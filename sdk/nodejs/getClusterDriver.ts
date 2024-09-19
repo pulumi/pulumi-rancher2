@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getClusterDriver(args: GetClusterDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterDriverResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterDriver:getClusterDriver", {
         "name": args.name,
@@ -99,7 +98,11 @@ export interface GetClusterDriverResult {
  * ```
  */
 export function getClusterDriverOutput(args: GetClusterDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterDriverResult> {
-    return pulumi.output(args).apply((a: any) => getClusterDriver(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getClusterDriver:getClusterDriver", {
+        "name": args.name,
+        "url": args.url,
+    }, opts);
 }
 
 /**

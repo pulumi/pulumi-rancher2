@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getUser:getUser", {
         "isExternal": args.isExternal,
@@ -93,7 +92,13 @@ export interface GetUserResult {
  * ```
  */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply((a: any) => getUser(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getUser:getUser", {
+        "isExternal": args.isExternal,
+        "name": args.name,
+        "username": args.username,
+    }, opts);
 }
 
 /**

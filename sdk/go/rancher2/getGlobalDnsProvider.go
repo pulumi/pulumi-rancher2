@@ -73,14 +73,20 @@ type LookupGlobalDnsProviderResult struct {
 
 func LookupGlobalDnsProviderOutput(ctx *pulumi.Context, args LookupGlobalDnsProviderOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalDnsProviderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGlobalDnsProviderResult, error) {
+		ApplyT(func(v interface{}) (LookupGlobalDnsProviderResultOutput, error) {
 			args := v.(LookupGlobalDnsProviderArgs)
-			r, err := LookupGlobalDnsProvider(ctx, &args, opts...)
-			var s LookupGlobalDnsProviderResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGlobalDnsProviderResult
+			secret, err := ctx.InvokePackageRaw("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGlobalDnsProviderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGlobalDnsProviderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGlobalDnsProviderResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGlobalDnsProviderResultOutput)
 }
 

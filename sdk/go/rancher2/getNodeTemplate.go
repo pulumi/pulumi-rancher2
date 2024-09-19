@@ -93,14 +93,20 @@ type LookupNodeTemplateResult struct {
 
 func LookupNodeTemplateOutput(ctx *pulumi.Context, args LookupNodeTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupNodeTemplateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNodeTemplateResult, error) {
+		ApplyT(func(v interface{}) (LookupNodeTemplateResultOutput, error) {
 			args := v.(LookupNodeTemplateArgs)
-			r, err := LookupNodeTemplate(ctx, &args, opts...)
-			var s LookupNodeTemplateResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupNodeTemplateResult
+			secret, err := ctx.InvokePackageRaw("rancher2:index/getNodeTemplate:getNodeTemplate", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNodeTemplateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNodeTemplateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNodeTemplateResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNodeTemplateResultOutput)
 }
 

@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
  */
 export function getCatalogV2(args: GetCatalogV2Args, opts?: pulumi.InvokeOptions): Promise<GetCatalogV2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getCatalogV2:getCatalogV2", {
         "clusterId": args.clusterId,
@@ -109,7 +108,15 @@ export interface GetCatalogV2Result {
  * Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
  */
 export function getCatalogV2Output(args: GetCatalogV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogV2Result> {
-    return pulumi.output(args).apply((a: any) => getCatalogV2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getCatalogV2:getCatalogV2", {
+        "clusterId": args.clusterId,
+        "exponentialBackoffMaxRetries": args.exponentialBackoffMaxRetries,
+        "exponentialBackoffMaxWait": args.exponentialBackoffMaxWait,
+        "exponentialBackoffMinWait": args.exponentialBackoffMinWait,
+        "insecurePlainHttp": args.insecurePlainHttp,
+        "name": args.name,
+    }, opts);
 }
 
 /**

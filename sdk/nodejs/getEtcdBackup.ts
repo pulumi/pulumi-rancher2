@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getEtcdBackup(args: GetEtcdBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetEtcdBackupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getEtcdBackup:getEtcdBackup", {
         "clusterId": args.clusterId,
@@ -95,7 +94,11 @@ export interface GetEtcdBackupResult {
  * ```
  */
 export function getEtcdBackupOutput(args: GetEtcdBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEtcdBackupResult> {
-    return pulumi.output(args).apply((a: any) => getEtcdBackup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getEtcdBackup:getEtcdBackup", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

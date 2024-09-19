@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNodeDriver(args: GetNodeDriverArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeDriverResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getNodeDriver:getNodeDriver", {
         "name": args.name,
@@ -103,7 +102,11 @@ export interface GetNodeDriverResult {
  * ```
  */
 export function getNodeDriverOutput(args: GetNodeDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeDriverResult> {
-    return pulumi.output(args).apply((a: any) => getNodeDriver(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getNodeDriver:getNodeDriver", {
+        "name": args.name,
+        "url": args.url,
+    }, opts);
 }
 
 /**

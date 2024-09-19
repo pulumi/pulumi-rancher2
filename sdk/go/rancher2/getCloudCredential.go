@@ -67,14 +67,20 @@ type LookupCloudCredentialResult struct {
 
 func LookupCloudCredentialOutput(ctx *pulumi.Context, args LookupCloudCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupCloudCredentialResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCloudCredentialResult, error) {
+		ApplyT(func(v interface{}) (LookupCloudCredentialResultOutput, error) {
 			args := v.(LookupCloudCredentialArgs)
-			r, err := LookupCloudCredential(ctx, &args, opts...)
-			var s LookupCloudCredentialResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupCloudCredentialResult
+			secret, err := ctx.InvokePackageRaw("rancher2:index/getCloudCredential:getCloudCredential", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCloudCredentialResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCloudCredentialResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCloudCredentialResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCloudCredentialResultOutput)
 }
 

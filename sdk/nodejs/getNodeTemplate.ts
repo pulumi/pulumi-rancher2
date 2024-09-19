@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getNodeTemplate(args: GetNodeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTemplateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getNodeTemplate:getNodeTemplate", {
         "name": args.name,
@@ -124,7 +123,11 @@ export interface GetNodeTemplateResult {
  * ```
  */
 export function getNodeTemplateOutput(args: GetNodeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTemplateResult> {
-    return pulumi.output(args).apply((a: any) => getNodeTemplate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getNodeTemplate:getNodeTemplate", {
+        "name": args.name,
+        "useInternalIpAddress": args.useInternalIpAddress,
+    }, opts);
 }
 
 /**
