@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getRegistry:getRegistry", {
         "name": args.name,
@@ -127,7 +126,12 @@ export interface GetRegistryResult {
  * ```
  */
 export function getRegistryOutput(args: GetRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryResult> {
-    return pulumi.output(args).apply((a: any) => getRegistry(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getRegistry:getRegistry", {
+        "name": args.name,
+        "namespaceId": args.namespaceId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

@@ -89,14 +89,20 @@ type LookupMultiClusterAppResult struct {
 
 func LookupMultiClusterAppOutput(ctx *pulumi.Context, args LookupMultiClusterAppOutputArgs, opts ...pulumi.InvokeOption) LookupMultiClusterAppResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMultiClusterAppResult, error) {
+		ApplyT(func(v interface{}) (LookupMultiClusterAppResultOutput, error) {
 			args := v.(LookupMultiClusterAppArgs)
-			r, err := LookupMultiClusterApp(ctx, &args, opts...)
-			var s LookupMultiClusterAppResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupMultiClusterAppResult
+			secret, err := ctx.InvokePackageRaw("rancher2:index/getMultiClusterApp:getMultiClusterApp", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMultiClusterAppResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMultiClusterAppResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMultiClusterAppResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMultiClusterAppResultOutput)
 }
 

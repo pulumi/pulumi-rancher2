@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSetting(args: GetSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetSettingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getSetting:getSetting", {
         "name": args.name,
@@ -65,7 +64,10 @@ export interface GetSettingResult {
  * ```
  */
 export function getSettingOutput(args: GetSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSettingResult> {
-    return pulumi.output(args).apply((a: any) => getSetting(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getSetting:getSetting", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

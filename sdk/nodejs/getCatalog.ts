@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getCatalog(args: GetCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetCatalogResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getCatalog:getCatalog", {
         "name": args.name,
@@ -111,7 +110,11 @@ export interface GetCatalogResult {
  * ```
  */
 export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogResult> {
-    return pulumi.output(args).apply((a: any) => getCatalog(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getCatalog:getCatalog", {
+        "name": args.name,
+        "scope": args.scope,
+    }, opts);
 }
 
 /**

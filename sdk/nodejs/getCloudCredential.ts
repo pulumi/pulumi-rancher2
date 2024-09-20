@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getCloudCredential(args: GetCloudCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudCredentialResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getCloudCredential:getCloudCredential", {
         "name": args.name,
@@ -69,7 +68,10 @@ export interface GetCloudCredentialResult {
  * ```
  */
 export function getCloudCredentialOutput(args: GetCloudCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudCredentialResult> {
-    return pulumi.output(args).apply((a: any) => getCloudCredential(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getCloudCredential:getCloudCredential", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

@@ -37,7 +37,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getSecret:getSecret", {
         "name": args.name,
@@ -125,7 +124,12 @@ export interface GetSecretResult {
  * ```
  */
 export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
-    return pulumi.output(args).apply((a: any) => getSecret(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getSecret:getSecret", {
+        "name": args.name,
+        "namespaceId": args.namespaceId,
+        "projectId": args.projectId,
+    }, opts);
 }
 
 /**

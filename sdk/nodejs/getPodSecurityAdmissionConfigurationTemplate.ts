@@ -7,7 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getPodSecurityAdmissionConfigurationTemplate(args: GetPodSecurityAdmissionConfigurationTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetPodSecurityAdmissionConfigurationTemplateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", {
         "annotations": args.annotations,
@@ -41,7 +40,12 @@ export interface GetPodSecurityAdmissionConfigurationTemplateResult {
     readonly name: string;
 }
 export function getPodSecurityAdmissionConfigurationTemplateOutput(args: GetPodSecurityAdmissionConfigurationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPodSecurityAdmissionConfigurationTemplateResult> {
-    return pulumi.output(args).apply((a: any) => getPodSecurityAdmissionConfigurationTemplate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", {
+        "annotations": args.annotations,
+        "labels": args.labels,
+        "name": args.name,
+    }, opts);
 }
 
 /**

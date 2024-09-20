@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getPrincipal(args: GetPrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetPrincipalResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getPrincipal:getPrincipal", {
         "name": args.name,
@@ -67,7 +66,11 @@ export interface GetPrincipalResult {
  * ```
  */
 export function getPrincipalOutput(args: GetPrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrincipalResult> {
-    return pulumi.output(args).apply((a: any) => getPrincipal(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getPrincipal:getPrincipal", {
+        "name": args.name,
+        "type": args.type,
+    }, opts);
 }
 
 /**

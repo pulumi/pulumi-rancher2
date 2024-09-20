@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterTemplate:getClusterTemplate", {
         "annotations": args.annotations,
@@ -100,7 +99,13 @@ export interface GetClusterTemplateResult {
  * ```
  */
 export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterTemplateResult> {
-    return pulumi.output(args).apply((a: any) => getClusterTemplate(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getClusterTemplate:getClusterTemplate", {
+        "annotations": args.annotations,
+        "description": args.description,
+        "labels": args.labels,
+        "name": args.name,
+    }, opts);
 }
 
 /**

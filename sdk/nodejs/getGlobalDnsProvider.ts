@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGlobalDnsProvider(args: GetGlobalDnsProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalDnsProviderResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", {
         "name": args.name,
@@ -79,7 +78,10 @@ export interface GetGlobalDnsProviderResult {
  * ```
  */
 export function getGlobalDnsProviderOutput(args: GetGlobalDnsProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalDnsProviderResult> {
-    return pulumi.output(args).apply((a: any) => getGlobalDnsProvider(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

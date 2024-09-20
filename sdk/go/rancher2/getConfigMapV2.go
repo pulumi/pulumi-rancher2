@@ -53,14 +53,20 @@ type LookupConfigMapV2Result struct {
 
 func LookupConfigMapV2Output(ctx *pulumi.Context, args LookupConfigMapV2OutputArgs, opts ...pulumi.InvokeOption) LookupConfigMapV2ResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigMapV2Result, error) {
+		ApplyT(func(v interface{}) (LookupConfigMapV2ResultOutput, error) {
 			args := v.(LookupConfigMapV2Args)
-			r, err := LookupConfigMapV2(ctx, &args, opts...)
-			var s LookupConfigMapV2Result
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigMapV2Result
+			secret, err := ctx.InvokePackageRaw("rancher2:index/getConfigMapV2:getConfigMapV2", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigMapV2ResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigMapV2ResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigMapV2ResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigMapV2ResultOutput)
 }
 

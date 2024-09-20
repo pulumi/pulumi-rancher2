@@ -65,14 +65,20 @@ type LookupSettingResult struct {
 
 func LookupSettingOutput(ctx *pulumi.Context, args LookupSettingOutputArgs, opts ...pulumi.InvokeOption) LookupSettingResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSettingResult, error) {
+		ApplyT(func(v interface{}) (LookupSettingResultOutput, error) {
 			args := v.(LookupSettingArgs)
-			r, err := LookupSetting(ctx, &args, opts...)
-			var s LookupSettingResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSettingResult
+			secret, err := ctx.InvokePackageRaw("rancher2:index/getSetting:getSetting", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSettingResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSettingResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSettingResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSettingResultOutput)
 }
 
