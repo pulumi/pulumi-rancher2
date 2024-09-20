@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getClusterRoleTemplateBinding(args: GetClusterRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterRoleTemplateBindingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", {
         "clusterId": args.clusterId,
@@ -99,7 +98,12 @@ export interface GetClusterRoleTemplateBindingResult {
  * ```
  */
 export function getClusterRoleTemplateBindingOutput(args: GetClusterRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterRoleTemplateBindingResult> {
-    return pulumi.output(args).apply((a: any) => getClusterRoleTemplateBinding(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "roleTemplateId": args.roleTemplateId,
+    }, opts);
 }
 
 /**

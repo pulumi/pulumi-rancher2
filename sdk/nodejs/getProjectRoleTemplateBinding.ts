@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getProjectRoleTemplateBinding(args: GetProjectRoleTemplateBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectRoleTemplateBindingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", {
         "name": args.name,
@@ -99,7 +98,12 @@ export interface GetProjectRoleTemplateBindingResult {
  * ```
  */
 export function getProjectRoleTemplateBindingOutput(args: GetProjectRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectRoleTemplateBindingResult> {
-    return pulumi.output(args).apply((a: any) => getProjectRoleTemplateBinding(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", {
+        "name": args.name,
+        "projectId": args.projectId,
+        "roleTemplateId": args.roleTemplateId,
+    }, opts);
 }
 
 /**

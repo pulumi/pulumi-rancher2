@@ -79,14 +79,20 @@ type LookupEtcdBackupResult struct {
 
 func LookupEtcdBackupOutput(ctx *pulumi.Context, args LookupEtcdBackupOutputArgs, opts ...pulumi.InvokeOption) LookupEtcdBackupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupEtcdBackupResult, error) {
+		ApplyT(func(v interface{}) (LookupEtcdBackupResultOutput, error) {
 			args := v.(LookupEtcdBackupArgs)
-			r, err := LookupEtcdBackup(ctx, &args, opts...)
-			var s LookupEtcdBackupResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupEtcdBackupResult
+			secret, err := ctx.InvokePackageRaw("rancher2:index/getEtcdBackup:getEtcdBackup", args, &rv, "", opts...)
+			if err != nil {
+				return LookupEtcdBackupResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupEtcdBackupResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupEtcdBackupResultOutput), nil
+			}
+			return output, nil
 		}).(LookupEtcdBackupResultOutput)
 }
 

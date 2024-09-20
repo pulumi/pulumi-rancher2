@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGlobalRoleBinding(args: GetGlobalRoleBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleBindingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", {
         "globalRoleId": args.globalRoleId,
@@ -85,7 +84,11 @@ export interface GetGlobalRoleBindingResult {
  * ```
  */
 export function getGlobalRoleBindingOutput(args: GetGlobalRoleBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleBindingResult> {
-    return pulumi.output(args).apply((a: any) => getGlobalRoleBinding(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", {
+        "globalRoleId": args.globalRoleId,
+        "name": args.name,
+    }, opts);
 }
 
 /**

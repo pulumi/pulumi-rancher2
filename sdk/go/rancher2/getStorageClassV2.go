@@ -58,14 +58,20 @@ type LookupStorageClassV2Result struct {
 
 func LookupStorageClassV2Output(ctx *pulumi.Context, args LookupStorageClassV2OutputArgs, opts ...pulumi.InvokeOption) LookupStorageClassV2ResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupStorageClassV2Result, error) {
+		ApplyT(func(v interface{}) (LookupStorageClassV2ResultOutput, error) {
 			args := v.(LookupStorageClassV2Args)
-			r, err := LookupStorageClassV2(ctx, &args, opts...)
-			var s LookupStorageClassV2Result
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupStorageClassV2Result
+			secret, err := ctx.InvokePackageRaw("rancher2:index/getStorageClassV2:getStorageClassV2", args, &rv, "", opts...)
+			if err != nil {
+				return LookupStorageClassV2ResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupStorageClassV2ResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupStorageClassV2ResultOutput), nil
+			}
+			return output, nil
 		}).(LookupStorageClassV2ResultOutput)
 }
 

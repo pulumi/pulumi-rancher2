@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getMultiClusterApp(args: GetMultiClusterAppArgs, opts?: pulumi.InvokeOptions): Promise<GetMultiClusterAppResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getMultiClusterApp:getMultiClusterApp", {
         "name": args.name,
@@ -115,7 +114,10 @@ export interface GetMultiClusterAppResult {
  * ```
  */
 export function getMultiClusterAppOutput(args: GetMultiClusterAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMultiClusterAppResult> {
-    return pulumi.output(args).apply((a: any) => getMultiClusterApp(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getMultiClusterApp:getMultiClusterApp", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

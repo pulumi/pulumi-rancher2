@@ -42,14 +42,20 @@ type LookupPodSecurityAdmissionConfigurationTemplateResult struct {
 
 func LookupPodSecurityAdmissionConfigurationTemplateOutput(ctx *pulumi.Context, args LookupPodSecurityAdmissionConfigurationTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupPodSecurityAdmissionConfigurationTemplateResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPodSecurityAdmissionConfigurationTemplateResult, error) {
+		ApplyT(func(v interface{}) (LookupPodSecurityAdmissionConfigurationTemplateResultOutput, error) {
 			args := v.(LookupPodSecurityAdmissionConfigurationTemplateArgs)
-			r, err := LookupPodSecurityAdmissionConfigurationTemplate(ctx, &args, opts...)
-			var s LookupPodSecurityAdmissionConfigurationTemplateResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPodSecurityAdmissionConfigurationTemplateResult
+			secret, err := ctx.InvokePackageRaw("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPodSecurityAdmissionConfigurationTemplateResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPodSecurityAdmissionConfigurationTemplateResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPodSecurityAdmissionConfigurationTemplateResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPodSecurityAdmissionConfigurationTemplateResultOutput)
 }
 

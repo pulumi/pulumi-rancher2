@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getClusterV2(args: GetClusterV2Args, opts?: pulumi.InvokeOptions): Promise<GetClusterV2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterV2:getClusterV2", {
         "fleetNamespace": args.fleetNamespace,
@@ -117,7 +116,11 @@ export interface GetClusterV2Result {
  * ```
  */
 export function getClusterV2Output(args: GetClusterV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterV2Result> {
-    return pulumi.output(args).apply((a: any) => getClusterV2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getClusterV2:getClusterV2", {
+        "fleetNamespace": args.fleetNamespace,
+        "name": args.name,
+    }, opts);
 }
 
 /**

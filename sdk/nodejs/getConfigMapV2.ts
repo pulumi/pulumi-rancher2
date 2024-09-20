@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
  */
 export function getConfigMapV2(args: GetConfigMapV2Args, opts?: pulumi.InvokeOptions): Promise<GetConfigMapV2Result> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getConfigMapV2:getConfigMapV2", {
         "clusterId": args.clusterId,
@@ -71,7 +70,12 @@ export interface GetConfigMapV2Result {
  * Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
  */
 export function getConfigMapV2Output(args: GetConfigMapV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigMapV2Result> {
-    return pulumi.output(args).apply((a: any) => getConfigMapV2(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getConfigMapV2:getConfigMapV2", {
+        "clusterId": args.clusterId,
+        "name": args.name,
+        "namespace": args.namespace,
+    }, opts);
 }
 
 /**

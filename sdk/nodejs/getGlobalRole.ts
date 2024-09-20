@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getGlobalRole(args: GetGlobalRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalRoleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getGlobalRole:getGlobalRole", {
         "inheritedClusterRoles": args.inheritedClusterRoles,
@@ -96,7 +95,11 @@ export interface GetGlobalRoleResult {
  * ```
  */
 export function getGlobalRoleOutput(args: GetGlobalRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleResult> {
-    return pulumi.output(args).apply((a: any) => getGlobalRole(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getGlobalRole:getGlobalRole", {
+        "inheritedClusterRoles": args.inheritedClusterRoles,
+        "name": args.name,
+    }, opts);
 }
 
 /**

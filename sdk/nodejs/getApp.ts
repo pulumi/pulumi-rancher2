@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getApp:getApp", {
         "annotations": args.annotations,
@@ -122,7 +121,13 @@ export interface GetAppResult {
  * ```
  */
 export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
-    return pulumi.output(args).apply((a: any) => getApp(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("rancher2:index/getApp:getApp", {
+        "annotations": args.annotations,
+        "name": args.name,
+        "projectId": args.projectId,
+        "targetNamespace": args.targetNamespace,
+    }, opts);
 }
 
 /**
