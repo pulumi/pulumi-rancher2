@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -121,9 +126,6 @@ def get_pod_security_admission_configuration_template(annotations: Optional[Mapp
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_pod_security_admission_configuration_template)
 def get_pod_security_admission_configuration_template_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                                              labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                                              name: Optional[pulumi.Input[str]] = None,
@@ -131,4 +133,17 @@ def get_pod_security_admission_configuration_template_output(annotations: Option
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['annotations'] = annotations
+    __args__['labels'] = labels
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate', __args__, opts=opts, typ=GetPodSecurityAdmissionConfigurationTemplateResult)
+    return __ret__.apply(lambda __response__: GetPodSecurityAdmissionConfigurationTemplateResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        defaults=pulumi.get(__response__, 'defaults'),
+        description=pulumi.get(__response__, 'description'),
+        exemptions=pulumi.get(__response__, 'exemptions'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name')))

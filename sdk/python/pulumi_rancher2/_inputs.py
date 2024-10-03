@@ -4,268 +4,547 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'CloudCredentialAmazonec2CredentialConfigArgs',
+    'CloudCredentialAmazonec2CredentialConfigArgsDict',
     'CloudCredentialAzureCredentialConfigArgs',
+    'CloudCredentialAzureCredentialConfigArgsDict',
     'CloudCredentialDigitaloceanCredentialConfigArgs',
+    'CloudCredentialDigitaloceanCredentialConfigArgsDict',
     'CloudCredentialGoogleCredentialConfigArgs',
+    'CloudCredentialGoogleCredentialConfigArgsDict',
     'CloudCredentialHarvesterCredentialConfigArgs',
+    'CloudCredentialHarvesterCredentialConfigArgsDict',
     'CloudCredentialLinodeCredentialConfigArgs',
+    'CloudCredentialLinodeCredentialConfigArgsDict',
     'CloudCredentialOpenstackCredentialConfigArgs',
+    'CloudCredentialOpenstackCredentialConfigArgsDict',
     'CloudCredentialS3CredentialConfigArgs',
+    'CloudCredentialS3CredentialConfigArgsDict',
     'CloudCredentialVsphereCredentialConfigArgs',
+    'CloudCredentialVsphereCredentialConfigArgsDict',
     'ClusterAgentEnvVarArgs',
+    'ClusterAgentEnvVarArgsDict',
     'ClusterAksConfigArgs',
+    'ClusterAksConfigArgsDict',
     'ClusterAksConfigV2Args',
+    'ClusterAksConfigV2ArgsDict',
     'ClusterAksConfigV2NodePoolArgs',
+    'ClusterAksConfigV2NodePoolArgsDict',
     'ClusterClusterAgentDeploymentCustomizationArgs',
+    'ClusterClusterAgentDeploymentCustomizationArgsDict',
     'ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs',
+    'ClusterClusterAgentDeploymentCustomizationAppendTolerationArgsDict',
     'ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs',
+    'ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict',
     'ClusterClusterAuthEndpointArgs',
+    'ClusterClusterAuthEndpointArgsDict',
     'ClusterClusterRegistrationTokenArgs',
+    'ClusterClusterRegistrationTokenArgsDict',
     'ClusterClusterTemplateAnswersArgs',
+    'ClusterClusterTemplateAnswersArgsDict',
     'ClusterClusterTemplateQuestionArgs',
+    'ClusterClusterTemplateQuestionArgsDict',
     'ClusterEksConfigArgs',
+    'ClusterEksConfigArgsDict',
     'ClusterEksConfigV2Args',
+    'ClusterEksConfigV2ArgsDict',
     'ClusterEksConfigV2NodeGroupArgs',
+    'ClusterEksConfigV2NodeGroupArgsDict',
     'ClusterEksConfigV2NodeGroupLaunchTemplateArgs',
+    'ClusterEksConfigV2NodeGroupLaunchTemplateArgsDict',
     'ClusterFleetAgentDeploymentCustomizationArgs',
+    'ClusterFleetAgentDeploymentCustomizationArgsDict',
     'ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs',
+    'ClusterFleetAgentDeploymentCustomizationAppendTolerationArgsDict',
     'ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs',
+    'ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict',
     'ClusterGkeConfigArgs',
+    'ClusterGkeConfigArgsDict',
     'ClusterGkeConfigV2Args',
+    'ClusterGkeConfigV2ArgsDict',
     'ClusterGkeConfigV2ClusterAddonsArgs',
+    'ClusterGkeConfigV2ClusterAddonsArgsDict',
     'ClusterGkeConfigV2IpAllocationPolicyArgs',
+    'ClusterGkeConfigV2IpAllocationPolicyArgsDict',
     'ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs',
+    'ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgsDict',
     'ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs',
+    'ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgsDict',
     'ClusterGkeConfigV2NodePoolArgs',
+    'ClusterGkeConfigV2NodePoolArgsDict',
     'ClusterGkeConfigV2NodePoolAutoscalingArgs',
+    'ClusterGkeConfigV2NodePoolAutoscalingArgsDict',
     'ClusterGkeConfigV2NodePoolConfigArgs',
+    'ClusterGkeConfigV2NodePoolConfigArgsDict',
     'ClusterGkeConfigV2NodePoolConfigTaintArgs',
+    'ClusterGkeConfigV2NodePoolConfigTaintArgsDict',
     'ClusterGkeConfigV2NodePoolManagementArgs',
+    'ClusterGkeConfigV2NodePoolManagementArgsDict',
     'ClusterGkeConfigV2PrivateClusterConfigArgs',
+    'ClusterGkeConfigV2PrivateClusterConfigArgsDict',
     'ClusterK3sConfigArgs',
+    'ClusterK3sConfigArgsDict',
     'ClusterK3sConfigUpgradeStrategyArgs',
+    'ClusterK3sConfigUpgradeStrategyArgsDict',
     'ClusterOkeConfigArgs',
+    'ClusterOkeConfigArgsDict',
     'ClusterRke2ConfigArgs',
+    'ClusterRke2ConfigArgsDict',
     'ClusterRke2ConfigUpgradeStrategyArgs',
+    'ClusterRke2ConfigUpgradeStrategyArgsDict',
     'ClusterRkeConfigArgs',
+    'ClusterRkeConfigArgsDict',
     'ClusterRkeConfigAuthenticationArgs',
+    'ClusterRkeConfigAuthenticationArgsDict',
     'ClusterRkeConfigAuthorizationArgs',
+    'ClusterRkeConfigAuthorizationArgsDict',
     'ClusterRkeConfigBastionHostArgs',
+    'ClusterRkeConfigBastionHostArgsDict',
     'ClusterRkeConfigCloudProviderArgs',
+    'ClusterRkeConfigCloudProviderArgsDict',
     'ClusterRkeConfigCloudProviderAwsCloudProviderArgs',
+    'ClusterRkeConfigCloudProviderAwsCloudProviderArgsDict',
     'ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs',
+    'ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgsDict',
     'ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs',
+    'ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgsDict',
     'ClusterRkeConfigCloudProviderAzureCloudProviderArgs',
+    'ClusterRkeConfigCloudProviderAzureCloudProviderArgsDict',
     'ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs',
+    'ClusterRkeConfigCloudProviderOpenstackCloudProviderArgsDict',
     'ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs',
+    'ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgsDict',
     'ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs',
+    'ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgsDict',
     'ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs',
+    'ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgsDict',
     'ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs',
+    'ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgsDict',
     'ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs',
+    'ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgsDict',
     'ClusterRkeConfigCloudProviderVsphereCloudProviderArgs',
+    'ClusterRkeConfigCloudProviderVsphereCloudProviderArgsDict',
     'ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs',
+    'ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgsDict',
     'ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs',
+    'ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgsDict',
     'ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs',
+    'ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgsDict',
     'ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs',
+    'ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgsDict',
     'ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs',
+    'ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgsDict',
     'ClusterRkeConfigDnsArgs',
+    'ClusterRkeConfigDnsArgsDict',
     'ClusterRkeConfigDnsLinearAutoscalerParamsArgs',
+    'ClusterRkeConfigDnsLinearAutoscalerParamsArgsDict',
     'ClusterRkeConfigDnsNodelocalArgs',
+    'ClusterRkeConfigDnsNodelocalArgsDict',
     'ClusterRkeConfigDnsTolerationArgs',
+    'ClusterRkeConfigDnsTolerationArgsDict',
     'ClusterRkeConfigDnsUpdateStrategyArgs',
+    'ClusterRkeConfigDnsUpdateStrategyArgsDict',
     'ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs',
+    'ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgsDict',
     'ClusterRkeConfigIngressArgs',
+    'ClusterRkeConfigIngressArgsDict',
     'ClusterRkeConfigIngressTolerationArgs',
+    'ClusterRkeConfigIngressTolerationArgsDict',
     'ClusterRkeConfigIngressUpdateStrategyArgs',
+    'ClusterRkeConfigIngressUpdateStrategyArgsDict',
     'ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs',
+    'ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgsDict',
     'ClusterRkeConfigMonitoringArgs',
+    'ClusterRkeConfigMonitoringArgsDict',
     'ClusterRkeConfigMonitoringTolerationArgs',
+    'ClusterRkeConfigMonitoringTolerationArgsDict',
     'ClusterRkeConfigMonitoringUpdateStrategyArgs',
+    'ClusterRkeConfigMonitoringUpdateStrategyArgsDict',
     'ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs',
+    'ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgsDict',
     'ClusterRkeConfigNetworkArgs',
+    'ClusterRkeConfigNetworkArgsDict',
     'ClusterRkeConfigNetworkAciNetworkProviderArgs',
+    'ClusterRkeConfigNetworkAciNetworkProviderArgsDict',
     'ClusterRkeConfigNetworkCalicoNetworkProviderArgs',
+    'ClusterRkeConfigNetworkCalicoNetworkProviderArgsDict',
     'ClusterRkeConfigNetworkCanalNetworkProviderArgs',
+    'ClusterRkeConfigNetworkCanalNetworkProviderArgsDict',
     'ClusterRkeConfigNetworkFlannelNetworkProviderArgs',
+    'ClusterRkeConfigNetworkFlannelNetworkProviderArgsDict',
     'ClusterRkeConfigNetworkTolerationArgs',
+    'ClusterRkeConfigNetworkTolerationArgsDict',
     'ClusterRkeConfigNetworkWeaveNetworkProviderArgs',
+    'ClusterRkeConfigNetworkWeaveNetworkProviderArgsDict',
     'ClusterRkeConfigNodeArgs',
+    'ClusterRkeConfigNodeArgsDict',
     'ClusterRkeConfigPrivateRegistryArgs',
+    'ClusterRkeConfigPrivateRegistryArgsDict',
     'ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs',
+    'ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgsDict',
     'ClusterRkeConfigServicesArgs',
+    'ClusterRkeConfigServicesArgsDict',
     'ClusterRkeConfigServicesEtcdArgs',
+    'ClusterRkeConfigServicesEtcdArgsDict',
     'ClusterRkeConfigServicesEtcdBackupConfigArgs',
+    'ClusterRkeConfigServicesEtcdBackupConfigArgsDict',
     'ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs',
+    'ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict',
     'ClusterRkeConfigServicesKubeApiArgs',
+    'ClusterRkeConfigServicesKubeApiArgsDict',
     'ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs',
+    'ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgsDict',
     'ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs',
+    'ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgsDict',
     'ClusterRkeConfigServicesKubeApiAuditLogArgs',
+    'ClusterRkeConfigServicesKubeApiAuditLogArgsDict',
     'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs',
+    'ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgsDict',
     'ClusterRkeConfigServicesKubeApiEventRateLimitArgs',
+    'ClusterRkeConfigServicesKubeApiEventRateLimitArgsDict',
     'ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs',
+    'ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgsDict',
     'ClusterRkeConfigServicesKubeControllerArgs',
+    'ClusterRkeConfigServicesKubeControllerArgsDict',
     'ClusterRkeConfigServicesKubeletArgs',
+    'ClusterRkeConfigServicesKubeletArgsDict',
     'ClusterRkeConfigServicesKubeproxyArgs',
+    'ClusterRkeConfigServicesKubeproxyArgsDict',
     'ClusterRkeConfigServicesSchedulerArgs',
+    'ClusterRkeConfigServicesSchedulerArgsDict',
     'ClusterRkeConfigUpgradeStrategyArgs',
+    'ClusterRkeConfigUpgradeStrategyArgsDict',
     'ClusterRkeConfigUpgradeStrategyDrainInputArgs',
+    'ClusterRkeConfigUpgradeStrategyDrainInputArgsDict',
     'ClusterSyncNodeArgs',
+    'ClusterSyncNodeArgsDict',
     'ClusterTemplateMemberArgs',
+    'ClusterTemplateMemberArgsDict',
     'ClusterTemplateTemplateRevisionArgs',
+    'ClusterTemplateTemplateRevisionArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgsDict',
     'ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs',
+    'ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgsDict',
     'ClusterTemplateTemplateRevisionQuestionArgs',
+    'ClusterTemplateTemplateRevisionQuestionArgsDict',
     'ClusterV2AgentEnvVarArgs',
+    'ClusterV2AgentEnvVarArgsDict',
     'ClusterV2ClusterAgentDeploymentCustomizationArgs',
+    'ClusterV2ClusterAgentDeploymentCustomizationArgsDict',
     'ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs',
+    'ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgsDict',
     'ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs',
+    'ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict',
     'ClusterV2ClusterRegistrationTokenArgs',
+    'ClusterV2ClusterRegistrationTokenArgsDict',
     'ClusterV2FleetAgentDeploymentCustomizationArgs',
+    'ClusterV2FleetAgentDeploymentCustomizationArgsDict',
     'ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs',
+    'ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgsDict',
     'ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs',
+    'ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict',
     'ClusterV2LocalAuthEndpointArgs',
+    'ClusterV2LocalAuthEndpointArgsDict',
     'ClusterV2RkeConfigArgs',
+    'ClusterV2RkeConfigArgsDict',
     'ClusterV2RkeConfigEtcdArgs',
+    'ClusterV2RkeConfigEtcdArgsDict',
     'ClusterV2RkeConfigEtcdS3ConfigArgs',
+    'ClusterV2RkeConfigEtcdS3ConfigArgsDict',
     'ClusterV2RkeConfigEtcdSnapshotCreateArgs',
+    'ClusterV2RkeConfigEtcdSnapshotCreateArgsDict',
     'ClusterV2RkeConfigEtcdSnapshotRestoreArgs',
+    'ClusterV2RkeConfigEtcdSnapshotRestoreArgsDict',
     'ClusterV2RkeConfigLocalAuthEndpointArgs',
+    'ClusterV2RkeConfigLocalAuthEndpointArgsDict',
     'ClusterV2RkeConfigMachinePoolArgs',
+    'ClusterV2RkeConfigMachinePoolArgsDict',
     'ClusterV2RkeConfigMachinePoolDefaultArgs',
+    'ClusterV2RkeConfigMachinePoolDefaultArgsDict',
     'ClusterV2RkeConfigMachinePoolMachineConfigArgs',
+    'ClusterV2RkeConfigMachinePoolMachineConfigArgsDict',
     'ClusterV2RkeConfigMachinePoolRollingUpdateArgs',
+    'ClusterV2RkeConfigMachinePoolRollingUpdateArgsDict',
     'ClusterV2RkeConfigMachinePoolTaintArgs',
+    'ClusterV2RkeConfigMachinePoolTaintArgsDict',
     'ClusterV2RkeConfigMachineSelectorConfigArgs',
+    'ClusterV2RkeConfigMachineSelectorConfigArgsDict',
     'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs',
+    'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgsDict',
     'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs',
+    'ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgsDict',
     'ClusterV2RkeConfigMachineSelectorFileArgs',
+    'ClusterV2RkeConfigMachineSelectorFileArgsDict',
     'ClusterV2RkeConfigMachineSelectorFileFileSourceArgs',
+    'ClusterV2RkeConfigMachineSelectorFileFileSourceArgsDict',
     'ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs',
+    'ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgsDict',
     'ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs',
+    'ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgsDict',
     'ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs',
+    'ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgsDict',
     'ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs',
+    'ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgsDict',
     'ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs',
+    'ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgsDict',
     'ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs',
+    'ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgsDict',
     'ClusterV2RkeConfigRegistriesArgs',
+    'ClusterV2RkeConfigRegistriesArgsDict',
     'ClusterV2RkeConfigRegistriesConfigArgs',
+    'ClusterV2RkeConfigRegistriesConfigArgsDict',
     'ClusterV2RkeConfigRegistriesMirrorArgs',
+    'ClusterV2RkeConfigRegistriesMirrorArgsDict',
     'ClusterV2RkeConfigRotateCertificatesArgs',
+    'ClusterV2RkeConfigRotateCertificatesArgsDict',
     'ClusterV2RkeConfigUpgradeStrategyArgs',
+    'ClusterV2RkeConfigUpgradeStrategyArgsDict',
     'ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs',
+    'ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgsDict',
     'ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs',
+    'ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgsDict',
     'EtcdBackupBackupConfigArgs',
+    'EtcdBackupBackupConfigArgsDict',
     'EtcdBackupBackupConfigS3BackupConfigArgs',
+    'EtcdBackupBackupConfigS3BackupConfigArgsDict',
     'GlobalDnsProviderAlidnsConfigArgs',
+    'GlobalDnsProviderAlidnsConfigArgsDict',
     'GlobalDnsProviderCloudflareConfigArgs',
+    'GlobalDnsProviderCloudflareConfigArgsDict',
     'GlobalDnsProviderRoute53ConfigArgs',
+    'GlobalDnsProviderRoute53ConfigArgsDict',
     'GlobalRoleRuleArgs',
+    'GlobalRoleRuleArgsDict',
     'MachineConfigV2Amazonec2ConfigArgs',
+    'MachineConfigV2Amazonec2ConfigArgsDict',
     'MachineConfigV2AzureConfigArgs',
+    'MachineConfigV2AzureConfigArgsDict',
     'MachineConfigV2DigitaloceanConfigArgs',
+    'MachineConfigV2DigitaloceanConfigArgsDict',
     'MachineConfigV2HarvesterConfigArgs',
+    'MachineConfigV2HarvesterConfigArgsDict',
     'MachineConfigV2LinodeConfigArgs',
+    'MachineConfigV2LinodeConfigArgsDict',
     'MachineConfigV2OpenstackConfigArgs',
+    'MachineConfigV2OpenstackConfigArgsDict',
     'MachineConfigV2VsphereConfigArgs',
+    'MachineConfigV2VsphereConfigArgsDict',
     'MultiClusterAppAnswerArgs',
+    'MultiClusterAppAnswerArgsDict',
     'MultiClusterAppMemberArgs',
+    'MultiClusterAppMemberArgsDict',
     'MultiClusterAppTargetArgs',
+    'MultiClusterAppTargetArgsDict',
     'MultiClusterAppUpgradeStrategyArgs',
+    'MultiClusterAppUpgradeStrategyArgsDict',
     'MultiClusterAppUpgradeStrategyRollingUpdateArgs',
+    'MultiClusterAppUpgradeStrategyRollingUpdateArgsDict',
     'NamespaceContainerResourceLimitArgs',
+    'NamespaceContainerResourceLimitArgsDict',
     'NamespaceResourceQuotaArgs',
+    'NamespaceResourceQuotaArgsDict',
     'NamespaceResourceQuotaLimitArgs',
+    'NamespaceResourceQuotaLimitArgsDict',
     'NodePoolNodeTaintArgs',
+    'NodePoolNodeTaintArgsDict',
     'NodeTemplateAmazonec2ConfigArgs',
+    'NodeTemplateAmazonec2ConfigArgsDict',
     'NodeTemplateAzureConfigArgs',
+    'NodeTemplateAzureConfigArgsDict',
     'NodeTemplateDigitaloceanConfigArgs',
+    'NodeTemplateDigitaloceanConfigArgsDict',
     'NodeTemplateHarvesterConfigArgs',
+    'NodeTemplateHarvesterConfigArgsDict',
     'NodeTemplateHetznerConfigArgs',
+    'NodeTemplateHetznerConfigArgsDict',
     'NodeTemplateLinodeConfigArgs',
+    'NodeTemplateLinodeConfigArgsDict',
     'NodeTemplateNodeTaintArgs',
+    'NodeTemplateNodeTaintArgsDict',
     'NodeTemplateOpennebulaConfigArgs',
+    'NodeTemplateOpennebulaConfigArgsDict',
     'NodeTemplateOpenstackConfigArgs',
+    'NodeTemplateOpenstackConfigArgsDict',
     'NodeTemplateOutscaleConfigArgs',
+    'NodeTemplateOutscaleConfigArgsDict',
     'NodeTemplateVsphereConfigArgs',
+    'NodeTemplateVsphereConfigArgsDict',
     'PodSecurityAdmissionConfigurationTemplateDefaultsArgs',
+    'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict',
     'PodSecurityAdmissionConfigurationTemplateExemptionsArgs',
+    'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict',
     'ProjectContainerResourceLimitArgs',
+    'ProjectContainerResourceLimitArgsDict',
     'ProjectResourceQuotaArgs',
+    'ProjectResourceQuotaArgsDict',
     'ProjectResourceQuotaNamespaceDefaultLimitArgs',
+    'ProjectResourceQuotaNamespaceDefaultLimitArgsDict',
     'ProjectResourceQuotaProjectLimitArgs',
+    'ProjectResourceQuotaProjectLimitArgsDict',
     'RegistryRegistryArgs',
+    'RegistryRegistryArgsDict',
     'RoleTemplateExternalRuleArgs',
+    'RoleTemplateExternalRuleArgsDict',
     'RoleTemplateRuleArgs',
+    'RoleTemplateRuleArgsDict',
     'GetRoleTemplateExternalRuleArgs',
+    'GetRoleTemplateExternalRuleArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class CloudCredentialAmazonec2CredentialConfigArgsDict(TypedDict):
+        access_key: pulumi.Input[str]
+        """
+        AWS Access Key
+        """
+        secret_key: pulumi.Input[str]
+        """
+        AWS Secret Key
+        """
+        default_region: NotRequired[pulumi.Input[str]]
+        """
+        AWS default region
+        """
+elif False:
+    CloudCredentialAmazonec2CredentialConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudCredentialAmazonec2CredentialConfigArgs:
@@ -319,6 +598,31 @@ class CloudCredentialAmazonec2CredentialConfigArgs:
     def default_region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "default_region", value)
 
+
+if not MYPY:
+    class CloudCredentialAzureCredentialConfigArgsDict(TypedDict):
+        client_id: pulumi.Input[str]
+        """
+        Azure Service Principal Account ID
+        """
+        client_secret: pulumi.Input[str]
+        """
+        Azure Service Principal Account password
+        """
+        subscription_id: pulumi.Input[str]
+        """
+        Azure Subscription ID
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
+        """
+        tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        Azure Tenant ID
+        """
+elif False:
+    CloudCredentialAzureCredentialConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudCredentialAzureCredentialConfigArgs:
@@ -404,6 +708,15 @@ class CloudCredentialAzureCredentialConfigArgs:
         pulumi.set(self, "tenant_id", value)
 
 
+if not MYPY:
+    class CloudCredentialDigitaloceanCredentialConfigArgsDict(TypedDict):
+        access_token: pulumi.Input[str]
+        """
+        Digital Ocean access token
+        """
+elif False:
+    CloudCredentialDigitaloceanCredentialConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudCredentialDigitaloceanCredentialConfigArgs:
     def __init__(__self__, *,
@@ -426,6 +739,15 @@ class CloudCredentialDigitaloceanCredentialConfigArgs:
         pulumi.set(self, "access_token", value)
 
 
+if not MYPY:
+    class CloudCredentialGoogleCredentialConfigArgsDict(TypedDict):
+        auth_encoded_json: pulumi.Input[str]
+        """
+        Google auth encoded json
+        """
+elif False:
+    CloudCredentialGoogleCredentialConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudCredentialGoogleCredentialConfigArgs:
     def __init__(__self__, *,
@@ -447,6 +769,23 @@ class CloudCredentialGoogleCredentialConfigArgs:
     def auth_encoded_json(self, value: pulumi.Input[str]):
         pulumi.set(self, "auth_encoded_json", value)
 
+
+if not MYPY:
+    class CloudCredentialHarvesterCredentialConfigArgsDict(TypedDict):
+        cluster_type: pulumi.Input[str]
+        """
+        Harvester cluster type. must be imported or external
+        """
+        kubeconfig_content: pulumi.Input[str]
+        """
+        Harvester cluster kubeconfig content
+        """
+        cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        The cluster id of imported Harvester cluster
+        """
+elif False:
+    CloudCredentialHarvesterCredentialConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudCredentialHarvesterCredentialConfigArgs:
@@ -501,6 +840,15 @@ class CloudCredentialHarvesterCredentialConfigArgs:
         pulumi.set(self, "cluster_id", value)
 
 
+if not MYPY:
+    class CloudCredentialLinodeCredentialConfigArgsDict(TypedDict):
+        token: pulumi.Input[str]
+        """
+        Linode API token
+        """
+elif False:
+    CloudCredentialLinodeCredentialConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudCredentialLinodeCredentialConfigArgs:
     def __init__(__self__, *,
@@ -523,6 +871,15 @@ class CloudCredentialLinodeCredentialConfigArgs:
         pulumi.set(self, "token", value)
 
 
+if not MYPY:
+    class CloudCredentialOpenstackCredentialConfigArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        """
+        OpenStack password
+        """
+elif False:
+    CloudCredentialOpenstackCredentialConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudCredentialOpenstackCredentialConfigArgs:
     def __init__(__self__, *,
@@ -544,6 +901,43 @@ class CloudCredentialOpenstackCredentialConfigArgs:
     def password(self, value: pulumi.Input[str]):
         pulumi.set(self, "password", value)
 
+
+if not MYPY:
+    class CloudCredentialS3CredentialConfigArgsDict(TypedDict):
+        access_key: pulumi.Input[str]
+        """
+        AWS Access Key
+        """
+        secret_key: pulumi.Input[str]
+        """
+        AWS Secret Key
+        """
+        default_bucket: NotRequired[pulumi.Input[str]]
+        """
+        AWS default bucket
+        """
+        default_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        AWS default endpoint
+        """
+        default_endpoint_ca: NotRequired[pulumi.Input[str]]
+        """
+        AWS default endpoint CA
+        """
+        default_folder: NotRequired[pulumi.Input[str]]
+        """
+        AWS default folder
+        """
+        default_region: NotRequired[pulumi.Input[str]]
+        """
+        AWS default region
+        """
+        default_skip_ssl_verify: NotRequired[pulumi.Input[bool]]
+        """
+        AWS default skip ssl verify
+        """
+elif False:
+    CloudCredentialS3CredentialConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudCredentialS3CredentialConfigArgs:
@@ -678,6 +1072,27 @@ class CloudCredentialS3CredentialConfigArgs:
         pulumi.set(self, "default_skip_ssl_verify", value)
 
 
+if not MYPY:
+    class CloudCredentialVsphereCredentialConfigArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        """
+        vSphere password
+        """
+        username: pulumi.Input[str]
+        """
+        vSphere username
+        """
+        vcenter: pulumi.Input[str]
+        """
+        vSphere IP/hostname for vCenter
+        """
+        vcenter_port: NotRequired[pulumi.Input[str]]
+        """
+        vSphere Port for vCenter
+        """
+elif False:
+    CloudCredentialVsphereCredentialConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudCredentialVsphereCredentialConfigArgs:
     def __init__(__self__, *,
@@ -746,6 +1161,19 @@ class CloudCredentialVsphereCredentialConfigArgs:
         pulumi.set(self, "vcenter_port", value)
 
 
+if not MYPY:
+    class ClusterAgentEnvVarArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the Cluster (string)
+        """
+        value: pulumi.Input[str]
+        """
+        The GKE taint value (string)
+        """
+elif False:
+    ClusterAgentEnvVarArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterAgentEnvVarArgs:
     def __init__(__self__, *,
@@ -782,6 +1210,167 @@ class ClusterAgentEnvVarArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ClusterAksConfigArgsDict(TypedDict):
+        agent_dns_prefix: pulumi.Input[str]
+        """
+        DNS prefix to be used to create the FQDN for the agent pool
+        """
+        client_id: pulumi.Input[str]
+        """
+        Azure client ID to use
+        """
+        client_secret: pulumi.Input[str]
+        """
+        Azure client secret associated with the "client id"
+        """
+        kubernetes_version: pulumi.Input[str]
+        """
+        Specify the version of Kubernetes
+        """
+        master_dns_prefix: pulumi.Input[str]
+        """
+        DNS prefix to use the Kubernetes cluster control pane
+        """
+        resource_group: pulumi.Input[str]
+        """
+        The name of the Cluster resource group
+        """
+        ssh_public_key_contents: pulumi.Input[str]
+        """
+        Contents of the SSH public key used to authenticate with Linux hosts
+        """
+        subnet: pulumi.Input[str]
+        """
+        The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
+        """
+        subscription_id: pulumi.Input[str]
+        """
+        Subscription credentials which uniquely identify Microsoft Azure subscription
+        """
+        tenant_id: pulumi.Input[str]
+        """
+        Azure tenant ID to use
+        """
+        virtual_network: pulumi.Input[str]
+        """
+        The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
+        """
+        virtual_network_resource_group: pulumi.Input[str]
+        """
+        The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
+        """
+        aad_server_app_secret: NotRequired[pulumi.Input[str]]
+        """
+        The secret of an Azure Active Directory server application
+        """
+        aad_tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of an Azure Active Directory tenant
+        """
+        add_client_app_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of an Azure Active Directory client application of type "Native". This application is for user login via kubectl
+        """
+        add_server_app_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of an Azure Active Directory server application of type "Web app/API". This application represents the managed cluster's apiserver (Server application)
+        """
+        admin_username: NotRequired[pulumi.Input[str]]
+        """
+        The administrator username to use for Linux hosts
+        """
+        agent_os_disk_size: NotRequired[pulumi.Input[int]]
+        """
+        GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the "agent vm size" specified
+        """
+        agent_pool_name: NotRequired[pulumi.Input[str]]
+        """
+        Name for the agent pool, upto 12 alphanumeric characters
+        """
+        agent_storage_profile: NotRequired[pulumi.Input[str]]
+        """
+        Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
+        """
+        agent_vm_size: NotRequired[pulumi.Input[str]]
+        """
+        Size of machine in the agent pool
+        """
+        auth_base_url: NotRequired[pulumi.Input[str]]
+        """
+        Different authentication API url to use
+        """
+        base_url: NotRequired[pulumi.Input[str]]
+        """
+        Different resource management API url to use
+        """
+        count: NotRequired[pulumi.Input[int]]
+        """
+        Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
+        """
+        dns_service_ip: NotRequired[pulumi.Input[str]]
+        """
+        An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in "service cidr"
+        """
+        docker_bridge_cidr: NotRequired[pulumi.Input[str]]
+        """
+        A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in "service cidr"
+        """
+        enable_http_application_routing: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the Kubernetes ingress with automatic public DNS name creation
+        """
+        enable_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Turn on Azure Log Analytics monitoring. Uses the Log Analytics "Default" workspace if it exists, else creates one. if using an existing workspace, specifies "log analytics workspace resource id"
+        """
+        load_balancer_sku: NotRequired[pulumi.Input[str]]
+        """
+        Load balancer type (basic | standard). Must be standard for auto-scaling
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Azure Kubernetes cluster location
+        """
+        log_analytics_workspace: NotRequired[pulumi.Input[str]]
+        """
+        The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}'
+        """
+        log_analytics_workspace_resource_group: NotRequired[pulumi.Input[str]]
+        """
+        The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group
+        """
+        max_pods: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of pods that can run on a node
+        """
+        network_plugin: NotRequired[pulumi.Input[str]]
+        """
+        Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
+        """
+        network_policy: NotRequired[pulumi.Input[str]]
+        """
+        Network policy used for building Kubernetes network. Chooses from [calico]
+        """
+        pod_cidr: NotRequired[pulumi.Input[str]]
+        """
+        A CIDR notation IP range from which to assign Kubernetes Pod IPs when "network plugin" is specified in "kubenet".
+        """
+        service_cidr: NotRequired[pulumi.Input[str]]
+        """
+        A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
+        """
+        tag: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Tags for Kubernetes cluster. For example, foo=bar
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
+        """
+elif False:
+    ClusterAksConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterAksConfigArgs:
@@ -1406,6 +1995,131 @@ class ClusterAksConfigArgs:
         pulumi.set(self, "tags", value)
 
 
+if not MYPY:
+    class ClusterAksConfigV2ArgsDict(TypedDict):
+        cloud_credential_id: pulumi.Input[str]
+        """
+        The AKS Cloud Credential ID to use
+        """
+        resource_group: pulumi.Input[str]
+        """
+        The AKS resource group
+        """
+        resource_location: pulumi.Input[str]
+        """
+        The AKS resource location
+        """
+        auth_base_url: NotRequired[pulumi.Input[str]]
+        """
+        The AKS auth base url
+        """
+        authorized_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The AKS authorized ip ranges
+        """
+        base_url: NotRequired[pulumi.Input[str]]
+        """
+        The AKS base url
+        """
+        dns_prefix: NotRequired[pulumi.Input[str]]
+        """
+        The AKS dns prefix. Required if `import=false`
+        """
+        http_application_routing: NotRequired[pulumi.Input[bool]]
+        """
+        Enable AKS http application routing?
+        """
+        imported: NotRequired[pulumi.Input[bool]]
+        """
+        Is AKS cluster imported?
+        """
+        kubernetes_version: NotRequired[pulumi.Input[str]]
+        """
+        The kubernetes master version. Required if `import=false`
+        """
+        linux_admin_username: NotRequired[pulumi.Input[str]]
+        """
+        The AKS linux admin username
+        """
+        linux_ssh_public_key: NotRequired[pulumi.Input[str]]
+        """
+        The AKS linux ssh public key
+        """
+        load_balancer_sku: NotRequired[pulumi.Input[str]]
+        """
+        The AKS load balancer sku
+        """
+        log_analytics_workspace_group: NotRequired[pulumi.Input[str]]
+        """
+        The AKS log analytics workspace group
+        """
+        log_analytics_workspace_name: NotRequired[pulumi.Input[str]]
+        """
+        The AKS log analytics workspace name
+        """
+        monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Is AKS cluster monitoring enabled?
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Cluster (string)
+        """
+        network_dns_service_ip: NotRequired[pulumi.Input[str]]
+        """
+        The AKS network dns service ip
+        """
+        network_docker_bridge_cidr: NotRequired[pulumi.Input[str]]
+        """
+        The AKS network docker bridge cidr
+        """
+        network_plugin: NotRequired[pulumi.Input[str]]
+        """
+        The AKS network plugin. Required if `import=false`
+        """
+        network_pod_cidr: NotRequired[pulumi.Input[str]]
+        """
+        The AKS network pod cidr
+        """
+        network_policy: NotRequired[pulumi.Input[str]]
+        """
+        The AKS network policy
+        """
+        network_service_cidr: NotRequired[pulumi.Input[str]]
+        """
+        The AKS network service cidr
+        """
+        node_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterAksConfigV2NodePoolArgsDict']]]]
+        """
+        The AKS node pools to use. Required if `import=false`
+        """
+        node_resource_group: NotRequired[pulumi.Input[str]]
+        """
+        The AKS node resource group name
+        """
+        private_cluster: NotRequired[pulumi.Input[bool]]
+        """
+        Is AKS cluster private?
+        """
+        subnet: NotRequired[pulumi.Input[str]]
+        """
+        The AKS subnet
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The AKS cluster tags
+        """
+        virtual_network: NotRequired[pulumi.Input[str]]
+        """
+        The AKS virtual network
+        """
+        virtual_network_resource_group: NotRequired[pulumi.Input[str]]
+        """
+        The AKS virtual network resource group
+        """
+elif False:
+    ClusterAksConfigV2ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterAksConfigV2Args:
     def __init__(__self__, *,
@@ -1890,6 +2604,75 @@ class ClusterAksConfigV2Args:
         pulumi.set(self, "virtual_network_resource_group", value)
 
 
+if not MYPY:
+    class ClusterAksConfigV2NodePoolArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the Cluster (string)
+        """
+        availability_zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The AKS node pool availability zones
+        """
+        count: NotRequired[pulumi.Input[int]]
+        """
+        The AKS node pool count
+        """
+        enable_auto_scaling: NotRequired[pulumi.Input[bool]]
+        """
+        Is AKS node pool auto scaling enabled?
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the Cluster (map)
+        """
+        max_count: NotRequired[pulumi.Input[int]]
+        """
+        The AKS node pool max count
+        """
+        max_pods: NotRequired[pulumi.Input[int]]
+        """
+        The AKS node pool max pods
+        """
+        max_surge: NotRequired[pulumi.Input[str]]
+        """
+        The AKS node pool max surge
+        """
+        min_count: NotRequired[pulumi.Input[int]]
+        """
+        The AKS node pool min count
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The AKS node pool mode
+        """
+        orchestrator_version: NotRequired[pulumi.Input[str]]
+        """
+        The AKS node pool orchestrator version
+        """
+        os_disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        The AKS node pool os disk size gb
+        """
+        os_disk_type: NotRequired[pulumi.Input[str]]
+        """
+        The AKS node pool os disk type
+        """
+        os_type: NotRequired[pulumi.Input[str]]
+        """
+        Enable AKS node pool os type
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The AKS node pool taints
+        """
+        vm_size: NotRequired[pulumi.Input[str]]
+        """
+        The AKS node pool vm size
+        """
+elif False:
+    ClusterAksConfigV2NodePoolArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterAksConfigV2NodePoolArgs:
     def __init__(__self__, *,
@@ -2152,6 +2935,23 @@ class ClusterAksConfigV2NodePoolArgs:
         pulumi.set(self, "vm_size", value)
 
 
+if not MYPY:
+    class ClusterClusterAgentDeploymentCustomizationArgsDict(TypedDict):
+        append_tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationAppendTolerationArgsDict']]]]
+        """
+        User defined tolerations to append to agent
+        """
+        override_affinity: NotRequired[pulumi.Input[str]]
+        """
+        User defined affinity to override default agent affinity
+        """
+        override_resource_requirements: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict']]]]
+        """
+        User defined resource requirements to set on the agent
+        """
+elif False:
+    ClusterClusterAgentDeploymentCustomizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterClusterAgentDeploymentCustomizationArgs:
     def __init__(__self__, *,
@@ -2206,6 +3006,31 @@ class ClusterClusterAgentDeploymentCustomizationArgs:
     def override_resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]):
         pulumi.set(self, "override_resource_requirements", value)
 
+
+if not MYPY:
+    class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The GKE taint key (string)
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint effect (string)
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        The toleration seconds (int)
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint value (string)
+        """
+elif False:
+    ClusterClusterAgentDeploymentCustomizationAppendTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs:
@@ -2293,6 +3118,27 @@ class ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict(TypedDict):
+        cpu_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum CPU limit for agent
+        """
+        cpu_request: NotRequired[pulumi.Input[str]]
+        """
+        The minimum CPU required for agent
+        """
+        memory_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum memory limit for agent
+        """
+        memory_request: NotRequired[pulumi.Input[str]]
+        """
+        The minimum memory required for agent
+        """
+elif False:
+    ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs:
     def __init__(__self__, *,
@@ -2364,6 +3210,23 @@ class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs:
         pulumi.set(self, "memory_request", value)
 
 
+if not MYPY:
+    class ClusterClusterAuthEndpointArgsDict(TypedDict):
+        ca_certs: NotRequired[pulumi.Input[str]]
+        """
+        CA certs for the authorized cluster endpoint (string)
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
+        fqdn: NotRequired[pulumi.Input[str]]
+        """
+        FQDN for the authorized cluster endpoint (string)
+        """
+elif False:
+    ClusterClusterAuthEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterClusterAuthEndpointArgs:
     def __init__(__self__, *,
@@ -2418,6 +3281,57 @@ class ClusterClusterAuthEndpointArgs:
     def fqdn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fqdn", value)
 
+
+if not MYPY:
+    class ClusterClusterRegistrationTokenArgsDict(TypedDict):
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Annotations for the Cluster (map)
+        """
+        cluster_id: NotRequired[pulumi.Input[str]]
+        command: NotRequired[pulumi.Input[str]]
+        """
+        Command to execute in a imported k8s cluster (string)
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        (Computed) The ID of the resource (string)
+        """
+        insecure_command: NotRequired[pulumi.Input[str]]
+        """
+        Insecure command to execute in a imported k8s cluster (string)
+        """
+        insecure_node_command: NotRequired[pulumi.Input[str]]
+        """
+        Insecure node command to execute in a imported k8s cluster (string)
+        """
+        insecure_windows_node_command: NotRequired[pulumi.Input[str]]
+        """
+        Insecure windows command to execute in a imported k8s cluster (string)
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the Cluster (map)
+        """
+        manifest_url: NotRequired[pulumi.Input[str]]
+        """
+        K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Cluster (string)
+        """
+        node_command: NotRequired[pulumi.Input[str]]
+        """
+        Node command to execute in linux nodes for custom k8s cluster (string)
+        """
+        token: NotRequired[pulumi.Input[str]]
+        windows_node_command: NotRequired[pulumi.Input[str]]
+        """
+        Node command to execute in windows nodes for custom k8s cluster (string)
+        """
+elif False:
+    ClusterClusterRegistrationTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterClusterRegistrationTokenArgs:
@@ -2626,6 +3540,23 @@ class ClusterClusterRegistrationTokenArgs:
         pulumi.set(self, "windows_node_command", value)
 
 
+if not MYPY:
+    class ClusterClusterTemplateAnswersArgsDict(TypedDict):
+        cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        Cluster ID for answer
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project ID for answer
+        """
+        values: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Key/values for answer
+        """
+elif False:
+    ClusterClusterTemplateAnswersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterClusterTemplateAnswersArgs:
     def __init__(__self__, *,
@@ -2680,6 +3611,27 @@ class ClusterClusterTemplateAnswersArgs:
     def values(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class ClusterClusterTemplateQuestionArgsDict(TypedDict):
+        default: pulumi.Input[str]
+        """
+        Default variable value
+        """
+        variable: pulumi.Input[str]
+        """
+        Variable name
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Required variable
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Variable type
+        """
+elif False:
+    ClusterClusterTemplateQuestionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterClusterTemplateQuestionArgs:
@@ -2749,6 +3701,87 @@ class ClusterClusterTemplateQuestionArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ClusterEksConfigArgsDict(TypedDict):
+        access_key: pulumi.Input[str]
+        """
+        The AWS Client ID to use
+        """
+        kubernetes_version: pulumi.Input[str]
+        """
+        The kubernetes master version
+        """
+        secret_key: pulumi.Input[str]
+        """
+        The AWS Client Secret associated with the Client ID
+        """
+        ami: NotRequired[pulumi.Input[str]]
+        """
+        A custom AMI ID to use for the worker nodes instead of the default
+        """
+        associate_worker_node_public_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Associate public ip EKS worker nodes
+        """
+        desired_nodes: NotRequired[pulumi.Input[int]]
+        """
+        The desired number of worker nodes
+        """
+        ebs_encryption: NotRequired[pulumi.Input[bool]]
+        """
+        Enables EBS encryption of worker nodes
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of machine to use for worker nodes
+        """
+        key_pair_name: NotRequired[pulumi.Input[str]]
+        """
+        Allow user to specify key name to use
+        """
+        maximum_nodes: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of worker nodes
+        """
+        minimum_nodes: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of worker nodes
+        """
+        node_volume_size: NotRequired[pulumi.Input[int]]
+        """
+        The volume size for each node
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Region to create the EKS cluster in
+        """
+        security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of security groups to use for the cluster
+        """
+        service_role: NotRequired[pulumi.Input[str]]
+        """
+        The service role to use to perform the cluster operations in AWS
+        """
+        session_token: NotRequired[pulumi.Input[str]]
+        """
+        A session token to use with the client key and secret if applicable
+        """
+        subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of subnets in the virtual network to use
+        """
+        user_data: NotRequired[pulumi.Input[str]]
+        """
+        Pass user-data to the nodes to perform automated configuration tasks
+        """
+        virtual_network: NotRequired[pulumi.Input[str]]
+        """
+        The name of the virtual network to use
+        """
+elif False:
+    ClusterEksConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterEksConfigArgs:
@@ -3058,6 +4091,75 @@ class ClusterEksConfigArgs:
         pulumi.set(self, "virtual_network", value)
 
 
+if not MYPY:
+    class ClusterEksConfigV2ArgsDict(TypedDict):
+        cloud_credential_id: pulumi.Input[str]
+        """
+        The AWS Cloud Credential ID to use
+        """
+        imported: NotRequired[pulumi.Input[bool]]
+        """
+        Is EKS cluster imported?
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        The AWS kms key to use
+        """
+        kubernetes_version: NotRequired[pulumi.Input[str]]
+        """
+        The kubernetes master version
+        """
+        logging_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The AWS logging types
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Cluster (string)
+        """
+        node_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupArgsDict']]]]
+        """
+        The AWS node groups to use
+        """
+        private_access: NotRequired[pulumi.Input[bool]]
+        """
+        The EKS cluster has private access
+        """
+        public_access: NotRequired[pulumi.Input[bool]]
+        """
+        The EKS cluster has public access
+        """
+        public_access_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The EKS cluster public access sources
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Region to create the EKS cluster in
+        """
+        secrets_encryption: NotRequired[pulumi.Input[bool]]
+        """
+        Enable EKS cluster secret encryption
+        """
+        security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of security groups to use for the cluster
+        """
+        service_role: NotRequired[pulumi.Input[str]]
+        """
+        The AWS service role to use
+        """
+        subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of subnets in the virtual network to use
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The EKS cluster tags
+        """
+elif False:
+    ClusterEksConfigV2ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterEksConfigV2Args:
     def __init__(__self__, *,
@@ -3319,6 +4421,87 @@ class ClusterEksConfigV2Args:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+
+if not MYPY:
+    class ClusterEksConfigV2NodeGroupArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the Cluster (string)
+        """
+        desired_size: NotRequired[pulumi.Input[int]]
+        """
+        The EKS node group desired size
+        """
+        disk_size: NotRequired[pulumi.Input[int]]
+        """
+        The EKS node group disk size
+        """
+        ec2_ssh_key: NotRequired[pulumi.Input[str]]
+        """
+        The EKS node group ssh key
+        """
+        gpu: NotRequired[pulumi.Input[bool]]
+        """
+        Is EKS cluster using gpu?
+        """
+        image_id: NotRequired[pulumi.Input[str]]
+        """
+        The EKS node group image ID
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        The EKS node group instance type
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the Cluster (map)
+        """
+        launch_templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgsDict']]]]
+        """
+        The EKS node groups launch template
+        """
+        max_size: NotRequired[pulumi.Input[int]]
+        """
+        The EKS node group maximum size
+        """
+        min_size: NotRequired[pulumi.Input[int]]
+        """
+        The EKS node group minimum size
+        """
+        node_role: NotRequired[pulumi.Input[str]]
+        """
+        The EKS node group node role ARN
+        """
+        request_spot_instances: NotRequired[pulumi.Input[bool]]
+        """
+        Enable EKS node group request spot instances
+        """
+        resource_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The EKS node group resource tags
+        """
+        spot_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The EKS node group spot instance types
+        """
+        subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The EKS node group subnets
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The EKS node group tags
+        """
+        user_data: NotRequired[pulumi.Input[str]]
+        """
+        The EKS node group user data
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The EKS node group k8s version
+        """
+elif False:
+    ClusterEksConfigV2NodeGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterEksConfigV2NodeGroupArgs:
@@ -3630,6 +4813,23 @@ class ClusterEksConfigV2NodeGroupArgs:
         pulumi.set(self, "version", value)
 
 
+if not MYPY:
+    class ClusterEksConfigV2NodeGroupLaunchTemplateArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        (Computed) The ID of the resource (string)
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Cluster (string)
+        """
+        version: NotRequired[pulumi.Input[int]]
+        """
+        The EKS node group launch template version
+        """
+elif False:
+    ClusterEksConfigV2NodeGroupLaunchTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterEksConfigV2NodeGroupLaunchTemplateArgs:
     def __init__(__self__, *,
@@ -3683,6 +4883,23 @@ class ClusterEksConfigV2NodeGroupLaunchTemplateArgs:
     def version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class ClusterFleetAgentDeploymentCustomizationArgsDict(TypedDict):
+        append_tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationAppendTolerationArgsDict']]]]
+        """
+        User defined tolerations to append to agent
+        """
+        override_affinity: NotRequired[pulumi.Input[str]]
+        """
+        User defined affinity to override default agent affinity
+        """
+        override_resource_requirements: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict']]]]
+        """
+        User defined resource requirements to set on the agent
+        """
+elif False:
+    ClusterFleetAgentDeploymentCustomizationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterFleetAgentDeploymentCustomizationArgs:
@@ -3738,6 +4955,31 @@ class ClusterFleetAgentDeploymentCustomizationArgs:
     def override_resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]):
         pulumi.set(self, "override_resource_requirements", value)
 
+
+if not MYPY:
+    class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The GKE taint key (string)
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint effect (string)
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        The toleration seconds (int)
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint value (string)
+        """
+elif False:
+    ClusterFleetAgentDeploymentCustomizationAppendTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs:
@@ -3825,6 +5067,27 @@ class ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict(TypedDict):
+        cpu_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum CPU limit for agent
+        """
+        cpu_request: NotRequired[pulumi.Input[str]]
+        """
+        The minimum CPU required for agent
+        """
+        memory_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum memory limit for agent
+        """
+        memory_request: NotRequired[pulumi.Input[str]]
+        """
+        The minimum memory required for agent
+        """
+elif False:
+    ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs:
     def __init__(__self__, *,
@@ -3895,6 +5158,223 @@ class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs:
     def memory_request(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "memory_request", value)
 
+
+if not MYPY:
+    class ClusterGkeConfigArgsDict(TypedDict):
+        cluster_ipv4_cidr: pulumi.Input[str]
+        """
+        The IP address range of the container pods
+        """
+        credential: pulumi.Input[str]
+        """
+        The contents of the GC credential file
+        """
+        disk_type: pulumi.Input[str]
+        """
+        Type of the disk attached to each node
+        """
+        image_type: pulumi.Input[str]
+        """
+        The image to use for the worker nodes
+        """
+        ip_policy_cluster_ipv4_cidr_block: pulumi.Input[str]
+        """
+        The IP address range for the cluster pod IPs
+        """
+        ip_policy_cluster_secondary_range_name: pulumi.Input[str]
+        """
+        The name of the secondary range to be used for the cluster CIDR block
+        """
+        ip_policy_node_ipv4_cidr_block: pulumi.Input[str]
+        """
+        The IP address range of the instance IPs in this cluster
+        """
+        ip_policy_services_ipv4_cidr_block: pulumi.Input[str]
+        """
+        The IP address range of the services IPs in this cluster
+        """
+        ip_policy_services_secondary_range_name: pulumi.Input[str]
+        """
+        The name of the secondary range to be used for the services CIDR block
+        """
+        ip_policy_subnetwork_name: pulumi.Input[str]
+        """
+        A custom subnetwork name to be used if createSubnetwork is true
+        """
+        locations: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Locations to use for the cluster
+        """
+        machine_type: pulumi.Input[str]
+        """
+        The machine type to use for the worker nodes
+        """
+        maintenance_window: pulumi.Input[str]
+        """
+        When to performance updates on the nodes, in 24-hour time
+        """
+        master_ipv4_cidr_block: pulumi.Input[str]
+        """
+        The IP range in CIDR notation to use for the hosted master network
+        """
+        master_version: pulumi.Input[str]
+        """
+        The kubernetes master version
+        """
+        network: pulumi.Input[str]
+        """
+        The network to use for the cluster
+        """
+        node_pool: pulumi.Input[str]
+        """
+        The ID of the cluster node pool
+        """
+        node_version: pulumi.Input[str]
+        """
+        The version of kubernetes to use on the nodes
+        """
+        oauth_scopes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The set of Google API scopes to be made available on all of the node VMs under the default service account
+        """
+        project_id: pulumi.Input[str]
+        """
+        The ID of your project to use when creating a cluster
+        """
+        service_account: pulumi.Input[str]
+        """
+        The Google Cloud Platform Service Account to be used by the node VMs
+        """
+        sub_network: pulumi.Input[str]
+        """
+        The sub-network to use for the cluster
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description for Cluster (string)
+        """
+        disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        Size of the disk attached to each node
+        """
+        enable_alpha_feature: NotRequired[pulumi.Input[bool]]
+        """
+        To enable kubernetes alpha feature
+        """
+        enable_auto_repair: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the node auto-repair is enabled for the node pool
+        """
+        enable_auto_upgrade: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether node auto-upgrade is enabled for the node pool
+        """
+        enable_horizontal_pod_autoscaling: NotRequired[pulumi.Input[bool]]
+        """
+        Enable horizontal pod autoscaling for the cluster
+        """
+        enable_http_load_balancing: NotRequired[pulumi.Input[bool]]
+        """
+        Enable http load balancing for the cluster
+        """
+        enable_kubernetes_dashboard: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the kubernetes dashboard
+        """
+        enable_legacy_abac: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable legacy abac on the cluster
+        """
+        enable_master_authorized_network: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not master authorized network is enabled
+        """
+        enable_network_policy_config: NotRequired[pulumi.Input[bool]]
+        """
+        Enable network policy config for the cluster
+        """
+        enable_nodepool_autoscaling: NotRequired[pulumi.Input[bool]]
+        """
+        Enable nodepool autoscaling
+        """
+        enable_private_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the master's internal IP address is used as the cluster endpoint
+        """
+        enable_private_nodes: NotRequired[pulumi.Input[bool]]
+        """
+        Whether nodes have internal IP address only
+        """
+        enable_stackdriver_logging: NotRequired[pulumi.Input[bool]]
+        """
+        Enable stackdriver logging
+        """
+        enable_stackdriver_monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Enable stackdriver monitoring
+        """
+        ip_policy_create_subnetwork: NotRequired[pulumi.Input[bool]]
+        """
+        Whether a new subnetwork will be created automatically for the cluster
+        """
+        issue_client_certificate: NotRequired[pulumi.Input[bool]]
+        """
+        Issue a client certificate
+        """
+        kubernetes_dashboard: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the kubernetes dashboard
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the Cluster (map)
+        """
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of local SSD disks to be attached to the node
+        """
+        master_authorized_network_cidr_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Define up to 10 external networks that could access Kubernetes master through HTTPS
+        """
+        max_node_count: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster
+        """
+        min_node_count: NotRequired[pulumi.Input[int]]
+        """
+        Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount
+        """
+        node_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of nodes to create in this cluster
+        """
+        preemptible: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the nodes are created as preemptible VM instances
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The region to launch the cluster. Region or zone should be used
+        """
+        resource_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to each cluster
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of kubernetes taints to be applied to each node
+        """
+        use_ip_aliases: NotRequired[pulumi.Input[bool]]
+        """
+        Whether alias IPs will be used for pod IPs in the cluster
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        The zone to launch the cluster. Zone or region should be used
+        """
+elif False:
+    ClusterGkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterGkeConfigArgs:
@@ -4729,6 +6209,103 @@ class ClusterGkeConfigArgs:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class ClusterGkeConfigV2ArgsDict(TypedDict):
+        google_credential_secret: pulumi.Input[str]
+        """
+        Google credential secret
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Cluster (string)
+        """
+        project_id: pulumi.Input[str]
+        """
+        The GKE project id
+        """
+        cluster_addons: NotRequired[pulumi.Input['ClusterGkeConfigV2ClusterAddonsArgsDict']]
+        """
+        The GKE cluster addons
+        """
+        cluster_ipv4_cidr_block: NotRequired[pulumi.Input[str]]
+        """
+        The GKE ip v4 cidr block
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description for Cluster (string)
+        """
+        enable_kubernetes_alpha: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Kubernetes alpha
+        """
+        imported: NotRequired[pulumi.Input[bool]]
+        """
+        Is GKE cluster imported?
+        """
+        ip_allocation_policy: NotRequired[pulumi.Input['ClusterGkeConfigV2IpAllocationPolicyArgsDict']]
+        """
+        The GKE ip allocation policy
+        """
+        kubernetes_version: NotRequired[pulumi.Input[str]]
+        """
+        The kubernetes master version
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the Cluster (map)
+        """
+        locations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The GKE cluster locations
+        """
+        logging_service: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster logging service
+        """
+        maintenance_window: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster maintenance window
+        """
+        master_authorized_networks_config: NotRequired[pulumi.Input['ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgsDict']]
+        """
+        The GKE cluster master authorized networks config
+        """
+        monitoring_service: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster monitoring service
+        """
+        network: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster network
+        """
+        network_policy_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Is GKE cluster network policy enabled?
+        """
+        node_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterGkeConfigV2NodePoolArgsDict']]]]
+        """
+        The GKE cluster node pools
+        """
+        private_cluster_config: NotRequired[pulumi.Input['ClusterGkeConfigV2PrivateClusterConfigArgsDict']]
+        """
+        The GKE private cluster config
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster region. Required if `zone` is empty
+        """
+        subnetwork: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster subnetwork
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster zone. Required if `region` is empty
+        """
+elif False:
+    ClusterGkeConfigV2ArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterGkeConfigV2Args:
     def __init__(__self__, *,
@@ -5101,6 +6678,23 @@ class ClusterGkeConfigV2Args:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class ClusterGkeConfigV2ClusterAddonsArgsDict(TypedDict):
+        horizontal_pod_autoscaling: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE horizontal pod autoscaling
+        """
+        http_load_balancing: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE HTTP load balancing
+        """
+        network_policy_config: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE network policy config
+        """
+elif False:
+    ClusterGkeConfigV2ClusterAddonsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterGkeConfigV2ClusterAddonsArgs:
     def __init__(__self__, *,
@@ -5155,6 +6749,43 @@ class ClusterGkeConfigV2ClusterAddonsArgs:
     def network_policy_config(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "network_policy_config", value)
 
+
+if not MYPY:
+    class ClusterGkeConfigV2IpAllocationPolicyArgsDict(TypedDict):
+        cluster_ipv4_cidr_block: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster ip v4 allocation cidr block
+        """
+        cluster_secondary_range_name: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster ip v4 allocation secondary range name
+        """
+        create_subnetwork: NotRequired[pulumi.Input[bool]]
+        """
+        Create GKE subnetwork?
+        """
+        node_ipv4_cidr_block: NotRequired[pulumi.Input[str]]
+        """
+        The GKE node ip v4 allocation cidr block
+        """
+        services_ipv4_cidr_block: NotRequired[pulumi.Input[str]]
+        """
+        The GKE services ip v4 allocation cidr block
+        """
+        services_secondary_range_name: NotRequired[pulumi.Input[str]]
+        """
+        The GKE services ip v4 allocation secondary range name
+        """
+        subnetwork_name: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster subnetwork name
+        """
+        use_ip_aliases: NotRequired[pulumi.Input[bool]]
+        """
+        Use GKE ip aliases?
+        """
+elif False:
+    ClusterGkeConfigV2IpAllocationPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterGkeConfigV2IpAllocationPolicyArgs:
@@ -5291,6 +6922,19 @@ class ClusterGkeConfigV2IpAllocationPolicyArgs:
         pulumi.set(self, "use_ip_aliases", value)
 
 
+if not MYPY:
+    class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgsDict(TypedDict):
+        cidr_blocks: pulumi.Input[Sequence[pulumi.Input['ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgsDict']]]
+        """
+        The GKE master authorized network config cidr blocks
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE master authorized network config
+        """
+elif False:
+    ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs:
     def __init__(__self__, *,
@@ -5329,6 +6973,19 @@ class ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs:
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgsDict(TypedDict):
+        cidr_block: pulumi.Input[str]
+        """
+        The GKE master authorized network config cidr block
+        """
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        The GKE master authorized network config cidr block dispaly name
+        """
+elif False:
+    ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs:
     def __init__(__self__, *,
@@ -5366,6 +7023,39 @@ class ClusterGkeConfigV2MasterAuthorizedNetworksConfigCidrBlockArgs:
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
 
+
+if not MYPY:
+    class ClusterGkeConfigV2NodePoolArgsDict(TypedDict):
+        initial_node_count: pulumi.Input[int]
+        """
+        The GKE node pool config initial node count
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Cluster (string)
+        """
+        version: pulumi.Input[str]
+        """
+        The GKE node pool config version
+        """
+        autoscaling: NotRequired[pulumi.Input['ClusterGkeConfigV2NodePoolAutoscalingArgsDict']]
+        """
+        The GKE node pool config autoscaling
+        """
+        config: NotRequired[pulumi.Input['ClusterGkeConfigV2NodePoolConfigArgsDict']]
+        """
+        The GKE node pool node config
+        """
+        management: NotRequired[pulumi.Input['ClusterGkeConfigV2NodePoolManagementArgsDict']]
+        """
+        The GKE node pool config management
+        """
+        max_pods_constraint: NotRequired[pulumi.Input[int]]
+        """
+        The GKE node pool config max pods constraint
+        """
+elif False:
+    ClusterGkeConfigV2NodePoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterGkeConfigV2NodePoolArgs:
@@ -5483,6 +7173,23 @@ class ClusterGkeConfigV2NodePoolArgs:
         pulumi.set(self, "max_pods_constraint", value)
 
 
+if not MYPY:
+    class ClusterGkeConfigV2NodePoolAutoscalingArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE node pool config autoscaling
+        """
+        max_node_count: NotRequired[pulumi.Input[int]]
+        """
+        The GKE node pool config max node count
+        """
+        min_node_count: NotRequired[pulumi.Input[int]]
+        """
+        The GKE node pool config min node count
+        """
+elif False:
+    ClusterGkeConfigV2NodePoolAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterGkeConfigV2NodePoolAutoscalingArgs:
     def __init__(__self__, *,
@@ -5537,6 +7244,51 @@ class ClusterGkeConfigV2NodePoolAutoscalingArgs:
     def min_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_node_count", value)
 
+
+if not MYPY:
+    class ClusterGkeConfigV2NodePoolConfigArgsDict(TypedDict):
+        disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        The GKE node config disk size (Gb)
+        """
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        The GKE node config disk type
+        """
+        image_type: NotRequired[pulumi.Input[str]]
+        """
+        The GKE node config image type
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the Cluster (map)
+        """
+        local_ssd_count: NotRequired[pulumi.Input[int]]
+        """
+        The GKE node config local ssd count
+        """
+        machine_type: NotRequired[pulumi.Input[str]]
+        """
+        The GKE node config machine type
+        """
+        oauth_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The GKE node config oauth scopes
+        """
+        preemptible: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE node config preemptible
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The GKE node config tags
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterGkeConfigV2NodePoolConfigTaintArgsDict']]]]
+        """
+        The GKE node config taints
+        """
+elif False:
+    ClusterGkeConfigV2NodePoolConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterGkeConfigV2NodePoolConfigArgs:
@@ -5705,6 +7457,23 @@ class ClusterGkeConfigV2NodePoolConfigArgs:
         pulumi.set(self, "taints", value)
 
 
+if not MYPY:
+    class ClusterGkeConfigV2NodePoolConfigTaintArgsDict(TypedDict):
+        effect: pulumi.Input[str]
+        """
+        The GKE taint effect (string)
+        """
+        key: pulumi.Input[str]
+        """
+        The GKE taint key (string)
+        """
+        value: pulumi.Input[str]
+        """
+        The GKE taint value (string)
+        """
+elif False:
+    ClusterGkeConfigV2NodePoolConfigTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterGkeConfigV2NodePoolConfigTaintArgs:
     def __init__(__self__, *,
@@ -5757,6 +7526,19 @@ class ClusterGkeConfigV2NodePoolConfigTaintArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterGkeConfigV2NodePoolManagementArgsDict(TypedDict):
+        auto_repair: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE node pool config management auto repair
+        """
+        auto_upgrade: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE node pool config management auto upgrade
+        """
+elif False:
+    ClusterGkeConfigV2NodePoolManagementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterGkeConfigV2NodePoolManagementArgs:
     def __init__(__self__, *,
@@ -5795,6 +7577,23 @@ class ClusterGkeConfigV2NodePoolManagementArgs:
     def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_upgrade", value)
 
+
+if not MYPY:
+    class ClusterGkeConfigV2PrivateClusterConfigArgsDict(TypedDict):
+        master_ipv4_cidr_block: pulumi.Input[str]
+        """
+        The GKE cluster private master ip v4 cidr block
+        """
+        enable_private_endpoint: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE cluster private endpoint
+        """
+        enable_private_nodes: NotRequired[pulumi.Input[bool]]
+        """
+        Enable GKE cluster private nodes
+        """
+elif False:
+    ClusterGkeConfigV2PrivateClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterGkeConfigV2PrivateClusterConfigArgs:
@@ -5850,6 +7649,19 @@ class ClusterGkeConfigV2PrivateClusterConfigArgs:
         pulumi.set(self, "enable_private_nodes", value)
 
 
+if not MYPY:
+    class ClusterK3sConfigArgsDict(TypedDict):
+        upgrade_strategy: NotRequired[pulumi.Input['ClusterK3sConfigUpgradeStrategyArgsDict']]
+        """
+        The K3S upgrade strategy
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The K3S kubernetes version
+        """
+elif False:
+    ClusterK3sConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterK3sConfigArgs:
     def __init__(__self__, *,
@@ -5888,6 +7700,27 @@ class ClusterK3sConfigArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class ClusterK3sConfigUpgradeStrategyArgsDict(TypedDict):
+        drain_server_nodes: NotRequired[pulumi.Input[bool]]
+        """
+        Drain server nodes
+        """
+        drain_worker_nodes: NotRequired[pulumi.Input[bool]]
+        """
+        Drain worker nodes
+        """
+        server_concurrency: NotRequired[pulumi.Input[int]]
+        """
+        Server concurrency
+        """
+        worker_concurrency: NotRequired[pulumi.Input[int]]
+        """
+        Worker concurrency
+        """
+elif False:
+    ClusterK3sConfigUpgradeStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterK3sConfigUpgradeStrategyArgs:
@@ -5959,6 +7792,139 @@ class ClusterK3sConfigUpgradeStrategyArgs:
     def worker_concurrency(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "worker_concurrency", value)
 
+
+if not MYPY:
+    class ClusterOkeConfigArgsDict(TypedDict):
+        compartment_id: pulumi.Input[str]
+        """
+        The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
+        """
+        fingerprint: pulumi.Input[str]
+        """
+        The fingerprint corresponding to the specified user's private API Key
+        """
+        kubernetes_version: pulumi.Input[str]
+        """
+        The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+        """
+        node_image: pulumi.Input[str]
+        """
+        The OS for the node image
+        """
+        node_shape: pulumi.Input[str]
+        """
+        The shape of the node (determines number of CPUs and  amount of memory on each node)
+        """
+        private_key_contents: pulumi.Input[str]
+        """
+        The private API key file contents for the specified user, in PEM format
+        """
+        region: pulumi.Input[str]
+        """
+        The availability domain within the region to host the OKE cluster
+        """
+        tenancy_id: pulumi.Input[str]
+        """
+        The OCID of the tenancy in which to create resources
+        """
+        user_ocid: pulumi.Input[str]
+        """
+        The OCID of a user who has access to the tenancy/compartment
+        """
+        custom_boot_volume_size: NotRequired[pulumi.Input[int]]
+        """
+        An optional custom boot volume size (in GB) for the nodes
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description for Cluster (string)
+        """
+        enable_kubernetes_dashboard: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the kubernetes dashboard
+        """
+        enable_private_control_plane: NotRequired[pulumi.Input[bool]]
+        """
+        Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
+        """
+        enable_private_nodes: NotRequired[pulumi.Input[bool]]
+        """
+        Whether worker nodes are deployed into a new private subnet
+        """
+        flex_ocpus: NotRequired[pulumi.Input[int]]
+        """
+        Optional number of OCPUs for nodes (requires flexible node_shape)
+        """
+        kms_key_id: NotRequired[pulumi.Input[str]]
+        """
+        Optional specify the OCID of the KMS Vault master key
+        """
+        limit_node_count: NotRequired[pulumi.Input[int]]
+        """
+        Optional limit on the total number of nodes in the pool
+        """
+        load_balancer_subnet_name1: NotRequired[pulumi.Input[str]]
+        """
+        The name of the first existing subnet to use for Kubernetes services / LB
+        """
+        load_balancer_subnet_name2: NotRequired[pulumi.Input[str]]
+        """
+        The (optional) name of a second existing subnet to use for Kubernetes services / LB
+        """
+        node_pool_dns_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        Optional name for DNS domain of node pool subnet
+        """
+        node_pool_subnet_name: NotRequired[pulumi.Input[str]]
+        """
+        Optional name for node pool subnet
+        """
+        node_public_key_contents: NotRequired[pulumi.Input[str]]
+        """
+        The contents of the SSH public key file to use for the nodes
+        """
+        pod_cidr: NotRequired[pulumi.Input[str]]
+        """
+        Optional specify the pod CIDR, defaults to 10.244.0.0/16
+        """
+        private_key_passphrase: NotRequired[pulumi.Input[str]]
+        """
+        The passphrase of the private key for the OKE cluster
+        """
+        quantity_of_node_subnets: NotRequired[pulumi.Input[int]]
+        """
+        Number of node subnets (defaults to creating 1 regional subnet)
+        """
+        quantity_per_subnet: NotRequired[pulumi.Input[int]]
+        """
+        Number of worker nodes in each subnet / availability domain
+        """
+        service_cidr: NotRequired[pulumi.Input[str]]
+        """
+        Optional specify the service CIDR, defaults to 10.96.0.0/16
+        """
+        service_dns_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        Optional name for DNS domain of service subnet
+        """
+        skip_vcn_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to skip deleting VCN
+        """
+        vcn_compartment_id: NotRequired[pulumi.Input[str]]
+        """
+        The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
+        """
+        vcn_name: NotRequired[pulumi.Input[str]]
+        """
+        The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
+        """
+        worker_node_ingress_cidr: NotRequired[pulumi.Input[str]]
+        """
+        Additional CIDR from which to allow ingress to worker nodes
+        """
+elif False:
+    ClusterOkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterOkeConfigArgs:
@@ -6470,6 +8436,19 @@ class ClusterOkeConfigArgs:
         pulumi.set(self, "worker_node_ingress_cidr", value)
 
 
+if not MYPY:
+    class ClusterRke2ConfigArgsDict(TypedDict):
+        upgrade_strategy: NotRequired[pulumi.Input['ClusterRke2ConfigUpgradeStrategyArgsDict']]
+        """
+        The RKE2 upgrade strategy
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The RKE2 kubernetes version
+        """
+elif False:
+    ClusterRke2ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRke2ConfigArgs:
     def __init__(__self__, *,
@@ -6508,6 +8487,27 @@ class ClusterRke2ConfigArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+
+if not MYPY:
+    class ClusterRke2ConfigUpgradeStrategyArgsDict(TypedDict):
+        drain_server_nodes: NotRequired[pulumi.Input[bool]]
+        """
+        Drain server nodes
+        """
+        drain_worker_nodes: NotRequired[pulumi.Input[bool]]
+        """
+        Drain worker nodes
+        """
+        server_concurrency: NotRequired[pulumi.Input[int]]
+        """
+        Server concurrency
+        """
+        worker_concurrency: NotRequired[pulumi.Input[int]]
+        """
+        Worker concurrency
+        """
+elif False:
+    ClusterRke2ConfigUpgradeStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRke2ConfigUpgradeStrategyArgs:
@@ -6579,6 +8579,103 @@ class ClusterRke2ConfigUpgradeStrategyArgs:
     def worker_concurrency(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "worker_concurrency", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigArgsDict(TypedDict):
+        addon_job_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Optional duration in seconds of addon job.
+        """
+        addons: NotRequired[pulumi.Input[str]]
+        """
+        Optional addons descripton to deploy on rke cluster.
+        """
+        addons_includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional addons yaml manisfest to deploy on rke cluster.
+        """
+        authentication: NotRequired[pulumi.Input['ClusterRkeConfigAuthenticationArgsDict']]
+        """
+        Kubernetes cluster authentication
+        """
+        authorization: NotRequired[pulumi.Input['ClusterRkeConfigAuthorizationArgsDict']]
+        """
+        Kubernetes cluster authorization
+        """
+        bastion_host: NotRequired[pulumi.Input['ClusterRkeConfigBastionHostArgsDict']]
+        """
+        RKE bastion host
+        """
+        cloud_provider: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderArgsDict']]
+        """
+        RKE options for Calico network provider (string)
+        """
+        dns: NotRequired[pulumi.Input['ClusterRkeConfigDnsArgsDict']]
+        """
+        RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
+        """
+        enable_cri_dockerd: NotRequired[pulumi.Input[bool]]
+        """
+        Enable/disable using cri-dockerd
+        """
+        ignore_docker_version: NotRequired[pulumi.Input[bool]]
+        """
+        Optional ignore docker version on nodes
+        """
+        ingress: NotRequired[pulumi.Input['ClusterRkeConfigIngressArgsDict']]
+        """
+        Kubernetes ingress configuration
+        """
+        kubernetes_version: NotRequired[pulumi.Input[str]]
+        """
+        Optional kubernetes version to deploy
+        """
+        monitoring: NotRequired[pulumi.Input['ClusterRkeConfigMonitoringArgsDict']]
+        """
+        Kubernetes cluster monitoring
+        """
+        network: NotRequired[pulumi.Input['ClusterRkeConfigNetworkArgsDict']]
+        """
+        Kubernetes cluster networking
+        """
+        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigNodeArgsDict']]]]
+        """
+        Optional RKE cluster nodes
+        """
+        prefix_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional prefix to customize kubernetes path
+        """
+        private_registries: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigPrivateRegistryArgsDict']]]]
+        """
+        Optional private registries for docker images
+        """
+        services: NotRequired[pulumi.Input['ClusterRkeConfigServicesArgsDict']]
+        """
+        Kubernetes cluster services
+        """
+        ssh_agent_auth: NotRequired[pulumi.Input[bool]]
+        """
+        Optional use ssh agent auth
+        """
+        ssh_cert_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional cluster level SSH certificate path
+        """
+        ssh_key_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional cluster level SSH private key path
+        """
+        upgrade_strategy: NotRequired[pulumi.Input['ClusterRkeConfigUpgradeStrategyArgsDict']]
+        """
+        RKE upgrade strategy
+        """
+        win_prefix_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional prefix to customize kubernetes path for windows
+        """
+elif False:
+    ClusterRkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigArgs:
@@ -6955,6 +9052,19 @@ class ClusterRkeConfigArgs:
         pulumi.set(self, "win_prefix_path", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigAuthenticationArgsDict(TypedDict):
+        sans: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        RKE sans for authentication ([]string)
+        """
+        strategy: NotRequired[pulumi.Input[str]]
+        """
+        Monitoring deployment update strategy (string)
+        """
+elif False:
+    ClusterRkeConfigAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigAuthenticationArgs:
     def __init__(__self__, *,
@@ -6994,6 +9104,19 @@ class ClusterRkeConfigAuthenticationArgs:
         pulumi.set(self, "strategy", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigAuthorizationArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The AKS node group mode. Default: `System` (string)
+        """
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        RKE options for network (map)
+        """
+elif False:
+    ClusterRkeConfigAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigAuthorizationArgs:
     def __init__(__self__, *,
@@ -7032,6 +9155,35 @@ class ClusterRkeConfigAuthorizationArgs:
     def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigBastionHostArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        Address ip for node (string)
+        """
+        user: pulumi.Input[str]
+        """
+        Registry user (string)
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Port for node. Default `22` (string)
+        """
+        ssh_agent_auth: NotRequired[pulumi.Input[bool]]
+        """
+        Use ssh agent auth. Default `false` (bool)
+        """
+        ssh_key: NotRequired[pulumi.Input[str]]
+        """
+        Node SSH private key (string)
+        """
+        ssh_key_path: NotRequired[pulumi.Input[str]]
+        """
+        Node SSH private key path (string)
+        """
+elif False:
+    ClusterRkeConfigBastionHostArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigBastionHostArgs:
@@ -7133,6 +9285,35 @@ class ClusterRkeConfigBastionHostArgs:
     def ssh_key_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssh_key_path", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigCloudProviderArgsDict(TypedDict):
+        aws_cloud_provider: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderArgsDict']]
+        """
+        RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
+        """
+        azure_cloud_provider: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderAzureCloudProviderArgsDict']]
+        """
+        RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
+        """
+        custom_cloud_provider: NotRequired[pulumi.Input[str]]
+        """
+        RKE Custom Cloud Provider config for Cloud Provider (string)
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Cluster (string)
+        """
+        openstack_cloud_provider: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderArgsDict']]
+        """
+        RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
+        """
+        vsphere_cloud_provider: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderArgsDict']]
+        """
+        RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderArgs:
@@ -7237,6 +9418,19 @@ class ClusterRkeConfigCloudProviderArgs:
         pulumi.set(self, "vsphere_cloud_provider", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigCloudProviderAwsCloudProviderArgsDict(TypedDict):
+        global_: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgsDict']]
+        """
+        (list maxitems:1)
+        """
+        service_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgsDict']]]]
+        """
+        (list)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderAwsCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderAwsCloudProviderArgs:
     def __init__(__self__, *,
@@ -7275,6 +9469,51 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderArgs:
     def service_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs']]]]):
         pulumi.set(self, "service_overrides", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgsDict(TypedDict):
+        disable_security_group_ingress: NotRequired[pulumi.Input[bool]]
+        """
+        Default `false` (bool)
+        """
+        disable_strict_zone_check: NotRequired[pulumi.Input[bool]]
+        """
+        Default `false` (bool)
+        """
+        elb_security_group: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        kubernetes_cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        kubernetes_cluster_tag: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        route_table_id: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        subnet_id: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        vpc: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        zone: NotRequired[pulumi.Input[str]]
+        """
+        The GKE cluster zone. Required if `region` not set (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
@@ -7443,6 +9682,35 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        """
+        (string)
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        """
+        signing_method: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        signing_name: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        signing_region: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        Registry URL (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     def __init__(__self__, *,
@@ -7544,6 +9812,127 @@ class ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigCloudProviderAzureCloudProviderArgsDict(TypedDict):
+        aad_client_id: pulumi.Input[str]
+        """
+        (string)
+        """
+        aad_client_secret: pulumi.Input[str]
+        """
+        (string)
+        """
+        subscription_id: pulumi.Input[str]
+        """
+        Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        """
+        tenant_id: pulumi.Input[str]
+        """
+        Azure tenant ID to use (string)
+        """
+        aad_client_cert_password: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        aad_client_cert_path: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        cloud: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        cloud_provider_backoff: NotRequired[pulumi.Input[bool]]
+        """
+        (bool)
+        """
+        cloud_provider_backoff_duration: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+        cloud_provider_backoff_exponent: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+        cloud_provider_backoff_jitter: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+        cloud_provider_backoff_retries: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+        cloud_provider_rate_limit: NotRequired[pulumi.Input[bool]]
+        """
+        (bool)
+        """
+        cloud_provider_rate_limit_bucket: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+        cloud_provider_rate_limit_qps: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+        load_balancer_sku: NotRequired[pulumi.Input[str]]
+        """
+        Load balancer type (basic | standard). Must be standard for auto-scaling
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Azure Kubernetes cluster location. Default `eastus` (string)
+        """
+        maximum_load_balancer_rule_count: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+        primary_availability_set_name: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        primary_scale_set_name: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        resource_group: NotRequired[pulumi.Input[str]]
+        """
+        The AKS resource group (string)
+        """
+        route_table_name: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        security_group_name: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        subnet_name: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        use_instance_metadata: NotRequired[pulumi.Input[bool]]
+        """
+        (bool)
+        """
+        use_managed_identity_extension: NotRequired[pulumi.Input[bool]]
+        """
+        (bool)
+        """
+        vm_type: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        vnet_name: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        vnet_resource_group: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderAzureCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
@@ -8012,6 +10401,31 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
         pulumi.set(self, "vnet_resource_group", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgsDict(TypedDict):
+        global_: pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgsDict']
+        """
+        (list maxitems:1)
+        """
+        block_storage: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgsDict']]
+        """
+        (list maxitems:1)
+        """
+        load_balancer: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgsDict']]
+        """
+        (list maxitems:1)
+        """
+        metadata: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgsDict']]
+        """
+        (list maxitems:1)
+        """
+        route: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgsDict']]
+        """
+        (list maxitems:1)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderOpenstackCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs:
     def __init__(__self__, *,
@@ -8098,6 +10512,23 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs:
         pulumi.set(self, "route", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgsDict(TypedDict):
+        bs_version: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        ignore_volume_az: NotRequired[pulumi.Input[bool]]
+        """
+        (string)
+        """
+        trust_device_path: NotRequired[pulumi.Input[bool]]
+        """
+        (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs:
     def __init__(__self__, *,
@@ -8152,6 +10583,51 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs:
     def trust_device_path(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "trust_device_path", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgsDict(TypedDict):
+        auth_url: pulumi.Input[str]
+        """
+        (string)
+        """
+        password: pulumi.Input[str]
+        """
+        Registry password (string)
+        """
+        username: pulumi.Input[str]
+        """
+        (string)
+        """
+        ca_file: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        domain_id: NotRequired[pulumi.Input[str]]
+        """
+        Required if `domain_name` not provided. (string)
+        """
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        Required if `domain_id` not provided. (string)
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        """
+        tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        Azure tenant ID to use (string)
+        """
+        tenant_name: NotRequired[pulumi.Input[str]]
+        """
+        Required if `tenant_id` not provided. (string)
+        """
+        trust_id: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
@@ -8316,6 +10792,55 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     def trust_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "trust_id", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgsDict(TypedDict):
+        create_monitor: NotRequired[pulumi.Input[bool]]
+        """
+        (bool)
+        """
+        floating_network_id: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        lb_method: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        lb_provider: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        lb_version: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        manage_security_groups: NotRequired[pulumi.Input[bool]]
+        """
+        (bool)
+        """
+        monitor_delay: NotRequired[pulumi.Input[str]]
+        """
+        Default `60s` (string)
+        """
+        monitor_max_retries: NotRequired[pulumi.Input[int]]
+        """
+        Default 5 (int)
+        """
+        monitor_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Default `30s` (string)
+        """
+        subnet_id: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        use_octavia: NotRequired[pulumi.Input[bool]]
+        """
+        (bool)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
@@ -8500,6 +11025,19 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
         pulumi.set(self, "use_octavia", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgsDict(TypedDict):
+        request_timeout: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+        search_order: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs:
     def __init__(__self__, *,
@@ -8539,6 +11077,15 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs:
         pulumi.set(self, "search_order", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgsDict(TypedDict):
+        router_id: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs:
     def __init__(__self__, *,
@@ -8561,6 +11108,31 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs:
     def router_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "router_id", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigCloudProviderVsphereCloudProviderArgsDict(TypedDict):
+        virtual_centers: pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgsDict']]]
+        """
+        (List)
+        """
+        workspace: pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgsDict']
+        """
+        (list maxitems:1)
+        """
+        disk: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgsDict']]
+        """
+        (list maxitems:1)
+        """
+        global_: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgsDict']]
+        """
+        (list maxitems:1)
+        """
+        network: NotRequired[pulumi.Input['ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgsDict']]
+        """
+        The GKE cluster network. Required for create new cluster (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderVsphereCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
@@ -8647,6 +11219,15 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgs:
         pulumi.set(self, "network", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgsDict(TypedDict):
+        scsi_controller_type: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs:
     def __init__(__self__, *,
@@ -8669,6 +11250,36 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs:
     def scsi_controller_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scsi_controller_type", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgsDict(TypedDict):
+        datacenters: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        graceful_shutdown_timeout: NotRequired[pulumi.Input[str]]
+        insecure_flag: NotRequired[pulumi.Input[bool]]
+        """
+        (bool)
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Registry password (string)
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Port for node. Default `22` (string)
+        """
+        soap_roundtrip_count: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        Registry user (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
@@ -8785,6 +11396,15 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgsDict(TypedDict):
+        public_network: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs:
     def __init__(__self__, *,
@@ -8807,6 +11427,35 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs:
     def public_network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_network", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgsDict(TypedDict):
+        datacenters: pulumi.Input[str]
+        """
+        (string)
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Cluster (string)
+        """
+        password: pulumi.Input[str]
+        """
+        Registry password (string)
+        """
+        user: pulumi.Input[str]
+        """
+        Registry user (string)
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Port for node. Default `22` (string)
+        """
+        soap_roundtrip_count: NotRequired[pulumi.Input[int]]
+        """
+        (int)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
@@ -8907,6 +11556,31 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
         pulumi.set(self, "soap_roundtrip_count", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgsDict(TypedDict):
+        datacenter: pulumi.Input[str]
+        """
+        (string)
+        """
+        folder: pulumi.Input[str]
+        """
+        Folder for S3 service. Available from Rancher v2.2.7 (string)
+        """
+        server: pulumi.Input[str]
+        """
+        (string)
+        """
+        default_datastore: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+        resourcepool_path: NotRequired[pulumi.Input[str]]
+        """
+        (string)
+        """
+elif False:
+    ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
     def __init__(__self__, *,
@@ -8990,6 +11664,47 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
     def resourcepool_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resourcepool_path", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigDnsArgsDict(TypedDict):
+        linear_autoscaler_params: NotRequired[pulumi.Input['ClusterRkeConfigDnsLinearAutoscalerParamsArgsDict']]
+        """
+        Linear Autoscaler Params
+        """
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        RKE monitoring node selector (map)
+        """
+        nodelocal: NotRequired[pulumi.Input['ClusterRkeConfigDnsNodelocalArgsDict']]
+        """
+        Nodelocal dns
+        """
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        RKE options for network (map)
+        """
+        provider: NotRequired[pulumi.Input[str]]
+        """
+        RKE monitoring provider (string)
+        """
+        reverse_cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        DNS add-on reverse cidr  (list)
+        """
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigDnsTolerationArgsDict']]]]
+        """
+        DNS service tolerations
+        """
+        update_strategy: NotRequired[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyArgsDict']]
+        """
+        Update deployment strategy
+        """
+        upstream_nameservers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        DNS add-on upstream nameservers  (list)
+        """
+elif False:
+    ClusterRkeConfigDnsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigDnsArgs:
@@ -9142,6 +11857,31 @@ class ClusterRkeConfigDnsArgs:
         pulumi.set(self, "upstream_nameservers", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigDnsLinearAutoscalerParamsArgsDict(TypedDict):
+        cores_per_replica: NotRequired[pulumi.Input[float]]
+        """
+        number of replicas per cluster cores (float64)
+        """
+        max: NotRequired[pulumi.Input[int]]
+        """
+        maximum number of replicas (int64)
+        """
+        min: NotRequired[pulumi.Input[int]]
+        """
+        minimum number of replicas (int64)
+        """
+        nodes_per_replica: NotRequired[pulumi.Input[float]]
+        """
+        number of replica per cluster nodes (float64)
+        """
+        prevent_single_point_failure: NotRequired[pulumi.Input[bool]]
+        """
+        prevent single point of failure
+        """
+elif False:
+    ClusterRkeConfigDnsLinearAutoscalerParamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
     def __init__(__self__, *,
@@ -9229,6 +11969,19 @@ class ClusterRkeConfigDnsLinearAutoscalerParamsArgs:
         pulumi.set(self, "prevent_single_point_failure", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigDnsNodelocalArgsDict(TypedDict):
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        Nodelocal dns ip address (string)
+        """
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Node selector key pair
+        """
+elif False:
+    ClusterRkeConfigDnsNodelocalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigDnsNodelocalArgs:
     def __init__(__self__, *,
@@ -9267,6 +12020,31 @@ class ClusterRkeConfigDnsNodelocalArgs:
     def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigDnsTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The GKE taint key (string)
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint effect (string)
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        The toleration seconds (int)
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint value (string)
+        """
+elif False:
+    ClusterRkeConfigDnsTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigDnsTolerationArgs:
@@ -9354,6 +12132,19 @@ class ClusterRkeConfigDnsTolerationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigDnsUpdateStrategyArgsDict(TypedDict):
+        rolling_update: NotRequired[pulumi.Input['ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgsDict']]
+        """
+        Rolling update for update strategy
+        """
+        strategy: NotRequired[pulumi.Input[str]]
+        """
+        Strategy
+        """
+elif False:
+    ClusterRkeConfigDnsUpdateStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigDnsUpdateStrategyArgs:
     def __init__(__self__, *,
@@ -9393,6 +12184,19 @@ class ClusterRkeConfigDnsUpdateStrategyArgs:
         pulumi.set(self, "strategy", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgsDict(TypedDict):
+        max_surge: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max surge
+        """
+        max_unavailable: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max unavailable
+        """
+elif False:
+    ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs:
     def __init__(__self__, *,
@@ -9431,6 +12235,55 @@ class ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs:
     def max_unavailable(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_unavailable", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigIngressArgsDict(TypedDict):
+        default_backend: NotRequired[pulumi.Input[bool]]
+        """
+        Enable ingress default backend. Default: `true` (bool)
+        """
+        dns_policy: NotRequired[pulumi.Input[str]]
+        """
+        Ingress controller DNS policy. `ClusterFirstWithHostNet`, `ClusterFirst`, `Default`, and `None` are supported. [K8S dns Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) (string)
+        """
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Extra arguments for scheduler service (map)
+        """
+        http_port: NotRequired[pulumi.Input[int]]
+        """
+        HTTP port for RKE Ingress (int)
+        """
+        https_port: NotRequired[pulumi.Input[int]]
+        """
+        HTTPS port for RKE Ingress (int)
+        """
+        network_mode: NotRequired[pulumi.Input[str]]
+        """
+        Network mode for RKE Ingress (string)
+        """
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        RKE monitoring node selector (map)
+        """
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        RKE options for network (map)
+        """
+        provider: NotRequired[pulumi.Input[str]]
+        """
+        RKE monitoring provider (string)
+        """
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigIngressTolerationArgsDict']]]]
+        """
+        Ingress add-on tolerations
+        """
+        update_strategy: NotRequired[pulumi.Input['ClusterRkeConfigIngressUpdateStrategyArgsDict']]
+        """
+        Update daemon set strategy
+        """
+elif False:
+    ClusterRkeConfigIngressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigIngressArgs:
@@ -9615,6 +12468,31 @@ class ClusterRkeConfigIngressArgs:
         pulumi.set(self, "update_strategy", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigIngressTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The GKE taint key (string)
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint effect (string)
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        The toleration seconds (int)
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint value (string)
+        """
+elif False:
+    ClusterRkeConfigIngressTolerationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigIngressTolerationArgs:
     def __init__(__self__, *,
@@ -9701,6 +12579,19 @@ class ClusterRkeConfigIngressTolerationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigIngressUpdateStrategyArgsDict(TypedDict):
+        rolling_update: NotRequired[pulumi.Input['ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgsDict']]
+        """
+        Rolling update for update strategy
+        """
+        strategy: NotRequired[pulumi.Input[str]]
+        """
+        Strategy
+        """
+elif False:
+    ClusterRkeConfigIngressUpdateStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigIngressUpdateStrategyArgs:
     def __init__(__self__, *,
@@ -9740,6 +12631,15 @@ class ClusterRkeConfigIngressUpdateStrategyArgs:
         pulumi.set(self, "strategy", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgsDict(TypedDict):
+        max_unavailable: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max unavailable
+        """
+elif False:
+    ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs:
     def __init__(__self__, *,
@@ -9762,6 +12662,35 @@ class ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs:
     def max_unavailable(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_unavailable", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigMonitoringArgsDict(TypedDict):
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        RKE monitoring node selector (map)
+        """
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        RKE options for network (map)
+        """
+        provider: NotRequired[pulumi.Input[str]]
+        """
+        RKE monitoring provider (string)
+        """
+        replicas: NotRequired[pulumi.Input[int]]
+        """
+        RKE monitoring replicas (int)
+        """
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigMonitoringTolerationArgsDict']]]]
+        """
+        Monitoring add-on tolerations
+        """
+        update_strategy: NotRequired[pulumi.Input['ClusterRkeConfigMonitoringUpdateStrategyArgsDict']]
+        """
+        Update deployment strategy
+        """
+elif False:
+    ClusterRkeConfigMonitoringArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigMonitoringArgs:
@@ -9866,6 +12795,31 @@ class ClusterRkeConfigMonitoringArgs:
         pulumi.set(self, "update_strategy", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigMonitoringTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The GKE taint key (string)
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint effect (string)
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        The toleration seconds (int)
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint value (string)
+        """
+elif False:
+    ClusterRkeConfigMonitoringTolerationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigMonitoringTolerationArgs:
     def __init__(__self__, *,
@@ -9952,6 +12906,19 @@ class ClusterRkeConfigMonitoringTolerationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigMonitoringUpdateStrategyArgsDict(TypedDict):
+        rolling_update: NotRequired[pulumi.Input['ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgsDict']]
+        """
+        Rolling update for update strategy
+        """
+        strategy: NotRequired[pulumi.Input[str]]
+        """
+        Strategy
+        """
+elif False:
+    ClusterRkeConfigMonitoringUpdateStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigMonitoringUpdateStrategyArgs:
     def __init__(__self__, *,
@@ -9991,6 +12958,19 @@ class ClusterRkeConfigMonitoringUpdateStrategyArgs:
         pulumi.set(self, "strategy", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgsDict(TypedDict):
+        max_surge: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max surge
+        """
+        max_unavailable: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max unavailable
+        """
+elif False:
+    ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs:
     def __init__(__self__, *,
@@ -10029,6 +13009,47 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs:
     def max_unavailable(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_unavailable", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigNetworkArgsDict(TypedDict):
+        aci_network_provider: NotRequired[pulumi.Input['ClusterRkeConfigNetworkAciNetworkProviderArgsDict']]
+        """
+        ACI provider config for RKE network (list maxitems:63)
+        """
+        calico_network_provider: NotRequired[pulumi.Input['ClusterRkeConfigNetworkCalicoNetworkProviderArgsDict']]
+        """
+        Calico provider config for RKE network (list maxitems:1)
+        """
+        canal_network_provider: NotRequired[pulumi.Input['ClusterRkeConfigNetworkCanalNetworkProviderArgsDict']]
+        """
+        Canal provider config for RKE network (list maxitems:1)
+        """
+        flannel_network_provider: NotRequired[pulumi.Input['ClusterRkeConfigNetworkFlannelNetworkProviderArgsDict']]
+        """
+        Flannel provider config for RKE network (list maxitems:1)
+        """
+        mtu: NotRequired[pulumi.Input[int]]
+        """
+        Network provider MTU. Default `0` (int)
+        """
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        RKE options for network (map)
+        """
+        plugin: NotRequired[pulumi.Input[str]]
+        """
+        Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+        """
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigNetworkTolerationArgsDict']]]]
+        """
+        Network add-on tolerations
+        """
+        weave_network_provider: NotRequired[pulumi.Input['ClusterRkeConfigNetworkWeaveNetworkProviderArgsDict']]
+        """
+        Weave provider config for RKE network (list maxitems:1)
+        """
+elif False:
+    ClusterRkeConfigNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigNetworkArgs:
@@ -10180,6 +13201,304 @@ class ClusterRkeConfigNetworkArgs:
     def weave_network_provider(self, value: Optional[pulumi.Input['ClusterRkeConfigNetworkWeaveNetworkProviderArgs']]):
         pulumi.set(self, "weave_network_provider", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigNetworkAciNetworkProviderArgsDict(TypedDict):
+        aep: pulumi.Input[str]
+        """
+        Attachable entity profile (string)
+        """
+        apic_hosts: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of APIC hosts to connect for APIC API (list)
+        """
+        apic_user_crt: pulumi.Input[str]
+        """
+        APIC user certificate (string)
+        """
+        apic_user_key: pulumi.Input[str]
+        """
+        APIC user key (string)
+        """
+        apic_user_name: pulumi.Input[str]
+        """
+        APIC user name (string)
+        """
+        encap_type: pulumi.Input[str]
+        """
+        Encap type: vxlan or vlan (string)
+        """
+        extern_dynamic: pulumi.Input[str]
+        """
+        Subnet to use for dynamic external IPs (string)
+        """
+        extern_static: pulumi.Input[str]
+        """
+        Subnet to use for static external IPs (string)
+        """
+        kube_api_vlan: pulumi.Input[str]
+        """
+        The VLAN used by the physdom for nodes (string)
+        """
+        l3out: pulumi.Input[str]
+        """
+        L3out (string)
+        """
+        l3out_external_networks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        L3out external networks (list)
+        """
+        mcast_range_end: pulumi.Input[str]
+        """
+        End of mcast range (string)
+        """
+        mcast_range_start: pulumi.Input[str]
+        """
+        Start of mcast range (string)
+        """
+        node_subnet: pulumi.Input[str]
+        """
+        Subnet to use for nodes (string)
+        """
+        node_svc_subnet: pulumi.Input[str]
+        """
+        Subnet to use for service graph (string)
+        """
+        service_vlan: pulumi.Input[str]
+        """
+        The VLAN used by LoadBalancer services (string)
+        """
+        system_id: pulumi.Input[str]
+        """
+        ACI system ID (string)
+        """
+        token: pulumi.Input[str]
+        vrf_name: pulumi.Input[str]
+        """
+        VRF name (string)
+        """
+        vrf_tenant: pulumi.Input[str]
+        """
+        VRF tenant (string)
+        """
+        apic_refresh_ticker_adjust: NotRequired[pulumi.Input[str]]
+        """
+        APIC refresh ticker adjust amount (string)
+        """
+        apic_refresh_time: NotRequired[pulumi.Input[str]]
+        """
+        APIC refresh time in seconds (string)
+        """
+        apic_subscription_delay: NotRequired[pulumi.Input[str]]
+        """
+        APIC subscription delay amount (string)
+        """
+        capic: NotRequired[pulumi.Input[str]]
+        """
+        cAPIC cloud (string)
+        """
+        controller_log_level: NotRequired[pulumi.Input[str]]
+        """
+        Log level for ACI controller (string)
+        """
+        disable_periodic_snat_global_info_sync: NotRequired[pulumi.Input[str]]
+        """
+        Whether to disable periodic SNAT global info sync (string)
+        """
+        disable_wait_for_network: NotRequired[pulumi.Input[str]]
+        """
+        Whether to disable waiting for network (string)
+        """
+        drop_log_enable: NotRequired[pulumi.Input[str]]
+        """
+        Whether to enable drop log (string)
+        """
+        duration_wait_for_network: NotRequired[pulumi.Input[str]]
+        """
+        The duration to wait for network (string)
+        """
+        enable_endpoint_slice: NotRequired[pulumi.Input[str]]
+        """
+        Whether to enable endpoint slices (string)
+        """
+        ep_registry: NotRequired[pulumi.Input[str]]
+        """
+        EP registry (string)
+        """
+        gbp_pod_subnet: NotRequired[pulumi.Input[str]]
+        """
+        GBH pod subnet (string)
+        """
+        host_agent_log_level: NotRequired[pulumi.Input[str]]
+        """
+        Log level for ACI host agent (string)
+        """
+        image_pull_policy: NotRequired[pulumi.Input[str]]
+        """
+        Image pull policy (string)
+        """
+        image_pull_secret: NotRequired[pulumi.Input[str]]
+        """
+        Image pull policy (string)
+        """
+        infra_vlan: NotRequired[pulumi.Input[str]]
+        """
+        The VLAN used by ACI infra (string)
+        """
+        install_istio: NotRequired[pulumi.Input[str]]
+        """
+        Whether to install Istio (string)
+        """
+        istio_profile: NotRequired[pulumi.Input[str]]
+        """
+        Istio profile name (string)
+        """
+        kafka_brokers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of Kafka broker hosts (list)
+        """
+        kafka_client_crt: NotRequired[pulumi.Input[str]]
+        """
+        Kafka client certificate (string)
+        """
+        kafka_client_key: NotRequired[pulumi.Input[str]]
+        """
+        Kafka client key (string)
+        """
+        max_nodes_svc_graph: NotRequired[pulumi.Input[str]]
+        """
+        Max nodes in service graph (string)
+        """
+        mtu_head_room: NotRequired[pulumi.Input[str]]
+        """
+        MTU head room amount (string)
+        """
+        multus_disable: NotRequired[pulumi.Input[str]]
+        """
+        Whether to disable Multus (string)
+        """
+        no_priority_class: NotRequired[pulumi.Input[str]]
+        """
+        Whether to use priority class (string)
+        """
+        node_pod_if_enable: NotRequired[pulumi.Input[str]]
+        """
+        Whether to enable node pod interface (string)
+        """
+        opflex_client_ssl: NotRequired[pulumi.Input[str]]
+        """
+        Whether to use client SSL for Opflex (string)
+        """
+        opflex_device_delete_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Opflex device delete timeout (string)
+        """
+        opflex_log_level: NotRequired[pulumi.Input[str]]
+        """
+        Log level for ACI opflex (string)
+        """
+        opflex_mode: NotRequired[pulumi.Input[str]]
+        """
+        Opflex mode (string)
+        """
+        opflex_server_port: NotRequired[pulumi.Input[str]]
+        """
+        Opflex server port (string)
+        """
+        overlay_vrf_name: NotRequired[pulumi.Input[str]]
+        """
+        Overlay VRF name (string)
+        """
+        ovs_memory_limit: NotRequired[pulumi.Input[str]]
+        """
+        OVS memory limit (string)
+        """
+        pbr_tracking_non_snat: NotRequired[pulumi.Input[str]]
+        """
+        Policy-based routing tracking non snat (string)
+        """
+        pod_subnet_chunk_size: NotRequired[pulumi.Input[str]]
+        """
+        Pod subnet chunk size (string)
+        """
+        run_gbp_container: NotRequired[pulumi.Input[str]]
+        """
+        Whether to run GBP container (string)
+        """
+        run_opflex_server_container: NotRequired[pulumi.Input[str]]
+        """
+        Whether to run Opflex server container (string)
+        """
+        service_monitor_interval: NotRequired[pulumi.Input[str]]
+        """
+        Service monitor interval (string)
+        """
+        snat_contract_scope: NotRequired[pulumi.Input[str]]
+        """
+        Snat contract scope (string)
+        """
+        snat_namespace: NotRequired[pulumi.Input[str]]
+        """
+        Snat namespace (string)
+        """
+        snat_port_range_end: NotRequired[pulumi.Input[str]]
+        """
+        End of snat port range (string)
+        """
+        snat_port_range_start: NotRequired[pulumi.Input[str]]
+        """
+        End of snat port range (string)
+        """
+        snat_ports_per_node: NotRequired[pulumi.Input[str]]
+        """
+        Snat ports per node (string)
+        """
+        sriov_enable: NotRequired[pulumi.Input[str]]
+        """
+        Whether to enable SR-IOV (string)
+        """
+        subnet_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        Subnet domain name (string)
+        """
+        tenant: NotRequired[pulumi.Input[str]]
+        """
+        ACI tenant (string)
+        """
+        use_aci_anywhere_crd: NotRequired[pulumi.Input[str]]
+        """
+        Whether to use ACI anywhere CRD (string)
+        """
+        use_aci_cni_priority_class: NotRequired[pulumi.Input[str]]
+        """
+        Whether to use ACI CNI priority class (string)
+        """
+        use_cluster_role: NotRequired[pulumi.Input[str]]
+        """
+        Whether to use cluster role (string)
+        """
+        use_host_netns_volume: NotRequired[pulumi.Input[str]]
+        """
+        Whether to use host netns volume (string)
+        """
+        use_opflex_server_volume: NotRequired[pulumi.Input[str]]
+        """
+        Whether use Opflex server volume (string)
+        """
+        use_privileged_container: NotRequired[pulumi.Input[str]]
+        """
+        Whether ACI containers should run as privileged (string)
+        """
+        vmm_controller: NotRequired[pulumi.Input[str]]
+        """
+        VMM controller configuration (string)
+        """
+        vmm_domain: NotRequired[pulumi.Input[str]]
+        """
+        VMM domain configuration (string)
+        """
+elif False:
+    ClusterRkeConfigNetworkAciNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigNetworkAciNetworkProviderArgs:
@@ -11348,6 +14667,15 @@ class ClusterRkeConfigNetworkAciNetworkProviderArgs:
         pulumi.set(self, "vmm_domain", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigNetworkCalicoNetworkProviderArgsDict(TypedDict):
+        cloud_provider: NotRequired[pulumi.Input[str]]
+        """
+        RKE options for Calico network provider (string)
+        """
+elif False:
+    ClusterRkeConfigNetworkCalicoNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigNetworkCalicoNetworkProviderArgs:
     def __init__(__self__, *,
@@ -11370,6 +14698,15 @@ class ClusterRkeConfigNetworkCalicoNetworkProviderArgs:
     def cloud_provider(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_provider", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigNetworkCanalNetworkProviderArgsDict(TypedDict):
+        iface: NotRequired[pulumi.Input[str]]
+        """
+        Iface config Flannel network provider (string)
+        """
+elif False:
+    ClusterRkeConfigNetworkCanalNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigNetworkCanalNetworkProviderArgs:
@@ -11394,6 +14731,15 @@ class ClusterRkeConfigNetworkCanalNetworkProviderArgs:
         pulumi.set(self, "iface", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigNetworkFlannelNetworkProviderArgsDict(TypedDict):
+        iface: NotRequired[pulumi.Input[str]]
+        """
+        Iface config Flannel network provider (string)
+        """
+elif False:
+    ClusterRkeConfigNetworkFlannelNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigNetworkFlannelNetworkProviderArgs:
     def __init__(__self__, *,
@@ -11416,6 +14762,31 @@ class ClusterRkeConfigNetworkFlannelNetworkProviderArgs:
     def iface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "iface", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigNetworkTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The GKE taint key (string)
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint effect (string)
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        The toleration operator. `Equal`, and `Exists` are supported. Default: `Equal` (string)
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        The toleration seconds (int)
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint value (string)
+        """
+elif False:
+    ClusterRkeConfigNetworkTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigNetworkTolerationArgs:
@@ -11503,6 +14874,15 @@ class ClusterRkeConfigNetworkTolerationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigNetworkWeaveNetworkProviderArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        """
+        Registry password (string)
+        """
+elif False:
+    ClusterRkeConfigNetworkWeaveNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigNetworkWeaveNetworkProviderArgs:
     def __init__(__self__, *,
@@ -11524,6 +14904,59 @@ class ClusterRkeConfigNetworkWeaveNetworkProviderArgs:
     def password(self, value: pulumi.Input[str]):
         pulumi.set(self, "password", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigNodeArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        Address ip for node (string)
+        """
+        roles: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        """
+        user: pulumi.Input[str]
+        """
+        Registry user (string)
+        """
+        docker_socket: NotRequired[pulumi.Input[str]]
+        """
+        Docker socket for node (string)
+        """
+        hostname_override: NotRequired[pulumi.Input[str]]
+        """
+        Hostname override for node (string)
+        """
+        internal_address: NotRequired[pulumi.Input[str]]
+        """
+        Internal ip for node (string)
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the Cluster (map)
+        """
+        node_id: NotRequired[pulumi.Input[str]]
+        """
+        Id for the node (string)
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Port for node. Default `22` (string)
+        """
+        ssh_agent_auth: NotRequired[pulumi.Input[bool]]
+        """
+        Use ssh agent auth. Default `false` (bool)
+        """
+        ssh_key: NotRequired[pulumi.Input[str]]
+        """
+        Node SSH private key (string)
+        """
+        ssh_key_path: NotRequired[pulumi.Input[str]]
+        """
+        Node SSH private key path (string)
+        """
+elif False:
+    ClusterRkeConfigNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigNodeArgs:
@@ -11721,6 +15154,31 @@ class ClusterRkeConfigNodeArgs:
         pulumi.set(self, "ssh_key_path", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigPrivateRegistryArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        """
+        Registry URL (string)
+        """
+        ecr_credential_plugin: NotRequired[pulumi.Input['ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgsDict']]
+        """
+        ECR credential plugin config
+        """
+        is_default: NotRequired[pulumi.Input[bool]]
+        """
+        Set as default registry. Default `false` (bool)
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Registry password (string)
+        """
+        user: NotRequired[pulumi.Input[str]]
+        """
+        Registry user (string)
+        """
+elif False:
+    ClusterRkeConfigPrivateRegistryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigPrivateRegistryArgs:
     def __init__(__self__, *,
@@ -11807,6 +15265,23 @@ class ClusterRkeConfigPrivateRegistryArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgsDict(TypedDict):
+        aws_access_key_id: NotRequired[pulumi.Input[str]]
+        """
+        AWS access key ID (string)
+        """
+        aws_secret_access_key: NotRequired[pulumi.Input[str]]
+        """
+        AWS secret access key (string)
+        """
+        aws_session_token: NotRequired[pulumi.Input[str]]
+        """
+        AWS session token (string)
+        """
+elif False:
+    ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs:
     def __init__(__self__, *,
@@ -11861,6 +15336,35 @@ class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs:
     def aws_session_token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aws_session_token", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesArgsDict(TypedDict):
+        etcd: NotRequired[pulumi.Input['ClusterRkeConfigServicesEtcdArgsDict']]
+        """
+        Etcd options for RKE services (list maxitems:1)
+        """
+        kube_api: NotRequired[pulumi.Input['ClusterRkeConfigServicesKubeApiArgsDict']]
+        """
+        Kube API options for RKE services (list maxitems:1)
+        """
+        kube_controller: NotRequired[pulumi.Input['ClusterRkeConfigServicesKubeControllerArgsDict']]
+        """
+        Kube Controller options for RKE services (list maxitems:1)
+        """
+        kubelet: NotRequired[pulumi.Input['ClusterRkeConfigServicesKubeletArgsDict']]
+        """
+        Kubelet options for RKE services (list maxitems:1)
+        """
+        kubeproxy: NotRequired[pulumi.Input['ClusterRkeConfigServicesKubeproxyArgsDict']]
+        """
+        Kubeproxy options for RKE services (list maxitems:1)
+        """
+        scheduler: NotRequired[pulumi.Input['ClusterRkeConfigServicesSchedulerArgsDict']]
+        """
+        Scheduler options for RKE services (list maxitems:1)
+        """
+elif False:
+    ClusterRkeConfigServicesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesArgs:
@@ -11964,6 +15468,71 @@ class ClusterRkeConfigServicesArgs:
     def scheduler(self, value: Optional[pulumi.Input['ClusterRkeConfigServicesSchedulerArgs']]):
         pulumi.set(self, "scheduler", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesEtcdArgsDict(TypedDict):
+        backup_config: NotRequired[pulumi.Input['ClusterRkeConfigServicesEtcdBackupConfigArgsDict']]
+        """
+        Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
+        """
+        ca_cert: NotRequired[pulumi.Input[str]]
+        """
+        (Computed/Sensitive) K8s cluster ca cert (string)
+        """
+        cert: NotRequired[pulumi.Input[str]]
+        """
+        TLS certificate for etcd service (string)
+        """
+        creation: NotRequired[pulumi.Input[str]]
+        """
+        Creation option for etcd service (string)
+        """
+        external_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        External urls for etcd service (list)
+        """
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Extra arguments for scheduler service (map)
+        """
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra binds for scheduler service (list)
+        """
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra environment for scheduler service (list)
+        """
+        gid: NotRequired[pulumi.Input[int]]
+        """
+        Etcd service GID. Default: `0`. For Rancher v2.3.x and above (int)
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Docker image for scheduler service (string)
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The GKE taint key (string)
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        """
+        retention: NotRequired[pulumi.Input[str]]
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
+        snapshot: NotRequired[pulumi.Input[bool]]
+        """
+        Snapshot option for etcd service (bool)
+        """
+        uid: NotRequired[pulumi.Input[int]]
+        """
+        Etcd service UID. Default: `0`. For Rancher v2.3.x and above (int)
+        """
+elif False:
+    ClusterRkeConfigServicesEtcdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesEtcdArgs:
@@ -12212,6 +15781,35 @@ class ClusterRkeConfigServicesEtcdArgs:
         pulumi.set(self, "uid", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigServicesEtcdBackupConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
+        interval_hours: NotRequired[pulumi.Input[int]]
+        """
+        Interval hours for etcd backup. Default `12` (int)
+        """
+        retention: NotRequired[pulumi.Input[int]]
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
+        s3_backup_config: NotRequired[pulumi.Input['ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict']]
+        """
+        S3 config options for etcd backup (list maxitems:1)
+        """
+        safe_timestamp: NotRequired[pulumi.Input[bool]]
+        """
+        Safe timestamp for etcd backup. Default: `false` (bool)
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        RKE node drain timeout. Default: `60` (int)
+        """
+elif False:
+    ClusterRkeConfigServicesEtcdBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigServicesEtcdBackupConfigArgs:
     def __init__(__self__, *,
@@ -12314,6 +15912,39 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgs:
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        """
+        Bucket name for S3 service (string)
+        """
+        endpoint: pulumi.Input[str]
+        """
+        Endpoint for S3 service (string)
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Client ID to use (string)
+        """
+        custom_ca: NotRequired[pulumi.Input[str]]
+        """
+        Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        """
+        folder: NotRequired[pulumi.Input[str]]
+        """
+        Folder for S3 service. Available from Rancher v2.2.7 (string)
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Client Secret associated with the Client ID (string)
+        """
+elif False:
+    ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
@@ -12431,6 +16062,55 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     def secret_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_key", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesKubeApiArgsDict(TypedDict):
+        admission_configuration: NotRequired[pulumi.Input['ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgsDict']]
+        """
+        Cluster admission configuration
+        """
+        always_pull_images: NotRequired[pulumi.Input[bool]]
+        """
+        Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
+        """
+        audit_log: NotRequired[pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogArgsDict']]
+        """
+        K8s audit log configuration. (list maxitems: 1)
+        """
+        event_rate_limit: NotRequired[pulumi.Input['ClusterRkeConfigServicesKubeApiEventRateLimitArgsDict']]
+        """
+        K8s event rate limit configuration. (list maxitems: 1)
+        """
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Extra arguments for scheduler service (map)
+        """
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra binds for scheduler service (list)
+        """
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra environment for scheduler service (list)
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Docker image for scheduler service (string)
+        """
+        secrets_encryption_config: NotRequired[pulumi.Input['ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgsDict']]
+        """
+        [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
+        """
+        service_cluster_ip_range: NotRequired[pulumi.Input[str]]
+        """
+        Service Cluster ip Range option for kube controller service (string)
+        """
+        service_node_port_range: NotRequired[pulumi.Input[str]]
+        """
+        Service Node Port Range option for kube API service (string)
+        """
+elif False:
+    ClusterRkeConfigServicesKubeApiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeApiArgs:
@@ -12615,6 +16295,23 @@ class ClusterRkeConfigServicesKubeApiArgs:
         pulumi.set(self, "service_node_port_range", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgsDict(TypedDict):
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        Admission configuration ApiVersion
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        Admission configuration Kind
+        """
+        plugins: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgsDict']]]]
+        """
+        Admission configuration plugins
+        """
+elif False:
+    ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs:
     def __init__(__self__, *,
@@ -12670,6 +16367,23 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs:
         pulumi.set(self, "plugins", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgsDict(TypedDict):
+        configuration: NotRequired[pulumi.Input[str]]
+        """
+        Plugin configuration
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the Cluster (string)
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Plugin path
+        """
+elif False:
+    ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs:
     def __init__(__self__, *,
@@ -12724,6 +16438,30 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs:
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesKubeApiAuditLogArgsDict(TypedDict):
+        configuration: NotRequired[pulumi.Input['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgsDict']]
+        """
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+
+        ```
+        configuration = <<EOF
+        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        kind: Configuration
+        limits:
+        - type: Server
+        burst: 35000
+        qps: 6000
+        EOF
+        ```
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
+elif False:
+    ClusterRkeConfigServicesKubeApiAuditLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeApiAuditLogArgs:
@@ -12785,6 +16523,47 @@ class ClusterRkeConfigServicesKubeApiAuditLogArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgsDict(TypedDict):
+        format: NotRequired[pulumi.Input[str]]
+        """
+        Audit log format. Default: 'json' (string)
+        """
+        max_age: NotRequired[pulumi.Input[int]]
+        """
+        Audit log max age. Default: `30` (int)
+        """
+        max_backup: NotRequired[pulumi.Input[int]]
+        """
+        Audit log max backup. Default: `10` (int)
+        """
+        max_size: NotRequired[pulumi.Input[int]]
+        """
+        The EKS node group maximum size. Default `2` (int)
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        (Optional) Audit log path. Default: `/var/log/kube-audit/audit-log.json` (string)
+        """
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        Audit policy yaml encoded definition. `apiVersion` and `kind: Policy\\nrules:"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/audit-log/) (string) Ex:
+
+        ```
+        policy = <<EOF
+        apiVersion: audit.k8s.io/v1
+        kind: Policy
+        rules:
+        - level: RequestResponse
+        resources:
+        - resources:
+        - pods
+        EOF
+        ```
+        """
+elif False:
+    ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
@@ -12913,6 +16692,30 @@ class ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs:
         pulumi.set(self, "policy", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigServicesKubeApiEventRateLimitArgsDict(TypedDict):
+        configuration: NotRequired[pulumi.Input[str]]
+        """
+        Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
+
+        ```
+        configuration = <<EOF
+        apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+        kind: Configuration
+        limits:
+        - type: Server
+        burst: 35000
+        qps: 6000
+        EOF
+        ```
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
+elif False:
+    ClusterRkeConfigServicesKubeApiEventRateLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeApiEventRateLimitArgs:
     def __init__(__self__, *,
@@ -12973,6 +16776,36 @@ class ClusterRkeConfigServicesKubeApiEventRateLimitArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgsDict(TypedDict):
+        custom_config: NotRequired[pulumi.Input[str]]
+        """
+        Secrets encryption yaml encoded custom configuration. `"apiVersion"` and `"kind":"EncryptionConfiguration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/) (string) Ex:
+
+        ```
+        custom_config = <<EOF
+        apiVersion: apiserver.config.k8s.io/v1
+        kind: EncryptionConfiguration
+        resources:
+        - resources:
+        - secrets
+        providers:
+        - aescbc:
+        keys:
+        - name: k-fw5hn
+        secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=
+        identity: {}
+        EOF
+
+        ```
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable the authorized cluster endpoint. Default `true` (bool)
+        """
+elif False:
+    ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
@@ -13046,6 +16879,35 @@ class ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesKubeControllerArgsDict(TypedDict):
+        cluster_cidr: NotRequired[pulumi.Input[str]]
+        """
+        Cluster CIDR option for kube controller service (string)
+        """
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Extra arguments for scheduler service (map)
+        """
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra binds for scheduler service (list)
+        """
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra environment for scheduler service (list)
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Docker image for scheduler service (string)
+        """
+        service_cluster_ip_range: NotRequired[pulumi.Input[str]]
+        """
+        Service Cluster ip Range option for kube controller service (string)
+        """
+elif False:
+    ClusterRkeConfigServicesKubeControllerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeControllerArgs:
@@ -13149,6 +17011,47 @@ class ClusterRkeConfigServicesKubeControllerArgs:
     def service_cluster_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_cluster_ip_range", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesKubeletArgsDict(TypedDict):
+        cluster_dns_server: NotRequired[pulumi.Input[str]]
+        """
+        Cluster DNS Server option for kubelet service (string)
+        """
+        cluster_domain: NotRequired[pulumi.Input[str]]
+        """
+        Cluster Domain option for kubelet service (string)
+        """
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Extra arguments for scheduler service (map)
+        """
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra binds for scheduler service (list)
+        """
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra environment for scheduler service (list)
+        """
+        fail_swap_on: NotRequired[pulumi.Input[bool]]
+        """
+        Enable or disable failing when swap on is not supported (bool)
+        """
+        generate_serving_certificate: NotRequired[pulumi.Input[bool]]
+        """
+        [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Docker image for scheduler service (string)
+        """
+        infra_container_image: NotRequired[pulumi.Input[str]]
+        """
+        Infra container image for kubelet service (string)
+        """
+elif False:
+    ClusterRkeConfigServicesKubeletArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeletArgs:
@@ -13301,6 +17204,27 @@ class ClusterRkeConfigServicesKubeletArgs:
         pulumi.set(self, "infra_container_image", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigServicesKubeproxyArgsDict(TypedDict):
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Extra arguments for scheduler service (map)
+        """
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra binds for scheduler service (list)
+        """
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra environment for scheduler service (list)
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Docker image for scheduler service (string)
+        """
+elif False:
+    ClusterRkeConfigServicesKubeproxyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigServicesKubeproxyArgs:
     def __init__(__self__, *,
@@ -13371,6 +17295,27 @@ class ClusterRkeConfigServicesKubeproxyArgs:
     def image(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigServicesSchedulerArgsDict(TypedDict):
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Extra arguments for scheduler service (map)
+        """
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra binds for scheduler service (list)
+        """
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra environment for scheduler service (list)
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Docker image for scheduler service (string)
+        """
+elif False:
+    ClusterRkeConfigServicesSchedulerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigServicesSchedulerArgs:
@@ -13443,6 +17388,27 @@ class ClusterRkeConfigServicesSchedulerArgs:
         pulumi.set(self, "image", value)
 
 
+if not MYPY:
+    class ClusterRkeConfigUpgradeStrategyArgsDict(TypedDict):
+        drain: NotRequired[pulumi.Input[bool]]
+        """
+        RKE drain nodes. Default: `false` (bool)
+        """
+        drain_input: NotRequired[pulumi.Input['ClusterRkeConfigUpgradeStrategyDrainInputArgsDict']]
+        """
+        RKE drain node input (list Maxitems: 1)
+        """
+        max_unavailable_controlplane: NotRequired[pulumi.Input[str]]
+        """
+        RKE max unavailable controlplane nodes. Default: `1` (string)
+        """
+        max_unavailable_worker: NotRequired[pulumi.Input[str]]
+        """
+        RKE max unavailable worker nodes. Default: `10%` (string)
+        """
+elif False:
+    ClusterRkeConfigUpgradeStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterRkeConfigUpgradeStrategyArgs:
     def __init__(__self__, *,
@@ -13513,6 +17479,31 @@ class ClusterRkeConfigUpgradeStrategyArgs:
     def max_unavailable_worker(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_unavailable_worker", value)
 
+
+if not MYPY:
+    class ClusterRkeConfigUpgradeStrategyDrainInputArgsDict(TypedDict):
+        delete_local_data: NotRequired[pulumi.Input[bool]]
+        """
+        Delete RKE node local data. Default: `false` (bool)
+        """
+        force: NotRequired[pulumi.Input[bool]]
+        """
+        Force RKE node drain. Default: `false` (bool)
+        """
+        grace_period: NotRequired[pulumi.Input[int]]
+        """
+        RKE node drain grace period. Default: `-1` (int)
+        """
+        ignore_daemon_sets: NotRequired[pulumi.Input[bool]]
+        """
+        Ignore RKE daemon sets. Default: `true` (bool)
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        RKE node drain timeout. Default: `60` (int)
+        """
+elif False:
+    ClusterRkeConfigUpgradeStrategyDrainInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
@@ -13600,6 +17591,75 @@ class ClusterRkeConfigUpgradeStrategyDrainInputArgs:
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
+
+if not MYPY:
+    class ClusterSyncNodeArgsDict(TypedDict):
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Annotations of the resource
+        """
+        capacity: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        The total resources of a node (map).
+        """
+        cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        The cluster ID that is syncing (string)
+        """
+        external_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The external IP address of the node (string).
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        The hostname of the node (string).
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        (Computed) The ID of the resource. Same as `cluster_id` (string)
+        """
+        ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address of the node (string).
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels of the resource
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the node (string).
+        """
+        node_pool_id: NotRequired[pulumi.Input[str]]
+        """
+        The Node Pool ID of the node (string).
+        """
+        node_template_id: NotRequired[pulumi.Input[str]]
+        """
+        The Node Template ID of the node (string).
+        """
+        provider_id: NotRequired[pulumi.Input[str]]
+        """
+        The Provider ID of the node (string).
+        """
+        requested_hostname: NotRequired[pulumi.Input[str]]
+        """
+        The requested hostname (string).
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        The user to connect to the node (string).
+        """
+        system_info: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
+        """
+elif False:
+    ClusterSyncNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterSyncNodeArgs:
@@ -13864,6 +17924,23 @@ class ClusterSyncNodeArgs:
         pulumi.set(self, "system_info", value)
 
 
+if not MYPY:
+    class ClusterTemplateMemberArgsDict(TypedDict):
+        access_type: NotRequired[pulumi.Input[str]]
+        """
+        Member access type: member, owner, read-only
+        """
+        group_principal_id: NotRequired[pulumi.Input[str]]
+        """
+        Member group principal id
+        """
+        user_principal_id: NotRequired[pulumi.Input[str]]
+        """
+        Member user principal id
+        """
+elif False:
+    ClusterTemplateMemberArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateMemberArgs:
     def __init__(__self__, *,
@@ -13918,6 +17995,47 @@ class ClusterTemplateMemberArgs:
     def user_principal_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_principal_id", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionArgsDict(TypedDict):
+        cluster_config: pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigArgsDict']
+        """
+        Cluster configuration
+        """
+        name: pulumi.Input[str]
+        """
+        The cluster template name (string)
+        """
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Annotations for the cluster template (map)
+        """
+        cluster_template_id: NotRequired[pulumi.Input[str]]
+        """
+        Cluster template ID
+        """
+        default: NotRequired[pulumi.Input[bool]]
+        """
+        Default cluster template revision
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable cluster template revision
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        (Computed) The ID of the resource (string)
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the cluster template (map)
+        """
+        questions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionQuestionArgsDict']]]]
+        """
+        Cluster template questions
+        """
+elif False:
+    ClusterTemplateTemplateRevisionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionArgs:
@@ -14067,6 +18185,47 @@ class ClusterTemplateTemplateRevisionArgs:
     def questions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionQuestionArgs']]]]):
         pulumi.set(self, "questions", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigArgsDict(TypedDict):
+        rke_config: pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgsDict']
+        """
+        Rancher Kubernetes Engine Config
+        """
+        cluster_auth_endpoint: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgsDict']]
+        """
+        Local cluster auth endpoint
+        """
+        default_cluster_role_for_project_members: NotRequired[pulumi.Input[str]]
+        """
+        Default cluster role for project members
+        """
+        default_pod_security_admission_configuration_template_name: NotRequired[pulumi.Input[str]]
+        """
+        Default pod security admission configuration template name
+        """
+        desired_agent_image: NotRequired[pulumi.Input[str]]
+        """
+        Desired agent image
+        """
+        desired_auth_image: NotRequired[pulumi.Input[str]]
+        """
+        Desired auth image
+        """
+        docker_root_dir: NotRequired[pulumi.Input[str]]
+        """
+        Docker Root Dir
+        """
+        enable_network_policy: NotRequired[pulumi.Input[bool]]
+        """
+        Enable project network isolation
+        """
+        windows_prefered_cluster: NotRequired[pulumi.Input[bool]]
+        """
+        Windows prefered cluster
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigArgs:
@@ -14218,6 +18377,17 @@ class ClusterTemplateTemplateRevisionClusterConfigArgs:
         pulumi.set(self, "windows_prefered_cluster", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgsDict(TypedDict):
+        ca_certs: NotRequired[pulumi.Input[str]]
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
+        fqdn: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs:
     def __init__(__self__, *,
@@ -14264,6 +18434,97 @@ class ClusterTemplateTemplateRevisionClusterConfigClusterAuthEndpointArgs:
     def fqdn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fqdn", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgsDict(TypedDict):
+        addon_job_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Optional duration in seconds of addon job.
+        """
+        addons: NotRequired[pulumi.Input[str]]
+        """
+        Optional addons descripton to deploy on rke cluster.
+        """
+        addons_includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional addons yaml manisfest to deploy on rke cluster.
+        """
+        authentication: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgsDict']]
+        """
+        Kubernetes cluster authentication
+        """
+        authorization: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgsDict']]
+        """
+        Kubernetes cluster authorization
+        """
+        bastion_host: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgsDict']]
+        """
+        RKE bastion host
+        """
+        cloud_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgsDict']]
+        dns: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgsDict']]
+        enable_cri_dockerd: NotRequired[pulumi.Input[bool]]
+        """
+        Enable/disable using cri-dockerd
+        """
+        ignore_docker_version: NotRequired[pulumi.Input[bool]]
+        """
+        Optional ignore docker version on nodes
+        """
+        ingress: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgsDict']]
+        """
+        Kubernetes ingress configuration
+        """
+        kubernetes_version: NotRequired[pulumi.Input[str]]
+        """
+        Optional kubernetes version to deploy
+        """
+        monitoring: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgsDict']]
+        """
+        Kubernetes cluster monitoring
+        """
+        network: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgsDict']]
+        """
+        Kubernetes cluster networking
+        """
+        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgsDict']]]]
+        """
+        Optional RKE cluster nodes
+        """
+        prefix_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional prefix to customize kubernetes path
+        """
+        private_registries: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgsDict']]]]
+        """
+        Optional private registries for docker images
+        """
+        services: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgsDict']]
+        """
+        Kubernetes cluster services
+        """
+        ssh_agent_auth: NotRequired[pulumi.Input[bool]]
+        """
+        Optional use ssh agent auth
+        """
+        ssh_cert_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional cluster level SSH certificate path
+        """
+        ssh_key_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional cluster level SSH private key path
+        """
+        upgrade_strategy: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgsDict']]
+        """
+        RKE upgrade strategy
+        """
+        win_prefix_path: NotRequired[pulumi.Input[str]]
+        """
+        Optional prefix to customize kubernetes path for windows
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs:
@@ -14632,6 +18893,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs:
         pulumi.set(self, "win_prefix_path", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgsDict(TypedDict):
+        sans: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        strategy: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs:
     def __init__(__self__, *,
@@ -14661,6 +18929,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthenticationArgs:
         pulumi.set(self, "strategy", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[str]]
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs:
     def __init__(__self__, *,
@@ -14689,6 +18964,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigAuthorizationArgs:
     def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "options", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        user: pulumi.Input[str]
+        port: NotRequired[pulumi.Input[str]]
+        ssh_agent_auth: NotRequired[pulumi.Input[bool]]
+        ssh_key: NotRequired[pulumi.Input[str]]
+        ssh_key_path: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs:
@@ -14764,6 +19050,20 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigBastionHostArgs:
     def ssh_key_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssh_key_path", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgsDict(TypedDict):
+        aws_cloud_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgsDict']]
+        azure_cloud_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgsDict']]
+        custom_cloud_provider: NotRequired[pulumi.Input[str]]
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The cluster template name (string)
+        """
+        openstack_cloud_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgsDict']]
+        vsphere_cloud_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgsDict']]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs:
@@ -14848,6 +19148,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderArgs:
         pulumi.set(self, "vsphere_cloud_provider", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgsDict(TypedDict):
+        global_: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgsDict']]
+        service_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgsDict']]]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderArgs:
     def __init__(__self__, *,
@@ -14876,6 +19183,21 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloud
     def service_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs']]]]):
         pulumi.set(self, "service_overrides", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgsDict(TypedDict):
+        disable_security_group_ingress: NotRequired[pulumi.Input[bool]]
+        disable_strict_zone_check: NotRequired[pulumi.Input[bool]]
+        elb_security_group: NotRequired[pulumi.Input[str]]
+        kubernetes_cluster_id: NotRequired[pulumi.Input[str]]
+        kubernetes_cluster_tag: NotRequired[pulumi.Input[str]]
+        role_arn: NotRequired[pulumi.Input[str]]
+        route_table_id: NotRequired[pulumi.Input[str]]
+        subnet_id: NotRequired[pulumi.Input[str]]
+        vpc: NotRequired[pulumi.Input[str]]
+        zone: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderGlobalArgs:
@@ -15002,6 +19324,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloud
         pulumi.set(self, "zone", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        region: NotRequired[pulumi.Input[str]]
+        signing_method: NotRequired[pulumi.Input[str]]
+        signing_name: NotRequired[pulumi.Input[str]]
+        signing_region: NotRequired[pulumi.Input[str]]
+        url: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs:
     def __init__(__self__, *,
@@ -15077,6 +19410,43 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAwsCloud
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgsDict(TypedDict):
+        aad_client_id: pulumi.Input[str]
+        aad_client_secret: pulumi.Input[str]
+        subscription_id: pulumi.Input[str]
+        tenant_id: pulumi.Input[str]
+        aad_client_cert_password: NotRequired[pulumi.Input[str]]
+        aad_client_cert_path: NotRequired[pulumi.Input[str]]
+        cloud: NotRequired[pulumi.Input[str]]
+        cloud_provider_backoff: NotRequired[pulumi.Input[bool]]
+        cloud_provider_backoff_duration: NotRequired[pulumi.Input[int]]
+        cloud_provider_backoff_exponent: NotRequired[pulumi.Input[int]]
+        cloud_provider_backoff_jitter: NotRequired[pulumi.Input[int]]
+        cloud_provider_backoff_retries: NotRequired[pulumi.Input[int]]
+        cloud_provider_rate_limit: NotRequired[pulumi.Input[bool]]
+        cloud_provider_rate_limit_bucket: NotRequired[pulumi.Input[int]]
+        cloud_provider_rate_limit_qps: NotRequired[pulumi.Input[int]]
+        load_balancer_sku: NotRequired[pulumi.Input[str]]
+        """
+        Load balancer type (basic | standard). Must be standard for auto-scaling
+        """
+        location: NotRequired[pulumi.Input[str]]
+        maximum_load_balancer_rule_count: NotRequired[pulumi.Input[int]]
+        primary_availability_set_name: NotRequired[pulumi.Input[str]]
+        primary_scale_set_name: NotRequired[pulumi.Input[str]]
+        resource_group: NotRequired[pulumi.Input[str]]
+        route_table_name: NotRequired[pulumi.Input[str]]
+        security_group_name: NotRequired[pulumi.Input[str]]
+        subnet_name: NotRequired[pulumi.Input[str]]
+        use_instance_metadata: NotRequired[pulumi.Input[bool]]
+        use_managed_identity_extension: NotRequired[pulumi.Input[bool]]
+        vm_type: NotRequired[pulumi.Input[str]]
+        vnet_name: NotRequired[pulumi.Input[str]]
+        vnet_resource_group: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureCloudProviderArgs:
@@ -15433,6 +19803,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderAzureClo
         pulumi.set(self, "vnet_resource_group", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgsDict(TypedDict):
+        global_: pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgsDict']
+        block_storage: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgsDict']]
+        load_balancer: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgsDict']]
+        metadata: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgsDict']]
+        route: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgsDict']]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderArgs:
     def __init__(__self__, *,
@@ -15497,6 +19877,14 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
         pulumi.set(self, "route", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgsDict(TypedDict):
+        bs_version: NotRequired[pulumi.Input[str]]
+        ignore_volume_az: NotRequired[pulumi.Input[bool]]
+        trust_device_path: NotRequired[pulumi.Input[bool]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs:
     def __init__(__self__, *,
@@ -15537,6 +19925,21 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
     def trust_device_path(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "trust_device_path", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgsDict(TypedDict):
+        auth_url: pulumi.Input[str]
+        password: pulumi.Input[str]
+        username: pulumi.Input[str]
+        ca_file: NotRequired[pulumi.Input[str]]
+        domain_id: NotRequired[pulumi.Input[str]]
+        domain_name: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
+        tenant_name: NotRequired[pulumi.Input[str]]
+        trust_id: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
@@ -15659,6 +20062,22 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
     def trust_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "trust_id", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgsDict(TypedDict):
+        create_monitor: NotRequired[pulumi.Input[bool]]
+        floating_network_id: NotRequired[pulumi.Input[str]]
+        lb_method: NotRequired[pulumi.Input[str]]
+        lb_provider: NotRequired[pulumi.Input[str]]
+        lb_version: NotRequired[pulumi.Input[str]]
+        manage_security_groups: NotRequired[pulumi.Input[bool]]
+        monitor_delay: NotRequired[pulumi.Input[str]]
+        monitor_max_retries: NotRequired[pulumi.Input[int]]
+        monitor_timeout: NotRequired[pulumi.Input[str]]
+        subnet_id: NotRequired[pulumi.Input[str]]
+        use_octavia: NotRequired[pulumi.Input[bool]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs:
@@ -15797,6 +20216,13 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
         pulumi.set(self, "use_octavia", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgsDict(TypedDict):
+        request_timeout: NotRequired[pulumi.Input[int]]
+        search_order: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs:
     def __init__(__self__, *,
@@ -15826,6 +20252,12 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
         pulumi.set(self, "search_order", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgsDict(TypedDict):
+        router_id: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstackCloudProviderRouteArgs:
     def __init__(__self__, *,
@@ -15842,6 +20274,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderOpenstac
     def router_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "router_id", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgsDict(TypedDict):
+        virtual_centers: pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgsDict']]]
+        workspace: pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgsDict']
+        disk: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgsDict']]
+        global_: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgsDict']]
+        network: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgsDict']]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderArgs:
@@ -15906,6 +20348,12 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
         pulumi.set(self, "network", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgsDict(TypedDict):
+        scsi_controller_type: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderDiskArgs:
     def __init__(__self__, *,
@@ -15922,6 +20370,18 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     def scsi_controller_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "scsi_controller_type", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgsDict(TypedDict):
+        datacenters: NotRequired[pulumi.Input[str]]
+        graceful_shutdown_timeout: NotRequired[pulumi.Input[str]]
+        insecure_flag: NotRequired[pulumi.Input[bool]]
+        password: NotRequired[pulumi.Input[str]]
+        port: NotRequired[pulumi.Input[str]]
+        soap_roundtrip_count: NotRequired[pulumi.Input[int]]
+        user: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderGlobalArgs:
@@ -16012,6 +20472,12 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgsDict(TypedDict):
+        public_network: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderNetworkArgs:
     def __init__(__self__, *,
@@ -16028,6 +20494,20 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     def public_network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_network", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgsDict(TypedDict):
+        datacenters: pulumi.Input[str]
+        name: pulumi.Input[str]
+        """
+        The cluster template name (string)
+        """
+        password: pulumi.Input[str]
+        user: pulumi.Input[str]
+        port: NotRequired[pulumi.Input[str]]
+        soap_roundtrip_count: NotRequired[pulumi.Input[int]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderVirtualCenterArgs:
@@ -16108,6 +20588,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
         pulumi.set(self, "soap_roundtrip_count", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgsDict(TypedDict):
+        datacenter: pulumi.Input[str]
+        folder: pulumi.Input[str]
+        server: pulumi.Input[str]
+        default_datastore: NotRequired[pulumi.Input[str]]
+        resourcepool_path: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
     def __init__(__self__, *,
@@ -16169,6 +20659,32 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigCloudProviderVsphereC
     def resourcepool_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resourcepool_path", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgsDict(TypedDict):
+        linear_autoscaler_params: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgsDict']]
+        """
+        Linear Autoscaler Params
+        """
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        nodelocal: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgsDict']]
+        """
+        Nodelocal dns
+        """
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        provider: NotRequired[pulumi.Input[str]]
+        reverse_cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgsDict']]]]
+        """
+        DNS service tolerations
+        """
+        update_strategy: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgsDict']]
+        """
+        Update deployment strategy
+        """
+        upstream_nameservers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
@@ -16301,6 +20817,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsArgs:
         pulumi.set(self, "upstream_nameservers", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgsDict(TypedDict):
+        cores_per_replica: NotRequired[pulumi.Input[float]]
+        max: NotRequired[pulumi.Input[int]]
+        min: NotRequired[pulumi.Input[int]]
+        nodes_per_replica: NotRequired[pulumi.Input[float]]
+        prevent_single_point_failure: NotRequired[pulumi.Input[bool]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerParamsArgs:
     def __init__(__self__, *,
@@ -16366,6 +20892,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsLinearAutoscalerPa
         pulumi.set(self, "prevent_single_point_failure", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgsDict(TypedDict):
+        ip_address: NotRequired[pulumi.Input[str]]
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Node selector key pair
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs:
     def __init__(__self__, *,
@@ -16400,6 +20936,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsNodelocalArgs:
     def node_selector(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "node_selector", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        effect: NotRequired[pulumi.Input[str]]
+        operator: NotRequired[pulumi.Input[str]]
+        seconds: NotRequired[pulumi.Input[int]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs:
@@ -16465,6 +21011,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsTolerationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgsDict(TypedDict):
+        rolling_update: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgsDict']]
+        """
+        Rolling update for update strategy
+        """
+        strategy: NotRequired[pulumi.Input[str]]
+        """
+        Strategy
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs:
     def __init__(__self__, *,
@@ -16504,6 +21063,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyArgs
         pulumi.set(self, "strategy", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgsDict(TypedDict):
+        max_surge: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max surge
+        """
+        max_unavailable: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max unavailable
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRollingUpdateArgs:
     def __init__(__self__, *,
@@ -16542,6 +21114,28 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigDnsUpdateStrategyRoll
     def max_unavailable(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_unavailable", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgsDict(TypedDict):
+        default_backend: NotRequired[pulumi.Input[bool]]
+        dns_policy: NotRequired[pulumi.Input[str]]
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        http_port: NotRequired[pulumi.Input[int]]
+        https_port: NotRequired[pulumi.Input[int]]
+        network_mode: NotRequired[pulumi.Input[str]]
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        provider: NotRequired[pulumi.Input[str]]
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgsDict']]]]
+        """
+        Ingress add-on tolerations
+        """
+        update_strategy: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgsDict']]
+        """
+        Update daemon set strategy
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs:
@@ -16690,6 +21284,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressArgs:
         pulumi.set(self, "update_strategy", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        effect: NotRequired[pulumi.Input[str]]
+        operator: NotRequired[pulumi.Input[str]]
+        seconds: NotRequired[pulumi.Input[int]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs:
     def __init__(__self__, *,
@@ -16754,6 +21358,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressTolerationArgs
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgsDict(TypedDict):
+        rolling_update: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgsDict']]
+        """
+        Rolling update for update strategy
+        """
+        strategy: NotRequired[pulumi.Input[str]]
+        """
+        Strategy
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyArgs:
     def __init__(__self__, *,
@@ -16793,6 +21410,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy
         pulumi.set(self, "strategy", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgsDict(TypedDict):
+        max_unavailable: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max unavailable
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategyRollingUpdateArgs:
     def __init__(__self__, *,
@@ -16815,6 +21441,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigIngressUpdateStrategy
     def max_unavailable(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_unavailable", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgsDict(TypedDict):
+        node_selector: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        provider: NotRequired[pulumi.Input[str]]
+        replicas: NotRequired[pulumi.Input[int]]
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgsDict']]]]
+        """
+        Monitoring add-on tolerations
+        """
+        update_strategy: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgsDict']]
+        """
+        Update deployment strategy
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs:
@@ -16903,6 +21546,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringArgs:
         pulumi.set(self, "update_strategy", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        effect: NotRequired[pulumi.Input[str]]
+        operator: NotRequired[pulumi.Input[str]]
+        seconds: NotRequired[pulumi.Input[int]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationArgs:
     def __init__(__self__, *,
@@ -16967,6 +21620,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringTolerationA
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgsDict(TypedDict):
+        rolling_update: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgsDict']]
+        """
+        Rolling update for update strategy
+        """
+        strategy: NotRequired[pulumi.Input[str]]
+        """
+        Strategy
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyArgs:
     def __init__(__self__, *,
@@ -17006,6 +21672,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrat
         pulumi.set(self, "strategy", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgsDict(TypedDict):
+        max_surge: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max surge
+        """
+        max_unavailable: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update max unavailable
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrategyRollingUpdateArgs:
     def __init__(__self__, *,
@@ -17044,6 +21723,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigMonitoringUpdateStrat
     def max_unavailable(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_unavailable", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgsDict(TypedDict):
+        aci_network_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgsDict']]
+        calico_network_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgsDict']]
+        canal_network_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgsDict']]
+        flannel_network_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgsDict']]
+        mtu: NotRequired[pulumi.Input[int]]
+        options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        plugin: NotRequired[pulumi.Input[str]]
+        tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgsDict']]]]
+        """
+        Network add-on tolerations
+        """
+        weave_network_provider: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgsDict']]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs:
@@ -17163,6 +21859,85 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs:
     def weave_network_provider(self, value: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs']]):
         pulumi.set(self, "weave_network_provider", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgsDict(TypedDict):
+        aep: pulumi.Input[str]
+        apic_hosts: pulumi.Input[Sequence[pulumi.Input[str]]]
+        apic_user_crt: pulumi.Input[str]
+        apic_user_key: pulumi.Input[str]
+        apic_user_name: pulumi.Input[str]
+        encap_type: pulumi.Input[str]
+        extern_dynamic: pulumi.Input[str]
+        extern_static: pulumi.Input[str]
+        kube_api_vlan: pulumi.Input[str]
+        l3out: pulumi.Input[str]
+        l3out_external_networks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        mcast_range_end: pulumi.Input[str]
+        mcast_range_start: pulumi.Input[str]
+        node_subnet: pulumi.Input[str]
+        node_svc_subnet: pulumi.Input[str]
+        service_vlan: pulumi.Input[str]
+        system_id: pulumi.Input[str]
+        token: pulumi.Input[str]
+        vrf_name: pulumi.Input[str]
+        vrf_tenant: pulumi.Input[str]
+        apic_refresh_ticker_adjust: NotRequired[pulumi.Input[str]]
+        apic_refresh_time: NotRequired[pulumi.Input[str]]
+        apic_subscription_delay: NotRequired[pulumi.Input[str]]
+        capic: NotRequired[pulumi.Input[str]]
+        controller_log_level: NotRequired[pulumi.Input[str]]
+        disable_periodic_snat_global_info_sync: NotRequired[pulumi.Input[str]]
+        disable_wait_for_network: NotRequired[pulumi.Input[str]]
+        drop_log_enable: NotRequired[pulumi.Input[str]]
+        duration_wait_for_network: NotRequired[pulumi.Input[str]]
+        enable_endpoint_slice: NotRequired[pulumi.Input[str]]
+        ep_registry: NotRequired[pulumi.Input[str]]
+        gbp_pod_subnet: NotRequired[pulumi.Input[str]]
+        host_agent_log_level: NotRequired[pulumi.Input[str]]
+        image_pull_policy: NotRequired[pulumi.Input[str]]
+        image_pull_secret: NotRequired[pulumi.Input[str]]
+        infra_vlan: NotRequired[pulumi.Input[str]]
+        install_istio: NotRequired[pulumi.Input[str]]
+        istio_profile: NotRequired[pulumi.Input[str]]
+        kafka_brokers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        kafka_client_crt: NotRequired[pulumi.Input[str]]
+        kafka_client_key: NotRequired[pulumi.Input[str]]
+        max_nodes_svc_graph: NotRequired[pulumi.Input[str]]
+        mtu_head_room: NotRequired[pulumi.Input[str]]
+        multus_disable: NotRequired[pulumi.Input[str]]
+        no_priority_class: NotRequired[pulumi.Input[str]]
+        node_pod_if_enable: NotRequired[pulumi.Input[str]]
+        opflex_client_ssl: NotRequired[pulumi.Input[str]]
+        opflex_device_delete_timeout: NotRequired[pulumi.Input[str]]
+        opflex_log_level: NotRequired[pulumi.Input[str]]
+        opflex_mode: NotRequired[pulumi.Input[str]]
+        opflex_server_port: NotRequired[pulumi.Input[str]]
+        overlay_vrf_name: NotRequired[pulumi.Input[str]]
+        ovs_memory_limit: NotRequired[pulumi.Input[str]]
+        pbr_tracking_non_snat: NotRequired[pulumi.Input[str]]
+        pod_subnet_chunk_size: NotRequired[pulumi.Input[str]]
+        run_gbp_container: NotRequired[pulumi.Input[str]]
+        run_opflex_server_container: NotRequired[pulumi.Input[str]]
+        service_monitor_interval: NotRequired[pulumi.Input[str]]
+        snat_contract_scope: NotRequired[pulumi.Input[str]]
+        snat_namespace: NotRequired[pulumi.Input[str]]
+        snat_port_range_end: NotRequired[pulumi.Input[str]]
+        snat_port_range_start: NotRequired[pulumi.Input[str]]
+        snat_ports_per_node: NotRequired[pulumi.Input[str]]
+        sriov_enable: NotRequired[pulumi.Input[str]]
+        subnet_domain_name: NotRequired[pulumi.Input[str]]
+        tenant: NotRequired[pulumi.Input[str]]
+        use_aci_anywhere_crd: NotRequired[pulumi.Input[str]]
+        use_aci_cni_priority_class: NotRequired[pulumi.Input[str]]
+        use_cluster_role: NotRequired[pulumi.Input[str]]
+        use_host_netns_volume: NotRequired[pulumi.Input[str]]
+        use_opflex_server_volume: NotRequired[pulumi.Input[str]]
+        use_privileged_container: NotRequired[pulumi.Input[str]]
+        vmm_controller: NotRequired[pulumi.Input[str]]
+        vmm_domain: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProviderArgs:
@@ -18037,6 +22812,12 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkAciNetworkProv
         pulumi.set(self, "vmm_domain", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgsDict(TypedDict):
+        cloud_provider: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkProviderArgs:
     def __init__(__self__, *,
@@ -18053,6 +22834,12 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCalicoNetworkP
     def cloud_provider(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_provider", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgsDict(TypedDict):
+        iface: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkProviderArgs:
@@ -18071,6 +22858,12 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkCanalNetworkPr
         pulumi.set(self, "iface", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgsDict(TypedDict):
+        iface: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetworkProviderArgs:
     def __init__(__self__, *,
@@ -18087,6 +22880,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkFlannelNetwork
     def iface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "iface", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        effect: NotRequired[pulumi.Input[str]]
+        operator: NotRequired[pulumi.Input[str]]
+        seconds: NotRequired[pulumi.Input[int]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs:
@@ -18152,6 +22955,12 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkTolerationArgs
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgsDict(TypedDict):
+        password: pulumi.Input[str]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkProviderArgs:
     def __init__(__self__, *,
@@ -18167,6 +22976,26 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkWeaveNetworkPr
     def password(self, value: pulumi.Input[str]):
         pulumi.set(self, "password", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        roles: pulumi.Input[Sequence[pulumi.Input[str]]]
+        user: pulumi.Input[str]
+        docker_socket: NotRequired[pulumi.Input[str]]
+        hostname_override: NotRequired[pulumi.Input[str]]
+        internal_address: NotRequired[pulumi.Input[str]]
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the cluster template (map)
+        """
+        node_id: NotRequired[pulumi.Input[str]]
+        port: NotRequired[pulumi.Input[str]]
+        ssh_agent_auth: NotRequired[pulumi.Input[bool]]
+        ssh_key: NotRequired[pulumi.Input[str]]
+        ssh_key_path: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs:
@@ -18320,6 +23149,19 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigNodeArgs:
         pulumi.set(self, "ssh_key_path", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgsDict(TypedDict):
+        url: pulumi.Input[str]
+        ecr_credential_plugin: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgsDict']]
+        """
+        ECR credential plugin config
+        """
+        is_default: NotRequired[pulumi.Input[bool]]
+        password: NotRequired[pulumi.Input[str]]
+        user: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs:
     def __init__(__self__, *,
@@ -18390,6 +23232,14 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryArgs:
         pulumi.set(self, "user", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgsDict(TypedDict):
+        aws_access_key_id: NotRequired[pulumi.Input[str]]
+        aws_secret_access_key: NotRequired[pulumi.Input[str]]
+        aws_session_token: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCredentialPluginArgs:
     def __init__(__self__, *,
@@ -18430,6 +23280,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigPrivateRegistryEcrCre
     def aws_session_token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aws_session_token", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgsDict(TypedDict):
+        etcd: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgsDict']]
+        kube_api: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgsDict']]
+        kube_controller: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgsDict']]
+        kubelet: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgsDict']]
+        kubeproxy: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgsDict']]
+        scheduler: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgsDict']]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs:
@@ -18507,6 +23368,26 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs:
     def scheduler(self, value: Optional[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs']]):
         pulumi.set(self, "scheduler", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgsDict(TypedDict):
+        backup_config: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgsDict']]
+        ca_cert: NotRequired[pulumi.Input[str]]
+        cert: NotRequired[pulumi.Input[str]]
+        creation: NotRequired[pulumi.Input[str]]
+        external_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        gid: NotRequired[pulumi.Input[int]]
+        image: NotRequired[pulumi.Input[str]]
+        key: NotRequired[pulumi.Input[str]]
+        path: NotRequired[pulumi.Input[str]]
+        retention: NotRequired[pulumi.Input[str]]
+        snapshot: NotRequired[pulumi.Input[bool]]
+        uid: NotRequired[pulumi.Input[int]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs:
@@ -18693,6 +23574,20 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs:
         pulumi.set(self, "uid", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
+        interval_hours: NotRequired[pulumi.Input[int]]
+        retention: NotRequired[pulumi.Input[int]]
+        s3_backup_config: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict']]
+        safe_timestamp: NotRequired[pulumi.Input[bool]]
+        timeout: NotRequired[pulumi.Input[int]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigArgs:
     def __init__(__self__, *,
@@ -18775,6 +23670,18 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        endpoint: pulumi.Input[str]
+        access_key: NotRequired[pulumi.Input[str]]
+        custom_ca: NotRequired[pulumi.Input[str]]
+        folder: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        secret_key: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
@@ -18862,6 +23769,25 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdBackupCon
     def secret_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_key", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgsDict(TypedDict):
+        admission_configuration: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgsDict']]
+        """
+        Cluster admission configuration
+        """
+        always_pull_images: NotRequired[pulumi.Input[bool]]
+        audit_log: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgsDict']]
+        event_rate_limit: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgsDict']]
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        image: NotRequired[pulumi.Input[str]]
+        secrets_encryption_config: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgsDict']]
+        service_cluster_ip_range: NotRequired[pulumi.Input[str]]
+        service_node_port_range: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs:
@@ -19006,6 +23932,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiArgs:
         pulumi.set(self, "service_node_port_range", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgsDict(TypedDict):
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        Admission configuration ApiVersion
+        """
+        kind: NotRequired[pulumi.Input[str]]
+        """
+        Admission configuration Kind
+        """
+        plugins: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgsDict']]]]
+        """
+        Admission configuration plugins
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationArgs:
     def __init__(__self__, *,
@@ -19060,6 +24003,23 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmiss
     def plugins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs']]]]):
         pulumi.set(self, "plugins", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgsDict(TypedDict):
+        configuration: NotRequired[pulumi.Input[str]]
+        """
+        Plugin configuration
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The cluster template name (string)
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Plugin path
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs:
@@ -19116,6 +24076,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAdmiss
         pulumi.set(self, "path", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgsDict(TypedDict):
+        configuration: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgsDict']]
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogArgs:
     def __init__(__self__, *,
@@ -19150,6 +24120,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgsDict(TypedDict):
+        format: NotRequired[pulumi.Input[str]]
+        max_age: NotRequired[pulumi.Input[int]]
+        max_backup: NotRequired[pulumi.Input[int]]
+        max_size: NotRequired[pulumi.Input[int]]
+        path: NotRequired[pulumi.Input[str]]
+        policy: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditLogConfigurationArgs:
@@ -19228,6 +24209,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiAuditL
         pulumi.set(self, "policy", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgsDict(TypedDict):
+        configuration: NotRequired[pulumi.Input[str]]
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventRateLimitArgs:
     def __init__(__self__, *,
@@ -19263,6 +24254,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiEventR
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgsDict(TypedDict):
+        custom_config: NotRequired[pulumi.Input[str]]
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable cluster template revision. Default `true` (bool)
+        """
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecretsEncryptionConfigArgs:
     def __init__(__self__, *,
@@ -19297,6 +24298,17 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeApiSecret
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgsDict(TypedDict):
+        cluster_cidr: NotRequired[pulumi.Input[str]]
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        image: NotRequired[pulumi.Input[str]]
+        service_cluster_ip_range: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControllerArgs:
@@ -19374,6 +24386,20 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeControlle
     def service_cluster_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_cluster_ip_range", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgsDict(TypedDict):
+        cluster_dns_server: NotRequired[pulumi.Input[str]]
+        cluster_domain: NotRequired[pulumi.Input[str]]
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        fail_swap_on: NotRequired[pulumi.Input[bool]]
+        generate_serving_certificate: NotRequired[pulumi.Input[bool]]
+        image: NotRequired[pulumi.Input[str]]
+        infra_container_image: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs:
@@ -19488,6 +24514,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeletArgs:
         pulumi.set(self, "infra_container_image", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgsDict(TypedDict):
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        image: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs:
     def __init__(__self__, *,
@@ -19540,6 +24575,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesKubeproxyArgs
     def image(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgsDict(TypedDict):
+        extra_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        extra_binds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        extra_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        image: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs:
@@ -19594,6 +24638,15 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesSchedulerArgs
         pulumi.set(self, "image", value)
 
 
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgsDict(TypedDict):
+        drain: NotRequired[pulumi.Input[bool]]
+        drain_input: NotRequired[pulumi.Input['ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgsDict']]
+        max_unavailable_controlplane: NotRequired[pulumi.Input[str]]
+        max_unavailable_worker: NotRequired[pulumi.Input[str]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs:
     def __init__(__self__, *,
@@ -19646,6 +24699,16 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyArgs:
     def max_unavailable_worker(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_unavailable_worker", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgsDict(TypedDict):
+        delete_local_data: NotRequired[pulumi.Input[bool]]
+        force: NotRequired[pulumi.Input[bool]]
+        grace_period: NotRequired[pulumi.Input[int]]
+        ignore_daemon_sets: NotRequired[pulumi.Input[bool]]
+        timeout: NotRequired[pulumi.Input[int]]
+elif False:
+    ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainInputArgs:
@@ -19711,6 +24774,27 @@ class ClusterTemplateTemplateRevisionClusterConfigRkeConfigUpgradeStrategyDrainI
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
+
+if not MYPY:
+    class ClusterTemplateTemplateRevisionQuestionArgsDict(TypedDict):
+        default: pulumi.Input[str]
+        """
+        Default variable value
+        """
+        variable: pulumi.Input[str]
+        """
+        Variable name
+        """
+        required: NotRequired[pulumi.Input[bool]]
+        """
+        Required variable
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Variable type
+        """
+elif False:
+    ClusterTemplateTemplateRevisionQuestionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterTemplateTemplateRevisionQuestionArgs:
@@ -19781,6 +24865,19 @@ class ClusterTemplateTemplateRevisionQuestionArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ClusterV2AgentEnvVarArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the cluster.
+        """
+        value: pulumi.Input[str]
+        """
+        The taint value.
+        """
+elif False:
+    ClusterV2AgentEnvVarArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2AgentEnvVarArgs:
     def __init__(__self__, *,
@@ -19817,6 +24914,23 @@ class ClusterV2AgentEnvVarArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ClusterV2ClusterAgentDeploymentCustomizationArgsDict(TypedDict):
+        append_tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgsDict']]]]
+        """
+        User defined tolerations to append to agent
+        """
+        override_affinity: NotRequired[pulumi.Input[str]]
+        """
+        User defined affinity to override default agent affinity
+        """
+        override_resource_requirements: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict']]]]
+        """
+        User defined resource requirements to set on the agent
+        """
+elif False:
+    ClusterV2ClusterAgentDeploymentCustomizationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2ClusterAgentDeploymentCustomizationArgs:
@@ -19872,6 +24986,31 @@ class ClusterV2ClusterAgentDeploymentCustomizationArgs:
     def override_resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]):
         pulumi.set(self, "override_resource_requirements", value)
 
+
+if not MYPY:
+    class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key is the name of the key of the item to retrieve.
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The taint effect. Default: `\\"NoExecute\\"`.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds a pod will stay bound to a node with a matching taint.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The taint value.
+        """
+elif False:
+    ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs:
@@ -19959,6 +25098,27 @@ class ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict(TypedDict):
+        cpu_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum CPU limit for agent
+        """
+        cpu_request: NotRequired[pulumi.Input[str]]
+        """
+        The minimum CPU required for agent
+        """
+        memory_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum memory limit for agent
+        """
+        memory_request: NotRequired[pulumi.Input[str]]
+        """
+        The minimum memory required for agent
+        """
+elif False:
+    ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs:
     def __init__(__self__, *,
@@ -20029,6 +25189,63 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArg
     def memory_request(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "memory_request", value)
 
+
+if not MYPY:
+    class ClusterV2ClusterRegistrationTokenArgsDict(TypedDict):
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Annotations for the Cluster.
+        """
+        cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        Cluster ID.
+        """
+        command: NotRequired[pulumi.Input[str]]
+        """
+        Command to execute in an imported k8s cluster.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        (Computed, string) The ID of the resource.
+        """
+        insecure_command: NotRequired[pulumi.Input[str]]
+        """
+        Insecure command to execute in an imported k8s cluster.
+        """
+        insecure_node_command: NotRequired[pulumi.Input[str]]
+        """
+        Insecure node command to execute in an imported k8s cluster.
+        """
+        insecure_windows_node_command: NotRequired[pulumi.Input[str]]
+        """
+        Insecure windows command to execute in an imported k8s cluster.
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the Cluster.
+        """
+        manifest_url: NotRequired[pulumi.Input[str]]
+        """
+        K8s manifest url to execute with `kubectl` to import an existing k8s cluster.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the cluster.
+        """
+        node_command: NotRequired[pulumi.Input[str]]
+        """
+        Node command to execute in Linux nodes for custom k8s cluster.
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        Token for cluster registration token object.
+        """
+        windows_node_command: NotRequired[pulumi.Input[str]]
+        """
+        Node command to execute in Windows nodes for custom k8s cluster.
+        """
+elif False:
+    ClusterV2ClusterRegistrationTokenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2ClusterRegistrationTokenArgs:
@@ -20245,6 +25462,23 @@ class ClusterV2ClusterRegistrationTokenArgs:
         pulumi.set(self, "windows_node_command", value)
 
 
+if not MYPY:
+    class ClusterV2FleetAgentDeploymentCustomizationArgsDict(TypedDict):
+        append_tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgsDict']]]]
+        """
+        User defined tolerations to append to agent
+        """
+        override_affinity: NotRequired[pulumi.Input[str]]
+        """
+        User defined affinity to override default agent affinity
+        """
+        override_resource_requirements: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict']]]]
+        """
+        User defined resource requirements to set on the agent
+        """
+elif False:
+    ClusterV2FleetAgentDeploymentCustomizationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2FleetAgentDeploymentCustomizationArgs:
     def __init__(__self__, *,
@@ -20299,6 +25533,31 @@ class ClusterV2FleetAgentDeploymentCustomizationArgs:
     def override_resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]):
         pulumi.set(self, "override_resource_requirements", value)
 
+
+if not MYPY:
+    class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key is the name of the key of the item to retrieve.
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The taint effect. Default: `\\"NoExecute\\"`.
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
+        """
+        seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds a pod will stay bound to a node with a matching taint.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The taint value.
+        """
+elif False:
+    ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs:
@@ -20386,6 +25645,27 @@ class ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict(TypedDict):
+        cpu_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum CPU limit for agent
+        """
+        cpu_request: NotRequired[pulumi.Input[str]]
+        """
+        The minimum CPU required for agent
+        """
+        memory_limit: NotRequired[pulumi.Input[str]]
+        """
+        The maximum memory limit for agent
+        """
+        memory_request: NotRequired[pulumi.Input[str]]
+        """
+        The minimum memory required for agent
+        """
+elif False:
+    ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs:
     def __init__(__self__, *,
@@ -20457,6 +25737,23 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs:
         pulumi.set(self, "memory_request", value)
 
 
+if not MYPY:
+    class ClusterV2LocalAuthEndpointArgsDict(TypedDict):
+        ca_certs: NotRequired[pulumi.Input[str]]
+        """
+        CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If `enabled` is set to true, nodes will be drained before upgrade.
+        """
+        fqdn: NotRequired[pulumi.Input[str]]
+        """
+        FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+        """
+elif False:
+    ClusterV2LocalAuthEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2LocalAuthEndpointArgs:
     def __init__(__self__, *,
@@ -20511,6 +25808,67 @@ class ClusterV2LocalAuthEndpointArgs:
     def fqdn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fqdn", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigArgsDict(TypedDict):
+        additional_manifest: NotRequired[pulumi.Input[str]]
+        """
+        Cluster V2 additional manifest
+        """
+        chart_values: NotRequired[pulumi.Input[str]]
+        """
+        Cluster V2 chart values. It should be in YAML format
+        """
+        etcd: NotRequired[pulumi.Input['ClusterV2RkeConfigEtcdArgsDict']]
+        """
+        Cluster V2 etcd
+        """
+        etcd_snapshot_create: NotRequired[pulumi.Input['ClusterV2RkeConfigEtcdSnapshotCreateArgsDict']]
+        """
+        Cluster V2 etcd snapshot create
+        """
+        etcd_snapshot_restore: NotRequired[pulumi.Input['ClusterV2RkeConfigEtcdSnapshotRestoreArgsDict']]
+        """
+        Cluster V2 etcd snapshot restore
+        """
+        local_auth_endpoint: NotRequired[pulumi.Input['ClusterV2RkeConfigLocalAuthEndpointArgsDict']]
+        """
+        Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
+        """
+        machine_global_config: NotRequired[pulumi.Input[str]]
+        """
+        Cluster V2 machine global config
+        """
+        machine_pool_defaults: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolDefaultArgsDict']]]]
+        """
+        Default values for machine pool configurations if unset
+        """
+        machine_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolArgsDict']]]]
+        """
+        Cluster V2 machine pools
+        """
+        machine_selector_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigArgsDict']]]]
+        """
+        Cluster V2 machine selector config
+        """
+        machine_selector_files: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileArgsDict']]]]
+        """
+        Cluster V2 machine selector files
+        """
+        registries: NotRequired[pulumi.Input['ClusterV2RkeConfigRegistriesArgsDict']]
+        """
+        Cluster V2 registries
+        """
+        rotate_certificates: NotRequired[pulumi.Input['ClusterV2RkeConfigRotateCertificatesArgsDict']]
+        """
+        Cluster V2 certificate rotation
+        """
+        upgrade_strategy: NotRequired[pulumi.Input['ClusterV2RkeConfigUpgradeStrategyArgsDict']]
+        """
+        Cluster V2 upgrade strategy
+        """
+elif False:
+    ClusterV2RkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigArgs:
@@ -20747,6 +26105,27 @@ class ClusterV2RkeConfigArgs:
         pulumi.set(self, "upgrade_strategy", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigEtcdArgsDict(TypedDict):
+        disable_snapshots: NotRequired[pulumi.Input[bool]]
+        """
+        Disable ETCD snapshots
+        """
+        s3_config: NotRequired[pulumi.Input['ClusterV2RkeConfigEtcdS3ConfigArgsDict']]
+        """
+        ETCD snapshot S3 config
+        """
+        snapshot_retention: NotRequired[pulumi.Input[int]]
+        """
+        ETCD snapshot retention
+        """
+        snapshot_schedule_cron: NotRequired[pulumi.Input[str]]
+        """
+        ETCD snapshot schedule cron (e.g `"0 */5 * * *"`)
+        """
+elif False:
+    ClusterV2RkeConfigEtcdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigEtcdArgs:
     def __init__(__self__, *,
@@ -20817,6 +26196,39 @@ class ClusterV2RkeConfigEtcdArgs:
     def snapshot_schedule_cron(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "snapshot_schedule_cron", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigEtcdS3ConfigArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        ETCD snapshot S3 bucket
+        """
+        endpoint: pulumi.Input[str]
+        """
+        ETCD snapshot S3 endpoint
+        """
+        cloud_credential_name: NotRequired[pulumi.Input[str]]
+        """
+        ETCD snapshot S3 cloud credential name
+        """
+        endpoint_ca: NotRequired[pulumi.Input[str]]
+        """
+        ETCD snapshot S3 endpoint CA
+        """
+        folder: NotRequired[pulumi.Input[str]]
+        """
+        ETCD snapshot S3 folder
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        ETCD snapshot S3 region
+        """
+        skip_ssl_verify: NotRequired[pulumi.Input[bool]]
+        """
+        Disable ETCD skip ssl verify
+        """
+elif False:
+    ClusterV2RkeConfigEtcdS3ConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigEtcdS3ConfigArgs:
@@ -20935,6 +26347,15 @@ class ClusterV2RkeConfigEtcdS3ConfigArgs:
         pulumi.set(self, "skip_ssl_verify", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigEtcdSnapshotCreateArgsDict(TypedDict):
+        generation: pulumi.Input[int]
+        """
+        ETCD generation to initiate a snapshot
+        """
+elif False:
+    ClusterV2RkeConfigEtcdSnapshotCreateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigEtcdSnapshotCreateArgs:
     def __init__(__self__, *,
@@ -20956,6 +26377,23 @@ class ClusterV2RkeConfigEtcdSnapshotCreateArgs:
     def generation(self, value: pulumi.Input[int]):
         pulumi.set(self, "generation", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigEtcdSnapshotRestoreArgsDict(TypedDict):
+        generation: pulumi.Input[int]
+        """
+        ETCD snapshot desired generation
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the cluster.
+        """
+        restore_rke_config: NotRequired[pulumi.Input[str]]
+        """
+        ETCD restore RKE config (set to none, all, or kubernetesVersion)
+        """
+elif False:
+    ClusterV2RkeConfigEtcdSnapshotRestoreArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigEtcdSnapshotRestoreArgs:
@@ -21009,6 +26447,23 @@ class ClusterV2RkeConfigEtcdSnapshotRestoreArgs:
     def restore_rke_config(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "restore_rke_config", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigLocalAuthEndpointArgsDict(TypedDict):
+        ca_certs: NotRequired[pulumi.Input[str]]
+        """
+        CA certs for the authorized cluster endpoint. It is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the CA Certificates field.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If `enabled` is set to true, nodes will be drained before upgrade.
+        """
+        fqdn: NotRequired[pulumi.Input[str]]
+        """
+        FQDN for the authorized cluster endpoint. If one is entered, it should point to the downstream cluster.
+        """
+elif False:
+    ClusterV2RkeConfigLocalAuthEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigLocalAuthEndpointArgs:
@@ -21064,6 +26519,91 @@ class ClusterV2RkeConfigLocalAuthEndpointArgs:
     def fqdn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fqdn", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigMachinePoolArgsDict(TypedDict):
+        machine_config: pulumi.Input['ClusterV2RkeConfigMachinePoolMachineConfigArgsDict']
+        """
+        Machine config data
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the cluster.
+        """
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Annotations for the Cluster.
+        """
+        cloud_credential_secret_name: NotRequired[pulumi.Input[str]]
+        """
+        Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
+        """
+        control_plane_role: NotRequired[pulumi.Input[bool]]
+        """
+        Machine pool control plane role
+        """
+        drain_before_delete: NotRequired[pulumi.Input[bool]]
+        """
+        Machine pool drain before delete
+        """
+        etcd_role: NotRequired[pulumi.Input[bool]]
+        """
+        Machine pool etcd role
+        """
+        hostname_length_limit: NotRequired[pulumi.Input[int]]
+        """
+        maximum length for autogenerated hostname
+        """
+        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels for the Cluster.
+        """
+        machine_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Labels of the machine
+        """
+        max_unhealthy: NotRequired[pulumi.Input[str]]
+        """
+        max unhealthy nodes for automated replacement to be allowed
+        """
+        node_drain_timeout: NotRequired[pulumi.Input[int]]
+        """
+        seconds to wait for machine pool drain to complete before machine deletion
+        """
+        node_startup_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        seconds a new node has to become active before it is replaced
+        """
+        paused: NotRequired[pulumi.Input[bool]]
+        """
+        Machine pool paused
+        """
+        quantity: NotRequired[pulumi.Input[int]]
+        """
+        Machine pool quantity
+        """
+        rolling_update: NotRequired[pulumi.Input['ClusterV2RkeConfigMachinePoolRollingUpdateArgsDict']]
+        """
+        Machine pool rolling update
+        """
+        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolTaintArgsDict']]]]
+        """
+        Machine pool taints
+        """
+        unhealthy_node_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        seconds an unhealthy node has to become active before it is replaced
+        """
+        unhealthy_range: NotRequired[pulumi.Input[str]]
+        """
+        range of unhealthy nodes for automated replacement to be allowed
+        """
+        worker_role: NotRequired[pulumi.Input[bool]]
+        """
+        Machine pool worker role
+        """
+elif False:
+    ClusterV2RkeConfigMachinePoolArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigMachinePoolArgs:
@@ -21390,6 +26930,15 @@ class ClusterV2RkeConfigMachinePoolArgs:
         pulumi.set(self, "worker_role", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigMachinePoolDefaultArgsDict(TypedDict):
+        hostname_length_limit: NotRequired[pulumi.Input[int]]
+        """
+        maximum length for autogenerated hostname
+        """
+elif False:
+    ClusterV2RkeConfigMachinePoolDefaultArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigMachinePoolDefaultArgs:
     def __init__(__self__, *,
@@ -21412,6 +26961,23 @@ class ClusterV2RkeConfigMachinePoolDefaultArgs:
     def hostname_length_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "hostname_length_limit", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigMachinePoolMachineConfigArgsDict(TypedDict):
+        kind: pulumi.Input[str]
+        """
+        Machine config kind
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the cluster.
+        """
+        api_version: NotRequired[pulumi.Input[str]]
+        """
+        Machine config API version
+        """
+elif False:
+    ClusterV2RkeConfigMachinePoolMachineConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigMachinePoolMachineConfigArgs:
@@ -21466,6 +27032,19 @@ class ClusterV2RkeConfigMachinePoolMachineConfigArgs:
         pulumi.set(self, "api_version", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigMachinePoolRollingUpdateArgsDict(TypedDict):
+        max_surge: NotRequired[pulumi.Input[str]]
+        """
+        Rolling update max surge
+        """
+        max_unavailable: NotRequired[pulumi.Input[str]]
+        """
+        Rolling update max unavailable
+        """
+elif False:
+    ClusterV2RkeConfigMachinePoolRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigMachinePoolRollingUpdateArgs:
     def __init__(__self__, *,
@@ -21504,6 +27083,23 @@ class ClusterV2RkeConfigMachinePoolRollingUpdateArgs:
     def max_unavailable(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "max_unavailable", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigMachinePoolTaintArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Key is the name of the key of the item to retrieve.
+        """
+        value: pulumi.Input[str]
+        """
+        The taint value.
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        The taint effect. Default: `\\"NoExecute\\"`.
+        """
+elif False:
+    ClusterV2RkeConfigMachinePoolTaintArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigMachinePoolTaintArgs:
@@ -21558,6 +27154,19 @@ class ClusterV2RkeConfigMachinePoolTaintArgs:
         pulumi.set(self, "effect", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorConfigArgsDict(TypedDict):
+        config: NotRequired[pulumi.Input[str]]
+        """
+        Machine selector config
+        """
+        machine_label_selector: NotRequired[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgsDict']]
+        """
+        Machine label selector
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorConfigArgs:
     def __init__(__self__, *,
@@ -21597,6 +27206,19 @@ class ClusterV2RkeConfigMachineSelectorConfigArgs:
         pulumi.set(self, "machine_label_selector", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgsDict']]]]
+        """
+        Label selector match expressions
+        """
+        match_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Label selector match labels
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs:
     def __init__(__self__, *,
@@ -21635,6 +27257,23 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs:
     def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "match_labels", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Label selector requirement key
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Label selector operator
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Label selector requirement values
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs:
@@ -21691,6 +27330,19 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorFileArgsDict(TypedDict):
+        file_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceArgsDict']]]]
+        """
+        File sources
+        """
+        machine_label_selector: NotRequired[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgsDict']]
+        """
+        Machine label selector
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorFileArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorFileArgs:
     def __init__(__self__, *,
@@ -21730,6 +27382,19 @@ class ClusterV2RkeConfigMachineSelectorFileArgs:
         pulumi.set(self, "machine_label_selector", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorFileFileSourceArgsDict(TypedDict):
+        configmap: NotRequired[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgsDict']]
+        """
+        The configmap which is the source of files
+        """
+        secret: NotRequired[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgsDict']]
+        """
+        The secret which is the source of files
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorFileFileSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorFileFileSourceArgs:
     def __init__(__self__, *,
@@ -21768,6 +27433,23 @@ class ClusterV2RkeConfigMachineSelectorFileFileSourceArgs:
     def secret(self, value: Optional[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs']]):
         pulumi.set(self, "secret", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the cluster.
+        """
+        default_permissions: NotRequired[pulumi.Input[str]]
+        """
+        The default permissions to be applied when they are not set at the item level
+        """
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgsDict']]]]
+        """
+        Items(files) to retrieve from the K8s object
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs:
@@ -21822,6 +27504,31 @@ class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs:
     def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs']]]]):
         pulumi.set(self, "items", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key of the item(file) to retrieve
+        """
+        path: pulumi.Input[str]
+        """
+        The path to put the file in the target node
+        """
+        dynamic: NotRequired[pulumi.Input[bool]]
+        """
+        If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
+        """
+        hash: NotRequired[pulumi.Input[str]]
+        """
+        The base64 encoded value of the SHA256 checksum of the file's content
+        """
+        permissions: NotRequired[pulumi.Input[str]]
+        """
+        The numeric representation of the file permissions
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs:
@@ -21908,6 +27615,23 @@ class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the cluster.
+        """
+        default_permissions: NotRequired[pulumi.Input[str]]
+        """
+        The default permissions to be applied when they are not set at the item level
+        """
+        items: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgsDict']]]]
+        """
+        Items(files) to retrieve from the K8s object
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs:
     def __init__(__self__, *,
@@ -21961,6 +27685,31 @@ class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs:
     def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs']]]]):
         pulumi.set(self, "items", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key of the item(file) to retrieve
+        """
+        path: pulumi.Input[str]
+        """
+        The path to put the file in the target node
+        """
+        dynamic: NotRequired[pulumi.Input[bool]]
+        """
+        If ture, the file is ignored when determining whether the node should be drained before updating the node plan (default: true).
+        """
+        hash: NotRequired[pulumi.Input[str]]
+        """
+        The base64 encoded value of the SHA256 checksum of the file's content
+        """
+        permissions: NotRequired[pulumi.Input[str]]
+        """
+        The numeric representation of the file permissions
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs:
@@ -22047,6 +27796,19 @@ class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs:
         pulumi.set(self, "permissions", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgsDict(TypedDict):
+        match_expressions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgsDict']]]]
+        """
+        Label selector match expressions
+        """
+        match_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Label selector match labels
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs:
     def __init__(__self__, *,
@@ -22085,6 +27847,23 @@ class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs:
     def match_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "match_labels", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Label selector requirement key
+        """
+        operator: NotRequired[pulumi.Input[str]]
+        """
+        Label selector operator
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Label selector requirement values
+        """
+elif False:
+    ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs:
@@ -22141,6 +27920,19 @@ class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionAr
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigRegistriesArgsDict(TypedDict):
+        configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigRegistriesConfigArgsDict']]]]
+        """
+        Registry config
+        """
+        mirrors: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigRegistriesMirrorArgsDict']]]]
+        """
+        Registry mirrors
+        """
+elif False:
+    ClusterV2RkeConfigRegistriesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigRegistriesArgs:
     def __init__(__self__, *,
@@ -22179,6 +27971,31 @@ class ClusterV2RkeConfigRegistriesArgs:
     def mirrors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigRegistriesMirrorArgs']]]]):
         pulumi.set(self, "mirrors", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigRegistriesConfigArgsDict(TypedDict):
+        hostname: pulumi.Input[str]
+        """
+        Registry hostname
+        """
+        auth_config_secret_name: NotRequired[pulumi.Input[str]]
+        """
+        Registry auth config secret name
+        """
+        ca_bundle: NotRequired[pulumi.Input[str]]
+        """
+        Registry CA bundle
+        """
+        insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Registry insecure connectivity
+        """
+        tls_secret_name: NotRequired[pulumi.Input[str]]
+        """
+        Registry TLS secret name. TLS is a pair of Cert/Key
+        """
+elif False:
+    ClusterV2RkeConfigRegistriesConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigRegistriesConfigArgs:
@@ -22266,6 +28083,23 @@ class ClusterV2RkeConfigRegistriesConfigArgs:
         pulumi.set(self, "tls_secret_name", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigRegistriesMirrorArgsDict(TypedDict):
+        hostname: pulumi.Input[str]
+        """
+        Registry hostname
+        """
+        endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Registry mirror endpoints
+        """
+        rewrites: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Registry mirror rewrites
+        """
+elif False:
+    ClusterV2RkeConfigRegistriesMirrorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigRegistriesMirrorArgs:
     def __init__(__self__, *,
@@ -22320,6 +28154,19 @@ class ClusterV2RkeConfigRegistriesMirrorArgs:
         pulumi.set(self, "rewrites", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigRotateCertificatesArgsDict(TypedDict):
+        generation: pulumi.Input[int]
+        """
+        Desired certificate rotation generation.
+        """
+        services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Service certificates to rotate with this generation.
+        """
+elif False:
+    ClusterV2RkeConfigRotateCertificatesArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigRotateCertificatesArgs:
     def __init__(__self__, *,
@@ -22357,6 +28204,27 @@ class ClusterV2RkeConfigRotateCertificatesArgs:
     def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "services", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigUpgradeStrategyArgsDict(TypedDict):
+        control_plane_concurrency: NotRequired[pulumi.Input[str]]
+        """
+        How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
+        """
+        control_plane_drain_options: NotRequired[pulumi.Input['ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgsDict']]
+        """
+        Controlplane nodes drain options
+        """
+        worker_concurrency: NotRequired[pulumi.Input[str]]
+        """
+        How many worker nodes should be upgrade at time
+        """
+        worker_drain_options: NotRequired[pulumi.Input['ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgsDict']]
+        """
+        Worker nodes drain options
+        """
+elif False:
+    ClusterV2RkeConfigUpgradeStrategyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigUpgradeStrategyArgs:
@@ -22428,6 +28296,47 @@ class ClusterV2RkeConfigUpgradeStrategyArgs:
     def worker_drain_options(self, value: Optional[pulumi.Input['ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs']]):
         pulumi.set(self, "worker_drain_options", value)
 
+
+if not MYPY:
+    class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgsDict(TypedDict):
+        delete_empty_dir_data: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options delete empty dir data
+        """
+        disable_eviction: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options disable eviction
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options enabled?
+        """
+        force: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options force
+        """
+        grace_period: NotRequired[pulumi.Input[int]]
+        """
+        Drain options grace period
+        """
+        ignore_daemon_sets: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options ignore daemon sets
+        """
+        ignore_errors: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options ignore errors
+        """
+        skip_wait_for_delete_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Drain options skip wait for delete timeout seconds
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        Drain options timeout
+        """
+elif False:
+    ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs:
@@ -22580,6 +28489,47 @@ class ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs:
         pulumi.set(self, "timeout", value)
 
 
+if not MYPY:
+    class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgsDict(TypedDict):
+        delete_empty_dir_data: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options delete empty dir data
+        """
+        disable_eviction: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options disable eviction
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options enabled?
+        """
+        force: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options force
+        """
+        grace_period: NotRequired[pulumi.Input[int]]
+        """
+        Drain options grace period
+        """
+        ignore_daemon_sets: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options ignore daemon sets
+        """
+        ignore_errors: NotRequired[pulumi.Input[bool]]
+        """
+        Drain options ignore errors
+        """
+        skip_wait_for_delete_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Drain options skip wait for delete timeout seconds
+        """
+        timeout: NotRequired[pulumi.Input[int]]
+        """
+        Drain options timeout
+        """
+elif False:
+    ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs:
     def __init__(__self__, *,
@@ -22731,6 +28681,29 @@ class ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs:
         pulumi.set(self, "timeout", value)
 
 
+if not MYPY:
+    class EtcdBackupBackupConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable etcd backup (bool)
+        """
+        interval_hours: NotRequired[pulumi.Input[int]]
+        """
+        Interval hours for etcd backup. Default `12` (int)
+        """
+        retention: NotRequired[pulumi.Input[int]]
+        """
+        Retention for etcd backup. Default `6` (int)
+        """
+        s3_backup_config: NotRequired[pulumi.Input['EtcdBackupBackupConfigS3BackupConfigArgsDict']]
+        """
+        S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+        """
+        safe_timestamp: NotRequired[pulumi.Input[bool]]
+        timeout: NotRequired[pulumi.Input[int]]
+elif False:
+    EtcdBackupBackupConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EtcdBackupBackupConfigArgs:
     def __init__(__self__, *,
@@ -22825,6 +28798,39 @@ class EtcdBackupBackupConfigArgs:
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
+
+if not MYPY:
+    class EtcdBackupBackupConfigS3BackupConfigArgsDict(TypedDict):
+        bucket_name: pulumi.Input[str]
+        """
+        Bucket name for S3 service (string)
+        """
+        endpoint: pulumi.Input[str]
+        """
+        Endpoint for S3 service (string)
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Access key for S3 service (string)
+        """
+        custom_ca: NotRequired[pulumi.Input[str]]
+        """
+        Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
+        """
+        folder: NotRequired[pulumi.Input[str]]
+        """
+        Folder for S3 service. Available from Rancher v2.2.7 (string)
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Region for S3 service (string)
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Secret key for S3 service (string)
+        """
+elif False:
+    EtcdBackupBackupConfigS3BackupConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EtcdBackupBackupConfigS3BackupConfigArgs:
@@ -22943,6 +28949,19 @@ class EtcdBackupBackupConfigS3BackupConfigArgs:
         pulumi.set(self, "secret_key", value)
 
 
+if not MYPY:
+    class GlobalDnsProviderAlidnsConfigArgsDict(TypedDict):
+        access_key: pulumi.Input[str]
+        """
+        The AWS Access key (string)
+        """
+        secret_key: pulumi.Input[str]
+        """
+        The AWS Secret key (string)
+        """
+elif False:
+    GlobalDnsProviderAlidnsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GlobalDnsProviderAlidnsConfigArgs:
     def __init__(__self__, *,
@@ -22979,6 +28998,23 @@ class GlobalDnsProviderAlidnsConfigArgs:
     def secret_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_key", value)
 
+
+if not MYPY:
+    class GlobalDnsProviderCloudflareConfigArgsDict(TypedDict):
+        api_email: pulumi.Input[str]
+        """
+        The CloudFlare API Email (string)
+        """
+        api_key: pulumi.Input[str]
+        """
+        The CloudFlare API Key (string)
+        """
+        proxy_setting: NotRequired[pulumi.Input[bool]]
+        """
+        CloudFlare Proxy Setting. Default: `false` (bool)
+        """
+elif False:
+    GlobalDnsProviderCloudflareConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GlobalDnsProviderCloudflareConfigArgs:
@@ -23032,6 +29068,35 @@ class GlobalDnsProviderCloudflareConfigArgs:
     def proxy_setting(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "proxy_setting", value)
 
+
+if not MYPY:
+    class GlobalDnsProviderRoute53ConfigArgsDict(TypedDict):
+        access_key: pulumi.Input[str]
+        """
+        The AWS Access key (string)
+        """
+        secret_key: pulumi.Input[str]
+        """
+        The AWS Secret key (string)
+        """
+        credentials_path: NotRequired[pulumi.Input[str]]
+        """
+        The AWS credentials path. Default: `"/.aws"` (string)
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Region. Default: `"us-west-2"` (string)
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Role ARN (string)
+        """
+        zone_type: NotRequired[pulumi.Input[str]]
+        """
+        The Route53 zone type `public, private`. Default: `"public"` (string)
+        """
+elif False:
+    GlobalDnsProviderRoute53ConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GlobalDnsProviderRoute53ConfigArgs:
@@ -23134,6 +29199,31 @@ class GlobalDnsProviderRoute53ConfigArgs:
         pulumi.set(self, "zone_type", value)
 
 
+if not MYPY:
+    class GlobalRoleRuleArgsDict(TypedDict):
+        api_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule api groups
+        """
+        non_resource_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule non resource urls
+        """
+        resource_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule resource names
+        """
+        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule resources
+        """
+        verbs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule verbs
+        """
+elif False:
+    GlobalRoleRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GlobalRoleRuleArgs:
     def __init__(__self__, *,
@@ -23220,6 +29310,147 @@ class GlobalRoleRuleArgs:
     def verbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "verbs", value)
 
+
+if not MYPY:
+    class MachineConfigV2Amazonec2ConfigArgsDict(TypedDict):
+        ami: pulumi.Input[str]
+        """
+        AWS machine image
+        """
+        region: pulumi.Input[str]
+        """
+        AWS Region
+        """
+        security_groups: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        AWS VPC security group
+        """
+        subnet_id: pulumi.Input[str]
+        """
+        AWS VPC subnet id
+        """
+        vpc_id: pulumi.Input[str]
+        """
+        AWS VPC id
+        """
+        zone: pulumi.Input[str]
+        """
+        AWS zone for instance (i.e. a,b,c,d,e)
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        AWS Access Key
+        """
+        block_duration_minutes: NotRequired[pulumi.Input[str]]
+        """
+        AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        AWS root device name
+        """
+        encrypt_ebs_volume: NotRequired[pulumi.Input[bool]]
+        """
+        Encrypt EBS volume
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Optional endpoint URL (hostname only or fully qualified URI)
+        """
+        http_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Enables or disables the HTTP metadata endpoint on your instances
+        """
+        http_tokens: NotRequired[pulumi.Input[str]]
+        """
+        The state of token usage for your instance metadata requests
+        """
+        iam_instance_profile: NotRequired[pulumi.Input[str]]
+        """
+        AWS IAM Instance Profile
+        """
+        insecure_transport: NotRequired[pulumi.Input[bool]]
+        """
+        Disable SSL when sending requests
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        AWS instance type
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        Custom KMS key ID using the AWS Managed CMK
+        """
+        monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Set this flag to enable CloudWatch monitoring
+        """
+        open_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Make the specified port number accessible from the Internet
+        """
+        private_address_only: NotRequired[pulumi.Input[bool]]
+        """
+        Only use a private IP address
+        """
+        request_spot_instance: NotRequired[pulumi.Input[bool]]
+        """
+        Set this flag to request spot instance
+        """
+        retries: NotRequired[pulumi.Input[str]]
+        """
+        Set retry count for recoverable failures (use -1 to disable)
+        """
+        root_size: NotRequired[pulumi.Input[str]]
+        """
+        AWS root disk size (in GB)
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        AWS Secret Key
+        """
+        security_group_readonly: NotRequired[pulumi.Input[bool]]
+        """
+        Skip adding default rules to security groups
+        """
+        session_token: NotRequired[pulumi.Input[str]]
+        """
+        AWS Session Token
+        """
+        spot_price: NotRequired[pulumi.Input[str]]
+        """
+        AWS spot instance bid price (in dollar)
+        """
+        ssh_key_contents: NotRequired[pulumi.Input[str]]
+        """
+        SSH Key file contents for sshKeyContents
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        Set the name of the ssh user
+        """
+        tags: NotRequired[pulumi.Input[str]]
+        """
+        AWS Tags (e.g. key1,value1,key2,value2)
+        """
+        use_ebs_optimized_instance: NotRequired[pulumi.Input[bool]]
+        """
+        Create an EBS optimized instance
+        """
+        use_private_address: NotRequired[pulumi.Input[bool]]
+        """
+        Force the usage of private IP address
+        """
+        userdata: NotRequired[pulumi.Input[str]]
+        """
+        Path to file with cloud-init user data
+        """
+        volume_type: NotRequired[pulumi.Input[str]]
+        """
+        Amazon EBS volume type
+        """
+elif False:
+    MachineConfigV2Amazonec2ConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MachineConfigV2Amazonec2ConfigArgs:
@@ -23766,6 +29997,143 @@ class MachineConfigV2Amazonec2ConfigArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class MachineConfigV2AzureConfigArgsDict(TypedDict):
+        accelerated_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Use Accelerated Networking when creating a network interface for the Azure VM
+        """
+        availability_set: NotRequired[pulumi.Input[str]]
+        """
+        Azure Availability Set to place the virtual machine into
+        """
+        availability_zone: NotRequired[pulumi.Input[str]]
+        """
+        The Availability Zone that the Azure VM should be created in
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Azure Service Principal Account ID (optional, browser auth is used if not specified)
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Azure Service Principal Account password (optional, browser auth is used if not specified)
+        """
+        custom_data: NotRequired[pulumi.Input[str]]
+        """
+        Path to file with custom-data
+        """
+        disk_size: NotRequired[pulumi.Input[str]]
+        """
+        Disk size if using managed disk
+        """
+        dns: NotRequired[pulumi.Input[str]]
+        """
+        A unique DNS label for the public IP adddress
+        """
+        docker_port: NotRequired[pulumi.Input[str]]
+        """
+        Port number for Docker engine
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
+        """
+        fault_domain_count: NotRequired[pulumi.Input[str]]
+        """
+        Fault domain count to use for availability set
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Azure virtual machine OS image
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Azure region to create the virtual machine
+        """
+        managed_disks: NotRequired[pulumi.Input[bool]]
+        """
+        Configures VM and availability set for managed disks
+        """
+        no_public_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Do not create a public IP address for the machine
+        """
+        nsg: NotRequired[pulumi.Input[str]]
+        """
+        Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
+        """
+        open_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Make the specified port number accessible from the Internet
+        """
+        private_address_only: NotRequired[pulumi.Input[bool]]
+        """
+        Only use a private IP address
+        """
+        private_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        Specify a static private IP address for the machine
+        """
+        resource_group: NotRequired[pulumi.Input[str]]
+        """
+        Azure Resource Group name (will be created if missing)
+        """
+        size: NotRequired[pulumi.Input[str]]
+        """
+        Size for Azure Virtual Machine
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        Username for SSH login
+        """
+        static_public_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Assign a static public IP address to the machine
+        """
+        storage_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of Storage Account to host the OS Disk for the machine
+        """
+        subnet: NotRequired[pulumi.Input[str]]
+        """
+        Azure Subnet Name to be used within the Virtual Network
+        """
+        subnet_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Private CIDR block to be used for the new subnet, should comply RFC 1918
+        """
+        subscription_id: NotRequired[pulumi.Input[str]]
+        """
+        Azure Subscription ID
+        """
+        tags: NotRequired[pulumi.Input[str]]
+        """
+        Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
+        """
+        tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        Azure Tenant ID
+        """
+        update_domain_count: NotRequired[pulumi.Input[str]]
+        """
+        Update domain count to use for availability set
+        """
+        use_private_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Use private IP address of the machine to connect
+        """
+        use_public_ip_standard_sku: NotRequired[pulumi.Input[bool]]
+        """
+        Use the standard SKU when creating a Public IP for the Azure VM instance
+        """
+        vnet: NotRequired[pulumi.Input[str]]
+        """
+        Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
+        """
+elif False:
+    MachineConfigV2AzureConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MachineConfigV2AzureConfigArgs:
     def __init__(__self__, *,
@@ -24301,6 +30669,67 @@ class MachineConfigV2AzureConfigArgs:
         pulumi.set(self, "vnet", value)
 
 
+if not MYPY:
+    class MachineConfigV2DigitaloceanConfigArgsDict(TypedDict):
+        access_token: NotRequired[pulumi.Input[str]]
+        """
+        Digital Ocean access token
+        """
+        backups: NotRequired[pulumi.Input[bool]]
+        """
+        Enable backups for droplet
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Digital Ocean Image
+        """
+        ipv6: NotRequired[pulumi.Input[bool]]
+        """
+        Enable ipv6 for droplet
+        """
+        monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Enable monitoring for droplet
+        """
+        private_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Enable private networking for droplet
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Digital Ocean region
+        """
+        size: NotRequired[pulumi.Input[str]]
+        """
+        Digital Ocean size
+        """
+        ssh_key_contents: NotRequired[pulumi.Input[str]]
+        """
+        SSH private key contents
+        """
+        ssh_key_fingerprint: NotRequired[pulumi.Input[str]]
+        """
+        SSH key fingerprint
+        """
+        ssh_port: NotRequired[pulumi.Input[str]]
+        """
+        SSH port
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        SSH username
+        """
+        tags: NotRequired[pulumi.Input[str]]
+        """
+        Comma-separated list of tags to apply to the Droplet
+        """
+        userdata: NotRequired[pulumi.Input[str]]
+        """
+        Path to file with cloud-init user-data
+        """
+elif False:
+    MachineConfigV2DigitaloceanConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MachineConfigV2DigitaloceanConfigArgs:
     def __init__(__self__, *,
@@ -24531,6 +30960,71 @@ class MachineConfigV2DigitaloceanConfigArgs:
     def userdata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "userdata", value)
 
+
+if not MYPY:
+    class MachineConfigV2HarvesterConfigArgsDict(TypedDict):
+        ssh_user: pulumi.Input[str]
+        """
+        SSH username
+        """
+        vm_namespace: pulumi.Input[str]
+        """
+        Virtual machine namespace
+        """
+        cpu_count: NotRequired[pulumi.Input[str]]
+        """
+        CPU count
+        """
+        disk_bus: NotRequired[pulumi.Input[str]]
+        """
+        Disk bus
+        """
+        disk_info: NotRequired[pulumi.Input[str]]
+        """
+        A JSON string specifying info for the disks e.g. `{"disks":[{"imageName":"harvester-public/image-57hzg","bootOrder":1,"size":40},{"storageClassName":"node-driver-test","bootOrder":2,"size":1}]}`
+        """
+        disk_size: NotRequired[pulumi.Input[str]]
+        """
+        Disk size (in GiB)
+        """
+        image_name: NotRequired[pulumi.Input[str]]
+        """
+        Image name
+        """
+        memory_size: NotRequired[pulumi.Input[str]]
+        """
+        Memory size (in GiB)
+        """
+        network_data: NotRequired[pulumi.Input[str]]
+        """
+        NetworkData content of cloud-init, base64 is supported
+        """
+        network_info: NotRequired[pulumi.Input[str]]
+        """
+        A JSON string specifying info for the networks e.g. `{"interfaces":[{"networkName":"harvester-public/vlan1"},{"networkName":"harvester-public/vlan2"}]}`
+        """
+        network_model: NotRequired[pulumi.Input[str]]
+        """
+        Network model
+        """
+        network_name: NotRequired[pulumi.Input[str]]
+        """
+        Network name
+        """
+        ssh_password: NotRequired[pulumi.Input[str]]
+        """
+        SSH password
+        """
+        user_data: NotRequired[pulumi.Input[str]]
+        """
+        UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
+        """
+        vm_affinity: NotRequired[pulumi.Input[str]]
+        """
+        VM affinity, base64 is supported
+        """
+elif False:
+    MachineConfigV2HarvesterConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MachineConfigV2HarvesterConfigArgs:
@@ -24797,6 +31291,75 @@ class MachineConfigV2HarvesterConfigArgs:
         pulumi.set(self, "vm_affinity", value)
 
 
+if not MYPY:
+    class MachineConfigV2LinodeConfigArgsDict(TypedDict):
+        authorized_users: NotRequired[pulumi.Input[str]]
+        """
+        Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node
+        """
+        create_private_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Create private IP for the instance
+        """
+        docker_port: NotRequired[pulumi.Input[str]]
+        """
+        Docker Port
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the Linode Instance type which determines CPU, memory, disk size, etc.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        Linode Instance Label
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the region (location) of the Linode instance
+        """
+        root_pass: NotRequired[pulumi.Input[str]]
+        """
+        Root Password
+        """
+        ssh_port: NotRequired[pulumi.Input[str]]
+        """
+        Linode Instance SSH Port
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the user as which docker-machine should log in to the Linode instance to install Docker.
+        """
+        stackscript: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the Linode StackScript to use to create the instance
+        """
+        stackscript_data: NotRequired[pulumi.Input[str]]
+        """
+        A JSON string specifying data for the selected StackScript
+        """
+        swap_size: NotRequired[pulumi.Input[str]]
+        """
+        Linode Instance Swap Size (MB)
+        """
+        tags: NotRequired[pulumi.Input[str]]
+        """
+        A comma separated list of tags to apply to the the Linode resource
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        Linode API Token
+        """
+        ua_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Prefix the User-Agent in Linode API calls with some 'product/version'
+        """
+elif False:
+    MachineConfigV2LinodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MachineConfigV2LinodeConfigArgs:
     def __init__(__self__, *,
@@ -25059,6 +31622,182 @@ class MachineConfigV2LinodeConfigArgs:
     def ua_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ua_prefix", value)
 
+
+if not MYPY:
+    class MachineConfigV2OpenstackConfigArgsDict(TypedDict):
+        auth_url: pulumi.Input[str]
+        """
+        OpenStack authentication URL (string)
+        """
+        availability_zone: pulumi.Input[str]
+        """
+        OpenStack availability zone (string)
+        """
+        region: pulumi.Input[str]
+        """
+        OpenStack region name (string)
+        """
+        active_timeout: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack active timeout Default `200` (string)
+        """
+        application_credential_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        """
+        application_credential_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        """
+        application_credential_secret: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack application credential secret (string)
+        """
+        boot_from_volume: NotRequired[pulumi.Input[bool]]
+        """
+        Enable booting from volume. Default is `false` (bool)
+        """
+        cacert: NotRequired[pulumi.Input[str]]
+        """
+        CA certificate bundle to verify against (string)
+        """
+        config_drive: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the OpenStack config drive for the instance. Default `false` (bool)
+        """
+        domain_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        """
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        """
+        endpoint_type: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        """
+        flavor_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        """
+        flavor_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        """
+        floating_ip_pool: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        """
+        image_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        """
+        image_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
+        insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Disable TLS credential checking. Default `false` (bool)
+        """
+        ip_version: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack version of IP address assigned for the machine Default `4` (string)
+        """
+        keypair_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack keypair to use to SSH to the instance (string)
+        """
+        net_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        """
+        net_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        """
+        nova_network: NotRequired[pulumi.Input[bool]]
+        """
+        Use the nova networking services instead of neutron (string)
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        private_key_file: NotRequired[pulumi.Input[str]]
+        """
+        Private key content to use for SSH (string)
+        """
+        sec_groups: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack comma separated security groups for the machine (string)
+        """
+        ssh_port: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22` (string)
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
+        """
+        tenant_domain_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+        """
+        tenant_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+        """
+        tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack tenant id. Conflicts with `tenant_name` (string)
+        """
+        tenant_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack tenant name. Conflicts with `tenant_id` (string)
+        """
+        user_data_file: NotRequired[pulumi.Input[str]]
+        """
+        File containing an openstack userdata script (string)
+        """
+        user_domain_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack user domain id. Conflicts with `user_domain_name` (string)
+        """
+        user_domain_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack user domain name. Conflicts with `user_domain_id` (string)
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack username (string)
+        """
+        volume_device_path: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+        > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
+        > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        """
+        volume_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
+        volume_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
+        volume_size: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        """
+        volume_type: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
+elif False:
+    MachineConfigV2OpenstackConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MachineConfigV2OpenstackConfigArgs:
@@ -25742,6 +32481,139 @@ class MachineConfigV2OpenstackConfigArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class MachineConfigV2VsphereConfigArgsDict(TypedDict):
+        boot2docker_url: NotRequired[pulumi.Input[str]]
+        """
+        vSphere URL for boot2docker image
+        """
+        cfgparams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere vm configuration parameters (used for guestinfo)
+        """
+        clone_from: NotRequired[pulumi.Input[str]]
+        """
+        If you choose creation type clone a name of what you want to clone is required
+        """
+        cloud_config: NotRequired[pulumi.Input[str]]
+        """
+        Filepath to a cloud-config yaml file to put into the ISO user-data
+        """
+        cloudinit: NotRequired[pulumi.Input[str]]
+        """
+        vSphere cloud-init filepath or url to add to guestinfo
+        """
+        content_library: NotRequired[pulumi.Input[str]]
+        """
+        If you choose to clone from a content library template specify the name of the library
+        """
+        cpu_count: NotRequired[pulumi.Input[str]]
+        """
+        vSphere CPU number for docker VM
+        """
+        creation_type: NotRequired[pulumi.Input[str]]
+        """
+        Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy
+        """
+        custom_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere custom attributes, format key/value e.g. '200=my custom value'
+        """
+        datacenter: NotRequired[pulumi.Input[str]]
+        """
+        vSphere datacenter for virtual machine
+        """
+        datastore: NotRequired[pulumi.Input[str]]
+        """
+        vSphere datastore for virtual machine
+        """
+        datastore_cluster: NotRequired[pulumi.Input[str]]
+        """
+        vSphere datastore cluster for virtual machine
+        """
+        disk_size: NotRequired[pulumi.Input[str]]
+        """
+        vSphere size of disk for docker VM (in MB)
+        """
+        folder: NotRequired[pulumi.Input[str]]
+        """
+        vSphere folder for the docker VM. This folder must already exist in the datacenter
+        """
+        graceful_shutdown_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+        """
+        hostsystem: NotRequired[pulumi.Input[str]]
+        """
+        vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
+        """
+        memory_size: NotRequired[pulumi.Input[str]]
+        """
+        vSphere size of memory for docker VM (in MB)
+        """
+        networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere network where the virtual machine will be attached
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        vSphere password
+        """
+        pool: NotRequired[pulumi.Input[str]]
+        """
+        vSphere resource pool for docker VM
+        """
+        ssh_password: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh password
+        """
+        ssh_port: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh port
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh user
+        """
+        ssh_user_group: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image the uploaded keys will need chown'ed, defaults to staff e.g. docker:staff
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere tags id e.g. urn:xxx
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        vSphere username
+        """
+        vapp_ip_allocation_policy: NotRequired[pulumi.Input[str]]
+        """
+        vSphere vApp IP allocation policy. Supported values are: dhcp, fixed, transient and fixedAllocated
+        """
+        vapp_ip_protocol: NotRequired[pulumi.Input[str]]
+        """
+        vSphere vApp IP protocol for this deployment. Supported values are: IPv4 and IPv6
+        """
+        vapp_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere vApp properties
+        """
+        vapp_transport: NotRequired[pulumi.Input[str]]
+        """
+        vSphere OVF environment transports to use for properties. Supported values are: iso and com.vmware.guestInfo
+        """
+        vcenter: NotRequired[pulumi.Input[str]]
+        """
+        vSphere IP/hostname for vCenter
+        """
+        vcenter_port: NotRequired[pulumi.Input[str]]
+        """
+        vSphere Port for vCenter
+        """
+elif False:
+    MachineConfigV2VsphereConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MachineConfigV2VsphereConfigArgs:
     def __init__(__self__, *,
@@ -26261,6 +33133,23 @@ class MachineConfigV2VsphereConfigArgs:
         pulumi.set(self, "vcenter_port", value)
 
 
+if not MYPY:
+    class MultiClusterAppAnswerArgsDict(TypedDict):
+        cluster_id: NotRequired[pulumi.Input[str]]
+        """
+        Cluster ID for answer
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        Project ID for answer
+        """
+        values: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Key/values for answer
+        """
+elif False:
+    MultiClusterAppAnswerArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MultiClusterAppAnswerArgs:
     def __init__(__self__, *,
@@ -26316,6 +33205,23 @@ class MultiClusterAppAnswerArgs:
         pulumi.set(self, "values", value)
 
 
+if not MYPY:
+    class MultiClusterAppMemberArgsDict(TypedDict):
+        access_type: NotRequired[pulumi.Input[str]]
+        """
+        Member access type: member, owner, read-only
+        """
+        group_principal_id: NotRequired[pulumi.Input[str]]
+        """
+        Member group principal id
+        """
+        user_principal_id: NotRequired[pulumi.Input[str]]
+        """
+        Member user principal id
+        """
+elif False:
+    MultiClusterAppMemberArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MultiClusterAppMemberArgs:
     def __init__(__self__, *,
@@ -26370,6 +33276,27 @@ class MultiClusterAppMemberArgs:
     def user_principal_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_principal_id", value)
 
+
+if not MYPY:
+    class MultiClusterAppTargetArgsDict(TypedDict):
+        project_id: pulumi.Input[str]
+        """
+        Project ID for target
+        """
+        app_id: NotRequired[pulumi.Input[str]]
+        """
+        App ID for target
+        """
+        health_state: NotRequired[pulumi.Input[str]]
+        """
+        App health state for target
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        App state for target
+        """
+elif False:
+    MultiClusterAppTargetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MultiClusterAppTargetArgs:
@@ -26441,6 +33368,15 @@ class MultiClusterAppTargetArgs:
         pulumi.set(self, "state", value)
 
 
+if not MYPY:
+    class MultiClusterAppUpgradeStrategyArgsDict(TypedDict):
+        rolling_update: NotRequired[pulumi.Input['MultiClusterAppUpgradeStrategyRollingUpdateArgsDict']]
+        """
+        Rolling update for upgrade strategy
+        """
+elif False:
+    MultiClusterAppUpgradeStrategyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MultiClusterAppUpgradeStrategyArgs:
     def __init__(__self__, *,
@@ -26463,6 +33399,19 @@ class MultiClusterAppUpgradeStrategyArgs:
     def rolling_update(self, value: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyRollingUpdateArgs']]):
         pulumi.set(self, "rolling_update", value)
 
+
+if not MYPY:
+    class MultiClusterAppUpgradeStrategyRollingUpdateArgsDict(TypedDict):
+        batch_size: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update batch size
+        """
+        interval: NotRequired[pulumi.Input[int]]
+        """
+        Rolling update interval
+        """
+elif False:
+    MultiClusterAppUpgradeStrategyRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MultiClusterAppUpgradeStrategyRollingUpdateArgs:
@@ -26502,6 +33451,27 @@ class MultiClusterAppUpgradeStrategyRollingUpdateArgs:
     def interval(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "interval", value)
 
+
+if not MYPY:
+    class NamespaceContainerResourceLimitArgsDict(TypedDict):
+        limits_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits cpu in namespace (string)
+        """
+        limits_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits memory in namespace (string)
+        """
+        requests_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests cpu in namespace (string)
+        """
+        requests_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests memory in namespace (string)
+        """
+elif False:
+    NamespaceContainerResourceLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NamespaceContainerResourceLimitArgs:
@@ -26574,6 +33544,15 @@ class NamespaceContainerResourceLimitArgs:
         pulumi.set(self, "requests_memory", value)
 
 
+if not MYPY:
+    class NamespaceResourceQuotaArgsDict(TypedDict):
+        limit: pulumi.Input['NamespaceResourceQuotaLimitArgsDict']
+        """
+        Resource quota limit for namespace (list maxitems:1)
+        """
+elif False:
+    NamespaceResourceQuotaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NamespaceResourceQuotaArgs:
     def __init__(__self__, *,
@@ -26595,6 +33574,62 @@ class NamespaceResourceQuotaArgs:
     def limit(self, value: pulumi.Input['NamespaceResourceQuotaLimitArgs']):
         pulumi.set(self, "limit", value)
 
+
+if not MYPY:
+    class NamespaceResourceQuotaLimitArgsDict(TypedDict):
+        config_maps: NotRequired[pulumi.Input[str]]
+        """
+        Limit for config maps in namespace (string)
+        """
+        limits_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits cpu in namespace (string)
+        """
+        limits_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits memory in namespace (string)
+        """
+        persistent_volume_claims: NotRequired[pulumi.Input[str]]
+        """
+        Limit for persistent volume claims in namespace (string)
+        """
+        pods: NotRequired[pulumi.Input[str]]
+        """
+        Limit for pods in namespace (string)
+        """
+        replication_controllers: NotRequired[pulumi.Input[str]]
+        """
+        Limit for replication controllers in namespace (string)
+        """
+        requests_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests cpu in namespace (string)
+        """
+        requests_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests memory in namespace (string)
+        """
+        requests_storage: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests storage in namespace (string)
+        """
+        secrets: NotRequired[pulumi.Input[str]]
+        """
+        Limit for secrets in namespace (string)
+        """
+        services: NotRequired[pulumi.Input[str]]
+        services_load_balancers: NotRequired[pulumi.Input[str]]
+        """
+        Limit for services load balancers in namespace (string)
+        """
+        services_node_ports: NotRequired[pulumi.Input[str]]
+        """
+        Limit for services node ports in namespace (string)
+
+        More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+        """
+elif False:
+    NamespaceResourceQuotaLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NamespaceResourceQuotaLimitArgs:
@@ -26811,6 +33846,27 @@ class NamespaceResourceQuotaLimitArgs:
         pulumi.set(self, "services_node_ports", value)
 
 
+if not MYPY:
+    class NodePoolNodeTaintArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Taint key (string)
+        """
+        value: pulumi.Input[str]
+        """
+        Taint value (string)
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        """
+        time_added: NotRequired[pulumi.Input[str]]
+        """
+        Taint time added (string)
+        """
+elif False:
+    NodePoolNodeTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodePoolNodeTaintArgs:
     def __init__(__self__, *,
@@ -26879,6 +33935,147 @@ class NodePoolNodeTaintArgs:
     def time_added(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_added", value)
 
+
+if not MYPY:
+    class NodeTemplateAmazonec2ConfigArgsDict(TypedDict):
+        ami: pulumi.Input[str]
+        """
+        AWS machine image
+        """
+        region: pulumi.Input[str]
+        """
+        AWS Region
+        """
+        security_groups: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        AWS VPC security group
+        """
+        subnet_id: pulumi.Input[str]
+        """
+        AWS VPC subnet id
+        """
+        vpc_id: pulumi.Input[str]
+        """
+        AWS VPC id
+        """
+        zone: pulumi.Input[str]
+        """
+        AWS zone for instance (i.e. a,b,c,d,e)
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        AWS Access Key
+        """
+        block_duration_minutes: NotRequired[pulumi.Input[str]]
+        """
+        AWS spot instance duration in minutes (60, 120, 180, 240, 300, or 360)
+        """
+        device_name: NotRequired[pulumi.Input[str]]
+        """
+        AWS root device name
+        """
+        encrypt_ebs_volume: NotRequired[pulumi.Input[bool]]
+        """
+        Encrypt EBS volume
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Optional endpoint URL (hostname only or fully qualified URI)
+        """
+        http_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Enables or disables the HTTP metadata endpoint on your instances
+        """
+        http_tokens: NotRequired[pulumi.Input[str]]
+        """
+        The state of token usage for your instance metadata requests
+        """
+        iam_instance_profile: NotRequired[pulumi.Input[str]]
+        """
+        AWS IAM Instance Profile
+        """
+        insecure_transport: NotRequired[pulumi.Input[bool]]
+        """
+        Disable SSL when sending requests
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        AWS instance type
+        """
+        kms_key: NotRequired[pulumi.Input[str]]
+        """
+        Custom KMS key ID using the AWS Managed CMK
+        """
+        monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Set this flag to enable CloudWatch monitoring
+        """
+        open_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Make the specified port number accessible from the Internet
+        """
+        private_address_only: NotRequired[pulumi.Input[bool]]
+        """
+        Only use a private IP address
+        """
+        request_spot_instance: NotRequired[pulumi.Input[bool]]
+        """
+        Set this flag to request spot instance
+        """
+        retries: NotRequired[pulumi.Input[str]]
+        """
+        Set retry count for recoverable failures (use -1 to disable)
+        """
+        root_size: NotRequired[pulumi.Input[str]]
+        """
+        AWS root disk size (in GB)
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        AWS Secret Key
+        """
+        security_group_readonly: NotRequired[pulumi.Input[bool]]
+        """
+        Skip adding default rules to security groups
+        """
+        session_token: NotRequired[pulumi.Input[str]]
+        """
+        AWS Session Token
+        """
+        spot_price: NotRequired[pulumi.Input[str]]
+        """
+        AWS spot instance bid price (in dollar)
+        """
+        ssh_keypath: NotRequired[pulumi.Input[str]]
+        """
+        SSH Key for Instance
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        Set the name of the ssh user
+        """
+        tags: NotRequired[pulumi.Input[str]]
+        """
+        AWS Tags (e.g. key1,value1,key2,value2)
+        """
+        use_ebs_optimized_instance: NotRequired[pulumi.Input[bool]]
+        """
+        Create an EBS optimized instance
+        """
+        use_private_address: NotRequired[pulumi.Input[bool]]
+        """
+        Force the usage of private IP address
+        """
+        userdata: NotRequired[pulumi.Input[str]]
+        """
+        Path to file with cloud-init user data
+        """
+        volume_type: NotRequired[pulumi.Input[str]]
+        """
+        Amazon EBS volume type
+        """
+elif False:
+    NodeTemplateAmazonec2ConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeTemplateAmazonec2ConfigArgs:
@@ -27425,6 +34622,139 @@ class NodeTemplateAmazonec2ConfigArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class NodeTemplateAzureConfigArgsDict(TypedDict):
+        accelerated_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Accelerated Networking when creating an Azure Network Interface
+        """
+        availability_set: NotRequired[pulumi.Input[str]]
+        """
+        Azure Availability Set to place the virtual machine into
+        """
+        availability_zone: NotRequired[pulumi.Input[str]]
+        """
+        The Azure Availability Zone the VM should be created in
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Azure Service Principal Account ID (optional, browser auth is used if not specified)
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Azure Service Principal Account password (optional, browser auth is used if not specified)
+        """
+        custom_data: NotRequired[pulumi.Input[str]]
+        """
+        Path to file with custom-data
+        """
+        disk_size: NotRequired[pulumi.Input[str]]
+        """
+        Disk size if using managed disk
+        """
+        dns: NotRequired[pulumi.Input[str]]
+        """
+        A unique DNS label for the public IP adddress
+        """
+        docker_port: NotRequired[pulumi.Input[str]]
+        """
+        Port number for Docker engine
+        """
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)
+        """
+        fault_domain_count: NotRequired[pulumi.Input[str]]
+        """
+        Fault domain count to use for availability set
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Azure virtual machine OS image
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Azure region to create the virtual machine
+        """
+        managed_disks: NotRequired[pulumi.Input[bool]]
+        """
+        Configures VM and availability set for managed disks
+        """
+        no_public_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Do not create a public IP address for the machine
+        """
+        nsg: NotRequired[pulumi.Input[str]]
+        """
+        Azure Network Security Group to assign this node to (accepts either a name or resource ID, default is to create a new NSG for each machine)
+        """
+        open_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Make the specified port number accessible from the Internet
+        """
+        plan: NotRequired[pulumi.Input[str]]
+        """
+        Purchase plan for Azure Virtual Machine (in <publisher>:<product>:<plan> format)
+        """
+        private_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        Specify a static private IP address for the machine
+        """
+        resource_group: NotRequired[pulumi.Input[str]]
+        """
+        Azure Resource Group name (will be created if missing)
+        """
+        size: NotRequired[pulumi.Input[str]]
+        """
+        Size for Azure Virtual Machine
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        Username for SSH login
+        """
+        static_public_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Assign a static public IP address to the machine
+        """
+        storage_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of Storage Account to host the OS Disk for the machine
+        """
+        subnet: NotRequired[pulumi.Input[str]]
+        """
+        Azure Subnet Name to be used within the Virtual Network
+        """
+        subnet_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Private CIDR block to be used for the new subnet, should comply RFC 1918
+        """
+        subscription_id: NotRequired[pulumi.Input[str]]
+        """
+        Azure Subscription ID
+        """
+        tags: NotRequired[pulumi.Input[str]]
+        """
+        Tags to be applied to the Azure VM instance (e.g. key1,value1,key2,value2)
+        """
+        update_domain_count: NotRequired[pulumi.Input[str]]
+        """
+        Update domain count to use for availability set
+        """
+        use_private_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Use private IP address of the machine to connect
+        """
+        use_public_ip_standard_sku: NotRequired[pulumi.Input[bool]]
+        """
+        Use the Standard SKU when creating a public IP for an Azure VM
+        """
+        vnet: NotRequired[pulumi.Input[str]]
+        """
+        Azure Virtual Network name to connect the virtual machine (in [resourcegroup:]name format)
+        """
+elif False:
+    NodeTemplateAzureConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeTemplateAzureConfigArgs:
     def __init__(__self__, *,
@@ -27944,6 +35274,67 @@ class NodeTemplateAzureConfigArgs:
         pulumi.set(self, "vnet", value)
 
 
+if not MYPY:
+    class NodeTemplateDigitaloceanConfigArgsDict(TypedDict):
+        access_token: NotRequired[pulumi.Input[str]]
+        """
+        Digital Ocean access token
+        """
+        backups: NotRequired[pulumi.Input[bool]]
+        """
+        Enable backups for droplet
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Digital Ocean Image
+        """
+        ipv6: NotRequired[pulumi.Input[bool]]
+        """
+        Enable ipv6 for droplet
+        """
+        monitoring: NotRequired[pulumi.Input[bool]]
+        """
+        Enable monitoring for droplet
+        """
+        private_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Enable private networking for droplet
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Digital Ocean region
+        """
+        size: NotRequired[pulumi.Input[str]]
+        """
+        Digital Ocean size
+        """
+        ssh_key_fingerprint: NotRequired[pulumi.Input[str]]
+        """
+        SSH key fingerprint
+        """
+        ssh_key_path: NotRequired[pulumi.Input[str]]
+        """
+        SSH private key path
+        """
+        ssh_port: NotRequired[pulumi.Input[str]]
+        """
+        SSH port
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        SSH username
+        """
+        tags: NotRequired[pulumi.Input[str]]
+        """
+        Comma-separated list of tags to apply to the Droplet
+        """
+        userdata: NotRequired[pulumi.Input[str]]
+        """
+        Path to file with cloud-init user-data
+        """
+elif False:
+    NodeTemplateDigitaloceanConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeTemplateDigitaloceanConfigArgs:
     def __init__(__self__, *,
@@ -28174,6 +35565,71 @@ class NodeTemplateDigitaloceanConfigArgs:
     def userdata(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "userdata", value)
 
+
+if not MYPY:
+    class NodeTemplateHarvesterConfigArgsDict(TypedDict):
+        ssh_user: pulumi.Input[str]
+        """
+        SSH username
+        """
+        vm_namespace: pulumi.Input[str]
+        """
+        Virtual machine namespace
+        """
+        cpu_count: NotRequired[pulumi.Input[str]]
+        """
+        CPU count
+        """
+        disk_bus: NotRequired[pulumi.Input[str]]
+        """
+        Disk bus
+        """
+        disk_info: NotRequired[pulumi.Input[str]]
+        """
+        A JSON string specifying info for the disks e.g. `{"disks":[{"imageName":"harvester-public/image-57hzg","bootOrder":1,"size":40},{"storageClassName":"node-driver-test","bootOrder":2,"size":1}]}`
+        """
+        disk_size: NotRequired[pulumi.Input[str]]
+        """
+        Disk size (in GiB)
+        """
+        image_name: NotRequired[pulumi.Input[str]]
+        """
+        Image name
+        """
+        memory_size: NotRequired[pulumi.Input[str]]
+        """
+        Memory size (in GiB)
+        """
+        network_data: NotRequired[pulumi.Input[str]]
+        """
+        NetworkData content of cloud-init, base64 is supported
+        """
+        network_info: NotRequired[pulumi.Input[str]]
+        """
+        A JSON string specifying info for the networks e.g. `{"interfaces":[{"networkName":"harvester-public/vlan1"},{"networkName":"harvester-public/vlan2"}]}`
+        """
+        network_model: NotRequired[pulumi.Input[str]]
+        """
+        Network model
+        """
+        network_name: NotRequired[pulumi.Input[str]]
+        """
+        Network name
+        """
+        ssh_password: NotRequired[pulumi.Input[str]]
+        """
+        SSH password
+        """
+        user_data: NotRequired[pulumi.Input[str]]
+        """
+        UserData content of cloud-init, base64 is supported. If the image does not contain the qemu-guest-agent package, you must install and start qemu-guest-agent using userdata
+        """
+        vm_affinity: NotRequired[pulumi.Input[str]]
+        """
+        VM affinity, base64 is supported
+        """
+elif False:
+    NodeTemplateHarvesterConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeTemplateHarvesterConfigArgs:
@@ -28440,6 +35896,47 @@ class NodeTemplateHarvesterConfigArgs:
         pulumi.set(self, "vm_affinity", value)
 
 
+if not MYPY:
+    class NodeTemplateHetznerConfigArgsDict(TypedDict):
+        api_token: pulumi.Input[str]
+        """
+        Hetzner Cloud project API token
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Hetzner Cloud server image
+        """
+        networks: NotRequired[pulumi.Input[str]]
+        """
+        Comma-separated list of network IDs or names which should be attached to the server private network interface
+        """
+        server_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Map of the labels which will be assigned to the server
+        """
+        server_location: NotRequired[pulumi.Input[str]]
+        """
+        Hetzner Cloud datacenter
+        """
+        server_type: NotRequired[pulumi.Input[str]]
+        """
+        Hetzner Cloud server type
+        """
+        use_private_network: NotRequired[pulumi.Input[bool]]
+        """
+        Use private network
+        """
+        userdata: NotRequired[pulumi.Input[str]]
+        """
+        Path to file with cloud-init user-data
+        """
+        volumes: NotRequired[pulumi.Input[str]]
+        """
+        Comma-separated list of volume IDs or names which should be attached to the server
+        """
+elif False:
+    NodeTemplateHetznerConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeTemplateHetznerConfigArgs:
     def __init__(__self__, *,
@@ -28589,6 +36086,75 @@ class NodeTemplateHetznerConfigArgs:
     def volumes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "volumes", value)
 
+
+if not MYPY:
+    class NodeTemplateLinodeConfigArgsDict(TypedDict):
+        authorized_users: NotRequired[pulumi.Input[str]]
+        """
+        Linode user accounts (seperated by commas) whose Linode SSH keys will be permitted root access to the created node
+        """
+        create_private_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Create private IP for the instance
+        """
+        docker_port: NotRequired[pulumi.Input[str]]
+        """
+        Docker Port
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the Linode Instance image which determines the OS distribution and base files
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the Linode Instance type which determines CPU, memory, disk size, etc.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        Linode Instance Label
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the region (location) of the Linode instance
+        """
+        root_pass: NotRequired[pulumi.Input[str]]
+        """
+        Root Password
+        """
+        ssh_port: NotRequired[pulumi.Input[str]]
+        """
+        Linode Instance SSH Port
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the user as which docker-machine should log in to the Linode instance to install Docker.
+        """
+        stackscript: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the Linode StackScript to use to create the instance
+        """
+        stackscript_data: NotRequired[pulumi.Input[str]]
+        """
+        A JSON string specifying data for the selected StackScript
+        """
+        swap_size: NotRequired[pulumi.Input[str]]
+        """
+        Linode Instance Swap Size (MB)
+        """
+        tags: NotRequired[pulumi.Input[str]]
+        """
+        A comma separated list of tags to apply to the the Linode resource
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        Linode API Token
+        """
+        ua_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Prefix the User-Agent in Linode API calls with some 'product/version'
+        """
+elif False:
+    NodeTemplateLinodeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeTemplateLinodeConfigArgs:
@@ -28853,6 +36419,27 @@ class NodeTemplateLinodeConfigArgs:
         pulumi.set(self, "ua_prefix", value)
 
 
+if not MYPY:
+    class NodeTemplateNodeTaintArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Taint key (string)
+        """
+        value: pulumi.Input[str]
+        """
+        Taint value (string)
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Taint effect. Supported values : `"NoExecute" | "NoSchedule" | "PreferNoSchedule"` (string)
+        """
+        time_added: NotRequired[pulumi.Input[str]]
+        """
+        Taint time added (string)
+        """
+elif False:
+    NodeTemplateNodeTaintArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeTemplateNodeTaintArgs:
     def __init__(__self__, *,
@@ -28921,6 +36508,89 @@ class NodeTemplateNodeTaintArgs:
     def time_added(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_added", value)
 
+
+if not MYPY:
+    class NodeTemplateOpennebulaConfigArgsDict(TypedDict):
+        password: pulumi.Input[str]
+        """
+        vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        user: pulumi.Input[str]
+        """
+        Set the user for the XML-RPC API authentication (string)
+        """
+        xml_rpc_url: pulumi.Input[str]
+        """
+        Set the url for the Opennebula XML-RPC API (string)
+        """
+        b2d_size: NotRequired[pulumi.Input[str]]
+        """
+        Size of the Volatile disk in MB - only for b2d (string)
+        """
+        cpu: NotRequired[pulumi.Input[str]]
+        """
+        CPU value for the VM (string)
+        """
+        dev_prefix: NotRequired[pulumi.Input[str]]
+        """
+        Dev prefix to use for the images. E.g.: 'vd', 'sd', 'hd' (string)
+        """
+        disable_vnc: NotRequired[pulumi.Input[bool]]
+        """
+        VNC is enabled by default. Disable it with this flag (bool)
+        """
+        disk_resize: NotRequired[pulumi.Input[str]]
+        """
+        Size of the disk for the VM in MB (string)
+        """
+        image_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        """
+        image_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
+        image_owner: NotRequired[pulumi.Input[str]]
+        """
+        Owner of the image to use as the VM OS (string)
+        """
+        memory: NotRequired[pulumi.Input[str]]
+        """
+        Size of the memory for the VM in MB (string)
+        """
+        network_id: NotRequired[pulumi.Input[str]]
+        """
+        Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        """
+        network_name: NotRequired[pulumi.Input[str]]
+        """
+        Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        """
+        network_owner: NotRequired[pulumi.Input[str]]
+        """
+        Opennebula user ID of the Network to connect the machine to (string)
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
+        template_id: NotRequired[pulumi.Input[str]]
+        """
+        Opennebula template ID to use. Conflicts with `template_name` (string)
+        """
+        template_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        """
+        vcpu: NotRequired[pulumi.Input[str]]
+        """
+        VCPUs for the VM (string)
+
+        > **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+        """
+elif False:
+    NodeTemplateOpennebulaConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeTemplateOpennebulaConfigArgs:
@@ -29233,6 +36903,169 @@ class NodeTemplateOpennebulaConfigArgs:
     def vcpu(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vcpu", value)
 
+
+if not MYPY:
+    class NodeTemplateOpenstackConfigArgsDict(TypedDict):
+        auth_url: pulumi.Input[str]
+        """
+        OpenStack authentication URL (string)
+        """
+        availability_zone: pulumi.Input[str]
+        """
+        OpenStack availability zone (string)
+        """
+        region: pulumi.Input[str]
+        """
+        AWS region. Default `eu-west-2` (string)
+        """
+        active_timeout: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack active timeout Default `200` (string)
+        """
+        application_credential_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        """
+        application_credential_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        """
+        application_credential_secret: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack application credential secret (string)
+        """
+        boot_from_volume: NotRequired[pulumi.Input[bool]]
+        """
+        Enable booting from volume. Default is `false` (bool)
+        """
+        cacert: NotRequired[pulumi.Input[str]]
+        """
+        CA certificate bundle to verify against (string)
+        """
+        config_drive: NotRequired[pulumi.Input[bool]]
+        """
+        Enables the OpenStack config drive for the instance. Default `false` (bool)
+        """
+        domain_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        """
+        domain_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        """
+        endpoint_type: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack endpoint type. adminURL, internalURL or publicURL (string)
+        """
+        flavor_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        """
+        flavor_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        """
+        floating_ip_pool: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack floating IP pool to get an IP from to assign to the instance (string)
+        """
+        image_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        """
+        image_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        """
+        insecure: NotRequired[pulumi.Input[bool]]
+        """
+        Disable TLS credential checking. Default `false` (bool)
+        """
+        ip_version: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack version of IP address assigned for the machine Default `4` (string)
+        """
+        keypair_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack keypair to use to SSH to the instance (string)
+        """
+        net_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        """
+        net_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        """
+        nova_network: NotRequired[pulumi.Input[bool]]
+        """
+        Use the nova networking services instead of neutron (string)
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        vSphere password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        private_key_file: NotRequired[pulumi.Input[str]]
+        """
+        Private key content to use for SSH (string)
+        """
+        sec_groups: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack comma separated security groups for the machine (string)
+        """
+        ssh_port: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh port. Default `22`. From Rancher v2.3.3 (string)
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        """
+        tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack tenant id. Conflicts with `tenant_name` (string)
+        """
+        tenant_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack tenant name. Conflicts with `tenant_id` (string)
+        """
+        user_data_file: NotRequired[pulumi.Input[str]]
+        """
+        File containing an openstack userdata script (string)
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        vSphere username. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        """
+        volume_device_path: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+
+        > **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
+
+        > **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+
+        > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        """
+        volume_id: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
+        volume_name: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        """
+        volume_size: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        """
+        volume_type: NotRequired[pulumi.Input[str]]
+        """
+        OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        """
+elif False:
+    NodeTemplateOpenstackConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeTemplateOpenstackConfigArgs:
@@ -29858,6 +37691,55 @@ class NodeTemplateOpenstackConfigArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class NodeTemplateOutscaleConfigArgsDict(TypedDict):
+        access_key: pulumi.Input[str]
+        """
+        Outscale Access Key
+        """
+        secret_key: pulumi.Input[str]
+        """
+        Outscale Secret Key
+        """
+        extra_tags_alls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra tags for all created resources (e.g. key1=value1,key2=value2)
+        """
+        extra_tags_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Extra tags only for instances (e.g. key1=value1,key2=value2)
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Outscale VM type
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Outscale Region
+        """
+        root_disk_iops: NotRequired[pulumi.Input[int]]
+        """
+        Iops for io1 Root Disk. From 1 to 13000.
+        """
+        root_disk_size: NotRequired[pulumi.Input[int]]
+        """
+        Size of the Root Disk (in GB). From 1 to 14901.
+        """
+        root_disk_type: NotRequired[pulumi.Input[str]]
+        """
+        Type of the Root Disk. Possible values are :'standard', 'gp2' or 'io1'.
+        """
+        security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Ids of user defined Security Groups to add to the machine
+        """
+        source_omi: NotRequired[pulumi.Input[str]]
+        """
+        Outscale Machine Image to use as bootstrap for the VM
+        """
+elif False:
+    NodeTemplateOutscaleConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class NodeTemplateOutscaleConfigArgs:
     def __init__(__self__, *,
@@ -30038,6 +37920,139 @@ class NodeTemplateOutscaleConfigArgs:
     def source_omi(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_omi", value)
 
+
+if not MYPY:
+    class NodeTemplateVsphereConfigArgsDict(TypedDict):
+        boot2docker_url: NotRequired[pulumi.Input[str]]
+        """
+        vSphere URL for boot2docker image
+        """
+        cfgparams: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere vm configuration parameters (used for guestinfo)
+        """
+        clone_from: NotRequired[pulumi.Input[str]]
+        """
+        If you choose creation type clone a name of what you want to clone is required
+        """
+        cloud_config: NotRequired[pulumi.Input[str]]
+        """
+        Filepath to a cloud-config yaml file to put into the ISO user-data
+        """
+        cloudinit: NotRequired[pulumi.Input[str]]
+        """
+        vSphere cloud-init filepath or url to add to guestinfo
+        """
+        content_library: NotRequired[pulumi.Input[str]]
+        """
+        If you choose to clone from a content library template specify the name of the library
+        """
+        cpu_count: NotRequired[pulumi.Input[str]]
+        """
+        vSphere CPU number for docker VM
+        """
+        creation_type: NotRequired[pulumi.Input[str]]
+        """
+        Creation type when creating a new virtual machine. Supported values: vm, template, library, legacy
+        """
+        custom_attributes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere custom attributes, format key/value e.g. '200=my custom value'
+        """
+        datacenter: NotRequired[pulumi.Input[str]]
+        """
+        vSphere datacenter for virtual machine
+        """
+        datastore: NotRequired[pulumi.Input[str]]
+        """
+        vSphere datastore for virtual machine
+        """
+        datastore_cluster: NotRequired[pulumi.Input[str]]
+        """
+        vSphere datastore cluster for virtual machine
+        """
+        disk_size: NotRequired[pulumi.Input[str]]
+        """
+        vSphere size of disk for docker VM (in MB)
+        """
+        folder: NotRequired[pulumi.Input[str]]
+        """
+        vSphere folder for the docker VM. This folder must already exist in the datacenter
+        """
+        graceful_shutdown_timeout: NotRequired[pulumi.Input[str]]
+        """
+        Duration in seconds before the graceful shutdown of the VM times out and the VM is destroyed. A force destroy will be performed when the value is zero
+        """
+        hostsystem: NotRequired[pulumi.Input[str]]
+        """
+        vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
+        """
+        memory_size: NotRequired[pulumi.Input[str]]
+        """
+        vSphere size of memory for docker VM (in MB)
+        """
+        networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere network where the virtual machine will be attached
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        vSphere password
+        """
+        pool: NotRequired[pulumi.Input[str]]
+        """
+        vSphere resource pool for docker VM
+        """
+        ssh_password: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh password
+        """
+        ssh_port: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh port
+        """
+        ssh_user: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image you can specify the ssh user
+        """
+        ssh_user_group: NotRequired[pulumi.Input[str]]
+        """
+        If using a non-B2D image the uploaded keys will need chown'ed, defaults to staff e.g. docker:staff
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere tags id e.g. urn:xxx
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        vSphere username
+        """
+        vapp_ip_allocation_policy: NotRequired[pulumi.Input[str]]
+        """
+        vSphere vApp IP allocation policy. Supported values are: dhcp, fixed, transient and fixedAllocated
+        """
+        vapp_ip_protocol: NotRequired[pulumi.Input[str]]
+        """
+        vSphere vApp IP protocol for this deployment. Supported values are: IPv4 and IPv6
+        """
+        vapp_properties: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        vSphere vApp properties
+        """
+        vapp_transport: NotRequired[pulumi.Input[str]]
+        """
+        vSphere OVF environment transports to use for properties. Supported values are: iso and com.vmware.guestInfo
+        """
+        vcenter: NotRequired[pulumi.Input[str]]
+        """
+        vSphere IP/hostname for vCenter
+        """
+        vcenter_port: NotRequired[pulumi.Input[str]]
+        """
+        vSphere Port for vCenter
+        """
+elif False:
+    NodeTemplateVsphereConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NodeTemplateVsphereConfigArgs:
@@ -30558,6 +38573,35 @@ class NodeTemplateVsphereConfigArgs:
         pulumi.set(self, "vcenter_port", value)
 
 
+if not MYPY:
+    class PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict(TypedDict):
+        audit: NotRequired[pulumi.Input[str]]
+        """
+        Pod Security Admission Configuration audit. This audits a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+        """
+        audit_version: NotRequired[pulumi.Input[str]]
+        """
+        Pod Security Admission Configuration audit version (default: latest)
+        """
+        enforce: NotRequired[pulumi.Input[str]]
+        """
+        Pod Security Admission Configuration enforce. This rejects a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+        """
+        enforce_version: NotRequired[pulumi.Input[str]]
+        """
+        Pod Security Admission Configuration enforce version (default: latest)
+        """
+        warn: NotRequired[pulumi.Input[str]]
+        """
+        Pod Security Admission Configuration warn. This warns the user about a pod in violation of privileged, baseline, or restricted policy (default: privileged)
+        """
+        warn_version: NotRequired[pulumi.Input[str]]
+        """
+        Pod Security Admission Configuration warn version (default: latest)
+        """
+elif False:
+    PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PodSecurityAdmissionConfigurationTemplateDefaultsArgs:
     def __init__(__self__, *,
@@ -30661,6 +38705,23 @@ class PodSecurityAdmissionConfigurationTemplateDefaultsArgs:
         pulumi.set(self, "warn_version", value)
 
 
+if not MYPY:
+    class PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict(TypedDict):
+        namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Pod Security Admission Configuration namespace exemptions
+        """
+        runtime_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Pod Security Admission Configuration runtime class exemptions
+        """
+        usernames: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Pod Security Admission Configuration username exemptions
+        """
+elif False:
+    PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PodSecurityAdmissionConfigurationTemplateExemptionsArgs:
     def __init__(__self__, *,
@@ -30715,6 +38776,27 @@ class PodSecurityAdmissionConfigurationTemplateExemptionsArgs:
     def usernames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "usernames", value)
 
+
+if not MYPY:
+    class ProjectContainerResourceLimitArgsDict(TypedDict):
+        limits_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits cpu in project (string)
+        """
+        limits_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits memory in project (string)
+        """
+        requests_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests cpu in project (string)
+        """
+        requests_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests memory in project (string)
+        """
+elif False:
+    ProjectContainerResourceLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectContainerResourceLimitArgs:
@@ -30787,6 +38869,19 @@ class ProjectContainerResourceLimitArgs:
         pulumi.set(self, "requests_memory", value)
 
 
+if not MYPY:
+    class ProjectResourceQuotaArgsDict(TypedDict):
+        namespace_default_limit: pulumi.Input['ProjectResourceQuotaNamespaceDefaultLimitArgsDict']
+        """
+        Default resource quota limit for  namespaces in project (list maxitems:1)
+        """
+        project_limit: pulumi.Input['ProjectResourceQuotaProjectLimitArgsDict']
+        """
+        Resource quota limit for project (list maxitems:1)
+        """
+elif False:
+    ProjectResourceQuotaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectResourceQuotaArgs:
     def __init__(__self__, *,
@@ -30823,6 +38918,62 @@ class ProjectResourceQuotaArgs:
     def project_limit(self, value: pulumi.Input['ProjectResourceQuotaProjectLimitArgs']):
         pulumi.set(self, "project_limit", value)
 
+
+if not MYPY:
+    class ProjectResourceQuotaNamespaceDefaultLimitArgsDict(TypedDict):
+        config_maps: NotRequired[pulumi.Input[str]]
+        """
+        Limit for config maps in project (string)
+        """
+        limits_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits cpu in project (string)
+        """
+        limits_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits memory in project (string)
+        """
+        persistent_volume_claims: NotRequired[pulumi.Input[str]]
+        """
+        Limit for persistent volume claims in project (string)
+        """
+        pods: NotRequired[pulumi.Input[str]]
+        """
+        Limit for pods in project (string)
+        """
+        replication_controllers: NotRequired[pulumi.Input[str]]
+        """
+        Limit for replication controllers in project (string)
+        """
+        requests_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests cpu in project (string)
+        """
+        requests_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests memory in project (string)
+        """
+        requests_storage: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests storage in project (string)
+        """
+        secrets: NotRequired[pulumi.Input[str]]
+        """
+        Limit for secrets in project (string)
+        """
+        services: NotRequired[pulumi.Input[str]]
+        services_load_balancers: NotRequired[pulumi.Input[str]]
+        """
+        Limit for services load balancers in project (string)
+        """
+        services_node_ports: NotRequired[pulumi.Input[str]]
+        """
+        Limit for services node ports in project (string)
+
+        More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+        """
+elif False:
+    ProjectResourceQuotaNamespaceDefaultLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectResourceQuotaNamespaceDefaultLimitArgs:
@@ -31039,6 +39190,62 @@ class ProjectResourceQuotaNamespaceDefaultLimitArgs:
         pulumi.set(self, "services_node_ports", value)
 
 
+if not MYPY:
+    class ProjectResourceQuotaProjectLimitArgsDict(TypedDict):
+        config_maps: NotRequired[pulumi.Input[str]]
+        """
+        Limit for config maps in project (string)
+        """
+        limits_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits cpu in project (string)
+        """
+        limits_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for limits memory in project (string)
+        """
+        persistent_volume_claims: NotRequired[pulumi.Input[str]]
+        """
+        Limit for persistent volume claims in project (string)
+        """
+        pods: NotRequired[pulumi.Input[str]]
+        """
+        Limit for pods in project (string)
+        """
+        replication_controllers: NotRequired[pulumi.Input[str]]
+        """
+        Limit for replication controllers in project (string)
+        """
+        requests_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests cpu in project (string)
+        """
+        requests_memory: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests memory in project (string)
+        """
+        requests_storage: NotRequired[pulumi.Input[str]]
+        """
+        Limit for requests storage in project (string)
+        """
+        secrets: NotRequired[pulumi.Input[str]]
+        """
+        Limit for secrets in project (string)
+        """
+        services: NotRequired[pulumi.Input[str]]
+        services_load_balancers: NotRequired[pulumi.Input[str]]
+        """
+        Limit for services load balancers in project (string)
+        """
+        services_node_ports: NotRequired[pulumi.Input[str]]
+        """
+        Limit for services node ports in project (string)
+
+        More info at [resource-quotas](https://rancher.com/docs/rancher/v2.x/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/)
+        """
+elif False:
+    ProjectResourceQuotaProjectLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectResourceQuotaProjectLimitArgs:
     def __init__(__self__, *,
@@ -31254,6 +39461,23 @@ class ProjectResourceQuotaProjectLimitArgs:
         pulumi.set(self, "services_node_ports", value)
 
 
+if not MYPY:
+    class RegistryRegistryArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        Address for registry.
+        """
+        password: NotRequired[pulumi.Input[str]]
+        """
+        Password for the registry (string)
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        Username for the registry (string)
+        """
+elif False:
+    RegistryRegistryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RegistryRegistryArgs:
     def __init__(__self__, *,
@@ -31307,6 +39531,31 @@ class RegistryRegistryArgs:
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class RoleTemplateExternalRuleArgsDict(TypedDict):
+        api_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule api groups
+        """
+        non_resource_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule non resource urls
+        """
+        resource_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule resource names
+        """
+        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule resources
+        """
+        verbs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule verbs
+        """
+elif False:
+    RoleTemplateExternalRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RoleTemplateExternalRuleArgs:
@@ -31395,6 +39644,31 @@ class RoleTemplateExternalRuleArgs:
         pulumi.set(self, "verbs", value)
 
 
+if not MYPY:
+    class RoleTemplateRuleArgsDict(TypedDict):
+        api_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule api groups
+        """
+        non_resource_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule non resource urls
+        """
+        resource_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule resource names
+        """
+        resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule resources
+        """
+        verbs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Policy rule verbs
+        """
+elif False:
+    RoleTemplateRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RoleTemplateRuleArgs:
     def __init__(__self__, *,
@@ -31481,6 +39755,31 @@ class RoleTemplateRuleArgs:
     def verbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "verbs", value)
 
+
+if not MYPY:
+    class GetRoleTemplateExternalRuleArgsDict(TypedDict):
+        api_groups: NotRequired[Sequence[str]]
+        """
+        Policy rule api groups
+        """
+        non_resource_urls: NotRequired[Sequence[str]]
+        """
+        Policy rule non resource urls
+        """
+        resource_names: NotRequired[Sequence[str]]
+        """
+        Policy rule resource names
+        """
+        resources: NotRequired[Sequence[str]]
+        """
+        Policy rule resources
+        """
+        verbs: NotRequired[Sequence[str]]
+        """
+        Policy rule verbs
+        """
+elif False:
+    GetRoleTemplateExternalRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetRoleTemplateExternalRuleArgs:

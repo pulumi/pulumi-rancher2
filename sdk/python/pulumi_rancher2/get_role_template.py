@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -252,9 +257,6 @@ def get_role_template(context: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         role_template_ids=pulumi.get(__ret__, 'role_template_ids'),
         rules=pulumi.get(__ret__, 'rules'))
-
-
-@_utilities.lift_output_func(get_role_template)
 def get_role_template_output(context: Optional[pulumi.Input[Optional[str]]] = None,
                              external_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']]]]] = None,
                              name: Optional[pulumi.Input[str]] = None,
@@ -276,4 +278,25 @@ def get_role_template_output(context: Optional[pulumi.Input[Optional[str]]] = No
     :param Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']] external_rules: (Computed) External rules used for authorization. (list)
     :param str name: The name of the Role Template (string)
     """
-    ...
+    __args__ = dict()
+    __args__['context'] = context
+    __args__['externalRules'] = external_rules
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getRoleTemplate:getRoleTemplate', __args__, opts=opts, typ=GetRoleTemplateResult)
+    return __ret__.apply(lambda __response__: GetRoleTemplateResult(
+        administrative=pulumi.get(__response__, 'administrative'),
+        annotations=pulumi.get(__response__, 'annotations'),
+        builtin=pulumi.get(__response__, 'builtin'),
+        context=pulumi.get(__response__, 'context'),
+        default_role=pulumi.get(__response__, 'default_role'),
+        description=pulumi.get(__response__, 'description'),
+        external=pulumi.get(__response__, 'external'),
+        external_rules=pulumi.get(__response__, 'external_rules'),
+        hidden=pulumi.get(__response__, 'hidden'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        locked=pulumi.get(__response__, 'locked'),
+        name=pulumi.get(__response__, 'name'),
+        role_template_ids=pulumi.get(__response__, 'role_template_ids'),
+        rules=pulumi.get(__response__, 'rules')))

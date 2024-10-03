@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -299,9 +304,6 @@ def get_catalog_v2(cluster_id: Optional[str] = None,
         service_account=pulumi.get(__ret__, 'service_account'),
         service_account_namespace=pulumi.get(__ret__, 'service_account_namespace'),
         url=pulumi.get(__ret__, 'url'))
-
-
-@_utilities.lift_output_func(get_catalog_v2)
 def get_catalog_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
                           exponential_backoff_max_retries: Optional[pulumi.Input[Optional[int]]] = None,
                           exponential_backoff_max_wait: Optional[pulumi.Input[Optional[int]]] = None,
@@ -316,4 +318,33 @@ def get_catalog_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str cluster_id: The cluster id of the catalog V2 (string)
     :param str name: The name of the catalog v2 (string)
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['exponentialBackoffMaxRetries'] = exponential_backoff_max_retries
+    __args__['exponentialBackoffMaxWait'] = exponential_backoff_max_wait
+    __args__['exponentialBackoffMinWait'] = exponential_backoff_min_wait
+    __args__['insecurePlainHttp'] = insecure_plain_http
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getCatalogV2:getCatalogV2', __args__, opts=opts, typ=GetCatalogV2Result)
+    return __ret__.apply(lambda __response__: GetCatalogV2Result(
+        annotations=pulumi.get(__response__, 'annotations'),
+        ca_bundle=pulumi.get(__response__, 'ca_bundle'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        exponential_backoff_max_retries=pulumi.get(__response__, 'exponential_backoff_max_retries'),
+        exponential_backoff_max_wait=pulumi.get(__response__, 'exponential_backoff_max_wait'),
+        exponential_backoff_min_wait=pulumi.get(__response__, 'exponential_backoff_min_wait'),
+        git_branch=pulumi.get(__response__, 'git_branch'),
+        git_repo=pulumi.get(__response__, 'git_repo'),
+        id=pulumi.get(__response__, 'id'),
+        insecure=pulumi.get(__response__, 'insecure'),
+        insecure_plain_http=pulumi.get(__response__, 'insecure_plain_http'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        resource_version=pulumi.get(__response__, 'resource_version'),
+        secret_name=pulumi.get(__response__, 'secret_name'),
+        secret_namespace=pulumi.get(__response__, 'secret_namespace'),
+        service_account=pulumi.get(__response__, 'service_account'),
+        service_account_namespace=pulumi.get(__response__, 'service_account_namespace'),
+        url=pulumi.get(__response__, 'url')))

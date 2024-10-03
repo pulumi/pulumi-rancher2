@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -171,9 +176,6 @@ def get_etcd_backup(cluster_id: Optional[str] = None,
         manual=pulumi.get(__ret__, 'manual'),
         name=pulumi.get(__ret__, 'name'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'))
-
-
-@_utilities.lift_output_func(get_etcd_backup)
 def get_etcd_backup_output(cluster_id: Optional[pulumi.Input[str]] = None,
                            name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEtcdBackupResult]:
@@ -194,4 +196,18 @@ def get_etcd_backup_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str cluster_id: Cluster ID to config Etcd Backup (string)
     :param str name: The name of the Etcd Backup (string)
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getEtcdBackup:getEtcdBackup', __args__, opts=opts, typ=GetEtcdBackupResult)
+    return __ret__.apply(lambda __response__: GetEtcdBackupResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        backup_config=pulumi.get(__response__, 'backup_config'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        filename=pulumi.get(__response__, 'filename'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        manual=pulumi.get(__response__, 'manual'),
+        name=pulumi.get(__response__, 'name'),
+        namespace_id=pulumi.get(__response__, 'namespace_id')))
