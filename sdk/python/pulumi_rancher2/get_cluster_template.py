@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -164,9 +169,6 @@ def get_cluster_template(annotations: Optional[Mapping[str, str]] = None,
         members=pulumi.get(__ret__, 'members'),
         name=pulumi.get(__ret__, 'name'),
         template_revisions=pulumi.get(__ret__, 'template_revisions'))
-
-
-@_utilities.lift_output_func(get_cluster_template)
 def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                 description: Optional[pulumi.Input[Optional[str]]] = None,
                                 labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
@@ -191,4 +193,19 @@ def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapp
     :param Mapping[str, str] labels: (Computed) Labels for the cluster template (map)
     :param str name: The cluster template name (string)
     """
-    ...
+    __args__ = dict()
+    __args__['annotations'] = annotations
+    __args__['description'] = description
+    __args__['labels'] = labels
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getClusterTemplate:getClusterTemplate', __args__, opts=opts, typ=GetClusterTemplateResult)
+    return __ret__.apply(lambda __response__: GetClusterTemplateResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        default_revision_id=pulumi.get(__response__, 'default_revision_id'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        members=pulumi.get(__response__, 'members'),
+        name=pulumi.get(__response__, 'name'),
+        template_revisions=pulumi.get(__response__, 'template_revisions')))

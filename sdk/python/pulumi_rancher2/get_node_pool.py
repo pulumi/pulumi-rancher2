@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -223,9 +228,6 @@ def get_node_pool(cluster_id: Optional[str] = None,
         node_template_id=pulumi.get(__ret__, 'node_template_id'),
         quantity=pulumi.get(__ret__, 'quantity'),
         worker=pulumi.get(__ret__, 'worker'))
-
-
-@_utilities.lift_output_func(get_node_pool)
 def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
                          name: Optional[pulumi.Input[str]] = None,
                          node_template_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -248,4 +250,23 @@ def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the Node Pool (string)
     :param str node_template_id: The Node Template ID to use for node creation (string)
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    __args__['nodeTemplateId'] = node_template_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getNodePool:getNodePool', __args__, opts=opts, typ=GetNodePoolResult)
+    return __ret__.apply(lambda __response__: GetNodePoolResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        control_plane=pulumi.get(__response__, 'control_plane'),
+        delete_not_ready_after_secs=pulumi.get(__response__, 'delete_not_ready_after_secs'),
+        etcd=pulumi.get(__response__, 'etcd'),
+        hostname_prefix=pulumi.get(__response__, 'hostname_prefix'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        node_taints=pulumi.get(__response__, 'node_taints'),
+        node_template_id=pulumi.get(__response__, 'node_template_id'),
+        quantity=pulumi.get(__response__, 'quantity'),
+        worker=pulumi.get(__response__, 'worker')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -144,9 +149,6 @@ def get_global_role_binding(global_role_id: Optional[str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_global_role_binding)
 def get_global_role_binding_output(global_role_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalRoleBindingResult]:
@@ -167,4 +169,16 @@ def get_global_role_binding_output(global_role_id: Optional[pulumi.Input[Optiona
     :param str global_role_id: The global role id (string)
     :param str name: The name of the global role binding (string)
     """
-    ...
+    __args__ = dict()
+    __args__['globalRoleId'] = global_role_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding', __args__, opts=opts, typ=GetGlobalRoleBindingResult)
+    return __ret__.apply(lambda __response__: GetGlobalRoleBindingResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        global_role_id=pulumi.get(__response__, 'global_role_id'),
+        group_principal_id=pulumi.get(__response__, 'group_principal_id'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        user_id=pulumi.get(__response__, 'user_id')))

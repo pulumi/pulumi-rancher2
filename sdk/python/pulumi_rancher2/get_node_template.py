@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -264,9 +269,6 @@ def get_node_template(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         node_taints=pulumi.get(__ret__, 'node_taints'),
         use_internal_ip_address=pulumi.get(__ret__, 'use_internal_ip_address'))
-
-
-@_utilities.lift_output_func(get_node_template)
 def get_node_template_output(name: Optional[pulumi.Input[str]] = None,
                              use_internal_ip_address: Optional[pulumi.Input[Optional[bool]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTemplateResult]:
@@ -286,4 +288,25 @@ def get_node_template_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the Node Template (string)
     :param bool use_internal_ip_address: (Computed) Engine storage driver for the node template (bool)
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['useInternalIpAddress'] = use_internal_ip_address
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getNodeTemplate:getNodeTemplate', __args__, opts=opts, typ=GetNodeTemplateResult)
+    return __ret__.apply(lambda __response__: GetNodeTemplateResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        cloud_credential_id=pulumi.get(__response__, 'cloud_credential_id'),
+        description=pulumi.get(__response__, 'description'),
+        driver=pulumi.get(__response__, 'driver'),
+        engine_env=pulumi.get(__response__, 'engine_env'),
+        engine_insecure_registries=pulumi.get(__response__, 'engine_insecure_registries'),
+        engine_install_url=pulumi.get(__response__, 'engine_install_url'),
+        engine_label=pulumi.get(__response__, 'engine_label'),
+        engine_opt=pulumi.get(__response__, 'engine_opt'),
+        engine_registry_mirrors=pulumi.get(__response__, 'engine_registry_mirrors'),
+        engine_storage_driver=pulumi.get(__response__, 'engine_storage_driver'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        node_taints=pulumi.get(__response__, 'node_taints'),
+        use_internal_ip_address=pulumi.get(__response__, 'use_internal_ip_address')))

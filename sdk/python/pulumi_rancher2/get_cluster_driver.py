@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -195,9 +200,6 @@ def get_cluster_driver(name: Optional[str] = None,
         ui_url=pulumi.get(__ret__, 'ui_url'),
         url=pulumi.get(__ret__, 'url'),
         whitelist_domains=pulumi.get(__ret__, 'whitelist_domains'))
-
-
-@_utilities.lift_output_func(get_cluster_driver)
 def get_cluster_driver_output(name: Optional[pulumi.Input[str]] = None,
                               url: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterDriverResult]:
@@ -217,4 +219,20 @@ def get_cluster_driver_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: Name of the cluster driver (string)
     :param str url: The URL to download the machine driver binary for 64-bit Linux (string)
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['url'] = url
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getClusterDriver:getClusterDriver', __args__, opts=opts, typ=GetClusterDriverResult)
+    return __ret__.apply(lambda __response__: GetClusterDriverResult(
+        active=pulumi.get(__response__, 'active'),
+        actual_url=pulumi.get(__response__, 'actual_url'),
+        annotations=pulumi.get(__response__, 'annotations'),
+        builtin=pulumi.get(__response__, 'builtin'),
+        checksum=pulumi.get(__response__, 'checksum'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        ui_url=pulumi.get(__response__, 'ui_url'),
+        url=pulumi.get(__response__, 'url'),
+        whitelist_domains=pulumi.get(__response__, 'whitelist_domains')))
