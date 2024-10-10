@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -239,9 +244,6 @@ def get_app(annotations: Optional[Mapping[str, str]] = None,
         template_name=pulumi.get(__ret__, 'template_name'),
         template_version=pulumi.get(__ret__, 'template_version'),
         values_yaml=pulumi.get(__ret__, 'values_yaml'))
-
-
-@_utilities.lift_output_func(get_app)
 def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                    name: Optional[pulumi.Input[str]] = None,
                    project_id: Optional[pulumi.Input[str]] = None,
@@ -267,4 +269,25 @@ def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]
     :param str project_id: The id of the project where the app is deployed (string)
     :param str target_namespace: The namespace name where the app is deployed (string)
     """
-    ...
+    __args__ = dict()
+    __args__['annotations'] = annotations
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    __args__['targetNamespace'] = target_namespace
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult)
+    return __ret__.apply(lambda __response__: GetAppResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        answers=pulumi.get(__response__, 'answers'),
+        catalog_name=pulumi.get(__response__, 'catalog_name'),
+        description=pulumi.get(__response__, 'description'),
+        external_id=pulumi.get(__response__, 'external_id'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        revision_id=pulumi.get(__response__, 'revision_id'),
+        target_namespace=pulumi.get(__response__, 'target_namespace'),
+        template_name=pulumi.get(__response__, 'template_name'),
+        template_version=pulumi.get(__response__, 'template_version'),
+        values_yaml=pulumi.get(__response__, 'values_yaml')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -248,9 +253,6 @@ def get_multi_cluster_app(name: Optional[str] = None,
         template_version=pulumi.get(__ret__, 'template_version'),
         template_version_id=pulumi.get(__ret__, 'template_version_id'),
         upgrade_strategies=pulumi.get(__ret__, 'upgrade_strategies'))
-
-
-@_utilities.lift_output_func(get_multi_cluster_app)
 def get_multi_cluster_app_output(name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMultiClusterAppResult]:
     """
@@ -268,4 +270,23 @@ def get_multi_cluster_app_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The multi cluster app name (string)
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getMultiClusterApp:getMultiClusterApp', __args__, opts=opts, typ=GetMultiClusterAppResult)
+    return __ret__.apply(lambda __response__: GetMultiClusterAppResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        answers=pulumi.get(__response__, 'answers'),
+        catalog_name=pulumi.get(__response__, 'catalog_name'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        members=pulumi.get(__response__, 'members'),
+        name=pulumi.get(__response__, 'name'),
+        revision_history_limit=pulumi.get(__response__, 'revision_history_limit'),
+        revision_id=pulumi.get(__response__, 'revision_id'),
+        roles=pulumi.get(__response__, 'roles'),
+        targets=pulumi.get(__response__, 'targets'),
+        template_name=pulumi.get(__response__, 'template_name'),
+        template_version=pulumi.get(__response__, 'template_version'),
+        template_version_id=pulumi.get(__response__, 'template_version_id'),
+        upgrade_strategies=pulumi.get(__response__, 'upgrade_strategies')))

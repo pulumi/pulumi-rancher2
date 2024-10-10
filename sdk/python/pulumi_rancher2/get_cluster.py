@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -442,9 +447,6 @@ def get_cluster(default_pod_security_admission_configuration_template_name: Opti
         rke2_config=pulumi.get(__ret__, 'rke2_config'),
         rke_config=pulumi.get(__ret__, 'rke_config'),
         system_project_id=pulumi.get(__ret__, 'system_project_id'))
-
-
-@_utilities.lift_output_func(get_cluster)
 def get_cluster_output(default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
@@ -463,4 +465,39 @@ def get_cluster_output(default_pod_security_admission_configuration_template_nam
 
     :param str name: The name of the Cluster (string)
     """
-    ...
+    __args__ = dict()
+    __args__['defaultPodSecurityAdmissionConfigurationTemplateName'] = default_pod_security_admission_configuration_template_name
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
+    return __ret__.apply(lambda __response__: GetClusterResult(
+        agent_env_vars=pulumi.get(__response__, 'agent_env_vars'),
+        aks_config=pulumi.get(__response__, 'aks_config'),
+        aks_config_v2=pulumi.get(__response__, 'aks_config_v2'),
+        annotations=pulumi.get(__response__, 'annotations'),
+        ca_cert=pulumi.get(__response__, 'ca_cert'),
+        cluster_auth_endpoint=pulumi.get(__response__, 'cluster_auth_endpoint'),
+        cluster_registration_token=pulumi.get(__response__, 'cluster_registration_token'),
+        cluster_template_answers=pulumi.get(__response__, 'cluster_template_answers'),
+        cluster_template_id=pulumi.get(__response__, 'cluster_template_id'),
+        cluster_template_questions=pulumi.get(__response__, 'cluster_template_questions'),
+        cluster_template_revision_id=pulumi.get(__response__, 'cluster_template_revision_id'),
+        default_pod_security_admission_configuration_template_name=pulumi.get(__response__, 'default_pod_security_admission_configuration_template_name'),
+        default_project_id=pulumi.get(__response__, 'default_project_id'),
+        description=pulumi.get(__response__, 'description'),
+        driver=pulumi.get(__response__, 'driver'),
+        eks_config=pulumi.get(__response__, 'eks_config'),
+        eks_config_v2=pulumi.get(__response__, 'eks_config_v2'),
+        enable_network_policy=pulumi.get(__response__, 'enable_network_policy'),
+        fleet_workspace_name=pulumi.get(__response__, 'fleet_workspace_name'),
+        gke_config=pulumi.get(__response__, 'gke_config'),
+        gke_config_v2=pulumi.get(__response__, 'gke_config_v2'),
+        id=pulumi.get(__response__, 'id'),
+        k3s_config=pulumi.get(__response__, 'k3s_config'),
+        kube_config=pulumi.get(__response__, 'kube_config'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        oke_config=pulumi.get(__response__, 'oke_config'),
+        rke2_config=pulumi.get(__response__, 'rke2_config'),
+        rke_config=pulumi.get(__response__, 'rke_config'),
+        system_project_id=pulumi.get(__response__, 'system_project_id')))

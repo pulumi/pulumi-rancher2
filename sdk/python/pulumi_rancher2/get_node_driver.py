@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -208,9 +213,6 @@ def get_node_driver(name: Optional[str] = None,
         ui_url=pulumi.get(__ret__, 'ui_url'),
         url=pulumi.get(__ret__, 'url'),
         whitelist_domains=pulumi.get(__ret__, 'whitelist_domains'))
-
-
-@_utilities.lift_output_func(get_node_driver)
 def get_node_driver_output(name: Optional[pulumi.Input[str]] = None,
                            url: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeDriverResult]:
@@ -230,4 +232,21 @@ def get_node_driver_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: Name of the node driver (string)
     :param str url: The URL to download the machine driver binary for 64-bit Linux (string)
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['url'] = url
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getNodeDriver:getNodeDriver', __args__, opts=opts, typ=GetNodeDriverResult)
+    return __ret__.apply(lambda __response__: GetNodeDriverResult(
+        active=pulumi.get(__response__, 'active'),
+        annotations=pulumi.get(__response__, 'annotations'),
+        builtin=pulumi.get(__response__, 'builtin'),
+        checksum=pulumi.get(__response__, 'checksum'),
+        description=pulumi.get(__response__, 'description'),
+        external_id=pulumi.get(__response__, 'external_id'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        ui_url=pulumi.get(__response__, 'ui_url'),
+        url=pulumi.get(__response__, 'url'),
+        whitelist_domains=pulumi.get(__response__, 'whitelist_domains')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -160,9 +165,6 @@ def get_config_map_v2(cluster_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         namespace=pulumi.get(__ret__, 'namespace'),
         resource_version=pulumi.get(__ret__, 'resource_version'))
-
-
-@_utilities.lift_output_func(get_config_map_v2)
 def get_config_map_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
                              name: Optional[pulumi.Input[str]] = None,
                              namespace: Optional[pulumi.Input[Optional[str]]] = None,
@@ -175,4 +177,19 @@ def get_config_map_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the configMap v2 (string)
     :param str namespace: The namespaces of the configMap v2. Default: `default` (string)
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    __args__['namespace'] = namespace
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getConfigMapV2:getConfigMapV2', __args__, opts=opts, typ=GetConfigMapV2Result)
+    return __ret__.apply(lambda __response__: GetConfigMapV2Result(
+        annotations=pulumi.get(__response__, 'annotations'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        data=pulumi.get(__response__, 'data'),
+        id=pulumi.get(__response__, 'id'),
+        immutable=pulumi.get(__response__, 'immutable'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        resource_version=pulumi.get(__response__, 'resource_version')))

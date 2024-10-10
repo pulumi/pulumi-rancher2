@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -199,9 +204,6 @@ def get_storage_class_v2(cluster_id: Optional[str] = None,
         reclaim_policy=pulumi.get(__ret__, 'reclaim_policy'),
         resource_version=pulumi.get(__ret__, 'resource_version'),
         volume_binding_mode=pulumi.get(__ret__, 'volume_binding_mode'))
-
-
-@_utilities.lift_output_func(get_storage_class_v2)
 def get_storage_class_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                 name: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageClassV2Result]:
@@ -212,4 +214,21 @@ def get_storage_class_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
     :param str cluster_id: The cluster id of the storageClass V2 (string)
     :param str name: The name of the storageClass v2 (string)
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getStorageClassV2:getStorageClassV2', __args__, opts=opts, typ=GetStorageClassV2Result)
+    return __ret__.apply(lambda __response__: GetStorageClassV2Result(
+        allow_volume_expansion=pulumi.get(__response__, 'allow_volume_expansion'),
+        annotations=pulumi.get(__response__, 'annotations'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        k8s_provisioner=pulumi.get(__response__, 'k8s_provisioner'),
+        labels=pulumi.get(__response__, 'labels'),
+        mount_options=pulumi.get(__response__, 'mount_options'),
+        name=pulumi.get(__response__, 'name'),
+        parameters=pulumi.get(__response__, 'parameters'),
+        reclaim_policy=pulumi.get(__response__, 'reclaim_policy'),
+        resource_version=pulumi.get(__response__, 'resource_version'),
+        volume_binding_mode=pulumi.get(__response__, 'volume_binding_mode')))

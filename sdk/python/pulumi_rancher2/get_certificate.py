@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -172,9 +177,6 @@ def get_certificate(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-
-
-@_utilities.lift_output_func(get_certificate)
 def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
                            namespace_id: Optional[pulumi.Input[Optional[str]]] = None,
                            project_id: Optional[pulumi.Input[str]] = None,
@@ -212,4 +214,18 @@ def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
     :param str namespace_id: The namespace id where to assign the namespaced certificate (string)
     :param str project_id: The project id where to assign the certificate (string)
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['namespaceId'] = namespace_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult)
+    return __ret__.apply(lambda __response__: GetCertificateResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        certs=pulumi.get(__response__, 'certs'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        namespace_id=pulumi.get(__response__, 'namespace_id'),
+        project_id=pulumi.get(__response__, 'project_id')))

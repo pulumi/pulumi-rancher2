@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -173,9 +178,6 @@ def get_registry(name: Optional[str] = None,
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         registries=pulumi.get(__ret__, 'registries'))
-
-
-@_utilities.lift_output_func(get_registry)
 def get_registry_output(name: Optional[pulumi.Input[str]] = None,
                         namespace_id: Optional[pulumi.Input[Optional[str]]] = None,
                         project_id: Optional[pulumi.Input[str]] = None,
@@ -213,4 +215,18 @@ def get_registry_output(name: Optional[pulumi.Input[str]] = None,
     :param str namespace_id: The namespace id where to assign the namespaced registry (string)
     :param str project_id: The project id where to assign the registry (string)
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['namespaceId'] = namespace_id
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getRegistry:getRegistry', __args__, opts=opts, typ=GetRegistryResult)
+    return __ret__.apply(lambda __response__: GetRegistryResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        namespace_id=pulumi.get(__response__, 'namespace_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        registries=pulumi.get(__response__, 'registries')))
