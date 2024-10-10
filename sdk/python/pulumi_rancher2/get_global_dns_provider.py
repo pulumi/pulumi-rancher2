@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -158,9 +163,6 @@ def get_global_dns_provider(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         root_domain=pulumi.get(__ret__, 'root_domain'),
         route53_config=pulumi.get(__ret__, 'route53_config'))
-
-
-@_utilities.lift_output_func(get_global_dns_provider)
 def get_global_dns_provider_output(name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalDnsProviderResult]:
     """
@@ -178,4 +180,17 @@ def get_global_dns_provider_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The name of the global DNS provider (string)
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider', __args__, opts=opts, typ=GetGlobalDnsProviderResult)
+    return __ret__.apply(lambda __response__: GetGlobalDnsProviderResult(
+        alidns_config=pulumi.get(__response__, 'alidns_config'),
+        annotations=pulumi.get(__response__, 'annotations'),
+        cloudflare_config=pulumi.get(__response__, 'cloudflare_config'),
+        dns_provider=pulumi.get(__response__, 'dns_provider'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        root_domain=pulumi.get(__response__, 'root_domain'),
+        route53_config=pulumi.get(__response__, 'route53_config')))

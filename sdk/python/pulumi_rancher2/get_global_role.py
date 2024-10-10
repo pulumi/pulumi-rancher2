@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -173,9 +178,6 @@ def get_global_role(inherited_cluster_roles: Optional[Sequence[str]] = None,
         name=pulumi.get(__ret__, 'name'),
         new_user_default=pulumi.get(__ret__, 'new_user_default'),
         rules=pulumi.get(__ret__, 'rules'))
-
-
-@_utilities.lift_output_func(get_global_role)
 def get_global_role_output(inherited_cluster_roles: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalRoleResult]:
@@ -195,4 +197,18 @@ def get_global_role_output(inherited_cluster_roles: Optional[pulumi.Input[Option
     :param Sequence[str] inherited_cluster_roles: (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
     :param str name: The name of the Global Role (string)
     """
-    ...
+    __args__ = dict()
+    __args__['inheritedClusterRoles'] = inherited_cluster_roles
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getGlobalRole:getGlobalRole', __args__, opts=opts, typ=GetGlobalRoleResult)
+    return __ret__.apply(lambda __response__: GetGlobalRoleResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        builtin=pulumi.get(__response__, 'builtin'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        inherited_cluster_roles=pulumi.get(__response__, 'inherited_cluster_roles'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        new_user_default=pulumi.get(__response__, 'new_user_default'),
+        rules=pulumi.get(__response__, 'rules')))

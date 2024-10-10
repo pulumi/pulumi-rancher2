@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -183,9 +188,6 @@ def get_project_role_template_binding(name: Optional[str] = None,
         role_template_id=pulumi.get(__ret__, 'role_template_id'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_principal_id=pulumi.get(__ret__, 'user_principal_id'))
-
-
-@_utilities.lift_output_func(get_project_role_template_binding)
 def get_project_role_template_binding_output(name: Optional[pulumi.Input[str]] = None,
                                              project_id: Optional[pulumi.Input[str]] = None,
                                              role_template_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -208,4 +210,20 @@ def get_project_role_template_binding_output(name: Optional[pulumi.Input[str]] =
     :param str project_id: The project id where bind project role template (string)
     :param str role_template_id: The role template id from create project role template binding (string)
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    __args__['roleTemplateId'] = role_template_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding', __args__, opts=opts, typ=GetProjectRoleTemplateBindingResult)
+    return __ret__.apply(lambda __response__: GetProjectRoleTemplateBindingResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        group_principal_id=pulumi.get(__response__, 'group_principal_id'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        role_template_id=pulumi.get(__response__, 'role_template_id'),
+        user_id=pulumi.get(__response__, 'user_id'),
+        user_principal_id=pulumi.get(__response__, 'user_principal_id')))

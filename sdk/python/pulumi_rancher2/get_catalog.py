@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -234,9 +239,6 @@ def get_catalog(name: Optional[str] = None,
         url=pulumi.get(__ret__, 'url'),
         username=pulumi.get(__ret__, 'username'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_catalog)
 def get_catalog_output(name: Optional[pulumi.Input[str]] = None,
                        scope: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogResult]:
@@ -256,4 +258,23 @@ def get_catalog_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The catalog name.
     :param str scope: The scope of the catalog. `cluster`, `global`, and `project` are supported. Default `global` (string)
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['scope'] = scope
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('rancher2:index/getCatalog:getCatalog', __args__, opts=opts, typ=GetCatalogResult)
+    return __ret__.apply(lambda __response__: GetCatalogResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        branch=pulumi.get(__response__, 'branch'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        kind=pulumi.get(__response__, 'kind'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        password=pulumi.get(__response__, 'password'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        scope=pulumi.get(__response__, 'scope'),
+        url=pulumi.get(__response__, 'url'),
+        username=pulumi.get(__response__, 'username'),
+        version=pulumi.get(__response__, 'version')))
