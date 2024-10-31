@@ -1,4 +1,5 @@
 ---
+# *** WARNING: This file was auto-generated. Do not edit by hand unless you're certain you know what you are doing! ***
 title: Rancher2 Provider
 meta_desc: Provides an overview on how to configure the Pulumi Rancher2 provider.
 layout: package
