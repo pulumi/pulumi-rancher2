@@ -66,8 +66,8 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.95.0
-	github.com/pulumi/pulumi/sdk/v3 v3.137.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.96.0
+	github.com/pulumi/pulumi/sdk/v3 v3.140.0
 	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20240906181849-d9facffb5f46
 )
 
@@ -155,7 +155,7 @@ require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/go-version v1.6.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
-	github.com/hashicorp/hcl/v2 v2.19.1 // indirect
+	github.com/hashicorp/hcl/v2 v2.22.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-config-inspect v0.0.0-20191212124732-c6ae6269b9d7 // indirect
@@ -220,9 +220,9 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.10.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
-	github.com/pulumi/pulumi-java/pkg v0.16.1 // indirect
-	github.com/pulumi/pulumi-yaml v1.11.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.137.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v0.17.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.11.2 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.140.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rancher/aks-operator v1.9.0-rc.9 // indirect
