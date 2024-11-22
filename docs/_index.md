@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The rancher2 provider is available as a package in all Pulumi languages:
+The Rancher2 provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/rancher2`](https://www.npmjs.com/package/@pulumi/rancher2)
 * Python: [`pulumi-rancher2`](https://pypi.org/project/pulumi-rancher2/)
