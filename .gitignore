@@ -47,3 +47,7 @@ dist/
 
 
 sdk/python/venv
+
+
+# Ignore local build tracking directory
+.make
