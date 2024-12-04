@@ -132,6 +132,11 @@ public final class GetClusterAksConfigV2 {
      */
     private String nodeResourceGroup;
     /**
+     * @return The AKS outbound type for the egress traffic
+     * 
+     */
+    private @Nullable String outboundType;
+    /**
      * @return Is AKS cluster private?
      * 
      */
@@ -330,6 +335,13 @@ public final class GetClusterAksConfigV2 {
         return this.nodeResourceGroup;
     }
     /**
+     * @return The AKS outbound type for the egress traffic
+     * 
+     */
+    public Optional<String> outboundType() {
+        return Optional.ofNullable(this.outboundType);
+    }
+    /**
      * @return Is AKS cluster private?
      * 
      */
@@ -411,6 +423,7 @@ public final class GetClusterAksConfigV2 {
         private String networkServiceCidr;
         private @Nullable List<GetClusterAksConfigV2NodePool> nodePools;
         private String nodeResourceGroup;
+        private @Nullable String outboundType;
         private Boolean privateCluster;
         private String resourceGroup;
         private String resourceLocation;
@@ -444,6 +457,7 @@ public final class GetClusterAksConfigV2 {
     	      this.networkServiceCidr = defaults.networkServiceCidr;
     	      this.nodePools = defaults.nodePools;
     	      this.nodeResourceGroup = defaults.nodeResourceGroup;
+    	      this.outboundType = defaults.outboundType;
     	      this.privateCluster = defaults.privateCluster;
     	      this.resourceGroup = defaults.resourceGroup;
     	      this.resourceLocation = defaults.resourceLocation;
@@ -628,6 +642,12 @@ public final class GetClusterAksConfigV2 {
             return this;
         }
         @CustomType.Setter
+        public Builder outboundType(@Nullable String outboundType) {
+
+            this.outboundType = outboundType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateCluster(Boolean privateCluster) {
             if (privateCluster == null) {
               throw new MissingRequiredPropertyException("GetClusterAksConfigV2", "privateCluster");
@@ -708,6 +728,7 @@ public final class GetClusterAksConfigV2 {
             _resultValue.networkServiceCidr = networkServiceCidr;
             _resultValue.nodePools = nodePools;
             _resultValue.nodeResourceGroup = nodeResourceGroup;
+            _resultValue.outboundType = outboundType;
             _resultValue.privateCluster = privateCluster;
             _resultValue.resourceGroup = resourceGroup;
             _resultValue.resourceLocation = resourceLocation;

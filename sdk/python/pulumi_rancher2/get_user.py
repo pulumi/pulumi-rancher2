@@ -26,7 +26,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, annotations=None, enabled=None, id=None, is_external=None, labels=None, name=None, principal_ids=None, username=None):
+    def __init__(__self__, annotations=None, enabled=None, id=None, is_external=None, labels=None, must_change_password=None, name=None, principal_ids=None, username=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -42,6 +42,9 @@ class GetUserResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if must_change_password and not isinstance(must_change_password, bool):
+            raise TypeError("Expected argument 'must_change_password' to be a bool")
+        pulumi.set(__self__, "must_change_password", must_change_password)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -90,6 +93,14 @@ class GetUserResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="mustChangePassword")
+    def must_change_password(self) -> bool:
+        """
+        (Computed) The user must change password at first login (bool)
+        """
+        return pulumi.get(self, "must_change_password")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -122,6 +133,7 @@ class AwaitableGetUserResult(GetUserResult):
             id=self.id,
             is_external=self.is_external,
             labels=self.labels,
+            must_change_password=self.must_change_password,
             name=self.name,
             principal_ids=self.principal_ids,
             username=self.username)
@@ -161,6 +173,7 @@ def get_user(is_external: Optional[bool] = None,
         id=pulumi.get(__ret__, 'id'),
         is_external=pulumi.get(__ret__, 'is_external'),
         labels=pulumi.get(__ret__, 'labels'),
+        must_change_password=pulumi.get(__ret__, 'must_change_password'),
         name=pulumi.get(__ret__, 'name'),
         principal_ids=pulumi.get(__ret__, 'principal_ids'),
         username=pulumi.get(__ret__, 'username'))
@@ -197,6 +210,7 @@ def get_user_output(is_external: Optional[pulumi.Input[Optional[bool]]] = None,
         id=pulumi.get(__response__, 'id'),
         is_external=pulumi.get(__response__, 'is_external'),
         labels=pulumi.get(__response__, 'labels'),
+        must_change_password=pulumi.get(__response__, 'must_change_password'),
         name=pulumi.get(__response__, 'name'),
         principal_ids=pulumi.get(__response__, 'principal_ids'),
         username=pulumi.get(__response__, 'username')))

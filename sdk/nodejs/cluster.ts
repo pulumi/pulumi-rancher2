@@ -484,6 +484,7 @@ import * as utilities from "./utilities";
  *         virtualNetworkResourceGroup: "<virtual-network-resource-group>",
  *         subnet: "<subnet>",
  *         nodeResourceGroup: "<node-resource-group>",
+ *         outboundType: "loadBalancer",
  *         nodePools: [
  *             {
  *                 availabilityZones: [

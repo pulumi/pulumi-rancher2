@@ -106,6 +106,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string NodeResourceGroup;
         /// <summary>
+        /// The AKS outbound type for the egress traffic
+        /// </summary>
+        public readonly string? OutboundType;
+        /// <summary>
         /// Is AKS cluster private?
         /// </summary>
         public readonly bool PrivateCluster;
@@ -182,6 +186,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string nodeResourceGroup,
 
+            string? outboundType,
+
             bool privateCluster,
 
             string resourceGroup,
@@ -219,6 +225,7 @@ namespace Pulumi.Rancher2.Outputs
             NetworkServiceCidr = networkServiceCidr;
             NodePools = nodePools;
             NodeResourceGroup = nodeResourceGroup;
+            OutboundType = outboundType;
             PrivateCluster = privateCluster;
             ResourceGroup = resourceGroup;
             ResourceLocation = resourceLocation;

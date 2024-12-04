@@ -32,8 +32,6 @@ import com.pulumi.rancher2.inputs.GetConfigMapV2Args;
 import com.pulumi.rancher2.inputs.GetConfigMapV2PlainArgs;
 import com.pulumi.rancher2.inputs.GetEtcdBackupArgs;
 import com.pulumi.rancher2.inputs.GetEtcdBackupPlainArgs;
-import com.pulumi.rancher2.inputs.GetGlobalDnsProviderArgs;
-import com.pulumi.rancher2.inputs.GetGlobalDnsProviderPlainArgs;
 import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
 import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
 import com.pulumi.rancher2.inputs.GetGlobalRoleBindingPlainArgs;
@@ -82,7 +80,6 @@ import com.pulumi.rancher2.outputs.GetClusterTemplateResult;
 import com.pulumi.rancher2.outputs.GetClusterV2Result;
 import com.pulumi.rancher2.outputs.GetConfigMapV2Result;
 import com.pulumi.rancher2.outputs.GetEtcdBackupResult;
-import com.pulumi.rancher2.outputs.GetGlobalDnsProviderResult;
 import com.pulumi.rancher2.outputs.GetGlobalRoleBindingResult;
 import com.pulumi.rancher2.outputs.GetGlobalRoleResult;
 import com.pulumi.rancher2.outputs.GetMultiClusterAppResult;
@@ -2035,174 +2032,6 @@ public final class Rancher2Functions {
      */
     public static CompletableFuture<GetEtcdBackupResult> getEtcdBackupPlain(GetEtcdBackupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getEtcdBackup:getEtcdBackup", TypeShape.of(GetEtcdBackupResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetGlobalDnsProviderArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
-     *             .name("foo")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetGlobalDnsProviderResult> getGlobalDnsProvider(GetGlobalDnsProviderArgs args) {
-        return getGlobalDnsProvider(args, InvokeOptions.Empty);
-    }
-    /**
-     * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetGlobalDnsProviderArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
-     *             .name("foo")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static CompletableFuture<GetGlobalDnsProviderResult> getGlobalDnsProviderPlain(GetGlobalDnsProviderPlainArgs args) {
-        return getGlobalDnsProviderPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetGlobalDnsProviderArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
-     *             .name("foo")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static Output<GetGlobalDnsProviderResult> getGlobalDnsProvider(GetGlobalDnsProviderArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", TypeShape.of(GetGlobalDnsProviderResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Provides a Rancher V2 Global DNS Provider data source. Use this data source to retrieve information about a Rancher v2 global DNS provider
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.rancher2.Rancher2Functions;
-     * import com.pulumi.rancher2.inputs.GetGlobalDnsProviderArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var foo = Rancher2Functions.getGlobalDnsProvider(GetGlobalDnsProviderArgs.builder()
-     *             .name("foo")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     */
-    public static CompletableFuture<GetGlobalDnsProviderResult> getGlobalDnsProviderPlain(GetGlobalDnsProviderPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider", TypeShape.of(GetGlobalDnsProviderResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a Rancher v2 global role resource.

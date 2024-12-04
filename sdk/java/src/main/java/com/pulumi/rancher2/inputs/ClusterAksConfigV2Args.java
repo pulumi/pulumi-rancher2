@@ -366,6 +366,21 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The AKS outbound type for the egress traffic
+     * 
+     */
+    @Import(name="outboundType")
+    private @Nullable Output<String> outboundType;
+
+    /**
+     * @return The AKS outbound type for the egress traffic
+     * 
+     */
+    public Optional<Output<String>> outboundType() {
+        return Optional.ofNullable(this.outboundType);
+    }
+
+    /**
      * Is AKS cluster private?
      * 
      */
@@ -496,6 +511,7 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
         this.networkServiceCidr = $.networkServiceCidr;
         this.nodePools = $.nodePools;
         this.nodeResourceGroup = $.nodeResourceGroup;
+        this.outboundType = $.outboundType;
         this.privateCluster = $.privateCluster;
         this.resourceGroup = $.resourceGroup;
         this.resourceLocation = $.resourceLocation;
@@ -1024,6 +1040,27 @@ public final class ClusterAksConfigV2Args extends com.pulumi.resources.ResourceA
          */
         public Builder nodeResourceGroup(String nodeResourceGroup) {
             return nodeResourceGroup(Output.of(nodeResourceGroup));
+        }
+
+        /**
+         * @param outboundType The AKS outbound type for the egress traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundType(@Nullable Output<String> outboundType) {
+            $.outboundType = outboundType;
+            return this;
+        }
+
+        /**
+         * @param outboundType The AKS outbound type for the egress traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundType(String outboundType) {
+            return outboundType(Output.of(outboundType));
         }
 
         /**

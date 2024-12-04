@@ -24,6 +24,7 @@ class UserArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 must_change_password: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a User resource.
@@ -31,6 +32,7 @@ class UserArgs:
         :param pulumi.Input[str] username: The user username (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for global role binding (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for global role binding (map)
+        :param pulumi.Input[bool] must_change_password: The user must change password at first login (bool)
         :param pulumi.Input[str] name: The user full name (string)
         """
         pulumi.set(__self__, "password", password)
@@ -41,6 +43,8 @@ class UserArgs:
             pulumi.set(__self__, "enabled", enabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if must_change_password is not None:
+            pulumi.set(__self__, "must_change_password", must_change_password)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -102,6 +106,18 @@ class UserArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="mustChangePassword")
+    def must_change_password(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The user must change password at first login (bool)
+        """
+        return pulumi.get(self, "must_change_password")
+
+    @must_change_password.setter
+    def must_change_password(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "must_change_password", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -120,6 +136,7 @@ class _UserState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 must_change_password: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -128,6 +145,7 @@ class _UserState:
         Input properties used for looking up and filtering User resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for global role binding (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for global role binding (map)
+        :param pulumi.Input[bool] must_change_password: The user must change password at first login (bool)
         :param pulumi.Input[str] name: The user full name (string)
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] principal_ids: (Computed) The user principal IDs (list)
@@ -139,6 +157,8 @@ class _UserState:
             pulumi.set(__self__, "enabled", enabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if must_change_password is not None:
+            pulumi.set(__self__, "must_change_password", must_change_password)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if password is not None:
@@ -180,6 +200,18 @@ class _UserState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="mustChangePassword")
+    def must_change_password(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The user must change password at first login (bool)
+        """
+        return pulumi.get(self, "must_change_password")
+
+    @must_change_password.setter
+    def must_change_password(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "must_change_password", value)
 
     @property
     @pulumi.getter
@@ -238,6 +270,7 @@ class User(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 must_change_password: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -258,7 +291,8 @@ class User(pulumi.CustomResource):
             name="Foo user",
             username="foo",
             password="changeme",
-            enabled=True)
+            enabled=True,
+            must_change_password=True)
         # Create a new rancher2 global_role_binding for User
         foo_global_role_binding = rancher2.GlobalRoleBinding("foo",
             name="foo",
@@ -278,6 +312,7 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for global role binding (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for global role binding (map)
+        :param pulumi.Input[bool] must_change_password: The user must change password at first login (bool)
         :param pulumi.Input[str] name: The user full name (string)
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[str] username: The user username (string)
@@ -304,7 +339,8 @@ class User(pulumi.CustomResource):
             name="Foo user",
             username="foo",
             password="changeme",
-            enabled=True)
+            enabled=True,
+            must_change_password=True)
         # Create a new rancher2 global_role_binding for User
         foo_global_role_binding = rancher2.GlobalRoleBinding("foo",
             name="foo",
@@ -338,6 +374,7 @@ class User(pulumi.CustomResource):
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 must_change_password: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
@@ -353,6 +390,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["must_change_password"] = must_change_password
             __props__.__dict__["name"] = name
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
@@ -376,6 +414,7 @@ class User(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            must_change_password: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -389,6 +428,7 @@ class User(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations for global role binding (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for global role binding (map)
+        :param pulumi.Input[bool] must_change_password: The user must change password at first login (bool)
         :param pulumi.Input[str] name: The user full name (string)
         :param pulumi.Input[str] password: The user password (string)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] principal_ids: (Computed) The user principal IDs (list)
@@ -401,6 +441,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["must_change_password"] = must_change_password
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
         __props__.__dict__["principal_ids"] = principal_ids
@@ -427,6 +468,14 @@ class User(pulumi.CustomResource):
         Labels for global role binding (map)
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="mustChangePassword")
+    def must_change_password(self) -> pulumi.Output[Optional[bool]]:
+        """
+        The user must change password at first login (bool)
+        """
+        return pulumi.get(self, "must_change_password")
 
     @property
     @pulumi.getter

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,10 +73,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EtcdBackup{}
 	case "rancher2:index/feature:Feature":
 		r = &Feature{}
-	case "rancher2:index/globalDns:GlobalDns":
-		r = &GlobalDns{}
-	case "rancher2:index/globalDnsProvider:GlobalDnsProvider":
-		r = &GlobalDnsProvider{}
 	case "rancher2:index/globalRole:GlobalRole":
 		r = &GlobalRole{}
 	case "rancher2:index/globalRoleBinding:GlobalRoleBinding":
@@ -274,16 +270,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/feature",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/globalDns",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/globalDnsProvider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

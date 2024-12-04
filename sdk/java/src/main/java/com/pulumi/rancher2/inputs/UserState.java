@@ -56,6 +56,21 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The user must change password at first login (bool)
+     * 
+     */
+    @Import(name="mustChangePassword")
+    private @Nullable Output<Boolean> mustChangePassword;
+
+    /**
+     * @return The user must change password at first login (bool)
+     * 
+     */
+    public Optional<Output<Boolean>> mustChangePassword() {
+        return Optional.ofNullable(this.mustChangePassword);
+    }
+
+    /**
      * The user full name (string)
      * 
      */
@@ -121,6 +136,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.enabled = $.enabled;
         this.labels = $.labels;
+        this.mustChangePassword = $.mustChangePassword;
         this.name = $.name;
         this.password = $.password;
         this.principalIds = $.principalIds;
@@ -194,6 +210,27 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param mustChangePassword The user must change password at first login (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mustChangePassword(@Nullable Output<Boolean> mustChangePassword) {
+            $.mustChangePassword = mustChangePassword;
+            return this;
+        }
+
+        /**
+         * @param mustChangePassword The user must change password at first login (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mustChangePassword(Boolean mustChangePassword) {
+            return mustChangePassword(Output.of(mustChangePassword));
         }
 
         /**

@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *             .username("foo")
  *             .password("changeme")
  *             .enabled(true)
+ *             .mustChangePassword(true)
  *             .build());
  * 
  *         // Create a new rancher2 global_role_binding for User
@@ -114,6 +115,20 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> labels() {
         return this.labels;
+    }
+    /**
+     * The user must change password at first login (bool)
+     * 
+     */
+    @Export(name="mustChangePassword", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> mustChangePassword;
+
+    /**
+     * @return The user must change password at first login (bool)
+     * 
+     */
+    public Output<Optional<Boolean>> mustChangePassword() {
+        return Codegen.optional(this.mustChangePassword);
     }
     /**
      * The user full name (string)

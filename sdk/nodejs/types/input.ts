@@ -406,6 +406,10 @@ export interface ClusterAksConfigV2 {
      */
     nodeResourceGroup?: pulumi.Input<string>;
     /**
+     * The AKS outbound type for the egress traffic
+     */
+    outboundType?: pulumi.Input<string>;
+    /**
      * Is AKS cluster private?
      */
     privateCluster?: pulumi.Input<boolean>;
@@ -5369,59 +5373,6 @@ export interface GetRoleTemplateExternalRuleArgs {
      * Policy rule verbs
      */
     verbs?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GlobalDnsProviderAlidnsConfig {
-    /**
-     * The AWS Access key (string)
-     */
-    accessKey: pulumi.Input<string>;
-    /**
-     * The AWS Secret key (string)
-     */
-    secretKey: pulumi.Input<string>;
-}
-
-export interface GlobalDnsProviderCloudflareConfig {
-    /**
-     * The CloudFlare API Email (string)
-     */
-    apiEmail: pulumi.Input<string>;
-    /**
-     * The CloudFlare API Key (string)
-     */
-    apiKey: pulumi.Input<string>;
-    /**
-     * CloudFlare Proxy Setting. Default: `false` (bool)
-     */
-    proxySetting?: pulumi.Input<boolean>;
-}
-
-export interface GlobalDnsProviderRoute53Config {
-    /**
-     * The AWS Access key (string)
-     */
-    accessKey: pulumi.Input<string>;
-    /**
-     * The AWS credentials path. Default: `"/.aws"` (string)
-     */
-    credentialsPath?: pulumi.Input<string>;
-    /**
-     * The AWS Region. Default: `"us-west-2"` (string)
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The AWS Role ARN (string)
-     */
-    roleArn?: pulumi.Input<string>;
-    /**
-     * The AWS Secret key (string)
-     */
-    secretKey: pulumi.Input<string>;
-    /**
-     * The Route53 zone type `public, private`. Default: `"public"` (string)
-     */
-    zoneType?: pulumi.Input<string>;
 }
 
 export interface GlobalRoleRule {

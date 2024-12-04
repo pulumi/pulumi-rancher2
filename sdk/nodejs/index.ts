@@ -195,11 +195,6 @@ export const getEtcdBackup: typeof import("./getEtcdBackup").getEtcdBackup = nul
 export const getEtcdBackupOutput: typeof import("./getEtcdBackup").getEtcdBackupOutput = null as any;
 utilities.lazyLoad(exports, ["getEtcdBackup","getEtcdBackupOutput"], () => require("./getEtcdBackup"));
 
-export { GetGlobalDnsProviderArgs, GetGlobalDnsProviderResult, GetGlobalDnsProviderOutputArgs } from "./getGlobalDnsProvider";
-export const getGlobalDnsProvider: typeof import("./getGlobalDnsProvider").getGlobalDnsProvider = null as any;
-export const getGlobalDnsProviderOutput: typeof import("./getGlobalDnsProvider").getGlobalDnsProviderOutput = null as any;
-utilities.lazyLoad(exports, ["getGlobalDnsProvider","getGlobalDnsProviderOutput"], () => require("./getGlobalDnsProvider"));
-
 export { GetGlobalRoleArgs, GetGlobalRoleResult, GetGlobalRoleOutputArgs } from "./getGlobalRole";
 export const getGlobalRole: typeof import("./getGlobalRole").getGlobalRole = null as any;
 export const getGlobalRoleOutput: typeof import("./getGlobalRole").getGlobalRoleOutput = null as any;
@@ -289,16 +284,6 @@ export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
-
-export { GlobalDnsArgs, GlobalDnsState } from "./globalDns";
-export type GlobalDns = import("./globalDns").GlobalDns;
-export const GlobalDns: typeof import("./globalDns").GlobalDns = null as any;
-utilities.lazyLoad(exports, ["GlobalDns"], () => require("./globalDns"));
-
-export { GlobalDnsProviderArgs, GlobalDnsProviderState } from "./globalDnsProvider";
-export type GlobalDnsProvider = import("./globalDnsProvider").GlobalDnsProvider;
-export const GlobalDnsProvider: typeof import("./globalDnsProvider").GlobalDnsProvider = null as any;
-utilities.lazyLoad(exports, ["GlobalDnsProvider"], () => require("./globalDnsProvider"));
 
 export { GlobalRoleArgs, GlobalRoleState } from "./globalRole";
 export type GlobalRole = import("./globalRole").GlobalRole;
@@ -466,10 +451,6 @@ const _module = {
                 return new EtcdBackup(name, <any>undefined, { urn })
             case "rancher2:index/feature:Feature":
                 return new Feature(name, <any>undefined, { urn })
-            case "rancher2:index/globalDns:GlobalDns":
-                return new GlobalDns(name, <any>undefined, { urn })
-            case "rancher2:index/globalDnsProvider:GlobalDnsProvider":
-                return new GlobalDnsProvider(name, <any>undefined, { urn })
             case "rancher2:index/globalRole:GlobalRole":
                 return new GlobalRole(name, <any>undefined, { urn })
             case "rancher2:index/globalRoleBinding:GlobalRoleBinding":
@@ -539,8 +520,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/configMapV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/customUserToken", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/etcdBackup", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/feature", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/globalDns", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/globalDnsProvider", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalRole", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalRoleBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/machineConfigV2", _module)

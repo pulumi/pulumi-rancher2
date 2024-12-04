@@ -68,6 +68,10 @@ export interface GetUserResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * (Computed) The user must change password at first login (bool)
+     */
+    readonly mustChangePassword: boolean;
+    /**
      * (Computed) The user common name (string)
      */
     readonly name: string;

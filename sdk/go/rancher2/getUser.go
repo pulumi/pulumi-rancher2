@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -69,6 +69,8 @@ type LookupUserResult struct {
 	IsExternal *bool  `pulumi:"isExternal"`
 	// (Computed) Labels of the resource (map)
 	Labels map[string]string `pulumi:"labels"`
+	// (Computed) The user must change password at first login (bool)
+	MustChangePassword bool `pulumi:"mustChangePassword"`
 	// (Computed) The user common name (string)
 	Name string `pulumi:"name"`
 	// (Computed) The user principal IDs (list)
@@ -146,6 +148,11 @@ func (o LookupUserResultOutput) IsExternal() pulumi.BoolPtrOutput {
 // (Computed) Labels of the resource (map)
 func (o LookupUserResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupUserResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// (Computed) The user must change password at first login (bool)
+func (o LookupUserResultOutput) MustChangePassword() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.MustChangePassword }).(pulumi.BoolOutput)
 }
 
 // (Computed) The user common name (string)

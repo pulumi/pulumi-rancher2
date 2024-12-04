@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v7/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,10 +32,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 User
 //			foo, err := rancher2.NewUser(ctx, "foo", &rancher2.UserArgs{
-//				Name:     pulumi.String("Foo user"),
-//				Username: pulumi.String("foo"),
-//				Password: pulumi.String("changeme"),
-//				Enabled:  pulumi.Bool(true),
+//				Name:               pulumi.String("Foo user"),
+//				Username:           pulumi.String("foo"),
+//				Password:           pulumi.String("changeme"),
+//				Enabled:            pulumi.Bool(true),
+//				MustChangePassword: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -70,6 +71,8 @@ type User struct {
 	Enabled     pulumi.BoolPtrOutput   `pulumi:"enabled"`
 	// Labels for global role binding (map)
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The user must change password at first login (bool)
+	MustChangePassword pulumi.BoolPtrOutput `pulumi:"mustChangePassword"`
 	// The user full name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The user password (string)
@@ -128,6 +131,8 @@ type userState struct {
 	Enabled     *bool             `pulumi:"enabled"`
 	// Labels for global role binding (map)
 	Labels map[string]string `pulumi:"labels"`
+	// The user must change password at first login (bool)
+	MustChangePassword *bool `pulumi:"mustChangePassword"`
 	// The user full name (string)
 	Name *string `pulumi:"name"`
 	// The user password (string)
@@ -144,6 +149,8 @@ type UserState struct {
 	Enabled     pulumi.BoolPtrInput
 	// Labels for global role binding (map)
 	Labels pulumi.StringMapInput
+	// The user must change password at first login (bool)
+	MustChangePassword pulumi.BoolPtrInput
 	// The user full name (string)
 	Name pulumi.StringPtrInput
 	// The user password (string)
@@ -164,6 +171,8 @@ type userArgs struct {
 	Enabled     *bool             `pulumi:"enabled"`
 	// Labels for global role binding (map)
 	Labels map[string]string `pulumi:"labels"`
+	// The user must change password at first login (bool)
+	MustChangePassword *bool `pulumi:"mustChangePassword"`
 	// The user full name (string)
 	Name *string `pulumi:"name"`
 	// The user password (string)
@@ -179,6 +188,8 @@ type UserArgs struct {
 	Enabled     pulumi.BoolPtrInput
 	// Labels for global role binding (map)
 	Labels pulumi.StringMapInput
+	// The user must change password at first login (bool)
+	MustChangePassword pulumi.BoolPtrInput
 	// The user full name (string)
 	Name pulumi.StringPtrInput
 	// The user password (string)
@@ -286,6 +297,11 @@ func (o UserOutput) Enabled() pulumi.BoolPtrOutput {
 // Labels for global role binding (map)
 func (o UserOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *User) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The user must change password at first login (bool)
+func (o UserOutput) MustChangePassword() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.MustChangePassword }).(pulumi.BoolPtrOutput)
 }
 
 // The user full name (string)

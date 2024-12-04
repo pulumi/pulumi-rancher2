@@ -865,6 +865,7 @@ import javax.annotation.Nullable;
  *                 .virtualNetworkResourceGroup("<virtual-network-resource-group>")
  *                 .subnet("<subnet>")
  *                 .nodeResourceGroup("<node-resource-group>")
+ *                 .outboundType("loadBalancer")
  *                 .nodePools(                
  *                     ClusterAksConfigV2NodePoolArgs.builder()
  *                         .availabilityZones(                        
