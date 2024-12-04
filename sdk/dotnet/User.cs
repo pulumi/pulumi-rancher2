@@ -31,6 +31,7 @@ namespace Pulumi.Rancher2
     ///         Username = "foo",
     ///         Password = "changeme",
     ///         Enabled = true,
+    ///         MustChangePassword = true,
     ///     });
     /// 
     ///     // Create a new rancher2 global_role_binding for User
@@ -69,6 +70,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The user must change password at first login (bool)
+        /// </summary>
+        [Output("mustChangePassword")]
+        public Output<bool?> MustChangePassword { get; private set; } = null!;
 
         /// <summary>
         /// The user full name (string)
@@ -172,6 +179,12 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
+        /// The user must change password at first login (bool)
+        /// </summary>
+        [Input("mustChangePassword")]
+        public Input<bool>? MustChangePassword { get; set; }
+
+        /// <summary>
         /// The user full name (string)
         /// </summary>
         [Input("name")]
@@ -233,6 +246,12 @@ namespace Pulumi.Rancher2
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// The user must change password at first login (bool)
+        /// </summary>
+        [Input("mustChangePassword")]
+        public Input<bool>? MustChangePassword { get; set; }
 
         /// <summary>
         /// The user full name (string)

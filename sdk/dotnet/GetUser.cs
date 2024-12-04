@@ -135,6 +135,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// (Computed) The user must change password at first login (bool)
+        /// </summary>
+        public readonly bool MustChangePassword;
+        /// <summary>
         /// (Computed) The user common name (string)
         /// </summary>
         public readonly string Name;
@@ -156,6 +160,8 @@ namespace Pulumi.Rancher2
 
             ImmutableDictionary<string, string> labels,
 
+            bool mustChangePassword,
+
             string name,
 
             ImmutableArray<string> principalIds,
@@ -167,6 +173,7 @@ namespace Pulumi.Rancher2
             Id = id;
             IsExternal = isExternal;
             Labels = labels;
+            MustChangePassword = mustChangePassword;
             Name = name;
             PrincipalIds = principalIds;
             Username = username;

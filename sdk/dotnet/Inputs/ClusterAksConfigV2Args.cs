@@ -163,6 +163,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? NodeResourceGroup { get; set; }
 
         /// <summary>
+        /// The AKS outbound type for the egress traffic
+        /// </summary>
+        [Input("outboundType")]
+        public Input<string>? OutboundType { get; set; }
+
+        /// <summary>
         /// Is AKS cluster private?
         /// </summary>
         [Input("privateCluster")]

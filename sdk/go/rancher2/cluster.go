@@ -725,6 +725,7 @@ import (
 //					VirtualNetworkResourceGroup: pulumi.String("<virtual-network-resource-group>"),
 //					Subnet:                      pulumi.String("<subnet>"),
 //					NodeResourceGroup:           pulumi.String("<node-resource-group>"),
+//					OutboundType:                pulumi.String("loadBalancer"),
 //					NodePools: rancher2.ClusterAksConfigV2NodePoolArray{
 //						&rancher2.ClusterAksConfigV2NodePoolArgs{
 //							AvailabilityZones: pulumi.StringArray{

@@ -671,6 +671,7 @@ namespace Pulumi.Rancher2
     ///             VirtualNetworkResourceGroup = "&lt;virtual-network-resource-group&gt;",
     ///             Subnet = "&lt;subnet&gt;",
     ///             NodeResourceGroup = "&lt;node-resource-group&gt;",
+    ///             OutboundType = "loadBalancer",
     ///             NodePools = new[]
     ///             {
     ///                 new Rancher2.Inputs.ClusterAksConfigV2NodePoolArgs

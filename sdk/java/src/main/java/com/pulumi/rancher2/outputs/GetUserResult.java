@@ -37,6 +37,11 @@ public final class GetUserResult {
      */
     private Map<String,String> labels;
     /**
+     * @return (Computed) The user must change password at first login (bool)
+     * 
+     */
+    private Boolean mustChangePassword;
+    /**
      * @return (Computed) The user common name (string)
      * 
      */
@@ -81,6 +86,13 @@ public final class GetUserResult {
         return this.labels;
     }
     /**
+     * @return (Computed) The user must change password at first login (bool)
+     * 
+     */
+    public Boolean mustChangePassword() {
+        return this.mustChangePassword;
+    }
+    /**
      * @return (Computed) The user common name (string)
      * 
      */
@@ -112,6 +124,7 @@ public final class GetUserResult {
         private String id;
         private @Nullable Boolean isExternal;
         private Map<String,String> labels;
+        private Boolean mustChangePassword;
         private String name;
         private List<String> principalIds;
         private String username;
@@ -123,6 +136,7 @@ public final class GetUserResult {
     	      this.id = defaults.id;
     	      this.isExternal = defaults.isExternal;
     	      this.labels = defaults.labels;
+    	      this.mustChangePassword = defaults.mustChangePassword;
     	      this.name = defaults.name;
     	      this.principalIds = defaults.principalIds;
     	      this.username = defaults.username;
@@ -167,6 +181,14 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mustChangePassword(Boolean mustChangePassword) {
+            if (mustChangePassword == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "mustChangePassword");
+            }
+            this.mustChangePassword = mustChangePassword;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetUserResult", "name");
@@ -200,6 +222,7 @@ public final class GetUserResult {
             _resultValue.id = id;
             _resultValue.isExternal = isExternal;
             _resultValue.labels = labels;
+            _resultValue.mustChangePassword = mustChangePassword;
             _resultValue.name = name;
             _resultValue.principalIds = principalIds;
             _resultValue.username = username;
