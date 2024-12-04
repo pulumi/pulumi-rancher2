@@ -230,9 +230,6 @@ __all__ = [
     'ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptions',
     'EtcdBackupBackupConfig',
     'EtcdBackupBackupConfigS3BackupConfig',
-    'GlobalDnsProviderAlidnsConfig',
-    'GlobalDnsProviderCloudflareConfig',
-    'GlobalDnsProviderRoute53Config',
     'GlobalRoleRule',
     'MachineConfigV2Amazonec2Config',
     'MachineConfigV2AzureConfig',
@@ -460,9 +457,6 @@ __all__ = [
     'GetClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsResult',
     'GetEtcdBackupBackupConfigResult',
     'GetEtcdBackupBackupConfigS3BackupConfigResult',
-    'GetGlobalDnsProviderAlidnsConfigResult',
-    'GetGlobalDnsProviderCloudflareConfigResult',
-    'GetGlobalDnsProviderRoute53ConfigResult',
     'GetGlobalRoleRuleResult',
     'GetMultiClusterAppAnswerResult',
     'GetMultiClusterAppMemberResult',
@@ -1628,6 +1622,8 @@ class ClusterAksConfigV2(dict):
             suggest = "node_pools"
         elif key == "nodeResourceGroup":
             suggest = "node_resource_group"
+        elif key == "outboundType":
+            suggest = "outbound_type"
         elif key == "privateCluster":
             suggest = "private_cluster"
         elif key == "virtualNetwork":
@@ -1672,6 +1668,7 @@ class ClusterAksConfigV2(dict):
                  network_service_cidr: Optional[str] = None,
                  node_pools: Optional[Sequence['outputs.ClusterAksConfigV2NodePool']] = None,
                  node_resource_group: Optional[str] = None,
+                 outbound_type: Optional[str] = None,
                  private_cluster: Optional[bool] = None,
                  subnet: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -1703,6 +1700,7 @@ class ClusterAksConfigV2(dict):
         :param str network_service_cidr: The AKS network service cidr
         :param Sequence['ClusterAksConfigV2NodePoolArgs'] node_pools: The AKS node pools to use. Required if `import=false`
         :param str node_resource_group: The AKS node resource group name
+        :param str outbound_type: The AKS outbound type for the egress traffic
         :param bool private_cluster: Is AKS cluster private?
         :param str subnet: The AKS subnet
         :param Mapping[str, str] tags: The AKS cluster tags
@@ -1756,6 +1754,8 @@ class ClusterAksConfigV2(dict):
             pulumi.set(__self__, "node_pools", node_pools)
         if node_resource_group is not None:
             pulumi.set(__self__, "node_resource_group", node_resource_group)
+        if outbound_type is not None:
+            pulumi.set(__self__, "outbound_type", outbound_type)
         if private_cluster is not None:
             pulumi.set(__self__, "private_cluster", private_cluster)
         if subnet is not None:
@@ -1966,6 +1966,14 @@ class ClusterAksConfigV2(dict):
         The AKS node resource group name
         """
         return pulumi.get(self, "node_resource_group")
+
+    @property
+    @pulumi.getter(name="outboundType")
+    def outbound_type(self) -> Optional[str]:
+        """
+        The AKS outbound type for the egress traffic
+        """
+        return pulumi.get(self, "outbound_type")
 
     @property
     @pulumi.getter(name="privateCluster")
@@ -21854,218 +21862,6 @@ class EtcdBackupBackupConfigS3BackupConfig(dict):
 
 
 @pulumi.output_type
-class GlobalDnsProviderAlidnsConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKey":
-            suggest = "access_key"
-        elif key == "secretKey":
-            suggest = "secret_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GlobalDnsProviderAlidnsConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GlobalDnsProviderAlidnsConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GlobalDnsProviderAlidnsConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 access_key: str,
-                 secret_key: str):
-        """
-        :param str access_key: The AWS Access key (string)
-        :param str secret_key: The AWS Secret key (string)
-        """
-        pulumi.set(__self__, "access_key", access_key)
-        pulumi.set(__self__, "secret_key", secret_key)
-
-    @property
-    @pulumi.getter(name="accessKey")
-    def access_key(self) -> str:
-        """
-        The AWS Access key (string)
-        """
-        return pulumi.get(self, "access_key")
-
-    @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> str:
-        """
-        The AWS Secret key (string)
-        """
-        return pulumi.get(self, "secret_key")
-
-
-@pulumi.output_type
-class GlobalDnsProviderCloudflareConfig(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "apiEmail":
-            suggest = "api_email"
-        elif key == "apiKey":
-            suggest = "api_key"
-        elif key == "proxySetting":
-            suggest = "proxy_setting"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GlobalDnsProviderCloudflareConfig. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GlobalDnsProviderCloudflareConfig.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GlobalDnsProviderCloudflareConfig.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 api_email: str,
-                 api_key: str,
-                 proxy_setting: Optional[bool] = None):
-        """
-        :param str api_email: The CloudFlare API Email (string)
-        :param str api_key: The CloudFlare API Key (string)
-        :param bool proxy_setting: CloudFlare Proxy Setting. Default: `false` (bool)
-        """
-        pulumi.set(__self__, "api_email", api_email)
-        pulumi.set(__self__, "api_key", api_key)
-        if proxy_setting is not None:
-            pulumi.set(__self__, "proxy_setting", proxy_setting)
-
-    @property
-    @pulumi.getter(name="apiEmail")
-    def api_email(self) -> str:
-        """
-        The CloudFlare API Email (string)
-        """
-        return pulumi.get(self, "api_email")
-
-    @property
-    @pulumi.getter(name="apiKey")
-    def api_key(self) -> str:
-        """
-        The CloudFlare API Key (string)
-        """
-        return pulumi.get(self, "api_key")
-
-    @property
-    @pulumi.getter(name="proxySetting")
-    def proxy_setting(self) -> Optional[bool]:
-        """
-        CloudFlare Proxy Setting. Default: `false` (bool)
-        """
-        return pulumi.get(self, "proxy_setting")
-
-
-@pulumi.output_type
-class GlobalDnsProviderRoute53Config(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKey":
-            suggest = "access_key"
-        elif key == "secretKey":
-            suggest = "secret_key"
-        elif key == "credentialsPath":
-            suggest = "credentials_path"
-        elif key == "roleArn":
-            suggest = "role_arn"
-        elif key == "zoneType":
-            suggest = "zone_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GlobalDnsProviderRoute53Config. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GlobalDnsProviderRoute53Config.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GlobalDnsProviderRoute53Config.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 access_key: str,
-                 secret_key: str,
-                 credentials_path: Optional[str] = None,
-                 region: Optional[str] = None,
-                 role_arn: Optional[str] = None,
-                 zone_type: Optional[str] = None):
-        """
-        :param str access_key: The AWS Access key (string)
-        :param str secret_key: The AWS Secret key (string)
-        :param str credentials_path: The AWS credentials path. Default: `"/.aws"` (string)
-        :param str region: The AWS Region. Default: `"us-west-2"` (string)
-        :param str role_arn: The AWS Role ARN (string)
-        :param str zone_type: The Route53 zone type `public, private`. Default: `"public"` (string)
-        """
-        pulumi.set(__self__, "access_key", access_key)
-        pulumi.set(__self__, "secret_key", secret_key)
-        if credentials_path is not None:
-            pulumi.set(__self__, "credentials_path", credentials_path)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
-        if zone_type is not None:
-            pulumi.set(__self__, "zone_type", zone_type)
-
-    @property
-    @pulumi.getter(name="accessKey")
-    def access_key(self) -> str:
-        """
-        The AWS Access key (string)
-        """
-        return pulumi.get(self, "access_key")
-
-    @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> str:
-        """
-        The AWS Secret key (string)
-        """
-        return pulumi.get(self, "secret_key")
-
-    @property
-    @pulumi.getter(name="credentialsPath")
-    def credentials_path(self) -> Optional[str]:
-        """
-        The AWS credentials path. Default: `"/.aws"` (string)
-        """
-        return pulumi.get(self, "credentials_path")
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        """
-        The AWS Region. Default: `"us-west-2"` (string)
-        """
-        return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[str]:
-        """
-        The AWS Role ARN (string)
-        """
-        return pulumi.get(self, "role_arn")
-
-    @property
-    @pulumi.getter(name="zoneType")
-    def zone_type(self) -> Optional[str]:
-        """
-        The Route53 zone type `public, private`. Default: `"public"` (string)
-        """
-        return pulumi.get(self, "zone_type")
-
-
-@pulumi.output_type
 class GlobalRoleRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -30113,7 +29909,8 @@ class GetClusterAksConfigV2Result(dict):
                  imported: Optional[bool] = None,
                  kubernetes_version: Optional[str] = None,
                  network_plugin: Optional[str] = None,
-                 node_pools: Optional[Sequence['outputs.GetClusterAksConfigV2NodePoolResult']] = None):
+                 node_pools: Optional[Sequence['outputs.GetClusterAksConfigV2NodePoolResult']] = None,
+                 outbound_type: Optional[str] = None):
         """
         :param str cloud_credential_id: The AKS Cloud Credential ID to use
         :param bool http_application_routing: Enable AKS http application routing?
@@ -30145,6 +29942,7 @@ class GetClusterAksConfigV2Result(dict):
         :param str kubernetes_version: The kubernetes master version. Required if `import=false`
         :param str network_plugin: The AKS network plugin. Required if `import=false`
         :param Sequence['GetClusterAksConfigV2NodePoolArgs'] node_pools: The AKS node pools to use. Required if `import=false`
+        :param str outbound_type: The AKS outbound type for the egress traffic
         """
         pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
         pulumi.set(__self__, "http_application_routing", http_application_routing)
@@ -30184,6 +29982,8 @@ class GetClusterAksConfigV2Result(dict):
             pulumi.set(__self__, "network_plugin", network_plugin)
         if node_pools is not None:
             pulumi.set(__self__, "node_pools", node_pools)
+        if outbound_type is not None:
+            pulumi.set(__self__, "outbound_type", outbound_type)
 
     @property
     @pulumi.getter(name="cloudCredentialId")
@@ -30424,6 +30224,14 @@ class GetClusterAksConfigV2Result(dict):
         The AKS node pools to use. Required if `import=false`
         """
         return pulumi.get(self, "node_pools")
+
+    @property
+    @pulumi.getter(name="outboundType")
+    def outbound_type(self) -> Optional[str]:
+        """
+        The AKS outbound type for the egress traffic
+        """
+        return pulumi.get(self, "outbound_type")
 
 
 @pulumi.output_type
@@ -43018,103 +42826,6 @@ class GetEtcdBackupBackupConfigS3BackupConfigResult(dict):
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
         return pulumi.get(self, "secret_key")
-
-
-@pulumi.output_type
-class GetGlobalDnsProviderAlidnsConfigResult(dict):
-    def __init__(__self__, *,
-                 access_key: str,
-                 secret_key: str):
-        pulumi.set(__self__, "access_key", access_key)
-        pulumi.set(__self__, "secret_key", secret_key)
-
-    @property
-    @pulumi.getter(name="accessKey")
-    def access_key(self) -> str:
-        return pulumi.get(self, "access_key")
-
-    @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> str:
-        return pulumi.get(self, "secret_key")
-
-
-@pulumi.output_type
-class GetGlobalDnsProviderCloudflareConfigResult(dict):
-    def __init__(__self__, *,
-                 api_email: str,
-                 api_key: str,
-                 proxy_setting: Optional[bool] = None):
-        pulumi.set(__self__, "api_email", api_email)
-        pulumi.set(__self__, "api_key", api_key)
-        if proxy_setting is not None:
-            pulumi.set(__self__, "proxy_setting", proxy_setting)
-
-    @property
-    @pulumi.getter(name="apiEmail")
-    def api_email(self) -> str:
-        return pulumi.get(self, "api_email")
-
-    @property
-    @pulumi.getter(name="apiKey")
-    def api_key(self) -> str:
-        return pulumi.get(self, "api_key")
-
-    @property
-    @pulumi.getter(name="proxySetting")
-    def proxy_setting(self) -> Optional[bool]:
-        return pulumi.get(self, "proxy_setting")
-
-
-@pulumi.output_type
-class GetGlobalDnsProviderRoute53ConfigResult(dict):
-    def __init__(__self__, *,
-                 access_key: str,
-                 secret_key: str,
-                 credentials_path: Optional[str] = None,
-                 region: Optional[str] = None,
-                 role_arn: Optional[str] = None,
-                 zone_type: Optional[str] = None):
-        pulumi.set(__self__, "access_key", access_key)
-        pulumi.set(__self__, "secret_key", secret_key)
-        if credentials_path is not None:
-            pulumi.set(__self__, "credentials_path", credentials_path)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
-        if zone_type is not None:
-            pulumi.set(__self__, "zone_type", zone_type)
-
-    @property
-    @pulumi.getter(name="accessKey")
-    def access_key(self) -> str:
-        return pulumi.get(self, "access_key")
-
-    @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> str:
-        return pulumi.get(self, "secret_key")
-
-    @property
-    @pulumi.getter(name="credentialsPath")
-    def credentials_path(self) -> Optional[str]:
-        return pulumi.get(self, "credentials_path")
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        return pulumi.get(self, "region")
-
-    @property
-    @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[str]:
-        return pulumi.get(self, "role_arn")
-
-    @property
-    @pulumi.getter(name="zoneType")
-    def zone_type(self) -> Optional[str]:
-        return pulumi.get(self, "zone_type")
 
 
 @pulumi.output_type

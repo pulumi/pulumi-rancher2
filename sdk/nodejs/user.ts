@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  *     username: "foo",
  *     password: "changeme",
  *     enabled: true,
+ *     mustChangePassword: true,
  * });
  * // Create a new rancher2 global_role_binding for User
  * const fooGlobalRoleBinding = new rancher2.GlobalRoleBinding("foo", {
@@ -76,6 +77,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The user must change password at first login (bool)
+     */
+    public readonly mustChangePassword!: pulumi.Output<boolean | undefined>;
+    /**
      * The user full name (string)
      */
     public readonly name!: pulumi.Output<string>;
@@ -108,6 +113,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["mustChangePassword"] = state ? state.mustChangePassword : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["principalIds"] = state ? state.principalIds : undefined;
@@ -123,6 +129,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["mustChangePassword"] = args ? args.mustChangePassword : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
@@ -148,6 +155,10 @@ export interface UserState {
      * Labels for global role binding (map)
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The user must change password at first login (bool)
+     */
+    mustChangePassword?: pulumi.Input<boolean>;
     /**
      * The user full name (string)
      */
@@ -179,6 +190,10 @@ export interface UserArgs {
      * Labels for global role binding (map)
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The user must change password at first login (bool)
+     */
+    mustChangePassword?: pulumi.Input<boolean>;
     /**
      * The user full name (string)
      */

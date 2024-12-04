@@ -1603,6 +1603,7 @@ class Cluster(pulumi.CustomResource):
                 "virtual_network_resource_group": "<virtual-network-resource-group>",
                 "subnet": "<subnet>",
                 "node_resource_group": "<node-resource-group>",
+                "outbound_type": "loadBalancer",
                 "node_pools": [
                     {
                         "availability_zones": [
@@ -2144,6 +2145,7 @@ class Cluster(pulumi.CustomResource):
                 "virtual_network_resource_group": "<virtual-network-resource-group>",
                 "subnet": "<subnet>",
                 "node_resource_group": "<node-resource-group>",
+                "outbound_type": "loadBalancer",
                 "node_pools": [
                     {
                         "availability_zones": [

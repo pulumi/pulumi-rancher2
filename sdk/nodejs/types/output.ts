@@ -406,6 +406,10 @@ export interface ClusterAksConfigV2 {
      */
     nodeResourceGroup: string;
     /**
+     * The AKS outbound type for the egress traffic
+     */
+    outboundType?: string;
+    /**
      * Is AKS cluster private?
      */
     privateCluster: boolean;
@@ -5580,6 +5584,10 @@ export interface GetClusterAksConfigV2 {
      */
     nodeResourceGroup: string;
     /**
+     * The AKS outbound type for the egress traffic
+     */
+    outboundType?: string;
+    /**
      * Is AKS cluster private?
      */
     privateCluster: boolean;
@@ -8947,26 +8955,6 @@ export interface GetEtcdBackupBackupConfigS3BackupConfig {
     secretKey?: string;
 }
 
-export interface GetGlobalDnsProviderAlidnsConfig {
-    accessKey: string;
-    secretKey: string;
-}
-
-export interface GetGlobalDnsProviderCloudflareConfig {
-    apiEmail: string;
-    apiKey: string;
-    proxySetting?: boolean;
-}
-
-export interface GetGlobalDnsProviderRoute53Config {
-    accessKey: string;
-    credentialsPath?: string;
-    region?: string;
-    roleArn?: string;
-    secretKey: string;
-    zoneType?: string;
-}
-
 export interface GetGlobalRoleRule {
     /**
      * Policy rule api groups
@@ -9234,59 +9222,6 @@ export interface GetRoleTemplateRule {
      * Policy rule verbs
      */
     verbs?: string[];
-}
-
-export interface GlobalDnsProviderAlidnsConfig {
-    /**
-     * The AWS Access key (string)
-     */
-    accessKey: string;
-    /**
-     * The AWS Secret key (string)
-     */
-    secretKey: string;
-}
-
-export interface GlobalDnsProviderCloudflareConfig {
-    /**
-     * The CloudFlare API Email (string)
-     */
-    apiEmail: string;
-    /**
-     * The CloudFlare API Key (string)
-     */
-    apiKey: string;
-    /**
-     * CloudFlare Proxy Setting. Default: `false` (bool)
-     */
-    proxySetting?: boolean;
-}
-
-export interface GlobalDnsProviderRoute53Config {
-    /**
-     * The AWS Access key (string)
-     */
-    accessKey: string;
-    /**
-     * The AWS credentials path. Default: `"/.aws"` (string)
-     */
-    credentialsPath?: string;
-    /**
-     * The AWS Region. Default: `"us-west-2"` (string)
-     */
-    region?: string;
-    /**
-     * The AWS Role ARN (string)
-     */
-    roleArn?: string;
-    /**
-     * The AWS Secret key (string)
-     */
-    secretKey: string;
-    /**
-     * The Route53 zone type `public, private`. Default: `"public"` (string)
-     */
-    zoneType?: string;
 }
 
 export interface GlobalRoleRule {

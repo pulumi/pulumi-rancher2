@@ -43,7 +43,6 @@ from .get_cluster_template import *
 from .get_cluster_v2 import *
 from .get_config_map_v2 import *
 from .get_etcd_backup import *
-from .get_global_dns_provider import *
 from .get_global_role import *
 from .get_global_role_binding import *
 from .get_multi_cluster_app import *
@@ -62,8 +61,6 @@ from .get_secret_v2 import *
 from .get_setting import *
 from .get_storage_class_v2 import *
 from .get_user import *
-from .global_dns import *
-from .global_dns_provider import *
 from .global_role import *
 from .global_role_binding import *
 from .machine_config_v2 import *
@@ -303,22 +300,6 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/feature:Feature": "Feature"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/globalDns",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/globalDns:GlobalDns": "GlobalDns"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/globalDnsProvider",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/globalDnsProvider:GlobalDnsProvider": "GlobalDnsProvider"
   }
  },
  {
