@@ -1383,30 +1383,6 @@
                 "current": "rancher2:index/feature:Feature",
                 "majorVersion": 7
             },
-            "rancher2_global_dns": {
-                "current": "rancher2:index/globalDns:GlobalDns",
-                "majorVersion": 7,
-                "fields": {
-                    "project_ids": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "rancher2_global_dns_provider": {
-                "current": "rancher2:index/globalDnsProvider:GlobalDnsProvider",
-                "majorVersion": 7,
-                "fields": {
-                    "alidns_config": {
-                        "maxItemsOne": true
-                    },
-                    "cloudflare_config": {
-                        "maxItemsOne": true
-                    },
-                    "route53_config": {
-                        "maxItemsOne": true
-                    }
-                }
-            },
             "rancher2_global_role": {
                 "current": "rancher2:index/globalRole:GlobalRole",
                 "majorVersion": 7,
@@ -2983,21 +2959,6 @@
                                 }
                             }
                         }
-                    }
-                }
-            },
-            "rancher2_global_dns_provider": {
-                "current": "rancher2:index/getGlobalDnsProvider:getGlobalDnsProvider",
-                "majorVersion": 7,
-                "fields": {
-                    "alidns_config": {
-                        "maxItemsOne": true
-                    },
-                    "cloudflare_config": {
-                        "maxItemsOne": true
-                    },
-                    "route53_config": {
-                        "maxItemsOne": true
                     }
                 }
             },
