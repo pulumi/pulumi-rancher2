@@ -79,7 +79,7 @@ export interface GetStorageClassV2Result {
 /**
  * Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
  */
-export function getStorageClassV2Output(args: GetStorageClassV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageClassV2Result> {
+export function getStorageClassV2Output(args: GetStorageClassV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageClassV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getStorageClassV2:getStorageClassV2", {
         "clusterId": args.clusterId,

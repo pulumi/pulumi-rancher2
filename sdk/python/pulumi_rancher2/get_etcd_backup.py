@@ -178,7 +178,7 @@ def get_etcd_backup(cluster_id: Optional[str] = None,
         namespace_id=pulumi.get(__ret__, 'namespace_id'))
 def get_etcd_backup_output(cluster_id: Optional[pulumi.Input[str]] = None,
                            name: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEtcdBackupResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEtcdBackupResult]:
     """
     Use this data source to retrieve information about a Rancher v2 etcd backup.
 
@@ -199,7 +199,7 @@ def get_etcd_backup_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getEtcdBackup:getEtcdBackup', __args__, opts=opts, typ=GetEtcdBackupResult)
     return __ret__.apply(lambda __response__: GetEtcdBackupResult(
         annotations=pulumi.get(__response__, 'annotations'),

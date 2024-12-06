@@ -93,7 +93,7 @@ export interface GetEtcdBackupResult {
  * });
  * ```
  */
-export function getEtcdBackupOutput(args: GetEtcdBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEtcdBackupResult> {
+export function getEtcdBackupOutput(args: GetEtcdBackupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEtcdBackupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getEtcdBackup:getEtcdBackup", {
         "clusterId": args.clusterId,

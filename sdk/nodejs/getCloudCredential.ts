@@ -67,7 +67,7 @@ export interface GetCloudCredentialResult {
  * });
  * ```
  */
-export function getCloudCredentialOutput(args: GetCloudCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudCredentialResult> {
+export function getCloudCredentialOutput(args: GetCloudCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getCloudCredential:getCloudCredential", {
         "name": args.name,

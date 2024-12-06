@@ -83,7 +83,7 @@ export interface GetGlobalRoleBindingResult {
  * });
  * ```
  */
-export function getGlobalRoleBindingOutput(args: GetGlobalRoleBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalRoleBindingResult> {
+export function getGlobalRoleBindingOutput(args: GetGlobalRoleBindingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGlobalRoleBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", {
         "globalRoleId": args.globalRoleId,

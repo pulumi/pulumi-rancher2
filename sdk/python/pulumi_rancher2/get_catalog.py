@@ -241,7 +241,7 @@ def get_catalog(name: Optional[str] = None,
         version=pulumi.get(__ret__, 'version'))
 def get_catalog_output(name: Optional[pulumi.Input[str]] = None,
                        scope: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogResult]:
     """
     Use this data source to retrieve information about a Rancher v2 catalog.
 
@@ -261,7 +261,7 @@ def get_catalog_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['scope'] = scope
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getCatalog:getCatalog', __args__, opts=opts, typ=GetCatalogResult)
     return __ret__.apply(lambda __response__: GetCatalogResult(
         annotations=pulumi.get(__response__, 'annotations'),
