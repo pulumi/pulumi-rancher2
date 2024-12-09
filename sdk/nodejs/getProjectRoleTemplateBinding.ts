@@ -97,7 +97,7 @@ export interface GetProjectRoleTemplateBindingResult {
  * });
  * ```
  */
-export function getProjectRoleTemplateBindingOutput(args: GetProjectRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectRoleTemplateBindingResult> {
+export function getProjectRoleTemplateBindingOutput(args: GetProjectRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectRoleTemplateBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", {
         "name": args.name,

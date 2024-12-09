@@ -120,7 +120,7 @@ export interface GetRoleTemplateResult {
  * });
  * ```
  */
-export function getRoleTemplateOutput(args: GetRoleTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleTemplateResult> {
+export function getRoleTemplateOutput(args: GetRoleTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getRoleTemplate:getRoleTemplate", {
         "context": args.context,

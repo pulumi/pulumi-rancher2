@@ -263,7 +263,7 @@ def get_cluster_v2(fleet_namespace: Optional[str] = None,
         rke_config=pulumi.get(__ret__, 'rke_config'))
 def get_cluster_v2_output(fleet_namespace: Optional[pulumi.Input[Optional[str]]] = None,
                           name: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterV2Result]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterV2Result]:
     """
     Use this data source to retrieve information about a Rancher v2 cluster.
 
@@ -284,7 +284,7 @@ def get_cluster_v2_output(fleet_namespace: Optional[pulumi.Input[Optional[str]]]
     __args__ = dict()
     __args__['fleetNamespace'] = fleet_namespace
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getClusterV2:getClusterV2', __args__, opts=opts, typ=GetClusterV2Result)
     return __ret__.apply(lambda __response__: GetClusterV2Result(
         agent_env_vars=pulumi.get(__response__, 'agent_env_vars'),

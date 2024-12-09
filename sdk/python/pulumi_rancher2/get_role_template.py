@@ -260,7 +260,7 @@ def get_role_template(context: Optional[str] = None,
 def get_role_template_output(context: Optional[pulumi.Input[Optional[str]]] = None,
                              external_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']]]]] = None,
                              name: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleTemplateResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleTemplateResult]:
     """
     Use this data source to retrieve information about a Rancher v2 role template resource.
 
@@ -282,7 +282,7 @@ def get_role_template_output(context: Optional[pulumi.Input[Optional[str]]] = No
     __args__['context'] = context
     __args__['externalRules'] = external_rules
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getRoleTemplate:getRoleTemplate', __args__, opts=opts, typ=GetRoleTemplateResult)
     return __ret__.apply(lambda __response__: GetRoleTemplateResult(
         administrative=pulumi.get(__response__, 'administrative'),

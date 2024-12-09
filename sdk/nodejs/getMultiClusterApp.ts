@@ -113,7 +113,7 @@ export interface GetMultiClusterAppResult {
  * });
  * ```
  */
-export function getMultiClusterAppOutput(args: GetMultiClusterAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMultiClusterAppResult> {
+export function getMultiClusterAppOutput(args: GetMultiClusterAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMultiClusterAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getMultiClusterApp:getMultiClusterApp", {
         "name": args.name,
