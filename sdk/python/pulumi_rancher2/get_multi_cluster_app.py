@@ -254,7 +254,7 @@ def get_multi_cluster_app(name: Optional[str] = None,
         template_version_id=pulumi.get(__ret__, 'template_version_id'),
         upgrade_strategies=pulumi.get(__ret__, 'upgrade_strategies'))
 def get_multi_cluster_app_output(name: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMultiClusterAppResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMultiClusterAppResult]:
     """
     Use this data source to retrieve information about a Rancher v2 multi cluster app.
 
@@ -272,7 +272,7 @@ def get_multi_cluster_app_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getMultiClusterApp:getMultiClusterApp', __args__, opts=opts, typ=GetMultiClusterAppResult)
     return __ret__.apply(lambda __response__: GetMultiClusterAppResult(
         annotations=pulumi.get(__response__, 'annotations'),

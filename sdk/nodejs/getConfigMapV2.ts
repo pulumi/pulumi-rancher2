@@ -69,7 +69,7 @@ export interface GetConfigMapV2Result {
 /**
  * Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
  */
-export function getConfigMapV2Output(args: GetConfigMapV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigMapV2Result> {
+export function getConfigMapV2Output(args: GetConfigMapV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigMapV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getConfigMapV2:getConfigMapV2", {
         "clusterId": args.clusterId,

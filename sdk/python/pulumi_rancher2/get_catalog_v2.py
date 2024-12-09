@@ -310,7 +310,7 @@ def get_catalog_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
                           exponential_backoff_min_wait: Optional[pulumi.Input[Optional[int]]] = None,
                           insecure_plain_http: Optional[pulumi.Input[Optional[bool]]] = None,
                           name: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCatalogV2Result]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogV2Result]:
     """
     Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
 
@@ -325,7 +325,7 @@ def get_catalog_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['exponentialBackoffMinWait'] = exponential_backoff_min_wait
     __args__['insecurePlainHttp'] = insecure_plain_http
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getCatalogV2:getCatalogV2', __args__, opts=opts, typ=GetCatalogV2Result)
     return __ret__.apply(lambda __response__: GetCatalogV2Result(
         annotations=pulumi.get(__response__, 'annotations'),

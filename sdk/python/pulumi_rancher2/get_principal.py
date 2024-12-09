@@ -98,7 +98,7 @@ def get_principal(name: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_principal_output(name: Optional[pulumi.Input[str]] = None,
                          type: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrincipalResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrincipalResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Principal resource.
 
@@ -118,7 +118,7 @@ def get_principal_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getPrincipal:getPrincipal', __args__, opts=opts, typ=GetPrincipalResult)
     return __ret__.apply(lambda __response__: GetPrincipalResult(
         id=pulumi.get(__response__, 'id'),
