@@ -115,7 +115,7 @@ export interface GetClusterV2Result {
  * });
  * ```
  */
-export function getClusterV2Output(args: GetClusterV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterV2Result> {
+export function getClusterV2Output(args: GetClusterV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getClusterV2:getClusterV2", {
         "fleetNamespace": args.fleetNamespace,

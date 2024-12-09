@@ -271,7 +271,7 @@ def get_node_template(name: Optional[str] = None,
         use_internal_ip_address=pulumi.get(__ret__, 'use_internal_ip_address'))
 def get_node_template_output(name: Optional[pulumi.Input[str]] = None,
                              use_internal_ip_address: Optional[pulumi.Input[Optional[bool]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTemplateResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeTemplateResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Node Template resource.
 
@@ -291,7 +291,7 @@ def get_node_template_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['useInternalIpAddress'] = use_internal_ip_address
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getNodeTemplate:getNodeTemplate', __args__, opts=opts, typ=GetNodeTemplateResult)
     return __ret__.apply(lambda __response__: GetNodeTemplateResult(
         annotations=pulumi.get(__response__, 'annotations'),

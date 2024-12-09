@@ -97,7 +97,7 @@ export interface GetClusterDriverResult {
  * });
  * ```
  */
-export function getClusterDriverOutput(args: GetClusterDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterDriverResult> {
+export function getClusterDriverOutput(args: GetClusterDriverOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterDriverResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getClusterDriver:getClusterDriver", {
         "name": args.name,

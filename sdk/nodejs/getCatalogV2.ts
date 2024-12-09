@@ -107,7 +107,7 @@ export interface GetCatalogV2Result {
 /**
  * Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
  */
-export function getCatalogV2Output(args: GetCatalogV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogV2Result> {
+export function getCatalogV2Output(args: GetCatalogV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCatalogV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getCatalogV2:getCatalogV2", {
         "clusterId": args.clusterId,

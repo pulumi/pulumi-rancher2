@@ -151,7 +151,7 @@ def get_global_role_binding(global_role_id: Optional[str] = None,
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_global_role_binding_output(global_role_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    name: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalRoleBindingResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGlobalRoleBindingResult]:
     """
     Use this data source to retrieve information about a Rancher v2 global role binding.
 
@@ -172,7 +172,7 @@ def get_global_role_binding_output(global_role_id: Optional[pulumi.Input[Optiona
     __args__ = dict()
     __args__['globalRoleId'] = global_role_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding', __args__, opts=opts, typ=GetGlobalRoleBindingResult)
     return __ret__.apply(lambda __response__: GetGlobalRoleBindingResult(
         annotations=pulumi.get(__response__, 'annotations'),

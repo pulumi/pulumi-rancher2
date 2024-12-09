@@ -109,7 +109,7 @@ export interface GetCatalogResult {
  * });
  * ```
  */
-export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCatalogResult> {
+export function getCatalogOutput(args: GetCatalogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getCatalog:getCatalog", {
         "name": args.name,

@@ -39,7 +39,7 @@ export interface GetPodSecurityAdmissionConfigurationTemplateResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
 }
-export function getPodSecurityAdmissionConfigurationTemplateOutput(args: GetPodSecurityAdmissionConfigurationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPodSecurityAdmissionConfigurationTemplateResult> {
+export function getPodSecurityAdmissionConfigurationTemplateOutput(args: GetPodSecurityAdmissionConfigurationTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPodSecurityAdmissionConfigurationTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", {
         "annotations": args.annotations,

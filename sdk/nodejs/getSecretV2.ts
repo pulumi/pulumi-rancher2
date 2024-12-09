@@ -73,7 +73,7 @@ export interface GetSecretV2Result {
 /**
  * Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.
  */
-export function getSecretV2Output(args: GetSecretV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretV2Result> {
+export function getSecretV2Output(args: GetSecretV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getSecretV2:getSecretV2", {
         "clusterId": args.clusterId,

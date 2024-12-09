@@ -122,7 +122,7 @@ export interface GetNodeTemplateResult {
  * });
  * ```
  */
-export function getNodeTemplateOutput(args: GetNodeTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTemplateResult> {
+export function getNodeTemplateOutput(args: GetNodeTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getNodeTemplate:getNodeTemplate", {
         "name": args.name,
