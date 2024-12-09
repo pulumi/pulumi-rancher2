@@ -173,7 +173,7 @@ def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapp
                                 description: Optional[pulumi.Input[Optional[str]]] = None,
                                 labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                 name: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterTemplateResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterTemplateResult]:
     """
     Use this data source to retrieve information about a Rancher v2 cluster template.
 
@@ -198,7 +198,7 @@ def get_cluster_template_output(annotations: Optional[pulumi.Input[Optional[Mapp
     __args__['description'] = description
     __args__['labels'] = labels
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getClusterTemplate:getClusterTemplate', __args__, opts=opts, typ=GetClusterTemplateResult)
     return __ret__.apply(lambda __response__: GetClusterTemplateResult(
         annotations=pulumi.get(__response__, 'annotations'),

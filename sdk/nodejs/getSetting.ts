@@ -63,7 +63,7 @@ export interface GetSettingResult {
  * });
  * ```
  */
-export function getSettingOutput(args: GetSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSettingResult> {
+export function getSettingOutput(args: GetSettingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSettingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getSetting:getSetting", {
         "name": args.name,

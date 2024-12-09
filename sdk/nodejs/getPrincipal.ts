@@ -65,7 +65,7 @@ export interface GetPrincipalResult {
  * });
  * ```
  */
-export function getPrincipalOutput(args: GetPrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrincipalResult> {
+export function getPrincipalOutput(args: GetPrincipalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrincipalResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getPrincipal:getPrincipal", {
         "name": args.name,

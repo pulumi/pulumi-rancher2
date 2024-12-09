@@ -129,7 +129,7 @@ def get_pod_security_admission_configuration_template(annotations: Optional[Mapp
 def get_pod_security_admission_configuration_template_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                                              labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                                              name: Optional[pulumi.Input[str]] = None,
-                                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPodSecurityAdmissionConfigurationTemplateResult]:
+                                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPodSecurityAdmissionConfigurationTemplateResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -137,7 +137,7 @@ def get_pod_security_admission_configuration_template_output(annotations: Option
     __args__['annotations'] = annotations
     __args__['labels'] = labels
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate', __args__, opts=opts, typ=GetPodSecurityAdmissionConfigurationTemplateResult)
     return __ret__.apply(lambda __response__: GetPodSecurityAdmissionConfigurationTemplateResult(
         annotations=pulumi.get(__response__, 'annotations'),

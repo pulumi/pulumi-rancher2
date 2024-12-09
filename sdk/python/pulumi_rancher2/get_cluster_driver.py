@@ -202,7 +202,7 @@ def get_cluster_driver(name: Optional[str] = None,
         whitelist_domains=pulumi.get(__ret__, 'whitelist_domains'))
 def get_cluster_driver_output(name: Optional[pulumi.Input[str]] = None,
                               url: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterDriverResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterDriverResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Cluster Driver resource.
 
@@ -222,7 +222,7 @@ def get_cluster_driver_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['url'] = url
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getClusterDriver:getClusterDriver', __args__, opts=opts, typ=GetClusterDriverResult)
     return __ret__.apply(lambda __response__: GetClusterDriverResult(
         active=pulumi.get(__response__, 'active'),

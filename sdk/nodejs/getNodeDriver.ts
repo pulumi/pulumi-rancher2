@@ -101,7 +101,7 @@ export interface GetNodeDriverResult {
  * });
  * ```
  */
-export function getNodeDriverOutput(args: GetNodeDriverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeDriverResult> {
+export function getNodeDriverOutput(args: GetNodeDriverOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeDriverResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getNodeDriver:getNodeDriver", {
         "name": args.name,

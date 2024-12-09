@@ -180,7 +180,7 @@ def get_user(is_external: Optional[bool] = None,
 def get_user_output(is_external: Optional[pulumi.Input[Optional[bool]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     username: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Use this data source to retrieve information about a Rancher v2 user
 
@@ -202,7 +202,7 @@ def get_user_output(is_external: Optional[pulumi.Input[Optional[bool]]] = None,
     __args__['isExternal'] = is_external
     __args__['name'] = name
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
         annotations=pulumi.get(__response__, 'annotations'),
