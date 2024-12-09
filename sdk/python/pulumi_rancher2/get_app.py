@@ -248,7 +248,7 @@ def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]
                    name: Optional[pulumi.Input[str]] = None,
                    project_id: Optional[pulumi.Input[str]] = None,
                    target_namespace: Optional[pulumi.Input[Optional[str]]] = None,
-                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppResult]:
+                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppResult]:
     """
     Use this data source to retrieve information about a Rancher v2 app.
 
@@ -274,7 +274,7 @@ def get_app_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, str]
     __args__['name'] = name
     __args__['projectId'] = project_id
     __args__['targetNamespace'] = target_namespace
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getApp:getApp', __args__, opts=opts, typ=GetAppResult)
     return __ret__.apply(lambda __response__: GetAppResult(
         annotations=pulumi.get(__response__, 'annotations'),

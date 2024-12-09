@@ -97,7 +97,7 @@ export interface GetClusterRoleTemplateBindingResult {
  * });
  * ```
  */
-export function getClusterRoleTemplateBindingOutput(args: GetClusterRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterRoleTemplateBindingResult> {
+export function getClusterRoleTemplateBindingOutput(args: GetClusterRoleTemplateBindingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterRoleTemplateBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", {
         "clusterId": args.clusterId,

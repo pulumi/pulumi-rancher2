@@ -206,7 +206,7 @@ def get_storage_class_v2(cluster_id: Optional[str] = None,
         volume_binding_mode=pulumi.get(__ret__, 'volume_binding_mode'))
 def get_storage_class_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                 name: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageClassV2Result]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageClassV2Result]:
     """
     Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
 
@@ -217,7 +217,7 @@ def get_storage_class_v2_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getStorageClassV2:getStorageClassV2', __args__, opts=opts, typ=GetStorageClassV2Result)
     return __ret__.apply(lambda __response__: GetStorageClassV2Result(
         allow_volume_expansion=pulumi.get(__response__, 'allow_volume_expansion'),

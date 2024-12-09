@@ -120,7 +120,7 @@ export interface GetAppResult {
  * });
  * ```
  */
-export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
+export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getApp:getApp", {
         "annotations": args.annotations,

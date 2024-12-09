@@ -191,7 +191,7 @@ def get_cluster_role_template_binding(cluster_id: Optional[str] = None,
 def get_cluster_role_template_binding_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                              name: Optional[pulumi.Input[str]] = None,
                                              role_template_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterRoleTemplateBindingResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterRoleTemplateBindingResult]:
     """
     Use this data source to retrieve information about a Rancher v2 cluster role template binding.
 
@@ -214,7 +214,7 @@ def get_cluster_role_template_binding_output(cluster_id: Optional[pulumi.Input[s
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
     __args__['roleTemplateId'] = role_template_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding', __args__, opts=opts, typ=GetClusterRoleTemplateBindingResult)
     return __ret__.apply(lambda __response__: GetClusterRoleTemplateBindingResult(
         annotations=pulumi.get(__response__, 'annotations'),
