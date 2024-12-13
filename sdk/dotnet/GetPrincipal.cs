@@ -58,6 +58,30 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetPrincipalResult> Invoke(GetPrincipalInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Principal resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetPrincipal.Invoke(new()
+        ///     {
+        ///         Name = "user@example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPrincipalResult> Invoke(GetPrincipalInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrincipalResult>("rancher2:index/getPrincipal:getPrincipal", args ?? new GetPrincipalInvokeArgs(), options.WithDefaults());
     }
 
 

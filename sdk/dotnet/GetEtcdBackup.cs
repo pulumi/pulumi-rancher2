@@ -60,6 +60,31 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetEtcdBackupResult> Invoke(GetEtcdBackupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 etcd backup.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetEtcdBackup.Invoke(new()
+        ///     {
+        ///         ClusterId = "&lt;CLUSTER_ID&gt;",
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEtcdBackupResult> Invoke(GetEtcdBackupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEtcdBackupResult>("rancher2:index/getEtcdBackup:getEtcdBackup", args ?? new GetEtcdBackupInvokeArgs(), options.WithDefaults());
     }
 
 

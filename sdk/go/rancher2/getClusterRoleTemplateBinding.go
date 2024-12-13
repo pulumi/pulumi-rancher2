@@ -81,21 +81,11 @@ type LookupClusterRoleTemplateBindingResult struct {
 }
 
 func LookupClusterRoleTemplateBindingOutput(ctx *pulumi.Context, args LookupClusterRoleTemplateBindingOutputArgs, opts ...pulumi.InvokeOption) LookupClusterRoleTemplateBindingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupClusterRoleTemplateBindingResultOutput, error) {
 			args := v.(LookupClusterRoleTemplateBindingArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupClusterRoleTemplateBindingResult
-			secret, err := ctx.InvokePackageRaw("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", args, &rv, "", opts...)
-			if err != nil {
-				return LookupClusterRoleTemplateBindingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupClusterRoleTemplateBindingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupClusterRoleTemplateBindingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding", args, LookupClusterRoleTemplateBindingResultOutput{}, options).(LookupClusterRoleTemplateBindingResultOutput), nil
 		}).(LookupClusterRoleTemplateBindingResultOutput)
 }
 

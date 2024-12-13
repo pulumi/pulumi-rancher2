@@ -16,6 +16,9 @@ namespace Pulumi.Rancher2
 
         public static Output<GetPodSecurityAdmissionConfigurationTemplateResult> Invoke(GetPodSecurityAdmissionConfigurationTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPodSecurityAdmissionConfigurationTemplateResult>("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", args ?? new GetPodSecurityAdmissionConfigurationTemplateInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetPodSecurityAdmissionConfigurationTemplateResult> Invoke(GetPodSecurityAdmissionConfigurationTemplateInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPodSecurityAdmissionConfigurationTemplateResult>("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", args ?? new GetPodSecurityAdmissionConfigurationTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

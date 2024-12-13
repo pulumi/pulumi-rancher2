@@ -73,21 +73,11 @@ type LookupCatalogV2Result struct {
 }
 
 func LookupCatalogV2Output(ctx *pulumi.Context, args LookupCatalogV2OutputArgs, opts ...pulumi.InvokeOption) LookupCatalogV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCatalogV2ResultOutput, error) {
 			args := v.(LookupCatalogV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupCatalogV2Result
-			secret, err := ctx.InvokePackageRaw("rancher2:index/getCatalogV2:getCatalogV2", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCatalogV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCatalogV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCatalogV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("rancher2:index/getCatalogV2:getCatalogV2", args, LookupCatalogV2ResultOutput{}, options).(LookupCatalogV2ResultOutput), nil
 		}).(LookupCatalogV2ResultOutput)
 }
 
