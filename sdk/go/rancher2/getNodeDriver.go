@@ -83,21 +83,11 @@ type LookupNodeDriverResult struct {
 }
 
 func LookupNodeDriverOutput(ctx *pulumi.Context, args LookupNodeDriverOutputArgs, opts ...pulumi.InvokeOption) LookupNodeDriverResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNodeDriverResultOutput, error) {
 			args := v.(LookupNodeDriverArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupNodeDriverResult
-			secret, err := ctx.InvokePackageRaw("rancher2:index/getNodeDriver:getNodeDriver", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNodeDriverResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNodeDriverResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNodeDriverResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("rancher2:index/getNodeDriver:getNodeDriver", args, LookupNodeDriverResultOutput{}, options).(LookupNodeDriverResultOutput), nil
 		}).(LookupNodeDriverResultOutput)
 }
 

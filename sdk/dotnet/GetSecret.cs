@@ -108,6 +108,55 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 secret.
+        /// 
+        /// Depending of the availability, there are 2 types of Rancher v2 secrets:
+        /// - Project secret: Available to all namespaces in the `project_id`
+        /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve a rancher2 Project Secret
+        ///     var foo = Rancher2.GetSecret.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve a rancher2 Namespaced Secret
+        ///     var foo = Rancher2.GetSecret.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretResult>("rancher2:index/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
     }
 
 

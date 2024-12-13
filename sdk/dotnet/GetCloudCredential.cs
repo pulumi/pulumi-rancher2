@@ -58,6 +58,30 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetCloudCredentialResult> Invoke(GetCloudCredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Cloud Credential.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Rancher2.GetCloudCredential.Invoke(new()
+        ///     {
+        ///         Name = "test",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCloudCredentialResult> Invoke(GetCloudCredentialInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCloudCredentialResult>("rancher2:index/getCloudCredential:getCloudCredential", args ?? new GetCloudCredentialInvokeArgs(), options.WithDefaults());
     }
 
 

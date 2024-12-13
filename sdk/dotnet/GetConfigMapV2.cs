@@ -22,6 +22,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetConfigMapV2Result> Invoke(GetConfigMapV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.
+        /// </summary>
+        public static Output<GetConfigMapV2Result> Invoke(GetConfigMapV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConfigMapV2Result>("rancher2:index/getConfigMapV2:getConfigMapV2", args ?? new GetConfigMapV2InvokeArgs(), options.WithDefaults());
     }
 
 

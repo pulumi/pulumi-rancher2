@@ -60,6 +60,31 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetClusterV2Result> Invoke(GetClusterV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 cluster.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetClusterV2.Invoke(new()
+        ///     {
+        ///         Name = "foo",
+        ///         FleetNamespace = "fleet-ns",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClusterV2Result> Invoke(GetClusterV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterV2Result>("rancher2:index/getClusterV2:getClusterV2", args ?? new GetClusterV2InvokeArgs(), options.WithDefaults());
     }
 
 

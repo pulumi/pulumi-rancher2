@@ -60,6 +60,31 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetNodePoolResult> Invoke(GetNodePoolInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 Node Pool resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetNodePool.Invoke(new()
+        ///     {
+        ///         ClusterId = foo_custom.Id,
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNodePoolResult> Invoke(GetNodePoolInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodePoolResult>("rancher2:index/getNodePool:getNodePool", args ?? new GetNodePoolInvokeArgs(), options.WithDefaults());
     }
 
 

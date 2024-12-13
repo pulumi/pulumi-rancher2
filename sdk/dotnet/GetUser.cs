@@ -58,6 +58,30 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("rancher2:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 user
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetUser.Invoke(new()
+        ///     {
+        ///         Username = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("rancher2:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
 
 

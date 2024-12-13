@@ -58,6 +58,30 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetSettingResult> Invoke(GetSettingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 setting.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var server_image = Rancher2.GetSetting.Invoke(new()
+        ///     {
+        ///         Name = "server-image",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSettingResult> Invoke(GetSettingInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSettingResult>("rancher2:index/getSetting:getSetting", args ?? new GetSettingInvokeArgs(), options.WithDefaults());
     }
 
 
