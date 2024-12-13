@@ -91,21 +91,11 @@ type LookupRoleTemplateResult struct {
 }
 
 func LookupRoleTemplateOutput(ctx *pulumi.Context, args LookupRoleTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupRoleTemplateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRoleTemplateResultOutput, error) {
 			args := v.(LookupRoleTemplateArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRoleTemplateResult
-			secret, err := ctx.InvokePackageRaw("rancher2:index/getRoleTemplate:getRoleTemplate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRoleTemplateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRoleTemplateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRoleTemplateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("rancher2:index/getRoleTemplate:getRoleTemplate", args, LookupRoleTemplateResultOutput{}, options).(LookupRoleTemplateResultOutput), nil
 		}).(LookupRoleTemplateResultOutput)
 }
 

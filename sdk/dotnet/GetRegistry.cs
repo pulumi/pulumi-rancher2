@@ -108,6 +108,55 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetRegistryResult> Invoke(GetRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("rancher2:index/getRegistry:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher v2 docker registry.
+        /// 
+        /// Depending of the availability, there are 2 types of Rancher v2 docker registries:
+        /// - Project registry: Available to all namespaces in the `project_id`
+        /// - Namespaced registry: Available to just `namespace_id` in the `project_id`
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve a rancher2 Project Registry
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Retrieve a rancher2 Namespaced Registry
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///         NamespaceId = "&lt;namespace_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegistryResult> Invoke(GetRegistryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("rancher2:index/getRegistry:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithDefaults());
     }
 
 

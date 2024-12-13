@@ -74,21 +74,11 @@ type LookupGlobalRoleBindingResult struct {
 }
 
 func LookupGlobalRoleBindingOutput(ctx *pulumi.Context, args LookupGlobalRoleBindingOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalRoleBindingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGlobalRoleBindingResultOutput, error) {
 			args := v.(LookupGlobalRoleBindingArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupGlobalRoleBindingResult
-			secret, err := ctx.InvokePackageRaw("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args, &rv, "", opts...)
-			if err != nil {
-				return LookupGlobalRoleBindingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupGlobalRoleBindingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupGlobalRoleBindingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args, LookupGlobalRoleBindingResultOutput{}, options).(LookupGlobalRoleBindingResultOutput), nil
 		}).(LookupGlobalRoleBindingResultOutput)
 }
 

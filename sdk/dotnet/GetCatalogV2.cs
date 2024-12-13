@@ -22,6 +22,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetCatalogV2Result> Invoke(GetCatalogV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.
+        /// </summary>
+        public static Output<GetCatalogV2Result> Invoke(GetCatalogV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCatalogV2Result>("rancher2:index/getCatalogV2:getCatalogV2", args ?? new GetCatalogV2InvokeArgs(), options.WithDefaults());
     }
 
 

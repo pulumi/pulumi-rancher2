@@ -22,6 +22,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         public static Output<GetStorageClassV2Result> Invoke(GetStorageClassV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to retrieve information about a Rancher2 Storage Class v2. Storage Class v2 resource is available at Rancher v2.5.x and above.
+        /// </summary>
+        public static Output<GetStorageClassV2Result> Invoke(GetStorageClassV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStorageClassV2Result>("rancher2:index/getStorageClassV2:getStorageClassV2", args ?? new GetStorageClassV2InvokeArgs(), options.WithDefaults());
     }
 
 

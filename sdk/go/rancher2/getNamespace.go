@@ -76,21 +76,11 @@ type LookupNamespaceResult struct {
 }
 
 func LookupNamespaceOutput(ctx *pulumi.Context, args LookupNamespaceOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamespaceResultOutput, error) {
 			args := v.(LookupNamespaceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupNamespaceResult
-			secret, err := ctx.InvokePackageRaw("rancher2:index/getNamespace:getNamespace", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNamespaceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNamespaceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNamespaceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("rancher2:index/getNamespace:getNamespace", args, LookupNamespaceResultOutput{}, options).(LookupNamespaceResultOutput), nil
 		}).(LookupNamespaceResultOutput)
 }
 
