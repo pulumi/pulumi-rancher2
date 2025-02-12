@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rancher2.NewGlobalRoleBinding(ctx, "foo-login", &rancher2.GlobalRoleBindingArgs{
+//			foo_login, err := rancher2.NewGlobalRoleBinding(ctx, "foo-login", &rancher2.GlobalRoleBindingArgs{
 //				Name:         pulumi.String("foo-login-binding"),
 //				GlobalRoleId: pulumi.String("user-base"),
 //				UserId:       foo.ID(),

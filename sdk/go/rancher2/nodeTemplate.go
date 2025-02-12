@@ -127,7 +127,7 @@ import (
 //				return err
 //			}
 //			// Create a new Cloud Credential for an imported Harvester cluster
-//			_, err = rancher2.NewCloudCredential(ctx, "foo-harvester", &rancher2.CloudCredentialArgs{
+//			foo_harvesterCloudCredential, err := rancher2.NewCloudCredential(ctx, "foo-harvester", &rancher2.CloudCredentialArgs{
 //				Name: pulumi.String("foo-harvester"),
 //				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
 //					ClusterId:         pulumi.String(foo_harvester.ClusterV1Id),

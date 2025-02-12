@@ -69,7 +69,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Cluster
-//			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//			foo_custom, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
 //				Name:        pulumi.String("foo-custom"),
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{

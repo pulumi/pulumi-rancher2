@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const server-image = rancher2.getSetting({
+ * const server_image = rancher2.getSetting({
  *     name: "server-image",
  * });
  * ```
@@ -58,7 +58,7 @@ export interface GetSettingResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const server-image = rancher2.getSetting({
+ * const server_image = rancher2.getSetting({
  *     name: "server-image",
  * });
  * ```
