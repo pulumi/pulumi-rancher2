@@ -95,7 +95,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 RKE Cluster
-//			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//			foo_custom, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
 //				Name:        pulumi.String("foo-custom"),
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
@@ -108,14 +108,14 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Cluster Sync for foo-custom cluster
-//			_, err = rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
+//			foo_customClusterSync, err := rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
 //				ClusterId: foo_custom.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new rancher2 Namespace
-//			_, err = rancher2.NewNamespace(ctx, "foo-istio", &rancher2.NamespaceArgs{
+//			foo_istio, err := rancher2.NewNamespace(ctx, "foo-istio", &rancher2.NamespaceArgs{
 //				Name:        pulumi.String("istio-system"),
 //				ProjectId:   foo_customClusterSync.SystemProjectId,
 //				Description: pulumi.String("istio namespace"),
@@ -197,7 +197,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 RKE Cluster
-//			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//			foo_custom, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
 //				Name:        pulumi.String("foo-custom"),
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
@@ -700,7 +700,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewCloudCredential(ctx, "foo-aks", &rancher2.CloudCredentialArgs{
+//			foo_aks, err := rancher2.NewCloudCredential(ctx, "foo-aks", &rancher2.CloudCredentialArgs{
 //				Name: pulumi.String("foo-aks"),
 //				AzureCredentialConfig: &rancher2.CloudCredentialAzureCredentialConfigArgs{
 //					ClientId:       pulumi.String("<client-id>"),

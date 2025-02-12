@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo-custom = rancher2.getCluster({
+ * const foo_custom = rancher2.getCluster({
  *     name: "foo-custom",
  * });
  * ```
@@ -167,7 +167,7 @@ export interface GetClusterResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as rancher2 from "@pulumi/rancher2";
  *
- * const foo-custom = rancher2.getCluster({
+ * const foo_custom = rancher2.getCluster({
  *     name: "foo-custom",
  * });
  * ```
