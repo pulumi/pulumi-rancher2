@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Get imported harvester cluster info
- * const foo-harvester = rancher2.getClusterV2({
+ * const foo_harvester = rancher2.getClusterV2({
  *     name: "foo-harvester",
  * });
  * // Create a new Cloud Credential for an imported Harvester cluster

@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 rke Cluster
-//			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//			foo_custom, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
 //				Name:        pulumi.String("foo-custom"),
 //				Description: pulumi.String("Foo rancher2 custom cluster"),
 //				RkeConfig: &rancher2.ClusterRkeConfigArgs{
@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			// Create a new rancher2 Cluster Sync
-//			_, err = rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
+//			foo_customClusterSync, err := rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
 //				ClusterId: foo_custom.ID(),
 //				NodePoolIds: pulumi.StringArray{
 //					fooNodePool.ID(),
