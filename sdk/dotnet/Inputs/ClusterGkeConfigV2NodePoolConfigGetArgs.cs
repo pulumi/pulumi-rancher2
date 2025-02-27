@@ -72,6 +72,12 @@ namespace Pulumi.Rancher2.Inputs
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
+        /// <summary>
+        /// The GKE node config service account
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 

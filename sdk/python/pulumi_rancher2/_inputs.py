@@ -7293,6 +7293,10 @@ if not MYPY:
         """
         Enable GKE node config preemptible
         """
+        service_account: NotRequired[pulumi.Input[str]]
+        """
+        The GKE node config service account
+        """
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         The GKE node config tags
@@ -7315,6 +7319,7 @@ class ClusterGkeConfigV2NodePoolConfigArgs:
                  machine_type: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterGkeConfigV2NodePoolConfigTaintArgs']]]] = None):
         """
@@ -7326,6 +7331,7 @@ class ClusterGkeConfigV2NodePoolConfigArgs:
         :param pulumi.Input[str] machine_type: The GKE node config machine type
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: The GKE node config oauth scopes
         :param pulumi.Input[bool] preemptible: Enable GKE node config preemptible
+        :param pulumi.Input[str] service_account: The GKE node config service account
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The GKE node config tags
         :param pulumi.Input[Sequence[pulumi.Input['ClusterGkeConfigV2NodePoolConfigTaintArgs']]] taints: The GKE node config taints
         """
@@ -7345,6 +7351,8 @@ class ClusterGkeConfigV2NodePoolConfigArgs:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -7445,6 +7453,18 @@ class ClusterGkeConfigV2NodePoolConfigArgs:
     @preemptible.setter
     def preemptible(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preemptible", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GKE node config service account
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
 
     @property
     @pulumi.getter

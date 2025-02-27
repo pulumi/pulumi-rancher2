@@ -58,6 +58,11 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
      */
     private @Nullable Boolean preemptible;
     /**
+     * @return The GKE node config service account
+     * 
+     */
+    private @Nullable String serviceAccount;
+    /**
      * @return The GKE node config tags
      * 
      */
@@ -126,6 +131,13 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
         return Optional.ofNullable(this.preemptible);
     }
     /**
+     * @return The GKE node config service account
+     * 
+     */
+    public Optional<String> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+    /**
      * @return The GKE node config tags
      * 
      */
@@ -157,6 +169,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
         private @Nullable String machineType;
         private List<String> oauthScopes;
         private @Nullable Boolean preemptible;
+        private @Nullable String serviceAccount;
         private List<String> tags;
         private @Nullable List<GetClusterGkeConfigV2NodePoolConfigTaint> taints;
         public Builder() {}
@@ -170,6 +183,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
     	      this.machineType = defaults.machineType;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
+    	      this.serviceAccount = defaults.serviceAccount;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
         }
@@ -230,6 +244,12 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAccount(@Nullable String serviceAccount) {
+
+            this.serviceAccount = serviceAccount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetClusterGkeConfigV2NodePoolConfig", "tags");
@@ -259,6 +279,7 @@ public final class GetClusterGkeConfigV2NodePoolConfig {
             _resultValue.machineType = machineType;
             _resultValue.oauthScopes = oauthScopes;
             _resultValue.preemptible = preemptible;
+            _resultValue.serviceAccount = serviceAccount;
             _resultValue.tags = tags;
             _resultValue.taints = taints;
             return _resultValue;
