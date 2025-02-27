@@ -141,6 +141,21 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
     }
 
     /**
+     * The GKE node config service account
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return The GKE node config service account
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
+    /**
      * The GKE node config tags
      * 
      */
@@ -181,6 +196,7 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
         this.machineType = $.machineType;
         this.oauthScopes = $.oauthScopes;
         this.preemptible = $.preemptible;
+        this.serviceAccount = $.serviceAccount;
         this.tags = $.tags;
         this.taints = $.taints;
     }
@@ -379,6 +395,27 @@ public final class ClusterGkeConfigV2NodePoolConfigArgs extends com.pulumi.resou
          */
         public Builder preemptible(Boolean preemptible) {
             return preemptible(Output.of(preemptible));
+        }
+
+        /**
+         * @param serviceAccount The GKE node config service account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount The GKE node config service account
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         /**

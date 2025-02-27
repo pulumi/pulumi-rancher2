@@ -1420,6 +1420,10 @@ export interface ClusterGkeConfigV2NodePoolConfig {
      */
     preemptible?: pulumi.Input<boolean>;
     /**
+     * The GKE node config service account
+     */
+    serviceAccount?: pulumi.Input<string>;
+    /**
      * The GKE node config tags
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;

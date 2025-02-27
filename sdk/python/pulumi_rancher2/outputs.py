@@ -5384,6 +5384,8 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
             suggest = "machine_type"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
+        elif key == "serviceAccount":
+            suggest = "service_account"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterGkeConfigV2NodePoolConfig. Access the value via the '{suggest}' property getter instead.")
@@ -5405,6 +5407,7 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
                  machine_type: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  preemptible: Optional[bool] = None,
+                 service_account: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.ClusterGkeConfigV2NodePoolConfigTaint']] = None):
         """
@@ -5416,6 +5419,7 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
         :param str machine_type: The GKE node config machine type
         :param Sequence[str] oauth_scopes: The GKE node config oauth scopes
         :param bool preemptible: Enable GKE node config preemptible
+        :param str service_account: The GKE node config service account
         :param Sequence[str] tags: The GKE node config tags
         :param Sequence['ClusterGkeConfigV2NodePoolConfigTaintArgs'] taints: The GKE node config taints
         """
@@ -5435,6 +5439,8 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -5503,6 +5509,14 @@ class ClusterGkeConfigV2NodePoolConfig(dict):
         Enable GKE node config preemptible
         """
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[str]:
+        """
+        The GKE node config service account
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter
@@ -32571,6 +32585,7 @@ class GetClusterGkeConfigV2NodePoolConfigResult(dict):
                  local_ssd_count: Optional[int] = None,
                  machine_type: Optional[str] = None,
                  preemptible: Optional[bool] = None,
+                 service_account: Optional[str] = None,
                  taints: Optional[Sequence['outputs.GetClusterGkeConfigV2NodePoolConfigTaintResult']] = None):
         """
         :param Mapping[str, str] labels: (Computed) Labels for Node Pool object (map)
@@ -32582,6 +32597,7 @@ class GetClusterGkeConfigV2NodePoolConfigResult(dict):
         :param int local_ssd_count: The GKE node config local ssd count
         :param str machine_type: The GKE node config machine type
         :param bool preemptible: Enable GKE node config preemptible
+        :param str service_account: The GKE node config service account
         :param Sequence['GetClusterGkeConfigV2NodePoolConfigTaintArgs'] taints: The GKE node config taints
         """
         pulumi.set(__self__, "labels", labels)
@@ -32599,6 +32615,8 @@ class GetClusterGkeConfigV2NodePoolConfigResult(dict):
             pulumi.set(__self__, "machine_type", machine_type)
         if preemptible is not None:
             pulumi.set(__self__, "preemptible", preemptible)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
 
@@ -32673,6 +32691,14 @@ class GetClusterGkeConfigV2NodePoolConfigResult(dict):
         Enable GKE node config preemptible
         """
         return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[str]:
+        """
+        The GKE node config service account
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter

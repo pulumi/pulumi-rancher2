@@ -46,6 +46,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Preemptible;
         /// <summary>
+        /// The GKE node config service account
+        /// </summary>
+        public readonly string? ServiceAccount;
+        /// <summary>
         /// The GKE node config tags
         /// </summary>
         public readonly ImmutableArray<string> Tags;
@@ -72,6 +76,8 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? preemptible,
 
+            string? serviceAccount,
+
             ImmutableArray<string> tags,
 
             ImmutableArray<Outputs.GetClusterGkeConfigV2NodePoolConfigTaintResult> taints)
@@ -84,6 +90,7 @@ namespace Pulumi.Rancher2.Outputs
             MachineType = machineType;
             OauthScopes = oauthScopes;
             Preemptible = preemptible;
+            ServiceAccount = serviceAccount;
             Tags = tags;
             Taints = taints;
         }

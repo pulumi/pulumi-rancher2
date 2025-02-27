@@ -1420,6 +1420,10 @@ export interface ClusterGkeConfigV2NodePoolConfig {
      */
     preemptible?: boolean;
     /**
+     * The GKE node config service account
+     */
+    serviceAccount?: string;
+    /**
      * The GKE node config tags
      */
     tags: string[];
@@ -6453,6 +6457,10 @@ export interface GetClusterGkeConfigV2NodePoolConfig {
      * Enable GKE node config preemptible
      */
     preemptible?: boolean;
+    /**
+     * The GKE node config service account
+     */
+    serviceAccount?: string;
     /**
      * The GKE node config tags
      */

@@ -57,6 +57,11 @@ public final class ClusterGkeConfigV2NodePoolConfig {
      */
     private @Nullable Boolean preemptible;
     /**
+     * @return The GKE node config service account
+     * 
+     */
+    private @Nullable String serviceAccount;
+    /**
      * @return The GKE node config tags
      * 
      */
@@ -125,6 +130,13 @@ public final class ClusterGkeConfigV2NodePoolConfig {
         return Optional.ofNullable(this.preemptible);
     }
     /**
+     * @return The GKE node config service account
+     * 
+     */
+    public Optional<String> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+    /**
      * @return The GKE node config tags
      * 
      */
@@ -156,6 +168,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
         private @Nullable String machineType;
         private @Nullable List<String> oauthScopes;
         private @Nullable Boolean preemptible;
+        private @Nullable String serviceAccount;
         private @Nullable List<String> tags;
         private @Nullable List<ClusterGkeConfigV2NodePoolConfigTaint> taints;
         public Builder() {}
@@ -169,6 +182,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
     	      this.machineType = defaults.machineType;
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
+    	      this.serviceAccount = defaults.serviceAccount;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
         }
@@ -225,6 +239,12 @@ public final class ClusterGkeConfigV2NodePoolConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceAccount(@Nullable String serviceAccount) {
+
+            this.serviceAccount = serviceAccount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
 
             this.tags = tags;
@@ -252,6 +272,7 @@ public final class ClusterGkeConfigV2NodePoolConfig {
             _resultValue.machineType = machineType;
             _resultValue.oauthScopes = oauthScopes;
             _resultValue.preemptible = preemptible;
+            _resultValue.serviceAccount = serviceAccount;
             _resultValue.tags = tags;
             _resultValue.taints = taints;
             return _resultValue;
