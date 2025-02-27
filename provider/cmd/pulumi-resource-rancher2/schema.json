@@ -2141,6 +2141,10 @@
                     "type": "boolean",
                     "description": "Enable GKE node config preemptible\n"
                 },
+                "serviceAccount": {
+                    "type": "string",
+                    "description": "The GKE node config service account\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -12955,6 +12959,10 @@
                 "preemptible": {
                     "type": "boolean",
                     "description": "Enable GKE node config preemptible\n"
+                },
+                "serviceAccount": {
+                    "type": "string",
+                    "description": "The GKE node config service account\n"
                 },
                 "tags": {
                     "type": "array",
