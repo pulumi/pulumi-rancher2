@@ -81,7 +81,7 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.104.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.104.1-0.20250313133841-de5510662e1c
 	github.com/pulumi/pulumi/sdk/v3 v3.153.1
 	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20250227212022-149a0fabe988
 )
