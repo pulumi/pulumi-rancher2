@@ -190,10 +190,10 @@ import javax.annotation.Nullable;
  *             .templateVersion("0.1.1")
  *             .targetNamespace(foo_istio.id())
  *             .answers(Map.ofEntries(
- *                 Map.entry("certmanager.enabled", false),
- *                 Map.entry("enableCRDs", true),
- *                 Map.entry("galley.enabled", true),
- *                 Map.entry("gateways.enabled", false),
+ *                 Map.entry("certmanager.enabled", "false"),
+ *                 Map.entry("enableCRDs", "true"),
+ *                 Map.entry("galley.enabled", "true"),
+ *                 Map.entry("gateways.enabled", "false"),
  *                 Map.entry("gateways.istio-ingressgateway.resources.limits.cpu", "2000m"),
  *                 Map.entry("gateways.istio-ingressgateway.resources.limits.memory", "1024Mi"),
  *                 Map.entry("gateways.istio-ingressgateway.resources.requests.cpu", "100m"),
@@ -213,17 +213,17 @@ import javax.annotation.Nullable;
  *                 Map.entry("mixer.telemetry.resources.limits.memory", "4096Mi"),
  *                 Map.entry("mixer.telemetry.resources.requests.cpu", "1000m"),
  *                 Map.entry("mixer.telemetry.resources.requests.memory", "1024Mi"),
- *                 Map.entry("mtls.enabled", false),
- *                 Map.entry("nodeagent.enabled", false),
- *                 Map.entry("pilot.enabled", true),
+ *                 Map.entry("mtls.enabled", "false"),
+ *                 Map.entry("nodeagent.enabled", "false"),
+ *                 Map.entry("pilot.enabled", "true"),
  *                 Map.entry("pilot.resources.limits.cpu", "1000m"),
  *                 Map.entry("pilot.resources.limits.memory", "4096Mi"),
  *                 Map.entry("pilot.resources.requests.cpu", "500m"),
  *                 Map.entry("pilot.resources.requests.memory", "2048Mi"),
  *                 Map.entry("pilot.traceSampling", "1"),
- *                 Map.entry("security.enabled", true),
- *                 Map.entry("sidecarInjectorWebhook.enabled", true),
- *                 Map.entry("tracing.enabled", true),
+ *                 Map.entry("security.enabled", "true"),
+ *                 Map.entry("sidecarInjectorWebhook.enabled", "true"),
+ *                 Map.entry("tracing.enabled", "true"),
  *                 Map.entry("tracing.jaeger.resources.limits.cpu", "500m"),
  *                 Map.entry("tracing.jaeger.resources.limits.memory", "1024Mi"),
  *                 Map.entry("tracing.jaeger.resources.requests.cpu", "100m"),
@@ -379,7 +379,7 @@ import javax.annotation.Nullable;
  *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()
  *             .name("foo")
  *             .clusterTemplateId(foo.id())
- *             .clusterTemplateRevisionId(foo.templateRevisions().applyValue(templateRevisions -> templateRevisions[0].id()))
+ *             .clusterTemplateRevisionId(foo.templateRevisions().applyValue(_templateRevisions -> _templateRevisions[0].id()))
  *             .build());
  * 
  *     }
