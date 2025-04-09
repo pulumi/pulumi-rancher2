@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .answers(Map.ofEntries(
  *                 Map.entry("ingress_host", "test.xip.io"),
  *                 Map.entry("foo", "bar"),
- *                 Map.entry("ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true)
+ *                 Map.entry("ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", "true")
  *             ))
  *             .build());
  * 
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .answers(Map.ofEntries(
  *                 Map.entry("ingress_host", "test.xip.io"),
  *                 Map.entry("foo", "bar"),
- *                 Map.entry("ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", true)
+ *                 Map.entry("ingress.annotations.nginx.ingress.kubernetes.io/force-ssl-redirect", "true")
  *             ))
  *             .build());
  * 
