@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Francher2.svg)](https://www.npmjs.com/package/@pulumi/rancher2)
 [![Python version](https://badge.fury.io/py/pulumi-rancher2.svg)](https://pypi.org/project/pulumi-rancher2)
 [![NuGet version](https://badge.fury.io/nu/pulumi.rancher2.svg)](https://badge.fury.io/nu/pulumi.rancher2)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-rancher2/sdk/v6/go)](https://pkg.go.dev/github.com/pulumi/pulumi-rancher2/sdk/v6/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-rancher2/sdk/v9/go)](https://pkg.go.dev/github.com/pulumi/pulumi-rancher2/sdk/v9/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-rancher2/blob/master/LICENSE)
 
 # Rancher2 Resource Provider
@@ -35,7 +35,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-rancher2/sdk/v5
+    $ go get github.com/pulumi/pulumi-rancher2/sdk/v9
 
 ### .NET
 
