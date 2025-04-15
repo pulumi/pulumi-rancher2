@@ -12,10 +12,7 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2_bootstrap
- * const admin = new rancher2.Bootstrap("admin", {
- *     password: "blahblah",
- *     telemetry: true,
- * });
+ * const admin = new rancher2.Bootstrap("admin", {password: "blahblah"});
  * ```
  *
  * ```typescript
@@ -26,7 +23,6 @@ import * as utilities from "./utilities";
  * const admin = new rancher2.Bootstrap("admin", {
  *     initialPassword: "<INSTALL_PASSWORD>",
  *     password: "blahblah",
- *     telemetry: true,
  * });
  * ```
  *
@@ -35,10 +31,7 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * // Create a new rancher2_bootstrap using bootstrap provider config
- * const admin = new rancher2.Bootstrap("admin", {
- *     password: "blahblah",
- *     telemetry: true,
- * });
+ * const admin = new rancher2.Bootstrap("admin", {password: "blahblah"});
  * ```
  */
 export class Bootstrap extends pulumi.CustomResource {
@@ -81,10 +74,6 @@ export class Bootstrap extends pulumi.CustomResource {
      * Password for Admin user or random generated if empty (string)
      */
     public readonly password!: pulumi.Output<string>;
-    /**
-     * Send telemetry anonymous data. Default: `false` (bool)
-     */
-    public readonly telemetry!: pulumi.Output<boolean | undefined>;
     /**
      * (Computed) Generated API temporary token as helper. Should be empty (string)
      */
@@ -138,7 +127,6 @@ export class Bootstrap extends pulumi.CustomResource {
             resourceInputs["currentPassword"] = state ? state.currentPassword : undefined;
             resourceInputs["initialPassword"] = state ? state.initialPassword : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["telemetry"] = state ? state.telemetry : undefined;
             resourceInputs["tempToken"] = state ? state.tempToken : undefined;
             resourceInputs["tempTokenId"] = state ? state.tempTokenId : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
@@ -152,7 +140,6 @@ export class Bootstrap extends pulumi.CustomResource {
             const args = argsOrState as BootstrapArgs | undefined;
             resourceInputs["initialPassword"] = args?.initialPassword ? pulumi.secret(args.initialPassword) : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["telemetry"] = args ? args.telemetry : undefined;
             resourceInputs["tokenTtl"] = args ? args.tokenTtl : undefined;
             resourceInputs["tokenUpdate"] = args ? args.tokenUpdate : undefined;
             resourceInputs["uiDefaultLanding"] = args ? args.uiDefaultLanding : undefined;
@@ -187,10 +174,6 @@ export interface BootstrapState {
      * Password for Admin user or random generated if empty (string)
      */
     password?: pulumi.Input<string>;
-    /**
-     * Send telemetry anonymous data. Default: `false` (bool)
-     */
-    telemetry?: pulumi.Input<boolean>;
     /**
      * (Computed) Generated API temporary token as helper. Should be empty (string)
      */
@@ -241,10 +224,6 @@ export interface BootstrapArgs {
      * Password for Admin user or random generated if empty (string)
      */
     password?: pulumi.Input<string>;
-    /**
-     * Send telemetry anonymous data. Default: `false` (bool)
-     */
-    telemetry?: pulumi.Input<boolean>;
     /**
      * TTL in seconds for generated admin token. Default: `0`  (int)
      */

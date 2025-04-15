@@ -22,7 +22,6 @@ class BootstrapArgs:
     def __init__(__self__, *,
                  initial_password: Optional[pulumi.Input[builtins.str]] = None,
                  password: Optional[pulumi.Input[builtins.str]] = None,
-                 telemetry: Optional[pulumi.Input[builtins.bool]] = None,
                  token_ttl: Optional[pulumi.Input[builtins.int]] = None,
                  token_update: Optional[pulumi.Input[builtins.bool]] = None,
                  ui_default_landing: Optional[pulumi.Input[builtins.str]] = None):
@@ -30,7 +29,6 @@ class BootstrapArgs:
         The set of arguments for constructing a Bootstrap resource.
         :param pulumi.Input[builtins.str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[builtins.str] password: Password for Admin user or random generated if empty (string)
-        :param pulumi.Input[builtins.bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[builtins.int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
         :param pulumi.Input[builtins.bool] token_update: Regenerate admin token. Default: `false` (bool)
         :param pulumi.Input[builtins.str] ui_default_landing: Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
@@ -39,8 +37,6 @@ class BootstrapArgs:
             pulumi.set(__self__, "initial_password", initial_password)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if telemetry is not None:
-            pulumi.set(__self__, "telemetry", telemetry)
         if token_ttl is not None:
             pulumi.set(__self__, "token_ttl", token_ttl)
         if token_update is not None:
@@ -71,18 +67,6 @@ class BootstrapArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
-    def telemetry(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Send telemetry anonymous data. Default: `false` (bool)
-        """
-        return pulumi.get(self, "telemetry")
-
-    @telemetry.setter
-    def telemetry(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "telemetry", value)
 
     @property
     @pulumi.getter(name="tokenTtl")
@@ -127,7 +111,6 @@ class _BootstrapState:
                  current_password: Optional[pulumi.Input[builtins.str]] = None,
                  initial_password: Optional[pulumi.Input[builtins.str]] = None,
                  password: Optional[pulumi.Input[builtins.str]] = None,
-                 telemetry: Optional[pulumi.Input[builtins.bool]] = None,
                  temp_token: Optional[pulumi.Input[builtins.str]] = None,
                  temp_token_id: Optional[pulumi.Input[builtins.str]] = None,
                  token: Optional[pulumi.Input[builtins.str]] = None,
@@ -142,7 +125,6 @@ class _BootstrapState:
         :param pulumi.Input[builtins.str] current_password: (Computed/Sensitive) Current password for Admin user (string)
         :param pulumi.Input[builtins.str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[builtins.str] password: Password for Admin user or random generated if empty (string)
-        :param pulumi.Input[builtins.bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[builtins.str] temp_token: (Computed) Generated API temporary token as helper. Should be empty (string)
         :param pulumi.Input[builtins.str] temp_token_id: (Computed) Generated API temporary token id as helper. Should be empty (string)
         :param pulumi.Input[builtins.str] token: (Computed) Generated API token for Admin User (string)
@@ -159,8 +141,6 @@ class _BootstrapState:
             pulumi.set(__self__, "initial_password", initial_password)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if telemetry is not None:
-            pulumi.set(__self__, "telemetry", telemetry)
         if temp_token is not None:
             pulumi.set(__self__, "temp_token", temp_token)
         if temp_token_id is not None:
@@ -215,18 +195,6 @@ class _BootstrapState:
     @password.setter
     def password(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
-    def telemetry(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Send telemetry anonymous data. Default: `false` (bool)
-        """
-        return pulumi.get(self, "telemetry")
-
-    @telemetry.setter
-    def telemetry(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "telemetry", value)
 
     @property
     @pulumi.getter(name="tempToken")
@@ -344,7 +312,6 @@ class Bootstrap(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  initial_password: Optional[pulumi.Input[builtins.str]] = None,
                  password: Optional[pulumi.Input[builtins.str]] = None,
-                 telemetry: Optional[pulumi.Input[builtins.bool]] = None,
                  token_ttl: Optional[pulumi.Input[builtins.int]] = None,
                  token_update: Optional[pulumi.Input[builtins.bool]] = None,
                  ui_default_landing: Optional[pulumi.Input[builtins.str]] = None,
@@ -357,9 +324,7 @@ class Bootstrap(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2_bootstrap
-        admin = rancher2.Bootstrap("admin",
-            password="blahblah",
-            telemetry=True)
+        admin = rancher2.Bootstrap("admin", password="blahblah")
         ```
 
         ```python
@@ -369,8 +334,7 @@ class Bootstrap(pulumi.CustomResource):
         # Create a new rancher2_bootstrap for Rancher v2.6.0 and above
         admin = rancher2.Bootstrap("admin",
             initial_password="<INSTALL_PASSWORD>",
-            password="blahblah",
-            telemetry=True)
+            password="blahblah")
         ```
 
         ```python
@@ -378,16 +342,13 @@ class Bootstrap(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2_bootstrap using bootstrap provider config
-        admin = rancher2.Bootstrap("admin",
-            password="blahblah",
-            telemetry=True)
+        admin = rancher2.Bootstrap("admin", password="blahblah")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[builtins.str] password: Password for Admin user or random generated if empty (string)
-        :param pulumi.Input[builtins.bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[builtins.int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
         :param pulumi.Input[builtins.bool] token_update: Regenerate admin token. Default: `false` (bool)
         :param pulumi.Input[builtins.str] ui_default_landing: Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
@@ -406,9 +367,7 @@ class Bootstrap(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2_bootstrap
-        admin = rancher2.Bootstrap("admin",
-            password="blahblah",
-            telemetry=True)
+        admin = rancher2.Bootstrap("admin", password="blahblah")
         ```
 
         ```python
@@ -418,8 +377,7 @@ class Bootstrap(pulumi.CustomResource):
         # Create a new rancher2_bootstrap for Rancher v2.6.0 and above
         admin = rancher2.Bootstrap("admin",
             initial_password="<INSTALL_PASSWORD>",
-            password="blahblah",
-            telemetry=True)
+            password="blahblah")
         ```
 
         ```python
@@ -427,9 +385,7 @@ class Bootstrap(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         # Create a new rancher2_bootstrap using bootstrap provider config
-        admin = rancher2.Bootstrap("admin",
-            password="blahblah",
-            telemetry=True)
+        admin = rancher2.Bootstrap("admin", password="blahblah")
         ```
 
         :param str resource_name: The name of the resource.
@@ -449,7 +405,6 @@ class Bootstrap(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  initial_password: Optional[pulumi.Input[builtins.str]] = None,
                  password: Optional[pulumi.Input[builtins.str]] = None,
-                 telemetry: Optional[pulumi.Input[builtins.bool]] = None,
                  token_ttl: Optional[pulumi.Input[builtins.int]] = None,
                  token_update: Optional[pulumi.Input[builtins.bool]] = None,
                  ui_default_landing: Optional[pulumi.Input[builtins.str]] = None,
@@ -464,7 +419,6 @@ class Bootstrap(pulumi.CustomResource):
 
             __props__.__dict__["initial_password"] = None if initial_password is None else pulumi.Output.secret(initial_password)
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
-            __props__.__dict__["telemetry"] = telemetry
             __props__.__dict__["token_ttl"] = token_ttl
             __props__.__dict__["token_update"] = token_update
             __props__.__dict__["ui_default_landing"] = ui_default_landing
@@ -490,7 +444,6 @@ class Bootstrap(pulumi.CustomResource):
             current_password: Optional[pulumi.Input[builtins.str]] = None,
             initial_password: Optional[pulumi.Input[builtins.str]] = None,
             password: Optional[pulumi.Input[builtins.str]] = None,
-            telemetry: Optional[pulumi.Input[builtins.bool]] = None,
             temp_token: Optional[pulumi.Input[builtins.str]] = None,
             temp_token_id: Optional[pulumi.Input[builtins.str]] = None,
             token: Optional[pulumi.Input[builtins.str]] = None,
@@ -510,7 +463,6 @@ class Bootstrap(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] current_password: (Computed/Sensitive) Current password for Admin user (string)
         :param pulumi.Input[builtins.str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[builtins.str] password: Password for Admin user or random generated if empty (string)
-        :param pulumi.Input[builtins.bool] telemetry: Send telemetry anonymous data. Default: `false` (bool)
         :param pulumi.Input[builtins.str] temp_token: (Computed) Generated API temporary token as helper. Should be empty (string)
         :param pulumi.Input[builtins.str] temp_token_id: (Computed) Generated API temporary token id as helper. Should be empty (string)
         :param pulumi.Input[builtins.str] token: (Computed) Generated API token for Admin User (string)
@@ -528,7 +480,6 @@ class Bootstrap(pulumi.CustomResource):
         __props__.__dict__["current_password"] = current_password
         __props__.__dict__["initial_password"] = initial_password
         __props__.__dict__["password"] = password
-        __props__.__dict__["telemetry"] = telemetry
         __props__.__dict__["temp_token"] = temp_token
         __props__.__dict__["temp_token_id"] = temp_token_id
         __props__.__dict__["token"] = token
@@ -563,14 +514,6 @@ class Bootstrap(pulumi.CustomResource):
         Password for Admin user or random generated if empty (string)
         """
         return pulumi.get(self, "password")
-
-    @property
-    @pulumi.getter
-    def telemetry(self) -> pulumi.Output[Optional[builtins.bool]]:
-        """
-        Send telemetry anonymous data. Default: `false` (bool)
-        """
-        return pulumi.get(self, "telemetry")
 
     @property
     @pulumi.getter(name="tempToken")

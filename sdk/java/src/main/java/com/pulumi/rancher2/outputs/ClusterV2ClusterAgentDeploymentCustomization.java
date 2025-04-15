@@ -6,6 +6,7 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration;
 import com.pulumi.rancher2.outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement;
+import com.pulumi.rancher2.outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +30,11 @@ public final class ClusterV2ClusterAgentDeploymentCustomization {
      * 
      */
     private @Nullable List<ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
+    /**
+     * @return User defined scheduling customization for the cattle cluster agent
+     * 
+     */
+    private @Nullable List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations;
 
     private ClusterV2ClusterAgentDeploymentCustomization() {}
     /**
@@ -52,6 +58,13 @@ public final class ClusterV2ClusterAgentDeploymentCustomization {
     public List<ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements() {
         return this.overrideResourceRequirements == null ? List.of() : this.overrideResourceRequirements;
     }
+    /**
+     * @return User defined scheduling customization for the cattle cluster agent
+     * 
+     */
+    public List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations() {
+        return this.schedulingCustomizations == null ? List.of() : this.schedulingCustomizations;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,12 +78,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomization {
         private @Nullable List<ClusterV2ClusterAgentDeploymentCustomizationAppendToleration> appendTolerations;
         private @Nullable String overrideAffinity;
         private @Nullable List<ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
+        private @Nullable List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations;
         public Builder() {}
         public Builder(ClusterV2ClusterAgentDeploymentCustomization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appendTolerations = defaults.appendTolerations;
     	      this.overrideAffinity = defaults.overrideAffinity;
     	      this.overrideResourceRequirements = defaults.overrideResourceRequirements;
+    	      this.schedulingCustomizations = defaults.schedulingCustomizations;
         }
 
         @CustomType.Setter
@@ -97,11 +112,21 @@ public final class ClusterV2ClusterAgentDeploymentCustomization {
         public Builder overrideResourceRequirements(ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement... overrideResourceRequirements) {
             return overrideResourceRequirements(List.of(overrideResourceRequirements));
         }
+        @CustomType.Setter
+        public Builder schedulingCustomizations(@Nullable List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations) {
+
+            this.schedulingCustomizations = schedulingCustomizations;
+            return this;
+        }
+        public Builder schedulingCustomizations(ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization... schedulingCustomizations) {
+            return schedulingCustomizations(List.of(schedulingCustomizations));
+        }
         public ClusterV2ClusterAgentDeploymentCustomization build() {
             final var _resultValue = new ClusterV2ClusterAgentDeploymentCustomization();
             _resultValue.appendTolerations = appendTolerations;
             _resultValue.overrideAffinity = overrideAffinity;
             _resultValue.overrideResourceRequirements = overrideResourceRequirements;
+            _resultValue.schedulingCustomizations = schedulingCustomizations;
             return _resultValue;
         }
     }

@@ -519,6 +519,10 @@ export interface ClusterClusterAgentDeploymentCustomization {
      * User defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
+    /**
+     * User defined scheduling customization for the cattle cluster agent
+     */
+    schedulingCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomization>[]>;
 }
 
 export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
@@ -561,6 +565,39 @@ export interface ClusterClusterAgentDeploymentCustomizationOverrideResourceRequi
      * The minimum memory required for agent
      */
     memoryRequest?: pulumi.Input<string>;
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomization {
+    /**
+     * The Pod Disruption Budget created for the cattle cluster agent
+     */
+    podDisruptionBudgets?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget>[]>;
+    /**
+     * The Priority Class created for the cattle cluster agent
+     */
+    priorityClasses?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass>[]>;
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+    /**
+     * The maximum number of cattle cluster agent replicas that can be down at a given time.
+     */
+    maxUnavailable?: pulumi.Input<string>;
+    /**
+     * The minimum number of cattle cluster agent replicas that must be running at a given time.
+     */
+    minAvailable?: pulumi.Input<string>;
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+    /**
+     * The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+     */
+    preemptionPolicy?: pulumi.Input<string>;
+    /**
+     * The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     */
+    value: pulumi.Input<number>;
 }
 
 export interface ClusterClusterAuthEndpoint {
@@ -4513,6 +4550,10 @@ export interface ClusterV2ClusterAgentDeploymentCustomization {
      * User defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
+    /**
+     * User defined scheduling customization for the cattle cluster agent
+     */
+    schedulingCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization>[]>;
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
@@ -4555,6 +4596,39 @@ export interface ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceReq
      * The minimum memory required for agent
      */
     memoryRequest?: pulumi.Input<string>;
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization {
+    /**
+     * The Pod Disruption Budget created for the cattle cluster agent
+     */
+    podDisruptionBudgets?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget>[]>;
+    /**
+     * The Priority Class created for the cattle cluster agent
+     */
+    priorityClasses?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass>[]>;
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+    /**
+     * The maximum number of cattle cluster agent replicas that can be down at a given time.
+     */
+    maxUnavailable?: pulumi.Input<string>;
+    /**
+     * The minimum number of cattle cluster agent replicas that must be running at a given time.
+     */
+    minAvailable?: pulumi.Input<string>;
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+    /**
+     * The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+     */
+    preemptionPolicy?: pulumi.Input<string>;
+    /**
+     * The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     */
+    value: pulumi.Input<number>;
 }
 
 export interface ClusterV2ClusterRegistrationToken {
@@ -6178,73 +6252,6 @@ export interface MachineConfigV2VsphereConfig {
      * vSphere Port for vCenter
      */
     vcenterPort?: pulumi.Input<string>;
-}
-
-export interface MultiClusterAppAnswer {
-    /**
-     * Cluster ID for answer
-     */
-    clusterId?: pulumi.Input<string>;
-    /**
-     * Project ID for answer
-     */
-    projectId?: pulumi.Input<string>;
-    /**
-     * Key/values for answer
-     */
-    values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-}
-
-export interface MultiClusterAppMember {
-    /**
-     * Member access type: member, owner, read-only
-     */
-    accessType?: pulumi.Input<string>;
-    /**
-     * Member group principal id
-     */
-    groupPrincipalId?: pulumi.Input<string>;
-    /**
-     * Member user principal id
-     */
-    userPrincipalId?: pulumi.Input<string>;
-}
-
-export interface MultiClusterAppTarget {
-    /**
-     * App ID for target
-     */
-    appId?: pulumi.Input<string>;
-    /**
-     * App health state for target
-     */
-    healthState?: pulumi.Input<string>;
-    /**
-     * Project ID for target
-     */
-    projectId: pulumi.Input<string>;
-    /**
-     * App state for target
-     */
-    state?: pulumi.Input<string>;
-}
-
-export interface MultiClusterAppUpgradeStrategy {
-    /**
-     * Rolling update for upgrade strategy
-     */
-    rollingUpdate?: pulumi.Input<inputs.MultiClusterAppUpgradeStrategyRollingUpdate>;
-}
-
-export interface MultiClusterAppUpgradeStrategyRollingUpdate {
-    /**
-     * Rolling update batch size
-     */
-    batchSize?: pulumi.Input<number>;
-    /**
-     * Rolling update interval
-     */
-    interval?: pulumi.Input<number>;
 }
 
 export interface NamespaceContainerResourceLimit {

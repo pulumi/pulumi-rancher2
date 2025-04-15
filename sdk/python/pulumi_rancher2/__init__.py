@@ -6,7 +6,6 @@ import builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
-from .app import *
 from .app_v2 import *
 from .auth_config_active_directory import *
 from .auth_config_adfs import *
@@ -18,7 +17,6 @@ from .auth_config_okta import *
 from .auth_config_open_ldap import *
 from .auth_config_ping import *
 from .bootstrap import *
-from .catalog import *
 from .catalog_v2 import *
 from .certificate import *
 from .cloud_credential import *
@@ -32,8 +30,6 @@ from .config_map_v2 import *
 from .custom_user_token import *
 from .etcd_backup import *
 from .feature import *
-from .get_app import *
-from .get_catalog import *
 from .get_catalog_v2 import *
 from .get_certificate import *
 from .get_cloud_credential import *
@@ -46,7 +42,6 @@ from .get_config_map_v2 import *
 from .get_etcd_backup import *
 from .get_global_role import *
 from .get_global_role_binding import *
-from .get_multi_cluster_app import *
 from .get_namespace import *
 from .get_node_driver import *
 from .get_node_pool import *
@@ -65,7 +60,6 @@ from .get_user import *
 from .global_role import *
 from .global_role_binding import *
 from .machine_config_v2 import *
-from .multi_cluster_app import *
 from .namespace import *
 from .node_driver import *
 from .node_pool import *
@@ -95,14 +89,6 @@ else:
 _utilities.register(
     resource_modules="""
 [
- {
-  "pkg": "rancher2",
-  "mod": "index/app",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/app:App": "App"
-  }
- },
  {
   "pkg": "rancher2",
   "mod": "index/appV2",
@@ -189,14 +175,6 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/bootstrap:Bootstrap": "Bootstrap"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/catalog",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/catalog:Catalog": "Catalog"
   }
  },
  {
@@ -325,14 +303,6 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/machineConfigV2:MachineConfigV2": "MachineConfigV2"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/multiClusterApp",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/multiClusterApp:MultiClusterApp": "MultiClusterApp"
   }
  },
  {

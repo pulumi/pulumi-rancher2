@@ -42,6 +42,18 @@ namespace Pulumi.Rancher2.Inputs
             set => _overrideResourceRequirements = value;
         }
 
+        [Input("schedulingCustomizations")]
+        private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationGetArgs>? _schedulingCustomizations;
+
+        /// <summary>
+        /// User defined scheduling customization for the cattle cluster agent
+        /// </summary>
+        public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationGetArgs> SchedulingCustomizations
+        {
+            get => _schedulingCustomizations ?? (_schedulingCustomizations = new InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationGetArgs>());
+            set => _schedulingCustomizations = value;
+        }
+
         public ClusterV2ClusterAgentDeploymentCustomizationGetArgs()
         {
         }

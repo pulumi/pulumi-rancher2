@@ -87,6 +87,7 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
      * AzureAD graph endpoint (string)
      */
     public readonly graphEndpoint!: pulumi.Output<string>;
+    public readonly groupMembershipFilter!: pulumi.Output<string | undefined>;
     /**
      * Labels of the resource (map)
      */
@@ -134,6 +135,7 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["graphEndpoint"] = state ? state.graphEndpoint : undefined;
+            resourceInputs["groupMembershipFilter"] = state ? state.groupMembershipFilter : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["rancherUrl"] = state ? state.rancherUrl : undefined;
@@ -172,6 +174,7 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
             resourceInputs["graphEndpoint"] = args ? args.graphEndpoint : undefined;
+            resourceInputs["groupMembershipFilter"] = args ? args.groupMembershipFilter : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["rancherUrl"] = args ? args.rancherUrl : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
@@ -226,6 +229,7 @@ export interface AuthConfigAzureAdState {
      * AzureAD graph endpoint (string)
      */
     graphEndpoint?: pulumi.Input<string>;
+    groupMembershipFilter?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */
@@ -292,6 +296,7 @@ export interface AuthConfigAzureAdArgs {
      * AzureAD graph endpoint (string)
      */
     graphEndpoint: pulumi.Input<string>;
+    groupMembershipFilter?: pulumi.Input<string>;
     /**
      * Labels of the resource (map)
      */

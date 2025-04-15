@@ -63,21 +63,6 @@ public final class BootstrapState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Send telemetry anonymous data. Default: `false` (bool)
-     * 
-     */
-    @Import(name="telemetry")
-    private @Nullable Output<Boolean> telemetry;
-
-    /**
-     * @return Send telemetry anonymous data. Default: `false` (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> telemetry() {
-        return Optional.ofNullable(this.telemetry);
-    }
-
-    /**
      * (Computed) Generated API temporary token as helper. Should be empty (string)
      * 
      */
@@ -218,7 +203,6 @@ public final class BootstrapState extends com.pulumi.resources.ResourceArgs {
         this.currentPassword = $.currentPassword;
         this.initialPassword = $.initialPassword;
         this.password = $.password;
-        this.telemetry = $.telemetry;
         this.tempToken = $.tempToken;
         this.tempTokenId = $.tempTokenId;
         this.token = $.token;
@@ -309,27 +293,6 @@ public final class BootstrapState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder password(String password) {
             return password(Output.of(password));
-        }
-
-        /**
-         * @param telemetry Send telemetry anonymous data. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder telemetry(@Nullable Output<Boolean> telemetry) {
-            $.telemetry = telemetry;
-            return this;
-        }
-
-        /**
-         * @param telemetry Send telemetry anonymous data. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder telemetry(Boolean telemetry) {
-            return telemetry(Output.of(telemetry));
         }
 
         /**

@@ -189,6 +189,12 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
     public Output<String> graphEndpoint() {
         return this.graphEndpoint;
     }
+    @Export(name="groupMembershipFilter", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> groupMembershipFilter;
+
+    public Output<Optional<String>> groupMembershipFilter() {
+        return Codegen.optional(this.groupMembershipFilter);
+    }
     /**
      * Labels of the resource (map)
      * 

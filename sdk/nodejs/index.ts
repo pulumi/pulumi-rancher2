@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export { AppArgs, AppState } from "./app";
-export type App = import("./app").App;
-export const App: typeof import("./app").App = null as any;
-utilities.lazyLoad(exports, ["App"], () => require("./app"));
-
 export { AppV2Args, AppV2State } from "./appV2";
 export type AppV2 = import("./appV2").AppV2;
 export const AppV2: typeof import("./appV2").AppV2 = null as any;
@@ -64,11 +59,6 @@ export { BootstrapArgs, BootstrapState } from "./bootstrap";
 export type Bootstrap = import("./bootstrap").Bootstrap;
 export const Bootstrap: typeof import("./bootstrap").Bootstrap = null as any;
 utilities.lazyLoad(exports, ["Bootstrap"], () => require("./bootstrap"));
-
-export { CatalogArgs, CatalogState } from "./catalog";
-export type Catalog = import("./catalog").Catalog;
-export const Catalog: typeof import("./catalog").Catalog = null as any;
-utilities.lazyLoad(exports, ["Catalog"], () => require("./catalog"));
 
 export { CatalogV2Args, CatalogV2State } from "./catalogV2";
 export type CatalogV2 = import("./catalogV2").CatalogV2;
@@ -135,16 +125,6 @@ export type Feature = import("./feature").Feature;
 export const Feature: typeof import("./feature").Feature = null as any;
 utilities.lazyLoad(exports, ["Feature"], () => require("./feature"));
 
-export { GetAppArgs, GetAppResult, GetAppOutputArgs } from "./getApp";
-export const getApp: typeof import("./getApp").getApp = null as any;
-export const getAppOutput: typeof import("./getApp").getAppOutput = null as any;
-utilities.lazyLoad(exports, ["getApp","getAppOutput"], () => require("./getApp"));
-
-export { GetCatalogArgs, GetCatalogResult, GetCatalogOutputArgs } from "./getCatalog";
-export const getCatalog: typeof import("./getCatalog").getCatalog = null as any;
-export const getCatalogOutput: typeof import("./getCatalog").getCatalogOutput = null as any;
-utilities.lazyLoad(exports, ["getCatalog","getCatalogOutput"], () => require("./getCatalog"));
-
 export { GetCatalogV2Args, GetCatalogV2Result, GetCatalogV2OutputArgs } from "./getCatalogV2";
 export const getCatalogV2: typeof import("./getCatalogV2").getCatalogV2 = null as any;
 export const getCatalogV2Output: typeof import("./getCatalogV2").getCatalogV2Output = null as any;
@@ -204,11 +184,6 @@ export { GetGlobalRoleBindingArgs, GetGlobalRoleBindingResult, GetGlobalRoleBind
 export const getGlobalRoleBinding: typeof import("./getGlobalRoleBinding").getGlobalRoleBinding = null as any;
 export const getGlobalRoleBindingOutput: typeof import("./getGlobalRoleBinding").getGlobalRoleBindingOutput = null as any;
 utilities.lazyLoad(exports, ["getGlobalRoleBinding","getGlobalRoleBindingOutput"], () => require("./getGlobalRoleBinding"));
-
-export { GetMultiClusterAppArgs, GetMultiClusterAppResult, GetMultiClusterAppOutputArgs } from "./getMultiClusterApp";
-export const getMultiClusterApp: typeof import("./getMultiClusterApp").getMultiClusterApp = null as any;
-export const getMultiClusterAppOutput: typeof import("./getMultiClusterApp").getMultiClusterAppOutput = null as any;
-utilities.lazyLoad(exports, ["getMultiClusterApp","getMultiClusterAppOutput"], () => require("./getMultiClusterApp"));
 
 export { GetNamespaceArgs, GetNamespaceResult, GetNamespaceOutputArgs } from "./getNamespace";
 export const getNamespace: typeof import("./getNamespace").getNamespace = null as any;
@@ -299,11 +274,6 @@ export { MachineConfigV2Args, MachineConfigV2State } from "./machineConfigV2";
 export type MachineConfigV2 = import("./machineConfigV2").MachineConfigV2;
 export const MachineConfigV2: typeof import("./machineConfigV2").MachineConfigV2 = null as any;
 utilities.lazyLoad(exports, ["MachineConfigV2"], () => require("./machineConfigV2"));
-
-export { MultiClusterAppArgs, MultiClusterAppState } from "./multiClusterApp";
-export type MultiClusterApp = import("./multiClusterApp").MultiClusterApp;
-export const MultiClusterApp: typeof import("./multiClusterApp").MultiClusterApp = null as any;
-utilities.lazyLoad(exports, ["MultiClusterApp"], () => require("./multiClusterApp"));
 
 export { NamespaceArgs, NamespaceState } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
@@ -399,8 +369,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "rancher2:index/app:App":
-                return new App(name, <any>undefined, { urn })
             case "rancher2:index/appV2:AppV2":
                 return new AppV2(name, <any>undefined, { urn })
             case "rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory":
@@ -423,8 +391,6 @@ const _module = {
                 return new AuthConfigPing(name, <any>undefined, { urn })
             case "rancher2:index/bootstrap:Bootstrap":
                 return new Bootstrap(name, <any>undefined, { urn })
-            case "rancher2:index/catalog:Catalog":
-                return new Catalog(name, <any>undefined, { urn })
             case "rancher2:index/catalogV2:CatalogV2":
                 return new CatalogV2(name, <any>undefined, { urn })
             case "rancher2:index/certificate:Certificate":
@@ -457,8 +423,6 @@ const _module = {
                 return new GlobalRoleBinding(name, <any>undefined, { urn })
             case "rancher2:index/machineConfigV2:MachineConfigV2":
                 return new MachineConfigV2(name, <any>undefined, { urn })
-            case "rancher2:index/multiClusterApp:MultiClusterApp":
-                return new MultiClusterApp(name, <any>undefined, { urn })
             case "rancher2:index/namespace:Namespace":
                 return new Namespace(name, <any>undefined, { urn })
             case "rancher2:index/nodeDriver:NodeDriver":
@@ -494,7 +458,6 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("rancher2", "index/app", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/appV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigActiveDirectory", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigAdfs", _module)
@@ -506,7 +469,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/authConfigOkta", _modul
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigOpenLdap", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigPing", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/bootstrap", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/catalog", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/catalogV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/certificate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/cloudCredential", _module)
@@ -523,7 +485,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/feature", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalRole", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalRoleBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/machineConfigV2", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/multiClusterApp", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/namespace", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodeDriver", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodePool", _module)

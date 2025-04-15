@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs;
+import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -63,12 +64,28 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         return Optional.ofNullable(this.overrideResourceRequirements);
     }
 
+    /**
+     * User defined scheduling customization for the cattle cluster agent
+     * 
+     */
+    @Import(name="schedulingCustomizations")
+    private @Nullable Output<List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs>> schedulingCustomizations;
+
+    /**
+     * @return User defined scheduling customization for the cattle cluster agent
+     * 
+     */
+    public Optional<Output<List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs>>> schedulingCustomizations() {
+        return Optional.ofNullable(this.schedulingCustomizations);
+    }
+
     private ClusterClusterAgentDeploymentCustomizationArgs() {}
 
     private ClusterClusterAgentDeploymentCustomizationArgs(ClusterClusterAgentDeploymentCustomizationArgs $) {
         this.appendTolerations = $.appendTolerations;
         this.overrideAffinity = $.overrideAffinity;
         this.overrideResourceRequirements = $.overrideResourceRequirements;
+        this.schedulingCustomizations = $.schedulingCustomizations;
     }
 
     public static Builder builder() {
@@ -170,6 +187,37 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
          */
         public Builder overrideResourceRequirements(ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs... overrideResourceRequirements) {
             return overrideResourceRequirements(List.of(overrideResourceRequirements));
+        }
+
+        /**
+         * @param schedulingCustomizations User defined scheduling customization for the cattle cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingCustomizations(@Nullable Output<List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs>> schedulingCustomizations) {
+            $.schedulingCustomizations = schedulingCustomizations;
+            return this;
+        }
+
+        /**
+         * @param schedulingCustomizations User defined scheduling customization for the cattle cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingCustomizations(List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs> schedulingCustomizations) {
+            return schedulingCustomizations(Output.of(schedulingCustomizations));
+        }
+
+        /**
+         * @param schedulingCustomizations User defined scheduling customization for the cattle cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingCustomizations(ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs... schedulingCustomizations) {
+            return schedulingCustomizations(List.of(schedulingCustomizations));
         }
 
         public ClusterClusterAgentDeploymentCustomizationArgs build() {

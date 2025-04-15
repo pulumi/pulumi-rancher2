@@ -570,7 +570,7 @@ class _ClusterState:
         :param pulumi.Input[builtins.str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input['ClusterEksConfigArgs'] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterEksConfigV2Args'] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
-        :param pulumi.Input[builtins.bool] enable_cluster_istio: Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+        :param pulumi.Input[builtins.bool] enable_cluster_istio: Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
         :param pulumi.Input[builtins.bool] enable_network_policy: Enable project network isolation (bool)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]] fleet_agent_deployment_customizations: Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[builtins.str] fleet_workspace_name: Fleet workspace name (string)
@@ -630,8 +630,8 @@ class _ClusterState:
         if eks_config_v2 is not None:
             pulumi.set(__self__, "eks_config_v2", eks_config_v2)
         if enable_cluster_istio is not None:
-            warnings.warn("""Deploy istio using App resource instead""", DeprecationWarning)
-            pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using App resource instead""")
+            warnings.warn("""Deploy istio using rancher2_app resource instead""", DeprecationWarning)
+            pulumi.log.warn("""enable_cluster_istio is deprecated: Deploy istio using rancher2_app resource instead""")
         if enable_cluster_istio is not None:
             pulumi.set(__self__, "enable_cluster_istio", enable_cluster_istio)
         if enable_network_policy is not None:
@@ -919,10 +919,10 @@ class _ClusterState:
 
     @property
     @pulumi.getter(name="enableClusterIstio")
-    @_utilities.deprecated("""Deploy istio using App resource instead""")
+    @_utilities.deprecated("""Deploy istio using rancher2_app resource instead""")
     def enable_cluster_istio(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+        Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
         """
         return pulumi.get(self, "enable_cluster_istio")
 
@@ -1208,53 +1208,53 @@ class Cluster(pulumi.CustomResource):
             project_id=foo_custom_cluster_sync.system_project_id,
             description="istio namespace")
         # Create a new rancher2 App deploying istio
-        istio = rancher2.App("istio",
-            catalog_name="system-library",
-            name="cluster-istio",
-            description="Terraform app acceptance test",
+        istio = rancher2.index.App("istio",
+            catalog_name=system-library,
+            name=cluster-istio,
+            description=Terraform app acceptance test,
             project_id=foo_istio.project_id,
-            template_name="rancher-istio",
-            template_version="0.1.1",
+            template_name=rancher-istio,
+            template_version=0.1.1,
             target_namespace=foo_istio.id,
             answers={
-                "certmanager.enabled": "false",
-                "enableCRDs": "true",
-                "galley.enabled": "true",
-                "gateways.enabled": "false",
-                "gateways.istio-ingressgateway.resources.limits.cpu": "2000m",
-                "gateways.istio-ingressgateway.resources.limits.memory": "1024Mi",
-                "gateways.istio-ingressgateway.resources.requests.cpu": "100m",
-                "gateways.istio-ingressgateway.resources.requests.memory": "128Mi",
-                "gateways.istio-ingressgateway.type": "NodePort",
-                "global.rancher.clusterId": foo_custom_cluster_sync.cluster_id,
-                "istio_cni.enabled": "false",
-                "istiocoredns.enabled": "false",
-                "kiali.enabled": "true",
-                "mixer.enabled": "true",
-                "mixer.policy.enabled": "true",
-                "mixer.policy.resources.limits.cpu": "4800m",
-                "mixer.policy.resources.limits.memory": "4096Mi",
-                "mixer.policy.resources.requests.cpu": "1000m",
-                "mixer.policy.resources.requests.memory": "1024Mi",
-                "mixer.telemetry.resources.limits.cpu": "4800m",
-                "mixer.telemetry.resources.limits.memory": "4096Mi",
-                "mixer.telemetry.resources.requests.cpu": "1000m",
-                "mixer.telemetry.resources.requests.memory": "1024Mi",
-                "mtls.enabled": "false",
-                "nodeagent.enabled": "false",
-                "pilot.enabled": "true",
-                "pilot.resources.limits.cpu": "1000m",
-                "pilot.resources.limits.memory": "4096Mi",
-                "pilot.resources.requests.cpu": "500m",
-                "pilot.resources.requests.memory": "2048Mi",
-                "pilot.traceSampling": "1",
-                "security.enabled": "true",
-                "sidecarInjectorWebhook.enabled": "true",
-                "tracing.enabled": "true",
-                "tracing.jaeger.resources.limits.cpu": "500m",
-                "tracing.jaeger.resources.limits.memory": "1024Mi",
-                "tracing.jaeger.resources.requests.cpu": "100m",
-                "tracing.jaeger.resources.requests.memory": "100Mi",
+                enabled: False,
+                enableCRDs: True,
+                enabled: True,
+                enabled: False,
+                cpu: 2000m,
+                memory: 1024Mi,
+                cpu: 100m,
+                memory: 128Mi,
+                type: NodePort,
+                clusterId: foo_custom_cluster_sync.cluster_id,
+                enabled: false,
+                enabled: false,
+                enabled: true,
+                enabled: true,
+                enabled: true,
+                cpu: 4800m,
+                memory: 4096Mi,
+                cpu: 1000m,
+                memory: 1024Mi,
+                cpu: 4800m,
+                memory: 4096Mi,
+                cpu: 1000m,
+                memory: 1024Mi,
+                enabled: False,
+                enabled: False,
+                enabled: True,
+                cpu: 1000m,
+                memory: 4096Mi,
+                cpu: 500m,
+                memory: 2048Mi,
+                traceSampling: 1,
+                enabled: True,
+                enabled: True,
+                enabled: True,
+                cpu: 500m,
+                memory: 1024Mi,
+                cpu: 100m,
+                memory: 100Mi,
             })
         ```
 
@@ -1428,6 +1428,29 @@ class Cluster(pulumi.CustomResource):
                     "cpu_request": "500",
                     "memory_limit": "800",
                     "memory_request": "500",
+                }],
+            }])
+        ```
+
+        ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.Cluster("foo",
+            name="foo",
+            description="Terraform cluster with agent customization",
+            rke_config={},
+            cluster_agent_deployment_customizations=[{
+                "scheduling_customizations": [{
+                    "priority_classes": [{
+                        "preemption_policy": "PreemptLowerPriority",
+                        "value": 1000000000,
+                    }],
+                    "pod_disruption_budgets": [{
+                        "min_available": "1",
+                    }],
                 }],
             }])
         ```
@@ -1750,53 +1773,53 @@ class Cluster(pulumi.CustomResource):
             project_id=foo_custom_cluster_sync.system_project_id,
             description="istio namespace")
         # Create a new rancher2 App deploying istio
-        istio = rancher2.App("istio",
-            catalog_name="system-library",
-            name="cluster-istio",
-            description="Terraform app acceptance test",
+        istio = rancher2.index.App("istio",
+            catalog_name=system-library,
+            name=cluster-istio,
+            description=Terraform app acceptance test,
             project_id=foo_istio.project_id,
-            template_name="rancher-istio",
-            template_version="0.1.1",
+            template_name=rancher-istio,
+            template_version=0.1.1,
             target_namespace=foo_istio.id,
             answers={
-                "certmanager.enabled": "false",
-                "enableCRDs": "true",
-                "galley.enabled": "true",
-                "gateways.enabled": "false",
-                "gateways.istio-ingressgateway.resources.limits.cpu": "2000m",
-                "gateways.istio-ingressgateway.resources.limits.memory": "1024Mi",
-                "gateways.istio-ingressgateway.resources.requests.cpu": "100m",
-                "gateways.istio-ingressgateway.resources.requests.memory": "128Mi",
-                "gateways.istio-ingressgateway.type": "NodePort",
-                "global.rancher.clusterId": foo_custom_cluster_sync.cluster_id,
-                "istio_cni.enabled": "false",
-                "istiocoredns.enabled": "false",
-                "kiali.enabled": "true",
-                "mixer.enabled": "true",
-                "mixer.policy.enabled": "true",
-                "mixer.policy.resources.limits.cpu": "4800m",
-                "mixer.policy.resources.limits.memory": "4096Mi",
-                "mixer.policy.resources.requests.cpu": "1000m",
-                "mixer.policy.resources.requests.memory": "1024Mi",
-                "mixer.telemetry.resources.limits.cpu": "4800m",
-                "mixer.telemetry.resources.limits.memory": "4096Mi",
-                "mixer.telemetry.resources.requests.cpu": "1000m",
-                "mixer.telemetry.resources.requests.memory": "1024Mi",
-                "mtls.enabled": "false",
-                "nodeagent.enabled": "false",
-                "pilot.enabled": "true",
-                "pilot.resources.limits.cpu": "1000m",
-                "pilot.resources.limits.memory": "4096Mi",
-                "pilot.resources.requests.cpu": "500m",
-                "pilot.resources.requests.memory": "2048Mi",
-                "pilot.traceSampling": "1",
-                "security.enabled": "true",
-                "sidecarInjectorWebhook.enabled": "true",
-                "tracing.enabled": "true",
-                "tracing.jaeger.resources.limits.cpu": "500m",
-                "tracing.jaeger.resources.limits.memory": "1024Mi",
-                "tracing.jaeger.resources.requests.cpu": "100m",
-                "tracing.jaeger.resources.requests.memory": "100Mi",
+                enabled: False,
+                enableCRDs: True,
+                enabled: True,
+                enabled: False,
+                cpu: 2000m,
+                memory: 1024Mi,
+                cpu: 100m,
+                memory: 128Mi,
+                type: NodePort,
+                clusterId: foo_custom_cluster_sync.cluster_id,
+                enabled: false,
+                enabled: false,
+                enabled: true,
+                enabled: true,
+                enabled: true,
+                cpu: 4800m,
+                memory: 4096Mi,
+                cpu: 1000m,
+                memory: 1024Mi,
+                cpu: 4800m,
+                memory: 4096Mi,
+                cpu: 1000m,
+                memory: 1024Mi,
+                enabled: False,
+                enabled: False,
+                enabled: True,
+                cpu: 1000m,
+                memory: 4096Mi,
+                cpu: 500m,
+                memory: 2048Mi,
+                traceSampling: 1,
+                enabled: True,
+                enabled: True,
+                enabled: True,
+                cpu: 500m,
+                memory: 1024Mi,
+                cpu: 100m,
+                memory: 100Mi,
             })
         ```
 
@@ -1970,6 +1993,29 @@ class Cluster(pulumi.CustomResource):
                     "cpu_request": "500",
                     "memory_limit": "800",
                     "memory_request": "500",
+                }],
+            }])
+        ```
+
+        ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.Cluster("foo",
+            name="foo",
+            description="Terraform cluster with agent customization",
+            rke_config={},
+            cluster_agent_deployment_customizations=[{
+                "scheduling_customizations": [{
+                    "priority_classes": [{
+                        "preemption_policy": "PreemptLowerPriority",
+                        "value": 1000000000,
+                    }],
+                    "pod_disruption_budgets": [{
+                        "min_available": "1",
+                    }],
                 }],
             }])
         ```
@@ -2360,7 +2406,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] driver: (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         :param pulumi.Input[Union['ClusterEksConfigArgs', 'ClusterEksConfigArgsDict']] eks_config: The Amazon EKS configuration for `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Union['ClusterEksConfigV2Args', 'ClusterEksConfigV2ArgsDict']] eks_config_v2: The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
-        :param pulumi.Input[builtins.bool] enable_cluster_istio: Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+        :param pulumi.Input[builtins.bool] enable_cluster_istio: Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
         :param pulumi.Input[builtins.bool] enable_network_policy: Enable project network isolation (bool)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterFleetAgentDeploymentCustomizationArgs', 'ClusterFleetAgentDeploymentCustomizationArgsDict']]]] fleet_agent_deployment_customizations: Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[builtins.str] fleet_workspace_name: Fleet workspace name (string)
@@ -2590,10 +2636,10 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableClusterIstio")
-    @_utilities.deprecated("""Deploy istio using App resource instead""")
+    @_utilities.deprecated("""Deploy istio using rancher2_app resource instead""")
     def enable_cluster_istio(self) -> pulumi.Output[builtins.bool]:
         """
-        Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+        Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
         """
         return pulumi.get(self, "enable_cluster_istio")
 

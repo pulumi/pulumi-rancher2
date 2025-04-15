@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -64,7 +64,8 @@ type AuthConfigAzureAd struct {
 	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
 	Endpoint pulumi.StringPtrOutput `pulumi:"endpoint"`
 	// AzureAD graph endpoint (string)
-	GraphEndpoint pulumi.StringOutput `pulumi:"graphEndpoint"`
+	GraphEndpoint         pulumi.StringOutput    `pulumi:"graphEndpoint"`
+	GroupMembershipFilter pulumi.StringPtrOutput `pulumi:"groupMembershipFilter"`
 	// Labels of the resource (map)
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
@@ -158,7 +159,8 @@ type authConfigAzureAdState struct {
 	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
 	Endpoint *string `pulumi:"endpoint"`
 	// AzureAD graph endpoint (string)
-	GraphEndpoint *string `pulumi:"graphEndpoint"`
+	GraphEndpoint         *string `pulumi:"graphEndpoint"`
+	GroupMembershipFilter *string `pulumi:"groupMembershipFilter"`
 	// Labels of the resource (map)
 	Labels map[string]string `pulumi:"labels"`
 	// (Computed) The name of the resource (string)
@@ -191,7 +193,8 @@ type AuthConfigAzureAdState struct {
 	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
 	Endpoint pulumi.StringPtrInput
 	// AzureAD graph endpoint (string)
-	GraphEndpoint pulumi.StringPtrInput
+	GraphEndpoint         pulumi.StringPtrInput
+	GroupMembershipFilter pulumi.StringPtrInput
 	// Labels of the resource (map)
 	Labels pulumi.StringMapInput
 	// (Computed) The name of the resource (string)
@@ -228,7 +231,8 @@ type authConfigAzureAdArgs struct {
 	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
 	Endpoint *string `pulumi:"endpoint"`
 	// AzureAD graph endpoint (string)
-	GraphEndpoint string `pulumi:"graphEndpoint"`
+	GraphEndpoint         string  `pulumi:"graphEndpoint"`
+	GroupMembershipFilter *string `pulumi:"groupMembershipFilter"`
 	// Labels of the resource (map)
 	Labels map[string]string `pulumi:"labels"`
 	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
@@ -258,7 +262,8 @@ type AuthConfigAzureAdArgs struct {
 	// AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
 	Endpoint pulumi.StringPtrInput
 	// AzureAD graph endpoint (string)
-	GraphEndpoint pulumi.StringInput
+	GraphEndpoint         pulumi.StringInput
+	GroupMembershipFilter pulumi.StringPtrInput
 	// Labels of the resource (map)
 	Labels pulumi.StringMapInput
 	// Rancher URL (string). "<rancher_url>/verify-auth-azure"
@@ -399,6 +404,10 @@ func (o AuthConfigAzureAdOutput) Endpoint() pulumi.StringPtrOutput {
 // AzureAD graph endpoint (string)
 func (o AuthConfigAzureAdOutput) GraphEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringOutput { return v.GraphEndpoint }).(pulumi.StringOutput)
+}
+
+func (o AuthConfigAzureAdOutput) GroupMembershipFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigAzureAd) pulumi.StringPtrOutput { return v.GroupMembershipFilter }).(pulumi.StringPtrOutput)
 }
 
 // Labels of the resource (map)

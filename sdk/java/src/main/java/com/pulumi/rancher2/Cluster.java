@@ -142,8 +142,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterSyncArgs;
  * import com.pulumi.rancher2.Namespace;
  * import com.pulumi.rancher2.NamespaceArgs;
- * import com.pulumi.rancher2.App;
- * import com.pulumi.rancher2.AppArgs;
+ * import com.pulumi.rancher2.app;
+ * import com.pulumi.rancher2.appArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -190,44 +190,44 @@ import javax.annotation.Nullable;
  *             .templateVersion("0.1.1")
  *             .targetNamespace(foo_istio.id())
  *             .answers(Map.ofEntries(
- *                 Map.entry("certmanager.enabled", "false"),
- *                 Map.entry("enableCRDs", "true"),
- *                 Map.entry("galley.enabled", "true"),
- *                 Map.entry("gateways.enabled", "false"),
- *                 Map.entry("gateways.istio-ingressgateway.resources.limits.cpu", "2000m"),
- *                 Map.entry("gateways.istio-ingressgateway.resources.limits.memory", "1024Mi"),
- *                 Map.entry("gateways.istio-ingressgateway.resources.requests.cpu", "100m"),
- *                 Map.entry("gateways.istio-ingressgateway.resources.requests.memory", "128Mi"),
- *                 Map.entry("gateways.istio-ingressgateway.type", "NodePort"),
- *                 Map.entry("global.rancher.clusterId", foo_customClusterSync.clusterId()),
- *                 Map.entry("istio_cni.enabled", "false"),
- *                 Map.entry("istiocoredns.enabled", "false"),
- *                 Map.entry("kiali.enabled", "true"),
- *                 Map.entry("mixer.enabled", "true"),
- *                 Map.entry("mixer.policy.enabled", "true"),
- *                 Map.entry("mixer.policy.resources.limits.cpu", "4800m"),
- *                 Map.entry("mixer.policy.resources.limits.memory", "4096Mi"),
- *                 Map.entry("mixer.policy.resources.requests.cpu", "1000m"),
- *                 Map.entry("mixer.policy.resources.requests.memory", "1024Mi"),
- *                 Map.entry("mixer.telemetry.resources.limits.cpu", "4800m"),
- *                 Map.entry("mixer.telemetry.resources.limits.memory", "4096Mi"),
- *                 Map.entry("mixer.telemetry.resources.requests.cpu", "1000m"),
- *                 Map.entry("mixer.telemetry.resources.requests.memory", "1024Mi"),
- *                 Map.entry("mtls.enabled", "false"),
- *                 Map.entry("nodeagent.enabled", "false"),
- *                 Map.entry("pilot.enabled", "true"),
- *                 Map.entry("pilot.resources.limits.cpu", "1000m"),
- *                 Map.entry("pilot.resources.limits.memory", "4096Mi"),
- *                 Map.entry("pilot.resources.requests.cpu", "500m"),
- *                 Map.entry("pilot.resources.requests.memory", "2048Mi"),
- *                 Map.entry("pilot.traceSampling", "1"),
- *                 Map.entry("security.enabled", "true"),
- *                 Map.entry("sidecarInjectorWebhook.enabled", "true"),
- *                 Map.entry("tracing.enabled", "true"),
- *                 Map.entry("tracing.jaeger.resources.limits.cpu", "500m"),
- *                 Map.entry("tracing.jaeger.resources.limits.memory", "1024Mi"),
- *                 Map.entry("tracing.jaeger.resources.requests.cpu", "100m"),
- *                 Map.entry("tracing.jaeger.resources.requests.memory", "100Mi")
+ *                 Map.entry("enabled", false),
+ *                 Map.entry("enableCRDs", true),
+ *                 Map.entry("enabled", true),
+ *                 Map.entry("enabled", false),
+ *                 Map.entry("cpu", "2000m"),
+ *                 Map.entry("memory", "1024Mi"),
+ *                 Map.entry("cpu", "100m"),
+ *                 Map.entry("memory", "128Mi"),
+ *                 Map.entry("type", "NodePort"),
+ *                 Map.entry("clusterId", foo_customClusterSync.clusterId()),
+ *                 Map.entry("enabled", "false"),
+ *                 Map.entry("enabled", "false"),
+ *                 Map.entry("enabled", "true"),
+ *                 Map.entry("enabled", "true"),
+ *                 Map.entry("enabled", "true"),
+ *                 Map.entry("cpu", "4800m"),
+ *                 Map.entry("memory", "4096Mi"),
+ *                 Map.entry("cpu", "1000m"),
+ *                 Map.entry("memory", "1024Mi"),
+ *                 Map.entry("cpu", "4800m"),
+ *                 Map.entry("memory", "4096Mi"),
+ *                 Map.entry("cpu", "1000m"),
+ *                 Map.entry("memory", "1024Mi"),
+ *                 Map.entry("enabled", false),
+ *                 Map.entry("enabled", false),
+ *                 Map.entry("enabled", true),
+ *                 Map.entry("cpu", "1000m"),
+ *                 Map.entry("memory", "4096Mi"),
+ *                 Map.entry("cpu", "500m"),
+ *                 Map.entry("memory", "2048Mi"),
+ *                 Map.entry("traceSampling", "1"),
+ *                 Map.entry("enabled", true),
+ *                 Map.entry("enabled", true),
+ *                 Map.entry("enabled", true),
+ *                 Map.entry("cpu", "500m"),
+ *                 Map.entry("memory", "1024Mi"),
+ *                 Map.entry("cpu", "100m"),
+ *                 Map.entry("memory", "100Mi")
  *             ))
  *             .build());
  * 
@@ -536,6 +536,57 @@ import javax.annotation.Nullable;
  *                     .cpuRequest("500")
  *                     .memoryLimit("800")
  *                     .memoryRequest("500")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Cluster("foo", ClusterArgs.builder()
+ *             .name("foo")
+ *             .description("Terraform cluster with agent customization")
+ *             .rkeConfig(ClusterRkeConfigArgs.builder()
+ *                 .build())
+ *             .clusterAgentDeploymentCustomizations(ClusterClusterAgentDeploymentCustomizationArgs.builder()
+ *                 .schedulingCustomizations(ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs.builder()
+ *                     .priorityClasses(ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs.builder()
+ *                         .preemptionPolicy("PreemptLowerPriority")
+ *                         .value(1000000000)
+ *                         .build())
+ *                     .podDisruptionBudgets(ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs.builder()
+ *                         .minAvailable("1")
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
@@ -1212,18 +1263,18 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.eksConfigV2;
     }
     /**
-     * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
      * 
      * @deprecated
-     * Deploy istio using rancher2.App resource instead
+     * Deploy istio using rancher2_app resource instead
      * 
      */
-    @Deprecated /* Deploy istio using rancher2.App resource instead */
+    @Deprecated /* Deploy istio using rancher2_app resource instead */
     @Export(name="enableClusterIstio", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableClusterIstio;
 
     /**
-     * @return Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * @return Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
      * 
      */
     public Output<Boolean> enableClusterIstio() {

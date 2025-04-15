@@ -71,7 +71,7 @@ import * as utilities from "./utilities";
  *     description: "istio namespace",
  * });
  * // Create a new rancher2 App deploying istio
- * const istio = new rancher2.App("istio", {
+ * const istio = new rancher2.index.App("istio", {
  *     catalogName: "system-library",
  *     name: "cluster-istio",
  *     description: "Terraform app acceptance test",
@@ -80,44 +80,44 @@ import * as utilities from "./utilities";
  *     templateVersion: "0.1.1",
  *     targetNamespace: foo_istio.id,
  *     answers: {
- *         "certmanager.enabled": "false",
- *         enableCRDs: "true",
- *         "galley.enabled": "true",
- *         "gateways.enabled": "false",
- *         "gateways.istio-ingressgateway.resources.limits.cpu": "2000m",
- *         "gateways.istio-ingressgateway.resources.limits.memory": "1024Mi",
- *         "gateways.istio-ingressgateway.resources.requests.cpu": "100m",
- *         "gateways.istio-ingressgateway.resources.requests.memory": "128Mi",
- *         "gateways.istio-ingressgateway.type": "NodePort",
- *         "global.rancher.clusterId": foo_customClusterSync.clusterId,
- *         "istio_cni.enabled": "false",
- *         "istiocoredns.enabled": "false",
- *         "kiali.enabled": "true",
- *         "mixer.enabled": "true",
- *         "mixer.policy.enabled": "true",
- *         "mixer.policy.resources.limits.cpu": "4800m",
- *         "mixer.policy.resources.limits.memory": "4096Mi",
- *         "mixer.policy.resources.requests.cpu": "1000m",
- *         "mixer.policy.resources.requests.memory": "1024Mi",
- *         "mixer.telemetry.resources.limits.cpu": "4800m",
- *         "mixer.telemetry.resources.limits.memory": "4096Mi",
- *         "mixer.telemetry.resources.requests.cpu": "1000m",
- *         "mixer.telemetry.resources.requests.memory": "1024Mi",
- *         "mtls.enabled": "false",
- *         "nodeagent.enabled": "false",
- *         "pilot.enabled": "true",
- *         "pilot.resources.limits.cpu": "1000m",
- *         "pilot.resources.limits.memory": "4096Mi",
- *         "pilot.resources.requests.cpu": "500m",
- *         "pilot.resources.requests.memory": "2048Mi",
- *         "pilot.traceSampling": "1",
- *         "security.enabled": "true",
- *         "sidecarInjectorWebhook.enabled": "true",
- *         "tracing.enabled": "true",
- *         "tracing.jaeger.resources.limits.cpu": "500m",
- *         "tracing.jaeger.resources.limits.memory": "1024Mi",
- *         "tracing.jaeger.resources.requests.cpu": "100m",
- *         "tracing.jaeger.resources.requests.memory": "100Mi",
+ *         enabled: false,
+ *         enableCRDs: true,
+ *         enabled: true,
+ *         enabled: false,
+ *         cpu: "2000m",
+ *         memory: "1024Mi",
+ *         cpu: "100m",
+ *         memory: "128Mi",
+ *         type: "NodePort",
+ *         clusterId: foo_customClusterSync.clusterId,
+ *         enabled: "false",
+ *         enabled: "false",
+ *         enabled: "true",
+ *         enabled: "true",
+ *         enabled: "true",
+ *         cpu: "4800m",
+ *         memory: "4096Mi",
+ *         cpu: "1000m",
+ *         memory: "1024Mi",
+ *         cpu: "4800m",
+ *         memory: "4096Mi",
+ *         cpu: "1000m",
+ *         memory: "1024Mi",
+ *         enabled: false,
+ *         enabled: false,
+ *         enabled: true,
+ *         cpu: "1000m",
+ *         memory: "4096Mi",
+ *         cpu: "500m",
+ *         memory: "2048Mi",
+ *         traceSampling: "1",
+ *         enabled: true,
+ *         enabled: true,
+ *         enabled: true,
+ *         cpu: "500m",
+ *         memory: "1024Mi",
+ *         cpu: "100m",
+ *         memory: "100Mi",
  *     },
  * });
  * ```
@@ -298,6 +298,30 @@ import * as utilities from "./utilities";
  *             cpuRequest: "500",
  *             memoryLimit: "800",
  *             memoryRequest: "500",
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * const foo = new rancher2.Cluster("foo", {
+ *     name: "foo",
+ *     description: "Terraform cluster with agent customization",
+ *     rkeConfig: {},
+ *     clusterAgentDeploymentCustomizations: [{
+ *         schedulingCustomizations: [{
+ *             priorityClasses: [{
+ *                 preemptionPolicy: "PreemptLowerPriority",
+ *                 value: 1000000000,
+ *             }],
+ *             podDisruptionBudgets: [{
+ *                 minAvailable: "1",
+ *             }],
  *         }],
  *     }],
  * });
@@ -644,9 +668,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly eksConfigV2!: pulumi.Output<outputs.ClusterEksConfigV2>;
     /**
-     * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
      *
-     * @deprecated Deploy istio using rancher2.App resource instead
+     * @deprecated Deploy istio using rancher2App resource instead
      */
     public /*out*/ readonly enableClusterIstio!: pulumi.Output<boolean>;
     /**
@@ -896,9 +920,9 @@ export interface ClusterState {
      */
     eksConfigV2?: pulumi.Input<inputs.ClusterEksConfigV2>;
     /**
-     * Deploy istio on `system` project and `istio-system` namespace, using rancher2.App resource instead. See above example.
+     * Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
      *
-     * @deprecated Deploy istio using rancher2.App resource instead
+     * @deprecated Deploy istio using rancher2App resource instead
      */
     enableClusterIstio?: pulumi.Input<boolean>;
     /**

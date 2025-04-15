@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,7 +18,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -27,8 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2_bootstrap
 //			_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
-//				Password:  pulumi.String("blahblah"),
-//				Telemetry: pulumi.Bool(true),
+//				Password: pulumi.String("blahblah"),
 //			})
 //			if err != nil {
 //				return err
@@ -44,7 +43,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -55,7 +54,6 @@ import (
 //			_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
 //				InitialPassword: pulumi.String("<INSTALL_PASSWORD>"),
 //				Password:        pulumi.String("blahblah"),
-//				Telemetry:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -71,7 +69,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -80,8 +78,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2_bootstrap using bootstrap provider config
 //			_, err := rancher2.NewBootstrap(ctx, "admin", &rancher2.BootstrapArgs{
-//				Password:  pulumi.String("blahblah"),
-//				Telemetry: pulumi.Bool(true),
+//				Password: pulumi.String("blahblah"),
 //			})
 //			if err != nil {
 //				return err
@@ -100,8 +97,6 @@ type Bootstrap struct {
 	InitialPassword pulumi.StringPtrOutput `pulumi:"initialPassword"`
 	// Password for Admin user or random generated if empty (string)
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Send telemetry anonymous data. Default: `false` (bool)
-	Telemetry pulumi.BoolPtrOutput `pulumi:"telemetry"`
 	// (Computed) Generated API temporary token as helper. Should be empty (string)
 	TempToken pulumi.StringOutput `pulumi:"tempToken"`
 	// (Computed) Generated API temporary token id as helper. Should be empty (string)
@@ -172,8 +167,6 @@ type bootstrapState struct {
 	InitialPassword *string `pulumi:"initialPassword"`
 	// Password for Admin user or random generated if empty (string)
 	Password *string `pulumi:"password"`
-	// Send telemetry anonymous data. Default: `false` (bool)
-	Telemetry *bool `pulumi:"telemetry"`
 	// (Computed) Generated API temporary token as helper. Should be empty (string)
 	TempToken *string `pulumi:"tempToken"`
 	// (Computed) Generated API temporary token id as helper. Should be empty (string)
@@ -201,8 +194,6 @@ type BootstrapState struct {
 	InitialPassword pulumi.StringPtrInput
 	// Password for Admin user or random generated if empty (string)
 	Password pulumi.StringPtrInput
-	// Send telemetry anonymous data. Default: `false` (bool)
-	Telemetry pulumi.BoolPtrInput
 	// (Computed) Generated API temporary token as helper. Should be empty (string)
 	TempToken pulumi.StringPtrInput
 	// (Computed) Generated API temporary token id as helper. Should be empty (string)
@@ -232,8 +223,6 @@ type bootstrapArgs struct {
 	InitialPassword *string `pulumi:"initialPassword"`
 	// Password for Admin user or random generated if empty (string)
 	Password *string `pulumi:"password"`
-	// Send telemetry anonymous data. Default: `false` (bool)
-	Telemetry *bool `pulumi:"telemetry"`
 	// TTL in seconds for generated admin token. Default: `0`  (int)
 	TokenTtl *int `pulumi:"tokenTtl"`
 	// Regenerate admin token. Default: `false` (bool)
@@ -248,8 +237,6 @@ type BootstrapArgs struct {
 	InitialPassword pulumi.StringPtrInput
 	// Password for Admin user or random generated if empty (string)
 	Password pulumi.StringPtrInput
-	// Send telemetry anonymous data. Default: `false` (bool)
-	Telemetry pulumi.BoolPtrInput
 	// TTL in seconds for generated admin token. Default: `0`  (int)
 	TokenTtl pulumi.IntPtrInput
 	// Regenerate admin token. Default: `false` (bool)
@@ -358,11 +345,6 @@ func (o BootstrapOutput) InitialPassword() pulumi.StringPtrOutput {
 // Password for Admin user or random generated if empty (string)
 func (o BootstrapOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bootstrap) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
-}
-
-// Send telemetry anonymous data. Default: `false` (bool)
-func (o BootstrapOutput) Telemetry() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Bootstrap) pulumi.BoolPtrOutput { return v.Telemetry }).(pulumi.BoolPtrOutput)
 }
 
 // (Computed) Generated API temporary token as helper. Should be empty (string)
