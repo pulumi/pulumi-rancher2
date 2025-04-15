@@ -17,8 +17,8 @@ package main
 import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 
-	rancher2 "github.com/pulumi/pulumi-rancher2/provider/v8"
-	"github.com/pulumi/pulumi-rancher2/provider/v8/pkg/version"
+	rancher2 "github.com/pulumi/pulumi-rancher2/provider/v9"
+	"github.com/pulumi/pulumi-rancher2/provider/v9/pkg/version"
 )
 
 func main() {

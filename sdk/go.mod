@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-rancher2/sdk/v8
+module github.com/pulumi/pulumi-rancher2/sdk/v9
 
 go 1.22
 
@@ -6,6 +6,7 @@ toolchain go1.23.5
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
+	github.com/pulumi/pulumi-rancher2/sdk/v8 v8.1.5
 	github.com/pulumi/pulumi/sdk/v3 v3.160.0
 )
 
