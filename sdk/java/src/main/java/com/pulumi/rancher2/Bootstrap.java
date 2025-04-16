@@ -46,7 +46,6 @@ import javax.annotation.Nullable;
  *         // Create a new rancher2_bootstrap
  *         var admin = new Bootstrap("admin", BootstrapArgs.builder()
  *             .password("blahblah")
- *             .telemetry(true)
  *             .build());
  * 
  *     }
@@ -82,7 +81,6 @@ import javax.annotation.Nullable;
  *         var admin = new Bootstrap("admin", BootstrapArgs.builder()
  *             .initialPassword("<INSTALL_PASSWORD>")
  *             .password("blahblah")
- *             .telemetry(true)
  *             .build());
  * 
  *     }
@@ -117,7 +115,6 @@ import javax.annotation.Nullable;
  *         // Create a new rancher2_bootstrap using bootstrap provider config
  *         var admin = new Bootstrap("admin", BootstrapArgs.builder()
  *             .password("blahblah")
- *             .telemetry(true)
  *             .build());
  * 
  *     }
@@ -170,20 +167,6 @@ public class Bootstrap extends com.pulumi.resources.CustomResource {
      */
     public Output<String> password() {
         return this.password;
-    }
-    /**
-     * Send telemetry anonymous data. Default: `false` (bool)
-     * 
-     */
-    @Export(name="telemetry", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> telemetry;
-
-    /**
-     * @return Send telemetry anonymous data. Default: `false` (bool)
-     * 
-     */
-    public Output<Optional<Boolean>> telemetry() {
-        return Codegen.optional(this.telemetry);
     }
     /**
      * (Computed) Generated API temporary token as helper. Should be empty (string)

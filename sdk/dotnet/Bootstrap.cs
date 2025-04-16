@@ -24,7 +24,6 @@ namespace Pulumi.Rancher2
     ///     var admin = new Rancher2.Bootstrap("admin", new()
     ///     {
     ///         Password = "blahblah",
-    ///         Telemetry = true,
     ///     });
     /// 
     /// });
@@ -43,7 +42,6 @@ namespace Pulumi.Rancher2
     ///     {
     ///         InitialPassword = "&lt;INSTALL_PASSWORD&gt;",
     ///         Password = "blahblah",
-    ///         Telemetry = true,
     ///     });
     /// 
     /// });
@@ -61,7 +59,6 @@ namespace Pulumi.Rancher2
     ///     var admin = new Rancher2.Bootstrap("admin", new()
     ///     {
     ///         Password = "blahblah",
-    ///         Telemetry = true,
     ///     });
     /// 
     /// });
@@ -87,12 +84,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
-
-        /// <summary>
-        /// Send telemetry anonymous data. Default: `false` (bool)
-        /// </summary>
-        [Output("telemetry")]
-        public Output<bool?> Telemetry { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) Generated API temporary token as helper. Should be empty (string)
@@ -235,12 +226,6 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Send telemetry anonymous data. Default: `false` (bool)
-        /// </summary>
-        [Input("telemetry")]
-        public Input<bool>? Telemetry { get; set; }
-
-        /// <summary>
         /// TTL in seconds for generated admin token. Default: `0`  (int)
         /// </summary>
         [Input("tokenTtl")]
@@ -313,12 +298,6 @@ namespace Pulumi.Rancher2
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
-
-        /// <summary>
-        /// Send telemetry anonymous data. Default: `false` (bool)
-        /// </summary>
-        [Input("telemetry")]
-        public Input<bool>? Telemetry { get; set; }
 
         [Input("tempToken")]
         private Input<string>? _tempToken;

@@ -48,21 +48,6 @@ public final class BootstrapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Send telemetry anonymous data. Default: `false` (bool)
-     * 
-     */
-    @Import(name="telemetry")
-    private @Nullable Output<Boolean> telemetry;
-
-    /**
-     * @return Send telemetry anonymous data. Default: `false` (bool)
-     * 
-     */
-    public Optional<Output<Boolean>> telemetry() {
-        return Optional.ofNullable(this.telemetry);
-    }
-
-    /**
      * TTL in seconds for generated admin token. Default: `0`  (int)
      * 
      */
@@ -112,7 +97,6 @@ public final class BootstrapArgs extends com.pulumi.resources.ResourceArgs {
     private BootstrapArgs(BootstrapArgs $) {
         this.initialPassword = $.initialPassword;
         this.password = $.password;
-        this.telemetry = $.telemetry;
         this.tokenTtl = $.tokenTtl;
         this.tokenUpdate = $.tokenUpdate;
         this.uiDefaultLanding = $.uiDefaultLanding;
@@ -176,27 +160,6 @@ public final class BootstrapArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder password(String password) {
             return password(Output.of(password));
-        }
-
-        /**
-         * @param telemetry Send telemetry anonymous data. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder telemetry(@Nullable Output<Boolean> telemetry) {
-            $.telemetry = telemetry;
-            return this;
-        }
-
-        /**
-         * @param telemetry Send telemetry anonymous data. Default: `false` (bool)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder telemetry(Boolean telemetry) {
-            return telemetry(Output.of(telemetry));
         }
 
         /**

@@ -32,6 +32,7 @@ class AuthConfigAzureAdArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 group_membership_filter: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a AuthConfigAzureAd resource.
@@ -66,6 +67,8 @@ class AuthConfigAzureAdArgs:
             pulumi.set(__self__, "enabled", enabled)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if group_membership_filter is not None:
+            pulumi.set(__self__, "group_membership_filter", group_membership_filter)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
 
@@ -214,6 +217,15 @@ class AuthConfigAzureAdArgs:
         pulumi.set(self, "endpoint", value)
 
     @property
+    @pulumi.getter(name="groupMembershipFilter")
+    def group_membership_filter(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "group_membership_filter")
+
+    @group_membership_filter.setter
+    def group_membership_filter(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "group_membership_filter", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -238,6 +250,7 @@ class _AuthConfigAzureAdState:
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  graph_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 group_membership_filter: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  rancher_url: Optional[pulumi.Input[builtins.str]] = None,
@@ -280,6 +293,8 @@ class _AuthConfigAzureAdState:
             pulumi.set(__self__, "endpoint", endpoint)
         if graph_endpoint is not None:
             pulumi.set(__self__, "graph_endpoint", graph_endpoint)
+        if group_membership_filter is not None:
+            pulumi.set(__self__, "group_membership_filter", group_membership_filter)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -402,6 +417,15 @@ class _AuthConfigAzureAdState:
         pulumi.set(self, "graph_endpoint", value)
 
     @property
+    @pulumi.getter(name="groupMembershipFilter")
+    def group_membership_filter(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "group_membership_filter")
+
+    @group_membership_filter.setter
+    def group_membership_filter(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "group_membership_filter", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
@@ -488,6 +512,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  graph_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 group_membership_filter: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  rancher_url: Optional[pulumi.Input[builtins.str]] = None,
                  tenant_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -575,6 +600,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  graph_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 group_membership_filter: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  rancher_url: Optional[pulumi.Input[builtins.str]] = None,
                  tenant_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -605,6 +631,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
             if graph_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'graph_endpoint'")
             __props__.__dict__["graph_endpoint"] = graph_endpoint
+            __props__.__dict__["group_membership_filter"] = group_membership_filter
             __props__.__dict__["labels"] = labels
             if rancher_url is None and not opts.urn:
                 raise TypeError("Missing required property 'rancher_url'")
@@ -638,6 +665,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
             enabled: Optional[pulumi.Input[builtins.bool]] = None,
             endpoint: Optional[pulumi.Input[builtins.str]] = None,
             graph_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+            group_membership_filter: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             rancher_url: Optional[pulumi.Input[builtins.str]] = None,
@@ -680,6 +708,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["graph_endpoint"] = graph_endpoint
+        __props__.__dict__["group_membership_filter"] = group_membership_filter
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["rancher_url"] = rancher_url
@@ -759,6 +788,11 @@ class AuthConfigAzureAd(pulumi.CustomResource):
         AzureAD graph endpoint (string)
         """
         return pulumi.get(self, "graph_endpoint")
+
+    @property
+    @pulumi.getter(name="groupMembershipFilter")
+    def group_membership_filter(self) -> pulumi.Output[Optional[builtins.str]]:
+        return pulumi.get(self, "group_membership_filter")
 
     @property
     @pulumi.getter

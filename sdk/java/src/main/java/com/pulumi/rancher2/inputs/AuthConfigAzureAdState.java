@@ -153,6 +153,13 @@ public final class AuthConfigAzureAdState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.graphEndpoint);
     }
 
+    @Import(name="groupMembershipFilter")
+    private @Nullable Output<String> groupMembershipFilter;
+
+    public Optional<Output<String>> groupMembershipFilter() {
+        return Optional.ofNullable(this.groupMembershipFilter);
+    }
+
     /**
      * Labels of the resource (map)
      * 
@@ -255,6 +262,7 @@ public final class AuthConfigAzureAdState extends com.pulumi.resources.ResourceA
         this.enabled = $.enabled;
         this.endpoint = $.endpoint;
         this.graphEndpoint = $.graphEndpoint;
+        this.groupMembershipFilter = $.groupMembershipFilter;
         this.labels = $.labels;
         this.name = $.name;
         this.rancherUrl = $.rancherUrl;
@@ -478,6 +486,15 @@ public final class AuthConfigAzureAdState extends com.pulumi.resources.ResourceA
          */
         public Builder graphEndpoint(String graphEndpoint) {
             return graphEndpoint(Output.of(graphEndpoint));
+        }
+
+        public Builder groupMembershipFilter(@Nullable Output<String> groupMembershipFilter) {
+            $.groupMembershipFilter = groupMembershipFilter;
+            return this;
+        }
+
+        public Builder groupMembershipFilter(String groupMembershipFilter) {
+            return groupMembershipFilter(Output.of(groupMembershipFilter));
         }
 
         /**

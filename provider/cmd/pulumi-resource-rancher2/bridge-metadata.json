@@ -1,17 +1,13 @@
 {
     "auto-aliasing": {
         "resources": {
-            "rancher2_app": {
-                "current": "rancher2:index/app:App",
-                "majorVersion": 8
-            },
             "rancher2_app_v2": {
                 "current": "rancher2:index/appV2:AppV2",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_auth_config_activedirectory": {
                 "current": "rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "allowed_principal_ids": {
                         "maxItemsOne": false
@@ -23,7 +19,7 @@
             },
             "rancher2_auth_config_adfs": {
                 "current": "rancher2:index/authConfigAdfs:AuthConfigAdfs",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "allowed_principal_ids": {
                         "maxItemsOne": false
@@ -32,7 +28,7 @@
             },
             "rancher2_auth_config_azuread": {
                 "current": "rancher2:index/authConfigAzureAd:AuthConfigAzureAd",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "allowed_principal_ids": {
                         "maxItemsOne": false
@@ -41,7 +37,7 @@
             },
             "rancher2_auth_config_freeipa": {
                 "current": "rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "allowed_principal_ids": {
                         "maxItemsOne": false
@@ -53,7 +49,7 @@
             },
             "rancher2_auth_config_github": {
                 "current": "rancher2:index/authConfigGithub:AuthConfigGithub",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "allowed_principal_ids": {
                         "maxItemsOne": false
@@ -62,7 +58,7 @@
             },
             "rancher2_auth_config_keycloak": {
                 "current": "rancher2:index/authConfigKeycloak:AuthConfigKeycloak",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "allowed_principal_ids": {
                         "maxItemsOne": false
@@ -71,7 +67,7 @@
             },
             "rancher2_auth_config_okta": {
                 "current": "rancher2:index/authConfigOkta:AuthConfigOkta",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "allowed_principal_ids": {
                         "maxItemsOne": false
@@ -80,7 +76,7 @@
             },
             "rancher2_auth_config_openldap": {
                 "current": "rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "allowed_principal_ids": {
                         "maxItemsOne": false
@@ -92,7 +88,7 @@
             },
             "rancher2_auth_config_ping": {
                 "current": "rancher2:index/authConfigPing:AuthConfigPing",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "allowed_principal_ids": {
                         "maxItemsOne": false
@@ -101,23 +97,19 @@
             },
             "rancher2_bootstrap": {
                 "current": "rancher2:index/bootstrap:Bootstrap",
-                "majorVersion": 8
-            },
-            "rancher2_catalog": {
-                "current": "rancher2:index/catalog:Catalog",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_catalog_v2": {
                 "current": "rancher2:index/catalogV2:CatalogV2",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_certificate": {
                 "current": "rancher2:index/certificate:Certificate",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_cloud_credential": {
                 "current": "rancher2:index/cloudCredential:CloudCredential",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "amazonec2_credential_config": {
                         "maxItemsOne": true
@@ -150,7 +142,7 @@
             },
             "rancher2_cluster": {
                 "current": "rancher2:index/cluster:Cluster",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "agent_env_vars": {
                         "maxItemsOne": false
@@ -197,6 +189,19 @@
                                 },
                                 "override_resource_requirements": {
                                     "maxItemsOne": false
+                                },
+                                "scheduling_customization": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "pod_disruption_budget": {
+                                                "maxItemsOne": false
+                                            },
+                                            "priority_class": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -735,7 +740,7 @@
             },
             "rancher2_cluster_driver": {
                 "current": "rancher2:index/clusterDriver:ClusterDriver",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "whitelist_domains": {
                         "maxItemsOne": false
@@ -744,11 +749,11 @@
             },
             "rancher2_cluster_role_template_binding": {
                 "current": "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_cluster_sync": {
                 "current": "rancher2:index/clusterSync:ClusterSync",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "node_pool_ids": {
                         "maxItemsOne": false
@@ -767,7 +772,7 @@
             },
             "rancher2_cluster_template": {
                 "current": "rancher2:index/clusterTemplate:ClusterTemplate",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "members": {
                         "maxItemsOne": false
@@ -1153,7 +1158,7 @@
             },
             "rancher2_cluster_v2": {
                 "current": "rancher2:index/clusterV2:ClusterV2",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "agent_env_vars": {
                         "maxItemsOne": false
@@ -1167,6 +1172,19 @@
                                 },
                                 "override_resource_requirements": {
                                     "maxItemsOne": false
+                                },
+                                "scheduling_customization": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "pod_disruption_budget": {
+                                                "maxItemsOne": false
+                                            },
+                                            "priority_class": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1357,15 +1375,15 @@
             },
             "rancher2_config_map_v2": {
                 "current": "rancher2:index/configMapV2:ConfigMapV2",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_custom_user_token": {
                 "current": "rancher2:index/customUserToken:CustomUserToken",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_etcd_backup": {
                 "current": "rancher2:index/etcdBackup:EtcdBackup",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "backup_config": {
                         "maxItemsOne": true,
@@ -1381,11 +1399,11 @@
             },
             "rancher2_feature": {
                 "current": "rancher2:index/feature:Feature",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_global_role": {
                 "current": "rancher2:index/globalRole:GlobalRole",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "inherited_cluster_roles": {
                         "maxItemsOne": false
@@ -1416,11 +1434,11 @@
             },
             "rancher2_global_role_binding": {
                 "current": "rancher2:index/globalRoleBinding:GlobalRoleBinding",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_machine_config_v2": {
                 "current": "rancher2:index/machineConfigV2:MachineConfigV2",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "amazonec2_config": {
                         "maxItemsOne": true,
@@ -1481,37 +1499,9 @@
                     }
                 }
             },
-            "rancher2_multi_cluster_app": {
-                "current": "rancher2:index/multiClusterApp:MultiClusterApp",
-                "majorVersion": 8,
-                "fields": {
-                    "answers": {
-                        "maxItemsOne": false
-                    },
-                    "members": {
-                        "maxItemsOne": false
-                    },
-                    "roles": {
-                        "maxItemsOne": false
-                    },
-                    "targets": {
-                        "maxItemsOne": false
-                    },
-                    "upgrade_strategy": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "rolling_update": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "rancher2_namespace": {
                 "current": "rancher2:index/namespace:Namespace",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "container_resource_limit": {
                         "maxItemsOne": true
@@ -1530,7 +1520,7 @@
             },
             "rancher2_node_driver": {
                 "current": "rancher2:index/nodeDriver:NodeDriver",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "whitelist_domains": {
                         "maxItemsOne": false
@@ -1539,7 +1529,7 @@
             },
             "rancher2_node_pool": {
                 "current": "rancher2:index/nodePool:NodePool",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "node_taints": {
                         "maxItemsOne": false
@@ -1548,7 +1538,7 @@
             },
             "rancher2_node_template": {
                 "current": "rancher2:index/nodeTemplate:NodeTemplate",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "amazonec2_config": {
                         "maxItemsOne": true,
@@ -1642,7 +1632,7 @@
             },
             "rancher2_pod_security_admission_configuration_template": {
                 "current": "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "defaults": {
                         "maxItemsOne": true
@@ -1667,7 +1657,7 @@
             },
             "rancher2_project": {
                 "current": "rancher2:index/project:Project",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "container_resource_limit": {
                         "maxItemsOne": true
@@ -1689,11 +1679,11 @@
             },
             "rancher2_project_role_template_binding": {
                 "current": "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_registry": {
                 "current": "rancher2:index/registry:Registry",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "registries": {
                         "maxItemsOne": false
@@ -1702,7 +1692,7 @@
             },
             "rancher2_role_template": {
                 "current": "rancher2:index/roleTemplate:RoleTemplate",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "external_rules": {
                         "maxItemsOne": false,
@@ -1755,19 +1745,19 @@
             },
             "rancher2_secret": {
                 "current": "rancher2:index/secret:Secret",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_secret_v2": {
                 "current": "rancher2:index/secretV2:SecretV2",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_setting": {
                 "current": "rancher2:index/setting:Setting",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_storage_class_v2": {
                 "current": "rancher2:index/storageClassV2:StorageClassV2",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "mount_options": {
                         "maxItemsOne": false
@@ -1776,11 +1766,11 @@
             },
             "rancher2_token": {
                 "current": "rancher2:index/token:Token",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_user": {
                 "current": "rancher2:index/user:User",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "principal_ids": {
                         "maxItemsOne": false
@@ -1789,29 +1779,21 @@
             }
         },
         "datasources": {
-            "rancher2_app": {
-                "current": "rancher2:index/getApp:getApp",
-                "majorVersion": 8
-            },
-            "rancher2_catalog": {
-                "current": "rancher2:index/getCatalog:getCatalog",
-                "majorVersion": 8
-            },
             "rancher2_catalog_v2": {
                 "current": "rancher2:index/getCatalogV2:getCatalogV2",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_certificate": {
                 "current": "rancher2:index/getCertificate:getCertificate",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_cloud_credential": {
                 "current": "rancher2:index/getCloudCredential:getCloudCredential",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_cluster": {
                 "current": "rancher2:index/getCluster:getCluster",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "agent_env_vars": {
                         "maxItemsOne": false
@@ -2370,7 +2352,7 @@
             },
             "rancher2_cluster_driver": {
                 "current": "rancher2:index/getClusterDriver:getClusterDriver",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "whitelist_domains": {
                         "maxItemsOne": false
@@ -2379,11 +2361,11 @@
             },
             "rancher2_cluster_role_template_binding": {
                 "current": "rancher2:index/getClusterRoleTemplateBinding:getClusterRoleTemplateBinding",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_cluster_template": {
                 "current": "rancher2:index/getClusterTemplate:getClusterTemplate",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "members": {
                         "maxItemsOne": false
@@ -2769,7 +2751,7 @@
             },
             "rancher2_cluster_v2": {
                 "current": "rancher2:index/getClusterV2:getClusterV2",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "agent_env_vars": {
                         "maxItemsOne": false
@@ -2944,11 +2926,11 @@
             },
             "rancher2_config_map_v2": {
                 "current": "rancher2:index/getConfigMapV2:getConfigMapV2",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_etcd_backup": {
                 "current": "rancher2:index/getEtcdBackup:getEtcdBackup",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "backup_config": {
                         "maxItemsOne": true,
@@ -2964,7 +2946,7 @@
             },
             "rancher2_global_role": {
                 "current": "rancher2:index/getGlobalRole:getGlobalRole",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "inherited_cluster_roles": {
                         "maxItemsOne": false
@@ -2995,39 +2977,11 @@
             },
             "rancher2_global_role_binding": {
                 "current": "rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding",
-                "majorVersion": 8
-            },
-            "rancher2_multi_cluster_app": {
-                "current": "rancher2:index/getMultiClusterApp:getMultiClusterApp",
-                "majorVersion": 8,
-                "fields": {
-                    "answers": {
-                        "maxItemsOne": false
-                    },
-                    "members": {
-                        "maxItemsOne": false
-                    },
-                    "roles": {
-                        "maxItemsOne": false
-                    },
-                    "targets": {
-                        "maxItemsOne": false
-                    },
-                    "upgrade_strategy": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "rolling_update": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    }
-                }
+                "majorVersion": 9
             },
             "rancher2_namespace": {
                 "current": "rancher2:index/getNamespace:getNamespace",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "container_resource_limit": {
                         "maxItemsOne": true
@@ -3046,7 +3000,7 @@
             },
             "rancher2_node_driver": {
                 "current": "rancher2:index/getNodeDriver:getNodeDriver",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "whitelist_domains": {
                         "maxItemsOne": false
@@ -3055,7 +3009,7 @@
             },
             "rancher2_node_pool": {
                 "current": "rancher2:index/getNodePool:getNodePool",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "node_taints": {
                         "maxItemsOne": false
@@ -3064,7 +3018,7 @@
             },
             "rancher2_node_template": {
                 "current": "rancher2:index/getNodeTemplate:getNodeTemplate",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "engine_insecure_registry": {
                         "maxItemsOne": false
@@ -3079,7 +3033,7 @@
             },
             "rancher2_pod_security_admission_configuration_template": {
                 "current": "rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "defaults": {
                         "maxItemsOne": true
@@ -3104,11 +3058,11 @@
             },
             "rancher2_principal": {
                 "current": "rancher2:index/getPrincipal:getPrincipal",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_project": {
                 "current": "rancher2:index/getProject:getProject",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "container_resource_limit": {
                         "maxItemsOne": true
@@ -3130,11 +3084,11 @@
             },
             "rancher2_project_role_template_binding": {
                 "current": "rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_registry": {
                 "current": "rancher2:index/getRegistry:getRegistry",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "registries": {
                         "maxItemsOne": false
@@ -3143,7 +3097,7 @@
             },
             "rancher2_role_template": {
                 "current": "rancher2:index/getRoleTemplate:getRoleTemplate",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "external_rules": {
                         "maxItemsOne": false,
@@ -3196,19 +3150,19 @@
             },
             "rancher2_secret": {
                 "current": "rancher2:index/getSecret:getSecret",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_secret_v2": {
                 "current": "rancher2:index/getSecretV2:getSecretV2",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_setting": {
                 "current": "rancher2:index/getSetting:getSetting",
-                "majorVersion": 8
+                "majorVersion": 9
             },
             "rancher2_storage_class_v2": {
                 "current": "rancher2:index/getStorageClassV2:getStorageClassV2",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "mount_options": {
                         "maxItemsOne": false
@@ -3217,7 +3171,7 @@
             },
             "rancher2_user": {
                 "current": "rancher2:index/getUser:getUser",
-                "majorVersion": 8,
+                "majorVersion": 9,
                 "fields": {
                     "principal_ids": {
                         "maxItemsOne": false

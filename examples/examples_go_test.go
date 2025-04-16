@@ -1,4 +1,5 @@
 // Copyright 2016-2020, Pulumi Corporation.  All rights reserved.
+//go:build go || all
 // +build go all
 
 package examples
@@ -11,7 +12,7 @@ func getGoBaseOptions() integration.ProgramTestOptions {
 	base := getBaseOptions()
 	goBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-rancher2/sdk/v2",
+			"github.com/pulumi/pulumi-rancher2/sdk/v9",
 		},
 	})
 

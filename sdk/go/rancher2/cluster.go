@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,7 +54,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,7 +87,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -125,52 +125,52 @@ import (
 //			}
 //			// Create a new rancher2 App deploying istio
 //			_, err = rancher2.NewApp(ctx, "istio", &rancher2.AppArgs{
-//				CatalogName:     pulumi.String("system-library"),
-//				Name:            pulumi.String("cluster-istio"),
-//				Description:     pulumi.String("Terraform app acceptance test"),
+//				CatalogName:     "system-library",
+//				Name:            "cluster-istio",
+//				Description:     "Terraform app acceptance test",
 //				ProjectId:       foo_istio.ProjectId,
-//				TemplateName:    pulumi.String("rancher-istio"),
-//				TemplateVersion: pulumi.String("0.1.1"),
+//				TemplateName:    "rancher-istio",
+//				TemplateVersion: "0.1.1",
 //				TargetNamespace: foo_istio.ID(),
-//				Answers: pulumi.StringMap{
-//					"certmanager.enabled": pulumi.String("false"),
-//					"enableCRDs":          pulumi.String("true"),
-//					"galley.enabled":      pulumi.String("true"),
-//					"gateways.enabled":    pulumi.String("false"),
-//					"gateways.istio-ingressgateway.resources.limits.cpu":      pulumi.String("2000m"),
-//					"gateways.istio-ingressgateway.resources.limits.memory":   pulumi.String("1024Mi"),
-//					"gateways.istio-ingressgateway.resources.requests.cpu":    pulumi.String("100m"),
-//					"gateways.istio-ingressgateway.resources.requests.memory": pulumi.String("128Mi"),
-//					"gateways.istio-ingressgateway.type":                      pulumi.String("NodePort"),
-//					"global.rancher.clusterId":                                foo_customClusterSync.ClusterId,
-//					"istio_cni.enabled":                                       pulumi.String("false"),
-//					"istiocoredns.enabled":                                    pulumi.String("false"),
-//					"kiali.enabled":                                           pulumi.String("true"),
-//					"mixer.enabled":                                           pulumi.String("true"),
-//					"mixer.policy.enabled":                                    pulumi.String("true"),
-//					"mixer.policy.resources.limits.cpu":                       pulumi.String("4800m"),
-//					"mixer.policy.resources.limits.memory":                    pulumi.String("4096Mi"),
-//					"mixer.policy.resources.requests.cpu":                     pulumi.String("1000m"),
-//					"mixer.policy.resources.requests.memory":                  pulumi.String("1024Mi"),
-//					"mixer.telemetry.resources.limits.cpu":                    pulumi.String("4800m"),
-//					"mixer.telemetry.resources.limits.memory":                 pulumi.String("4096Mi"),
-//					"mixer.telemetry.resources.requests.cpu":                  pulumi.String("1000m"),
-//					"mixer.telemetry.resources.requests.memory":               pulumi.String("1024Mi"),
-//					"mtls.enabled":                                            pulumi.String("false"),
-//					"nodeagent.enabled":                                       pulumi.String("false"),
-//					"pilot.enabled":                                           pulumi.String("true"),
-//					"pilot.resources.limits.cpu":                              pulumi.String("1000m"),
-//					"pilot.resources.limits.memory":                           pulumi.String("4096Mi"),
-//					"pilot.resources.requests.cpu":                            pulumi.String("500m"),
-//					"pilot.resources.requests.memory":                         pulumi.String("2048Mi"),
-//					"pilot.traceSampling":                                     pulumi.String("1"),
-//					"security.enabled":                                        pulumi.String("true"),
-//					"sidecarInjectorWebhook.enabled":                          pulumi.String("true"),
-//					"tracing.enabled":                                         pulumi.String("true"),
-//					"tracing.jaeger.resources.limits.cpu":                     pulumi.String("500m"),
-//					"tracing.jaeger.resources.limits.memory":                  pulumi.String("1024Mi"),
-//					"tracing.jaeger.resources.requests.cpu":                   pulumi.String("100m"),
-//					"tracing.jaeger.resources.requests.memory":                pulumi.String("100Mi"),
+//				Answers: map[string]interface{}{
+//					"enabled":       false,
+//					"enableCRDs":    true,
+//					"enabled":       true,
+//					"enabled":       false,
+//					"cpu":           "2000m",
+//					"memory":        "1024Mi",
+//					"cpu":           "100m",
+//					"memory":        "128Mi",
+//					"type":          "NodePort",
+//					"clusterId":     foo_customClusterSync.ClusterId,
+//					"enabled":       "false",
+//					"enabled":       "false",
+//					"enabled":       "true",
+//					"enabled":       "true",
+//					"enabled":       "true",
+//					"cpu":           "4800m",
+//					"memory":        "4096Mi",
+//					"cpu":           "1000m",
+//					"memory":        "1024Mi",
+//					"cpu":           "4800m",
+//					"memory":        "4096Mi",
+//					"cpu":           "1000m",
+//					"memory":        "1024Mi",
+//					"enabled":       false,
+//					"enabled":       false,
+//					"enabled":       true,
+//					"cpu":           "1000m",
+//					"memory":        "4096Mi",
+//					"cpu":           "500m",
+//					"memory":        "2048Mi",
+//					"traceSampling": "1",
+//					"enabled":       true,
+//					"enabled":       true,
+//					"enabled":       true,
+//					"cpu":           "500m",
+//					"memory":        "1024Mi",
+//					"cpu":           "100m",
+//					"memory":        "100Mi",
 //				},
 //			})
 //			if err != nil {
@@ -189,7 +189,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -256,7 +256,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -320,7 +320,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -391,7 +391,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -453,6 +453,53 @@ import (
 //
 // ```
 //
+// ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("Terraform cluster with agent customization"),
+//				RkeConfig:   &rancher2.ClusterRkeConfigArgs{},
+//				ClusterAgentDeploymentCustomizations: rancher2.ClusterClusterAgentDeploymentCustomizationArray{
+//					&rancher2.ClusterClusterAgentDeploymentCustomizationArgs{
+//						SchedulingCustomizations: rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArray{
+//							&rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs{
+//								PriorityClasses: rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{
+//									&rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{
+//										PreemptionPolicy: pulumi.String("PreemptLowerPriority"),
+//										Value:            pulumi.Int(1000000000),
+//									},
+//								},
+//								PodDisruptionBudgets: rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{
+//									&rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{
+//										MinAvailable: pulumi.String("1"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
 //
 // ```go
@@ -460,7 +507,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -521,7 +568,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -565,7 +612,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -631,7 +678,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -693,7 +740,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -825,9 +872,9 @@ type Cluster struct {
 	EksConfig ClusterEksConfigPtrOutput `pulumi:"eksConfig"`
 	// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
 	EksConfigV2 ClusterEksConfigV2Output `pulumi:"eksConfigV2"`
-	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+	// Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
 	//
-	// Deprecated: Deploy istio using App resource instead
+	// Deprecated: Deploy istio using rancher2App resource instead
 	EnableClusterIstio pulumi.BoolOutput `pulumi:"enableClusterIstio"`
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolOutput `pulumi:"enableNetworkPolicy"`
@@ -938,9 +985,9 @@ type clusterState struct {
 	EksConfig *ClusterEksConfig `pulumi:"eksConfig"`
 	// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
 	EksConfigV2 *ClusterEksConfigV2 `pulumi:"eksConfigV2"`
-	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+	// Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
 	//
-	// Deprecated: Deploy istio using App resource instead
+	// Deprecated: Deploy istio using rancher2App resource instead
 	EnableClusterIstio *bool `pulumi:"enableClusterIstio"`
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy *bool `pulumi:"enableNetworkPolicy"`
@@ -1017,9 +1064,9 @@ type ClusterState struct {
 	EksConfig ClusterEksConfigPtrInput
 	// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
 	EksConfigV2 ClusterEksConfigV2PtrInput
-	// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+	// Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
 	//
-	// Deprecated: Deploy istio using App resource instead
+	// Deprecated: Deploy istio using rancher2App resource instead
 	EnableClusterIstio pulumi.BoolPtrInput
 	// Enable project network isolation (bool)
 	EnableNetworkPolicy pulumi.BoolPtrInput
@@ -1378,9 +1425,9 @@ func (o ClusterOutput) EksConfigV2() ClusterEksConfigV2Output {
 	return o.ApplyT(func(v *Cluster) ClusterEksConfigV2Output { return v.EksConfigV2 }).(ClusterEksConfigV2Output)
 }
 
-// Deploy istio on `system` project and `istio-system` namespace, using App resource instead. See above example.
+// Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
 //
-// Deprecated: Deploy istio using App resource instead
+// Deprecated: Deploy istio using rancher2App resource instead
 func (o ClusterOutput) EnableClusterIstio() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableClusterIstio }).(pulumi.BoolOutput)
 }

@@ -48,6 +48,12 @@ __all__ = [
     'ClusterClusterAgentDeploymentCustomizationAppendTolerationArgsDict',
     'ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs',
     'ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict',
+    'ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs',
+    'ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict',
+    'ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs',
+    'ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict',
+    'ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs',
+    'ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict',
     'ClusterClusterAuthEndpointArgs',
     'ClusterClusterAuthEndpointArgsDict',
     'ClusterClusterRegistrationTokenArgs',
@@ -372,6 +378,12 @@ __all__ = [
     'ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgsDict',
     'ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs',
     'ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict',
+    'ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs',
+    'ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict',
+    'ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs',
+    'ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict',
+    'ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs',
+    'ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict',
     'ClusterV2ClusterRegistrationTokenArgs',
     'ClusterV2ClusterRegistrationTokenArgsDict',
     'ClusterV2FleetAgentDeploymentCustomizationArgs',
@@ -460,16 +472,6 @@ __all__ = [
     'MachineConfigV2OpenstackConfigArgsDict',
     'MachineConfigV2VsphereConfigArgs',
     'MachineConfigV2VsphereConfigArgsDict',
-    'MultiClusterAppAnswerArgs',
-    'MultiClusterAppAnswerArgsDict',
-    'MultiClusterAppMemberArgs',
-    'MultiClusterAppMemberArgsDict',
-    'MultiClusterAppTargetArgs',
-    'MultiClusterAppTargetArgsDict',
-    'MultiClusterAppUpgradeStrategyArgs',
-    'MultiClusterAppUpgradeStrategyArgsDict',
-    'MultiClusterAppUpgradeStrategyRollingUpdateArgs',
-    'MultiClusterAppUpgradeStrategyRollingUpdateArgsDict',
     'NamespaceContainerResourceLimitArgs',
     'NamespaceContainerResourceLimitArgsDict',
     'NamespaceResourceQuotaArgs',
@@ -2964,6 +2966,10 @@ if not MYPY:
         """
         User defined resource requirements to set on the agent
         """
+        scheduling_customizations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict']]]]
+        """
+        User defined scheduling customization for the cattle cluster agent
+        """
 elif False:
     ClusterClusterAgentDeploymentCustomizationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2972,11 +2978,13 @@ class ClusterClusterAgentDeploymentCustomizationArgs:
     def __init__(__self__, *,
                  append_tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs']]]] = None,
                  override_affinity: Optional[pulumi.Input[builtins.str]] = None,
-                 override_resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]] = None):
+                 override_resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]] = None,
+                 scheduling_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs']]] append_tolerations: User defined tolerations to append to agent
         :param pulumi.Input[builtins.str] override_affinity: User defined affinity to override default agent affinity
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]] override_resource_requirements: User defined resource requirements to set on the agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]] scheduling_customizations: User defined scheduling customization for the cattle cluster agent
         """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
@@ -2984,6 +2992,8 @@ class ClusterClusterAgentDeploymentCustomizationArgs:
             pulumi.set(__self__, "override_affinity", override_affinity)
         if override_resource_requirements is not None:
             pulumi.set(__self__, "override_resource_requirements", override_resource_requirements)
+        if scheduling_customizations is not None:
+            pulumi.set(__self__, "scheduling_customizations", scheduling_customizations)
 
     @property
     @pulumi.getter(name="appendTolerations")
@@ -3020,6 +3030,18 @@ class ClusterClusterAgentDeploymentCustomizationArgs:
     @override_resource_requirements.setter
     def override_resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]):
         pulumi.set(self, "override_resource_requirements", value)
+
+    @property
+    @pulumi.getter(name="schedulingCustomizations")
+    def scheduling_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]]]:
+        """
+        User defined scheduling customization for the cattle cluster agent
+        """
+        return pulumi.get(self, "scheduling_customizations")
+
+    @scheduling_customizations.setter
+    def scheduling_customizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]]]):
+        pulumi.set(self, "scheduling_customizations", value)
 
 
 if not MYPY:
@@ -3223,6 +3245,161 @@ class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs:
     @memory_request.setter
     def memory_request(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "memory_request", value)
+
+
+if not MYPY:
+    class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict(TypedDict):
+        pod_disruption_budgets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict']]]]
+        """
+        The Pod Disruption Budget created for the cattle cluster agent
+        """
+        priority_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict']]]]
+        """
+        The Priority Class created for the cattle cluster agent
+        """
+elif False:
+    ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs:
+    def __init__(__self__, *,
+                 pod_disruption_budgets: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]] = None,
+                 priority_classes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]] pod_disruption_budgets: The Pod Disruption Budget created for the cattle cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]] priority_classes: The Priority Class created for the cattle cluster agent
+        """
+        if pod_disruption_budgets is not None:
+            pulumi.set(__self__, "pod_disruption_budgets", pod_disruption_budgets)
+        if priority_classes is not None:
+            pulumi.set(__self__, "priority_classes", priority_classes)
+
+    @property
+    @pulumi.getter(name="podDisruptionBudgets")
+    def pod_disruption_budgets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]]:
+        """
+        The Pod Disruption Budget created for the cattle cluster agent
+        """
+        return pulumi.get(self, "pod_disruption_budgets")
+
+    @pod_disruption_budgets.setter
+    def pod_disruption_budgets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]]):
+        pulumi.set(self, "pod_disruption_budgets", value)
+
+    @property
+    @pulumi.getter(name="priorityClasses")
+    def priority_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]]:
+        """
+        The Priority Class created for the cattle cluster agent
+        """
+        return pulumi.get(self, "priority_classes")
+
+    @priority_classes.setter
+    def priority_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]]):
+        pulumi.set(self, "priority_classes", value)
+
+
+if not MYPY:
+    class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict(TypedDict):
+        max_unavailable: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The maximum number of cattle cluster agent replicas that can be down at a given time.
+        """
+        min_available: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The minimum number of cattle cluster agent replicas that must be running at a given time.
+        """
+elif False:
+    ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs:
+    def __init__(__self__, *,
+                 max_unavailable: Optional[pulumi.Input[builtins.str]] = None,
+                 min_available: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] max_unavailable: The maximum number of cattle cluster agent replicas that can be down at a given time.
+        :param pulumi.Input[builtins.str] min_available: The minimum number of cattle cluster agent replicas that must be running at a given time.
+        """
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+        if min_available is not None:
+            pulumi.set(__self__, "min_available", min_available)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The maximum number of cattle cluster agent replicas that can be down at a given time.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @max_unavailable.setter
+    def max_unavailable(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "max_unavailable", value)
+
+    @property
+    @pulumi.getter(name="minAvailable")
+    def min_available(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The minimum number of cattle cluster agent replicas that must be running at a given time.
+        """
+        return pulumi.get(self, "min_available")
+
+    @min_available.setter
+    def min_available(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "min_available", value)
+
+
+if not MYPY:
+    class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict(TypedDict):
+        value: pulumi.Input[builtins.int]
+        """
+        The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        """
+        preemption_policy: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+elif False:
+    ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[builtins.int],
+                 preemption_policy: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] value: The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        :param pulumi.Input[builtins.str] preemption_policy: The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+        pulumi.set(__self__, "value", value)
+        if preemption_policy is not None:
+            pulumi.set(__self__, "preemption_policy", preemption_policy)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[builtins.int]:
+        """
+        The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="preemptionPolicy")
+    def preemption_policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+        return pulumi.get(self, "preemption_policy")
+
+    @preemption_policy.setter
+    def preemption_policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "preemption_policy", value)
 
 
 if not MYPY:
@@ -24964,6 +25141,10 @@ if not MYPY:
         """
         User defined resource requirements to set on the agent
         """
+        scheduling_customizations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict']]]]
+        """
+        User defined scheduling customization for the cattle cluster agent
+        """
 elif False:
     ClusterV2ClusterAgentDeploymentCustomizationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -24972,11 +25153,13 @@ class ClusterV2ClusterAgentDeploymentCustomizationArgs:
     def __init__(__self__, *,
                  append_tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs']]]] = None,
                  override_affinity: Optional[pulumi.Input[builtins.str]] = None,
-                 override_resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]] = None):
+                 override_resource_requirements: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]] = None,
+                 scheduling_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs']]] append_tolerations: User defined tolerations to append to agent
         :param pulumi.Input[builtins.str] override_affinity: User defined affinity to override default agent affinity
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]] override_resource_requirements: User defined resource requirements to set on the agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]] scheduling_customizations: User defined scheduling customization for the cattle cluster agent
         """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
@@ -24984,6 +25167,8 @@ class ClusterV2ClusterAgentDeploymentCustomizationArgs:
             pulumi.set(__self__, "override_affinity", override_affinity)
         if override_resource_requirements is not None:
             pulumi.set(__self__, "override_resource_requirements", override_resource_requirements)
+        if scheduling_customizations is not None:
+            pulumi.set(__self__, "scheduling_customizations", scheduling_customizations)
 
     @property
     @pulumi.getter(name="appendTolerations")
@@ -25020,6 +25205,18 @@ class ClusterV2ClusterAgentDeploymentCustomizationArgs:
     @override_resource_requirements.setter
     def override_resource_requirements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]):
         pulumi.set(self, "override_resource_requirements", value)
+
+    @property
+    @pulumi.getter(name="schedulingCustomizations")
+    def scheduling_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]]]:
+        """
+        User defined scheduling customization for the cattle cluster agent
+        """
+        return pulumi.get(self, "scheduling_customizations")
+
+    @scheduling_customizations.setter
+    def scheduling_customizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]]]):
+        pulumi.set(self, "scheduling_customizations", value)
 
 
 if not MYPY:
@@ -25223,6 +25420,161 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArg
     @memory_request.setter
     def memory_request(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "memory_request", value)
+
+
+if not MYPY:
+    class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict(TypedDict):
+        pod_disruption_budgets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict']]]]
+        """
+        The Pod Disruption Budget created for the cattle cluster agent
+        """
+        priority_classes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict']]]]
+        """
+        The Priority Class created for the cattle cluster agent
+        """
+elif False:
+    ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs:
+    def __init__(__self__, *,
+                 pod_disruption_budgets: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]] = None,
+                 priority_classes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]] pod_disruption_budgets: The Pod Disruption Budget created for the cattle cluster agent
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]] priority_classes: The Priority Class created for the cattle cluster agent
+        """
+        if pod_disruption_budgets is not None:
+            pulumi.set(__self__, "pod_disruption_budgets", pod_disruption_budgets)
+        if priority_classes is not None:
+            pulumi.set(__self__, "priority_classes", priority_classes)
+
+    @property
+    @pulumi.getter(name="podDisruptionBudgets")
+    def pod_disruption_budgets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]]:
+        """
+        The Pod Disruption Budget created for the cattle cluster agent
+        """
+        return pulumi.get(self, "pod_disruption_budgets")
+
+    @pod_disruption_budgets.setter
+    def pod_disruption_budgets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]]):
+        pulumi.set(self, "pod_disruption_budgets", value)
+
+    @property
+    @pulumi.getter(name="priorityClasses")
+    def priority_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]]:
+        """
+        The Priority Class created for the cattle cluster agent
+        """
+        return pulumi.get(self, "priority_classes")
+
+    @priority_classes.setter
+    def priority_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]]):
+        pulumi.set(self, "priority_classes", value)
+
+
+if not MYPY:
+    class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict(TypedDict):
+        max_unavailable: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The maximum number of cattle cluster agent replicas that can be down at a given time.
+        """
+        min_available: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The minimum number of cattle cluster agent replicas that must be running at a given time.
+        """
+elif False:
+    ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs:
+    def __init__(__self__, *,
+                 max_unavailable: Optional[pulumi.Input[builtins.str]] = None,
+                 min_available: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] max_unavailable: The maximum number of cattle cluster agent replicas that can be down at a given time.
+        :param pulumi.Input[builtins.str] min_available: The minimum number of cattle cluster agent replicas that must be running at a given time.
+        """
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+        if min_available is not None:
+            pulumi.set(__self__, "min_available", min_available)
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The maximum number of cattle cluster agent replicas that can be down at a given time.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @max_unavailable.setter
+    def max_unavailable(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "max_unavailable", value)
+
+    @property
+    @pulumi.getter(name="minAvailable")
+    def min_available(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The minimum number of cattle cluster agent replicas that must be running at a given time.
+        """
+        return pulumi.get(self, "min_available")
+
+    @min_available.setter
+    def min_available(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "min_available", value)
+
+
+if not MYPY:
+    class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict(TypedDict):
+        value: pulumi.Input[builtins.int]
+        """
+        The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        """
+        preemption_policy: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+elif False:
+    ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[builtins.int],
+                 preemption_policy: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.int] value: The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        :param pulumi.Input[builtins.str] preemption_policy: The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+        pulumi.set(__self__, "value", value)
+        if preemption_policy is not None:
+            pulumi.set(__self__, "preemption_policy", preemption_policy)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[builtins.int]:
+        """
+        The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="preemptionPolicy")
+    def preemption_policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+        return pulumi.get(self, "preemption_policy")
+
+    @preemption_policy.setter
+    def preemption_policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "preemption_policy", value)
 
 
 if not MYPY:
@@ -32916,325 +33268,6 @@ class MachineConfigV2VsphereConfigArgs:
     @vcenter_port.setter
     def vcenter_port(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "vcenter_port", value)
-
-
-if not MYPY:
-    class MultiClusterAppAnswerArgsDict(TypedDict):
-        cluster_id: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Cluster ID for answer
-        """
-        project_id: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Project ID for answer
-        """
-        values: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
-        """
-        Key/values for answer
-        """
-elif False:
-    MultiClusterAppAnswerArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MultiClusterAppAnswerArgs:
-    def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[builtins.str]] = None,
-                 values: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
-        """
-        :param pulumi.Input[builtins.str] cluster_id: Cluster ID for answer
-        :param pulumi.Input[builtins.str] project_id: Project ID for answer
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] values: Key/values for answer
-        """
-        if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if values is not None:
-            pulumi.set(__self__, "values", values)
-
-    @property
-    @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Cluster ID for answer
-        """
-        return pulumi.get(self, "cluster_id")
-
-    @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "cluster_id", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Project ID for answer
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
-        """
-        Key/values for answer
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
-        pulumi.set(self, "values", value)
-
-
-if not MYPY:
-    class MultiClusterAppMemberArgsDict(TypedDict):
-        access_type: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Member access type: member, owner, read-only
-        """
-        group_principal_id: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Member group principal id
-        """
-        user_principal_id: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Member user principal id
-        """
-elif False:
-    MultiClusterAppMemberArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MultiClusterAppMemberArgs:
-    def __init__(__self__, *,
-                 access_type: Optional[pulumi.Input[builtins.str]] = None,
-                 group_principal_id: Optional[pulumi.Input[builtins.str]] = None,
-                 user_principal_id: Optional[pulumi.Input[builtins.str]] = None):
-        """
-        :param pulumi.Input[builtins.str] access_type: Member access type: member, owner, read-only
-        :param pulumi.Input[builtins.str] group_principal_id: Member group principal id
-        :param pulumi.Input[builtins.str] user_principal_id: Member user principal id
-        """
-        if access_type is not None:
-            pulumi.set(__self__, "access_type", access_type)
-        if group_principal_id is not None:
-            pulumi.set(__self__, "group_principal_id", group_principal_id)
-        if user_principal_id is not None:
-            pulumi.set(__self__, "user_principal_id", user_principal_id)
-
-    @property
-    @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Member access type: member, owner, read-only
-        """
-        return pulumi.get(self, "access_type")
-
-    @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "access_type", value)
-
-    @property
-    @pulumi.getter(name="groupPrincipalId")
-    def group_principal_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Member group principal id
-        """
-        return pulumi.get(self, "group_principal_id")
-
-    @group_principal_id.setter
-    def group_principal_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "group_principal_id", value)
-
-    @property
-    @pulumi.getter(name="userPrincipalId")
-    def user_principal_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Member user principal id
-        """
-        return pulumi.get(self, "user_principal_id")
-
-    @user_principal_id.setter
-    def user_principal_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "user_principal_id", value)
-
-
-if not MYPY:
-    class MultiClusterAppTargetArgsDict(TypedDict):
-        project_id: pulumi.Input[builtins.str]
-        """
-        Project ID for target
-        """
-        app_id: NotRequired[pulumi.Input[builtins.str]]
-        """
-        App ID for target
-        """
-        health_state: NotRequired[pulumi.Input[builtins.str]]
-        """
-        App health state for target
-        """
-        state: NotRequired[pulumi.Input[builtins.str]]
-        """
-        App state for target
-        """
-elif False:
-    MultiClusterAppTargetArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MultiClusterAppTargetArgs:
-    def __init__(__self__, *,
-                 project_id: pulumi.Input[builtins.str],
-                 app_id: Optional[pulumi.Input[builtins.str]] = None,
-                 health_state: Optional[pulumi.Input[builtins.str]] = None,
-                 state: Optional[pulumi.Input[builtins.str]] = None):
-        """
-        :param pulumi.Input[builtins.str] project_id: Project ID for target
-        :param pulumi.Input[builtins.str] app_id: App ID for target
-        :param pulumi.Input[builtins.str] health_state: App health state for target
-        :param pulumi.Input[builtins.str] state: App state for target
-        """
-        pulumi.set(__self__, "project_id", project_id)
-        if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
-        if health_state is not None:
-            pulumi.set(__self__, "health_state", health_state)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[builtins.str]:
-        """
-        Project ID for target
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        App ID for target
-        """
-        return pulumi.get(self, "app_id")
-
-    @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "app_id", value)
-
-    @property
-    @pulumi.getter(name="healthState")
-    def health_state(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        App health state for target
-        """
-        return pulumi.get(self, "health_state")
-
-    @health_state.setter
-    def health_state(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "health_state", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        App state for target
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "state", value)
-
-
-if not MYPY:
-    class MultiClusterAppUpgradeStrategyArgsDict(TypedDict):
-        rolling_update: NotRequired[pulumi.Input['MultiClusterAppUpgradeStrategyRollingUpdateArgsDict']]
-        """
-        Rolling update for upgrade strategy
-        """
-elif False:
-    MultiClusterAppUpgradeStrategyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MultiClusterAppUpgradeStrategyArgs:
-    def __init__(__self__, *,
-                 rolling_update: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyRollingUpdateArgs']] = None):
-        """
-        :param pulumi.Input['MultiClusterAppUpgradeStrategyRollingUpdateArgs'] rolling_update: Rolling update for upgrade strategy
-        """
-        if rolling_update is not None:
-            pulumi.set(__self__, "rolling_update", rolling_update)
-
-    @property
-    @pulumi.getter(name="rollingUpdate")
-    def rolling_update(self) -> Optional[pulumi.Input['MultiClusterAppUpgradeStrategyRollingUpdateArgs']]:
-        """
-        Rolling update for upgrade strategy
-        """
-        return pulumi.get(self, "rolling_update")
-
-    @rolling_update.setter
-    def rolling_update(self, value: Optional[pulumi.Input['MultiClusterAppUpgradeStrategyRollingUpdateArgs']]):
-        pulumi.set(self, "rolling_update", value)
-
-
-if not MYPY:
-    class MultiClusterAppUpgradeStrategyRollingUpdateArgsDict(TypedDict):
-        batch_size: NotRequired[pulumi.Input[builtins.int]]
-        """
-        Rolling update batch size
-        """
-        interval: NotRequired[pulumi.Input[builtins.int]]
-        """
-        Rolling update interval
-        """
-elif False:
-    MultiClusterAppUpgradeStrategyRollingUpdateArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class MultiClusterAppUpgradeStrategyRollingUpdateArgs:
-    def __init__(__self__, *,
-                 batch_size: Optional[pulumi.Input[builtins.int]] = None,
-                 interval: Optional[pulumi.Input[builtins.int]] = None):
-        """
-        :param pulumi.Input[builtins.int] batch_size: Rolling update batch size
-        :param pulumi.Input[builtins.int] interval: Rolling update interval
-        """
-        if batch_size is not None:
-            pulumi.set(__self__, "batch_size", batch_size)
-        if interval is not None:
-            pulumi.set(__self__, "interval", interval)
-
-    @property
-    @pulumi.getter(name="batchSize")
-    def batch_size(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Rolling update batch size
-        """
-        return pulumi.get(self, "batch_size")
-
-    @batch_size.setter
-    def batch_size(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "batch_size", value)
-
-    @property
-    @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Rolling update interval
-        """
-        return pulumi.get(self, "interval")
-
-    @interval.setter
-    def interval(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "interval", value)
 
 
 if not MYPY:

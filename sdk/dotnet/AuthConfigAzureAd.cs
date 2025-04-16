@@ -92,6 +92,9 @@ namespace Pulumi.Rancher2
         [Output("graphEndpoint")]
         public Output<string> GraphEndpoint { get; private set; } = null!;
 
+        [Output("groupMembershipFilter")]
+        public Output<string?> GroupMembershipFilter { get; private set; } = null!;
+
         /// <summary>
         /// Labels of the resource (map)
         /// </summary>
@@ -265,6 +268,9 @@ namespace Pulumi.Rancher2
         [Input("graphEndpoint", required: true)]
         public Input<string> GraphEndpoint { get; set; } = null!;
 
+        [Input("groupMembershipFilter")]
+        public Input<string>? GroupMembershipFilter { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -388,6 +394,9 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("graphEndpoint")]
         public Input<string>? GraphEndpoint { get; set; }
+
+        [Input("groupMembershipFilter")]
+        public Input<string>? GroupMembershipFilter { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

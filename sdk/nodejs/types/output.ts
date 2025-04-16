@@ -519,6 +519,10 @@ export interface ClusterClusterAgentDeploymentCustomization {
      * User defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement[];
+    /**
+     * User defined scheduling customization for the cattle cluster agent
+     */
+    schedulingCustomizations?: outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomization[];
 }
 
 export interface ClusterClusterAgentDeploymentCustomizationAppendToleration {
@@ -561,6 +565,39 @@ export interface ClusterClusterAgentDeploymentCustomizationOverrideResourceRequi
      * The minimum memory required for agent
      */
     memoryRequest?: string;
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomization {
+    /**
+     * The Pod Disruption Budget created for the cattle cluster agent
+     */
+    podDisruptionBudgets?: outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget[];
+    /**
+     * The Priority Class created for the cattle cluster agent
+     */
+    priorityClasses?: outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass[];
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+    /**
+     * The maximum number of cattle cluster agent replicas that can be down at a given time.
+     */
+    maxUnavailable?: string;
+    /**
+     * The minimum number of cattle cluster agent replicas that must be running at a given time.
+     */
+    minAvailable?: string;
+}
+
+export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+    /**
+     * The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+     */
+    preemptionPolicy?: string;
+    /**
+     * The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     */
+    value: number;
 }
 
 export interface ClusterClusterAuthEndpoint {
@@ -4513,6 +4550,10 @@ export interface ClusterV2ClusterAgentDeploymentCustomization {
      * User defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement[];
+    /**
+     * User defined scheduling customization for the cattle cluster agent
+     */
+    schedulingCustomizations?: outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization[];
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
@@ -4555,6 +4596,39 @@ export interface ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceReq
      * The minimum memory required for agent
      */
     memoryRequest?: string;
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization {
+    /**
+     * The Pod Disruption Budget created for the cattle cluster agent
+     */
+    podDisruptionBudgets?: outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget[];
+    /**
+     * The Priority Class created for the cattle cluster agent
+     */
+    priorityClasses?: outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass[];
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+    /**
+     * The maximum number of cattle cluster agent replicas that can be down at a given time.
+     */
+    maxUnavailable?: string;
+    /**
+     * The minimum number of cattle cluster agent replicas that must be running at a given time.
+     */
+    minAvailable?: string;
+}
+
+export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+    /**
+     * The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+     */
+    preemptionPolicy?: string;
+    /**
+     * The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     */
+    value: number;
 }
 
 export interface ClusterV2ClusterRegistrationToken {
@@ -8986,73 +9060,6 @@ export interface GetGlobalRoleRule {
     verbs?: string[];
 }
 
-export interface GetMultiClusterAppAnswer {
-    /**
-     * Cluster ID for answer
-     */
-    clusterId: string;
-    /**
-     * Project ID for answer
-     */
-    projectId: string;
-    /**
-     * Key/values for answer
-     */
-    values: {[key: string]: string};
-}
-
-export interface GetMultiClusterAppMember {
-    /**
-     * Member access type: member, owner, read-only
-     */
-    accessType?: string;
-    /**
-     * Member group principal id
-     */
-    groupPrincipalId?: string;
-    /**
-     * Member user principal id
-     */
-    userPrincipalId?: string;
-}
-
-export interface GetMultiClusterAppTarget {
-    /**
-     * App ID for target
-     */
-    appId: string;
-    /**
-     * App health state for target
-     */
-    healthState: string;
-    /**
-     * Project ID for target
-     */
-    projectId: string;
-    /**
-     * App state for target
-     */
-    state: string;
-}
-
-export interface GetMultiClusterAppUpgradeStrategy {
-    /**
-     * Rolling update for upgrade strategy
-     */
-    rollingUpdate?: outputs.GetMultiClusterAppUpgradeStrategyRollingUpdate;
-}
-
-export interface GetMultiClusterAppUpgradeStrategyRollingUpdate {
-    /**
-     * Rolling update batch size
-     */
-    batchSize?: number;
-    /**
-     * Rolling update interval
-     */
-    interval?: number;
-}
-
 export interface GetNamespaceContainerResourceLimit {
     limitsCpu?: string;
     limitsMemory?: string;
@@ -10031,73 +10038,6 @@ export interface MachineConfigV2VsphereConfig {
      * vSphere Port for vCenter
      */
     vcenterPort?: string;
-}
-
-export interface MultiClusterAppAnswer {
-    /**
-     * Cluster ID for answer
-     */
-    clusterId: string;
-    /**
-     * Project ID for answer
-     */
-    projectId: string;
-    /**
-     * Key/values for answer
-     */
-    values: {[key: string]: string};
-}
-
-export interface MultiClusterAppMember {
-    /**
-     * Member access type: member, owner, read-only
-     */
-    accessType?: string;
-    /**
-     * Member group principal id
-     */
-    groupPrincipalId?: string;
-    /**
-     * Member user principal id
-     */
-    userPrincipalId?: string;
-}
-
-export interface MultiClusterAppTarget {
-    /**
-     * App ID for target
-     */
-    appId: string;
-    /**
-     * App health state for target
-     */
-    healthState: string;
-    /**
-     * Project ID for target
-     */
-    projectId: string;
-    /**
-     * App state for target
-     */
-    state: string;
-}
-
-export interface MultiClusterAppUpgradeStrategy {
-    /**
-     * Rolling update for upgrade strategy
-     */
-    rollingUpdate?: outputs.MultiClusterAppUpgradeStrategyRollingUpdate;
-}
-
-export interface MultiClusterAppUpgradeStrategyRollingUpdate {
-    /**
-     * Rolling update batch size
-     */
-    batchSize?: number;
-    /**
-     * Rolling update interval
-     */
-    interval?: number;
 }
 
 export interface NamespaceContainerResourceLimit {

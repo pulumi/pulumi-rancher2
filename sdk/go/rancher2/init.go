@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-rancher2/sdk/v8/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "rancher2:index/app:App":
-		r = &App{}
 	case "rancher2:index/appV2:AppV2":
 		r = &AppV2{}
 	case "rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory":
@@ -45,8 +43,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthConfigPing{}
 	case "rancher2:index/bootstrap:Bootstrap":
 		r = &Bootstrap{}
-	case "rancher2:index/catalog:Catalog":
-		r = &Catalog{}
 	case "rancher2:index/catalogV2:CatalogV2":
 		r = &CatalogV2{}
 	case "rancher2:index/certificate:Certificate":
@@ -79,8 +75,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GlobalRoleBinding{}
 	case "rancher2:index/machineConfigV2:MachineConfigV2":
 		r = &MachineConfigV2{}
-	case "rancher2:index/multiClusterApp:MultiClusterApp":
-		r = &MultiClusterApp{}
 	case "rancher2:index/namespace:Namespace":
 		r = &Namespace{}
 	case "rancher2:index/nodeDriver:NodeDriver":
@@ -144,11 +138,6 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"rancher2",
-		"index/app",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
 		"index/appV2",
 		&module{version},
 	)
@@ -200,11 +189,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/bootstrap",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/catalog",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -285,11 +269,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/machineConfigV2",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/multiClusterApp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

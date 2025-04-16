@@ -6,6 +6,7 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration;
 import com.pulumi.rancher2.outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement;
+import com.pulumi.rancher2.outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomization;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +30,11 @@ public final class ClusterClusterAgentDeploymentCustomization {
      * 
      */
     private @Nullable List<ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
+    /**
+     * @return User defined scheduling customization for the cattle cluster agent
+     * 
+     */
+    private @Nullable List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations;
 
     private ClusterClusterAgentDeploymentCustomization() {}
     /**
@@ -52,6 +58,13 @@ public final class ClusterClusterAgentDeploymentCustomization {
     public List<ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements() {
         return this.overrideResourceRequirements == null ? List.of() : this.overrideResourceRequirements;
     }
+    /**
+     * @return User defined scheduling customization for the cattle cluster agent
+     * 
+     */
+    public List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations() {
+        return this.schedulingCustomizations == null ? List.of() : this.schedulingCustomizations;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -65,12 +78,14 @@ public final class ClusterClusterAgentDeploymentCustomization {
         private @Nullable List<ClusterClusterAgentDeploymentCustomizationAppendToleration> appendTolerations;
         private @Nullable String overrideAffinity;
         private @Nullable List<ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
+        private @Nullable List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations;
         public Builder() {}
         public Builder(ClusterClusterAgentDeploymentCustomization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appendTolerations = defaults.appendTolerations;
     	      this.overrideAffinity = defaults.overrideAffinity;
     	      this.overrideResourceRequirements = defaults.overrideResourceRequirements;
+    	      this.schedulingCustomizations = defaults.schedulingCustomizations;
         }
 
         @CustomType.Setter
@@ -97,11 +112,21 @@ public final class ClusterClusterAgentDeploymentCustomization {
         public Builder overrideResourceRequirements(ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement... overrideResourceRequirements) {
             return overrideResourceRequirements(List.of(overrideResourceRequirements));
         }
+        @CustomType.Setter
+        public Builder schedulingCustomizations(@Nullable List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations) {
+
+            this.schedulingCustomizations = schedulingCustomizations;
+            return this;
+        }
+        public Builder schedulingCustomizations(ClusterClusterAgentDeploymentCustomizationSchedulingCustomization... schedulingCustomizations) {
+            return schedulingCustomizations(List.of(schedulingCustomizations));
+        }
         public ClusterClusterAgentDeploymentCustomization build() {
             final var _resultValue = new ClusterClusterAgentDeploymentCustomization();
             _resultValue.appendTolerations = appendTolerations;
             _resultValue.overrideAffinity = overrideAffinity;
             _resultValue.overrideResourceRequirements = overrideResourceRequirements;
+            _resultValue.schedulingCustomizations = schedulingCustomizations;
             return _resultValue;
         }
     }

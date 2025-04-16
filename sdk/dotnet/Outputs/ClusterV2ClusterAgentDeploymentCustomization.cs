@@ -25,6 +25,10 @@ namespace Pulumi.Rancher2.Outputs
         /// User defined resource requirements to set on the agent
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement> OverrideResourceRequirements;
+        /// <summary>
+        /// User defined scheduling customization for the cattle cluster agent
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization> SchedulingCustomizations;
 
         [OutputConstructor]
         private ClusterV2ClusterAgentDeploymentCustomization(
@@ -32,11 +36,14 @@ namespace Pulumi.Rancher2.Outputs
 
             string? overrideAffinity,
 
-            ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements)
+            ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements,
+
+            ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations)
         {
             AppendTolerations = appendTolerations;
             OverrideAffinity = overrideAffinity;
             OverrideResourceRequirements = overrideResourceRequirements;
+            SchedulingCustomizations = schedulingCustomizations;
         }
     }
 }
