@@ -244,6 +244,9 @@ class _ClusterTemplateState:
 
 
 class ClusterTemplate(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/clusterTemplate:ClusterTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

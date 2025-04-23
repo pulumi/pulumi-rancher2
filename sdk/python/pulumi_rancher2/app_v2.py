@@ -570,6 +570,9 @@ class _AppV2State:
 
 
 class AppV2(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/appV2:AppV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

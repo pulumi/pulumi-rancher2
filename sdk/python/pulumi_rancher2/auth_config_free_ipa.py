@@ -1092,6 +1092,9 @@ class _AuthConfigFreeIpaState:
 
 
 class AuthConfigFreeIpa(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

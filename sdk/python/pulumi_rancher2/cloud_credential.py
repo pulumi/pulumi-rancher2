@@ -468,6 +468,9 @@ class _CloudCredentialState:
 
 
 class CloudCredential(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/cloudCredential:CloudCredential"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
