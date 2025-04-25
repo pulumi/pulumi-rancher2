@@ -291,6 +291,9 @@ class _ProjectState:
 
 
 class Project(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/project:Project"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

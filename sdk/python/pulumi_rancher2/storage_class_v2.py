@@ -368,6 +368,9 @@ class _StorageClassV2State:
 
 
 class StorageClassV2(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/storageClassV2:StorageClassV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -924,6 +924,9 @@ class _NodeTemplateState:
 
 
 class NodeTemplate(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/nodeTemplate:NodeTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

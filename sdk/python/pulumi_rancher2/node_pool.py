@@ -449,6 +449,9 @@ class _NodePoolState:
 
 
 class NodePool(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/nodePool:NodePool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

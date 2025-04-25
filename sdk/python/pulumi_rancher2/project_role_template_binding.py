@@ -328,6 +328,9 @@ class _ProjectRoleTemplateBindingState:
 
 
 class ProjectRoleTemplateBinding(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

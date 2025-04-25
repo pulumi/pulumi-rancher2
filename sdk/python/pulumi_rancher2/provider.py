@@ -177,6 +177,9 @@ class ProviderArgs:
 
 
 class Provider(pulumi.ProviderResource):
+
+    pulumi_type = "pulumi:providers:rancher2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

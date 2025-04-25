@@ -474,6 +474,9 @@ class _AuthConfigAdfsState:
 
 
 class AuthConfigAdfs(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/authConfigAdfs:AuthConfigAdfs"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

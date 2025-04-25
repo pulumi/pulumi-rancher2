@@ -231,6 +231,9 @@ class _PodSecurityAdmissionConfigurationTemplateState:
 
 
 class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

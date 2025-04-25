@@ -506,6 +506,9 @@ class _AuthConfigKeycloakState:
 
 
 class AuthConfigKeycloak(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/authConfigKeycloak:AuthConfigKeycloak"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
