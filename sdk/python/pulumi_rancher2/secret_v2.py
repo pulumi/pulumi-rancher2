@@ -304,6 +304,9 @@ class _SecretV2State:
 
 
 class SecretV2(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/secretV2:SecretV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

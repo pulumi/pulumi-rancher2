@@ -1116,6 +1116,9 @@ class _AuthConfigActiveDirectoryState:
 
 
 class AuthConfigActiveDirectory(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

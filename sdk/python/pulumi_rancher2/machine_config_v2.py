@@ -443,6 +443,9 @@ class _MachineConfigV2State:
 
 
 class MachineConfigV2(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/machineConfigV2:MachineConfigV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

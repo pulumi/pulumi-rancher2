@@ -1092,6 +1092,9 @@ class _AuthConfigOpenLdapState:
 
 
 class AuthConfigOpenLdap(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

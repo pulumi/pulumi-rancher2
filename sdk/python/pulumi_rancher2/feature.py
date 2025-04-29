@@ -162,6 +162,9 @@ class _FeatureState:
 
 
 class Feature(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/feature:Feature"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

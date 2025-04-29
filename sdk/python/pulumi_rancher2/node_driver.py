@@ -383,6 +383,9 @@ class _NodeDriverState:
 
 
 class NodeDriver(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/nodeDriver:NodeDriver"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
