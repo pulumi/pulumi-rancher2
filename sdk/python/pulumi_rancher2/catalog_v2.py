@@ -625,6 +625,9 @@ class _CatalogV2State:
 
 
 class CatalogV2(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/catalogV2:CatalogV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

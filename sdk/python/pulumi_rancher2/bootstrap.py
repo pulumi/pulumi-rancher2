@@ -306,6 +306,9 @@ class _BootstrapState:
 
 
 class Bootstrap(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/bootstrap:Bootstrap"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

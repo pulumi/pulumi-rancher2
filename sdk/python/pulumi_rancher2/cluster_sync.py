@@ -259,6 +259,9 @@ class _ClusterSyncState:
 
 
 class ClusterSync(pulumi.CustomResource):
+
+    pulumi_type = "rancher2:index/clusterSync:ClusterSync"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
