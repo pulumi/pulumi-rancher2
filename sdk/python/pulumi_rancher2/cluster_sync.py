@@ -258,10 +258,8 @@ class _ClusterSyncState:
         pulumi.set(self, "wait_catalogs", value)
 
 
+@pulumi.type_token("rancher2:index/clusterSync:ClusterSync")
 class ClusterSync(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/clusterSync:ClusterSync"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

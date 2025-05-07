@@ -327,10 +327,8 @@ class _ClusterRoleTemplateBindingState:
         pulumi.set(self, "user_principal_id", value)
 
 
+@pulumi.type_token("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding")
 class ClusterRoleTemplateBinding(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

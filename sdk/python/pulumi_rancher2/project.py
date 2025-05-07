@@ -290,10 +290,8 @@ class _ProjectState:
         pulumi.set(self, "wait_for_cluster", value)
 
 
+@pulumi.type_token("rancher2:index/project:Project")
 class Project(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/project:Project"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

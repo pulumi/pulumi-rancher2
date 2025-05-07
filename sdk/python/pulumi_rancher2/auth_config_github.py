@@ -351,10 +351,8 @@ class _AuthConfigGithubState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("rancher2:index/authConfigGithub:AuthConfigGithub")
 class AuthConfigGithub(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/authConfigGithub:AuthConfigGithub"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

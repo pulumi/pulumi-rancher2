@@ -271,10 +271,8 @@ class _ConfigMapV2State:
         pulumi.set(self, "resource_version", value)
 
 
+@pulumi.type_token("rancher2:index/configMapV2:ConfigMapV2")
 class ConfigMapV2(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/configMapV2:ConfigMapV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

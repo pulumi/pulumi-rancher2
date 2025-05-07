@@ -382,10 +382,8 @@ class _NodeDriverState:
         pulumi.set(self, "whitelist_domains", value)
 
 
+@pulumi.type_token("rancher2:index/nodeDriver:NodeDriver")
 class NodeDriver(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/nodeDriver:NodeDriver"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

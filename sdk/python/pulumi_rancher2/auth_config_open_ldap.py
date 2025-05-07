@@ -1091,10 +1091,8 @@ class _AuthConfigOpenLdapState:
         pulumi.set(self, "user_search_filter", value)
 
 
+@pulumi.type_token("rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap")
 class AuthConfigOpenLdap(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

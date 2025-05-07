@@ -310,10 +310,8 @@ export type ProjectRoleTemplateBinding = import("./projectRoleTemplateBinding").
 export const ProjectRoleTemplateBinding: typeof import("./projectRoleTemplateBinding").ProjectRoleTemplateBinding = null as any;
 utilities.lazyLoad(exports, ["ProjectRoleTemplateBinding"], () => require("./projectRoleTemplateBinding"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { RegistryArgs, RegistryState } from "./registry";
 export type Registry = import("./registry").Registry;

@@ -275,10 +275,8 @@ class _GlobalRoleState:
         pulumi.set(self, "rules", value)
 
 
+@pulumi.type_token("rancher2:index/globalRole:GlobalRole")
 class GlobalRole(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/globalRole:GlobalRole"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
