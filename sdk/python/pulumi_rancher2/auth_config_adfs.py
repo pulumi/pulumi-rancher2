@@ -473,10 +473,8 @@ class _AuthConfigAdfsState:
         pulumi.set(self, "user_name_field", value)
 
 
+@pulumi.type_token("rancher2:index/authConfigAdfs:AuthConfigAdfs")
 class AuthConfigAdfs(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/authConfigAdfs:AuthConfigAdfs"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

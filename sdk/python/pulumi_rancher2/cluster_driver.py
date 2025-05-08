@@ -350,10 +350,8 @@ class _ClusterDriverState:
         pulumi.set(self, "whitelist_domains", value)
 
 
+@pulumi.type_token("rancher2:index/clusterDriver:ClusterDriver")
 class ClusterDriver(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/clusterDriver:ClusterDriver"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

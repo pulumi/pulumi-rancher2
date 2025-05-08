@@ -473,10 +473,8 @@ class _AuthConfigOktaState:
         pulumi.set(self, "user_name_field", value)
 
 
+@pulumi.type_token("rancher2:index/authConfigOkta:AuthConfigOkta")
 class AuthConfigOkta(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/authConfigOkta:AuthConfigOkta"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

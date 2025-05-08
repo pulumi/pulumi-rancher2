@@ -624,10 +624,8 @@ class _CatalogV2State:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("rancher2:index/catalogV2:CatalogV2")
 class CatalogV2(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/catalogV2:CatalogV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

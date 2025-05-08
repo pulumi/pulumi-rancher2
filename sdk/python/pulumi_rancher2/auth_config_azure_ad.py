@@ -498,10 +498,8 @@ class _AuthConfigAzureAdState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("rancher2:index/authConfigAzureAd:AuthConfigAzureAd")
 class AuthConfigAzureAd(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/authConfigAzureAd:AuthConfigAzureAd"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

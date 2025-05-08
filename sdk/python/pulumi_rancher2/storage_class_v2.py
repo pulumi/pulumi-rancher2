@@ -367,10 +367,8 @@ class _StorageClassV2State:
         pulumi.set(self, "volume_binding_mode", value)
 
 
+@pulumi.type_token("rancher2:index/storageClassV2:StorageClassV2")
 class StorageClassV2(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/storageClassV2:StorageClassV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -286,10 +286,8 @@ class _CertificateState:
         pulumi.set(self, "project_id", value)
 
 
+@pulumi.type_token("rancher2:index/certificate:Certificate")
 class Certificate(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/certificate:Certificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

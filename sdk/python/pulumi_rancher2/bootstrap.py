@@ -305,10 +305,8 @@ class _BootstrapState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("rancher2:index/bootstrap:Bootstrap")
 class Bootstrap(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/bootstrap:Bootstrap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -232,10 +232,8 @@ class _GlobalRoleBindingState:
         pulumi.set(self, "user_id", value)
 
 
+@pulumi.type_token("rancher2:index/globalRoleBinding:GlobalRoleBinding")
 class GlobalRoleBinding(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/globalRoleBinding:GlobalRoleBinding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

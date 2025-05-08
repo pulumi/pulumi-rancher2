@@ -439,10 +439,8 @@ class _CustomUserTokenState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("rancher2:index/customUserToken:CustomUserToken")
 class CustomUserToken(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/customUserToken:CustomUserToken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

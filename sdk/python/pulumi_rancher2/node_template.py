@@ -923,10 +923,8 @@ class _NodeTemplateState:
         pulumi.set(self, "vsphere_config", value)
 
 
+@pulumi.type_token("rancher2:index/nodeTemplate:NodeTemplate")
 class NodeTemplate(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/nodeTemplate:NodeTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
