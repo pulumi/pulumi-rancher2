@@ -257,10 +257,8 @@ class _RegistryState:
         pulumi.set(self, "registries", value)
 
 
+@pulumi.type_token("rancher2:index/registry:Registry")
 class Registry(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/registry:Registry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

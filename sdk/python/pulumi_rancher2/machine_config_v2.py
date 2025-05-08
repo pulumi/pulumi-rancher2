@@ -442,10 +442,8 @@ class _MachineConfigV2State:
         pulumi.set(self, "vsphere_config", value)
 
 
+@pulumi.type_token("rancher2:index/machineConfigV2:MachineConfigV2")
 class MachineConfigV2(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/machineConfigV2:MachineConfigV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

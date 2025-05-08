@@ -160,10 +160,8 @@ class _SettingState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("rancher2:index/setting:Setting")
 class Setting(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/setting:Setting"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

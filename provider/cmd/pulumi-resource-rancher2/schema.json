@@ -19760,7 +19760,10 @@
         },
         "requiredInputs": [
             "apiUrl"
-        ]
+        ],
+        "methods": {
+            "terraformConfig": "pulumi:providers:rancher2/terraformConfig"
+        }
     },
     "resources": {
         "rancher2:index/appV2:AppV2": {
@@ -28941,6 +28944,35 @@
         }
     },
     "functions": {
+        "pulumi:providers:rancher2/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:rancher2"
+                    }
+                },
+                "type": "pulumi:providers:rancher2/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
+            }
+        },
         "rancher2:index/getCatalogV2:getCatalogV2": {
             "description": "Use this data source to retrieve information about a Rancher2 catalog v2. Catalog v2 resource is available at Rancher v2.5.x and above.\n\n",
             "inputs": {

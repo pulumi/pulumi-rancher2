@@ -1111,10 +1111,8 @@ class _ClusterState:
         pulumi.set(self, "windows_prefered_cluster", value)
 
 
+@pulumi.type_token("rancher2:index/cluster:Cluster")
 class Cluster(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/cluster:Cluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

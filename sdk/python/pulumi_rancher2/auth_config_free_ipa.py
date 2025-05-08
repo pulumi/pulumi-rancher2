@@ -1091,10 +1091,8 @@ class _AuthConfigFreeIpaState:
         pulumi.set(self, "user_search_filter", value)
 
 
+@pulumi.type_token("rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa")
 class AuthConfigFreeIpa(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

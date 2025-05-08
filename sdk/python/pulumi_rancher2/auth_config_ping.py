@@ -505,10 +505,8 @@ class _AuthConfigPingState:
         pulumi.set(self, "user_name_field", value)
 
 
+@pulumi.type_token("rancher2:index/authConfigPing:AuthConfigPing")
 class AuthConfigPing(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/authConfigPing:AuthConfigPing"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -467,10 +467,8 @@ class _RoleTemplateState:
         pulumi.set(self, "rules", value)
 
 
+@pulumi.type_token("rancher2:index/roleTemplate:RoleTemplate")
 class RoleTemplate(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/roleTemplate:RoleTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

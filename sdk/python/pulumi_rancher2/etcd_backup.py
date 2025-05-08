@@ -290,10 +290,8 @@ class _EtcdBackupState:
         pulumi.set(self, "namespace_id", value)
 
 
+@pulumi.type_token("rancher2:index/etcdBackup:EtcdBackup")
 class EtcdBackup(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/etcdBackup:EtcdBackup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

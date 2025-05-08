@@ -467,10 +467,8 @@ class _CloudCredentialState:
         pulumi.set(self, "vsphere_credential_config", value)
 
 
+@pulumi.type_token("rancher2:index/cloudCredential:CloudCredential")
 class CloudCredential(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/cloudCredential:CloudCredential"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

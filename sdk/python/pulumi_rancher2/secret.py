@@ -255,10 +255,8 @@ class _SecretState:
         pulumi.set(self, "project_id", value)
 
 
+@pulumi.type_token("rancher2:index/secret:Secret")
 class Secret(pulumi.CustomResource):
-
-    pulumi_type = "rancher2:index/secret:Secret"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
