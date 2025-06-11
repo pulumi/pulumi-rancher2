@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -22,7 +21,7 @@ type Provider struct {
 	// API Key used to authenticate with the rancher server
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
 	// The URL to the rancher API
-	ApiUrl pulumi.StringOutput `pulumi:"apiUrl"`
+	ApiUrl pulumi.StringPtrOutput `pulumi:"apiUrl"`
 	// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
 	CaCerts pulumi.StringPtrOutput `pulumi:"caCerts"`
 	// API secret used to authenticate with the rancher server
@@ -37,12 +36,9 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.ApiUrl == nil {
-		return nil, errors.New("invalid value for required argument 'ApiUrl'")
-	}
 	if args.Bootstrap == nil {
 		if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "RANCHER_BOOTSTRAP"); d != nil {
 			args.Bootstrap = pulumi.BoolPtr(d.(bool))
@@ -81,7 +77,7 @@ type providerArgs struct {
 	// API Key used to authenticate with the rancher server
 	AccessKey *string `pulumi:"accessKey"`
 	// The URL to the rancher API
-	ApiUrl string `pulumi:"apiUrl"`
+	ApiUrl *string `pulumi:"apiUrl"`
 	// Bootstrap rancher server
 	Bootstrap *bool `pulumi:"bootstrap"`
 	// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
@@ -105,7 +101,7 @@ type ProviderArgs struct {
 	// API Key used to authenticate with the rancher server
 	AccessKey pulumi.StringPtrInput
 	// The URL to the rancher API
-	ApiUrl pulumi.StringInput
+	ApiUrl pulumi.StringPtrInput
 	// Bootstrap rancher server
 	Bootstrap pulumi.BoolPtrInput
 	// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
@@ -190,8 +186,8 @@ func (o ProviderOutput) AccessKey() pulumi.StringPtrOutput {
 }
 
 // The URL to the rancher API
-func (o ProviderOutput) ApiUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.ApiUrl }).(pulumi.StringOutput)
+func (o ProviderOutput) ApiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiUrl }).(pulumi.StringPtrOutput)
 }
 
 // CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
