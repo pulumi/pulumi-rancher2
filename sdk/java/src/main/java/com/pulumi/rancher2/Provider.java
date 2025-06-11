@@ -42,14 +42,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Export(name="apiUrl", refs={String.class}, tree="[0]")
-    private Output<String> apiUrl;
+    private Output</* @Nullable */ String> apiUrl;
 
     /**
      * @return The URL to the rancher API
      * 
      */
-    public Output<String> apiUrl() {
-        return this.apiUrl;
+    public Output<Optional<String>> apiUrl() {
+        return Codegen.optional(this.apiUrl);
     }
     /**
      * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
@@ -120,7 +120,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Provider(java.lang.String name, ProviderArgs args) {
+    public Provider(java.lang.String name, @Nullable ProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -129,11 +129,11 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Provider(java.lang.String name, ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Provider(java.lang.String name, @Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("rancher2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private static ProviderArgs makeArgs(ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ProviderArgs makeArgs(@Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
