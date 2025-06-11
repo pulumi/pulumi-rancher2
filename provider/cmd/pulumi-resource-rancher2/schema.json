@@ -19701,9 +19701,6 @@
                 "secret": true
             }
         },
-        "required": [
-            "apiUrl"
-        ],
         "inputProperties": {
             "accessKey": {
                 "type": "string",
@@ -19758,9 +19755,6 @@
                 "secret": true
             }
         },
-        "requiredInputs": [
-            "apiUrl"
-        ],
         "methods": {
             "terraformConfig": "pulumi:providers:rancher2/terraformConfig"
         }
