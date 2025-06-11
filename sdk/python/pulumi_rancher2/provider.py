@@ -20,8 +20,8 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_url: pulumi.Input[builtins.str],
                  access_key: Optional[pulumi.Input[builtins.str]] = None,
+                 api_url: Optional[pulumi.Input[builtins.str]] = None,
                  bootstrap: Optional[pulumi.Input[builtins.bool]] = None,
                  ca_certs: Optional[pulumi.Input[builtins.str]] = None,
                  insecure: Optional[pulumi.Input[builtins.bool]] = None,
@@ -31,8 +31,8 @@ class ProviderArgs:
                  token_key: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[builtins.str] api_url: The URL to the rancher API
         :param pulumi.Input[builtins.str] access_key: API Key used to authenticate with the rancher server
+        :param pulumi.Input[builtins.str] api_url: The URL to the rancher API
         :param pulumi.Input[builtins.bool] bootstrap: Bootstrap rancher server
         :param pulumi.Input[builtins.str] ca_certs: CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
         :param pulumi.Input[builtins.bool] insecure: Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
@@ -41,9 +41,10 @@ class ProviderArgs:
         :param pulumi.Input[builtins.str] timeout: Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
         :param pulumi.Input[builtins.str] token_key: API token used to authenticate with the rancher server
         """
-        pulumi.set(__self__, "api_url", api_url)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if api_url is not None:
+            pulumi.set(__self__, "api_url", api_url)
         if bootstrap is None:
             bootstrap = (_utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
         if bootstrap is not None:
@@ -67,18 +68,6 @@ class ProviderArgs:
             pulumi.set(__self__, "token_key", token_key)
 
     @property
-    @pulumi.getter(name="apiUrl")
-    def api_url(self) -> pulumi.Input[builtins.str]:
-        """
-        The URL to the rancher API
-        """
-        return pulumi.get(self, "api_url")
-
-    @api_url.setter
-    def api_url(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "api_url", value)
-
-    @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -89,6 +78,18 @@ class ProviderArgs:
     @access_key.setter
     def access_key(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The URL to the rancher API
+        """
+        return pulumi.get(self, "api_url")
+
+    @api_url.setter
+    def api_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "api_url", value)
 
     @property
     @pulumi.getter
@@ -214,7 +215,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the rancher2 package. By default, resources use package-wide configuration
@@ -256,8 +257,6 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["access_key"] = None if access_key is None else pulumi.Output.secret(access_key)
-            if api_url is None and not opts.urn:
-                raise TypeError("Missing required property 'api_url'")
             __props__.__dict__["api_url"] = api_url
             if bootstrap is None:
                 bootstrap = (_utilities.get_env_bool('RANCHER_BOOTSTRAP') or False)
@@ -288,7 +287,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="apiUrl")
-    def api_url(self) -> pulumi.Output[builtins.str]:
+    def api_url(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The URL to the rancher API
         """

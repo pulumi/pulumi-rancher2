@@ -32,7 +32,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The URL to the rancher API
      */
-    public readonly apiUrl!: pulumi.Output<string>;
+    public readonly apiUrl!: pulumi.Output<string | undefined>;
     /**
      * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
      */
@@ -57,13 +57,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.apiUrl === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apiUrl'");
-            }
             resourceInputs["accessKey"] = args?.accessKey ? pulumi.secret(args.accessKey) : undefined;
             resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
             resourceInputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) ?? (utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
@@ -101,7 +98,7 @@ export interface ProviderArgs {
     /**
      * The URL to the rancher API
      */
-    apiUrl: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string>;
     /**
      * Bootstrap rancher server
      */

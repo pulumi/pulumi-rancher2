@@ -6,7 +6,6 @@ package com.pulumi.rancher2;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -38,15 +37,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * The URL to the rancher API
      * 
      */
-    @Import(name="apiUrl", required=true)
-    private Output<String> apiUrl;
+    @Import(name="apiUrl")
+    private @Nullable Output<String> apiUrl;
 
     /**
      * @return The URL to the rancher API
      * 
      */
-    public Output<String> apiUrl() {
-        return this.apiUrl;
+    public Optional<Output<String>> apiUrl() {
+        return Optional.ofNullable(this.apiUrl);
     }
 
     /**
@@ -221,7 +220,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder apiUrl(Output<String> apiUrl) {
+        public Builder apiUrl(@Nullable Output<String> apiUrl) {
             $.apiUrl = apiUrl;
             return this;
         }
@@ -392,9 +391,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            if ($.apiUrl == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "apiUrl");
-            }
             $.bootstrap = Codegen.booleanProp("bootstrap").output().arg($.bootstrap).env("RANCHER_BOOTSTRAP").def(false).getNullable();
             $.insecure = Codegen.booleanProp("insecure").output().arg($.insecure).env("RANCHER_INSECURE").def(false).getNullable();
             return $;

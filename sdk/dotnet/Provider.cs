@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2
         /// The URL to the rancher API
         /// </summary>
         [Output("apiUrl")]
-        public Output<string> ApiUrl { get; private set; } = null!;
+        public Output<string?> ApiUrl { get; private set; } = null!;
 
         /// <summary>
         /// CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("rancher2", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -113,8 +113,8 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// The URL to the rancher API
         /// </summary>
-        [Input("apiUrl", required: true)]
-        public Input<string> ApiUrl { get; set; } = null!;
+        [Input("apiUrl")]
+        public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
         /// Bootstrap rancher server
