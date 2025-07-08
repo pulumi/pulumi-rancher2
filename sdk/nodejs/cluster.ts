@@ -26,7 +26,20 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * Creating Rancher v2 RKE cluster
+ * ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new rancher2 imported Cluster with custom configuration 
+ * const foo_imported = new rancher2.Cluster("foo-imported", {
+ *     name: "foo-imported",
+ *     importedConfig: {
+ *         privateRegistryUrl: "test.io",
+ *     },
+ * });
+ * ```
  *
  * ### Creating Rancher v2 RKE cluster enabling
  *
@@ -694,6 +707,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly gkeConfigV2!: pulumi.Output<outputs.ClusterGkeConfigV2 | undefined>;
     /**
+     * The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
+     */
+    public readonly importedConfig!: pulumi.Output<outputs.ClusterImportedConfig | undefined>;
+    /**
      * (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
      */
     public /*out*/ readonly istioEnabled!: pulumi.Output<boolean>;
@@ -774,6 +791,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["fleetWorkspaceName"] = state ? state.fleetWorkspaceName : undefined;
             resourceInputs["gkeConfig"] = state ? state.gkeConfig : undefined;
             resourceInputs["gkeConfigV2"] = state ? state.gkeConfigV2 : undefined;
+            resourceInputs["importedConfig"] = state ? state.importedConfig : undefined;
             resourceInputs["istioEnabled"] = state ? state.istioEnabled : undefined;
             resourceInputs["k3sConfig"] = state ? state.k3sConfig : undefined;
             resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
@@ -809,6 +827,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["fleetWorkspaceName"] = args ? args.fleetWorkspaceName : undefined;
             resourceInputs["gkeConfig"] = args ? args.gkeConfig : undefined;
             resourceInputs["gkeConfigV2"] = args ? args.gkeConfigV2 : undefined;
+            resourceInputs["importedConfig"] = args ? args.importedConfig : undefined;
             resourceInputs["k3sConfig"] = args ? args.k3sConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -945,6 +964,10 @@ export interface ClusterState {
      * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      */
     gkeConfigV2?: pulumi.Input<inputs.ClusterGkeConfigV2>;
+    /**
+     * The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
+     */
+    importedConfig?: pulumi.Input<inputs.ClusterImportedConfig>;
     /**
      * (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
      */
@@ -1083,6 +1106,10 @@ export interface ClusterArgs {
      * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      */
     gkeConfigV2?: pulumi.Input<inputs.ClusterGkeConfigV2>;
+    /**
+     * The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
+     */
+    importedConfig?: pulumi.Input<inputs.ClusterImportedConfig>;
     /**
      * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
      */

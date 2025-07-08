@@ -9,42 +9,100 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Rancher2
 {
+    /// <summary>
+    /// Provides a rancher v2 pod security admission configration template resource.
+    /// This can be used to create pod security admission configration templates and retrieve their information.
+    /// 
+    /// For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a Pod Security Admission Configuration Template resource
+    ///     var foo = new Rancher2.PodSecurityAdmissionConfigurationTemplate("foo", new()
+    ///     {
+    ///         Name = "custom-psact",
+    ///         Description = "This is my custom Pod Security Admission Configuration Template",
+    ///         Defaults = new Rancher2.Inputs.PodSecurityAdmissionConfigurationTemplateDefaultsArgs
+    ///         {
+    ///             Audit = "restricted",
+    ///             AuditVersion = "latest",
+    ///             Enforce = "restricted",
+    ///             EnforceVersion = "latest",
+    ///             Warn = "restricted",
+    ///             WarnVersion = "latest",
+    ///         },
+    ///         Exemptions = new Rancher2.Inputs.PodSecurityAdmissionConfigurationTemplateExemptionsArgs
+    ///         {
+    ///             Usernames = new[]
+    ///             {
+    ///                 "testuser",
+    ///             },
+    ///             RuntimeClasses = new[]
+    ///             {
+    ///                 "testclass",
+    ///             },
+    ///             Namespaces = new[]
+    ///             {
+    ///                 "ingress-nginx",
+    ///                 "kube-system",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Pod Security Admission Configration Templates can be imported using its ID:
+    /// 
+    /// ```sh
+    /// $ pulumi import rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate foo &amp;lt;resource_id&amp;gt;
+    /// ```
+    /// </summary>
     [Rancher2ResourceType("rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate")]
     public partial class PodSecurityAdmissionConfigurationTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// defaults allows the user to define admission control mode for Pod Security
+        /// The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
         /// </summary>
         [Output("defaults")]
         public Output<Outputs.PodSecurityAdmissionConfigurationTemplateDefaults> Defaults { get; private set; } = null!;
 
         /// <summary>
-        /// Pod Security Admission Configuration template description
+        /// The description of the pod security admission configuration template (string)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-        /// prohibited
+        /// The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
         /// </summary>
         [Output("exemptions")]
         public Output<Outputs.PodSecurityAdmissionConfigurationTemplateExemptions?> Exemptions { get; private set; } = null!;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Pod Security Admission Configuration template name
+        /// The name of the pod security admission configuration template (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -99,7 +157,7 @@ namespace Pulumi.Rancher2
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -108,20 +166,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// defaults allows the user to define admission control mode for Pod Security
+        /// The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
         /// </summary>
         [Input("defaults", required: true)]
         public Input<Inputs.PodSecurityAdmissionConfigurationTemplateDefaultsArgs> Defaults { get; set; } = null!;
 
         /// <summary>
-        /// Pod Security Admission Configuration template description
+        /// The description of the pod security admission configuration template (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-        /// prohibited
+        /// The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
         /// </summary>
         [Input("exemptions")]
         public Input<Inputs.PodSecurityAdmissionConfigurationTemplateExemptionsArgs>? Exemptions { get; set; }
@@ -130,7 +187,7 @@ namespace Pulumi.Rancher2
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         public InputMap<string> Labels
         {
@@ -139,7 +196,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Pod Security Admission Configuration template name
+        /// The name of the pod security admission configuration template (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -156,7 +213,7 @@ namespace Pulumi.Rancher2
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// Annotations of the resource
+        /// Annotations of the resource (map)
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -165,20 +222,19 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// defaults allows the user to define admission control mode for Pod Security
+        /// The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
         /// </summary>
         [Input("defaults")]
         public Input<Inputs.PodSecurityAdmissionConfigurationTemplateDefaultsGetArgs>? Defaults { get; set; }
 
         /// <summary>
-        /// Pod Security Admission Configuration template description
+        /// The description of the pod security admission configuration template (string)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-        /// prohibited
+        /// The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
         /// </summary>
         [Input("exemptions")]
         public Input<Inputs.PodSecurityAdmissionConfigurationTemplateExemptionsGetArgs>? Exemptions { get; set; }
@@ -187,7 +243,7 @@ namespace Pulumi.Rancher2
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels of the resource
+        /// Labels of the resource (map)
         /// </summary>
         public InputMap<string> Labels
         {
@@ -196,7 +252,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Pod Security Admission Configuration template name
+        /// The name of the pod security admission configuration template (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

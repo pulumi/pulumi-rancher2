@@ -96,6 +96,10 @@ export class GlobalRole extends pulumi.CustomResource {
      * Global role policy rules (list)
      */
     public readonly rules!: pulumi.Output<outputs.GlobalRoleRule[]>;
+    /**
+     * Global role uuid
+     */
+    public /*out*/ readonly uuid!: pulumi.Output<string>;
 
     /**
      * Create a GlobalRole resource with the given unique name, arguments, and options.
@@ -118,6 +122,7 @@ export class GlobalRole extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["newUserDefault"] = state ? state.newUserDefault : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["uuid"] = state ? state.uuid : undefined;
         } else {
             const args = argsOrState as GlobalRoleArgs | undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
@@ -128,6 +133,7 @@ export class GlobalRole extends pulumi.CustomResource {
             resourceInputs["newUserDefault"] = args ? args.newUserDefault : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["builtin"] = undefined /*out*/;
+            resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalRole.__pulumiType, name, resourceInputs, opts);
@@ -170,6 +176,10 @@ export interface GlobalRoleState {
      * Global role policy rules (list)
      */
     rules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleRule>[]>;
+    /**
+     * Global role uuid
+     */
+    uuid?: pulumi.Input<string>;
 }
 
 /**

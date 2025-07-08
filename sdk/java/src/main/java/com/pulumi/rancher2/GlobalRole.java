@@ -188,6 +188,20 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
     public Output<List<GlobalRoleRule>> rules() {
         return this.rules;
     }
+    /**
+     * Global role uuid
+     * 
+     */
+    @Export(name="uuid", refs={String.class}, tree="[0]")
+    private Output<String> uuid;
+
+    /**
+     * @return Global role uuid
+     * 
+     */
+    public Output<String> uuid() {
+        return this.uuid;
+    }
 
     /**
      *

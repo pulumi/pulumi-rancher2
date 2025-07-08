@@ -23,6 +23,7 @@ import com.pulumi.rancher2.outputs.ClusterEksConfigV2;
 import com.pulumi.rancher2.outputs.ClusterFleetAgentDeploymentCustomization;
 import com.pulumi.rancher2.outputs.ClusterGkeConfig;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2;
+import com.pulumi.rancher2.outputs.ClusterImportedConfig;
 import com.pulumi.rancher2.outputs.ClusterK3sConfig;
 import com.pulumi.rancher2.outputs.ClusterOkeConfig;
 import com.pulumi.rancher2.outputs.ClusterRke2Config;
@@ -78,7 +79,45 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * Creating Rancher v2 RKE cluster
+ * ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import com.pulumi.rancher2.inputs.ClusterImportedConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 imported Cluster with custom configuration 
+ *         var foo_imported = new Cluster("foo-imported", ClusterArgs.builder()
+ *             .name("foo-imported")
+ *             .importedConfig(ClusterImportedConfigArgs.builder()
+ *                 .privateRegistryUrl("test.io")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Creating Rancher v2 RKE cluster enabling
  * 
@@ -1349,6 +1388,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterGkeConfigV2>> gkeConfigV2() {
         return Codegen.optional(this.gkeConfigV2);
+    }
+    /**
+     * The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+     * 
+     */
+    @Export(name="importedConfig", refs={ClusterImportedConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterImportedConfig> importedConfig;
+
+    /**
+     * @return The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+     * 
+     */
+    public Output<Optional<ClusterImportedConfig>> importedConfig() {
+        return Codegen.optional(this.importedConfig);
     }
     /**
      * (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)

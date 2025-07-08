@@ -17,6 +17,7 @@ import com.pulumi.rancher2.inputs.ClusterEksConfigV2Args;
 import com.pulumi.rancher2.inputs.ClusterFleetAgentDeploymentCustomizationArgs;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2Args;
+import com.pulumi.rancher2.inputs.ClusterImportedConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterK3sConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterOkeConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterRke2ConfigArgs;
@@ -380,6 +381,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+     * 
+     */
+    @Import(name="importedConfig")
+    private @Nullable Output<ClusterImportedConfigArgs> importedConfig;
+
+    /**
+     * @return The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+     * 
+     */
+    public Optional<Output<ClusterImportedConfigArgs>> importedConfig() {
+        return Optional.ofNullable(this.importedConfig);
+    }
+
+    /**
      * The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
      * 
      */
@@ -510,6 +526,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.fleetWorkspaceName = $.fleetWorkspaceName;
         this.gkeConfig = $.gkeConfig;
         this.gkeConfigV2 = $.gkeConfigV2;
+        this.importedConfig = $.importedConfig;
         this.k3sConfig = $.k3sConfig;
         this.labels = $.labels;
         this.name = $.name;
@@ -1058,6 +1075,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gkeConfigV2(ClusterGkeConfigV2Args gkeConfigV2) {
             return gkeConfigV2(Output.of(gkeConfigV2));
+        }
+
+        /**
+         * @param importedConfig The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importedConfig(@Nullable Output<ClusterImportedConfigArgs> importedConfig) {
+            $.importedConfig = importedConfig;
+            return this;
+        }
+
+        /**
+         * @param importedConfig The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importedConfig(ClusterImportedConfigArgs importedConfig) {
+            return importedConfig(Output.of(importedConfig));
         }
 
         /**

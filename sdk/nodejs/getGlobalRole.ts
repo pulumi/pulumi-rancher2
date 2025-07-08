@@ -79,6 +79,10 @@ export interface GetGlobalRoleResult {
      * (Computed) Global role policy rules (list)
      */
     readonly rules: outputs.GetGlobalRoleRule[];
+    /**
+     * (Computed) Global role uuid (string)
+     */
+    readonly uuid: string;
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 global role resource.

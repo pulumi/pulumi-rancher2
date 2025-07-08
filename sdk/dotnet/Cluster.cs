@@ -36,7 +36,28 @@ namespace Pulumi.Rancher2
     /// });
     /// ```
     /// 
-    /// Creating Rancher v2 RKE cluster
+    /// ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 imported Cluster with custom configuration 
+    ///     var foo_imported = new Rancher2.Cluster("foo-imported", new()
+    ///     {
+    ///         Name = "foo-imported",
+    ///         ImportedConfig = new Rancher2.Inputs.ClusterImportedConfigArgs
+    ///         {
+    ///             PrivateRegistryUrl = "test.io",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ### Creating Rancher v2 RKE cluster enabling
     /// 
@@ -942,6 +963,12 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterGkeConfigV2?> GkeConfigV2 { get; private set; } = null!;
 
         /// <summary>
+        /// The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+        /// </summary>
+        [Output("importedConfig")]
+        public Output<Outputs.ClusterImportedConfig?> ImportedConfig { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
         /// </summary>
         [Output("istioEnabled")]
@@ -1221,6 +1248,12 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterGkeConfigV2Args>? GkeConfigV2 { get; set; }
 
         /// <summary>
+        /// The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+        /// </summary>
+        [Input("importedConfig")]
+        public Input<Inputs.ClusterImportedConfigArgs>? ImportedConfig { get; set; }
+
+        /// <summary>
         /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         /// </summary>
         [Input("k3sConfig")]
@@ -1477,6 +1510,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("gkeConfigV2")]
         public Input<Inputs.ClusterGkeConfigV2GetArgs>? GkeConfigV2 { get; set; }
+
+        /// <summary>
+        /// The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+        /// </summary>
+        [Input("importedConfig")]
+        public Input<Inputs.ClusterImportedConfigGetArgs>? ImportedConfig { get; set; }
 
         /// <summary>
         /// (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)

@@ -17,23 +17,47 @@ public final class GetPodSecurityAdmissionConfigurationTemplateArgs extends com.
 
     public static final GetPodSecurityAdmissionConfigurationTemplateArgs Empty = new GetPodSecurityAdmissionConfigurationTemplateArgs();
 
+    /**
+     * (Computed) Annotations of the resource (map)
+     * 
+     */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
+    /**
+     * @return (Computed) Annotations of the resource (map)
+     * 
+     */
     public Optional<Output<Map<String,String>>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
+    /**
+     * (Computed) Labels of the resource (map)
+     * 
+     */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
+    /**
+     * @return (Computed) Labels of the resource (map)
+     * 
+     */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
+    /**
+     * The name of the pod security admission configuration template (string)
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the pod security admission configuration template (string)
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -64,29 +88,65 @@ public final class GetPodSecurityAdmissionConfigurationTemplateArgs extends com.
             $ = new GetPodSecurityAdmissionConfigurationTemplateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param annotations (Computed) Annotations of the resource (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
             $.annotations = annotations;
             return this;
         }
 
+        /**
+         * @param annotations (Computed) Annotations of the resource (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
         }
 
+        /**
+         * @param labels (Computed) Labels of the resource (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(@Nullable Output<Map<String,String>> labels) {
             $.labels = labels;
             return this;
         }
 
+        /**
+         * @param labels (Computed) Labels of the resource (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
         }
 
+        /**
+         * @param name The name of the pod security admission configuration template (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the pod security admission configuration template (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

@@ -149,7 +149,8 @@ class _GlobalRoleState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  new_user_default: Optional[pulumi.Input[builtins.bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None):
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None,
+                 uuid: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalRole resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] annotations: Annotations for global role object (map)
@@ -160,6 +161,7 @@ class _GlobalRoleState:
         :param pulumi.Input[builtins.str] name: Global role name (string)
         :param pulumi.Input[builtins.bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]] rules: Global role policy rules (list)
+        :param pulumi.Input[builtins.str] uuid: Global role uuid
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -177,6 +179,8 @@ class _GlobalRoleState:
             pulumi.set(__self__, "new_user_default", new_user_default)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
 
     @property
     @pulumi.getter
@@ -273,6 +277,18 @@ class _GlobalRoleState:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Global role uuid
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "uuid", value)
 
 
 @pulumi.type_token("rancher2:index/globalRole:GlobalRole")
@@ -402,6 +418,7 @@ class GlobalRole(pulumi.CustomResource):
             __props__.__dict__["new_user_default"] = new_user_default
             __props__.__dict__["rules"] = rules
             __props__.__dict__["builtin"] = None
+            __props__.__dict__["uuid"] = None
         super(GlobalRole, __self__).__init__(
             'rancher2:index/globalRole:GlobalRole',
             resource_name,
@@ -419,7 +436,8 @@ class GlobalRole(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             new_user_default: Optional[pulumi.Input[builtins.bool]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]]] = None) -> 'GlobalRole':
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]]] = None,
+            uuid: Optional[pulumi.Input[builtins.str]] = None) -> 'GlobalRole':
         """
         Get an existing GlobalRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -435,6 +453,7 @@ class GlobalRole(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Global role name (string)
         :param pulumi.Input[builtins.bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
         :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict']]]] rules: Global role policy rules (list)
+        :param pulumi.Input[builtins.str] uuid: Global role uuid
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -448,6 +467,7 @@ class GlobalRole(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["new_user_default"] = new_user_default
         __props__.__dict__["rules"] = rules
+        __props__.__dict__["uuid"] = uuid
         return GlobalRole(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -513,4 +533,12 @@ class GlobalRole(pulumi.CustomResource):
         Global role policy rules (list)
         """
         return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> pulumi.Output[builtins.str]:
+        """
+        Global role uuid
+        """
+        return pulumi.get(self, "uuid")
 
