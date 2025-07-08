@@ -81,6 +81,8 @@ type GlobalRole struct {
 	NewUserDefault pulumi.BoolPtrOutput `pulumi:"newUserDefault"`
 	// Global role policy rules (list)
 	Rules GlobalRoleRuleArrayOutput `pulumi:"rules"`
+	// Global role uuid
+	Uuid pulumi.StringOutput `pulumi:"uuid"`
 }
 
 // NewGlobalRole registers a new resource with the given unique name, arguments, and options.
@@ -129,6 +131,8 @@ type globalRoleState struct {
 	NewUserDefault *bool `pulumi:"newUserDefault"`
 	// Global role policy rules (list)
 	Rules []GlobalRoleRule `pulumi:"rules"`
+	// Global role uuid
+	Uuid *string `pulumi:"uuid"`
 }
 
 type GlobalRoleState struct {
@@ -148,6 +152,8 @@ type GlobalRoleState struct {
 	NewUserDefault pulumi.BoolPtrInput
 	// Global role policy rules (list)
 	Rules GlobalRoleRuleArrayInput
+	// Global role uuid
+	Uuid pulumi.StringPtrInput
 }
 
 func (GlobalRoleState) ElementType() reflect.Type {
@@ -314,6 +320,11 @@ func (o GlobalRoleOutput) NewUserDefault() pulumi.BoolPtrOutput {
 // Global role policy rules (list)
 func (o GlobalRoleOutput) Rules() GlobalRoleRuleArrayOutput {
 	return o.ApplyT(func(v *GlobalRole) GlobalRoleRuleArrayOutput { return v.Rules }).(GlobalRoleRuleArrayOutput)
+}
+
+// Global role uuid
+func (o GlobalRoleOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalRole) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
 type GlobalRoleArrayOutput struct{ *pulumi.OutputState }

@@ -11,12 +11,75 @@ namespace Pulumi.Rancher2
 {
     public static class GetPodSecurityAdmissionConfigurationTemplate
     {
+        /// <summary>
+        /// Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetPodSecurityAdmissionConfigurationTemplate.Invoke(new()
+        ///     {
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetPodSecurityAdmissionConfigurationTemplateResult> InvokeAsync(GetPodSecurityAdmissionConfigurationTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPodSecurityAdmissionConfigurationTemplateResult>("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", args ?? new GetPodSecurityAdmissionConfigurationTemplateArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetPodSecurityAdmissionConfigurationTemplate.Invoke(new()
+        ///     {
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPodSecurityAdmissionConfigurationTemplateResult> Invoke(GetPodSecurityAdmissionConfigurationTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPodSecurityAdmissionConfigurationTemplateResult>("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", args ?? new GetPodSecurityAdmissionConfigurationTemplateInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Rancher2 = Pulumi.Rancher2;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Rancher2.GetPodSecurityAdmissionConfigurationTemplate.Invoke(new()
+        ///     {
+        ///         Name = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetPodSecurityAdmissionConfigurationTemplateResult> Invoke(GetPodSecurityAdmissionConfigurationTemplateInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPodSecurityAdmissionConfigurationTemplateResult>("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", args ?? new GetPodSecurityAdmissionConfigurationTemplateInvokeArgs(), options.WithDefaults());
     }
@@ -26,6 +89,10 @@ namespace Pulumi.Rancher2
     {
         [Input("annotations")]
         private Dictionary<string, string>? _annotations;
+
+        /// <summary>
+        /// (Computed) Annotations of the resource (map)
+        /// </summary>
         public Dictionary<string, string> Annotations
         {
             get => _annotations ?? (_annotations = new Dictionary<string, string>());
@@ -34,12 +101,19 @@ namespace Pulumi.Rancher2
 
         [Input("labels")]
         private Dictionary<string, string>? _labels;
+
+        /// <summary>
+        /// (Computed) Labels of the resource (map)
+        /// </summary>
         public Dictionary<string, string> Labels
         {
             get => _labels ?? (_labels = new Dictionary<string, string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the pod security admission configuration template (string)
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -53,6 +127,10 @@ namespace Pulumi.Rancher2
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// (Computed) Annotations of the resource (map)
+        /// </summary>
         public InputMap<string> Annotations
         {
             get => _annotations ?? (_annotations = new InputMap<string>());
@@ -61,12 +139,19 @@ namespace Pulumi.Rancher2
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// (Computed) Labels of the resource (map)
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The name of the pod security admission configuration template (string)
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -80,14 +165,29 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetPodSecurityAdmissionConfigurationTemplateResult
     {
+        /// <summary>
+        /// (Computed) Annotations of the resource (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
+        /// <summary>
+        /// (Computed) The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
+        /// </summary>
         public readonly Outputs.GetPodSecurityAdmissionConfigurationTemplateDefaultsResult Defaults;
+        /// <summary>
+        /// (Computed) The description of the pod security admission configuration template (string)
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// (Computed) The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
+        /// </summary>
         public readonly Outputs.GetPodSecurityAdmissionConfigurationTemplateExemptionsResult Exemptions;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Computed) Labels of the resource (map)
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
 

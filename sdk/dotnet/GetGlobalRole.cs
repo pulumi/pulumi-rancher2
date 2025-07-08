@@ -174,6 +174,10 @@ namespace Pulumi.Rancher2
         /// (Computed) Global role policy rules (list)
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGlobalRoleRuleResult> Rules;
+        /// <summary>
+        /// (Computed) Global role uuid (string)
+        /// </summary>
+        public readonly string Uuid;
 
         [OutputConstructor]
         private GetGlobalRoleResult(
@@ -193,7 +197,9 @@ namespace Pulumi.Rancher2
 
             bool newUserDefault,
 
-            ImmutableArray<Outputs.GetGlobalRoleRuleResult> rules)
+            ImmutableArray<Outputs.GetGlobalRoleRuleResult> rules,
+
+            string uuid)
         {
             Annotations = annotations;
             Builtin = builtin;
@@ -204,6 +210,7 @@ namespace Pulumi.Rancher2
             Name = name;
             NewUserDefault = newUserDefault;
             Rules = rules;
+            Uuid = uuid;
         }
     }
 }

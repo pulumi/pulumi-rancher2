@@ -54,21 +54,33 @@ class GetPodSecurityAdmissionConfigurationTemplateResult:
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, builtins.str]:
+        """
+        (Computed) Annotations of the resource (map)
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def defaults(self) -> 'outputs.GetPodSecurityAdmissionConfigurationTemplateDefaultsResult':
+        """
+        (Computed) The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
+        """
         return pulumi.get(self, "defaults")
 
     @property
     @pulumi.getter
     def description(self) -> builtins.str:
+        """
+        (Computed) The description of the pod security admission configuration template (string)
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def exemptions(self) -> 'outputs.GetPodSecurityAdmissionConfigurationTemplateExemptionsResult':
+        """
+        (Computed) The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
+        """
         return pulumi.get(self, "exemptions")
 
     @property
@@ -82,6 +94,9 @@ class GetPodSecurityAdmissionConfigurationTemplateResult:
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, builtins.str]:
+        """
+        (Computed) Labels of the resource (map)
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -110,7 +125,21 @@ def get_pod_security_admission_configuration_template(annotations: Optional[Mapp
                                                       name: Optional[builtins.str] = None,
                                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPodSecurityAdmissionConfigurationTemplateResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_pod_security_admission_configuration_template(name="foo")
+    ```
+
+
+    :param Mapping[str, builtins.str] annotations: (Computed) Annotations of the resource (map)
+    :param Mapping[str, builtins.str] labels: (Computed) Labels of the resource (map)
+    :param builtins.str name: The name of the pod security admission configuration template (string)
     """
     __args__ = dict()
     __args__['annotations'] = annotations
@@ -132,7 +161,21 @@ def get_pod_security_admission_configuration_template_output(annotations: Option
                                                              name: Optional[pulumi.Input[builtins.str]] = None,
                                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPodSecurityAdmissionConfigurationTemplateResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_rancher2 as rancher2
+
+    foo = rancher2.get_pod_security_admission_configuration_template(name="foo")
+    ```
+
+
+    :param Mapping[str, builtins.str] annotations: (Computed) Annotations of the resource (map)
+    :param Mapping[str, builtins.str] labels: (Computed) Labels of the resource (map)
+    :param builtins.str name: The name of the pod security admission configuration template (string)
     """
     __args__ = dict()
     __args__['annotations'] = annotations

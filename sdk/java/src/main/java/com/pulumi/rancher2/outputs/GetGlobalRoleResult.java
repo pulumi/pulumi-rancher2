@@ -56,6 +56,11 @@ public final class GetGlobalRoleResult {
      * 
      */
     private List<GetGlobalRoleRule> rules;
+    /**
+     * @return (Computed) Global role uuid (string)
+     * 
+     */
+    private String uuid;
 
     private GetGlobalRoleResult() {}
     /**
@@ -117,6 +122,13 @@ public final class GetGlobalRoleResult {
     public List<GetGlobalRoleRule> rules() {
         return this.rules;
     }
+    /**
+     * @return (Computed) Global role uuid (string)
+     * 
+     */
+    public String uuid() {
+        return this.uuid;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -136,6 +148,7 @@ public final class GetGlobalRoleResult {
         private String name;
         private Boolean newUserDefault;
         private List<GetGlobalRoleRule> rules;
+        private String uuid;
         public Builder() {}
         public Builder(GetGlobalRoleResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -148,6 +161,7 @@ public final class GetGlobalRoleResult {
     	      this.name = defaults.name;
     	      this.newUserDefault = defaults.newUserDefault;
     	      this.rules = defaults.rules;
+    	      this.uuid = defaults.uuid;
         }
 
         @CustomType.Setter
@@ -226,6 +240,14 @@ public final class GetGlobalRoleResult {
         public Builder rules(GetGlobalRoleRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
+        public Builder uuid(String uuid) {
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "uuid");
+            }
+            this.uuid = uuid;
+            return this;
+        }
         public GetGlobalRoleResult build() {
             final var _resultValue = new GetGlobalRoleResult();
             _resultValue.annotations = annotations;
@@ -237,6 +259,7 @@ public final class GetGlobalRoleResult {
             _resultValue.name = name;
             _resultValue.newUserDefault = newUserDefault;
             _resultValue.rules = rules;
+            _resultValue.uuid = uuid;
             return _resultValue;
         }
     }

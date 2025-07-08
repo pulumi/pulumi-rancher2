@@ -1511,6 +1511,13 @@ export interface ClusterGkeConfigV2PrivateClusterConfig {
     masterIpv4CidrBlock: string;
 }
 
+export interface ClusterImportedConfig {
+    /**
+     * Private registry URL
+     */
+    privateRegistryUrl: string;
+}
+
 export interface ClusterK3sConfig {
     /**
      * The K3S upgrade strategy

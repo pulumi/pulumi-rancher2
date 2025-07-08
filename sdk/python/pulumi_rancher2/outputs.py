@@ -59,6 +59,7 @@ __all__ = [
     'ClusterGkeConfigV2NodePoolConfigTaint',
     'ClusterGkeConfigV2NodePoolManagement',
     'ClusterGkeConfigV2PrivateClusterConfig',
+    'ClusterImportedConfig',
     'ClusterK3sConfig',
     'ClusterK3sConfigUpgradeStrategy',
     'ClusterOkeConfig',
@@ -5844,6 +5845,42 @@ class ClusterGkeConfigV2PrivateClusterConfig(dict):
         Enable GKE cluster private nodes
         """
         return pulumi.get(self, "enable_private_nodes")
+
+
+@pulumi.output_type
+class ClusterImportedConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateRegistryUrl":
+            suggest = "private_registry_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterImportedConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterImportedConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterImportedConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_registry_url: Optional[builtins.str] = None):
+        """
+        :param builtins.str private_registry_url: Private registry URL
+        """
+        if private_registry_url is not None:
+            pulumi.set(__self__, "private_registry_url", private_registry_url)
+
+    @property
+    @pulumi.getter(name="privateRegistryUrl")
+    def private_registry_url(self) -> Optional[builtins.str]:
+        """
+        Private registry URL
+        """
+        return pulumi.get(self, "private_registry_url")
 
 
 @pulumi.output_type

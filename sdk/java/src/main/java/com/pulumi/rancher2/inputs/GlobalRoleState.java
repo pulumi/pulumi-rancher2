@@ -139,6 +139,21 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rules);
     }
 
+    /**
+     * Global role uuid
+     * 
+     */
+    @Import(name="uuid")
+    private @Nullable Output<String> uuid;
+
+    /**
+     * @return Global role uuid
+     * 
+     */
+    public Optional<Output<String>> uuid() {
+        return Optional.ofNullable(this.uuid);
+    }
+
     private GlobalRoleState() {}
 
     private GlobalRoleState(GlobalRoleState $) {
@@ -150,6 +165,7 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.newUserDefault = $.newUserDefault;
         this.rules = $.rules;
+        this.uuid = $.uuid;
     }
 
     public static Builder builder() {
@@ -356,6 +372,27 @@ public final class GlobalRoleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rules(GlobalRoleRuleArgs... rules) {
             return rules(List.of(rules));
+        }
+
+        /**
+         * @param uuid Global role uuid
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(@Nullable Output<String> uuid) {
+            $.uuid = uuid;
+            return this;
+        }
+
+        /**
+         * @param uuid Global role uuid
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(String uuid) {
+            return uuid(Output.of(uuid));
         }
 
         public GlobalRoleState build() {

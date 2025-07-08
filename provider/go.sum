@@ -2297,8 +2297,8 @@ github.com/rancher/rancher/pkg/client v0.0.0-20250227174106-7829dbe62d7f h1:iKq0
 github.com/rancher/rancher/pkg/client v0.0.0-20250227174106-7829dbe62d7f/go.mod h1:8uj341n3iMsNlch0+T1nuvo3NYgZFd28AJjQYx78DeY=
 github.com/rancher/rke v1.8.0-rc.2 h1:kW6Or5YFanUkz82p1u4up5PenLZrTuUZg8xCzLmjJUk=
 github.com/rancher/rke v1.8.0-rc.2/go.mod h1:x9N1abruzDFMwTpqq2cnaDYpKCptlNoW8VraNWB6Pc4=
-github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20250522202039-99dd974dff19 h1:zB3J/jRrqqM61BSM2U492XgAbmXMg9E/9KhHlPWFo/I=
-github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20250522202039-99dd974dff19/go.mod h1:bpV5Dy6zrrNfM0YhsugddlMPeno6zUaaFcXs/cuFzgU=
+github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20250703175014-ea002d985665 h1:yuww8REMEL5ixfM+lUQx2uapAfRLl/ETZM7EYiJafVM=
+github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20250703175014-ea002d985665/go.mod h1:bpV5Dy6zrrNfM0YhsugddlMPeno6zUaaFcXs/cuFzgU=
 github.com/rancher/wrangler/v3 v3.2.0-rc.3 h1:MySHWLxLLrGrM2sq5YYp7Ol1kQqYt9lvIzjGR50UZ+c=
 github.com/rancher/wrangler/v3 v3.2.0-rc.3/go.mod h1:0C5QyvSrQOff8gQQzpB/L/FF03EQycjR3unSJcKCHno=
 github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0/go.mod h1:qqbHyh8v60DhA7CoWK5oRCqLrMHRGoxYCSS9EjAz6Eo=

@@ -17,89 +17,156 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Provides a rancher v2 pod security admission configration template resource.
+ * This can be used to create pod security admission configration templates and retrieve their information.
+ * 
+ * For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates)
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.PodSecurityAdmissionConfigurationTemplate;
+ * import com.pulumi.rancher2.PodSecurityAdmissionConfigurationTemplateArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityAdmissionConfigurationTemplateDefaultsArgs;
+ * import com.pulumi.rancher2.inputs.PodSecurityAdmissionConfigurationTemplateExemptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create a Pod Security Admission Configuration Template resource
+ *         var foo = new PodSecurityAdmissionConfigurationTemplate("foo", PodSecurityAdmissionConfigurationTemplateArgs.builder()
+ *             .name("custom-psact")
+ *             .description("This is my custom Pod Security Admission Configuration Template")
+ *             .defaults(PodSecurityAdmissionConfigurationTemplateDefaultsArgs.builder()
+ *                 .audit("restricted")
+ *                 .auditVersion("latest")
+ *                 .enforce("restricted")
+ *                 .enforceVersion("latest")
+ *                 .warn("restricted")
+ *                 .warnVersion("latest")
+ *                 .build())
+ *             .exemptions(PodSecurityAdmissionConfigurationTemplateExemptionsArgs.builder()
+ *                 .usernames("testuser")
+ *                 .runtimeClasses("testclass")
+ *                 .namespaces(                
+ *                     "ingress-nginx",
+ *                     "kube-system")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * Pod Security Admission Configration Templates can be imported using its ID:
+ * 
+ * ```sh
+ * $ pulumi import rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate foo &amp;lt;resource_id&amp;gt;
+ * ```
+ * 
+ */
 @ResourceType(type="rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate")
 public class PodSecurityAdmissionConfigurationTemplate extends com.pulumi.resources.CustomResource {
     /**
-     * Annotations of the resource
+     * Annotations of the resource (map)
      * 
      */
     @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations of the resource
+     * @return Annotations of the resource (map)
      * 
      */
     public Output<Map<String,String>> annotations() {
         return this.annotations;
     }
     /**
-     * defaults allows the user to define admission control mode for Pod Security
+     * The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
      * 
      */
     @Export(name="defaults", refs={PodSecurityAdmissionConfigurationTemplateDefaults.class}, tree="[0]")
     private Output<PodSecurityAdmissionConfigurationTemplateDefaults> defaults;
 
     /**
-     * @return defaults allows the user to define admission control mode for Pod Security
+     * @return The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
      * 
      */
     public Output<PodSecurityAdmissionConfigurationTemplateDefaults> defaults() {
         return this.defaults;
     }
     /**
-     * Pod Security Admission Configuration template description
+     * The description of the pod security admission configuration template (string)
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Pod Security Admission Configuration template description
+     * @return The description of the pod security admission configuration template (string)
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-     * prohibited
+     * The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
      * 
      */
     @Export(name="exemptions", refs={PodSecurityAdmissionConfigurationTemplateExemptions.class}, tree="[0]")
     private Output</* @Nullable */ PodSecurityAdmissionConfigurationTemplateExemptions> exemptions;
 
     /**
-     * @return exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-     * prohibited
+     * @return The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
      * 
      */
     public Output<Optional<PodSecurityAdmissionConfigurationTemplateExemptions>> exemptions() {
         return Codegen.optional(this.exemptions);
     }
     /**
-     * Labels of the resource
+     * Labels of the resource (map)
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> labels;
 
     /**
-     * @return Labels of the resource
+     * @return Labels of the resource (map)
      * 
      */
     public Output<Map<String,String>> labels() {
         return this.labels;
     }
     /**
-     * Pod Security Admission Configuration template name
+     * The name of the pod security admission configuration template (string)
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Pod Security Admission Configuration template name
+     * @return The name of the pod security admission configuration template (string)
      * 
      */
     public Output<String> name() {

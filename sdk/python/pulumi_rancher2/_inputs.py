@@ -100,6 +100,8 @@ __all__ = [
     'ClusterGkeConfigV2NodePoolManagementArgsDict',
     'ClusterGkeConfigV2PrivateClusterConfigArgs',
     'ClusterGkeConfigV2PrivateClusterConfigArgsDict',
+    'ClusterImportedConfigArgs',
+    'ClusterImportedConfigArgsDict',
     'ClusterK3sConfigArgs',
     'ClusterK3sConfigArgsDict',
     'ClusterK3sConfigUpgradeStrategyArgs',
@@ -7859,6 +7861,38 @@ class ClusterGkeConfigV2PrivateClusterConfigArgs:
     @enable_private_nodes.setter
     def enable_private_nodes(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enable_private_nodes", value)
+
+
+if not MYPY:
+    class ClusterImportedConfigArgsDict(TypedDict):
+        private_registry_url: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Private registry URL
+        """
+elif False:
+    ClusterImportedConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterImportedConfigArgs:
+    def __init__(__self__, *,
+                 private_registry_url: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] private_registry_url: Private registry URL
+        """
+        if private_registry_url is not None:
+            pulumi.set(__self__, "private_registry_url", private_registry_url)
+
+    @property
+    @pulumi.getter(name="privateRegistryUrl")
+    def private_registry_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Private registry URL
+        """
+        return pulumi.get(self, "private_registry_url")
+
+    @private_registry_url.setter
+    def private_registry_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "private_registry_url", value)
 
 
 if not MYPY:

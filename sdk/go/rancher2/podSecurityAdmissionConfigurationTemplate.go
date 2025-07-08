@@ -12,21 +12,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a rancher v2 pod security admission configration template resource.
+// This can be used to create pod security admission configration templates and retrieve their information.
+//
+// For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a Pod Security Admission Configuration Template resource
+//			_, err := rancher2.NewPodSecurityAdmissionConfigurationTemplate(ctx, "foo", &rancher2.PodSecurityAdmissionConfigurationTemplateArgs{
+//				Name:        pulumi.String("custom-psact"),
+//				Description: pulumi.String("This is my custom Pod Security Admission Configuration Template"),
+//				Defaults: &rancher2.PodSecurityAdmissionConfigurationTemplateDefaultsArgs{
+//					Audit:          pulumi.String("restricted"),
+//					AuditVersion:   pulumi.String("latest"),
+//					Enforce:        pulumi.String("restricted"),
+//					EnforceVersion: pulumi.String("latest"),
+//					Warn:           pulumi.String("restricted"),
+//					WarnVersion:    pulumi.String("latest"),
+//				},
+//				Exemptions: &rancher2.PodSecurityAdmissionConfigurationTemplateExemptionsArgs{
+//					Usernames: pulumi.StringArray{
+//						pulumi.String("testuser"),
+//					},
+//					RuntimeClasses: pulumi.StringArray{
+//						pulumi.String("testclass"),
+//					},
+//					Namespaces: pulumi.StringArray{
+//						pulumi.String("ingress-nginx"),
+//						pulumi.String("kube-system"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Pod Security Admission Configration Templates can be imported using its ID:
+//
+// ```sh
+// $ pulumi import rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate foo &lt;resource_id&gt;
+// ```
 type PodSecurityAdmissionConfigurationTemplate struct {
 	pulumi.CustomResourceState
 
-	// Annotations of the resource
+	// Annotations of the resource (map)
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// defaults allows the user to define admission control mode for Pod Security
+	// The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
 	Defaults PodSecurityAdmissionConfigurationTemplateDefaultsOutput `pulumi:"defaults"`
-	// Pod Security Admission Configuration template description
+	// The description of the pod security admission configuration template (string)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-	// prohibited
+	// The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
 	Exemptions PodSecurityAdmissionConfigurationTemplateExemptionsPtrOutput `pulumi:"exemptions"`
-	// Labels of the resource
+	// Labels of the resource (map)
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Pod Security Admission Configuration template name
+	// The name of the pod security admission configuration template (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -63,34 +122,32 @@ func GetPodSecurityAdmissionConfigurationTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PodSecurityAdmissionConfigurationTemplate resources.
 type podSecurityAdmissionConfigurationTemplateState struct {
-	// Annotations of the resource
+	// Annotations of the resource (map)
 	Annotations map[string]string `pulumi:"annotations"`
-	// defaults allows the user to define admission control mode for Pod Security
+	// The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
 	Defaults *PodSecurityAdmissionConfigurationTemplateDefaults `pulumi:"defaults"`
-	// Pod Security Admission Configuration template description
+	// The description of the pod security admission configuration template (string)
 	Description *string `pulumi:"description"`
-	// exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-	// prohibited
+	// The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
 	Exemptions *PodSecurityAdmissionConfigurationTemplateExemptions `pulumi:"exemptions"`
-	// Labels of the resource
+	// Labels of the resource (map)
 	Labels map[string]string `pulumi:"labels"`
-	// Pod Security Admission Configuration template name
+	// The name of the pod security admission configuration template (string)
 	Name *string `pulumi:"name"`
 }
 
 type PodSecurityAdmissionConfigurationTemplateState struct {
-	// Annotations of the resource
+	// Annotations of the resource (map)
 	Annotations pulumi.StringMapInput
-	// defaults allows the user to define admission control mode for Pod Security
+	// The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
 	Defaults PodSecurityAdmissionConfigurationTemplateDefaultsPtrInput
-	// Pod Security Admission Configuration template description
+	// The description of the pod security admission configuration template (string)
 	Description pulumi.StringPtrInput
-	// exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-	// prohibited
+	// The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
 	Exemptions PodSecurityAdmissionConfigurationTemplateExemptionsPtrInput
-	// Labels of the resource
+	// Labels of the resource (map)
 	Labels pulumi.StringMapInput
-	// Pod Security Admission Configuration template name
+	// The name of the pod security admission configuration template (string)
 	Name pulumi.StringPtrInput
 }
 
@@ -99,35 +156,33 @@ func (PodSecurityAdmissionConfigurationTemplateState) ElementType() reflect.Type
 }
 
 type podSecurityAdmissionConfigurationTemplateArgs struct {
-	// Annotations of the resource
+	// Annotations of the resource (map)
 	Annotations map[string]string `pulumi:"annotations"`
-	// defaults allows the user to define admission control mode for Pod Security
+	// The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
 	Defaults PodSecurityAdmissionConfigurationTemplateDefaults `pulumi:"defaults"`
-	// Pod Security Admission Configuration template description
+	// The description of the pod security admission configuration template (string)
 	Description *string `pulumi:"description"`
-	// exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-	// prohibited
+	// The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
 	Exemptions *PodSecurityAdmissionConfigurationTemplateExemptions `pulumi:"exemptions"`
-	// Labels of the resource
+	// Labels of the resource (map)
 	Labels map[string]string `pulumi:"labels"`
-	// Pod Security Admission Configuration template name
+	// The name of the pod security admission configuration template (string)
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a PodSecurityAdmissionConfigurationTemplate resource.
 type PodSecurityAdmissionConfigurationTemplateArgs struct {
-	// Annotations of the resource
+	// Annotations of the resource (map)
 	Annotations pulumi.StringMapInput
-	// defaults allows the user to define admission control mode for Pod Security
+	// The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
 	Defaults PodSecurityAdmissionConfigurationTemplateDefaultsInput
-	// Pod Security Admission Configuration template description
+	// The description of the pod security admission configuration template (string)
 	Description pulumi.StringPtrInput
-	// exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-	// prohibited
+	// The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
 	Exemptions PodSecurityAdmissionConfigurationTemplateExemptionsPtrInput
-	// Labels of the resource
+	// Labels of the resource (map)
 	Labels pulumi.StringMapInput
-	// Pod Security Admission Configuration template name
+	// The name of the pod security admission configuration template (string)
 	Name pulumi.StringPtrInput
 }
 
@@ -218,37 +273,36 @@ func (o PodSecurityAdmissionConfigurationTemplateOutput) ToPodSecurityAdmissionC
 	return o
 }
 
-// Annotations of the resource
+// Annotations of the resource (map)
 func (o PodSecurityAdmissionConfigurationTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// defaults allows the user to define admission control mode for Pod Security
+// The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
 func (o PodSecurityAdmissionConfigurationTemplateOutput) Defaults() PodSecurityAdmissionConfigurationTemplateDefaultsOutput {
 	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) PodSecurityAdmissionConfigurationTemplateDefaultsOutput {
 		return v.Defaults
 	}).(PodSecurityAdmissionConfigurationTemplateDefaultsOutput)
 }
 
-// Pod Security Admission Configuration template description
+// The description of the pod security admission configuration template (string)
 func (o PodSecurityAdmissionConfigurationTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-// prohibited
+// The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
 func (o PodSecurityAdmissionConfigurationTemplateOutput) Exemptions() PodSecurityAdmissionConfigurationTemplateExemptionsPtrOutput {
 	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) PodSecurityAdmissionConfigurationTemplateExemptionsPtrOutput {
 		return v.Exemptions
 	}).(PodSecurityAdmissionConfigurationTemplateExemptionsPtrOutput)
 }
 
-// Labels of the resource
+// Labels of the resource (map)
 func (o PodSecurityAdmissionConfigurationTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Pod Security Admission Configuration template name
+// The name of the pod security admission configuration template (string)
 func (o PodSecurityAdmissionConfigurationTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PodSecurityAdmissionConfigurationTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

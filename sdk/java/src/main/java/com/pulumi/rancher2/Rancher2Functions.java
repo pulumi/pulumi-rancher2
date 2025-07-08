@@ -3353,18 +3353,213 @@ public final class Rancher2Functions {
     public static CompletableFuture<GetNodeTemplateResult> getNodeTemplatePlain(GetNodeTemplatePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getNodeTemplate:getNodeTemplate", TypeShape.of(GetNodeTemplateResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs.builder()
+     *             .name("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetPodSecurityAdmissionConfigurationTemplateResult> getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs args) {
         return getPodSecurityAdmissionConfigurationTemplate(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs.builder()
+     *             .name("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPodSecurityAdmissionConfigurationTemplateResult> getPodSecurityAdmissionConfigurationTemplatePlain(GetPodSecurityAdmissionConfigurationTemplatePlainArgs args) {
         return getPodSecurityAdmissionConfigurationTemplatePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs.builder()
+     *             .name("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetPodSecurityAdmissionConfigurationTemplateResult> getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", TypeShape.of(GetPodSecurityAdmissionConfigurationTemplateResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs.builder()
+     *             .name("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetPodSecurityAdmissionConfigurationTemplateResult> getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", TypeShape.of(GetPodSecurityAdmissionConfigurationTemplateResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Use this data source to retrieve information about a rancher v2 pod security admission configration template.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.rancher2.Rancher2Functions;
+     * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = Rancher2Functions.getPodSecurityAdmissionConfigurationTemplate(GetPodSecurityAdmissionConfigurationTemplateArgs.builder()
+     *             .name("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPodSecurityAdmissionConfigurationTemplateResult> getPodSecurityAdmissionConfigurationTemplatePlain(GetPodSecurityAdmissionConfigurationTemplatePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("rancher2:index/getPodSecurityAdmissionConfigurationTemplate:getPodSecurityAdmissionConfigurationTemplate", TypeShape.of(GetPodSecurityAdmissionConfigurationTemplateResult.class), args, Utilities.withVersion(options));
     }

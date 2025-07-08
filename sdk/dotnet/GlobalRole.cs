@@ -110,6 +110,12 @@ namespace Pulumi.Rancher2
         [Output("rules")]
         public Output<ImmutableArray<Outputs.GlobalRoleRule>> Rules { get; private set; } = null!;
 
+        /// <summary>
+        /// Global role uuid
+        /// </summary>
+        [Output("uuid")]
+        public Output<string> Uuid { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a GlobalRole resource with the given unique name, arguments, and options.
@@ -301,6 +307,12 @@ namespace Pulumi.Rancher2
             get => _rules ?? (_rules = new InputList<Inputs.GlobalRoleRuleGetArgs>());
             set => _rules = value;
         }
+
+        /// <summary>
+        /// Global role uuid
+        /// </summary>
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
 
         public GlobalRoleState()
         {

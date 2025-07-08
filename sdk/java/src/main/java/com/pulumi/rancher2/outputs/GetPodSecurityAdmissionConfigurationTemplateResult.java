@@ -13,28 +13,64 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPodSecurityAdmissionConfigurationTemplateResult {
+    /**
+     * @return (Computed) Annotations of the resource (map)
+     * 
+     */
     private Map<String,String> annotations;
+    /**
+     * @return (Computed) The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
+     * 
+     */
     private GetPodSecurityAdmissionConfigurationTemplateDefaults defaults;
+    /**
+     * @return (Computed) The description of the pod security admission configuration template (string)
+     * 
+     */
     private String description;
+    /**
+     * @return (Computed) The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
+     * 
+     */
     private GetPodSecurityAdmissionConfigurationTemplateExemptions exemptions;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return (Computed) Labels of the resource (map)
+     * 
+     */
     private Map<String,String> labels;
     private String name;
 
     private GetPodSecurityAdmissionConfigurationTemplateResult() {}
+    /**
+     * @return (Computed) Annotations of the resource (map)
+     * 
+     */
     public Map<String,String> annotations() {
         return this.annotations;
     }
+    /**
+     * @return (Computed) The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
+     * 
+     */
     public GetPodSecurityAdmissionConfigurationTemplateDefaults defaults() {
         return this.defaults;
     }
+    /**
+     * @return (Computed) The description of the pod security admission configuration template (string)
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return (Computed) The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
+     * 
+     */
     public GetPodSecurityAdmissionConfigurationTemplateExemptions exemptions() {
         return this.exemptions;
     }
@@ -45,6 +81,10 @@ public final class GetPodSecurityAdmissionConfigurationTemplateResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Computed) Labels of the resource (map)
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels;
     }

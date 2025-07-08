@@ -16,23 +16,47 @@ public final class GetPodSecurityAdmissionConfigurationTemplatePlainArgs extends
 
     public static final GetPodSecurityAdmissionConfigurationTemplatePlainArgs Empty = new GetPodSecurityAdmissionConfigurationTemplatePlainArgs();
 
+    /**
+     * (Computed) Annotations of the resource (map)
+     * 
+     */
     @Import(name="annotations")
     private @Nullable Map<String,String> annotations;
 
+    /**
+     * @return (Computed) Annotations of the resource (map)
+     * 
+     */
     public Optional<Map<String,String>> annotations() {
         return Optional.ofNullable(this.annotations);
     }
 
+    /**
+     * (Computed) Labels of the resource (map)
+     * 
+     */
     @Import(name="labels")
     private @Nullable Map<String,String> labels;
 
+    /**
+     * @return (Computed) Labels of the resource (map)
+     * 
+     */
     public Optional<Map<String,String>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
+    /**
+     * The name of the pod security admission configuration template (string)
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the pod security admission configuration template (string)
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -63,16 +87,34 @@ public final class GetPodSecurityAdmissionConfigurationTemplatePlainArgs extends
             $ = new GetPodSecurityAdmissionConfigurationTemplatePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param annotations (Computed) Annotations of the resource (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder annotations(@Nullable Map<String,String> annotations) {
             $.annotations = annotations;
             return this;
         }
 
+        /**
+         * @param labels (Computed) Labels of the resource (map)
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(@Nullable Map<String,String> labels) {
             $.labels = labels;
             return this;
         }
 
+        /**
+         * @param name The name of the pod security admission configuration template (string)
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

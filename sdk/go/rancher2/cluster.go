@@ -45,7 +45,35 @@ import (
 //
 // ```
 //
-// # Creating Rancher v2 RKE cluster
+// ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 imported Cluster with custom configuration
+//			_, err := rancher2.NewCluster(ctx, "foo-imported", &rancher2.ClusterArgs{
+//				Name: pulumi.String("foo-imported"),
+//				ImportedConfig: &rancher2.ClusterImportedConfigArgs{
+//					PrivateRegistryUrl: pulumi.String("test.io"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ### Creating Rancher v2 RKE cluster enabling
 //
@@ -886,6 +914,8 @@ type Cluster struct {
 	GkeConfig ClusterGkeConfigPtrOutput `pulumi:"gkeConfig"`
 	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 	GkeConfigV2 ClusterGkeConfigV2PtrOutput `pulumi:"gkeConfigV2"`
+	// The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
+	ImportedConfig ClusterImportedConfigPtrOutput `pulumi:"importedConfig"`
 	// (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
 	IstioEnabled pulumi.BoolOutput `pulumi:"istioEnabled"`
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
@@ -999,6 +1029,8 @@ type clusterState struct {
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
 	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 	GkeConfigV2 *ClusterGkeConfigV2 `pulumi:"gkeConfigV2"`
+	// The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
+	ImportedConfig *ClusterImportedConfig `pulumi:"importedConfig"`
 	// (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
 	IstioEnabled *bool `pulumi:"istioEnabled"`
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
@@ -1078,6 +1110,8 @@ type ClusterState struct {
 	GkeConfig ClusterGkeConfigPtrInput
 	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 	GkeConfigV2 ClusterGkeConfigV2PtrInput
+	// The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
+	ImportedConfig ClusterImportedConfigPtrInput
 	// (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
 	IstioEnabled pulumi.BoolPtrInput
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
@@ -1151,6 +1185,8 @@ type clusterArgs struct {
 	GkeConfig *ClusterGkeConfig `pulumi:"gkeConfig"`
 	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 	GkeConfigV2 *ClusterGkeConfigV2 `pulumi:"gkeConfigV2"`
+	// The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
+	ImportedConfig *ClusterImportedConfig `pulumi:"importedConfig"`
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig *ClusterK3sConfig `pulumi:"k3sConfig"`
 	// Labels for the Cluster (map)
@@ -1215,6 +1251,8 @@ type ClusterArgs struct {
 	GkeConfig ClusterGkeConfigPtrInput
 	// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 	GkeConfigV2 ClusterGkeConfigV2PtrInput
+	// The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
+	ImportedConfig ClusterImportedConfigPtrInput
 	// The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
 	K3sConfig ClusterK3sConfigPtrInput
 	// Labels for the Cluster (map)
@@ -1457,6 +1495,11 @@ func (o ClusterOutput) GkeConfig() ClusterGkeConfigPtrOutput {
 // The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 func (o ClusterOutput) GkeConfigV2() ClusterGkeConfigV2PtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterGkeConfigV2PtrOutput { return v.GkeConfigV2 }).(ClusterGkeConfigV2PtrOutput)
+}
+
+// The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
+func (o ClusterOutput) ImportedConfig() ClusterImportedConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterImportedConfigPtrOutput { return v.ImportedConfig }).(ClusterImportedConfigPtrOutput)
 }
 
 // (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)

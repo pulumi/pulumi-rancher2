@@ -75,6 +75,8 @@ type LookupGlobalRoleResult struct {
 	NewUserDefault bool `pulumi:"newUserDefault"`
 	// (Computed) Global role policy rules (list)
 	Rules []GetGlobalRoleRule `pulumi:"rules"`
+	// (Computed) Global role uuid (string)
+	Uuid string `pulumi:"uuid"`
 }
 
 func LookupGlobalRoleOutput(ctx *pulumi.Context, args LookupGlobalRoleOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalRoleResultOutput {
@@ -155,6 +157,11 @@ func (o LookupGlobalRoleResultOutput) NewUserDefault() pulumi.BoolOutput {
 // (Computed) Global role policy rules (list)
 func (o LookupGlobalRoleResultOutput) Rules() GetGlobalRoleRuleArrayOutput {
 	return o.ApplyT(func(v LookupGlobalRoleResult) []GetGlobalRoleRule { return v.Rules }).(GetGlobalRoleRuleArrayOutput)
+}
+
+// (Computed) Global role uuid (string)
+func (o LookupGlobalRoleResultOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
 func init() {

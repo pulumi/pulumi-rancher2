@@ -19,14 +19,14 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
     public static final PodSecurityAdmissionConfigurationTemplateState Empty = new PodSecurityAdmissionConfigurationTemplateState();
 
     /**
-     * Annotations of the resource
+     * Annotations of the resource (map)
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return Annotations of the resource
+     * @return Annotations of the resource (map)
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -34,14 +34,14 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
     }
 
     /**
-     * defaults allows the user to define admission control mode for Pod Security
+     * The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
      * 
      */
     @Import(name="defaults")
     private @Nullable Output<PodSecurityAdmissionConfigurationTemplateDefaultsArgs> defaults;
 
     /**
-     * @return defaults allows the user to define admission control mode for Pod Security
+     * @return The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
      * 
      */
     public Optional<Output<PodSecurityAdmissionConfigurationTemplateDefaultsArgs>> defaults() {
@@ -49,14 +49,14 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
     }
 
     /**
-     * Pod Security Admission Configuration template description
+     * The description of the pod security admission configuration template (string)
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Pod Security Admission Configuration template description
+     * @return The description of the pod security admission configuration template (string)
      * 
      */
     public Optional<Output<String>> description() {
@@ -64,16 +64,14 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
     }
 
     /**
-     * exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-     * prohibited
+     * The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
      * 
      */
     @Import(name="exemptions")
     private @Nullable Output<PodSecurityAdmissionConfigurationTemplateExemptionsArgs> exemptions;
 
     /**
-     * @return exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-     * prohibited
+     * @return The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
      * 
      */
     public Optional<Output<PodSecurityAdmissionConfigurationTemplateExemptionsArgs>> exemptions() {
@@ -81,14 +79,14 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
     }
 
     /**
-     * Labels of the resource
+     * Labels of the resource (map)
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels of the resource
+     * @return Labels of the resource (map)
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -96,14 +94,14 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
     }
 
     /**
-     * Pod Security Admission Configuration template name
+     * The name of the pod security admission configuration template (string)
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Pod Security Admission Configuration template name
+     * @return The name of the pod security admission configuration template (string)
      * 
      */
     public Optional<Output<String>> name() {
@@ -140,7 +138,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param annotations Annotations of the resource
+         * @param annotations Annotations of the resource (map)
          * 
          * @return builder
          * 
@@ -151,7 +149,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param annotations Annotations of the resource
+         * @param annotations Annotations of the resource (map)
          * 
          * @return builder
          * 
@@ -161,7 +159,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param defaults defaults allows the user to define admission control mode for Pod Security
+         * @param defaults The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
          * 
          * @return builder
          * 
@@ -172,7 +170,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param defaults defaults allows the user to define admission control mode for Pod Security
+         * @param defaults The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
          * 
          * @return builder
          * 
@@ -182,7 +180,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param description Pod Security Admission Configuration template description
+         * @param description The description of the pod security admission configuration template (string)
          * 
          * @return builder
          * 
@@ -193,7 +191,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param description Pod Security Admission Configuration template description
+         * @param description The description of the pod security admission configuration template (string)
          * 
          * @return builder
          * 
@@ -203,8 +201,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param exemptions exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-         * prohibited
+         * @param exemptions The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
          * 
          * @return builder
          * 
@@ -215,8 +212,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param exemptions exemptions allows the creation of pods for specific Usernames, RuntimeClassNames, and Namespaces that would otherwise be
-         * prohibited
+         * @param exemptions The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
          * 
          * @return builder
          * 
@@ -226,7 +222,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param labels Labels of the resource
+         * @param labels Labels of the resource (map)
          * 
          * @return builder
          * 
@@ -237,7 +233,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param labels Labels of the resource
+         * @param labels Labels of the resource (map)
          * 
          * @return builder
          * 
@@ -247,7 +243,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param name Pod Security Admission Configuration template name
+         * @param name The name of the pod security admission configuration template (string)
          * 
          * @return builder
          * 
@@ -258,7 +254,7 @@ public final class PodSecurityAdmissionConfigurationTemplateState extends com.pu
         }
 
         /**
-         * @param name Pod Security Admission Configuration template name
+         * @param name The name of the pod security admission configuration template (string)
          * 
          * @return builder
          * 

@@ -45,6 +45,7 @@ class ClusterArgs:
                  fleet_workspace_name: Optional[pulumi.Input[builtins.str]] = None,
                  gke_config: Optional[pulumi.Input['ClusterGkeConfigArgs']] = None,
                  gke_config_v2: Optional[pulumi.Input['ClusterGkeConfigV2Args']] = None,
+                 imported_config: Optional[pulumi.Input['ClusterImportedConfigArgs']] = None,
                  k3s_config: Optional[pulumi.Input['ClusterK3sConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -77,6 +78,7 @@ class ClusterArgs:
         :param pulumi.Input[builtins.str] fleet_workspace_name: Fleet workspace name (string)
         :param pulumi.Input['ClusterGkeConfigArgs'] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+        :param pulumi.Input['ClusterImportedConfigArgs'] imported_config: The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input['ClusterK3sConfigArgs'] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels for the Cluster (map)
         :param pulumi.Input[builtins.str] name: The name of the Cluster (string)
@@ -131,6 +133,8 @@ class ClusterArgs:
             pulumi.set(__self__, "gke_config", gke_config)
         if gke_config_v2 is not None:
             pulumi.set(__self__, "gke_config_v2", gke_config_v2)
+        if imported_config is not None:
+            pulumi.set(__self__, "imported_config", imported_config)
         if k3s_config is not None:
             pulumi.set(__self__, "k3s_config", k3s_config)
         if labels is not None:
@@ -423,6 +427,18 @@ class ClusterArgs:
         pulumi.set(self, "gke_config_v2", value)
 
     @property
+    @pulumi.getter(name="importedConfig")
+    def imported_config(self) -> Optional[pulumi.Input['ClusterImportedConfigArgs']]:
+        """
+        The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "imported_config")
+
+    @imported_config.setter
+    def imported_config(self, value: Optional[pulumi.Input['ClusterImportedConfigArgs']]):
+        pulumi.set(self, "imported_config", value)
+
+    @property
     @pulumi.getter(name="k3sConfig")
     def k3s_config(self) -> Optional[pulumi.Input['ClusterK3sConfigArgs']]:
         """
@@ -537,6 +553,7 @@ class _ClusterState:
                  fleet_workspace_name: Optional[pulumi.Input[builtins.str]] = None,
                  gke_config: Optional[pulumi.Input['ClusterGkeConfigArgs']] = None,
                  gke_config_v2: Optional[pulumi.Input['ClusterGkeConfigV2Args']] = None,
+                 imported_config: Optional[pulumi.Input['ClusterImportedConfigArgs']] = None,
                  istio_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  k3s_config: Optional[pulumi.Input['ClusterK3sConfigArgs']] = None,
                  kube_config: Optional[pulumi.Input[builtins.str]] = None,
@@ -576,6 +593,7 @@ class _ClusterState:
         :param pulumi.Input[builtins.str] fleet_workspace_name: Fleet workspace name (string)
         :param pulumi.Input['ClusterGkeConfigArgs'] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterGkeConfigV2Args'] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+        :param pulumi.Input['ClusterImportedConfigArgs'] imported_config: The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[builtins.bool] istio_enabled: (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
         :param pulumi.Input['ClusterK3sConfigArgs'] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[builtins.str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
@@ -644,6 +662,8 @@ class _ClusterState:
             pulumi.set(__self__, "gke_config", gke_config)
         if gke_config_v2 is not None:
             pulumi.set(__self__, "gke_config_v2", gke_config_v2)
+        if imported_config is not None:
+            pulumi.set(__self__, "imported_config", imported_config)
         if istio_enabled is not None:
             pulumi.set(__self__, "istio_enabled", istio_enabled)
         if k3s_config is not None:
@@ -991,6 +1011,18 @@ class _ClusterState:
         pulumi.set(self, "gke_config_v2", value)
 
     @property
+    @pulumi.getter(name="importedConfig")
+    def imported_config(self) -> Optional[pulumi.Input['ClusterImportedConfigArgs']]:
+        """
+        The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "imported_config")
+
+    @imported_config.setter
+    def imported_config(self, value: Optional[pulumi.Input['ClusterImportedConfigArgs']]):
+        pulumi.set(self, "imported_config", value)
+
+    @property
     @pulumi.getter(name="istioEnabled")
     def istio_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -1140,6 +1172,7 @@ class Cluster(pulumi.CustomResource):
                  fleet_workspace_name: Optional[pulumi.Input[builtins.str]] = None,
                  gke_config: Optional[pulumi.Input[Union['ClusterGkeConfigArgs', 'ClusterGkeConfigArgsDict']]] = None,
                  gke_config_v2: Optional[pulumi.Input[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']]] = None,
+                 imported_config: Optional[pulumi.Input[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']]] = None,
                  k3s_config: Optional[pulumi.Input[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -1167,7 +1200,19 @@ class Cluster(pulumi.CustomResource):
             description="Foo rancher2 imported cluster")
         ```
 
-        Creating Rancher v2 RKE cluster
+        ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 imported Cluster with custom configuration 
+        foo_imported = rancher2.Cluster("foo-imported",
+            name="foo-imported",
+            imported_config={
+                "private_registry_url": "test.io",
+            })
+        ```
 
         ### Creating Rancher v2 RKE cluster enabling
 
@@ -1699,6 +1744,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] fleet_workspace_name: Fleet workspace name (string)
         :param pulumi.Input[Union['ClusterGkeConfigArgs', 'ClusterGkeConfigArgsDict']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+        :param pulumi.Input[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']] imported_config: The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Labels for the Cluster (map)
         :param pulumi.Input[builtins.str] name: The name of the Cluster (string)
@@ -1732,7 +1778,19 @@ class Cluster(pulumi.CustomResource):
             description="Foo rancher2 imported cluster")
         ```
 
-        Creating Rancher v2 RKE cluster
+        ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 imported Cluster with custom configuration 
+        foo_imported = rancher2.Cluster("foo-imported",
+            name="foo-imported",
+            imported_config={
+                "private_registry_url": "test.io",
+            })
+        ```
 
         ### Creating Rancher v2 RKE cluster enabling
 
@@ -2277,6 +2335,7 @@ class Cluster(pulumi.CustomResource):
                  fleet_workspace_name: Optional[pulumi.Input[builtins.str]] = None,
                  gke_config: Optional[pulumi.Input[Union['ClusterGkeConfigArgs', 'ClusterGkeConfigArgsDict']]] = None,
                  gke_config_v2: Optional[pulumi.Input[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']]] = None,
+                 imported_config: Optional[pulumi.Input[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']]] = None,
                  k3s_config: Optional[pulumi.Input[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -2316,6 +2375,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["fleet_workspace_name"] = fleet_workspace_name
             __props__.__dict__["gke_config"] = gke_config
             __props__.__dict__["gke_config_v2"] = gke_config_v2
+            __props__.__dict__["imported_config"] = imported_config
             __props__.__dict__["k3s_config"] = k3s_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -2369,6 +2429,7 @@ class Cluster(pulumi.CustomResource):
             fleet_workspace_name: Optional[pulumi.Input[builtins.str]] = None,
             gke_config: Optional[pulumi.Input[Union['ClusterGkeConfigArgs', 'ClusterGkeConfigArgsDict']]] = None,
             gke_config_v2: Optional[pulumi.Input[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']]] = None,
+            imported_config: Optional[pulumi.Input[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']]] = None,
             istio_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             k3s_config: Optional[pulumi.Input[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']]] = None,
             kube_config: Optional[pulumi.Input[builtins.str]] = None,
@@ -2413,6 +2474,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] fleet_workspace_name: Fleet workspace name (string)
         :param pulumi.Input[Union['ClusterGkeConfigArgs', 'ClusterGkeConfigArgsDict']] gke_config: The Google GKE configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']] gke_config_v2: The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+        :param pulumi.Input[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']] imported_config: The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[builtins.bool] istio_enabled: (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
         :param pulumi.Input[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']] k3s_config: The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[builtins.str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
@@ -2455,6 +2517,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["fleet_workspace_name"] = fleet_workspace_name
         __props__.__dict__["gke_config"] = gke_config
         __props__.__dict__["gke_config_v2"] = gke_config_v2
+        __props__.__dict__["imported_config"] = imported_config
         __props__.__dict__["istio_enabled"] = istio_enabled
         __props__.__dict__["k3s_config"] = k3s_config
         __props__.__dict__["kube_config"] = kube_config
@@ -2683,6 +2746,14 @@ class Cluster(pulumi.CustomResource):
         The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
+
+    @property
+    @pulumi.getter(name="importedConfig")
+    def imported_config(self) -> pulumi.Output[Optional['outputs.ClusterImportedConfig']]:
+        """
+        The imported configuration for generic imported Clusters. Conflicts with `aks_config`,`aks_config_v2`, `eks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+        """
+        return pulumi.get(self, "imported_config")
 
     @property
     @pulumi.getter(name="istioEnabled")
