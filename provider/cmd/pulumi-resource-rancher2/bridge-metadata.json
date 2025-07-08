@@ -356,6 +356,9 @@
                             }
                         }
                     },
+                    "imported_config": {
+                        "maxItemsOne": true
+                    },
                     "k3s_config": {
                         "maxItemsOne": true,
                         "elem": {
