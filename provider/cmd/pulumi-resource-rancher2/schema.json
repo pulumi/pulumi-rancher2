@@ -28968,7 +28968,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:rancher2"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:rancher2/terraformConfig",
