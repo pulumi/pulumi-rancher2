@@ -111,38 +111,38 @@ export class ClusterSync extends pulumi.CustomResource {
     /**
      * The cluster ID that is syncing (string)
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * (Computed) Default project ID for the cluster sync (string)
      */
-    public /*out*/ readonly defaultProjectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultProjectId: pulumi.Output<string>;
     /**
      * (Computed/Sensitive) Kube Config generated for the cluster sync (string)
      */
-    public /*out*/ readonly kubeConfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeConfig: pulumi.Output<string>;
     /**
      * The node pool IDs used by the cluster id (list)
      */
-    public readonly nodePoolIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly nodePoolIds: pulumi.Output<string[] | undefined>;
     /**
      * (Computed) The cluster nodes (list).
      */
-    public /*out*/ readonly nodes!: pulumi.Output<outputs.ClusterSyncNode[]>;
+    declare public /*out*/ readonly nodes: pulumi.Output<outputs.ClusterSyncNode[]>;
     /**
      * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      *
      * **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
      */
-    public readonly stateConfirm!: pulumi.Output<number | undefined>;
-    public readonly synced!: pulumi.Output<boolean | undefined>;
+    declare public readonly stateConfirm: pulumi.Output<number | undefined>;
+    declare public readonly synced: pulumi.Output<boolean | undefined>;
     /**
      * (Computed) System project ID for the cluster sync (string)
      */
-    public /*out*/ readonly systemProjectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly systemProjectId: pulumi.Output<string>;
     /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
-    public readonly waitCatalogs!: pulumi.Output<boolean | undefined>;
+    declare public readonly waitCatalogs: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ClusterSync resource with the given unique name, arguments, and options.
@@ -157,25 +157,25 @@ export class ClusterSync extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterSyncState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
-            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            resourceInputs["nodePoolIds"] = state ? state.nodePoolIds : undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["stateConfirm"] = state ? state.stateConfirm : undefined;
-            resourceInputs["synced"] = state ? state.synced : undefined;
-            resourceInputs["systemProjectId"] = state ? state.systemProjectId : undefined;
-            resourceInputs["waitCatalogs"] = state ? state.waitCatalogs : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["defaultProjectId"] = state?.defaultProjectId;
+            resourceInputs["kubeConfig"] = state?.kubeConfig;
+            resourceInputs["nodePoolIds"] = state?.nodePoolIds;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["stateConfirm"] = state?.stateConfirm;
+            resourceInputs["synced"] = state?.synced;
+            resourceInputs["systemProjectId"] = state?.systemProjectId;
+            resourceInputs["waitCatalogs"] = state?.waitCatalogs;
         } else {
             const args = argsOrState as ClusterSyncArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["nodePoolIds"] = args ? args.nodePoolIds : undefined;
-            resourceInputs["stateConfirm"] = args ? args.stateConfirm : undefined;
-            resourceInputs["synced"] = args ? args.synced : undefined;
-            resourceInputs["waitCatalogs"] = args ? args.waitCatalogs : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["nodePoolIds"] = args?.nodePoolIds;
+            resourceInputs["stateConfirm"] = args?.stateConfirm;
+            resourceInputs["synced"] = args?.synced;
+            resourceInputs["waitCatalogs"] = args?.waitCatalogs;
             resourceInputs["defaultProjectId"] = undefined /*out*/;
             resourceInputs["kubeConfig"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;

@@ -88,59 +88,59 @@ export class RoleTemplate extends pulumi.CustomResource {
     /**
      * Administrative role template. Default `false` (bool)
      */
-    public readonly administrative!: pulumi.Output<boolean | undefined>;
+    declare public readonly administrative: pulumi.Output<boolean | undefined>;
     /**
      * Annotations for role template object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) Builtin role template (string)
      */
-    public /*out*/ readonly builtin!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly builtin: pulumi.Output<boolean>;
     /**
      * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
      */
-    public readonly context!: pulumi.Output<string | undefined>;
+    declare public readonly context: pulumi.Output<string | undefined>;
     /**
      * Default role template for new created cluster or project. Default `false` (bool)
      */
-    public readonly defaultRole!: pulumi.Output<boolean | undefined>;
+    declare public readonly defaultRole: pulumi.Output<boolean | undefined>;
     /**
      * Role template description (string)
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * External role template. Default `false` (bool)
      */
-    public readonly external!: pulumi.Output<boolean | undefined>;
+    declare public readonly external: pulumi.Output<boolean | undefined>;
     /**
      * External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
      */
-    public readonly externalRules!: pulumi.Output<outputs.RoleTemplateExternalRule[]>;
+    declare public readonly externalRules: pulumi.Output<outputs.RoleTemplateExternalRule[]>;
     /**
      * Hidden role template. Default `false` (bool)
      */
-    public readonly hidden!: pulumi.Output<boolean | undefined>;
+    declare public readonly hidden: pulumi.Output<boolean | undefined>;
     /**
      * Labels for role template object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Locked role template. Default `false` (bool)
      */
-    public readonly locked!: pulumi.Output<boolean | undefined>;
+    declare public readonly locked: pulumi.Output<boolean | undefined>;
     /**
      * Role template name (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Inherit role template IDs (list)
      */
-    public readonly roleTemplateIds!: pulumi.Output<string[]>;
+    declare public readonly roleTemplateIds: pulumi.Output<string[]>;
     /**
      * Role template policy rules (list)
      */
-    public readonly rules!: pulumi.Output<outputs.RoleTemplateRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.RoleTemplateRule[]>;
 
     /**
      * Create a RoleTemplate resource with the given unique name, arguments, and options.
@@ -155,35 +155,35 @@ export class RoleTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleTemplateState | undefined;
-            resourceInputs["administrative"] = state ? state.administrative : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["builtin"] = state ? state.builtin : undefined;
-            resourceInputs["context"] = state ? state.context : undefined;
-            resourceInputs["defaultRole"] = state ? state.defaultRole : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["external"] = state ? state.external : undefined;
-            resourceInputs["externalRules"] = state ? state.externalRules : undefined;
-            resourceInputs["hidden"] = state ? state.hidden : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["roleTemplateIds"] = state ? state.roleTemplateIds : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["administrative"] = state?.administrative;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["builtin"] = state?.builtin;
+            resourceInputs["context"] = state?.context;
+            resourceInputs["defaultRole"] = state?.defaultRole;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["external"] = state?.external;
+            resourceInputs["externalRules"] = state?.externalRules;
+            resourceInputs["hidden"] = state?.hidden;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["locked"] = state?.locked;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["roleTemplateIds"] = state?.roleTemplateIds;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as RoleTemplateArgs | undefined;
-            resourceInputs["administrative"] = args ? args.administrative : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["context"] = args ? args.context : undefined;
-            resourceInputs["defaultRole"] = args ? args.defaultRole : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["external"] = args ? args.external : undefined;
-            resourceInputs["externalRules"] = args ? args.externalRules : undefined;
-            resourceInputs["hidden"] = args ? args.hidden : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["locked"] = args ? args.locked : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["roleTemplateIds"] = args ? args.roleTemplateIds : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["administrative"] = args?.administrative;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["context"] = args?.context;
+            resourceInputs["defaultRole"] = args?.defaultRole;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["external"] = args?.external;
+            resourceInputs["externalRules"] = args?.externalRules;
+            resourceInputs["hidden"] = args?.hidden;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["locked"] = args?.locked;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["roleTemplateIds"] = args?.roleTemplateIds;
+            resourceInputs["rules"] = args?.rules;
             resourceInputs["builtin"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

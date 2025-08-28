@@ -67,39 +67,39 @@ export class GlobalRole extends pulumi.CustomResource {
     /**
      * Annotations for global role object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) Builtin global role (bool)
      */
-    public /*out*/ readonly builtin!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly builtin: pulumi.Output<boolean>;
     /**
      * Global role description (string)
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      */
-    public readonly inheritedClusterRoles!: pulumi.Output<string[] | undefined>;
+    declare public readonly inheritedClusterRoles: pulumi.Output<string[] | undefined>;
     /**
      * Labels for global role object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Global role name (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether or not this role should be added to new users. Default `false` (bool)
      */
-    public readonly newUserDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly newUserDefault: pulumi.Output<boolean | undefined>;
     /**
      * Global role policy rules (list)
      */
-    public readonly rules!: pulumi.Output<outputs.GlobalRoleRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.GlobalRoleRule[]>;
     /**
      * Global role uuid
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a GlobalRole resource with the given unique name, arguments, and options.
@@ -114,24 +114,24 @@ export class GlobalRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalRoleState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["builtin"] = state ? state.builtin : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["inheritedClusterRoles"] = state ? state.inheritedClusterRoles : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["newUserDefault"] = state ? state.newUserDefault : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["builtin"] = state?.builtin;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["inheritedClusterRoles"] = state?.inheritedClusterRoles;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["newUserDefault"] = state?.newUserDefault;
+            resourceInputs["rules"] = state?.rules;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as GlobalRoleArgs | undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["inheritedClusterRoles"] = args ? args.inheritedClusterRoles : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["newUserDefault"] = args ? args.newUserDefault : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["inheritedClusterRoles"] = args?.inheritedClusterRoles;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["newUserDefault"] = args?.newUserDefault;
+            resourceInputs["rules"] = args?.rules;
             resourceInputs["builtin"] = undefined /*out*/;
             resourceInputs["uuid"] = undefined /*out*/;
         }

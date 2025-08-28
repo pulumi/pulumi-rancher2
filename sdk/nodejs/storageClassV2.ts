@@ -46,47 +46,47 @@ export class StorageClassV2 extends pulumi.CustomResource {
     /**
      * Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
      */
-    public readonly allowVolumeExpansion!: pulumi.Output<boolean>;
+    declare public readonly allowVolumeExpansion: pulumi.Output<boolean>;
     /**
      * Annotations for the storageClass v2 (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id of the storageClass V2 (string)
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The provisioner of the storageClass v2 (string)
      */
-    public readonly k8sProvisioner!: pulumi.Output<string>;
+    declare public readonly k8sProvisioner: pulumi.Output<string>;
     /**
      * Labels for the storageClass v2 (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The mount options for storageClass v2 (list)
      */
-    public readonly mountOptions!: pulumi.Output<string[]>;
+    declare public readonly mountOptions: pulumi.Output<string[]>;
     /**
      * The name of the storageClass v2 (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The parameters for storageClass v2 (string)
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly parameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
      */
-    public readonly reclaimPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly reclaimPolicy: pulumi.Output<string | undefined>;
     /**
      * (Computed) The k8s resource version (string)
      */
-    public /*out*/ readonly resourceVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceVersion: pulumi.Output<string>;
     /**
      * The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
      */
-    public readonly volumeBindingMode!: pulumi.Output<string | undefined>;
+    declare public readonly volumeBindingMode: pulumi.Output<string | undefined>;
 
     /**
      * Create a StorageClassV2 resource with the given unique name, arguments, and options.
@@ -101,35 +101,35 @@ export class StorageClassV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StorageClassV2State | undefined;
-            resourceInputs["allowVolumeExpansion"] = state ? state.allowVolumeExpansion : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["k8sProvisioner"] = state ? state.k8sProvisioner : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["mountOptions"] = state ? state.mountOptions : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["reclaimPolicy"] = state ? state.reclaimPolicy : undefined;
-            resourceInputs["resourceVersion"] = state ? state.resourceVersion : undefined;
-            resourceInputs["volumeBindingMode"] = state ? state.volumeBindingMode : undefined;
+            resourceInputs["allowVolumeExpansion"] = state?.allowVolumeExpansion;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["k8sProvisioner"] = state?.k8sProvisioner;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["mountOptions"] = state?.mountOptions;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["reclaimPolicy"] = state?.reclaimPolicy;
+            resourceInputs["resourceVersion"] = state?.resourceVersion;
+            resourceInputs["volumeBindingMode"] = state?.volumeBindingMode;
         } else {
             const args = argsOrState as StorageClassV2Args | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.k8sProvisioner === undefined) && !opts.urn) {
+            if (args?.k8sProvisioner === undefined && !opts.urn) {
                 throw new Error("Missing required property 'k8sProvisioner'");
             }
-            resourceInputs["allowVolumeExpansion"] = args ? args.allowVolumeExpansion : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["k8sProvisioner"] = args ? args.k8sProvisioner : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["mountOptions"] = args ? args.mountOptions : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["reclaimPolicy"] = args ? args.reclaimPolicy : undefined;
-            resourceInputs["volumeBindingMode"] = args ? args.volumeBindingMode : undefined;
+            resourceInputs["allowVolumeExpansion"] = args?.allowVolumeExpansion;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["k8sProvisioner"] = args?.k8sProvisioner;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["mountOptions"] = args?.mountOptions;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["reclaimPolicy"] = args?.reclaimPolicy;
+            resourceInputs["volumeBindingMode"] = args?.volumeBindingMode;
             resourceInputs["resourceVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

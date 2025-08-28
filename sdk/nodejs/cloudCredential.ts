@@ -106,59 +106,59 @@ export class CloudCredential extends pulumi.CustomResource {
     /**
      * AWS config for the Cloud Credential (list maxitems:1)
      */
-    public readonly amazonec2CredentialConfig!: pulumi.Output<outputs.CloudCredentialAmazonec2CredentialConfig | undefined>;
+    declare public readonly amazonec2CredentialConfig: pulumi.Output<outputs.CloudCredentialAmazonec2CredentialConfig | undefined>;
     /**
      * Annotations for Cloud Credential object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Azure config for the Cloud Credential (list maxitems:1)
      */
-    public readonly azureCredentialConfig!: pulumi.Output<outputs.CloudCredentialAzureCredentialConfig | undefined>;
+    declare public readonly azureCredentialConfig: pulumi.Output<outputs.CloudCredentialAzureCredentialConfig | undefined>;
     /**
      * Description for the Cloud Credential (string)
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * DigitalOcean config for the Cloud Credential (list maxitems:1)
      */
-    public readonly digitaloceanCredentialConfig!: pulumi.Output<outputs.CloudCredentialDigitaloceanCredentialConfig | undefined>;
+    declare public readonly digitaloceanCredentialConfig: pulumi.Output<outputs.CloudCredentialDigitaloceanCredentialConfig | undefined>;
     /**
      * (Computed) The driver of the Cloud Credential (string)
      */
-    public /*out*/ readonly driver!: pulumi.Output<string>;
+    declare public /*out*/ readonly driver: pulumi.Output<string>;
     /**
      * Google config for the Cloud Credential (list maxitems:1)
      */
-    public readonly googleCredentialConfig!: pulumi.Output<outputs.CloudCredentialGoogleCredentialConfig | undefined>;
+    declare public readonly googleCredentialConfig: pulumi.Output<outputs.CloudCredentialGoogleCredentialConfig | undefined>;
     /**
      * Harvester config for the Cloud Credential (list maxitems:1)
      */
-    public readonly harvesterCredentialConfig!: pulumi.Output<outputs.CloudCredentialHarvesterCredentialConfig | undefined>;
+    declare public readonly harvesterCredentialConfig: pulumi.Output<outputs.CloudCredentialHarvesterCredentialConfig | undefined>;
     /**
      * Labels for Cloud Credential object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Linode config for the Cloud Credential (list maxitems:1)
      */
-    public readonly linodeCredentialConfig!: pulumi.Output<outputs.CloudCredentialLinodeCredentialConfig | undefined>;
+    declare public readonly linodeCredentialConfig: pulumi.Output<outputs.CloudCredentialLinodeCredentialConfig | undefined>;
     /**
      * The name of the Cloud Credential (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * OpenStack config for the Cloud Credential (list maxitems:1)
      */
-    public readonly openstackCredentialConfig!: pulumi.Output<outputs.CloudCredentialOpenstackCredentialConfig | undefined>;
+    declare public readonly openstackCredentialConfig: pulumi.Output<outputs.CloudCredentialOpenstackCredentialConfig | undefined>;
     /**
      * S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      */
-    public readonly s3CredentialConfig!: pulumi.Output<outputs.CloudCredentialS3CredentialConfig | undefined>;
+    declare public readonly s3CredentialConfig: pulumi.Output<outputs.CloudCredentialS3CredentialConfig | undefined>;
     /**
      * vSphere config for the Cloud Credential (list maxitems:1)
      */
-    public readonly vsphereCredentialConfig!: pulumi.Output<outputs.CloudCredentialVsphereCredentialConfig | undefined>;
+    declare public readonly vsphereCredentialConfig: pulumi.Output<outputs.CloudCredentialVsphereCredentialConfig | undefined>;
 
     /**
      * Create a CloudCredential resource with the given unique name, arguments, and options.
@@ -173,35 +173,35 @@ export class CloudCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudCredentialState | undefined;
-            resourceInputs["amazonec2CredentialConfig"] = state ? state.amazonec2CredentialConfig : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["azureCredentialConfig"] = state ? state.azureCredentialConfig : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["digitaloceanCredentialConfig"] = state ? state.digitaloceanCredentialConfig : undefined;
-            resourceInputs["driver"] = state ? state.driver : undefined;
-            resourceInputs["googleCredentialConfig"] = state ? state.googleCredentialConfig : undefined;
-            resourceInputs["harvesterCredentialConfig"] = state ? state.harvesterCredentialConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["linodeCredentialConfig"] = state ? state.linodeCredentialConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["openstackCredentialConfig"] = state ? state.openstackCredentialConfig : undefined;
-            resourceInputs["s3CredentialConfig"] = state ? state.s3CredentialConfig : undefined;
-            resourceInputs["vsphereCredentialConfig"] = state ? state.vsphereCredentialConfig : undefined;
+            resourceInputs["amazonec2CredentialConfig"] = state?.amazonec2CredentialConfig;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["azureCredentialConfig"] = state?.azureCredentialConfig;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["digitaloceanCredentialConfig"] = state?.digitaloceanCredentialConfig;
+            resourceInputs["driver"] = state?.driver;
+            resourceInputs["googleCredentialConfig"] = state?.googleCredentialConfig;
+            resourceInputs["harvesterCredentialConfig"] = state?.harvesterCredentialConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["linodeCredentialConfig"] = state?.linodeCredentialConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["openstackCredentialConfig"] = state?.openstackCredentialConfig;
+            resourceInputs["s3CredentialConfig"] = state?.s3CredentialConfig;
+            resourceInputs["vsphereCredentialConfig"] = state?.vsphereCredentialConfig;
         } else {
             const args = argsOrState as CloudCredentialArgs | undefined;
-            resourceInputs["amazonec2CredentialConfig"] = args ? args.amazonec2CredentialConfig : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["azureCredentialConfig"] = args ? args.azureCredentialConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["digitaloceanCredentialConfig"] = args ? args.digitaloceanCredentialConfig : undefined;
-            resourceInputs["googleCredentialConfig"] = args ? args.googleCredentialConfig : undefined;
-            resourceInputs["harvesterCredentialConfig"] = args ? args.harvesterCredentialConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["linodeCredentialConfig"] = args ? args.linodeCredentialConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["openstackCredentialConfig"] = args ? args.openstackCredentialConfig : undefined;
-            resourceInputs["s3CredentialConfig"] = args ? args.s3CredentialConfig : undefined;
-            resourceInputs["vsphereCredentialConfig"] = args ? args.vsphereCredentialConfig : undefined;
+            resourceInputs["amazonec2CredentialConfig"] = args?.amazonec2CredentialConfig;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["azureCredentialConfig"] = args?.azureCredentialConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["digitaloceanCredentialConfig"] = args?.digitaloceanCredentialConfig;
+            resourceInputs["googleCredentialConfig"] = args?.googleCredentialConfig;
+            resourceInputs["harvesterCredentialConfig"] = args?.harvesterCredentialConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["linodeCredentialConfig"] = args?.linodeCredentialConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["openstackCredentialConfig"] = args?.openstackCredentialConfig;
+            resourceInputs["s3CredentialConfig"] = args?.s3CredentialConfig;
+            resourceInputs["vsphereCredentialConfig"] = args?.vsphereCredentialConfig;
             resourceInputs["driver"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

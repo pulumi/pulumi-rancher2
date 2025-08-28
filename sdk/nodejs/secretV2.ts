@@ -46,39 +46,39 @@ export class SecretV2 extends pulumi.CustomResource {
     /**
      * Annotations for the secret v2 (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id of the secret V2 (string)
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The data of the secret v2 (map)
      */
-    public readonly data!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly data: pulumi.Output<{[key: string]: string}>;
     /**
      * If set to true, any secret update will remove and recreate the secret. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
-    public readonly immutable!: pulumi.Output<boolean | undefined>;
+    declare public readonly immutable: pulumi.Output<boolean | undefined>;
     /**
      * Labels for the secret v2 (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the secret v2 (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespaces of the secret v2. Default: `default` (string)
      */
-    public readonly namespace!: pulumi.Output<string | undefined>;
+    declare public readonly namespace: pulumi.Output<string | undefined>;
     /**
      * (Computed) The k8s resource version (string)
      */
-    public /*out*/ readonly resourceVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceVersion: pulumi.Output<string>;
     /**
      * The type of the k8s secret, used to facilitate programmatic handling of secret data, [More info](https://github.com/kubernetes/api/blob/release-1.20/core/v1/types.go#L5772) about k8s secret types and expected format.  Default: `Opaque` (string)
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a SecretV2 resource with the given unique name, arguments, and options.
@@ -93,31 +93,31 @@ export class SecretV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretV2State | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["immutable"] = state ? state.immutable : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["resourceVersion"] = state ? state.resourceVersion : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["data"] = state?.data;
+            resourceInputs["immutable"] = state?.immutable;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["resourceVersion"] = state?.resourceVersion;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as SecretV2Args | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.data === undefined) && !opts.urn) {
+            if (args?.data === undefined && !opts.urn) {
                 throw new Error("Missing required property 'data'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["data"] = args?.data ? pulumi.secret(args.data) : undefined;
-            resourceInputs["immutable"] = args ? args.immutable : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["immutable"] = args?.immutable;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["type"] = args?.type;
             resourceInputs["resourceVersion"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

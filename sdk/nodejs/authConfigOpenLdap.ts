@@ -40,134 +40,134 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    public readonly accessMode!: pulumi.Output<string | undefined>;
+    declare public readonly accessMode: pulumi.Output<string | undefined>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
      */
-    public readonly allowedPrincipalIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedPrincipalIds: pulumi.Output<string[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Base64 encoded CA certificate for TLS if self-signed. Use filebase64(<FILE>) for encoding file (string)
      */
-    public readonly certificate!: pulumi.Output<string | undefined>;
+    declare public readonly certificate: pulumi.Output<string | undefined>;
     /**
      * OpenLdap connection timeout. Default `5000` (int)
      */
-    public readonly connectionTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly connectionTimeout: pulumi.Output<number | undefined>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Group DN attribute. Default `entryDN` (string)
      */
-    public readonly groupDnAttribute!: pulumi.Output<string>;
+    declare public readonly groupDnAttribute: pulumi.Output<string>;
     /**
      * Group member mapping attribute. Default `member` (string)
      */
-    public readonly groupMemberMappingAttribute!: pulumi.Output<string>;
+    declare public readonly groupMemberMappingAttribute: pulumi.Output<string>;
     /**
      * Group member user attribute. Default `entryDN` (string)
      */
-    public readonly groupMemberUserAttribute!: pulumi.Output<string>;
+    declare public readonly groupMemberUserAttribute: pulumi.Output<string>;
     /**
      * Group name attribute. Default `cn` (string)
      */
-    public readonly groupNameAttribute!: pulumi.Output<string>;
+    declare public readonly groupNameAttribute: pulumi.Output<string>;
     /**
      * Group object class. Default `groupOfNames` (string)
      */
-    public readonly groupObjectClass!: pulumi.Output<string>;
+    declare public readonly groupObjectClass: pulumi.Output<string>;
     /**
      * Group search attribute. Default `cn` (string)
      */
-    public readonly groupSearchAttribute!: pulumi.Output<string>;
+    declare public readonly groupSearchAttribute: pulumi.Output<string>;
     /**
      * Group search base (string)
      */
-    public readonly groupSearchBase!: pulumi.Output<string>;
-    public readonly groupSearchFilter!: pulumi.Output<string | undefined>;
+    declare public readonly groupSearchBase: pulumi.Output<string>;
+    declare public readonly groupSearchFilter: pulumi.Output<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) The name of the resource (string)
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Nested group membership enable. Default `false` (bool)
      */
-    public readonly nestedGroupMembershipEnabled!: pulumi.Output<boolean>;
+    declare public readonly nestedGroupMembershipEnabled: pulumi.Output<boolean>;
     /**
      * OpenLdap port. Default `389` (int)
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * OpenLdap servers list (list)
      */
-    public readonly servers!: pulumi.Output<string[]>;
+    declare public readonly servers: pulumi.Output<string[]>;
     /**
      * Service account DN for access OpenLdap service (string)
      */
-    public readonly serviceAccountDistinguishedName!: pulumi.Output<string>;
+    declare public readonly serviceAccountDistinguishedName: pulumi.Output<string>;
     /**
      * Service account password for access OpenLdap service (string)
      */
-    public readonly serviceAccountPassword!: pulumi.Output<string>;
-    public readonly startTls!: pulumi.Output<boolean>;
+    declare public readonly serviceAccountPassword: pulumi.Output<string>;
+    declare public readonly startTls: pulumi.Output<boolean>;
     /**
      * Password for test access to OpenLdap service (string)
      */
-    public readonly testPassword!: pulumi.Output<string>;
+    declare public readonly testPassword: pulumi.Output<string>;
     /**
      * Username for test access to OpenLdap service (string)
      */
-    public readonly testUsername!: pulumi.Output<string>;
+    declare public readonly testUsername: pulumi.Output<string>;
     /**
      * Enable TLS connection (bool)
      */
-    public readonly tls!: pulumi.Output<boolean>;
+    declare public readonly tls: pulumi.Output<boolean>;
     /**
      * (Computed) The type of the resource (string)
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * User disabled bit mask (int)
      */
-    public readonly userDisabledBitMask!: pulumi.Output<number>;
+    declare public readonly userDisabledBitMask: pulumi.Output<number>;
     /**
      * User enable attribute (string)
      */
-    public readonly userEnabledAttribute!: pulumi.Output<string>;
+    declare public readonly userEnabledAttribute: pulumi.Output<string>;
     /**
      * User login attribute. Default `uid` (string)
      */
-    public readonly userLoginAttribute!: pulumi.Output<string>;
+    declare public readonly userLoginAttribute: pulumi.Output<string>;
     /**
      * User member attribute. Default `memberOf` (string)
      */
-    public readonly userMemberAttribute!: pulumi.Output<string>;
+    declare public readonly userMemberAttribute: pulumi.Output<string>;
     /**
      * User name attribute. Default `givenName` (string)
      */
-    public readonly userNameAttribute!: pulumi.Output<string>;
+    declare public readonly userNameAttribute: pulumi.Output<string>;
     /**
      * User object class. Default `inetorgperson` (string)
      */
-    public readonly userObjectClass!: pulumi.Output<string>;
+    declare public readonly userObjectClass: pulumi.Output<string>;
     /**
      * User search attribute. Default `uid|sn|givenName` (string)
      */
-    public readonly userSearchAttribute!: pulumi.Output<string>;
+    declare public readonly userSearchAttribute: pulumi.Output<string>;
     /**
      * User search base DN (string)
      */
-    public readonly userSearchBase!: pulumi.Output<string>;
-    public readonly userSearchFilter!: pulumi.Output<string | undefined>;
+    declare public readonly userSearchBase: pulumi.Output<string>;
+    declare public readonly userSearchFilter: pulumi.Output<string | undefined>;
 
     /**
      * Create a AuthConfigOpenLdap resource with the given unique name, arguments, and options.
@@ -182,94 +182,94 @@ export class AuthConfigOpenLdap extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthConfigOpenLdapState | undefined;
-            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
-            resourceInputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["connectionTimeout"] = state ? state.connectionTimeout : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["groupDnAttribute"] = state ? state.groupDnAttribute : undefined;
-            resourceInputs["groupMemberMappingAttribute"] = state ? state.groupMemberMappingAttribute : undefined;
-            resourceInputs["groupMemberUserAttribute"] = state ? state.groupMemberUserAttribute : undefined;
-            resourceInputs["groupNameAttribute"] = state ? state.groupNameAttribute : undefined;
-            resourceInputs["groupObjectClass"] = state ? state.groupObjectClass : undefined;
-            resourceInputs["groupSearchAttribute"] = state ? state.groupSearchAttribute : undefined;
-            resourceInputs["groupSearchBase"] = state ? state.groupSearchBase : undefined;
-            resourceInputs["groupSearchFilter"] = state ? state.groupSearchFilter : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nestedGroupMembershipEnabled"] = state ? state.nestedGroupMembershipEnabled : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["servers"] = state ? state.servers : undefined;
-            resourceInputs["serviceAccountDistinguishedName"] = state ? state.serviceAccountDistinguishedName : undefined;
-            resourceInputs["serviceAccountPassword"] = state ? state.serviceAccountPassword : undefined;
-            resourceInputs["startTls"] = state ? state.startTls : undefined;
-            resourceInputs["testPassword"] = state ? state.testPassword : undefined;
-            resourceInputs["testUsername"] = state ? state.testUsername : undefined;
-            resourceInputs["tls"] = state ? state.tls : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["userDisabledBitMask"] = state ? state.userDisabledBitMask : undefined;
-            resourceInputs["userEnabledAttribute"] = state ? state.userEnabledAttribute : undefined;
-            resourceInputs["userLoginAttribute"] = state ? state.userLoginAttribute : undefined;
-            resourceInputs["userMemberAttribute"] = state ? state.userMemberAttribute : undefined;
-            resourceInputs["userNameAttribute"] = state ? state.userNameAttribute : undefined;
-            resourceInputs["userObjectClass"] = state ? state.userObjectClass : undefined;
-            resourceInputs["userSearchAttribute"] = state ? state.userSearchAttribute : undefined;
-            resourceInputs["userSearchBase"] = state ? state.userSearchBase : undefined;
-            resourceInputs["userSearchFilter"] = state ? state.userSearchFilter : undefined;
+            resourceInputs["accessMode"] = state?.accessMode;
+            resourceInputs["allowedPrincipalIds"] = state?.allowedPrincipalIds;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["connectionTimeout"] = state?.connectionTimeout;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["groupDnAttribute"] = state?.groupDnAttribute;
+            resourceInputs["groupMemberMappingAttribute"] = state?.groupMemberMappingAttribute;
+            resourceInputs["groupMemberUserAttribute"] = state?.groupMemberUserAttribute;
+            resourceInputs["groupNameAttribute"] = state?.groupNameAttribute;
+            resourceInputs["groupObjectClass"] = state?.groupObjectClass;
+            resourceInputs["groupSearchAttribute"] = state?.groupSearchAttribute;
+            resourceInputs["groupSearchBase"] = state?.groupSearchBase;
+            resourceInputs["groupSearchFilter"] = state?.groupSearchFilter;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nestedGroupMembershipEnabled"] = state?.nestedGroupMembershipEnabled;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["servers"] = state?.servers;
+            resourceInputs["serviceAccountDistinguishedName"] = state?.serviceAccountDistinguishedName;
+            resourceInputs["serviceAccountPassword"] = state?.serviceAccountPassword;
+            resourceInputs["startTls"] = state?.startTls;
+            resourceInputs["testPassword"] = state?.testPassword;
+            resourceInputs["testUsername"] = state?.testUsername;
+            resourceInputs["tls"] = state?.tls;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["userDisabledBitMask"] = state?.userDisabledBitMask;
+            resourceInputs["userEnabledAttribute"] = state?.userEnabledAttribute;
+            resourceInputs["userLoginAttribute"] = state?.userLoginAttribute;
+            resourceInputs["userMemberAttribute"] = state?.userMemberAttribute;
+            resourceInputs["userNameAttribute"] = state?.userNameAttribute;
+            resourceInputs["userObjectClass"] = state?.userObjectClass;
+            resourceInputs["userSearchAttribute"] = state?.userSearchAttribute;
+            resourceInputs["userSearchBase"] = state?.userSearchBase;
+            resourceInputs["userSearchFilter"] = state?.userSearchFilter;
         } else {
             const args = argsOrState as AuthConfigOpenLdapArgs | undefined;
-            if ((!args || args.servers === undefined) && !opts.urn) {
+            if (args?.servers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'servers'");
             }
-            if ((!args || args.serviceAccountDistinguishedName === undefined) && !opts.urn) {
+            if (args?.serviceAccountDistinguishedName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountDistinguishedName'");
             }
-            if ((!args || args.serviceAccountPassword === undefined) && !opts.urn) {
+            if (args?.serviceAccountPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountPassword'");
             }
-            if ((!args || args.testPassword === undefined) && !opts.urn) {
+            if (args?.testPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'testPassword'");
             }
-            if ((!args || args.testUsername === undefined) && !opts.urn) {
+            if (args?.testUsername === undefined && !opts.urn) {
                 throw new Error("Missing required property 'testUsername'");
             }
-            if ((!args || args.userSearchBase === undefined) && !opts.urn) {
+            if (args?.userSearchBase === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userSearchBase'");
             }
-            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
-            resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["accessMode"] = args?.accessMode;
+            resourceInputs["allowedPrincipalIds"] = args?.allowedPrincipalIds;
+            resourceInputs["annotations"] = args?.annotations;
             resourceInputs["certificate"] = args?.certificate ? pulumi.secret(args.certificate) : undefined;
-            resourceInputs["connectionTimeout"] = args ? args.connectionTimeout : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["groupDnAttribute"] = args ? args.groupDnAttribute : undefined;
-            resourceInputs["groupMemberMappingAttribute"] = args ? args.groupMemberMappingAttribute : undefined;
-            resourceInputs["groupMemberUserAttribute"] = args ? args.groupMemberUserAttribute : undefined;
-            resourceInputs["groupNameAttribute"] = args ? args.groupNameAttribute : undefined;
-            resourceInputs["groupObjectClass"] = args ? args.groupObjectClass : undefined;
-            resourceInputs["groupSearchAttribute"] = args ? args.groupSearchAttribute : undefined;
-            resourceInputs["groupSearchBase"] = args ? args.groupSearchBase : undefined;
-            resourceInputs["groupSearchFilter"] = args ? args.groupSearchFilter : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["nestedGroupMembershipEnabled"] = args ? args.nestedGroupMembershipEnabled : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["servers"] = args ? args.servers : undefined;
+            resourceInputs["connectionTimeout"] = args?.connectionTimeout;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["groupDnAttribute"] = args?.groupDnAttribute;
+            resourceInputs["groupMemberMappingAttribute"] = args?.groupMemberMappingAttribute;
+            resourceInputs["groupMemberUserAttribute"] = args?.groupMemberUserAttribute;
+            resourceInputs["groupNameAttribute"] = args?.groupNameAttribute;
+            resourceInputs["groupObjectClass"] = args?.groupObjectClass;
+            resourceInputs["groupSearchAttribute"] = args?.groupSearchAttribute;
+            resourceInputs["groupSearchBase"] = args?.groupSearchBase;
+            resourceInputs["groupSearchFilter"] = args?.groupSearchFilter;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["nestedGroupMembershipEnabled"] = args?.nestedGroupMembershipEnabled;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["servers"] = args?.servers;
             resourceInputs["serviceAccountDistinguishedName"] = args?.serviceAccountDistinguishedName ? pulumi.secret(args.serviceAccountDistinguishedName) : undefined;
             resourceInputs["serviceAccountPassword"] = args?.serviceAccountPassword ? pulumi.secret(args.serviceAccountPassword) : undefined;
-            resourceInputs["startTls"] = args ? args.startTls : undefined;
+            resourceInputs["startTls"] = args?.startTls;
             resourceInputs["testPassword"] = args?.testPassword ? pulumi.secret(args.testPassword) : undefined;
-            resourceInputs["testUsername"] = args ? args.testUsername : undefined;
-            resourceInputs["tls"] = args ? args.tls : undefined;
-            resourceInputs["userDisabledBitMask"] = args ? args.userDisabledBitMask : undefined;
-            resourceInputs["userEnabledAttribute"] = args ? args.userEnabledAttribute : undefined;
-            resourceInputs["userLoginAttribute"] = args ? args.userLoginAttribute : undefined;
-            resourceInputs["userMemberAttribute"] = args ? args.userMemberAttribute : undefined;
-            resourceInputs["userNameAttribute"] = args ? args.userNameAttribute : undefined;
-            resourceInputs["userObjectClass"] = args ? args.userObjectClass : undefined;
-            resourceInputs["userSearchAttribute"] = args ? args.userSearchAttribute : undefined;
-            resourceInputs["userSearchBase"] = args ? args.userSearchBase : undefined;
-            resourceInputs["userSearchFilter"] = args ? args.userSearchFilter : undefined;
+            resourceInputs["testUsername"] = args?.testUsername;
+            resourceInputs["tls"] = args?.tls;
+            resourceInputs["userDisabledBitMask"] = args?.userDisabledBitMask;
+            resourceInputs["userEnabledAttribute"] = args?.userEnabledAttribute;
+            resourceInputs["userLoginAttribute"] = args?.userLoginAttribute;
+            resourceInputs["userMemberAttribute"] = args?.userMemberAttribute;
+            resourceInputs["userNameAttribute"] = args?.userNameAttribute;
+            resourceInputs["userObjectClass"] = args?.userObjectClass;
+            resourceInputs["userSearchAttribute"] = args?.userSearchAttribute;
+            resourceInputs["userSearchBase"] = args?.userSearchBase;
+            resourceInputs["userSearchFilter"] = args?.userSearchFilter;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

@@ -122,31 +122,31 @@ export class ClusterTemplate extends pulumi.CustomResource {
     /**
      * Annotations for the cluster template (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) Default cluster template revision ID (string)
      */
-    public /*out*/ readonly defaultRevisionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultRevisionId: pulumi.Output<string>;
     /**
      * Cluster template description
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Labels for the cluster template (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Cluster template members (list)
      */
-    public readonly members!: pulumi.Output<outputs.ClusterTemplateMember[] | undefined>;
+    declare public readonly members: pulumi.Output<outputs.ClusterTemplateMember[] | undefined>;
     /**
      * The cluster template name (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Cluster template revisions (list)
      */
-    public readonly templateRevisions!: pulumi.Output<outputs.ClusterTemplateTemplateRevision[]>;
+    declare public readonly templateRevisions: pulumi.Output<outputs.ClusterTemplateTemplateRevision[]>;
 
     /**
      * Create a ClusterTemplate resource with the given unique name, arguments, and options.
@@ -161,21 +161,21 @@ export class ClusterTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterTemplateState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["defaultRevisionId"] = state ? state.defaultRevisionId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["templateRevisions"] = state ? state.templateRevisions : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["defaultRevisionId"] = state?.defaultRevisionId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["templateRevisions"] = state?.templateRevisions;
         } else {
             const args = argsOrState as ClusterTemplateArgs | undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["templateRevisions"] = args ? args.templateRevisions : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["templateRevisions"] = args?.templateRevisions;
             resourceInputs["defaultRevisionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

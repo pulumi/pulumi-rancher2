@@ -66,29 +66,29 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
     /**
      * Annotations for global role binding (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The role id from create global role binding (string)
      */
-    public readonly globalRoleId!: pulumi.Output<string>;
+    declare public readonly globalRoleId: pulumi.Output<string>;
     /**
      * The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
      */
-    public readonly groupPrincipalId!: pulumi.Output<string>;
+    declare public readonly groupPrincipalId: pulumi.Output<string>;
     /**
      * Labels for global role binding (map)
      *
      * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the global role binding (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The user ID to assign global role binding (string)
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a GlobalRoleBinding resource with the given unique name, arguments, and options.
@@ -103,23 +103,23 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GlobalRoleBindingState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["globalRoleId"] = state ? state.globalRoleId : undefined;
-            resourceInputs["groupPrincipalId"] = state ? state.groupPrincipalId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["globalRoleId"] = state?.globalRoleId;
+            resourceInputs["groupPrincipalId"] = state?.groupPrincipalId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as GlobalRoleBindingArgs | undefined;
-            if ((!args || args.globalRoleId === undefined) && !opts.urn) {
+            if (args?.globalRoleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'globalRoleId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["globalRoleId"] = args ? args.globalRoleId : undefined;
-            resourceInputs["groupPrincipalId"] = args ? args.groupPrincipalId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["globalRoleId"] = args?.globalRoleId;
+            resourceInputs["groupPrincipalId"] = args?.groupPrincipalId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalRoleBinding.__pulumiType, name, resourceInputs, opts);

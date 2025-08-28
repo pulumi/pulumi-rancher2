@@ -599,157 +599,157 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
      */
-    public readonly agentEnvVars!: pulumi.Output<outputs.ClusterAgentEnvVar[] | undefined>;
+    declare public readonly agentEnvVars: pulumi.Output<outputs.ClusterAgentEnvVar[] | undefined>;
     /**
      * The Azure AKS configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
-    public readonly aksConfig!: pulumi.Output<outputs.ClusterAksConfig | undefined>;
+    declare public readonly aksConfig: pulumi.Output<outputs.ClusterAksConfig | undefined>;
     /**
      * The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
-    public readonly aksConfigV2!: pulumi.Output<outputs.ClusterAksConfigV2 | undefined>;
+    declare public readonly aksConfigV2: pulumi.Output<outputs.ClusterAksConfigV2 | undefined>;
     /**
      * Annotations for the Cluster (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed/Sensitive) K8s cluster ca cert (string)
      */
-    public /*out*/ readonly caCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCert: pulumi.Output<string>;
     /**
      * Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
      */
-    public readonly clusterAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterClusterAgentDeploymentCustomization[] | undefined>;
+    declare public readonly clusterAgentDeploymentCustomizations: pulumi.Output<outputs.ClusterClusterAgentDeploymentCustomization[] | undefined>;
     /**
      * Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
      */
-    public readonly clusterAuthEndpoint!: pulumi.Output<outputs.ClusterClusterAuthEndpoint>;
+    declare public readonly clusterAuthEndpoint: pulumi.Output<outputs.ClusterClusterAuthEndpoint>;
     /**
      * (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      */
-    public /*out*/ readonly clusterRegistrationToken!: pulumi.Output<outputs.ClusterClusterRegistrationToken>;
+    declare public /*out*/ readonly clusterRegistrationToken: pulumi.Output<outputs.ClusterClusterRegistrationToken>;
     /**
      * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
      */
-    public readonly clusterTemplateAnswers!: pulumi.Output<outputs.ClusterClusterTemplateAnswers>;
+    declare public readonly clusterTemplateAnswers: pulumi.Output<outputs.ClusterClusterTemplateAnswers>;
     /**
      * Cluster template ID. For Rancher v2.3.x and above (string)
      */
-    public readonly clusterTemplateId!: pulumi.Output<string | undefined>;
+    declare public readonly clusterTemplateId: pulumi.Output<string | undefined>;
     /**
      * Cluster template questions. For Rancher v2.3.x and above (list)
      */
-    public readonly clusterTemplateQuestions!: pulumi.Output<outputs.ClusterClusterTemplateQuestion[]>;
+    declare public readonly clusterTemplateQuestions: pulumi.Output<outputs.ClusterClusterTemplateQuestion[]>;
     /**
      * Cluster template revision ID. For Rancher v2.3.x and above (string)
      */
-    public readonly clusterTemplateRevisionId!: pulumi.Output<string | undefined>;
+    declare public readonly clusterTemplateRevisionId: pulumi.Output<string | undefined>;
     /**
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
      */
-    public readonly defaultPodSecurityAdmissionConfigurationTemplateName!: pulumi.Output<string>;
+    declare public readonly defaultPodSecurityAdmissionConfigurationTemplateName: pulumi.Output<string>;
     /**
      * (Computed) Default project ID for the cluster (string)
      */
-    public /*out*/ readonly defaultProjectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultProjectId: pulumi.Output<string>;
     /**
      * The description for Cluster (string)
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Desired agent image. For Rancher v2.3.x and above (string)
      */
-    public readonly desiredAgentImage!: pulumi.Output<string>;
+    declare public readonly desiredAgentImage: pulumi.Output<string>;
     /**
      * Desired auth image. For Rancher v2.3.x and above (string)
      */
-    public readonly desiredAuthImage!: pulumi.Output<string>;
+    declare public readonly desiredAuthImage: pulumi.Output<string>;
     /**
      * Desired auth image. For Rancher v2.3.x and above (string)
      */
-    public readonly dockerRootDir!: pulumi.Output<string>;
+    declare public readonly dockerRootDir: pulumi.Output<string>;
     /**
      * (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
      */
-    public readonly driver!: pulumi.Output<string>;
+    declare public readonly driver: pulumi.Output<string>;
     /**
      * The Amazon EKS configuration for `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
-    public readonly eksConfig!: pulumi.Output<outputs.ClusterEksConfig | undefined>;
+    declare public readonly eksConfig: pulumi.Output<outputs.ClusterEksConfig | undefined>;
     /**
      * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      */
-    public readonly eksConfigV2!: pulumi.Output<outputs.ClusterEksConfigV2>;
+    declare public readonly eksConfigV2: pulumi.Output<outputs.ClusterEksConfigV2>;
     /**
      * Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
      *
      * @deprecated Deploy istio using rancher2App resource instead
      */
-    public /*out*/ readonly enableClusterIstio!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enableClusterIstio: pulumi.Output<boolean>;
     /**
      * Enable project network isolation (bool)
      */
-    public readonly enableNetworkPolicy!: pulumi.Output<boolean>;
+    declare public readonly enableNetworkPolicy: pulumi.Output<boolean>;
     /**
      * Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
      */
-    public readonly fleetAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterFleetAgentDeploymentCustomization[] | undefined>;
+    declare public readonly fleetAgentDeploymentCustomizations: pulumi.Output<outputs.ClusterFleetAgentDeploymentCustomization[] | undefined>;
     /**
      * Fleet workspace name (string)
      */
-    public readonly fleetWorkspaceName!: pulumi.Output<string>;
+    declare public readonly fleetWorkspaceName: pulumi.Output<string>;
     /**
      * The Google GKE configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
-    public readonly gkeConfig!: pulumi.Output<outputs.ClusterGkeConfig | undefined>;
+    declare public readonly gkeConfig: pulumi.Output<outputs.ClusterGkeConfig | undefined>;
     /**
      * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      */
-    public readonly gkeConfigV2!: pulumi.Output<outputs.ClusterGkeConfigV2 | undefined>;
+    declare public readonly gkeConfigV2: pulumi.Output<outputs.ClusterGkeConfigV2 | undefined>;
     /**
      * The imported configuration for generic imported Clusters. Conflicts with `aksConfig`,`aksConfigV2`, `eksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
      */
-    public readonly importedConfig!: pulumi.Output<outputs.ClusterImportedConfig | undefined>;
+    declare public readonly importedConfig: pulumi.Output<outputs.ClusterImportedConfig | undefined>;
     /**
      * (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
      */
-    public /*out*/ readonly istioEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly istioEnabled: pulumi.Output<boolean>;
     /**
      * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
      */
-    public readonly k3sConfig!: pulumi.Output<outputs.ClusterK3sConfig>;
+    declare public readonly k3sConfig: pulumi.Output<outputs.ClusterK3sConfig>;
     /**
      * (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
      */
-    public /*out*/ readonly kubeConfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeConfig: pulumi.Output<string>;
     /**
      * Labels for the Cluster (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the Cluster (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
-    public readonly okeConfig!: pulumi.Output<outputs.ClusterOkeConfig | undefined>;
+    declare public readonly okeConfig: pulumi.Output<outputs.ClusterOkeConfig | undefined>;
     /**
      * The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
-    public readonly rke2Config!: pulumi.Output<outputs.ClusterRke2Config>;
+    declare public readonly rke2Config: pulumi.Output<outputs.ClusterRke2Config>;
     /**
      * The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      */
-    public readonly rkeConfig!: pulumi.Output<outputs.ClusterRkeConfig>;
+    declare public readonly rkeConfig: pulumi.Output<outputs.ClusterRkeConfig>;
     /**
      * (Computed) System project ID for the cluster (string)
      */
-    public /*out*/ readonly systemProjectId!: pulumi.Output<string>;
+    declare public /*out*/ readonly systemProjectId: pulumi.Output<string>;
     /**
      * Windows preferred cluster. Default: `false` (bool)
      */
-    public readonly windowsPreferedCluster!: pulumi.Output<boolean | undefined>;
+    declare public readonly windowsPreferedCluster: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -764,77 +764,77 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["agentEnvVars"] = state ? state.agentEnvVars : undefined;
-            resourceInputs["aksConfig"] = state ? state.aksConfig : undefined;
-            resourceInputs["aksConfigV2"] = state ? state.aksConfigV2 : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["caCert"] = state ? state.caCert : undefined;
-            resourceInputs["clusterAgentDeploymentCustomizations"] = state ? state.clusterAgentDeploymentCustomizations : undefined;
-            resourceInputs["clusterAuthEndpoint"] = state ? state.clusterAuthEndpoint : undefined;
-            resourceInputs["clusterRegistrationToken"] = state ? state.clusterRegistrationToken : undefined;
-            resourceInputs["clusterTemplateAnswers"] = state ? state.clusterTemplateAnswers : undefined;
-            resourceInputs["clusterTemplateId"] = state ? state.clusterTemplateId : undefined;
-            resourceInputs["clusterTemplateQuestions"] = state ? state.clusterTemplateQuestions : undefined;
-            resourceInputs["clusterTemplateRevisionId"] = state ? state.clusterTemplateRevisionId : undefined;
-            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = state ? state.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
-            resourceInputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["desiredAgentImage"] = state ? state.desiredAgentImage : undefined;
-            resourceInputs["desiredAuthImage"] = state ? state.desiredAuthImage : undefined;
-            resourceInputs["dockerRootDir"] = state ? state.dockerRootDir : undefined;
-            resourceInputs["driver"] = state ? state.driver : undefined;
-            resourceInputs["eksConfig"] = state ? state.eksConfig : undefined;
-            resourceInputs["eksConfigV2"] = state ? state.eksConfigV2 : undefined;
-            resourceInputs["enableClusterIstio"] = state ? state.enableClusterIstio : undefined;
-            resourceInputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
-            resourceInputs["fleetAgentDeploymentCustomizations"] = state ? state.fleetAgentDeploymentCustomizations : undefined;
-            resourceInputs["fleetWorkspaceName"] = state ? state.fleetWorkspaceName : undefined;
-            resourceInputs["gkeConfig"] = state ? state.gkeConfig : undefined;
-            resourceInputs["gkeConfigV2"] = state ? state.gkeConfigV2 : undefined;
-            resourceInputs["importedConfig"] = state ? state.importedConfig : undefined;
-            resourceInputs["istioEnabled"] = state ? state.istioEnabled : undefined;
-            resourceInputs["k3sConfig"] = state ? state.k3sConfig : undefined;
-            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["okeConfig"] = state ? state.okeConfig : undefined;
-            resourceInputs["rke2Config"] = state ? state.rke2Config : undefined;
-            resourceInputs["rkeConfig"] = state ? state.rkeConfig : undefined;
-            resourceInputs["systemProjectId"] = state ? state.systemProjectId : undefined;
-            resourceInputs["windowsPreferedCluster"] = state ? state.windowsPreferedCluster : undefined;
+            resourceInputs["agentEnvVars"] = state?.agentEnvVars;
+            resourceInputs["aksConfig"] = state?.aksConfig;
+            resourceInputs["aksConfigV2"] = state?.aksConfigV2;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["caCert"] = state?.caCert;
+            resourceInputs["clusterAgentDeploymentCustomizations"] = state?.clusterAgentDeploymentCustomizations;
+            resourceInputs["clusterAuthEndpoint"] = state?.clusterAuthEndpoint;
+            resourceInputs["clusterRegistrationToken"] = state?.clusterRegistrationToken;
+            resourceInputs["clusterTemplateAnswers"] = state?.clusterTemplateAnswers;
+            resourceInputs["clusterTemplateId"] = state?.clusterTemplateId;
+            resourceInputs["clusterTemplateQuestions"] = state?.clusterTemplateQuestions;
+            resourceInputs["clusterTemplateRevisionId"] = state?.clusterTemplateRevisionId;
+            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = state?.defaultPodSecurityAdmissionConfigurationTemplateName;
+            resourceInputs["defaultProjectId"] = state?.defaultProjectId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["desiredAgentImage"] = state?.desiredAgentImage;
+            resourceInputs["desiredAuthImage"] = state?.desiredAuthImage;
+            resourceInputs["dockerRootDir"] = state?.dockerRootDir;
+            resourceInputs["driver"] = state?.driver;
+            resourceInputs["eksConfig"] = state?.eksConfig;
+            resourceInputs["eksConfigV2"] = state?.eksConfigV2;
+            resourceInputs["enableClusterIstio"] = state?.enableClusterIstio;
+            resourceInputs["enableNetworkPolicy"] = state?.enableNetworkPolicy;
+            resourceInputs["fleetAgentDeploymentCustomizations"] = state?.fleetAgentDeploymentCustomizations;
+            resourceInputs["fleetWorkspaceName"] = state?.fleetWorkspaceName;
+            resourceInputs["gkeConfig"] = state?.gkeConfig;
+            resourceInputs["gkeConfigV2"] = state?.gkeConfigV2;
+            resourceInputs["importedConfig"] = state?.importedConfig;
+            resourceInputs["istioEnabled"] = state?.istioEnabled;
+            resourceInputs["k3sConfig"] = state?.k3sConfig;
+            resourceInputs["kubeConfig"] = state?.kubeConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["okeConfig"] = state?.okeConfig;
+            resourceInputs["rke2Config"] = state?.rke2Config;
+            resourceInputs["rkeConfig"] = state?.rkeConfig;
+            resourceInputs["systemProjectId"] = state?.systemProjectId;
+            resourceInputs["windowsPreferedCluster"] = state?.windowsPreferedCluster;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            resourceInputs["agentEnvVars"] = args ? args.agentEnvVars : undefined;
-            resourceInputs["aksConfig"] = args ? args.aksConfig : undefined;
-            resourceInputs["aksConfigV2"] = args ? args.aksConfigV2 : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterAgentDeploymentCustomizations"] = args ? args.clusterAgentDeploymentCustomizations : undefined;
-            resourceInputs["clusterAuthEndpoint"] = args ? args.clusterAuthEndpoint : undefined;
-            resourceInputs["clusterTemplateAnswers"] = args ? args.clusterTemplateAnswers : undefined;
-            resourceInputs["clusterTemplateId"] = args ? args.clusterTemplateId : undefined;
-            resourceInputs["clusterTemplateQuestions"] = args ? args.clusterTemplateQuestions : undefined;
-            resourceInputs["clusterTemplateRevisionId"] = args ? args.clusterTemplateRevisionId : undefined;
-            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = args ? args.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["desiredAgentImage"] = args ? args.desiredAgentImage : undefined;
-            resourceInputs["desiredAuthImage"] = args ? args.desiredAuthImage : undefined;
-            resourceInputs["dockerRootDir"] = args ? args.dockerRootDir : undefined;
-            resourceInputs["driver"] = args ? args.driver : undefined;
-            resourceInputs["eksConfig"] = args ? args.eksConfig : undefined;
-            resourceInputs["eksConfigV2"] = args ? args.eksConfigV2 : undefined;
-            resourceInputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
-            resourceInputs["fleetAgentDeploymentCustomizations"] = args ? args.fleetAgentDeploymentCustomizations : undefined;
-            resourceInputs["fleetWorkspaceName"] = args ? args.fleetWorkspaceName : undefined;
-            resourceInputs["gkeConfig"] = args ? args.gkeConfig : undefined;
-            resourceInputs["gkeConfigV2"] = args ? args.gkeConfigV2 : undefined;
-            resourceInputs["importedConfig"] = args ? args.importedConfig : undefined;
-            resourceInputs["k3sConfig"] = args ? args.k3sConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["okeConfig"] = args ? args.okeConfig : undefined;
-            resourceInputs["rke2Config"] = args ? args.rke2Config : undefined;
-            resourceInputs["rkeConfig"] = args ? args.rkeConfig : undefined;
-            resourceInputs["windowsPreferedCluster"] = args ? args.windowsPreferedCluster : undefined;
+            resourceInputs["agentEnvVars"] = args?.agentEnvVars;
+            resourceInputs["aksConfig"] = args?.aksConfig;
+            resourceInputs["aksConfigV2"] = args?.aksConfigV2;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterAgentDeploymentCustomizations"] = args?.clusterAgentDeploymentCustomizations;
+            resourceInputs["clusterAuthEndpoint"] = args?.clusterAuthEndpoint;
+            resourceInputs["clusterTemplateAnswers"] = args?.clusterTemplateAnswers;
+            resourceInputs["clusterTemplateId"] = args?.clusterTemplateId;
+            resourceInputs["clusterTemplateQuestions"] = args?.clusterTemplateQuestions;
+            resourceInputs["clusterTemplateRevisionId"] = args?.clusterTemplateRevisionId;
+            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = args?.defaultPodSecurityAdmissionConfigurationTemplateName;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["desiredAgentImage"] = args?.desiredAgentImage;
+            resourceInputs["desiredAuthImage"] = args?.desiredAuthImage;
+            resourceInputs["dockerRootDir"] = args?.dockerRootDir;
+            resourceInputs["driver"] = args?.driver;
+            resourceInputs["eksConfig"] = args?.eksConfig;
+            resourceInputs["eksConfigV2"] = args?.eksConfigV2;
+            resourceInputs["enableNetworkPolicy"] = args?.enableNetworkPolicy;
+            resourceInputs["fleetAgentDeploymentCustomizations"] = args?.fleetAgentDeploymentCustomizations;
+            resourceInputs["fleetWorkspaceName"] = args?.fleetWorkspaceName;
+            resourceInputs["gkeConfig"] = args?.gkeConfig;
+            resourceInputs["gkeConfigV2"] = args?.gkeConfigV2;
+            resourceInputs["importedConfig"] = args?.importedConfig;
+            resourceInputs["k3sConfig"] = args?.k3sConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["okeConfig"] = args?.okeConfig;
+            resourceInputs["rke2Config"] = args?.rke2Config;
+            resourceInputs["rkeConfig"] = args?.rkeConfig;
+            resourceInputs["windowsPreferedCluster"] = args?.windowsPreferedCluster;
             resourceInputs["caCert"] = undefined /*out*/;
             resourceInputs["clusterRegistrationToken"] = undefined /*out*/;
             resourceInputs["defaultProjectId"] = undefined /*out*/;

@@ -193,117 +193,117 @@ export class NodeTemplate extends pulumi.CustomResource {
     /**
      * AWS config for the Node Template (list maxitems:1)
      */
-    public readonly amazonec2Config!: pulumi.Output<outputs.NodeTemplateAmazonec2Config | undefined>;
+    declare public readonly amazonec2Config: pulumi.Output<outputs.NodeTemplateAmazonec2Config | undefined>;
     /**
      * Annotations for Node Template object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Auth certificate authority for the Node Template (string)
      */
-    public readonly authCertificateAuthority!: pulumi.Output<string | undefined>;
+    declare public readonly authCertificateAuthority: pulumi.Output<string | undefined>;
     /**
      * Auth key for the Node Template (string)
      */
-    public readonly authKey!: pulumi.Output<string | undefined>;
+    declare public readonly authKey: pulumi.Output<string | undefined>;
     /**
      * Azure config for the Node Template (list maxitems:1)
      */
-    public readonly azureConfig!: pulumi.Output<outputs.NodeTemplateAzureConfig | undefined>;
+    declare public readonly azureConfig: pulumi.Output<outputs.NodeTemplateAzureConfig | undefined>;
     /**
      * Cloud credential ID for the Node Template. Required from Rancher v2.2.x (string)
      */
-    public readonly cloudCredentialId!: pulumi.Output<string | undefined>;
+    declare public readonly cloudCredentialId: pulumi.Output<string | undefined>;
     /**
      * Description for the Node Template (string)
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Digitalocean config for the Node Template (list maxitems:1)
      */
-    public readonly digitaloceanConfig!: pulumi.Output<outputs.NodeTemplateDigitaloceanConfig | undefined>;
+    declare public readonly digitaloceanConfig: pulumi.Output<outputs.NodeTemplateDigitaloceanConfig | undefined>;
     /**
      * (Computed) The driver of the node template (string)
      */
-    public /*out*/ readonly driver!: pulumi.Output<string>;
+    declare public /*out*/ readonly driver: pulumi.Output<string>;
     /**
      * The node driver id used by the node template. It's required if the node driver isn't built in Rancher (string)
      */
-    public readonly driverId!: pulumi.Output<string>;
+    declare public readonly driverId: pulumi.Output<string>;
     /**
      * Engine environment for the node template (string)
      */
-    public readonly engineEnv!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly engineEnv: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Insecure registry for the node template (list)
      */
-    public readonly engineInsecureRegistries!: pulumi.Output<string[] | undefined>;
+    declare public readonly engineInsecureRegistries: pulumi.Output<string[] | undefined>;
     /**
      * Docker engine install URL for the node template. Available install docker versions at `https://github.com/rancher/install-docker` (string)
      */
-    public readonly engineInstallUrl!: pulumi.Output<string>;
+    declare public readonly engineInstallUrl: pulumi.Output<string>;
     /**
      * Engine label for the node template (string)
      */
-    public readonly engineLabel!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly engineLabel: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Engine options for the node template (map)
      */
-    public readonly engineOpt!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly engineOpt: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Engine registry mirror for the node template (list)
      */
-    public readonly engineRegistryMirrors!: pulumi.Output<string[] | undefined>;
+    declare public readonly engineRegistryMirrors: pulumi.Output<string[] | undefined>;
     /**
      * Engine storage driver for the node template (string)
      */
-    public readonly engineStorageDriver!: pulumi.Output<string | undefined>;
+    declare public readonly engineStorageDriver: pulumi.Output<string | undefined>;
     /**
      * Harvester config for the Node Template (list maxitems:1)
      */
-    public readonly harvesterConfig!: pulumi.Output<outputs.NodeTemplateHarvesterConfig | undefined>;
+    declare public readonly harvesterConfig: pulumi.Output<outputs.NodeTemplateHarvesterConfig | undefined>;
     /**
      * Hetzner config for the Node Template (list maxitems:1)
      */
-    public readonly hetznerConfig!: pulumi.Output<outputs.NodeTemplateHetznerConfig | undefined>;
+    declare public readonly hetznerConfig: pulumi.Output<outputs.NodeTemplateHetznerConfig | undefined>;
     /**
      * Labels for Node Template object (map)
      *
      * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Linode config for the Node Template (list maxitems:1)
      */
-    public readonly linodeConfig!: pulumi.Output<outputs.NodeTemplateLinodeConfig | undefined>;
+    declare public readonly linodeConfig: pulumi.Output<outputs.NodeTemplateLinodeConfig | undefined>;
     /**
      * The name of the Node Template (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Node taints. For Rancher v2.3.3 and above (List)
      */
-    public readonly nodeTaints!: pulumi.Output<outputs.NodeTemplateNodeTaint[] | undefined>;
+    declare public readonly nodeTaints: pulumi.Output<outputs.NodeTemplateNodeTaint[] | undefined>;
     /**
      * Opennebula config for the Node Template (list maxitems:1)
      */
-    public readonly opennebulaConfig!: pulumi.Output<outputs.NodeTemplateOpennebulaConfig | undefined>;
+    declare public readonly opennebulaConfig: pulumi.Output<outputs.NodeTemplateOpennebulaConfig | undefined>;
     /**
      * Openstack config for the Node Template (list maxitems:1)
      */
-    public readonly openstackConfig!: pulumi.Output<outputs.NodeTemplateOpenstackConfig | undefined>;
+    declare public readonly openstackConfig: pulumi.Output<outputs.NodeTemplateOpenstackConfig | undefined>;
     /**
      * Outscale config for the Node Template (list maxitems:1)
      */
-    public readonly outscaleConfig!: pulumi.Output<outputs.NodeTemplateOutscaleConfig | undefined>;
+    declare public readonly outscaleConfig: pulumi.Output<outputs.NodeTemplateOutscaleConfig | undefined>;
     /**
      * Engine storage driver for the node template (bool)
      */
-    public readonly useInternalIpAddress!: pulumi.Output<boolean | undefined>;
+    declare public readonly useInternalIpAddress: pulumi.Output<boolean | undefined>;
     /**
      * vSphere config for the Node Template (list maxitems:1)
      */
-    public readonly vsphereConfig!: pulumi.Output<outputs.NodeTemplateVsphereConfig | undefined>;
+    declare public readonly vsphereConfig: pulumi.Output<outputs.NodeTemplateVsphereConfig | undefined>;
 
     /**
      * Create a NodeTemplate resource with the given unique name, arguments, and options.
@@ -318,63 +318,63 @@ export class NodeTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeTemplateState | undefined;
-            resourceInputs["amazonec2Config"] = state ? state.amazonec2Config : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["authCertificateAuthority"] = state ? state.authCertificateAuthority : undefined;
-            resourceInputs["authKey"] = state ? state.authKey : undefined;
-            resourceInputs["azureConfig"] = state ? state.azureConfig : undefined;
-            resourceInputs["cloudCredentialId"] = state ? state.cloudCredentialId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["digitaloceanConfig"] = state ? state.digitaloceanConfig : undefined;
-            resourceInputs["driver"] = state ? state.driver : undefined;
-            resourceInputs["driverId"] = state ? state.driverId : undefined;
-            resourceInputs["engineEnv"] = state ? state.engineEnv : undefined;
-            resourceInputs["engineInsecureRegistries"] = state ? state.engineInsecureRegistries : undefined;
-            resourceInputs["engineInstallUrl"] = state ? state.engineInstallUrl : undefined;
-            resourceInputs["engineLabel"] = state ? state.engineLabel : undefined;
-            resourceInputs["engineOpt"] = state ? state.engineOpt : undefined;
-            resourceInputs["engineRegistryMirrors"] = state ? state.engineRegistryMirrors : undefined;
-            resourceInputs["engineStorageDriver"] = state ? state.engineStorageDriver : undefined;
-            resourceInputs["harvesterConfig"] = state ? state.harvesterConfig : undefined;
-            resourceInputs["hetznerConfig"] = state ? state.hetznerConfig : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["linodeConfig"] = state ? state.linodeConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeTaints"] = state ? state.nodeTaints : undefined;
-            resourceInputs["opennebulaConfig"] = state ? state.opennebulaConfig : undefined;
-            resourceInputs["openstackConfig"] = state ? state.openstackConfig : undefined;
-            resourceInputs["outscaleConfig"] = state ? state.outscaleConfig : undefined;
-            resourceInputs["useInternalIpAddress"] = state ? state.useInternalIpAddress : undefined;
-            resourceInputs["vsphereConfig"] = state ? state.vsphereConfig : undefined;
+            resourceInputs["amazonec2Config"] = state?.amazonec2Config;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["authCertificateAuthority"] = state?.authCertificateAuthority;
+            resourceInputs["authKey"] = state?.authKey;
+            resourceInputs["azureConfig"] = state?.azureConfig;
+            resourceInputs["cloudCredentialId"] = state?.cloudCredentialId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["digitaloceanConfig"] = state?.digitaloceanConfig;
+            resourceInputs["driver"] = state?.driver;
+            resourceInputs["driverId"] = state?.driverId;
+            resourceInputs["engineEnv"] = state?.engineEnv;
+            resourceInputs["engineInsecureRegistries"] = state?.engineInsecureRegistries;
+            resourceInputs["engineInstallUrl"] = state?.engineInstallUrl;
+            resourceInputs["engineLabel"] = state?.engineLabel;
+            resourceInputs["engineOpt"] = state?.engineOpt;
+            resourceInputs["engineRegistryMirrors"] = state?.engineRegistryMirrors;
+            resourceInputs["engineStorageDriver"] = state?.engineStorageDriver;
+            resourceInputs["harvesterConfig"] = state?.harvesterConfig;
+            resourceInputs["hetznerConfig"] = state?.hetznerConfig;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["linodeConfig"] = state?.linodeConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeTaints"] = state?.nodeTaints;
+            resourceInputs["opennebulaConfig"] = state?.opennebulaConfig;
+            resourceInputs["openstackConfig"] = state?.openstackConfig;
+            resourceInputs["outscaleConfig"] = state?.outscaleConfig;
+            resourceInputs["useInternalIpAddress"] = state?.useInternalIpAddress;
+            resourceInputs["vsphereConfig"] = state?.vsphereConfig;
         } else {
             const args = argsOrState as NodeTemplateArgs | undefined;
-            resourceInputs["amazonec2Config"] = args ? args.amazonec2Config : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["amazonec2Config"] = args?.amazonec2Config;
+            resourceInputs["annotations"] = args?.annotations;
             resourceInputs["authCertificateAuthority"] = args?.authCertificateAuthority ? pulumi.secret(args.authCertificateAuthority) : undefined;
             resourceInputs["authKey"] = args?.authKey ? pulumi.secret(args.authKey) : undefined;
-            resourceInputs["azureConfig"] = args ? args.azureConfig : undefined;
-            resourceInputs["cloudCredentialId"] = args ? args.cloudCredentialId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["digitaloceanConfig"] = args ? args.digitaloceanConfig : undefined;
-            resourceInputs["driverId"] = args ? args.driverId : undefined;
-            resourceInputs["engineEnv"] = args ? args.engineEnv : undefined;
-            resourceInputs["engineInsecureRegistries"] = args ? args.engineInsecureRegistries : undefined;
-            resourceInputs["engineInstallUrl"] = args ? args.engineInstallUrl : undefined;
-            resourceInputs["engineLabel"] = args ? args.engineLabel : undefined;
-            resourceInputs["engineOpt"] = args ? args.engineOpt : undefined;
-            resourceInputs["engineRegistryMirrors"] = args ? args.engineRegistryMirrors : undefined;
-            resourceInputs["engineStorageDriver"] = args ? args.engineStorageDriver : undefined;
-            resourceInputs["harvesterConfig"] = args ? args.harvesterConfig : undefined;
-            resourceInputs["hetznerConfig"] = args ? args.hetznerConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["linodeConfig"] = args ? args.linodeConfig : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeTaints"] = args ? args.nodeTaints : undefined;
-            resourceInputs["opennebulaConfig"] = args ? args.opennebulaConfig : undefined;
-            resourceInputs["openstackConfig"] = args ? args.openstackConfig : undefined;
-            resourceInputs["outscaleConfig"] = args ? args.outscaleConfig : undefined;
-            resourceInputs["useInternalIpAddress"] = args ? args.useInternalIpAddress : undefined;
-            resourceInputs["vsphereConfig"] = args ? args.vsphereConfig : undefined;
+            resourceInputs["azureConfig"] = args?.azureConfig;
+            resourceInputs["cloudCredentialId"] = args?.cloudCredentialId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["digitaloceanConfig"] = args?.digitaloceanConfig;
+            resourceInputs["driverId"] = args?.driverId;
+            resourceInputs["engineEnv"] = args?.engineEnv;
+            resourceInputs["engineInsecureRegistries"] = args?.engineInsecureRegistries;
+            resourceInputs["engineInstallUrl"] = args?.engineInstallUrl;
+            resourceInputs["engineLabel"] = args?.engineLabel;
+            resourceInputs["engineOpt"] = args?.engineOpt;
+            resourceInputs["engineRegistryMirrors"] = args?.engineRegistryMirrors;
+            resourceInputs["engineStorageDriver"] = args?.engineStorageDriver;
+            resourceInputs["harvesterConfig"] = args?.harvesterConfig;
+            resourceInputs["hetznerConfig"] = args?.hetznerConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["linodeConfig"] = args?.linodeConfig;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeTaints"] = args?.nodeTaints;
+            resourceInputs["opennebulaConfig"] = args?.opennebulaConfig;
+            resourceInputs["openstackConfig"] = args?.openstackConfig;
+            resourceInputs["outscaleConfig"] = args?.outscaleConfig;
+            resourceInputs["useInternalIpAddress"] = args?.useInternalIpAddress;
+            resourceInputs["vsphereConfig"] = args?.vsphereConfig;
             resourceInputs["driver"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
