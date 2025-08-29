@@ -108,35 +108,35 @@ export class Project extends pulumi.CustomResource {
     /**
      * Annotations for Node Pool object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id where create project (string)
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Default containers resource limits on project (List maxitem:1)
      */
-    public readonly containerResourceLimit!: pulumi.Output<outputs.ProjectContainerResourceLimit | undefined>;
+    declare public readonly containerResourceLimit: pulumi.Output<outputs.ProjectContainerResourceLimit | undefined>;
     /**
      * A project description (string)
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Labels for Node Pool object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the project (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
      */
-    public readonly resourceQuota!: pulumi.Output<outputs.ProjectResourceQuota | undefined>;
+    declare public readonly resourceQuota: pulumi.Output<outputs.ProjectResourceQuota | undefined>;
     /**
      * Wait for cluster becomes active. Default `false` (bool)
      */
-    public readonly waitForCluster!: pulumi.Output<boolean | undefined>;
+    declare public readonly waitForCluster: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -151,27 +151,27 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["containerResourceLimit"] = state ? state.containerResourceLimit : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceQuota"] = state ? state.resourceQuota : undefined;
-            resourceInputs["waitForCluster"] = state ? state.waitForCluster : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["containerResourceLimit"] = state?.containerResourceLimit;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceQuota"] = state?.resourceQuota;
+            resourceInputs["waitForCluster"] = state?.waitForCluster;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["containerResourceLimit"] = args ? args.containerResourceLimit : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["resourceQuota"] = args ? args.resourceQuota : undefined;
-            resourceInputs["waitForCluster"] = args ? args.waitForCluster : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["containerResourceLimit"] = args?.containerResourceLimit;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["resourceQuota"] = args?.resourceQuota;
+            resourceInputs["waitForCluster"] = args?.waitForCluster;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);

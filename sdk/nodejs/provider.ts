@@ -28,27 +28,27 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * API Key used to authenticate with the rancher server
      */
-    public readonly accessKey!: pulumi.Output<string | undefined>;
+    declare public readonly accessKey: pulumi.Output<string | undefined>;
     /**
      * The URL to the rancher API
      */
-    public readonly apiUrl!: pulumi.Output<string | undefined>;
+    declare public readonly apiUrl: pulumi.Output<string | undefined>;
     /**
      * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
      */
-    public readonly caCerts!: pulumi.Output<string | undefined>;
+    declare public readonly caCerts: pulumi.Output<string | undefined>;
     /**
      * API secret used to authenticate with the rancher server
      */
-    public readonly secretKey!: pulumi.Output<string | undefined>;
+    declare public readonly secretKey: pulumi.Output<string | undefined>;
     /**
      * Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
      */
-    public readonly timeout!: pulumi.Output<string | undefined>;
+    declare public readonly timeout: pulumi.Output<string | undefined>;
     /**
      * API token used to authenticate with the rancher server
      */
-    public readonly tokenKey!: pulumi.Output<string | undefined>;
+    declare public readonly tokenKey: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -62,13 +62,13 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["accessKey"] = args?.accessKey ? pulumi.secret(args.accessKey) : undefined;
-            resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
-            resourceInputs["bootstrap"] = pulumi.output((args ? args.bootstrap : undefined) ?? (utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
-            resourceInputs["caCerts"] = args ? args.caCerts : undefined;
-            resourceInputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? (utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
-            resourceInputs["retries"] = pulumi.output(args ? args.retries : undefined).apply(JSON.stringify);
+            resourceInputs["apiUrl"] = args?.apiUrl;
+            resourceInputs["bootstrap"] = pulumi.output((args?.bootstrap) ?? (utilities.getEnvBoolean("RANCHER_BOOTSTRAP") || false)).apply(JSON.stringify);
+            resourceInputs["caCerts"] = args?.caCerts;
+            resourceInputs["insecure"] = pulumi.output((args?.insecure) ?? (utilities.getEnvBoolean("RANCHER_INSECURE") || false)).apply(JSON.stringify);
+            resourceInputs["retries"] = pulumi.output(args?.retries).apply(JSON.stringify);
             resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["timeout"] = args?.timeout;
             resourceInputs["tokenKey"] = args?.tokenKey ? pulumi.secret(args.tokenKey) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

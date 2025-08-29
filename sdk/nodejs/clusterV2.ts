@@ -46,75 +46,75 @@ export class ClusterV2 extends pulumi.CustomResource {
     /**
      * Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
      */
-    public readonly agentEnvVars!: pulumi.Output<outputs.ClusterV2AgentEnvVar[] | undefined>;
+    declare public readonly agentEnvVars: pulumi.Output<outputs.ClusterV2AgentEnvVar[] | undefined>;
     /**
      * Annotations for the Cluster.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
-    public readonly cloudCredentialSecretName!: pulumi.Output<string | undefined>;
+    declare public readonly cloudCredentialSecretName: pulumi.Output<string | undefined>;
     /**
      * Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
      */
-    public readonly clusterAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterV2ClusterAgentDeploymentCustomization[] | undefined>;
+    declare public readonly clusterAgentDeploymentCustomizations: pulumi.Output<outputs.ClusterV2ClusterAgentDeploymentCustomization[] | undefined>;
     /**
      * (Computed, sensitive, list, max length: 1) Cluster Registration Token generated for the cluster.
      */
-    public /*out*/ readonly clusterRegistrationToken!: pulumi.Output<outputs.ClusterV2ClusterRegistrationToken>;
+    declare public /*out*/ readonly clusterRegistrationToken: pulumi.Output<outputs.ClusterV2ClusterRegistrationToken>;
     /**
      * (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2Sync`).
      */
-    public /*out*/ readonly clusterV1Id!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterV1Id: pulumi.Output<string>;
     /**
      * Default cluster role for project members.
      */
-    public readonly defaultClusterRoleForProjectMembers!: pulumi.Output<string | undefined>;
+    declare public readonly defaultClusterRoleForProjectMembers: pulumi.Output<string | undefined>;
     /**
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
      */
-    public readonly defaultPodSecurityAdmissionConfigurationTemplateName!: pulumi.Output<string | undefined>;
+    declare public readonly defaultPodSecurityAdmissionConfigurationTemplateName: pulumi.Output<string | undefined>;
     /**
      * Enable k8s network policy on the cluster.
      */
-    public readonly enableNetworkPolicy!: pulumi.Output<boolean>;
+    declare public readonly enableNetworkPolicy: pulumi.Output<boolean>;
     /**
      * Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
      */
-    public readonly fleetAgentDeploymentCustomizations!: pulumi.Output<outputs.ClusterV2FleetAgentDeploymentCustomization[] | undefined>;
+    declare public readonly fleetAgentDeploymentCustomizations: pulumi.Output<outputs.ClusterV2FleetAgentDeploymentCustomization[] | undefined>;
     /**
      * Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
      */
-    public readonly fleetNamespace!: pulumi.Output<string | undefined>;
+    declare public readonly fleetNamespace: pulumi.Output<string | undefined>;
     /**
      * (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected`.
      */
-    public /*out*/ readonly kubeConfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeConfig: pulumi.Output<string>;
     /**
      * The RKE2 or K3s version for the cluster.
      */
-    public readonly kubernetesVersion!: pulumi.Output<string>;
+    declare public readonly kubernetesVersion: pulumi.Output<string>;
     /**
      * Labels for the Cluster.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      */
-    public readonly localAuthEndpoint!: pulumi.Output<outputs.ClusterV2LocalAuthEndpoint | undefined>;
+    declare public readonly localAuthEndpoint: pulumi.Output<outputs.ClusterV2LocalAuthEndpoint | undefined>;
     /**
      * The name of the cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (Computed, string) Cluster's k8s resource version.
      */
-    public /*out*/ readonly resourceVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceVersion: pulumi.Output<string>;
     /**
      * The RKE configuration for the cluster.
      */
-    public readonly rkeConfig!: pulumi.Output<outputs.ClusterV2RkeConfig>;
+    declare public readonly rkeConfig: pulumi.Output<outputs.ClusterV2RkeConfig>;
 
     /**
      * Create a ClusterV2 resource with the given unique name, arguments, and options.
@@ -129,43 +129,43 @@ export class ClusterV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterV2State | undefined;
-            resourceInputs["agentEnvVars"] = state ? state.agentEnvVars : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["cloudCredentialSecretName"] = state ? state.cloudCredentialSecretName : undefined;
-            resourceInputs["clusterAgentDeploymentCustomizations"] = state ? state.clusterAgentDeploymentCustomizations : undefined;
-            resourceInputs["clusterRegistrationToken"] = state ? state.clusterRegistrationToken : undefined;
-            resourceInputs["clusterV1Id"] = state ? state.clusterV1Id : undefined;
-            resourceInputs["defaultClusterRoleForProjectMembers"] = state ? state.defaultClusterRoleForProjectMembers : undefined;
-            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = state ? state.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
-            resourceInputs["enableNetworkPolicy"] = state ? state.enableNetworkPolicy : undefined;
-            resourceInputs["fleetAgentDeploymentCustomizations"] = state ? state.fleetAgentDeploymentCustomizations : undefined;
-            resourceInputs["fleetNamespace"] = state ? state.fleetNamespace : undefined;
-            resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
-            resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["localAuthEndpoint"] = state ? state.localAuthEndpoint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["resourceVersion"] = state ? state.resourceVersion : undefined;
-            resourceInputs["rkeConfig"] = state ? state.rkeConfig : undefined;
+            resourceInputs["agentEnvVars"] = state?.agentEnvVars;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["cloudCredentialSecretName"] = state?.cloudCredentialSecretName;
+            resourceInputs["clusterAgentDeploymentCustomizations"] = state?.clusterAgentDeploymentCustomizations;
+            resourceInputs["clusterRegistrationToken"] = state?.clusterRegistrationToken;
+            resourceInputs["clusterV1Id"] = state?.clusterV1Id;
+            resourceInputs["defaultClusterRoleForProjectMembers"] = state?.defaultClusterRoleForProjectMembers;
+            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = state?.defaultPodSecurityAdmissionConfigurationTemplateName;
+            resourceInputs["enableNetworkPolicy"] = state?.enableNetworkPolicy;
+            resourceInputs["fleetAgentDeploymentCustomizations"] = state?.fleetAgentDeploymentCustomizations;
+            resourceInputs["fleetNamespace"] = state?.fleetNamespace;
+            resourceInputs["kubeConfig"] = state?.kubeConfig;
+            resourceInputs["kubernetesVersion"] = state?.kubernetesVersion;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["localAuthEndpoint"] = state?.localAuthEndpoint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["resourceVersion"] = state?.resourceVersion;
+            resourceInputs["rkeConfig"] = state?.rkeConfig;
         } else {
             const args = argsOrState as ClusterV2Args | undefined;
-            if ((!args || args.kubernetesVersion === undefined) && !opts.urn) {
+            if (args?.kubernetesVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kubernetesVersion'");
             }
-            resourceInputs["agentEnvVars"] = args ? args.agentEnvVars : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["cloudCredentialSecretName"] = args ? args.cloudCredentialSecretName : undefined;
-            resourceInputs["clusterAgentDeploymentCustomizations"] = args ? args.clusterAgentDeploymentCustomizations : undefined;
-            resourceInputs["defaultClusterRoleForProjectMembers"] = args ? args.defaultClusterRoleForProjectMembers : undefined;
-            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = args ? args.defaultPodSecurityAdmissionConfigurationTemplateName : undefined;
-            resourceInputs["enableNetworkPolicy"] = args ? args.enableNetworkPolicy : undefined;
-            resourceInputs["fleetAgentDeploymentCustomizations"] = args ? args.fleetAgentDeploymentCustomizations : undefined;
-            resourceInputs["fleetNamespace"] = args ? args.fleetNamespace : undefined;
-            resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["localAuthEndpoint"] = args ? args.localAuthEndpoint : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rkeConfig"] = args ? args.rkeConfig : undefined;
+            resourceInputs["agentEnvVars"] = args?.agentEnvVars;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["cloudCredentialSecretName"] = args?.cloudCredentialSecretName;
+            resourceInputs["clusterAgentDeploymentCustomizations"] = args?.clusterAgentDeploymentCustomizations;
+            resourceInputs["defaultClusterRoleForProjectMembers"] = args?.defaultClusterRoleForProjectMembers;
+            resourceInputs["defaultPodSecurityAdmissionConfigurationTemplateName"] = args?.defaultPodSecurityAdmissionConfigurationTemplateName;
+            resourceInputs["enableNetworkPolicy"] = args?.enableNetworkPolicy;
+            resourceInputs["fleetAgentDeploymentCustomizations"] = args?.fleetAgentDeploymentCustomizations;
+            resourceInputs["fleetNamespace"] = args?.fleetNamespace;
+            resourceInputs["kubernetesVersion"] = args?.kubernetesVersion;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["localAuthEndpoint"] = args?.localAuthEndpoint;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rkeConfig"] = args?.rkeConfig;
             resourceInputs["clusterRegistrationToken"] = undefined /*out*/;
             resourceInputs["clusterV1Id"] = undefined /*out*/;
             resourceInputs["kubeConfig"] = undefined /*out*/;

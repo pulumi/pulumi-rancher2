@@ -46,43 +46,43 @@ export class ClusterDriver extends pulumi.CustomResource {
     /**
      * Specify the cluster driver state (bool)
      */
-    public readonly active!: pulumi.Output<boolean>;
+    declare public readonly active: pulumi.Output<boolean>;
     /**
      * Actual url of the cluster driver (string)
      */
-    public readonly actualUrl!: pulumi.Output<string | undefined>;
+    declare public readonly actualUrl: pulumi.Output<string | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Specify whether the cluster driver is an internal cluster driver or not (bool)
      */
-    public readonly builtin!: pulumi.Output<boolean>;
+    declare public readonly builtin: pulumi.Output<boolean>;
     /**
      * Verify that the downloaded driver matches the expected checksum (string)
      */
-    public readonly checksum!: pulumi.Output<string | undefined>;
+    declare public readonly checksum: pulumi.Output<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Name of the cluster driver (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The URL to load for customized Add Clusters screen for this driver (string)
      */
-    public readonly uiUrl!: pulumi.Output<string | undefined>;
+    declare public readonly uiUrl: pulumi.Output<string | undefined>;
     /**
      * The URL to download the machine driver binary for 64-bit Linux (string)
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
     /**
      * Domains to whitelist for the ui (list)
      */
-    public readonly whitelistDomains!: pulumi.Output<string[] | undefined>;
+    declare public readonly whitelistDomains: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ClusterDriver resource with the given unique name, arguments, and options.
@@ -97,37 +97,37 @@ export class ClusterDriver extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterDriverState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["actualUrl"] = state ? state.actualUrl : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["builtin"] = state ? state.builtin : undefined;
-            resourceInputs["checksum"] = state ? state.checksum : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["uiUrl"] = state ? state.uiUrl : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["whitelistDomains"] = state ? state.whitelistDomains : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["actualUrl"] = state?.actualUrl;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["builtin"] = state?.builtin;
+            resourceInputs["checksum"] = state?.checksum;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["uiUrl"] = state?.uiUrl;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["whitelistDomains"] = state?.whitelistDomains;
         } else {
             const args = argsOrState as ClusterDriverArgs | undefined;
-            if ((!args || args.active === undefined) && !opts.urn) {
+            if (args?.active === undefined && !opts.urn) {
                 throw new Error("Missing required property 'active'");
             }
-            if ((!args || args.builtin === undefined) && !opts.urn) {
+            if (args?.builtin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'builtin'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["actualUrl"] = args ? args.actualUrl : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["builtin"] = args ? args.builtin : undefined;
-            resourceInputs["checksum"] = args ? args.checksum : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["uiUrl"] = args ? args.uiUrl : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["whitelistDomains"] = args ? args.whitelistDomains : undefined;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["actualUrl"] = args?.actualUrl;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["builtin"] = args?.builtin;
+            resourceInputs["checksum"] = args?.checksum;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["uiUrl"] = args?.uiUrl;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["whitelistDomains"] = args?.whitelistDomains;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClusterDriver.__pulumiType, name, resourceInputs, opts);

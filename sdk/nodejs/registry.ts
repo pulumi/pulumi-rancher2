@@ -90,31 +90,31 @@ export class Registry extends pulumi.CustomResource {
     /**
      * Annotations for Registry object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * A registry description (string)
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Labels for Registry object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the registry (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespace id where to assign the namespaced registry (string)
      */
-    public readonly namespaceId!: pulumi.Output<string | undefined>;
+    declare public readonly namespaceId: pulumi.Output<string | undefined>;
     /**
      * The project id where to assign the registry (string)
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Registries data for registry (list)
      */
-    public readonly registries!: pulumi.Output<outputs.RegistryRegistry[]>;
+    declare public readonly registries: pulumi.Output<outputs.RegistryRegistry[]>;
 
     /**
      * Create a Registry resource with the given unique name, arguments, and options.
@@ -129,28 +129,28 @@ export class Registry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["registries"] = state ? state.registries : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespaceId"] = state?.namespaceId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["registries"] = state?.registries;
         } else {
             const args = argsOrState as RegistryArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.registries === undefined) && !opts.urn) {
+            if (args?.registries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'registries'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["registries"] = args ? args.registries : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespaceId"] = args?.namespaceId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["registries"] = args?.registries;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Registry.__pulumiType, name, resourceInputs, opts);

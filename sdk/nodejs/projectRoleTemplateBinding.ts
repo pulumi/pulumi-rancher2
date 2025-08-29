@@ -61,41 +61,41 @@ export class ProjectRoleTemplateBinding extends pulumi.CustomResource {
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The group ID to assign project role template binding (string)
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The groupPrincipal ID to assign project role template binding (string)
      */
-    public readonly groupPrincipalId!: pulumi.Output<string>;
+    declare public readonly groupPrincipalId: pulumi.Output<string>;
     /**
      * Labels of the resource (map)
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the project role template binding (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The role template id from create project role template binding (string)
      */
-    public readonly roleTemplateId!: pulumi.Output<string>;
+    declare public readonly roleTemplateId: pulumi.Output<string>;
     /**
      * The user ID to assign project role template binding (string)
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
     /**
      * The userPrincipal ID to assign project role template binding (string)
      */
-    public readonly userPrincipalId!: pulumi.Output<string>;
+    declare public readonly userPrincipalId: pulumi.Output<string>;
 
     /**
      * Create a ProjectRoleTemplateBinding resource with the given unique name, arguments, and options.
@@ -110,32 +110,32 @@ export class ProjectRoleTemplateBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectRoleTemplateBindingState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["groupPrincipalId"] = state ? state.groupPrincipalId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["roleTemplateId"] = state ? state.roleTemplateId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userPrincipalId"] = state ? state.userPrincipalId : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["groupPrincipalId"] = state?.groupPrincipalId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["roleTemplateId"] = state?.roleTemplateId;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userPrincipalId"] = state?.userPrincipalId;
         } else {
             const args = argsOrState as ProjectRoleTemplateBindingArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.roleTemplateId === undefined) && !opts.urn) {
+            if (args?.roleTemplateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleTemplateId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["groupPrincipalId"] = args ? args.groupPrincipalId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["roleTemplateId"] = args ? args.roleTemplateId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
-            resourceInputs["userPrincipalId"] = args ? args.userPrincipalId : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["groupPrincipalId"] = args?.groupPrincipalId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["roleTemplateId"] = args?.roleTemplateId;
+            resourceInputs["userId"] = args?.userId;
+            resourceInputs["userPrincipalId"] = args?.userPrincipalId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectRoleTemplateBinding.__pulumiType, name, resourceInputs, opts);

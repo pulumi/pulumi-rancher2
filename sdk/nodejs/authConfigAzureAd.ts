@@ -54,64 +54,64 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    public readonly accessMode!: pulumi.Output<string | undefined>;
+    declare public readonly accessMode: pulumi.Output<string | undefined>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
      */
-    public readonly allowedPrincipalIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedPrincipalIds: pulumi.Output<string[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * AzureAD auth application ID (string)
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * AzureAD auth application secret (string)
      */
-    public readonly applicationSecret!: pulumi.Output<string>;
+    declare public readonly applicationSecret: pulumi.Output<string>;
     /**
      * AzureAD auth endpoint (string)
      */
-    public readonly authEndpoint!: pulumi.Output<string>;
+    declare public readonly authEndpoint: pulumi.Output<string>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * AzureAD endpoint. Default `https://login.microsoftonline.com/` (string)
      */
-    public readonly endpoint!: pulumi.Output<string | undefined>;
+    declare public readonly endpoint: pulumi.Output<string | undefined>;
     /**
      * AzureAD graph endpoint (string)
      */
-    public readonly graphEndpoint!: pulumi.Output<string>;
-    public readonly groupMembershipFilter!: pulumi.Output<string | undefined>;
+    declare public readonly graphEndpoint: pulumi.Output<string>;
+    declare public readonly groupMembershipFilter: pulumi.Output<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) The name of the resource (string)
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Rancher URL (string). "<rancher_url>/verify-auth-azure"
      */
-    public readonly rancherUrl!: pulumi.Output<string>;
+    declare public readonly rancherUrl: pulumi.Output<string>;
     /**
      * AzureAD tenant ID (string)
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
     /**
      * AzureAD token endpoint (string)
      */
-    public readonly tokenEndpoint!: pulumi.Output<string>;
+    declare public readonly tokenEndpoint: pulumi.Output<string>;
     /**
      * (Computed) The type of the resource (string)
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a AuthConfigAzureAd resource with the given unique name, arguments, and options.
@@ -126,59 +126,59 @@ export class AuthConfigAzureAd extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthConfigAzureAdState | undefined;
-            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
-            resourceInputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["applicationSecret"] = state ? state.applicationSecret : undefined;
-            resourceInputs["authEndpoint"] = state ? state.authEndpoint : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["graphEndpoint"] = state ? state.graphEndpoint : undefined;
-            resourceInputs["groupMembershipFilter"] = state ? state.groupMembershipFilter : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["rancherUrl"] = state ? state.rancherUrl : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["tokenEndpoint"] = state ? state.tokenEndpoint : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accessMode"] = state?.accessMode;
+            resourceInputs["allowedPrincipalIds"] = state?.allowedPrincipalIds;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["applicationSecret"] = state?.applicationSecret;
+            resourceInputs["authEndpoint"] = state?.authEndpoint;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["graphEndpoint"] = state?.graphEndpoint;
+            resourceInputs["groupMembershipFilter"] = state?.groupMembershipFilter;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["rancherUrl"] = state?.rancherUrl;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["tokenEndpoint"] = state?.tokenEndpoint;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AuthConfigAzureAdArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.applicationSecret === undefined) && !opts.urn) {
+            if (args?.applicationSecret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationSecret'");
             }
-            if ((!args || args.authEndpoint === undefined) && !opts.urn) {
+            if (args?.authEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authEndpoint'");
             }
-            if ((!args || args.graphEndpoint === undefined) && !opts.urn) {
+            if (args?.graphEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'graphEndpoint'");
             }
-            if ((!args || args.rancherUrl === undefined) && !opts.urn) {
+            if (args?.rancherUrl === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rancherUrl'");
             }
-            if ((!args || args.tenantId === undefined) && !opts.urn) {
+            if (args?.tenantId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            if ((!args || args.tokenEndpoint === undefined) && !opts.urn) {
+            if (args?.tokenEndpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tokenEndpoint'");
             }
-            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
-            resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["accessMode"] = args?.accessMode;
+            resourceInputs["allowedPrincipalIds"] = args?.allowedPrincipalIds;
+            resourceInputs["annotations"] = args?.annotations;
             resourceInputs["applicationId"] = args?.applicationId ? pulumi.secret(args.applicationId) : undefined;
             resourceInputs["applicationSecret"] = args?.applicationSecret ? pulumi.secret(args.applicationSecret) : undefined;
-            resourceInputs["authEndpoint"] = args ? args.authEndpoint : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["graphEndpoint"] = args ? args.graphEndpoint : undefined;
-            resourceInputs["groupMembershipFilter"] = args ? args.groupMembershipFilter : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["rancherUrl"] = args ? args.rancherUrl : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["tokenEndpoint"] = args ? args.tokenEndpoint : undefined;
+            resourceInputs["authEndpoint"] = args?.authEndpoint;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["graphEndpoint"] = args?.graphEndpoint;
+            resourceInputs["groupMembershipFilter"] = args?.groupMembershipFilter;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["rancherUrl"] = args?.rancherUrl;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["tokenEndpoint"] = args?.tokenEndpoint;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

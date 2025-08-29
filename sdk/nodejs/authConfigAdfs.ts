@@ -59,63 +59,63 @@ export class AuthConfigAdfs extends pulumi.CustomResource {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    public readonly accessMode!: pulumi.Output<string | undefined>;
+    declare public readonly accessMode: pulumi.Output<string | undefined>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `adfs_user://<USER_ID>`  `adfs_group://<GROUP_ID>` (list)
      */
-    public readonly allowedPrincipalIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedPrincipalIds: pulumi.Output<string[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * ADFS display name field (string)
      */
-    public readonly displayNameField!: pulumi.Output<string>;
+    declare public readonly displayNameField: pulumi.Output<string>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * ADFS group field (string)
      */
-    public readonly groupsField!: pulumi.Output<string>;
+    declare public readonly groupsField: pulumi.Output<string>;
     /**
      * ADFS IDP metadata content (string)
      */
-    public readonly idpMetadataContent!: pulumi.Output<string>;
+    declare public readonly idpMetadataContent: pulumi.Output<string>;
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) The name of the resource (string)
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */
-    public readonly rancherApiHost!: pulumi.Output<string>;
+    declare public readonly rancherApiHost: pulumi.Output<string>;
     /**
      * ADFS SP cert (string)
      */
-    public readonly spCert!: pulumi.Output<string>;
+    declare public readonly spCert: pulumi.Output<string>;
     /**
      * ADFS SP key (string)
      */
-    public readonly spKey!: pulumi.Output<string>;
+    declare public readonly spKey: pulumi.Output<string>;
     /**
      * (Computed) The type of the resource (string)
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * ADFS UID field (string)
      */
-    public readonly uidField!: pulumi.Output<string>;
+    declare public readonly uidField: pulumi.Output<string>;
     /**
      * ADFS user name field (string)
      */
-    public readonly userNameField!: pulumi.Output<string>;
+    declare public readonly userNameField: pulumi.Output<string>;
 
     /**
      * Create a AuthConfigAdfs resource with the given unique name, arguments, and options.
@@ -130,60 +130,60 @@ export class AuthConfigAdfs extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthConfigAdfsState | undefined;
-            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
-            resourceInputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["displayNameField"] = state ? state.displayNameField : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["groupsField"] = state ? state.groupsField : undefined;
-            resourceInputs["idpMetadataContent"] = state ? state.idpMetadataContent : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["rancherApiHost"] = state ? state.rancherApiHost : undefined;
-            resourceInputs["spCert"] = state ? state.spCert : undefined;
-            resourceInputs["spKey"] = state ? state.spKey : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uidField"] = state ? state.uidField : undefined;
-            resourceInputs["userNameField"] = state ? state.userNameField : undefined;
+            resourceInputs["accessMode"] = state?.accessMode;
+            resourceInputs["allowedPrincipalIds"] = state?.allowedPrincipalIds;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["displayNameField"] = state?.displayNameField;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["groupsField"] = state?.groupsField;
+            resourceInputs["idpMetadataContent"] = state?.idpMetadataContent;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["rancherApiHost"] = state?.rancherApiHost;
+            resourceInputs["spCert"] = state?.spCert;
+            resourceInputs["spKey"] = state?.spKey;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uidField"] = state?.uidField;
+            resourceInputs["userNameField"] = state?.userNameField;
         } else {
             const args = argsOrState as AuthConfigAdfsArgs | undefined;
-            if ((!args || args.displayNameField === undefined) && !opts.urn) {
+            if (args?.displayNameField === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayNameField'");
             }
-            if ((!args || args.groupsField === undefined) && !opts.urn) {
+            if (args?.groupsField === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupsField'");
             }
-            if ((!args || args.idpMetadataContent === undefined) && !opts.urn) {
+            if (args?.idpMetadataContent === undefined && !opts.urn) {
                 throw new Error("Missing required property 'idpMetadataContent'");
             }
-            if ((!args || args.rancherApiHost === undefined) && !opts.urn) {
+            if (args?.rancherApiHost === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rancherApiHost'");
             }
-            if ((!args || args.spCert === undefined) && !opts.urn) {
+            if (args?.spCert === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spCert'");
             }
-            if ((!args || args.spKey === undefined) && !opts.urn) {
+            if (args?.spKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'spKey'");
             }
-            if ((!args || args.uidField === undefined) && !opts.urn) {
+            if (args?.uidField === undefined && !opts.urn) {
                 throw new Error("Missing required property 'uidField'");
             }
-            if ((!args || args.userNameField === undefined) && !opts.urn) {
+            if (args?.userNameField === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userNameField'");
             }
-            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
-            resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["displayNameField"] = args ? args.displayNameField : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["groupsField"] = args ? args.groupsField : undefined;
+            resourceInputs["accessMode"] = args?.accessMode;
+            resourceInputs["allowedPrincipalIds"] = args?.allowedPrincipalIds;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["displayNameField"] = args?.displayNameField;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["groupsField"] = args?.groupsField;
             resourceInputs["idpMetadataContent"] = args?.idpMetadataContent ? pulumi.secret(args.idpMetadataContent) : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["rancherApiHost"] = args ? args.rancherApiHost : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["rancherApiHost"] = args?.rancherApiHost;
             resourceInputs["spCert"] = args?.spCert ? pulumi.secret(args.spCert) : undefined;
             resourceInputs["spKey"] = args?.spKey ? pulumi.secret(args.spKey) : undefined;
-            resourceInputs["uidField"] = args ? args.uidField : undefined;
-            resourceInputs["userNameField"] = args ? args.userNameField : undefined;
+            resourceInputs["uidField"] = args?.uidField;
+            resourceInputs["userNameField"] = args?.userNameField;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

@@ -116,35 +116,35 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Annotations for Node Pool object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Default containers resource limits on namespace (List maxitem:1)
      */
-    public readonly containerResourceLimit!: pulumi.Output<outputs.NamespaceContainerResourceLimit | undefined>;
+    declare public readonly containerResourceLimit: pulumi.Output<outputs.NamespaceContainerResourceLimit | undefined>;
     /**
      * A namespace description (string)
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Labels for Node Pool object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the namespace (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
      */
-    public readonly resourceQuota!: pulumi.Output<outputs.NamespaceResourceQuota>;
+    declare public readonly resourceQuota: pulumi.Output<outputs.NamespaceResourceQuota>;
     /**
      * Wait for cluster becomes active. Default `false` (bool)
      */
-    public readonly waitForCluster!: pulumi.Output<boolean | undefined>;
+    declare public readonly waitForCluster: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -159,27 +159,27 @@ export class Namespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["containerResourceLimit"] = state ? state.containerResourceLimit : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["resourceQuota"] = state ? state.resourceQuota : undefined;
-            resourceInputs["waitForCluster"] = state ? state.waitForCluster : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["containerResourceLimit"] = state?.containerResourceLimit;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["resourceQuota"] = state?.resourceQuota;
+            resourceInputs["waitForCluster"] = state?.waitForCluster;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["containerResourceLimit"] = args ? args.containerResourceLimit : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["resourceQuota"] = args ? args.resourceQuota : undefined;
-            resourceInputs["waitForCluster"] = args ? args.waitForCluster : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["containerResourceLimit"] = args?.containerResourceLimit;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["resourceQuota"] = args?.resourceQuota;
+            resourceInputs["waitForCluster"] = args?.waitForCluster;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Namespace.__pulumiType, name, resourceInputs, opts);

@@ -48,55 +48,55 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Annotations for Node Pool object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The RKE cluster id to use Node Pool (string)
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * RKE control plane role for created nodes (bool)
      */
-    public readonly controlPlane!: pulumi.Output<boolean | undefined>;
+    declare public readonly controlPlane: pulumi.Output<boolean | undefined>;
     /**
      * Delete not ready node after secs. For Rancher v2.3.3 and above. Default `0` (int)
      */
-    public readonly deleteNotReadyAfterSecs!: pulumi.Output<number | undefined>;
+    declare public readonly deleteNotReadyAfterSecs: pulumi.Output<number | undefined>;
     /**
      * Drain nodes before delete. Default: `false` (bool)
      */
-    public readonly drainBeforeDelete!: pulumi.Output<boolean | undefined>;
+    declare public readonly drainBeforeDelete: pulumi.Output<boolean | undefined>;
     /**
      * RKE etcd role for created nodes (bool)
      */
-    public readonly etcd!: pulumi.Output<boolean | undefined>;
+    declare public readonly etcd: pulumi.Output<boolean | undefined>;
     /**
      * The prefix for created nodes of the Node Pool (string)
      */
-    public readonly hostnamePrefix!: pulumi.Output<string>;
+    declare public readonly hostnamePrefix: pulumi.Output<string>;
     /**
      * Labels for Node Pool object (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the Node Pool (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Node taints. For Rancher v2.3.3 and above (List)
      */
-    public readonly nodeTaints!: pulumi.Output<outputs.NodePoolNodeTaint[] | undefined>;
+    declare public readonly nodeTaints: pulumi.Output<outputs.NodePoolNodeTaint[] | undefined>;
     /**
      * The Node Template ID to use for node creation (string)
      */
-    public readonly nodeTemplateId!: pulumi.Output<string>;
+    declare public readonly nodeTemplateId: pulumi.Output<string>;
     /**
      * The number of nodes to create on Node Pool. Default `1`. Only values >= 1 allowed (int)
      */
-    public readonly quantity!: pulumi.Output<number | undefined>;
+    declare public readonly quantity: pulumi.Output<number | undefined>;
     /**
      * RKE role role for created nodes (bool)
      */
-    public readonly worker!: pulumi.Output<boolean | undefined>;
+    declare public readonly worker: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a NodePool resource with the given unique name, arguments, and options.
@@ -111,43 +111,43 @@ export class NodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
-            resourceInputs["deleteNotReadyAfterSecs"] = state ? state.deleteNotReadyAfterSecs : undefined;
-            resourceInputs["drainBeforeDelete"] = state ? state.drainBeforeDelete : undefined;
-            resourceInputs["etcd"] = state ? state.etcd : undefined;
-            resourceInputs["hostnamePrefix"] = state ? state.hostnamePrefix : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeTaints"] = state ? state.nodeTaints : undefined;
-            resourceInputs["nodeTemplateId"] = state ? state.nodeTemplateId : undefined;
-            resourceInputs["quantity"] = state ? state.quantity : undefined;
-            resourceInputs["worker"] = state ? state.worker : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["controlPlane"] = state?.controlPlane;
+            resourceInputs["deleteNotReadyAfterSecs"] = state?.deleteNotReadyAfterSecs;
+            resourceInputs["drainBeforeDelete"] = state?.drainBeforeDelete;
+            resourceInputs["etcd"] = state?.etcd;
+            resourceInputs["hostnamePrefix"] = state?.hostnamePrefix;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeTaints"] = state?.nodeTaints;
+            resourceInputs["nodeTemplateId"] = state?.nodeTemplateId;
+            resourceInputs["quantity"] = state?.quantity;
+            resourceInputs["worker"] = state?.worker;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.hostnamePrefix === undefined) && !opts.urn) {
+            if (args?.hostnamePrefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'hostnamePrefix'");
             }
-            if ((!args || args.nodeTemplateId === undefined) && !opts.urn) {
+            if (args?.nodeTemplateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeTemplateId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
-            resourceInputs["deleteNotReadyAfterSecs"] = args ? args.deleteNotReadyAfterSecs : undefined;
-            resourceInputs["drainBeforeDelete"] = args ? args.drainBeforeDelete : undefined;
-            resourceInputs["etcd"] = args ? args.etcd : undefined;
-            resourceInputs["hostnamePrefix"] = args ? args.hostnamePrefix : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeTaints"] = args ? args.nodeTaints : undefined;
-            resourceInputs["nodeTemplateId"] = args ? args.nodeTemplateId : undefined;
-            resourceInputs["quantity"] = args ? args.quantity : undefined;
-            resourceInputs["worker"] = args ? args.worker : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["controlPlane"] = args?.controlPlane;
+            resourceInputs["deleteNotReadyAfterSecs"] = args?.deleteNotReadyAfterSecs;
+            resourceInputs["drainBeforeDelete"] = args?.drainBeforeDelete;
+            resourceInputs["etcd"] = args?.etcd;
+            resourceInputs["hostnamePrefix"] = args?.hostnamePrefix;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeTaints"] = args?.nodeTaints;
+            resourceInputs["nodeTemplateId"] = args?.nodeTemplateId;
+            resourceInputs["quantity"] = args?.quantity;
+            resourceInputs["worker"] = args?.worker;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NodePool.__pulumiType, name, resourceInputs, opts);
