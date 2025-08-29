@@ -61,41 +61,41 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
     /**
      * Annotations for cluster role template binding (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The cluster id where bind cluster role template binding (string)
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The group ID to assign cluster role template binding (string)
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The groupPrincipal ID to assign cluster role template binding (string)
      */
-    public readonly groupPrincipalId!: pulumi.Output<string>;
+    declare public readonly groupPrincipalId: pulumi.Output<string>;
     /**
      * Labels for cluster role template binding (map)
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the cluster role template binding (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The role template id from create cluster role template binding (string)
      */
-    public readonly roleTemplateId!: pulumi.Output<string>;
+    declare public readonly roleTemplateId: pulumi.Output<string>;
     /**
      * The user ID to assign cluster role template binding (string)
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
     /**
      * The userPrincipal ID to assign cluster role template binding (string)
      */
-    public readonly userPrincipalId!: pulumi.Output<string>;
+    declare public readonly userPrincipalId: pulumi.Output<string>;
 
     /**
      * Create a ClusterRoleTemplateBinding resource with the given unique name, arguments, and options.
@@ -110,32 +110,32 @@ export class ClusterRoleTemplateBinding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterRoleTemplateBindingState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["groupPrincipalId"] = state ? state.groupPrincipalId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["roleTemplateId"] = state ? state.roleTemplateId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userPrincipalId"] = state ? state.userPrincipalId : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["groupPrincipalId"] = state?.groupPrincipalId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["roleTemplateId"] = state?.roleTemplateId;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userPrincipalId"] = state?.userPrincipalId;
         } else {
             const args = argsOrState as ClusterRoleTemplateBindingArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.roleTemplateId === undefined) && !opts.urn) {
+            if (args?.roleTemplateId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleTemplateId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["groupPrincipalId"] = args ? args.groupPrincipalId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["roleTemplateId"] = args ? args.roleTemplateId : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
-            resourceInputs["userPrincipalId"] = args ? args.userPrincipalId : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["groupPrincipalId"] = args?.groupPrincipalId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["roleTemplateId"] = args?.roleTemplateId;
+            resourceInputs["userId"] = args?.userId;
+            resourceInputs["userPrincipalId"] = args?.userPrincipalId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ClusterRoleTemplateBinding.__pulumiType, name, resourceInputs, opts);

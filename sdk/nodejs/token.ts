@@ -44,57 +44,57 @@ export class Token extends pulumi.CustomResource {
     /**
      * (Computed) Token access key part (string)
      */
-    public /*out*/ readonly accessKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
      * (Computed) Annotations of the token (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Cluster ID for scoped token (string)
      */
-    public readonly clusterId!: pulumi.Output<string | undefined>;
+    declare public readonly clusterId: pulumi.Output<string | undefined>;
     /**
      * Token description (string)
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * (Computed) Token is enabled (bool)
      */
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
     /**
      * (Computed) Token is expired (bool)
      */
-    public /*out*/ readonly expired!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly expired: pulumi.Output<boolean>;
     /**
      * (Computed) Labels of the token (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) Token name (string)
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Renew expired or disabled token
      */
-    public readonly renew!: pulumi.Output<boolean | undefined>;
+    declare public readonly renew: pulumi.Output<boolean | undefined>;
     /**
      * (Computed/Sensitive) Token secret key part (string)
      */
-    public /*out*/ readonly secretKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly secretKey: pulumi.Output<string>;
     /**
      * (Computed/Sensitive) Token value (string)
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * Token time to live in seconds. Default `0` (int) 
      *
      * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    declare public readonly ttl: pulumi.Output<number | undefined>;
     /**
      * (Computed) Token user ID (string)
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
 
     /**
      * Create a Token resource with the given unique name, arguments, and options.
@@ -109,27 +109,27 @@ export class Token extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenState | undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["expired"] = state ? state.expired : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["renew"] = state ? state.renew : undefined;
-            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["expired"] = state?.expired;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["renew"] = state?.renew;
+            resourceInputs["secretKey"] = state?.secretKey;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as TokenArgs | undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["renew"] = args ? args.renew : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["renew"] = args?.renew;
+            resourceInputs["ttl"] = args?.ttl;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["expired"] = undefined /*out*/;

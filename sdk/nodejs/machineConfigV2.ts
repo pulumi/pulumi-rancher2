@@ -97,61 +97,61 @@ export class MachineConfigV2 extends pulumi.CustomResource {
     /**
      * AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    public readonly amazonec2Config!: pulumi.Output<outputs.MachineConfigV2Amazonec2Config | undefined>;
+    declare public readonly amazonec2Config: pulumi.Output<outputs.MachineConfigV2Amazonec2Config | undefined>;
     /**
      * Annotations for Machine Config V2 object (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    public readonly azureConfig!: pulumi.Output<outputs.MachineConfigV2AzureConfig | undefined>;
+    declare public readonly azureConfig: pulumi.Output<outputs.MachineConfigV2AzureConfig | undefined>;
     /**
      * Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    public readonly digitaloceanConfig!: pulumi.Output<outputs.MachineConfigV2DigitaloceanConfig | undefined>;
+    declare public readonly digitaloceanConfig: pulumi.Output<outputs.MachineConfigV2DigitaloceanConfig | undefined>;
     /**
      * Cluster V2 fleet namespace
      */
-    public readonly fleetNamespace!: pulumi.Output<string | undefined>;
+    declare public readonly fleetNamespace: pulumi.Output<string | undefined>;
     /**
      * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
      */
-    public readonly generateName!: pulumi.Output<string>;
+    declare public readonly generateName: pulumi.Output<string>;
     /**
      * Harvester config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    public readonly harvesterConfig!: pulumi.Output<outputs.MachineConfigV2HarvesterConfig | undefined>;
+    declare public readonly harvesterConfig: pulumi.Output<outputs.MachineConfigV2HarvesterConfig | undefined>;
     /**
      * (Computed) The machine config kind (string)
      */
-    public /*out*/ readonly kind!: pulumi.Output<string>;
+    declare public /*out*/ readonly kind: pulumi.Output<string>;
     /**
      * Labels for Machine Config V2 object (map)
      *
      * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    public readonly linodeConfig!: pulumi.Output<outputs.MachineConfigV2LinodeConfig | undefined>;
+    declare public readonly linodeConfig: pulumi.Output<outputs.MachineConfigV2LinodeConfig | undefined>;
     /**
      * (Computed) The machine config name (string)
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig` and `vsphereConfig` (list maxitems:1)
      */
-    public readonly openstackConfig!: pulumi.Output<outputs.MachineConfigV2OpenstackConfig | undefined>;
+    declare public readonly openstackConfig: pulumi.Output<outputs.MachineConfigV2OpenstackConfig | undefined>;
     /**
      * (Computed) The machine config k8s resource version (string)
      */
-    public /*out*/ readonly resourceVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceVersion: pulumi.Output<string>;
     /**
      * vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig` and `openstackConfig` (list maxitems:1)
      */
-    public readonly vsphereConfig!: pulumi.Output<outputs.MachineConfigV2VsphereConfig | undefined>;
+    declare public readonly vsphereConfig: pulumi.Output<outputs.MachineConfigV2VsphereConfig | undefined>;
 
     /**
      * Create a MachineConfigV2 resource with the given unique name, arguments, and options.
@@ -166,36 +166,36 @@ export class MachineConfigV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MachineConfigV2State | undefined;
-            resourceInputs["amazonec2Config"] = state ? state.amazonec2Config : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["azureConfig"] = state ? state.azureConfig : undefined;
-            resourceInputs["digitaloceanConfig"] = state ? state.digitaloceanConfig : undefined;
-            resourceInputs["fleetNamespace"] = state ? state.fleetNamespace : undefined;
-            resourceInputs["generateName"] = state ? state.generateName : undefined;
-            resourceInputs["harvesterConfig"] = state ? state.harvesterConfig : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["linodeConfig"] = state ? state.linodeConfig : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["openstackConfig"] = state ? state.openstackConfig : undefined;
-            resourceInputs["resourceVersion"] = state ? state.resourceVersion : undefined;
-            resourceInputs["vsphereConfig"] = state ? state.vsphereConfig : undefined;
+            resourceInputs["amazonec2Config"] = state?.amazonec2Config;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["azureConfig"] = state?.azureConfig;
+            resourceInputs["digitaloceanConfig"] = state?.digitaloceanConfig;
+            resourceInputs["fleetNamespace"] = state?.fleetNamespace;
+            resourceInputs["generateName"] = state?.generateName;
+            resourceInputs["harvesterConfig"] = state?.harvesterConfig;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["linodeConfig"] = state?.linodeConfig;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["openstackConfig"] = state?.openstackConfig;
+            resourceInputs["resourceVersion"] = state?.resourceVersion;
+            resourceInputs["vsphereConfig"] = state?.vsphereConfig;
         } else {
             const args = argsOrState as MachineConfigV2Args | undefined;
-            if ((!args || args.generateName === undefined) && !opts.urn) {
+            if (args?.generateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'generateName'");
             }
-            resourceInputs["amazonec2Config"] = args ? args.amazonec2Config : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["azureConfig"] = args ? args.azureConfig : undefined;
-            resourceInputs["digitaloceanConfig"] = args ? args.digitaloceanConfig : undefined;
-            resourceInputs["fleetNamespace"] = args ? args.fleetNamespace : undefined;
-            resourceInputs["generateName"] = args ? args.generateName : undefined;
-            resourceInputs["harvesterConfig"] = args ? args.harvesterConfig : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["linodeConfig"] = args ? args.linodeConfig : undefined;
-            resourceInputs["openstackConfig"] = args ? args.openstackConfig : undefined;
-            resourceInputs["vsphereConfig"] = args ? args.vsphereConfig : undefined;
+            resourceInputs["amazonec2Config"] = args?.amazonec2Config;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["azureConfig"] = args?.azureConfig;
+            resourceInputs["digitaloceanConfig"] = args?.digitaloceanConfig;
+            resourceInputs["fleetNamespace"] = args?.fleetNamespace;
+            resourceInputs["generateName"] = args?.generateName;
+            resourceInputs["harvesterConfig"] = args?.harvesterConfig;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["linodeConfig"] = args?.linodeConfig;
+            resourceInputs["openstackConfig"] = args?.openstackConfig;
+            resourceInputs["vsphereConfig"] = args?.vsphereConfig;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["resourceVersion"] = undefined /*out*/;

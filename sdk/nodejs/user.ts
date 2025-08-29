@@ -70,32 +70,32 @@ export class User extends pulumi.CustomResource {
     /**
      * Annotations for global role binding (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Labels for global role binding (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The user must change password at first login (bool)
      */
-    public readonly mustChangePassword!: pulumi.Output<boolean | undefined>;
+    declare public readonly mustChangePassword: pulumi.Output<boolean | undefined>;
     /**
      * The user full name (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The user password (string)
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * (Computed) The user principal IDs (list)
      */
-    public /*out*/ readonly principalIds!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly principalIds: pulumi.Output<string[]>;
     /**
      * The user username (string)
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -110,29 +110,29 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["mustChangePassword"] = state ? state.mustChangePassword : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["principalIds"] = state ? state.principalIds : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["mustChangePassword"] = state?.mustChangePassword;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["principalIds"] = state?.principalIds;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["mustChangePassword"] = args ? args.mustChangePassword : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["mustChangePassword"] = args?.mustChangePassword;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["username"] = args?.username;
             resourceInputs["principalIds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

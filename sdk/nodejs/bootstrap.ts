@@ -65,51 +65,51 @@ export class Bootstrap extends pulumi.CustomResource {
     /**
      * (Computed/Sensitive) Current password for Admin user (string)
      */
-    public /*out*/ readonly currentPassword!: pulumi.Output<string>;
+    declare public /*out*/ readonly currentPassword: pulumi.Output<string>;
     /**
      * Initial password for Admin user. Default: `admin` (string)
      */
-    public readonly initialPassword!: pulumi.Output<string | undefined>;
+    declare public readonly initialPassword: pulumi.Output<string | undefined>;
     /**
      * Password for Admin user or random generated if empty (string)
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * (Computed) Generated API temporary token as helper. Should be empty (string)
      */
-    public /*out*/ readonly tempToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly tempToken: pulumi.Output<string>;
     /**
      * (Computed) Generated API temporary token id as helper. Should be empty (string)
      */
-    public /*out*/ readonly tempTokenId!: pulumi.Output<string>;
+    declare public /*out*/ readonly tempTokenId: pulumi.Output<string>;
     /**
      * (Computed) Generated API token for Admin User (string)
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * (Computed) Generated API token id for Admin User (string)
      */
-    public /*out*/ readonly tokenId!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokenId: pulumi.Output<string>;
     /**
      * TTL in seconds for generated admin token. Default: `0`  (int)
      */
-    public readonly tokenTtl!: pulumi.Output<number | undefined>;
+    declare public readonly tokenTtl: pulumi.Output<number | undefined>;
     /**
      * Regenerate admin token. Default: `false` (bool)
      */
-    public readonly tokenUpdate!: pulumi.Output<boolean | undefined>;
+    declare public readonly tokenUpdate: pulumi.Output<boolean | undefined>;
     /**
      * Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
      */
-    public readonly uiDefaultLanding!: pulumi.Output<string | undefined>;
+    declare public readonly uiDefaultLanding: pulumi.Output<string | undefined>;
     /**
      * (Computed) URL set as server-url (string)
      */
-    public /*out*/ readonly url!: pulumi.Output<string>;
+    declare public /*out*/ readonly url: pulumi.Output<string>;
     /**
      * (Computed) Admin username (string)
      */
-    public /*out*/ readonly user!: pulumi.Output<string>;
+    declare public /*out*/ readonly user: pulumi.Output<string>;
 
     /**
      * Create a Bootstrap resource with the given unique name, arguments, and options.
@@ -124,25 +124,25 @@ export class Bootstrap extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BootstrapState | undefined;
-            resourceInputs["currentPassword"] = state ? state.currentPassword : undefined;
-            resourceInputs["initialPassword"] = state ? state.initialPassword : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["tempToken"] = state ? state.tempToken : undefined;
-            resourceInputs["tempTokenId"] = state ? state.tempTokenId : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
-            resourceInputs["tokenTtl"] = state ? state.tokenTtl : undefined;
-            resourceInputs["tokenUpdate"] = state ? state.tokenUpdate : undefined;
-            resourceInputs["uiDefaultLanding"] = state ? state.uiDefaultLanding : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["currentPassword"] = state?.currentPassword;
+            resourceInputs["initialPassword"] = state?.initialPassword;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["tempToken"] = state?.tempToken;
+            resourceInputs["tempTokenId"] = state?.tempTokenId;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["tokenId"] = state?.tokenId;
+            resourceInputs["tokenTtl"] = state?.tokenTtl;
+            resourceInputs["tokenUpdate"] = state?.tokenUpdate;
+            resourceInputs["uiDefaultLanding"] = state?.uiDefaultLanding;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as BootstrapArgs | undefined;
             resourceInputs["initialPassword"] = args?.initialPassword ? pulumi.secret(args.initialPassword) : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["tokenTtl"] = args ? args.tokenTtl : undefined;
-            resourceInputs["tokenUpdate"] = args ? args.tokenUpdate : undefined;
-            resourceInputs["uiDefaultLanding"] = args ? args.uiDefaultLanding : undefined;
+            resourceInputs["tokenTtl"] = args?.tokenTtl;
+            resourceInputs["tokenUpdate"] = args?.tokenUpdate;
+            resourceInputs["uiDefaultLanding"] = args?.uiDefaultLanding;
             resourceInputs["currentPassword"] = undefined /*out*/;
             resourceInputs["tempToken"] = undefined /*out*/;
             resourceInputs["tempTokenId"] = undefined /*out*/;

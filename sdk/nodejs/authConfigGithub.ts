@@ -53,47 +53,47 @@ export class AuthConfigGithub extends pulumi.CustomResource {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    public readonly accessMode!: pulumi.Output<string | undefined>;
+    declare public readonly accessMode: pulumi.Output<string | undefined>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
      */
-    public readonly allowedPrincipalIds!: pulumi.Output<string[] | undefined>;
+    declare public readonly allowedPrincipalIds: pulumi.Output<string[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Github auth Client ID (string)
      */
-    public readonly clientId!: pulumi.Output<string>;
+    declare public readonly clientId: pulumi.Output<string>;
     /**
      * Github auth Client secret (string)
      */
-    public readonly clientSecret!: pulumi.Output<string>;
+    declare public readonly clientSecret: pulumi.Output<string>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Github hostname to connect. Default `github.com` (string)
      */
-    public readonly hostname!: pulumi.Output<string | undefined>;
+    declare public readonly hostname: pulumi.Output<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * (Computed) The name of the resource (string)
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Enable TLS connection. Default `true` (bool)
      */
-    public readonly tls!: pulumi.Output<boolean | undefined>;
+    declare public readonly tls: pulumi.Output<boolean | undefined>;
     /**
      * (Computed) The type of the resource (string)
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a AuthConfigGithub resource with the given unique name, arguments, and options.
@@ -108,34 +108,34 @@ export class AuthConfigGithub extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthConfigGithubState | undefined;
-            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
-            resourceInputs["allowedPrincipalIds"] = state ? state.allowedPrincipalIds : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["tls"] = state ? state.tls : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["accessMode"] = state?.accessMode;
+            resourceInputs["allowedPrincipalIds"] = state?.allowedPrincipalIds;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["clientSecret"] = state?.clientSecret;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["tls"] = state?.tls;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AuthConfigGithubArgs | undefined;
-            if ((!args || args.clientId === undefined) && !opts.urn) {
+            if (args?.clientId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if ((!args || args.clientSecret === undefined) && !opts.urn) {
+            if (args?.clientSecret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clientSecret'");
             }
-            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
-            resourceInputs["allowedPrincipalIds"] = args ? args.allowedPrincipalIds : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["accessMode"] = args?.accessMode;
+            resourceInputs["allowedPrincipalIds"] = args?.allowedPrincipalIds;
+            resourceInputs["annotations"] = args?.annotations;
             resourceInputs["clientId"] = args?.clientId ? pulumi.secret(args.clientId) : undefined;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["hostname"] = args ? args.hostname : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["tls"] = args ? args.tls : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["hostname"] = args?.hostname;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["tls"] = args?.tls;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }

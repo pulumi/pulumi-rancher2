@@ -80,27 +80,27 @@ export class PodSecurityAdmissionConfigurationTemplate extends pulumi.CustomReso
     /**
      * Annotations of the resource (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
      */
-    public readonly defaults!: pulumi.Output<outputs.PodSecurityAdmissionConfigurationTemplateDefaults>;
+    declare public readonly defaults: pulumi.Output<outputs.PodSecurityAdmissionConfigurationTemplateDefaults>;
     /**
      * The description of the pod security admission configuration template (string)
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
      */
-    public readonly exemptions!: pulumi.Output<outputs.PodSecurityAdmissionConfigurationTemplateExemptions | undefined>;
+    declare public readonly exemptions: pulumi.Output<outputs.PodSecurityAdmissionConfigurationTemplateExemptions | undefined>;
     /**
      * Labels of the resource (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the pod security admission configuration template (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a PodSecurityAdmissionConfigurationTemplate resource with the given unique name, arguments, and options.
@@ -115,23 +115,23 @@ export class PodSecurityAdmissionConfigurationTemplate extends pulumi.CustomReso
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PodSecurityAdmissionConfigurationTemplateState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["defaults"] = state ? state.defaults : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["exemptions"] = state ? state.exemptions : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["defaults"] = state?.defaults;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["exemptions"] = state?.exemptions;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as PodSecurityAdmissionConfigurationTemplateArgs | undefined;
-            if ((!args || args.defaults === undefined) && !opts.urn) {
+            if (args?.defaults === undefined && !opts.urn) {
                 throw new Error("Missing required property 'defaults'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["defaults"] = args ? args.defaults : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["exemptions"] = args ? args.exemptions : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["defaults"] = args?.defaults;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["exemptions"] = args?.exemptions;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PodSecurityAdmissionConfigurationTemplate.__pulumiType, name, resourceInputs, opts);

@@ -85,72 +85,72 @@ export class AppV2 extends pulumi.CustomResource {
     /**
      * Annotations for the app v2 (map)
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * The app v2 chart name (string)
      */
-    public readonly chartName!: pulumi.Output<string>;
+    declare public readonly chartName: pulumi.Output<string>;
     /**
      * The app v2 chart version (string)
      */
-    public readonly chartVersion!: pulumi.Output<string>;
+    declare public readonly chartVersion: pulumi.Output<string>;
     /**
      * Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
      */
-    public readonly cleanupOnFail!: pulumi.Output<boolean | undefined>;
+    declare public readonly cleanupOnFail: pulumi.Output<boolean | undefined>;
     /**
      * The cluster id of the app (string)
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * (Computed) The cluster name of the app (string)
      */
-    public /*out*/ readonly clusterName!: pulumi.Output<string>;
-    public /*out*/ readonly deploymentValues!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterName: pulumi.Output<string>;
+    declare public /*out*/ readonly deploymentValues: pulumi.Output<string>;
     /**
      * Disable app v2 chart hooks. Default: `false` (bool)
      */
-    public readonly disableHooks!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableHooks: pulumi.Output<boolean | undefined>;
     /**
      * Disable app V2 Open API Validation. Default: `false` (bool)
      */
-    public readonly disableOpenApiValidation!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableOpenApiValidation: pulumi.Output<boolean | undefined>;
     /**
      * Force app V2 chart upgrade. Default: `false` (bool)
      */
-    public readonly forceUpgrade!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceUpgrade: pulumi.Output<boolean | undefined>;
     /**
      * Labels for the app v2 (map)
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The name of the app v2 (string)
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The namespace of the app v2 (string)
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * Deploy the app v2 within project ID (string)
      */
-    public readonly projectId!: pulumi.Output<string | undefined>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
      * Repo name (string)
      */
-    public readonly repoName!: pulumi.Output<string>;
+    declare public readonly repoName: pulumi.Output<string>;
     /**
      * System default registry providing images for app deployment (string)
      */
-    public readonly systemDefaultRegistry!: pulumi.Output<string>;
+    declare public readonly systemDefaultRegistry: pulumi.Output<string>;
     /**
      * The app v2 values yaml. Yaml format is required (string)
      */
-    public readonly values!: pulumi.Output<string | undefined>;
+    declare public readonly values: pulumi.Output<string | undefined>;
     /**
      * Wait until app is deployed. Default: `true` (bool)
      */
-    public readonly wait!: pulumi.Output<boolean | undefined>;
+    declare public readonly wait: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AppV2 resource with the given unique name, arguments, and options.
@@ -165,54 +165,54 @@ export class AppV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppV2State | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["chartName"] = state ? state.chartName : undefined;
-            resourceInputs["chartVersion"] = state ? state.chartVersion : undefined;
-            resourceInputs["cleanupOnFail"] = state ? state.cleanupOnFail : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["clusterName"] = state ? state.clusterName : undefined;
-            resourceInputs["deploymentValues"] = state ? state.deploymentValues : undefined;
-            resourceInputs["disableHooks"] = state ? state.disableHooks : undefined;
-            resourceInputs["disableOpenApiValidation"] = state ? state.disableOpenApiValidation : undefined;
-            resourceInputs["forceUpgrade"] = state ? state.forceUpgrade : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["repoName"] = state ? state.repoName : undefined;
-            resourceInputs["systemDefaultRegistry"] = state ? state.systemDefaultRegistry : undefined;
-            resourceInputs["values"] = state ? state.values : undefined;
-            resourceInputs["wait"] = state ? state.wait : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["chartName"] = state?.chartName;
+            resourceInputs["chartVersion"] = state?.chartVersion;
+            resourceInputs["cleanupOnFail"] = state?.cleanupOnFail;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["clusterName"] = state?.clusterName;
+            resourceInputs["deploymentValues"] = state?.deploymentValues;
+            resourceInputs["disableHooks"] = state?.disableHooks;
+            resourceInputs["disableOpenApiValidation"] = state?.disableOpenApiValidation;
+            resourceInputs["forceUpgrade"] = state?.forceUpgrade;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["repoName"] = state?.repoName;
+            resourceInputs["systemDefaultRegistry"] = state?.systemDefaultRegistry;
+            resourceInputs["values"] = state?.values;
+            resourceInputs["wait"] = state?.wait;
         } else {
             const args = argsOrState as AppV2Args | undefined;
-            if ((!args || args.chartName === undefined) && !opts.urn) {
+            if (args?.chartName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'chartName'");
             }
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.repoName === undefined) && !opts.urn) {
+            if (args?.repoName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repoName'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["chartName"] = args ? args.chartName : undefined;
-            resourceInputs["chartVersion"] = args ? args.chartVersion : undefined;
-            resourceInputs["cleanupOnFail"] = args ? args.cleanupOnFail : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["disableHooks"] = args ? args.disableHooks : undefined;
-            resourceInputs["disableOpenApiValidation"] = args ? args.disableOpenApiValidation : undefined;
-            resourceInputs["forceUpgrade"] = args ? args.forceUpgrade : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["repoName"] = args ? args.repoName : undefined;
-            resourceInputs["systemDefaultRegistry"] = args ? args.systemDefaultRegistry : undefined;
-            resourceInputs["values"] = args ? args.values : undefined;
-            resourceInputs["wait"] = args ? args.wait : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["chartName"] = args?.chartName;
+            resourceInputs["chartVersion"] = args?.chartVersion;
+            resourceInputs["cleanupOnFail"] = args?.cleanupOnFail;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["disableHooks"] = args?.disableHooks;
+            resourceInputs["disableOpenApiValidation"] = args?.disableOpenApiValidation;
+            resourceInputs["forceUpgrade"] = args?.forceUpgrade;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["repoName"] = args?.repoName;
+            resourceInputs["systemDefaultRegistry"] = args?.systemDefaultRegistry;
+            resourceInputs["values"] = args?.values;
+            resourceInputs["wait"] = args?.wait;
             resourceInputs["clusterName"] = undefined /*out*/;
             resourceInputs["deploymentValues"] = undefined /*out*/;
         }
