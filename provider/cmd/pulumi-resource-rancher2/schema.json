@@ -50,16 +50,16 @@
         "variables": {
             "accessKey": {
                 "type": "string",
-                "description": "API Key used to authenticate with the rancher server\n",
+                "description": "API Key used to authenticate with the rancher server",
                 "secret": true
             },
             "apiUrl": {
                 "type": "string",
-                "description": "The URL to the rancher API\n"
+                "description": "The URL to the rancher API"
             },
             "bootstrap": {
                 "type": "boolean",
-                "description": "Bootstrap rancher server\n",
+                "description": "Bootstrap rancher server",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -69,11 +69,11 @@
             },
             "caCerts": {
                 "type": "string",
-                "description": "CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false\n"
+                "description": "CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false"
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided\n",
+                "description": "Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -83,21 +83,21 @@
             },
             "retries": {
                 "type": "integer",
-                "description": "Rancher connection retries\n",
+                "description": "Rancher connection retries",
                 "deprecationMessage": "Use timeout instead"
             },
             "secretKey": {
                 "type": "string",
-                "description": "API secret used to authenticate with the rancher server\n",
+                "description": "API secret used to authenticate with the rancher server",
                 "secret": true
             },
             "timeout": {
                 "type": "string",
-                "description": "Rancher connection timeout (retry every 5s). Golang duration format, ex: \"60s\"\n"
+                "description": "Rancher connection timeout (retry every 5s). Golang duration format, ex: \"60s\""
             },
             "tokenKey": {
                 "type": "string",
-                "description": "API token used to authenticate with the rancher server\n",
+                "description": "API token used to authenticate with the rancher server",
                 "secret": true
             }
         },
@@ -19664,58 +19664,58 @@
         "properties": {
             "accessKey": {
                 "type": "string",
-                "description": "API Key used to authenticate with the rancher server\n",
+                "description": "API Key used to authenticate with the rancher server",
                 "secret": true
             },
             "apiUrl": {
                 "type": "string",
-                "description": "The URL to the rancher API\n"
+                "description": "The URL to the rancher API"
             },
             "bootstrap": {
                 "type": "boolean",
-                "description": "Bootstrap rancher server\n"
+                "description": "Bootstrap rancher server"
             },
             "caCerts": {
                 "type": "string",
-                "description": "CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false\n"
+                "description": "CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false"
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided\n"
+                "description": "Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided"
             },
             "retries": {
                 "type": "integer",
-                "description": "Rancher connection retries\n",
+                "description": "Rancher connection retries",
                 "deprecationMessage": "Use timeout instead"
             },
             "secretKey": {
                 "type": "string",
-                "description": "API secret used to authenticate with the rancher server\n",
+                "description": "API secret used to authenticate with the rancher server",
                 "secret": true
             },
             "timeout": {
                 "type": "string",
-                "description": "Rancher connection timeout (retry every 5s). Golang duration format, ex: \"60s\"\n"
+                "description": "Rancher connection timeout (retry every 5s). Golang duration format, ex: \"60s\""
             },
             "tokenKey": {
                 "type": "string",
-                "description": "API token used to authenticate with the rancher server\n",
+                "description": "API token used to authenticate with the rancher server",
                 "secret": true
             }
         },
         "inputProperties": {
             "accessKey": {
                 "type": "string",
-                "description": "API Key used to authenticate with the rancher server\n",
+                "description": "API Key used to authenticate with the rancher server",
                 "secret": true
             },
             "apiUrl": {
                 "type": "string",
-                "description": "The URL to the rancher API\n"
+                "description": "The URL to the rancher API"
             },
             "bootstrap": {
                 "type": "boolean",
-                "description": "Bootstrap rancher server\n",
+                "description": "Bootstrap rancher server",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -19725,11 +19725,11 @@
             },
             "caCerts": {
                 "type": "string",
-                "description": "CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false\n"
+                "description": "CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false"
             },
             "insecure": {
                 "type": "boolean",
-                "description": "Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided\n",
+                "description": "Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -19739,21 +19739,21 @@
             },
             "retries": {
                 "type": "integer",
-                "description": "Rancher connection retries\n",
+                "description": "Rancher connection retries",
                 "deprecationMessage": "Use timeout instead"
             },
             "secretKey": {
                 "type": "string",
-                "description": "API secret used to authenticate with the rancher server\n",
+                "description": "API secret used to authenticate with the rancher server",
                 "secret": true
             },
             "timeout": {
                 "type": "string",
-                "description": "Rancher connection timeout (retry every 5s). Golang duration format, ex: \"60s\"\n"
+                "description": "Rancher connection timeout (retry every 5s). Golang duration format, ex: \"60s\""
             },
             "tokenKey": {
                 "type": "string",
-                "description": "API token used to authenticate with the rancher server\n",
+                "description": "API token used to authenticate with the rancher server",
                 "secret": true
             }
         },
@@ -23147,15 +23147,15 @@
                 },
                 "exponentialBackoffMaxRetries": {
                     "type": "integer",
-                    "description": "Maximum number of retries before returning error\n"
+                    "description": "Maximum number of retries before returning error"
                 },
                 "exponentialBackoffMaxWait": {
                     "type": "integer",
-                    "description": "Maximum amount of seconds to wait before retrying\n"
+                    "description": "Maximum amount of seconds to wait before retrying"
                 },
                 "exponentialBackoffMinWait": {
                     "type": "integer",
-                    "description": "Minimum amount of seconds to wait before retrying\n"
+                    "description": "Minimum amount of seconds to wait before retrying"
                 },
                 "gitBranch": {
                     "type": "string",
@@ -23171,7 +23171,7 @@
                 },
                 "insecurePlainHttp": {
                     "type": "boolean",
-                    "description": "Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks\n"
+                    "description": "Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks"
                 },
                 "labels": {
                     "type": "object",
@@ -23243,15 +23243,15 @@
                 },
                 "exponentialBackoffMaxRetries": {
                     "type": "integer",
-                    "description": "Maximum number of retries before returning error\n"
+                    "description": "Maximum number of retries before returning error"
                 },
                 "exponentialBackoffMaxWait": {
                     "type": "integer",
-                    "description": "Maximum amount of seconds to wait before retrying\n"
+                    "description": "Maximum amount of seconds to wait before retrying"
                 },
                 "exponentialBackoffMinWait": {
                     "type": "integer",
-                    "description": "Minimum amount of seconds to wait before retrying\n"
+                    "description": "Minimum amount of seconds to wait before retrying"
                 },
                 "gitBranch": {
                     "type": "string",
@@ -23267,7 +23267,7 @@
                 },
                 "insecurePlainHttp": {
                     "type": "boolean",
-                    "description": "Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks\n"
+                    "description": "Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks"
                 },
                 "labels": {
                     "type": "object",
@@ -23329,15 +23329,15 @@
                     },
                     "exponentialBackoffMaxRetries": {
                         "type": "integer",
-                        "description": "Maximum number of retries before returning error\n"
+                        "description": "Maximum number of retries before returning error"
                     },
                     "exponentialBackoffMaxWait": {
                         "type": "integer",
-                        "description": "Maximum amount of seconds to wait before retrying\n"
+                        "description": "Maximum amount of seconds to wait before retrying"
                     },
                     "exponentialBackoffMinWait": {
                         "type": "integer",
-                        "description": "Minimum amount of seconds to wait before retrying\n"
+                        "description": "Minimum amount of seconds to wait before retrying"
                     },
                     "gitBranch": {
                         "type": "string",
@@ -23353,7 +23353,7 @@
                     },
                     "insecurePlainHttp": {
                         "type": "boolean",
-                        "description": "Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks\n"
+                        "description": "Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks"
                     },
                     "labels": {
                         "type": "object",
@@ -24761,7 +24761,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Cluster template description\n"
+                    "description": "Cluster template description"
                 },
                 "labels": {
                     "type": "object",
@@ -24806,7 +24806,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Cluster template description\n"
+                    "description": "Cluster template description"
                 },
                 "labels": {
                     "type": "object",
@@ -24850,7 +24850,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "Cluster template description\n"
+                        "description": "Cluster template description"
                     },
                     "labels": {
                         "type": "object",
@@ -25360,7 +25360,7 @@
                 },
                 "renew": {
                     "type": "boolean",
-                    "description": "Renew expired or disabled token\n"
+                    "description": "Renew expired or disabled token"
                 },
                 "secretKey": {
                     "type": "string",
@@ -25442,7 +25442,7 @@
                 },
                 "renew": {
                     "type": "boolean",
-                    "description": "Renew expired or disabled token\n",
+                    "description": "Renew expired or disabled token",
                     "willReplaceOnChanges": true
                 },
                 "ttl": {
@@ -25511,7 +25511,7 @@
                     },
                     "renew": {
                         "type": "boolean",
-                        "description": "Renew expired or disabled token\n",
+                        "description": "Renew expired or disabled token",
                         "willReplaceOnChanges": true
                     },
                     "secretKey": {
@@ -25831,7 +25831,7 @@
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "Global role uuid\n"
+                    "description": "Global role uuid"
                 }
             },
             "required": [
@@ -25934,7 +25934,7 @@
                     },
                     "uuid": {
                         "type": "string",
-                        "description": "Global role uuid\n"
+                        "description": "Global role uuid"
                     }
                 },
                 "type": "object"
@@ -28666,7 +28666,7 @@
                 },
                 "renew": {
                     "type": "boolean",
-                    "description": "Renew expired or disabled token\n"
+                    "description": "Renew expired or disabled token"
                 },
                 "secretKey": {
                     "type": "string",
@@ -28730,7 +28730,7 @@
                 },
                 "renew": {
                     "type": "boolean",
-                    "description": "Renew expired or disabled token\n",
+                    "description": "Renew expired or disabled token",
                     "willReplaceOnChanges": true
                 },
                 "ttl": {
@@ -28784,7 +28784,7 @@
                     },
                     "renew": {
                         "type": "boolean",
-                        "description": "Renew expired or disabled token\n",
+                        "description": "Renew expired or disabled token",
                         "willReplaceOnChanges": true
                     },
                     "secretKey": {
@@ -29062,7 +29062,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "insecure": {
@@ -29174,7 +29174,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -29232,7 +29232,7 @@
                         "type": "object"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -29370,7 +29370,7 @@
                         "description": "(Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)\n"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "k3sConfig": {
@@ -29489,7 +29489,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -29579,7 +29579,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -29669,7 +29669,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -29774,7 +29774,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "kubeConfig": {
@@ -29869,7 +29869,7 @@
                         "type": "object"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "immutable": {
@@ -29949,7 +29949,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30026,7 +30026,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "inheritedClusterRoles": {
@@ -30113,7 +30113,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30182,7 +30182,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30266,7 +30266,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30365,7 +30365,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30500,7 +30500,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30597,7 +30597,7 @@
                         "description": "(Computed) The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)\n"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30646,7 +30646,7 @@
                 "description": "A collection of values returned by getPrincipal.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -30705,7 +30705,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30784,7 +30784,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30866,7 +30866,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -30976,7 +30976,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -31074,7 +31074,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "labels": {
@@ -31151,7 +31151,7 @@
                         "type": "object"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "immutable": {
@@ -31213,7 +31213,7 @@
                 "description": "A collection of values returned by getSetting.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -31270,7 +31270,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "k8sProvisioner": {
@@ -31366,7 +31366,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isExternal": {
