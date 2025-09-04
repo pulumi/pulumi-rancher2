@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Azure tenant ID to use (string)
+        /// Required if `tenant_name` not provided. (string)
         /// </summary>
         public readonly string? TenantId;
         /// <summary>

@@ -19,6 +19,21 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterOkeConfigArgs Empty = new ClusterOkeConfigArgs();
 
     /**
+     * Optionally specify a cluster type of basic or enhanced
+     * 
+     */
+    @Import(name="clusterType")
+    private @Nullable Output<String> clusterType;
+
+    /**
+     * @return Optionally specify a cluster type of basic or enhanced
+     * 
+     */
+    public Optional<Output<String>> clusterType() {
+        return Optional.ofNullable(this.clusterType);
+    }
+
+    /**
      * The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      * 
      */
@@ -31,6 +46,21 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
      */
     public Output<String> compartmentId() {
         return this.compartmentId;
+    }
+
+    /**
+     * The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+     * 
+     */
+    @Import(name="controlPlaneSubnetName")
+    private @Nullable Output<String> controlPlaneSubnetName;
+
+    /**
+     * @return The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+     * 
+     */
+    public Optional<Output<String>> controlPlaneSubnetName() {
+        return Optional.ofNullable(this.controlPlaneSubnetName);
     }
 
     /**
@@ -109,18 +139,48 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The optional grace period in minutes to allow cordon and drain to complete successfuly
+     * 
+     */
+    @Import(name="evictionGraceDuration")
+    private @Nullable Output<String> evictionGraceDuration;
+
+    /**
+     * @return The optional grace period in minutes to allow cordon and drain to complete successfuly
+     * 
+     */
+    public Optional<Output<String>> evictionGraceDuration() {
+        return Optional.ofNullable(this.evictionGraceDuration);
+    }
+
+    /**
      * The fingerprint corresponding to the specified user&#39;s private API Key
      * 
      */
-    @Import(name="fingerprint", required=true)
-    private Output<String> fingerprint;
+    @Import(name="fingerprint")
+    private @Nullable Output<String> fingerprint;
 
     /**
      * @return The fingerprint corresponding to the specified user&#39;s private API Key
      * 
      */
-    public Output<String> fingerprint() {
-        return this.fingerprint;
+    public Optional<Output<String>> fingerprint() {
+        return Optional.ofNullable(this.fingerprint);
+    }
+
+    /**
+     * Optional amount of memory in GB for nodes (requires flexible node_shape)
+     * 
+     */
+    @Import(name="flexMemoryInGbs")
+    private @Nullable Output<Integer> flexMemoryInGbs;
+
+    /**
+     * @return Optional amount of memory in GB for nodes (requires flexible node_shape)
+     * 
+     */
+    public Optional<Output<Integer>> flexMemoryInGbs() {
+        return Optional.ofNullable(this.flexMemoryInGbs);
     }
 
     /**
@@ -139,6 +199,36 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+     * 
+     */
+    @Import(name="forceDeleteAfterGraceDuration")
+    private @Nullable Output<Boolean> forceDeleteAfterGraceDuration;
+
+    /**
+     * @return Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+     * 
+     */
+    public Optional<Output<Boolean>> forceDeleteAfterGraceDuration() {
+        return Optional.ofNullable(this.forceDeleteAfterGraceDuration);
+    }
+
+    /**
+     * Optional specify a comma separated list of master encryption key OCID(s) to verify images
+     * 
+     */
+    @Import(name="imageVerificationKmsKeyId")
+    private @Nullable Output<String> imageVerificationKmsKeyId;
+
+    /**
+     * @return Optional specify a comma separated list of master encryption key OCID(s) to verify images
+     * 
+     */
+    public Optional<Output<String>> imageVerificationKmsKeyId() {
+        return Optional.ofNullable(this.imageVerificationKmsKeyId);
+    }
+
+    /**
      * Optional specify the OCID of the KMS Vault master key
      * 
      */
@@ -154,14 +244,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
      * 
      */
     @Import(name="kubernetesVersion", required=true)
     private Output<String> kubernetesVersion;
 
     /**
-     * @return The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+     * @return The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
      * 
      */
     public Output<String> kubernetesVersion() {
@@ -244,14 +334,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional name for node pool subnet
+     * Optional pre-existing subnet (public or private) for nodes
      * 
      */
     @Import(name="nodePoolSubnetName")
     private @Nullable Output<String> nodePoolSubnetName;
 
     /**
-     * @return Optional name for node pool subnet
+     * @return Optional pre-existing subnet (public or private) for nodes
      * 
      */
     public Optional<Output<String>> nodePoolSubnetName() {
@@ -289,6 +379,21 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+     * 
+     */
+    @Import(name="nodeUserDataContents")
+    private @Nullable Output<String> nodeUserDataContents;
+
+    /**
+     * @return The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+     * 
+     */
+    public Optional<Output<String>> nodeUserDataContents() {
+        return Optional.ofNullable(this.nodeUserDataContents);
+    }
+
+    /**
      * Optional specify the pod CIDR, defaults to 10.244.0.0/16
      * 
      */
@@ -304,18 +409,48 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+     * 
+     */
+    @Import(name="podNetwork")
+    private @Nullable Output<String> podNetwork;
+
+    /**
+     * @return Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+     * 
+     */
+    public Optional<Output<String>> podNetwork() {
+        return Optional.ofNullable(this.podNetwork);
+    }
+
+    /**
+     * The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+     * 
+     */
+    @Import(name="podSubnetName")
+    private @Nullable Output<String> podSubnetName;
+
+    /**
+     * @return The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+     * 
+     */
+    public Optional<Output<String>> podSubnetName() {
+        return Optional.ofNullable(this.podSubnetName);
+    }
+
+    /**
      * The private API key file contents for the specified user, in PEM format
      * 
      */
-    @Import(name="privateKeyContents", required=true)
-    private Output<String> privateKeyContents;
+    @Import(name="privateKeyContents")
+    private @Nullable Output<String> privateKeyContents;
 
     /**
      * @return The private API key file contents for the specified user, in PEM format
      * 
      */
-    public Output<String> privateKeyContents() {
-        return this.privateKeyContents;
+    public Optional<Output<String>> privateKeyContents() {
+        return Optional.ofNullable(this.privateKeyContents);
     }
 
     /**
@@ -442,15 +577,15 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
      * The OCID of a user who has access to the tenancy/compartment
      * 
      */
-    @Import(name="userOcid", required=true)
-    private Output<String> userOcid;
+    @Import(name="userOcid")
+    private @Nullable Output<String> userOcid;
 
     /**
      * @return The OCID of a user who has access to the tenancy/compartment
      * 
      */
-    public Output<String> userOcid() {
-        return this.userOcid;
+    public Optional<Output<String>> userOcid() {
+        return Optional.ofNullable(this.userOcid);
     }
 
     /**
@@ -501,14 +636,20 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     private ClusterOkeConfigArgs() {}
 
     private ClusterOkeConfigArgs(ClusterOkeConfigArgs $) {
+        this.clusterType = $.clusterType;
         this.compartmentId = $.compartmentId;
+        this.controlPlaneSubnetName = $.controlPlaneSubnetName;
         this.customBootVolumeSize = $.customBootVolumeSize;
         this.description = $.description;
         this.enableKubernetesDashboard = $.enableKubernetesDashboard;
         this.enablePrivateControlPlane = $.enablePrivateControlPlane;
         this.enablePrivateNodes = $.enablePrivateNodes;
+        this.evictionGraceDuration = $.evictionGraceDuration;
         this.fingerprint = $.fingerprint;
+        this.flexMemoryInGbs = $.flexMemoryInGbs;
         this.flexOcpus = $.flexOcpus;
+        this.forceDeleteAfterGraceDuration = $.forceDeleteAfterGraceDuration;
+        this.imageVerificationKmsKeyId = $.imageVerificationKmsKeyId;
         this.kmsKeyId = $.kmsKeyId;
         this.kubernetesVersion = $.kubernetesVersion;
         this.limitNodeCount = $.limitNodeCount;
@@ -519,7 +660,10 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         this.nodePoolSubnetName = $.nodePoolSubnetName;
         this.nodePublicKeyContents = $.nodePublicKeyContents;
         this.nodeShape = $.nodeShape;
+        this.nodeUserDataContents = $.nodeUserDataContents;
         this.podCidr = $.podCidr;
+        this.podNetwork = $.podNetwork;
+        this.podSubnetName = $.podSubnetName;
         this.privateKeyContents = $.privateKeyContents;
         this.privateKeyPassphrase = $.privateKeyPassphrase;
         this.quantityOfNodeSubnets = $.quantityOfNodeSubnets;
@@ -554,6 +698,27 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param clusterType Optionally specify a cluster type of basic or enhanced
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterType(@Nullable Output<String> clusterType) {
+            $.clusterType = clusterType;
+            return this;
+        }
+
+        /**
+         * @param clusterType Optionally specify a cluster type of basic or enhanced
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterType(String clusterType) {
+            return clusterType(Output.of(clusterType));
+        }
+
+        /**
          * @param compartmentId The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
          * 
          * @return builder
@@ -572,6 +737,27 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder compartmentId(String compartmentId) {
             return compartmentId(Output.of(compartmentId));
+        }
+
+        /**
+         * @param controlPlaneSubnetName The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneSubnetName(@Nullable Output<String> controlPlaneSubnetName) {
+            $.controlPlaneSubnetName = controlPlaneSubnetName;
+            return this;
+        }
+
+        /**
+         * @param controlPlaneSubnetName The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneSubnetName(String controlPlaneSubnetName) {
+            return controlPlaneSubnetName(Output.of(controlPlaneSubnetName));
         }
 
         /**
@@ -680,12 +866,33 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param evictionGraceDuration The optional grace period in minutes to allow cordon and drain to complete successfuly
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionGraceDuration(@Nullable Output<String> evictionGraceDuration) {
+            $.evictionGraceDuration = evictionGraceDuration;
+            return this;
+        }
+
+        /**
+         * @param evictionGraceDuration The optional grace period in minutes to allow cordon and drain to complete successfuly
+         * 
+         * @return builder
+         * 
+         */
+        public Builder evictionGraceDuration(String evictionGraceDuration) {
+            return evictionGraceDuration(Output.of(evictionGraceDuration));
+        }
+
+        /**
          * @param fingerprint The fingerprint corresponding to the specified user&#39;s private API Key
          * 
          * @return builder
          * 
          */
-        public Builder fingerprint(Output<String> fingerprint) {
+        public Builder fingerprint(@Nullable Output<String> fingerprint) {
             $.fingerprint = fingerprint;
             return this;
         }
@@ -698,6 +905,27 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder fingerprint(String fingerprint) {
             return fingerprint(Output.of(fingerprint));
+        }
+
+        /**
+         * @param flexMemoryInGbs Optional amount of memory in GB for nodes (requires flexible node_shape)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexMemoryInGbs(@Nullable Output<Integer> flexMemoryInGbs) {
+            $.flexMemoryInGbs = flexMemoryInGbs;
+            return this;
+        }
+
+        /**
+         * @param flexMemoryInGbs Optional amount of memory in GB for nodes (requires flexible node_shape)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flexMemoryInGbs(Integer flexMemoryInGbs) {
+            return flexMemoryInGbs(Output.of(flexMemoryInGbs));
         }
 
         /**
@@ -722,6 +950,48 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param forceDeleteAfterGraceDuration Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteAfterGraceDuration(@Nullable Output<Boolean> forceDeleteAfterGraceDuration) {
+            $.forceDeleteAfterGraceDuration = forceDeleteAfterGraceDuration;
+            return this;
+        }
+
+        /**
+         * @param forceDeleteAfterGraceDuration Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDeleteAfterGraceDuration(Boolean forceDeleteAfterGraceDuration) {
+            return forceDeleteAfterGraceDuration(Output.of(forceDeleteAfterGraceDuration));
+        }
+
+        /**
+         * @param imageVerificationKmsKeyId Optional specify a comma separated list of master encryption key OCID(s) to verify images
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageVerificationKmsKeyId(@Nullable Output<String> imageVerificationKmsKeyId) {
+            $.imageVerificationKmsKeyId = imageVerificationKmsKeyId;
+            return this;
+        }
+
+        /**
+         * @param imageVerificationKmsKeyId Optional specify a comma separated list of master encryption key OCID(s) to verify images
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageVerificationKmsKeyId(String imageVerificationKmsKeyId) {
+            return imageVerificationKmsKeyId(Output.of(imageVerificationKmsKeyId));
+        }
+
+        /**
          * @param kmsKeyId Optional specify the OCID of the KMS Vault master key
          * 
          * @return builder
@@ -743,7 +1013,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
          * 
          * @return builder
          * 
@@ -754,7 +1024,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+         * @param kubernetesVersion The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
          * 
          * @return builder
          * 
@@ -869,7 +1139,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodePoolSubnetName Optional name for node pool subnet
+         * @param nodePoolSubnetName Optional pre-existing subnet (public or private) for nodes
          * 
          * @return builder
          * 
@@ -880,7 +1150,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodePoolSubnetName Optional name for node pool subnet
+         * @param nodePoolSubnetName Optional pre-existing subnet (public or private) for nodes
          * 
          * @return builder
          * 
@@ -932,6 +1202,27 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param nodeUserDataContents The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeUserDataContents(@Nullable Output<String> nodeUserDataContents) {
+            $.nodeUserDataContents = nodeUserDataContents;
+            return this;
+        }
+
+        /**
+         * @param nodeUserDataContents The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeUserDataContents(String nodeUserDataContents) {
+            return nodeUserDataContents(Output.of(nodeUserDataContents));
+        }
+
+        /**
          * @param podCidr Optional specify the pod CIDR, defaults to 10.244.0.0/16
          * 
          * @return builder
@@ -953,12 +1244,54 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param podNetwork Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podNetwork(@Nullable Output<String> podNetwork) {
+            $.podNetwork = podNetwork;
+            return this;
+        }
+
+        /**
+         * @param podNetwork Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podNetwork(String podNetwork) {
+            return podNetwork(Output.of(podNetwork));
+        }
+
+        /**
+         * @param podSubnetName The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podSubnetName(@Nullable Output<String> podSubnetName) {
+            $.podSubnetName = podSubnetName;
+            return this;
+        }
+
+        /**
+         * @param podSubnetName The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podSubnetName(String podSubnetName) {
+            return podSubnetName(Output.of(podSubnetName));
+        }
+
+        /**
          * @param privateKeyContents The private API key file contents for the specified user, in PEM format
          * 
          * @return builder
          * 
          */
-        public Builder privateKeyContents(Output<String> privateKeyContents) {
+        public Builder privateKeyContents(@Nullable Output<String> privateKeyContents) {
             $.privateKeyContents = privateKeyContents;
             return this;
         }
@@ -1147,7 +1480,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder userOcid(Output<String> userOcid) {
+        public Builder userOcid(@Nullable Output<String> userOcid) {
             $.userOcid = userOcid;
             return this;
         }
@@ -1229,9 +1562,6 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
             if ($.compartmentId == null) {
                 throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "compartmentId");
             }
-            if ($.fingerprint == null) {
-                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "fingerprint");
-            }
             if ($.kubernetesVersion == null) {
                 throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "kubernetesVersion");
             }
@@ -1241,17 +1571,11 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
             if ($.nodeShape == null) {
                 throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "nodeShape");
             }
-            if ($.privateKeyContents == null) {
-                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "privateKeyContents");
-            }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "region");
             }
             if ($.tenancyId == null) {
                 throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "tenancyId");
-            }
-            if ($.userOcid == null) {
-                throw new MissingRequiredPropertyException("ClusterOkeConfigArgs", "userOcid");
             }
             return $;
         }

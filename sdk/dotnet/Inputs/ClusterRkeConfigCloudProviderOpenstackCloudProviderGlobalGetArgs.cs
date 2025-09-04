@@ -72,7 +72,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _tenantId;
 
         /// <summary>
-        /// Azure tenant ID to use (string)
+        /// Required if `tenant_name` not provided. (string)
         /// </summary>
         public Input<string>? TenantId
         {

@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-rancher2/provider/v9
+module github.com/pulumi/pulumi-rancher2/provider/v10
 
 go 1.23.11
 
@@ -82,7 +82,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.113.0
 	github.com/pulumi/pulumi/sdk/v3 v3.190.0
-	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20250703175014-ea002d985665
+	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20250805185952-5a5fda9b2eb8
 )
 
 require (

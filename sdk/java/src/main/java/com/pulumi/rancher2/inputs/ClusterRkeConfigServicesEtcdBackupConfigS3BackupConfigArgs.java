@@ -17,14 +17,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
     public static final ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs Empty = new ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs();
 
     /**
-     * The AWS Client ID to use (string)
+     * Access key for S3 service (string)
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return The AWS Client ID to use (string)
+     * @return Access key for S3 service (string)
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -107,14 +107,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
     }
 
     /**
-     * The AWS Client Secret associated with the Client ID (string)
+     * Secret key for S3 service (string)
      * 
      */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
     /**
-     * @return The AWS Client Secret associated with the Client ID (string)
+     * @return Secret key for S3 service (string)
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -152,7 +152,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param accessKey The AWS Client ID to use (string)
+         * @param accessKey Access key for S3 service (string)
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param accessKey The AWS Client ID to use (string)
+         * @param accessKey Access key for S3 service (string)
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
+         * @param secretKey Secret key for S3 service (string)
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs ex
         }
 
         /**
-         * @param secretKey The AWS Client Secret associated with the Client ID (string)
+         * @param secretKey Secret key for S3 service (string)
          * 
          * @return builder
          * 

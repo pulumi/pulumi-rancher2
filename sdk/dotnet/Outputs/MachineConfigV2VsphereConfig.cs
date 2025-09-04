@@ -86,6 +86,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
+        /// Type of virtual machine OS in vSphere
+        /// </summary>
+        public readonly string? Os;
+        /// <summary>
         /// vSphere password
         /// </summary>
         public readonly string? Password;
@@ -180,6 +184,8 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableArray<string> networks,
 
+            string? os,
+
             string? password,
 
             string? pool,
@@ -226,6 +232,7 @@ namespace Pulumi.Rancher2.Outputs
             Hostsystem = hostsystem;
             MemorySize = memorySize;
             Networks = networks;
+            Os = os;
             Password = password;
             Pool = pool;
             SshPassword = sshPassword;

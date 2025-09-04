@@ -13,10 +13,22 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterOkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optionally specify a cluster type of basic or enhanced
+        /// </summary>
+        [Input("clusterType")]
+        public Input<string>? ClusterType { get; set; }
+
+        /// <summary>
         /// The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
         /// </summary>
         [Input("compartmentId", required: true)]
         public Input<string> CompartmentId { get; set; } = null!;
+
+        /// <summary>
+        /// The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+        /// </summary>
+        [Input("controlPlaneSubnetName")]
+        public Input<string>? ControlPlaneSubnetName { get; set; }
 
         /// <summary>
         /// An optional custom boot volume size (in GB) for the nodes
@@ -49,10 +61,22 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? EnablePrivateNodes { get; set; }
 
         /// <summary>
+        /// The optional grace period in minutes to allow cordon and drain to complete successfuly
+        /// </summary>
+        [Input("evictionGraceDuration")]
+        public Input<string>? EvictionGraceDuration { get; set; }
+
+        /// <summary>
         /// The fingerprint corresponding to the specified user's private API Key
         /// </summary>
-        [Input("fingerprint", required: true)]
-        public Input<string> Fingerprint { get; set; } = null!;
+        [Input("fingerprint")]
+        public Input<string>? Fingerprint { get; set; }
+
+        /// <summary>
+        /// Optional amount of memory in GB for nodes (requires flexible node_shape)
+        /// </summary>
+        [Input("flexMemoryInGbs")]
+        public Input<int>? FlexMemoryInGbs { get; set; }
 
         /// <summary>
         /// Optional number of OCPUs for nodes (requires flexible node_shape)
@@ -60,24 +84,26 @@ namespace Pulumi.Rancher2.Inputs
         [Input("flexOcpus")]
         public Input<int>? FlexOcpus { get; set; }
 
-        [Input("kmsKeyId")]
-        private Input<string>? _kmsKeyId;
+        /// <summary>
+        /// Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+        /// </summary>
+        [Input("forceDeleteAfterGraceDuration")]
+        public Input<bool>? ForceDeleteAfterGraceDuration { get; set; }
+
+        /// <summary>
+        /// Optional specify a comma separated list of master encryption key OCID(s) to verify images
+        /// </summary>
+        [Input("imageVerificationKmsKeyId")]
+        public Input<string>? ImageVerificationKmsKeyId { get; set; }
 
         /// <summary>
         /// Optional specify the OCID of the KMS Vault master key
         /// </summary>
-        public Input<string>? KmsKeyId
-        {
-            get => _kmsKeyId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _kmsKeyId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("kmsKeyId")]
+        public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+        /// The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
         /// </summary>
         [Input("kubernetesVersion", required: true)]
         public Input<string> KubernetesVersion { get; set; } = null!;
@@ -113,7 +139,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? NodePoolDnsDomainName { get; set; }
 
         /// <summary>
-        /// Optional name for node pool subnet
+        /// Optional pre-existing subnet (public or private) for nodes
         /// </summary>
         [Input("nodePoolSubnetName")]
         public Input<string>? NodePoolSubnetName { get; set; }
@@ -131,12 +157,30 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> NodeShape { get; set; } = null!;
 
         /// <summary>
+        /// The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+        /// </summary>
+        [Input("nodeUserDataContents")]
+        public Input<string>? NodeUserDataContents { get; set; }
+
+        /// <summary>
         /// Optional specify the pod CIDR, defaults to 10.244.0.0/16
         /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
 
-        [Input("privateKeyContents", required: true)]
+        /// <summary>
+        /// Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+        /// </summary>
+        [Input("podNetwork")]
+        public Input<string>? PodNetwork { get; set; }
+
+        /// <summary>
+        /// The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+        /// </summary>
+        [Input("podSubnetName")]
+        public Input<string>? PodSubnetName { get; set; }
+
+        [Input("privateKeyContents")]
         private Input<string>? _privateKeyContents;
 
         /// <summary>
@@ -213,8 +257,8 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// The OCID of a user who has access to the tenancy/compartment
         /// </summary>
-        [Input("userOcid", required: true)]
-        public Input<string> UserOcid { get; set; } = null!;
+        [Input("userOcid")]
+        public Input<string>? UserOcid { get; set; }
 
         /// <summary>
         /// The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.

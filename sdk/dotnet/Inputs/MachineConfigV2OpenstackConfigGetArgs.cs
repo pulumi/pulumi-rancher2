@@ -259,7 +259,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? UserDomainName { get; set; }
 
         /// <summary>
-        /// OpenStack username (string)
+        /// The username to be set when logging into the virtual machines (string)
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

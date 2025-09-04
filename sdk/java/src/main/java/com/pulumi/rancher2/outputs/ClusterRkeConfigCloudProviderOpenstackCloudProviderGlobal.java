@@ -43,7 +43,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     private @Nullable String region;
     /**
-     * @return Azure tenant ID to use (string)
+     * @return Required if `tenant_name` not provided. (string)
      * 
      */
     private @Nullable String tenantId;
@@ -107,7 +107,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Azure tenant ID to use (string)
+     * @return Required if `tenant_name` not provided. (string)
      * 
      */
     public Optional<String> tenantId() {

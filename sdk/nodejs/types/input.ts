@@ -151,167 +151,6 @@ export interface ClusterAgentEnvVar {
     value: pulumi.Input<string>;
 }
 
-export interface ClusterAksConfig {
-    /**
-     * The secret of an Azure Active Directory server application
-     */
-    aadServerAppSecret?: pulumi.Input<string>;
-    /**
-     * The ID of an Azure Active Directory tenant
-     */
-    aadTenantId?: pulumi.Input<string>;
-    /**
-     * The ID of an Azure Active Directory client application of type "Native". This application is for user login via kubectl
-     */
-    addClientAppId?: pulumi.Input<string>;
-    /**
-     * The ID of an Azure Active Directory server application of type "Web app/API". This application represents the managed cluster's apiserver (Server application)
-     */
-    addServerAppId?: pulumi.Input<string>;
-    /**
-     * The administrator username to use for Linux hosts
-     */
-    adminUsername?: pulumi.Input<string>;
-    /**
-     * DNS prefix to be used to create the FQDN for the agent pool
-     */
-    agentDnsPrefix: pulumi.Input<string>;
-    /**
-     * GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the "agent vm size" specified
-     */
-    agentOsDiskSize?: pulumi.Input<number>;
-    /**
-     * Name for the agent pool, upto 12 alphanumeric characters
-     */
-    agentPoolName?: pulumi.Input<string>;
-    /**
-     * Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
-     */
-    agentStorageProfile?: pulumi.Input<string>;
-    /**
-     * Size of machine in the agent pool
-     */
-    agentVmSize?: pulumi.Input<string>;
-    /**
-     * Different authentication API url to use
-     */
-    authBaseUrl?: pulumi.Input<string>;
-    /**
-     * Different resource management API url to use
-     */
-    baseUrl?: pulumi.Input<string>;
-    /**
-     * Azure client ID to use
-     */
-    clientId: pulumi.Input<string>;
-    /**
-     * Azure client secret associated with the "client id"
-     */
-    clientSecret: pulumi.Input<string>;
-    /**
-     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
-     */
-    count?: pulumi.Input<number>;
-    /**
-     * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in "service cidr"
-     */
-    dnsServiceIp?: pulumi.Input<string>;
-    /**
-     * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in "service cidr"
-     */
-    dockerBridgeCidr?: pulumi.Input<string>;
-    /**
-     * Enable the Kubernetes ingress with automatic public DNS name creation
-     */
-    enableHttpApplicationRouting?: pulumi.Input<boolean>;
-    /**
-     * Turn on Azure Log Analytics monitoring. Uses the Log Analytics "Default" workspace if it exists, else creates one. if using an existing workspace, specifies "log analytics workspace resource id"
-     */
-    enableMonitoring?: pulumi.Input<boolean>;
-    /**
-     * Specify the version of Kubernetes
-     */
-    kubernetesVersion: pulumi.Input<string>;
-    /**
-     * Load balancer type (basic | standard). Must be standard for auto-scaling
-     */
-    loadBalancerSku?: pulumi.Input<string>;
-    /**
-     * Azure Kubernetes cluster location
-     */
-    location?: pulumi.Input<string>;
-    /**
-     * The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}'
-     */
-    logAnalyticsWorkspace?: pulumi.Input<string>;
-    /**
-     * The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group
-     */
-    logAnalyticsWorkspaceResourceGroup?: pulumi.Input<string>;
-    /**
-     * DNS prefix to use the Kubernetes cluster control pane
-     */
-    masterDnsPrefix: pulumi.Input<string>;
-    /**
-     * Maximum number of pods that can run on a node
-     */
-    maxPods?: pulumi.Input<number>;
-    /**
-     * Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
-     */
-    networkPlugin?: pulumi.Input<string>;
-    /**
-     * Network policy used for building Kubernetes network. Chooses from [calico]
-     */
-    networkPolicy?: pulumi.Input<string>;
-    /**
-     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when "network plugin" is specified in "kubenet".
-     */
-    podCidr?: pulumi.Input<string>;
-    /**
-     * The name of the Cluster resource group
-     */
-    resourceGroup: pulumi.Input<string>;
-    /**
-     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
-     */
-    serviceCidr?: pulumi.Input<string>;
-    /**
-     * Contents of the SSH public key used to authenticate with Linux hosts
-     */
-    sshPublicKeyContents: pulumi.Input<string>;
-    /**
-     * The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
-     */
-    subnet: pulumi.Input<string>;
-    /**
-     * Subscription credentials which uniquely identify Microsoft Azure subscription
-     */
-    subscriptionId: pulumi.Input<string>;
-    /**
-     * Tags for Kubernetes cluster. For example, foo=bar
-     *
-     * @deprecated Use tags argument instead as []string
-     */
-    tag?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Azure tenant ID to use
-     */
-    tenantId: pulumi.Input<string>;
-    /**
-     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-     */
-    virtualNetwork: pulumi.Input<string>;
-    /**
-     * The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-     */
-    virtualNetworkResourceGroup: pulumi.Input<string>;
-}
-
 export interface ClusterAksConfigV2 {
     /**
      * The AKS auth base url
@@ -698,85 +537,6 @@ export interface ClusterClusterTemplateQuestion {
     variable: pulumi.Input<string>;
 }
 
-export interface ClusterEksConfig {
-    /**
-     * The AWS Client ID to use
-     */
-    accessKey: pulumi.Input<string>;
-    /**
-     * A custom AMI ID to use for the worker nodes instead of the default
-     */
-    ami?: pulumi.Input<string>;
-    /**
-     * Associate public ip EKS worker nodes
-     */
-    associateWorkerNodePublicIp?: pulumi.Input<boolean>;
-    /**
-     * The desired number of worker nodes
-     */
-    desiredNodes?: pulumi.Input<number>;
-    /**
-     * Enables EBS encryption of worker nodes
-     */
-    ebsEncryption?: pulumi.Input<boolean>;
-    /**
-     * The type of machine to use for worker nodes
-     */
-    instanceType?: pulumi.Input<string>;
-    /**
-     * Allow user to specify key name to use
-     */
-    keyPairName?: pulumi.Input<string>;
-    /**
-     * The kubernetes master version
-     */
-    kubernetesVersion: pulumi.Input<string>;
-    /**
-     * The maximum number of worker nodes
-     */
-    maximumNodes?: pulumi.Input<number>;
-    /**
-     * The minimum number of worker nodes
-     */
-    minimumNodes?: pulumi.Input<number>;
-    /**
-     * The volume size for each node
-     */
-    nodeVolumeSize?: pulumi.Input<number>;
-    /**
-     * The AWS Region to create the EKS cluster in
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The AWS Client Secret associated with the Client ID
-     */
-    secretKey: pulumi.Input<string>;
-    /**
-     * List of security groups to use for the cluster
-     */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The service role to use to perform the cluster operations in AWS
-     */
-    serviceRole?: pulumi.Input<string>;
-    /**
-     * A session token to use with the client key and secret if applicable
-     */
-    sessionToken?: pulumi.Input<string>;
-    /**
-     * List of subnets in the virtual network to use
-     */
-    subnets?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Pass user-data to the nodes to perform automated configuration tasks
-     */
-    userData?: pulumi.Input<string>;
-    /**
-     * The name of the virtual network to use
-     */
-    virtualNetwork?: pulumi.Input<string>;
-}
-
 export interface ClusterEksConfigV2 {
     /**
      * The AWS Cloud Credential ID to use
@@ -993,221 +753,6 @@ export interface ClusterFleetAgentDeploymentCustomizationOverrideResourceRequire
      * The minimum memory required for agent
      */
     memoryRequest?: pulumi.Input<string>;
-}
-
-export interface ClusterGkeConfig {
-    /**
-     * The IP address range of the container pods
-     */
-    clusterIpv4Cidr: pulumi.Input<string>;
-    /**
-     * The contents of the GC credential file
-     */
-    credential: pulumi.Input<string>;
-    /**
-     * The description for Cluster (string)
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Size of the disk attached to each node
-     */
-    diskSizeGb?: pulumi.Input<number>;
-    /**
-     * Type of the disk attached to each node
-     */
-    diskType: pulumi.Input<string>;
-    /**
-     * To enable kubernetes alpha feature
-     */
-    enableAlphaFeature?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether the node auto-repair is enabled for the node pool
-     */
-    enableAutoRepair?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether node auto-upgrade is enabled for the node pool
-     */
-    enableAutoUpgrade?: pulumi.Input<boolean>;
-    /**
-     * Enable horizontal pod autoscaling for the cluster
-     */
-    enableHorizontalPodAutoscaling?: pulumi.Input<boolean>;
-    /**
-     * Enable http load balancing for the cluster
-     */
-    enableHttpLoadBalancing?: pulumi.Input<boolean>;
-    /**
-     * Whether to enable the kubernetes dashboard
-     */
-    enableKubernetesDashboard?: pulumi.Input<boolean>;
-    /**
-     * Whether to enable legacy abac on the cluster
-     */
-    enableLegacyAbac?: pulumi.Input<boolean>;
-    /**
-     * Whether or not master authorized network is enabled
-     */
-    enableMasterAuthorizedNetwork?: pulumi.Input<boolean>;
-    /**
-     * Enable network policy config for the cluster
-     */
-    enableNetworkPolicyConfig?: pulumi.Input<boolean>;
-    /**
-     * Enable nodepool autoscaling
-     */
-    enableNodepoolAutoscaling?: pulumi.Input<boolean>;
-    /**
-     * Whether the master's internal IP address is used as the cluster endpoint
-     */
-    enablePrivateEndpoint?: pulumi.Input<boolean>;
-    /**
-     * Whether nodes have internal IP address only
-     */
-    enablePrivateNodes?: pulumi.Input<boolean>;
-    /**
-     * Enable stackdriver logging
-     */
-    enableStackdriverLogging?: pulumi.Input<boolean>;
-    /**
-     * Enable stackdriver monitoring
-     */
-    enableStackdriverMonitoring?: pulumi.Input<boolean>;
-    /**
-     * The image to use for the worker nodes
-     */
-    imageType: pulumi.Input<string>;
-    /**
-     * The IP address range for the cluster pod IPs
-     */
-    ipPolicyClusterIpv4CidrBlock: pulumi.Input<string>;
-    /**
-     * The name of the secondary range to be used for the cluster CIDR block
-     */
-    ipPolicyClusterSecondaryRangeName: pulumi.Input<string>;
-    /**
-     * Whether a new subnetwork will be created automatically for the cluster
-     */
-    ipPolicyCreateSubnetwork?: pulumi.Input<boolean>;
-    /**
-     * The IP address range of the instance IPs in this cluster
-     */
-    ipPolicyNodeIpv4CidrBlock: pulumi.Input<string>;
-    /**
-     * The IP address range of the services IPs in this cluster
-     */
-    ipPolicyServicesIpv4CidrBlock: pulumi.Input<string>;
-    /**
-     * The name of the secondary range to be used for the services CIDR block
-     */
-    ipPolicyServicesSecondaryRangeName: pulumi.Input<string>;
-    /**
-     * A custom subnetwork name to be used if createSubnetwork is true
-     */
-    ipPolicySubnetworkName: pulumi.Input<string>;
-    /**
-     * Issue a client certificate
-     */
-    issueClientCertificate?: pulumi.Input<boolean>;
-    /**
-     * Enable the kubernetes dashboard
-     */
-    kubernetesDashboard?: pulumi.Input<boolean>;
-    /**
-     * Labels for the Cluster (map)
-     */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The number of local SSD disks to be attached to the node
-     */
-    localSsdCount?: pulumi.Input<number>;
-    /**
-     * Locations to use for the cluster
-     */
-    locations: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The machine type to use for the worker nodes
-     */
-    machineType: pulumi.Input<string>;
-    /**
-     * When to performance updates on the nodes, in 24-hour time
-     */
-    maintenanceWindow: pulumi.Input<string>;
-    /**
-     * Define up to 10 external networks that could access Kubernetes master through HTTPS
-     */
-    masterAuthorizedNetworkCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The IP range in CIDR notation to use for the hosted master network
-     */
-    masterIpv4CidrBlock: pulumi.Input<string>;
-    /**
-     * The kubernetes master version
-     */
-    masterVersion: pulumi.Input<string>;
-    /**
-     * Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster
-     */
-    maxNodeCount?: pulumi.Input<number>;
-    /**
-     * Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount
-     */
-    minNodeCount?: pulumi.Input<number>;
-    /**
-     * The network to use for the cluster
-     */
-    network: pulumi.Input<string>;
-    /**
-     * The number of nodes to create in this cluster
-     */
-    nodeCount?: pulumi.Input<number>;
-    /**
-     * The ID of the cluster node pool
-     */
-    nodePool: pulumi.Input<string>;
-    /**
-     * The version of kubernetes to use on the nodes
-     */
-    nodeVersion: pulumi.Input<string>;
-    /**
-     * The set of Google API scopes to be made available on all of the node VMs under the default service account
-     */
-    oauthScopes: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether the nodes are created as preemptible VM instances
-     */
-    preemptible?: pulumi.Input<boolean>;
-    /**
-     * The ID of your project to use when creating a cluster
-     */
-    projectId: pulumi.Input<string>;
-    /**
-     * The region to launch the cluster. Region or zone should be used
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The map of Kubernetes labels (key/value pairs) to be applied to each cluster
-     */
-    resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The Google Cloud Platform Service Account to be used by the node VMs
-     */
-    serviceAccount: pulumi.Input<string>;
-    /**
-     * The sub-network to use for the cluster
-     */
-    subNetwork: pulumi.Input<string>;
-    /**
-     * List of kubernetes taints to be applied to each node
-     */
-    taints?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether alias IPs will be used for pod IPs in the cluster
-     */
-    useIpAliases?: pulumi.Input<boolean>;
-    /**
-     * The zone to launch the cluster. Zone or region should be used
-     */
-    zone?: pulumi.Input<string>;
 }
 
 export interface ClusterGkeConfigV2 {
@@ -1550,9 +1095,17 @@ export interface ClusterK3sConfigUpgradeStrategy {
 
 export interface ClusterOkeConfig {
     /**
+     * Optionally specify a cluster type of basic or enhanced
+     */
+    clusterType?: pulumi.Input<string>;
+    /**
      * The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      */
     compartmentId: pulumi.Input<string>;
+    /**
+     * The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+     */
+    controlPlaneSubnetName?: pulumi.Input<string>;
     /**
      * An optional custom boot volume size (in GB) for the nodes
      */
@@ -1574,19 +1127,35 @@ export interface ClusterOkeConfig {
      */
     enablePrivateNodes?: pulumi.Input<boolean>;
     /**
+     * The optional grace period in minutes to allow cordon and drain to complete successfuly
+     */
+    evictionGraceDuration?: pulumi.Input<string>;
+    /**
      * The fingerprint corresponding to the specified user's private API Key
      */
-    fingerprint: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
+    /**
+     * Optional amount of memory in GB for nodes (requires flexible node_shape)
+     */
+    flexMemoryInGbs?: pulumi.Input<number>;
     /**
      * Optional number of OCPUs for nodes (requires flexible node_shape)
      */
     flexOcpus?: pulumi.Input<number>;
     /**
+     * Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+     */
+    forceDeleteAfterGraceDuration?: pulumi.Input<boolean>;
+    /**
+     * Optional specify a comma separated list of master encryption key OCID(s) to verify images
+     */
+    imageVerificationKmsKeyId?: pulumi.Input<string>;
+    /**
      * Optional specify the OCID of the KMS Vault master key
      */
     kmsKeyId?: pulumi.Input<string>;
     /**
-     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
      */
     kubernetesVersion: pulumi.Input<string>;
     /**
@@ -1610,7 +1179,7 @@ export interface ClusterOkeConfig {
      */
     nodePoolDnsDomainName?: pulumi.Input<string>;
     /**
-     * Optional name for node pool subnet
+     * Optional pre-existing subnet (public or private) for nodes
      */
     nodePoolSubnetName?: pulumi.Input<string>;
     /**
@@ -1622,13 +1191,25 @@ export interface ClusterOkeConfig {
      */
     nodeShape: pulumi.Input<string>;
     /**
+     * The contents of custom cloud-init / userData for the nodes - will be base64 encoded internally if it is not already
+     */
+    nodeUserDataContents?: pulumi.Input<string>;
+    /**
      * Optional specify the pod CIDR, defaults to 10.244.0.0/16
      */
     podCidr?: pulumi.Input<string>;
     /**
+     * Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+     */
+    podNetwork?: pulumi.Input<string>;
+    /**
+     * The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+     */
+    podSubnetName?: pulumi.Input<string>;
+    /**
      * The private API key file contents for the specified user, in PEM format
      */
-    privateKeyContents: pulumi.Input<string>;
+    privateKeyContents?: pulumi.Input<string>;
     /**
      * The passphrase of the private key for the OKE cluster
      */
@@ -1664,7 +1245,7 @@ export interface ClusterOkeConfig {
     /**
      * The OCID of a user who has access to the tenancy/compartment
      */
-    userOcid: pulumi.Input<string>;
+    userOcid?: pulumi.Input<string>;
     /**
      * The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
      */
@@ -2019,7 +1600,7 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     loadBalancerSku?: pulumi.Input<string>;
     /**
-     * Azure Kubernetes cluster location. Default `eastus` (string)
+     * (string)
      */
     location?: pulumi.Input<string>;
     /**
@@ -2051,11 +1632,11 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     subnetName?: pulumi.Input<string>;
     /**
-     * Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * (string)
      */
     subscriptionId: pulumi.Input<string>;
     /**
-     * Azure tenant ID to use (string)
+     * Required if `tenantName` not provided. (string)
      */
     tenantId: pulumi.Input<string>;
     /**
@@ -2144,7 +1725,7 @@ export interface ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     region?: pulumi.Input<string>;
     /**
-     * Azure tenant ID to use (string)
+     * Required if `tenantName` not provided. (string)
      */
     tenantId?: pulumi.Input<string>;
     /**
@@ -3213,7 +2794,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
 
 export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
     /**
-     * The AWS Client ID to use (string)
+     * Access key for S3 service (string)
      */
     accessKey?: pulumi.Input<string>;
     /**
@@ -3237,7 +2818,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      */
     region?: pulumi.Input<string>;
     /**
-     * The AWS Client Secret associated with the Client ID (string)
+     * Secret key for S3 service (string)
      */
     secretKey?: pulumi.Input<string>;
 }
@@ -4947,9 +4528,13 @@ export interface ClusterV2RkeConfigMachinePool {
      */
     machineConfig: pulumi.Input<inputs.ClusterV2RkeConfigMachinePoolMachineConfig>;
     /**
-     * Labels of the machine
+     * Labels for the machine pool nodes
      */
     machineLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * OS Type in machine pool
+     */
+    machineOs?: pulumi.Input<string>;
     /**
      * max unhealthy nodes for automated replacement to be allowed
      */
@@ -5816,6 +5401,97 @@ export interface MachineConfigV2DigitaloceanConfig {
     userdata?: pulumi.Input<string>;
 }
 
+export interface MachineConfigV2GoogleConfig {
+    /**
+     * GCE Instance External IP
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * GCE service account auth json file path
+     */
+    authEncodedJson?: pulumi.Input<string>;
+    /**
+     * GCE Instance Disk Size (in GB)
+     */
+    diskSize: pulumi.Input<string>;
+    /**
+     * GCE Instance Disk Type
+     */
+    diskType: pulumi.Input<string>;
+    /**
+     * A prefix to be added to firewall rules created when exposing ports publicly. Required if exposing ports publicly.
+     */
+    externalFirewallRulePrefix?: pulumi.Input<string>;
+    /**
+     * A prefix to be added to an internal firewall rule created to ensure virtual machines can communicate with one another.
+     */
+    internalFirewallRulePrefix?: pulumi.Input<string>;
+    /**
+     * GCE instance image absolute URL
+     */
+    machineImage: pulumi.Input<string>;
+    /**
+     * GCE instance type
+     */
+    machineType: pulumi.Input<string>;
+    /**
+     * The network to provision virtual machines within
+     */
+    network: pulumi.Input<string>;
+    /**
+     * A list of ports to be opened publicly. 'external_firewall_rule_prefix' must also be set
+     */
+    openPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates if the virtual machine can be preempted
+     */
+    preemptable?: pulumi.Input<boolean>;
+    /**
+     * The GCP project to create virtual machines within
+     */
+    project: pulumi.Input<string>;
+    /**
+     * Access scopes to be set on the virtual machine
+     */
+    scopes?: pulumi.Input<string>;
+    /**
+     * The subnetwork to provision virtual machines within
+     */
+    subNetwork?: pulumi.Input<string>;
+    /**
+     * A set of network tags to be added to each VM, in the format of 'tag1,tag2'
+     */
+    tags?: pulumi.Input<string>;
+    /**
+     * Indicates if an existing VM should be used. This is not currently support in Rancher.
+     */
+    useExisting?: pulumi.Input<boolean>;
+    /**
+     * Indicates if the virtual machines should use an internal IP
+     */
+    useInternalIp?: pulumi.Input<boolean>;
+    /**
+     * Indicates if the virtual machines should use an internal IP only and not be assigned a public IP
+     */
+    useInternalIpOnly?: pulumi.Input<boolean>;
+    /**
+     * GCE user-data file path
+     */
+    userData?: pulumi.Input<string>;
+    /**
+     * The username to be set when logging into the virtual machines
+     */
+    username?: pulumi.Input<string>;
+    /**
+     * A set of labels to be added to each VM, in the format of 'key1,value1,key2,value2'
+     */
+    vmLabels?: pulumi.Input<string>;
+    /**
+     * The region and zone to create virtual machines within (e.g. us-east1-b)
+     */
+    zone: pulumi.Input<string>;
+}
+
 export interface MachineConfigV2HarvesterConfig {
     /**
      * CPU count
@@ -6102,7 +5778,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     userDomainName?: pulumi.Input<string>;
     /**
-     * OpenStack username (string)
+     * The username to be set when logging into the virtual machines (string)
      */
     username?: pulumi.Input<string>;
     /**
@@ -6203,6 +5879,10 @@ export interface MachineConfigV2VsphereConfig {
      * vSphere network where the virtual machine will be attached
      */
     networks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of virtual machine OS in vSphere
+     */
+    os?: pulumi.Input<string>;
     /**
      * vSphere password
      */

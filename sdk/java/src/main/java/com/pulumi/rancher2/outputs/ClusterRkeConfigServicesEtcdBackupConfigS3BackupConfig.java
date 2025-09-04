@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
     /**
-     * @return The AWS Client ID to use (string)
+     * @return Access key for S3 service (string)
      * 
      */
     private @Nullable String accessKey;
@@ -43,14 +43,14 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      */
     private @Nullable String region;
     /**
-     * @return The AWS Client Secret associated with the Client ID (string)
+     * @return Secret key for S3 service (string)
      * 
      */
     private @Nullable String secretKey;
 
     private ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig() {}
     /**
-     * @return The AWS Client ID to use (string)
+     * @return Access key for S3 service (string)
      * 
      */
     public Optional<String> accessKey() {
@@ -92,7 +92,7 @@ public final class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return The AWS Client Secret associated with the Client ID (string)
+     * @return Secret key for S3 service (string)
      * 
      */
     public Optional<String> secretKey() {

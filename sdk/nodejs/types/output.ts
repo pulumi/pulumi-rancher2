@@ -151,167 +151,6 @@ export interface ClusterAgentEnvVar {
     value: string;
 }
 
-export interface ClusterAksConfig {
-    /**
-     * The secret of an Azure Active Directory server application
-     */
-    aadServerAppSecret?: string;
-    /**
-     * The ID of an Azure Active Directory tenant
-     */
-    aadTenantId?: string;
-    /**
-     * The ID of an Azure Active Directory client application of type "Native". This application is for user login via kubectl
-     */
-    addClientAppId?: string;
-    /**
-     * The ID of an Azure Active Directory server application of type "Web app/API". This application represents the managed cluster's apiserver (Server application)
-     */
-    addServerAppId?: string;
-    /**
-     * The administrator username to use for Linux hosts
-     */
-    adminUsername?: string;
-    /**
-     * DNS prefix to be used to create the FQDN for the agent pool
-     */
-    agentDnsPrefix: string;
-    /**
-     * GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the "agent vm size" specified
-     */
-    agentOsDiskSize?: number;
-    /**
-     * Name for the agent pool, upto 12 alphanumeric characters
-     */
-    agentPoolName?: string;
-    /**
-     * Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
-     */
-    agentStorageProfile?: string;
-    /**
-     * Size of machine in the agent pool
-     */
-    agentVmSize?: string;
-    /**
-     * Different authentication API url to use
-     */
-    authBaseUrl?: string;
-    /**
-     * Different resource management API url to use
-     */
-    baseUrl?: string;
-    /**
-     * Azure client ID to use
-     */
-    clientId: string;
-    /**
-     * Azure client secret associated with the "client id"
-     */
-    clientSecret: string;
-    /**
-     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
-     */
-    count?: number;
-    /**
-     * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in "service cidr"
-     */
-    dnsServiceIp?: string;
-    /**
-     * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in "service cidr"
-     */
-    dockerBridgeCidr?: string;
-    /**
-     * Enable the Kubernetes ingress with automatic public DNS name creation
-     */
-    enableHttpApplicationRouting?: boolean;
-    /**
-     * Turn on Azure Log Analytics monitoring. Uses the Log Analytics "Default" workspace if it exists, else creates one. if using an existing workspace, specifies "log analytics workspace resource id"
-     */
-    enableMonitoring?: boolean;
-    /**
-     * Specify the version of Kubernetes
-     */
-    kubernetesVersion: string;
-    /**
-     * Load balancer type (basic | standard). Must be standard for auto-scaling
-     */
-    loadBalancerSku: string;
-    /**
-     * Azure Kubernetes cluster location
-     */
-    location?: string;
-    /**
-     * The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}'
-     */
-    logAnalyticsWorkspace?: string;
-    /**
-     * The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group
-     */
-    logAnalyticsWorkspaceResourceGroup?: string;
-    /**
-     * DNS prefix to use the Kubernetes cluster control pane
-     */
-    masterDnsPrefix: string;
-    /**
-     * Maximum number of pods that can run on a node
-     */
-    maxPods?: number;
-    /**
-     * Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
-     */
-    networkPlugin?: string;
-    /**
-     * Network policy used for building Kubernetes network. Chooses from [calico]
-     */
-    networkPolicy?: string;
-    /**
-     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when "network plugin" is specified in "kubenet".
-     */
-    podCidr?: string;
-    /**
-     * The name of the Cluster resource group
-     */
-    resourceGroup: string;
-    /**
-     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
-     */
-    serviceCidr?: string;
-    /**
-     * Contents of the SSH public key used to authenticate with Linux hosts
-     */
-    sshPublicKeyContents: string;
-    /**
-     * The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
-     */
-    subnet: string;
-    /**
-     * Subscription credentials which uniquely identify Microsoft Azure subscription
-     */
-    subscriptionId: string;
-    /**
-     * Tags for Kubernetes cluster. For example, foo=bar
-     *
-     * @deprecated Use tags argument instead as []string
-     */
-    tag: {[key: string]: string};
-    /**
-     * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
-     */
-    tags: string[];
-    /**
-     * Azure tenant ID to use
-     */
-    tenantId: string;
-    /**
-     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-     */
-    virtualNetwork: string;
-    /**
-     * The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-     */
-    virtualNetworkResourceGroup: string;
-}
-
 export interface ClusterAksConfigV2 {
     /**
      * The AKS auth base url
@@ -698,85 +537,6 @@ export interface ClusterClusterTemplateQuestion {
     variable: string;
 }
 
-export interface ClusterEksConfig {
-    /**
-     * The AWS Client ID to use
-     */
-    accessKey: string;
-    /**
-     * A custom AMI ID to use for the worker nodes instead of the default
-     */
-    ami?: string;
-    /**
-     * Associate public ip EKS worker nodes
-     */
-    associateWorkerNodePublicIp?: boolean;
-    /**
-     * The desired number of worker nodes
-     */
-    desiredNodes?: number;
-    /**
-     * Enables EBS encryption of worker nodes
-     */
-    ebsEncryption?: boolean;
-    /**
-     * The type of machine to use for worker nodes
-     */
-    instanceType?: string;
-    /**
-     * Allow user to specify key name to use
-     */
-    keyPairName?: string;
-    /**
-     * The kubernetes master version
-     */
-    kubernetesVersion: string;
-    /**
-     * The maximum number of worker nodes
-     */
-    maximumNodes?: number;
-    /**
-     * The minimum number of worker nodes
-     */
-    minimumNodes?: number;
-    /**
-     * The volume size for each node
-     */
-    nodeVolumeSize?: number;
-    /**
-     * The AWS Region to create the EKS cluster in
-     */
-    region?: string;
-    /**
-     * The AWS Client Secret associated with the Client ID
-     */
-    secretKey: string;
-    /**
-     * List of security groups to use for the cluster
-     */
-    securityGroups?: string[];
-    /**
-     * The service role to use to perform the cluster operations in AWS
-     */
-    serviceRole?: string;
-    /**
-     * A session token to use with the client key and secret if applicable
-     */
-    sessionToken?: string;
-    /**
-     * List of subnets in the virtual network to use
-     */
-    subnets?: string[];
-    /**
-     * Pass user-data to the nodes to perform automated configuration tasks
-     */
-    userData: string;
-    /**
-     * The name of the virtual network to use
-     */
-    virtualNetwork?: string;
-}
-
 export interface ClusterEksConfigV2 {
     /**
      * The AWS Cloud Credential ID to use
@@ -993,221 +753,6 @@ export interface ClusterFleetAgentDeploymentCustomizationOverrideResourceRequire
      * The minimum memory required for agent
      */
     memoryRequest?: string;
-}
-
-export interface ClusterGkeConfig {
-    /**
-     * The IP address range of the container pods
-     */
-    clusterIpv4Cidr: string;
-    /**
-     * The contents of the GC credential file
-     */
-    credential: string;
-    /**
-     * The description for Cluster (string)
-     */
-    description?: string;
-    /**
-     * Size of the disk attached to each node
-     */
-    diskSizeGb?: number;
-    /**
-     * Type of the disk attached to each node
-     */
-    diskType: string;
-    /**
-     * To enable kubernetes alpha feature
-     */
-    enableAlphaFeature?: boolean;
-    /**
-     * Specifies whether the node auto-repair is enabled for the node pool
-     */
-    enableAutoRepair?: boolean;
-    /**
-     * Specifies whether node auto-upgrade is enabled for the node pool
-     */
-    enableAutoUpgrade?: boolean;
-    /**
-     * Enable horizontal pod autoscaling for the cluster
-     */
-    enableHorizontalPodAutoscaling?: boolean;
-    /**
-     * Enable http load balancing for the cluster
-     */
-    enableHttpLoadBalancing?: boolean;
-    /**
-     * Whether to enable the kubernetes dashboard
-     */
-    enableKubernetesDashboard?: boolean;
-    /**
-     * Whether to enable legacy abac on the cluster
-     */
-    enableLegacyAbac?: boolean;
-    /**
-     * Whether or not master authorized network is enabled
-     */
-    enableMasterAuthorizedNetwork?: boolean;
-    /**
-     * Enable network policy config for the cluster
-     */
-    enableNetworkPolicyConfig?: boolean;
-    /**
-     * Enable nodepool autoscaling
-     */
-    enableNodepoolAutoscaling?: boolean;
-    /**
-     * Whether the master's internal IP address is used as the cluster endpoint
-     */
-    enablePrivateEndpoint?: boolean;
-    /**
-     * Whether nodes have internal IP address only
-     */
-    enablePrivateNodes?: boolean;
-    /**
-     * Enable stackdriver logging
-     */
-    enableStackdriverLogging?: boolean;
-    /**
-     * Enable stackdriver monitoring
-     */
-    enableStackdriverMonitoring?: boolean;
-    /**
-     * The image to use for the worker nodes
-     */
-    imageType: string;
-    /**
-     * The IP address range for the cluster pod IPs
-     */
-    ipPolicyClusterIpv4CidrBlock: string;
-    /**
-     * The name of the secondary range to be used for the cluster CIDR block
-     */
-    ipPolicyClusterSecondaryRangeName: string;
-    /**
-     * Whether a new subnetwork will be created automatically for the cluster
-     */
-    ipPolicyCreateSubnetwork?: boolean;
-    /**
-     * The IP address range of the instance IPs in this cluster
-     */
-    ipPolicyNodeIpv4CidrBlock: string;
-    /**
-     * The IP address range of the services IPs in this cluster
-     */
-    ipPolicyServicesIpv4CidrBlock: string;
-    /**
-     * The name of the secondary range to be used for the services CIDR block
-     */
-    ipPolicyServicesSecondaryRangeName: string;
-    /**
-     * A custom subnetwork name to be used if createSubnetwork is true
-     */
-    ipPolicySubnetworkName: string;
-    /**
-     * Issue a client certificate
-     */
-    issueClientCertificate?: boolean;
-    /**
-     * Enable the kubernetes dashboard
-     */
-    kubernetesDashboard?: boolean;
-    /**
-     * Labels for the Cluster (map)
-     */
-    labels: {[key: string]: string};
-    /**
-     * The number of local SSD disks to be attached to the node
-     */
-    localSsdCount?: number;
-    /**
-     * Locations to use for the cluster
-     */
-    locations: string[];
-    /**
-     * The machine type to use for the worker nodes
-     */
-    machineType: string;
-    /**
-     * When to performance updates on the nodes, in 24-hour time
-     */
-    maintenanceWindow: string;
-    /**
-     * Define up to 10 external networks that could access Kubernetes master through HTTPS
-     */
-    masterAuthorizedNetworkCidrBlocks?: string[];
-    /**
-     * The IP range in CIDR notation to use for the hosted master network
-     */
-    masterIpv4CidrBlock: string;
-    /**
-     * The kubernetes master version
-     */
-    masterVersion: string;
-    /**
-     * Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster
-     */
-    maxNodeCount?: number;
-    /**
-     * Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount
-     */
-    minNodeCount?: number;
-    /**
-     * The network to use for the cluster
-     */
-    network: string;
-    /**
-     * The number of nodes to create in this cluster
-     */
-    nodeCount?: number;
-    /**
-     * The ID of the cluster node pool
-     */
-    nodePool: string;
-    /**
-     * The version of kubernetes to use on the nodes
-     */
-    nodeVersion: string;
-    /**
-     * The set of Google API scopes to be made available on all of the node VMs under the default service account
-     */
-    oauthScopes: string[];
-    /**
-     * Whether the nodes are created as preemptible VM instances
-     */
-    preemptible?: boolean;
-    /**
-     * The ID of your project to use when creating a cluster
-     */
-    projectId: string;
-    /**
-     * The region to launch the cluster. Region or zone should be used
-     */
-    region?: string;
-    /**
-     * The map of Kubernetes labels (key/value pairs) to be applied to each cluster
-     */
-    resourceLabels: {[key: string]: string};
-    /**
-     * The Google Cloud Platform Service Account to be used by the node VMs
-     */
-    serviceAccount: string;
-    /**
-     * The sub-network to use for the cluster
-     */
-    subNetwork: string;
-    /**
-     * List of kubernetes taints to be applied to each node
-     */
-    taints?: string[];
-    /**
-     * Whether alias IPs will be used for pod IPs in the cluster
-     */
-    useIpAliases?: boolean;
-    /**
-     * The zone to launch the cluster. Zone or region should be used
-     */
-    zone?: string;
 }
 
 export interface ClusterGkeConfigV2 {
@@ -1550,9 +1095,17 @@ export interface ClusterK3sConfigUpgradeStrategy {
 
 export interface ClusterOkeConfig {
     /**
+     * Optionally specify a cluster type of basic or enhanced
+     */
+    clusterType?: string;
+    /**
      * The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      */
     compartmentId: string;
+    /**
+     * The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+     */
+    controlPlaneSubnetName?: string;
     /**
      * An optional custom boot volume size (in GB) for the nodes
      */
@@ -1574,19 +1127,35 @@ export interface ClusterOkeConfig {
      */
     enablePrivateNodes?: boolean;
     /**
+     * The optional grace period in minutes to allow cordon and drain to complete successfuly
+     */
+    evictionGraceDuration?: string;
+    /**
      * The fingerprint corresponding to the specified user's private API Key
      */
-    fingerprint: string;
+    fingerprint?: string;
+    /**
+     * Optional amount of memory in GB for nodes (requires flexible node_shape)
+     */
+    flexMemoryInGbs?: number;
     /**
      * Optional number of OCPUs for nodes (requires flexible node_shape)
      */
     flexOcpus?: number;
     /**
+     * Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+     */
+    forceDeleteAfterGraceDuration?: boolean;
+    /**
+     * Optional specify a comma separated list of master encryption key OCID(s) to verify images
+     */
+    imageVerificationKmsKeyId?: string;
+    /**
      * Optional specify the OCID of the KMS Vault master key
      */
     kmsKeyId?: string;
     /**
-     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
      */
     kubernetesVersion: string;
     /**
@@ -1610,7 +1179,7 @@ export interface ClusterOkeConfig {
      */
     nodePoolDnsDomainName?: string;
     /**
-     * Optional name for node pool subnet
+     * Optional pre-existing subnet (public or private) for nodes
      */
     nodePoolSubnetName?: string;
     /**
@@ -1622,13 +1191,25 @@ export interface ClusterOkeConfig {
      */
     nodeShape: string;
     /**
+     * The contents of custom cloud-init / userData for the nodes - will be base64 encoded internally if it is not already
+     */
+    nodeUserDataContents?: string;
+    /**
      * Optional specify the pod CIDR, defaults to 10.244.0.0/16
      */
     podCidr?: string;
     /**
+     * Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+     */
+    podNetwork?: string;
+    /**
+     * The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+     */
+    podSubnetName?: string;
+    /**
      * The private API key file contents for the specified user, in PEM format
      */
-    privateKeyContents: string;
+    privateKeyContents?: string;
     /**
      * The passphrase of the private key for the OKE cluster
      */
@@ -1664,7 +1245,7 @@ export interface ClusterOkeConfig {
     /**
      * The OCID of a user who has access to the tenancy/compartment
      */
-    userOcid: string;
+    userOcid?: string;
     /**
      * The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
      */
@@ -2019,7 +1600,7 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     loadBalancerSku?: string;
     /**
-     * Azure Kubernetes cluster location. Default `eastus` (string)
+     * (string)
      */
     location: string;
     /**
@@ -2051,11 +1632,11 @@ export interface ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     subnetName: string;
     /**
-     * Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * (string)
      */
     subscriptionId: string;
     /**
-     * Azure tenant ID to use (string)
+     * Required if `tenantName` not provided. (string)
      */
     tenantId: string;
     /**
@@ -2144,7 +1725,7 @@ export interface ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     region: string;
     /**
-     * Azure tenant ID to use (string)
+     * Required if `tenantName` not provided. (string)
      */
     tenantId: string;
     /**
@@ -3213,7 +2794,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfig {
 
 export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
     /**
-     * The AWS Client ID to use (string)
+     * Access key for S3 service (string)
      */
     accessKey?: string;
     /**
@@ -3237,7 +2818,7 @@ export interface ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig {
      */
     region?: string;
     /**
-     * The AWS Client Secret associated with the Client ID (string)
+     * Secret key for S3 service (string)
      */
     secretKey?: string;
 }
@@ -4917,7 +4498,7 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Annotations for the Cluster.
      */
-    annotations: {[key: string]: string};
+    annotations?: {[key: string]: string};
     /**
      * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
@@ -4941,15 +4522,19 @@ export interface ClusterV2RkeConfigMachinePool {
     /**
      * Labels for the Cluster.
      */
-    labels: {[key: string]: string};
+    labels?: {[key: string]: string};
     /**
      * Machine config data
      */
     machineConfig: outputs.ClusterV2RkeConfigMachinePoolMachineConfig;
     /**
-     * Labels of the machine
+     * Labels for the machine pool nodes
      */
-    machineLabels: {[key: string]: string};
+    machineLabels?: {[key: string]: string};
+    /**
+     * OS Type in machine pool
+     */
+    machineOs?: string;
     /**
      * max unhealthy nodes for automated replacement to be allowed
      */
@@ -5414,167 +4999,6 @@ export interface EtcdBackupBackupConfigS3BackupConfig {
     secretKey?: string;
 }
 
-export interface GetClusterAksConfig {
-    /**
-     * The secret of an Azure Active Directory server application
-     */
-    aadServerAppSecret?: string;
-    /**
-     * The ID of an Azure Active Directory tenant
-     */
-    aadTenantId?: string;
-    /**
-     * The ID of an Azure Active Directory client application of type "Native". This application is for user login via kubectl
-     */
-    addClientAppId?: string;
-    /**
-     * The ID of an Azure Active Directory server application of type "Web app/API". This application represents the managed cluster's apiserver (Server application)
-     */
-    addServerAppId?: string;
-    /**
-     * The administrator username to use for Linux hosts
-     */
-    adminUsername?: string;
-    /**
-     * DNS prefix to be used to create the FQDN for the agent pool
-     */
-    agentDnsPrefix: string;
-    /**
-     * GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the "agent vm size" specified
-     */
-    agentOsDiskSize?: number;
-    /**
-     * Name for the agent pool, upto 12 alphanumeric characters
-     */
-    agentPoolName?: string;
-    /**
-     * Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
-     */
-    agentStorageProfile?: string;
-    /**
-     * Size of machine in the agent pool
-     */
-    agentVmSize?: string;
-    /**
-     * Different authentication API url to use
-     */
-    authBaseUrl?: string;
-    /**
-     * Different resource management API url to use
-     */
-    baseUrl?: string;
-    /**
-     * Azure client ID to use
-     */
-    clientId: string;
-    /**
-     * Azure client secret associated with the "client id"
-     */
-    clientSecret: string;
-    /**
-     * Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
-     */
-    count?: number;
-    /**
-     * An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in "service cidr"
-     */
-    dnsServiceIp?: string;
-    /**
-     * A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in "service cidr"
-     */
-    dockerBridgeCidr?: string;
-    /**
-     * Enable the Kubernetes ingress with automatic public DNS name creation
-     */
-    enableHttpApplicationRouting?: boolean;
-    /**
-     * Turn on Azure Log Analytics monitoring. Uses the Log Analytics "Default" workspace if it exists, else creates one. if using an existing workspace, specifies "log analytics workspace resource id"
-     */
-    enableMonitoring?: boolean;
-    /**
-     * Specify the version of Kubernetes
-     */
-    kubernetesVersion: string;
-    /**
-     * Load balancer type (basic | standard). Must be standard for auto-scaling
-     */
-    loadBalancerSku: string;
-    /**
-     * Azure Kubernetes cluster location
-     */
-    location?: string;
-    /**
-     * The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}'
-     */
-    logAnalyticsWorkspace?: string;
-    /**
-     * The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group
-     */
-    logAnalyticsWorkspaceResourceGroup?: string;
-    /**
-     * DNS prefix to use the Kubernetes cluster control pane
-     */
-    masterDnsPrefix: string;
-    /**
-     * Maximum number of pods that can run on a node
-     */
-    maxPods?: number;
-    /**
-     * Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
-     */
-    networkPlugin?: string;
-    /**
-     * Network policy used for building Kubernetes network. Chooses from [calico]
-     */
-    networkPolicy?: string;
-    /**
-     * A CIDR notation IP range from which to assign Kubernetes Pod IPs when "network plugin" is specified in "kubenet".
-     */
-    podCidr?: string;
-    /**
-     * The name of the Cluster resource group
-     */
-    resourceGroup: string;
-    /**
-     * A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
-     */
-    serviceCidr?: string;
-    /**
-     * Contents of the SSH public key used to authenticate with Linux hosts
-     */
-    sshPublicKeyContents: string;
-    /**
-     * The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
-     */
-    subnet: string;
-    /**
-     * Subscription credentials which uniquely identify Microsoft Azure subscription
-     */
-    subscriptionId: string;
-    /**
-     * Tags for Kubernetes cluster. For example, foo=bar
-     *
-     * @deprecated Use tags argument instead as []string
-     */
-    tag: {[key: string]: string};
-    /**
-     * Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
-     */
-    tags: string[];
-    /**
-     * Azure tenant ID to use
-     */
-    tenantId: string;
-    /**
-     * The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-     */
-    virtualNetwork: string;
-    /**
-     * The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-     */
-    virtualNetworkResourceGroup: string;
-}
-
 export interface GetClusterAksConfigV2 {
     /**
      * The AKS auth base url
@@ -5837,85 +5261,6 @@ export interface GetClusterClusterTemplateQuestion {
     variable: string;
 }
 
-export interface GetClusterEksConfig {
-    /**
-     * The AWS Client ID to use
-     */
-    accessKey: string;
-    /**
-     * A custom AMI ID to use for the worker nodes instead of the default
-     */
-    ami?: string;
-    /**
-     * Associate public ip EKS worker nodes
-     */
-    associateWorkerNodePublicIp?: boolean;
-    /**
-     * The desired number of worker nodes
-     */
-    desiredNodes?: number;
-    /**
-     * Enables EBS encryption of worker nodes
-     */
-    ebsEncryption?: boolean;
-    /**
-     * The type of machine to use for worker nodes
-     */
-    instanceType?: string;
-    /**
-     * Allow user to specify key name to use
-     */
-    keyPairName?: string;
-    /**
-     * The kubernetes master version
-     */
-    kubernetesVersion: string;
-    /**
-     * The maximum number of worker nodes
-     */
-    maximumNodes?: number;
-    /**
-     * The minimum number of worker nodes
-     */
-    minimumNodes?: number;
-    /**
-     * The volume size for each node
-     */
-    nodeVolumeSize?: number;
-    /**
-     * The AWS Region to create the EKS cluster in
-     */
-    region?: string;
-    /**
-     * The AWS Client Secret associated with the Client ID
-     */
-    secretKey: string;
-    /**
-     * List of security groups to use for the cluster
-     */
-    securityGroups?: string[];
-    /**
-     * The service role to use to perform the cluster operations in AWS
-     */
-    serviceRole?: string;
-    /**
-     * A session token to use with the client key and secret if applicable
-     */
-    sessionToken?: string;
-    /**
-     * List of subnets in the virtual network to use
-     */
-    subnets?: string[];
-    /**
-     * Pass user-data to the nodes to perform automated configuration tasks
-     */
-    userData: string;
-    /**
-     * The name of the virtual network to use
-     */
-    virtualNetwork?: string;
-}
-
 export interface GetClusterEksConfigV2 {
     /**
      * The AWS Cloud Credential ID to use
@@ -6075,221 +5420,6 @@ export interface GetClusterEksConfigV2NodeGroupLaunchTemplate {
      * The EKS node group launch template version
      */
     version?: number;
-}
-
-export interface GetClusterGkeConfig {
-    /**
-     * The IP address range of the container pods
-     */
-    clusterIpv4Cidr: string;
-    /**
-     * The contents of the GC credential file
-     */
-    credential: string;
-    /**
-     * (Computed) The description for Cluster (string)
-     */
-    description?: string;
-    /**
-     * Size of the disk attached to each node
-     */
-    diskSizeGb?: number;
-    /**
-     * Type of the disk attached to each node
-     */
-    diskType: string;
-    /**
-     * To enable kubernetes alpha feature
-     */
-    enableAlphaFeature?: boolean;
-    /**
-     * Specifies whether the node auto-repair is enabled for the node pool
-     */
-    enableAutoRepair?: boolean;
-    /**
-     * Specifies whether node auto-upgrade is enabled for the node pool
-     */
-    enableAutoUpgrade?: boolean;
-    /**
-     * Enable horizontal pod autoscaling for the cluster
-     */
-    enableHorizontalPodAutoscaling?: boolean;
-    /**
-     * Enable http load balancing for the cluster
-     */
-    enableHttpLoadBalancing?: boolean;
-    /**
-     * Whether to enable the kubernetes dashboard
-     */
-    enableKubernetesDashboard?: boolean;
-    /**
-     * Whether to enable legacy abac on the cluster
-     */
-    enableLegacyAbac?: boolean;
-    /**
-     * Whether or not master authorized network is enabled
-     */
-    enableMasterAuthorizedNetwork?: boolean;
-    /**
-     * Enable network policy config for the cluster
-     */
-    enableNetworkPolicyConfig?: boolean;
-    /**
-     * Enable nodepool autoscaling
-     */
-    enableNodepoolAutoscaling?: boolean;
-    /**
-     * Whether the master's internal IP address is used as the cluster endpoint
-     */
-    enablePrivateEndpoint?: boolean;
-    /**
-     * Whether nodes have internal IP address only
-     */
-    enablePrivateNodes?: boolean;
-    /**
-     * Enable stackdriver logging
-     */
-    enableStackdriverLogging?: boolean;
-    /**
-     * Enable stackdriver monitoring
-     */
-    enableStackdriverMonitoring?: boolean;
-    /**
-     * The image to use for the worker nodes
-     */
-    imageType: string;
-    /**
-     * The IP address range for the cluster pod IPs
-     */
-    ipPolicyClusterIpv4CidrBlock: string;
-    /**
-     * The name of the secondary range to be used for the cluster CIDR block
-     */
-    ipPolicyClusterSecondaryRangeName: string;
-    /**
-     * Whether a new subnetwork will be created automatically for the cluster
-     */
-    ipPolicyCreateSubnetwork?: boolean;
-    /**
-     * The IP address range of the instance IPs in this cluster
-     */
-    ipPolicyNodeIpv4CidrBlock: string;
-    /**
-     * The IP address range of the services IPs in this cluster
-     */
-    ipPolicyServicesIpv4CidrBlock: string;
-    /**
-     * The name of the secondary range to be used for the services CIDR block
-     */
-    ipPolicyServicesSecondaryRangeName: string;
-    /**
-     * A custom subnetwork name to be used if createSubnetwork is true
-     */
-    ipPolicySubnetworkName: string;
-    /**
-     * Issue a client certificate
-     */
-    issueClientCertificate?: boolean;
-    /**
-     * Enable the kubernetes dashboard
-     */
-    kubernetesDashboard?: boolean;
-    /**
-     * (Computed) Labels for Node Pool object (map)
-     */
-    labels: {[key: string]: string};
-    /**
-     * The number of local SSD disks to be attached to the node
-     */
-    localSsdCount?: number;
-    /**
-     * Locations to use for the cluster
-     */
-    locations: string[];
-    /**
-     * The machine type to use for the worker nodes
-     */
-    machineType: string;
-    /**
-     * When to performance updates on the nodes, in 24-hour time
-     */
-    maintenanceWindow: string;
-    /**
-     * Define up to 10 external networks that could access Kubernetes master through HTTPS
-     */
-    masterAuthorizedNetworkCidrBlocks?: string[];
-    /**
-     * The IP range in CIDR notation to use for the hosted master network
-     */
-    masterIpv4CidrBlock: string;
-    /**
-     * The kubernetes master version
-     */
-    masterVersion: string;
-    /**
-     * Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster
-     */
-    maxNodeCount?: number;
-    /**
-     * Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount
-     */
-    minNodeCount?: number;
-    /**
-     * The network to use for the cluster
-     */
-    network: string;
-    /**
-     * The number of nodes to create in this cluster
-     */
-    nodeCount?: number;
-    /**
-     * The ID of the cluster node pool
-     */
-    nodePool: string;
-    /**
-     * The version of kubernetes to use on the nodes
-     */
-    nodeVersion: string;
-    /**
-     * The set of Google API scopes to be made available on all of the node VMs under the default service account
-     */
-    oauthScopes: string[];
-    /**
-     * Whether the nodes are created as preemptible VM instances
-     */
-    preemptible?: boolean;
-    /**
-     * The ID of your project to use when creating a cluster
-     */
-    projectId: string;
-    /**
-     * The region to launch the cluster. Region or zone should be used
-     */
-    region?: string;
-    /**
-     * The map of Kubernetes labels (key/value pairs) to be applied to each cluster
-     */
-    resourceLabels: {[key: string]: string};
-    /**
-     * The Google Cloud Platform Service Account to be used by the node VMs
-     */
-    serviceAccount: string;
-    /**
-     * The sub-network to use for the cluster
-     */
-    subNetwork: string;
-    /**
-     * List of kubernetes taints to be applied to each node
-     */
-    taints?: string[];
-    /**
-     * Whether alias IPs will be used for pod IPs in the cluster
-     */
-    useIpAliases?: boolean;
-    /**
-     * The zone to launch the cluster. Zone or region should be used
-     */
-    zone?: string;
 }
 
 export interface GetClusterGkeConfigV2 {
@@ -6584,6 +5714,13 @@ export interface GetClusterGkeConfigV2PrivateClusterConfig {
     masterIpv4CidrBlock: string;
 }
 
+export interface GetClusterImportedConfig {
+    /**
+     * Private registry URL
+     */
+    privateRegistryUrl: string;
+}
+
 export interface GetClusterK3sConfig {
     /**
      * The K3S upgrade strategy
@@ -6616,9 +5753,17 @@ export interface GetClusterK3sConfigUpgradeStrategy {
 
 export interface GetClusterOkeConfig {
     /**
+     * Optionally specify a cluster type of basic or enhanced
+     */
+    clusterType?: string;
+    /**
      * The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      */
     compartmentId: string;
+    /**
+     * The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+     */
+    controlPlaneSubnetName?: string;
     /**
      * An optional custom boot volume size (in GB) for the nodes
      */
@@ -6640,19 +5785,35 @@ export interface GetClusterOkeConfig {
      */
     enablePrivateNodes?: boolean;
     /**
+     * The optional grace period in minutes to allow cordon and drain to complete successfuly
+     */
+    evictionGraceDuration?: string;
+    /**
      * The fingerprint corresponding to the specified user's private API Key
      */
-    fingerprint: string;
+    fingerprint?: string;
+    /**
+     * Optional amount of memory in GB for nodes (requires flexible node_shape)
+     */
+    flexMemoryInGbs?: number;
     /**
      * Optional number of OCPUs for nodes (requires flexible node_shape)
      */
     flexOcpus?: number;
     /**
+     * Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+     */
+    forceDeleteAfterGraceDuration?: boolean;
+    /**
+     * Optional specify a comma separated list of master encryption key OCID(s) to verify images
+     */
+    imageVerificationKmsKeyId?: string;
+    /**
      * Optional specify the OCID of the KMS Vault master key
      */
     kmsKeyId?: string;
     /**
-     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+     * The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
      */
     kubernetesVersion: string;
     /**
@@ -6676,7 +5837,7 @@ export interface GetClusterOkeConfig {
      */
     nodePoolDnsDomainName?: string;
     /**
-     * Optional name for node pool subnet
+     * Optional pre-existing subnet (public or private) for nodes
      */
     nodePoolSubnetName?: string;
     /**
@@ -6688,13 +5849,25 @@ export interface GetClusterOkeConfig {
      */
     nodeShape: string;
     /**
+     * The contents of custom cloud-init / userData for the nodes - will be base64 encoded internally if it is not already
+     */
+    nodeUserDataContents?: string;
+    /**
      * Optional specify the pod CIDR, defaults to 10.244.0.0/16
      */
     podCidr?: string;
     /**
+     * Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+     */
+    podNetwork?: string;
+    /**
+     * The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+     */
+    podSubnetName?: string;
+    /**
      * The private API key file contents for the specified user, in PEM format
      */
-    privateKeyContents: string;
+    privateKeyContents?: string;
     /**
      * The passphrase of the private key for the OKE cluster
      */
@@ -6730,7 +5903,7 @@ export interface GetClusterOkeConfig {
     /**
      * The OCID of a user who has access to the tenancy/compartment
      */
-    userOcid: string;
+    userOcid?: string;
     /**
      * The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
      */
@@ -8587,9 +7760,9 @@ export interface GetClusterV2RkeConfigLocalAuthEndpoint {
 
 export interface GetClusterV2RkeConfigMachinePool {
     /**
-     * Annotations of the resource
+     * Annotations for the MachineDeployment object
      */
-    annotations: {[key: string]: string};
+    annotations?: {[key: string]: string};
     /**
      * (Computed) Cluster V2 cloud credential secret name (string)
      */
@@ -8611,17 +7784,21 @@ export interface GetClusterV2RkeConfigMachinePool {
      */
     hostnameLengthLimit?: number;
     /**
-     * Labels of the resource
+     * Labels for the MachineDeployment object
      */
-    labels: {[key: string]: string};
+    labels?: {[key: string]: string};
     /**
      * Machine config data
      */
     machineConfig: outputs.GetClusterV2RkeConfigMachinePoolMachineConfig;
     /**
-     * Labels of the machine
+     * Labels for the machine pool nodes
      */
-    machineLabels: {[key: string]: string};
+    machineLabels?: {[key: string]: string};
+    /**
+     * OS Type in machine pool
+     */
+    machineOs?: string;
     /**
      * max unhealthy nodes for automated replacement to be allowed
      */
@@ -9602,6 +8779,97 @@ export interface MachineConfigV2DigitaloceanConfig {
     userdata?: string;
 }
 
+export interface MachineConfigV2GoogleConfig {
+    /**
+     * GCE Instance External IP
+     */
+    address?: string;
+    /**
+     * GCE service account auth json file path
+     */
+    authEncodedJson?: string;
+    /**
+     * GCE Instance Disk Size (in GB)
+     */
+    diskSize: string;
+    /**
+     * GCE Instance Disk Type
+     */
+    diskType: string;
+    /**
+     * A prefix to be added to firewall rules created when exposing ports publicly. Required if exposing ports publicly.
+     */
+    externalFirewallRulePrefix?: string;
+    /**
+     * A prefix to be added to an internal firewall rule created to ensure virtual machines can communicate with one another.
+     */
+    internalFirewallRulePrefix?: string;
+    /**
+     * GCE instance image absolute URL
+     */
+    machineImage: string;
+    /**
+     * GCE instance type
+     */
+    machineType: string;
+    /**
+     * The network to provision virtual machines within
+     */
+    network: string;
+    /**
+     * A list of ports to be opened publicly. 'external_firewall_rule_prefix' must also be set
+     */
+    openPorts?: string[];
+    /**
+     * Indicates if the virtual machine can be preempted
+     */
+    preemptable?: boolean;
+    /**
+     * The GCP project to create virtual machines within
+     */
+    project: string;
+    /**
+     * Access scopes to be set on the virtual machine
+     */
+    scopes?: string;
+    /**
+     * The subnetwork to provision virtual machines within
+     */
+    subNetwork?: string;
+    /**
+     * A set of network tags to be added to each VM, in the format of 'tag1,tag2'
+     */
+    tags?: string;
+    /**
+     * Indicates if an existing VM should be used. This is not currently support in Rancher.
+     */
+    useExisting?: boolean;
+    /**
+     * Indicates if the virtual machines should use an internal IP
+     */
+    useInternalIp?: boolean;
+    /**
+     * Indicates if the virtual machines should use an internal IP only and not be assigned a public IP
+     */
+    useInternalIpOnly?: boolean;
+    /**
+     * GCE user-data file path
+     */
+    userData?: string;
+    /**
+     * The username to be set when logging into the virtual machines
+     */
+    username?: string;
+    /**
+     * A set of labels to be added to each VM, in the format of 'key1,value1,key2,value2'
+     */
+    vmLabels?: string;
+    /**
+     * The region and zone to create virtual machines within (e.g. us-east1-b)
+     */
+    zone: string;
+}
+
 export interface MachineConfigV2HarvesterConfig {
     /**
      * CPU count
@@ -9888,7 +9156,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     userDomainName?: string;
     /**
-     * OpenStack username (string)
+     * The username to be set when logging into the virtual machines (string)
      */
     username?: string;
     /**
@@ -9989,6 +9257,10 @@ export interface MachineConfigV2VsphereConfig {
      * vSphere network where the virtual machine will be attached
      */
     networks?: string[];
+    /**
+     * Type of virtual machine OS in vSphere
+     */
+    os?: string;
     /**
      * vSphere password
      */

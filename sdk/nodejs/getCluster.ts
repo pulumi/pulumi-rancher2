@@ -48,11 +48,7 @@ export interface GetClusterResult {
      */
     readonly agentEnvVars: string[];
     /**
-     * (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
-     */
-    readonly aksConfig: outputs.GetClusterAksConfig;
-    /**
-     * (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly aksConfigV2: outputs.GetClusterAksConfigV2;
     /**
@@ -101,11 +97,7 @@ export interface GetClusterResult {
      */
     readonly driver: string;
     /**
-     * (Computed) The Amazon eks configuration for `eks` Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
-     */
-    readonly eksConfig: outputs.GetClusterEksConfig;
-    /**
-     * (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
+     * (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      */
     readonly eksConfigV2: outputs.GetClusterEksConfigV2;
     /**
@@ -117,19 +109,16 @@ export interface GetClusterResult {
      */
     readonly fleetWorkspaceName: string;
     /**
-     * (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1) (list maxitems:1)
-     */
-    readonly gkeConfig: outputs.GetClusterGkeConfig;
-    /**
-     * (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
+     * (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      */
     readonly gkeConfigV2: outputs.GetClusterGkeConfigV2;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly importedConfigs: outputs.GetClusterImportedConfig[];
     /**
-     * (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
+     * (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, and `rkeConfig` (list maxitems:1)
      */
     readonly k3sConfig: outputs.GetClusterK3sConfig;
     /**
@@ -142,15 +131,15 @@ export interface GetClusterResult {
     readonly labels: {[key: string]: string};
     readonly name: string;
     /**
-     * (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly okeConfig: outputs.GetClusterOkeConfig;
     /**
-     * (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+     * (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      */
     readonly rke2Config: outputs.GetClusterRke2Config;
     /**
-     * (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
+     * (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
      */
     readonly rkeConfig: outputs.GetClusterRkeConfig;
     /**

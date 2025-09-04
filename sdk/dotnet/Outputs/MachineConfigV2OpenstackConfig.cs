@@ -158,7 +158,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? UserDomainName;
         /// <summary>
-        /// OpenStack username (string)
+        /// The username to be set when logging into the virtual machines (string)
         /// </summary>
         public readonly string? Username;
         /// <summary>

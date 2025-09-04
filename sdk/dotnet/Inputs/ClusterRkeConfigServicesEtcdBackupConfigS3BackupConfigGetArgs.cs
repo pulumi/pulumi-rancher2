@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// The AWS Client ID to use (string)
+        /// Access key for S3 service (string)
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -62,7 +62,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// The AWS Client Secret associated with the Client ID (string)
+        /// Secret key for S3 service (string)
         /// </summary>
         public Input<string>? SecretKey
         {

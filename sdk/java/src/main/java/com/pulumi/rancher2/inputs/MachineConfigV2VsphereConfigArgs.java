@@ -287,6 +287,21 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
     }
 
     /**
+     * Type of virtual machine OS in vSphere
+     * 
+     */
+    @Import(name="os")
+    private @Nullable Output<String> os;
+
+    /**
+     * @return Type of virtual machine OS in vSphere
+     * 
+     */
+    public Optional<Output<String>> os() {
+        return Optional.ofNullable(this.os);
+    }
+
+    /**
      * vSphere password
      * 
      */
@@ -517,6 +532,7 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
         this.hostsystem = $.hostsystem;
         this.memorySize = $.memorySize;
         this.networks = $.networks;
+        this.os = $.os;
         this.password = $.password;
         this.pool = $.pool;
         this.sshPassword = $.sshPassword;
@@ -957,6 +973,27 @@ public final class MachineConfigV2VsphereConfigArgs extends com.pulumi.resources
          */
         public Builder networks(String... networks) {
             return networks(List.of(networks));
+        }
+
+        /**
+         * @param os Type of virtual machine OS in vSphere
+         * 
+         * @return builder
+         * 
+         */
+        public Builder os(@Nullable Output<String> os) {
+            $.os = os;
+            return this;
+        }
+
+        /**
+         * @param os Type of virtual machine OS in vSphere
+         * 
+         * @return builder
+         * 
+         */
+        public Builder os(String os) {
+            return os(Output.of(os));
         }
 
         /**

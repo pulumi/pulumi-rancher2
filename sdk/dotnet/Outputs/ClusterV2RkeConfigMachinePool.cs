@@ -46,9 +46,13 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterV2RkeConfigMachinePoolMachineConfig MachineConfig;
         /// <summary>
-        /// Labels of the machine
+        /// Labels for the machine pool nodes
         /// </summary>
         public readonly ImmutableDictionary<string, string>? MachineLabels;
+        /// <summary>
+        /// OS Type in machine pool
+        /// </summary>
+        public readonly string? MachineOs;
         /// <summary>
         /// max unhealthy nodes for automated replacement to be allowed
         /// </summary>
@@ -114,6 +118,8 @@ namespace Pulumi.Rancher2.Outputs
 
             ImmutableDictionary<string, string>? machineLabels,
 
+            string? machineOs,
+
             string? maxUnhealthy,
 
             string name,
@@ -145,6 +151,7 @@ namespace Pulumi.Rancher2.Outputs
             Labels = labels;
             MachineConfig = machineConfig;
             MachineLabels = machineLabels;
+            MachineOs = machineOs;
             MaxUnhealthy = maxUnhealthy;
             Name = name;
             NodeDrainTimeout = nodeDrainTimeout;

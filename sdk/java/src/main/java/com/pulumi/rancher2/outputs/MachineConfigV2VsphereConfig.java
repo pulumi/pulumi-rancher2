@@ -103,6 +103,11 @@ public final class MachineConfigV2VsphereConfig {
      */
     private @Nullable List<String> networks;
     /**
+     * @return Type of virtual machine OS in vSphere
+     * 
+     */
+    private @Nullable String os;
+    /**
      * @return vSphere password
      * 
      */
@@ -301,6 +306,13 @@ public final class MachineConfigV2VsphereConfig {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
+     * @return Type of virtual machine OS in vSphere
+     * 
+     */
+    public Optional<String> os() {
+        return Optional.ofNullable(this.os);
+    }
+    /**
      * @return vSphere password
      * 
      */
@@ -426,6 +438,7 @@ public final class MachineConfigV2VsphereConfig {
         private @Nullable String hostsystem;
         private @Nullable String memorySize;
         private @Nullable List<String> networks;
+        private @Nullable String os;
         private @Nullable String password;
         private @Nullable String pool;
         private @Nullable String sshPassword;
@@ -461,6 +474,7 @@ public final class MachineConfigV2VsphereConfig {
     	      this.hostsystem = defaults.hostsystem;
     	      this.memorySize = defaults.memorySize;
     	      this.networks = defaults.networks;
+    	      this.os = defaults.os;
     	      this.password = defaults.password;
     	      this.pool = defaults.pool;
     	      this.sshPassword = defaults.sshPassword;
@@ -595,6 +609,12 @@ public final class MachineConfigV2VsphereConfig {
             return networks(List.of(networks));
         }
         @CustomType.Setter
+        public Builder os(@Nullable String os) {
+
+            this.os = os;
+            return this;
+        }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
 
             this.password = password;
@@ -704,6 +724,7 @@ public final class MachineConfigV2VsphereConfig {
             _resultValue.hostsystem = hostsystem;
             _resultValue.memorySize = memorySize;
             _resultValue.networks = networks;
+            _resultValue.os = os;
             _resultValue.password = password;
             _resultValue.pool = pool;
             _resultValue.sshPassword = sshPassword;

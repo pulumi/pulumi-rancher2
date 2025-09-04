@@ -138,6 +138,12 @@ namespace Pulumi.Rancher2.Inputs
             set => _networks = value;
         }
 
+        /// <summary>
+        /// Type of virtual machine OS in vSphere
+        /// </summary>
+        [Input("os")]
+        public Input<string>? Os { get; set; }
+
         [Input("password")]
         private Input<string>? _password;
 

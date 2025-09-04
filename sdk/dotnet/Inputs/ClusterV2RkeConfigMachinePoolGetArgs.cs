@@ -76,13 +76,19 @@ namespace Pulumi.Rancher2.Inputs
         private InputMap<string>? _machineLabels;
 
         /// <summary>
-        /// Labels of the machine
+        /// Labels for the machine pool nodes
         /// </summary>
         public InputMap<string> MachineLabels
         {
             get => _machineLabels ?? (_machineLabels = new InputMap<string>());
             set => _machineLabels = value;
         }
+
+        /// <summary>
+        /// OS Type in machine pool
+        /// </summary>
+        [Input("machineOs")]
+        public Input<string>? MachineOs { get; set; }
 
         /// <summary>
         /// max unhealthy nodes for automated replacement to be allowed

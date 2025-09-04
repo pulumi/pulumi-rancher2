@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig
     {
         /// <summary>
-        /// The AWS Client ID to use (string)
+        /// Access key for S3 service (string)
         /// </summary>
         public readonly string? AccessKey;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// The AWS Client Secret associated with the Client ID (string)
+        /// Secret key for S3 service (string)
         /// </summary>
         public readonly string? SecretKey;
 
