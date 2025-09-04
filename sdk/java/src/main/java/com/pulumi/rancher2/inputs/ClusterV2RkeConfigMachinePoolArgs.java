@@ -144,18 +144,33 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
     }
 
     /**
-     * Labels of the machine
+     * Labels for the machine pool nodes
      * 
      */
     @Import(name="machineLabels")
     private @Nullable Output<Map<String,String>> machineLabels;
 
     /**
-     * @return Labels of the machine
+     * @return Labels for the machine pool nodes
      * 
      */
     public Optional<Output<Map<String,String>>> machineLabels() {
         return Optional.ofNullable(this.machineLabels);
+    }
+
+    /**
+     * OS Type in machine pool
+     * 
+     */
+    @Import(name="machineOs")
+    private @Nullable Output<String> machineOs;
+
+    /**
+     * @return OS Type in machine pool
+     * 
+     */
+    public Optional<Output<String>> machineOs() {
+        return Optional.ofNullable(this.machineOs);
     }
 
     /**
@@ -335,6 +350,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         this.labels = $.labels;
         this.machineConfig = $.machineConfig;
         this.machineLabels = $.machineLabels;
+        this.machineOs = $.machineOs;
         this.maxUnhealthy = $.maxUnhealthy;
         this.name = $.name;
         this.nodeDrainTimeout = $.nodeDrainTimeout;
@@ -535,7 +551,7 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param machineLabels Labels of the machine
+         * @param machineLabels Labels for the machine pool nodes
          * 
          * @return builder
          * 
@@ -546,13 +562,34 @@ public final class ClusterV2RkeConfigMachinePoolArgs extends com.pulumi.resource
         }
 
         /**
-         * @param machineLabels Labels of the machine
+         * @param machineLabels Labels for the machine pool nodes
          * 
          * @return builder
          * 
          */
         public Builder machineLabels(Map<String,String> machineLabels) {
             return machineLabels(Output.of(machineLabels));
+        }
+
+        /**
+         * @param machineOs OS Type in machine pool
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineOs(@Nullable Output<String> machineOs) {
+            $.machineOs = machineOs;
+            return this;
+        }
+
+        /**
+         * @param machineOs OS Type in machine pool
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineOs(String machineOs) {
+            return machineOs(Output.of(machineOs));
         }
 
         /**

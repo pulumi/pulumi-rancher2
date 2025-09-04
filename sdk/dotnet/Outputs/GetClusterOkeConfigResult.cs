@@ -14,9 +14,17 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GetClusterOkeConfigResult
     {
         /// <summary>
+        /// Optionally specify a cluster type of basic or enhanced
+        /// </summary>
+        public readonly string? ClusterType;
+        /// <summary>
         /// The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
         /// </summary>
         public readonly string CompartmentId;
+        /// <summary>
+        /// The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+        /// </summary>
+        public readonly string? ControlPlaneSubnetName;
         /// <summary>
         /// An optional custom boot volume size (in GB) for the nodes
         /// </summary>
@@ -38,19 +46,35 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? EnablePrivateNodes;
         /// <summary>
+        /// The optional grace period in minutes to allow cordon and drain to complete successfuly
+        /// </summary>
+        public readonly string? EvictionGraceDuration;
+        /// <summary>
         /// The fingerprint corresponding to the specified user's private API Key
         /// </summary>
-        public readonly string Fingerprint;
+        public readonly string? Fingerprint;
+        /// <summary>
+        /// Optional amount of memory in GB for nodes (requires flexible node_shape)
+        /// </summary>
+        public readonly int? FlexMemoryInGbs;
         /// <summary>
         /// Optional number of OCPUs for nodes (requires flexible node_shape)
         /// </summary>
         public readonly int? FlexOcpus;
         /// <summary>
+        /// Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+        /// </summary>
+        public readonly bool? ForceDeleteAfterGraceDuration;
+        /// <summary>
+        /// Optional specify a comma separated list of master encryption key OCID(s) to verify images
+        /// </summary>
+        public readonly string? ImageVerificationKmsKeyId;
+        /// <summary>
         /// Optional specify the OCID of the KMS Vault master key
         /// </summary>
         public readonly string? KmsKeyId;
         /// <summary>
-        /// The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+        /// The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
         /// </summary>
         public readonly string KubernetesVersion;
         /// <summary>
@@ -74,7 +98,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NodePoolDnsDomainName;
         /// <summary>
-        /// Optional name for node pool subnet
+        /// Optional pre-existing subnet (public or private) for nodes
         /// </summary>
         public readonly string? NodePoolSubnetName;
         /// <summary>
@@ -86,13 +110,25 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string NodeShape;
         /// <summary>
+        /// The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+        /// </summary>
+        public readonly string? NodeUserDataContents;
+        /// <summary>
         /// Optional specify the pod CIDR, defaults to 10.244.0.0/16
         /// </summary>
         public readonly string? PodCidr;
         /// <summary>
+        /// Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+        /// </summary>
+        public readonly string? PodNetwork;
+        /// <summary>
+        /// The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+        /// </summary>
+        public readonly string? PodSubnetName;
+        /// <summary>
         /// The private API key file contents for the specified user, in PEM format
         /// </summary>
-        public readonly string PrivateKeyContents;
+        public readonly string? PrivateKeyContents;
         /// <summary>
         /// The passphrase of the private key for the OKE cluster
         /// </summary>
@@ -128,7 +164,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// The OCID of a user who has access to the tenancy/compartment
         /// </summary>
-        public readonly string UserOcid;
+        public readonly string? UserOcid;
         /// <summary>
         /// The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
         /// </summary>
@@ -144,7 +180,11 @@ namespace Pulumi.Rancher2.Outputs
 
         [OutputConstructor]
         private GetClusterOkeConfigResult(
+            string? clusterType,
+
             string compartmentId,
+
+            string? controlPlaneSubnetName,
 
             int? customBootVolumeSize,
 
@@ -156,9 +196,17 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? enablePrivateNodes,
 
-            string fingerprint,
+            string? evictionGraceDuration,
+
+            string? fingerprint,
+
+            int? flexMemoryInGbs,
 
             int? flexOcpus,
+
+            bool? forceDeleteAfterGraceDuration,
+
+            string? imageVerificationKmsKeyId,
 
             string? kmsKeyId,
 
@@ -180,9 +228,15 @@ namespace Pulumi.Rancher2.Outputs
 
             string nodeShape,
 
+            string? nodeUserDataContents,
+
             string? podCidr,
 
-            string privateKeyContents,
+            string? podNetwork,
+
+            string? podSubnetName,
+
+            string? privateKeyContents,
 
             string? privateKeyPassphrase,
 
@@ -200,7 +254,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string tenancyId,
 
-            string userOcid,
+            string? userOcid,
 
             string? vcnCompartmentId,
 
@@ -208,14 +262,20 @@ namespace Pulumi.Rancher2.Outputs
 
             string? workerNodeIngressCidr)
         {
+            ClusterType = clusterType;
             CompartmentId = compartmentId;
+            ControlPlaneSubnetName = controlPlaneSubnetName;
             CustomBootVolumeSize = customBootVolumeSize;
             Description = description;
             EnableKubernetesDashboard = enableKubernetesDashboard;
             EnablePrivateControlPlane = enablePrivateControlPlane;
             EnablePrivateNodes = enablePrivateNodes;
+            EvictionGraceDuration = evictionGraceDuration;
             Fingerprint = fingerprint;
+            FlexMemoryInGbs = flexMemoryInGbs;
             FlexOcpus = flexOcpus;
+            ForceDeleteAfterGraceDuration = forceDeleteAfterGraceDuration;
+            ImageVerificationKmsKeyId = imageVerificationKmsKeyId;
             KmsKeyId = kmsKeyId;
             KubernetesVersion = kubernetesVersion;
             LimitNodeCount = limitNodeCount;
@@ -226,7 +286,10 @@ namespace Pulumi.Rancher2.Outputs
             NodePoolSubnetName = nodePoolSubnetName;
             NodePublicKeyContents = nodePublicKeyContents;
             NodeShape = nodeShape;
+            NodeUserDataContents = nodeUserDataContents;
             PodCidr = podCidr;
+            PodNetwork = podNetwork;
+            PodSubnetName = podSubnetName;
             PrivateKeyContents = privateKeyContents;
             PrivateKeyPassphrase = privateKeyPassphrase;
             QuantityOfNodeSubnets = quantityOfNodeSubnets;

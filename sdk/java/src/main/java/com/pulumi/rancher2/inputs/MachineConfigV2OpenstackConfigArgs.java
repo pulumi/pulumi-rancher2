@@ -558,14 +558,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack username (string)
+     * The username to be set when logging into the virtual machines (string)
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return OpenStack username (string)
+     * @return The username to be set when logging into the virtual machines (string)
      * 
      */
     public Optional<Output<String>> username() {
@@ -1475,7 +1475,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param username OpenStack username (string)
+         * @param username The username to be set when logging into the virtual machines (string)
          * 
          * @return builder
          * 
@@ -1486,7 +1486,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param username OpenStack username (string)
+         * @param username The username to be set when logging into the virtual machines (string)
          * 
          * @return builder
          * 

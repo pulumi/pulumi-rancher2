@@ -229,14 +229,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
     }
 
     /**
-     * Azure Kubernetes cluster location. Default `eastus` (string)
+     * (string)
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Azure Kubernetes cluster location. Default `eastus` (string)
+     * @return (string)
      * 
      */
     public Optional<Output<String>> location() {
@@ -349,14 +349,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
     }
 
     /**
-     * Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * (string)
      * 
      */
     @Import(name="subscriptionId", required=true)
     private Output<String> subscriptionId;
 
     /**
-     * @return Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+     * @return (string)
      * 
      */
     public Output<String> subscriptionId() {
@@ -364,14 +364,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
     }
 
     /**
-     * Azure tenant ID to use (string)
+     * Required if `tenant_name` not provided. (string)
      * 
      */
     @Import(name="tenantId", required=true)
     private Output<String> tenantId;
 
     /**
-     * @return Azure tenant ID to use (string)
+     * @return Required if `tenant_name` not provided. (string)
      * 
      */
     public Output<String> tenantId() {
@@ -800,7 +800,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param location Azure Kubernetes cluster location. Default `eastus` (string)
+         * @param location (string)
          * 
          * @return builder
          * 
@@ -811,7 +811,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param location Azure Kubernetes cluster location. Default `eastus` (string)
+         * @param location (string)
          * 
          * @return builder
          * 
@@ -968,7 +968,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+         * @param subscriptionId (string)
          * 
          * @return builder
          * 
@@ -979,7 +979,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param subscriptionId Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+         * @param subscriptionId (string)
          * 
          * @return builder
          * 
@@ -989,7 +989,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param tenantId Azure tenant ID to use (string)
+         * @param tenantId Required if `tenant_name` not provided. (string)
          * 
          * @return builder
          * 
@@ -1000,7 +1000,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param tenantId Azure tenant ID to use (string)
+         * @param tenantId Required if `tenant_name` not provided. (string)
          * 
          * @return builder
          * 

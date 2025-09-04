@@ -60,10 +60,15 @@ public final class ClusterV2RkeConfigMachinePool {
      */
     private ClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
     /**
-     * @return Labels of the machine
+     * @return Labels for the machine pool nodes
      * 
      */
     private @Nullable Map<String,String> machineLabels;
+    /**
+     * @return OS Type in machine pool
+     * 
+     */
+    private @Nullable String machineOs;
     /**
      * @return max unhealthy nodes for automated replacement to be allowed
      * 
@@ -178,11 +183,18 @@ public final class ClusterV2RkeConfigMachinePool {
         return this.machineConfig;
     }
     /**
-     * @return Labels of the machine
+     * @return Labels for the machine pool nodes
      * 
      */
     public Map<String,String> machineLabels() {
         return this.machineLabels == null ? Map.of() : this.machineLabels;
+    }
+    /**
+     * @return OS Type in machine pool
+     * 
+     */
+    public Optional<String> machineOs() {
+        return Optional.ofNullable(this.machineOs);
     }
     /**
      * @return max unhealthy nodes for automated replacement to be allowed
@@ -280,6 +292,7 @@ public final class ClusterV2RkeConfigMachinePool {
         private @Nullable Map<String,String> labels;
         private ClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
         private @Nullable Map<String,String> machineLabels;
+        private @Nullable String machineOs;
         private @Nullable String maxUnhealthy;
         private String name;
         private @Nullable Integer nodeDrainTimeout;
@@ -303,6 +316,7 @@ public final class ClusterV2RkeConfigMachinePool {
     	      this.labels = defaults.labels;
     	      this.machineConfig = defaults.machineConfig;
     	      this.machineLabels = defaults.machineLabels;
+    	      this.machineOs = defaults.machineOs;
     	      this.maxUnhealthy = defaults.maxUnhealthy;
     	      this.name = defaults.name;
     	      this.nodeDrainTimeout = defaults.nodeDrainTimeout;
@@ -370,6 +384,12 @@ public final class ClusterV2RkeConfigMachinePool {
         public Builder machineLabels(@Nullable Map<String,String> machineLabels) {
 
             this.machineLabels = machineLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder machineOs(@Nullable String machineOs) {
+
+            this.machineOs = machineOs;
             return this;
         }
         @CustomType.Setter
@@ -454,6 +474,7 @@ public final class ClusterV2RkeConfigMachinePool {
             _resultValue.labels = labels;
             _resultValue.machineConfig = machineConfig;
             _resultValue.machineLabels = machineLabels;
+            _resultValue.machineOs = machineOs;
             _resultValue.maxUnhealthy = maxUnhealthy;
             _resultValue.name = name;
             _resultValue.nodeDrainTimeout = nodeDrainTimeout;

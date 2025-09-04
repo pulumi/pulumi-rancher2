@@ -20,10 +20,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterV2RkeConfigMachinePool {
     /**
-     * @return Annotations of the resource
+     * @return Annotations for the MachineDeployment object
      * 
      */
-    private Map<String,String> annotations;
+    private @Nullable Map<String,String> annotations;
     /**
      * @return (Computed) Cluster V2 cloud credential secret name (string)
      * 
@@ -50,20 +50,25 @@ public final class GetClusterV2RkeConfigMachinePool {
      */
     private @Nullable Integer hostnameLengthLimit;
     /**
-     * @return Labels of the resource
+     * @return Labels for the MachineDeployment object
      * 
      */
-    private Map<String,String> labels;
+    private @Nullable Map<String,String> labels;
     /**
      * @return Machine config data
      * 
      */
     private GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
     /**
-     * @return Labels of the machine
+     * @return Labels for the machine pool nodes
      * 
      */
-    private Map<String,String> machineLabels;
+    private @Nullable Map<String,String> machineLabels;
+    /**
+     * @return OS Type in machine pool
+     * 
+     */
+    private @Nullable String machineOs;
     /**
      * @return max unhealthy nodes for automated replacement to be allowed
      * 
@@ -122,11 +127,11 @@ public final class GetClusterV2RkeConfigMachinePool {
 
     private GetClusterV2RkeConfigMachinePool() {}
     /**
-     * @return Annotations of the resource
+     * @return Annotations for the MachineDeployment object
      * 
      */
     public Map<String,String> annotations() {
-        return this.annotations;
+        return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
      * @return (Computed) Cluster V2 cloud credential secret name (string)
@@ -164,11 +169,11 @@ public final class GetClusterV2RkeConfigMachinePool {
         return Optional.ofNullable(this.hostnameLengthLimit);
     }
     /**
-     * @return Labels of the resource
+     * @return Labels for the MachineDeployment object
      * 
      */
     public Map<String,String> labels() {
-        return this.labels;
+        return this.labels == null ? Map.of() : this.labels;
     }
     /**
      * @return Machine config data
@@ -178,11 +183,18 @@ public final class GetClusterV2RkeConfigMachinePool {
         return this.machineConfig;
     }
     /**
-     * @return Labels of the machine
+     * @return Labels for the machine pool nodes
      * 
      */
     public Map<String,String> machineLabels() {
-        return this.machineLabels;
+        return this.machineLabels == null ? Map.of() : this.machineLabels;
+    }
+    /**
+     * @return OS Type in machine pool
+     * 
+     */
+    public Optional<String> machineOs() {
+        return Optional.ofNullable(this.machineOs);
     }
     /**
      * @return max unhealthy nodes for automated replacement to be allowed
@@ -271,15 +283,16 @@ public final class GetClusterV2RkeConfigMachinePool {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,String> annotations;
+        private @Nullable Map<String,String> annotations;
         private @Nullable String cloudCredentialSecretName;
         private @Nullable Boolean controlPlaneRole;
         private @Nullable Boolean drainBeforeDelete;
         private @Nullable Boolean etcdRole;
         private @Nullable Integer hostnameLengthLimit;
-        private Map<String,String> labels;
+        private @Nullable Map<String,String> labels;
         private GetClusterV2RkeConfigMachinePoolMachineConfig machineConfig;
-        private Map<String,String> machineLabels;
+        private @Nullable Map<String,String> machineLabels;
+        private @Nullable String machineOs;
         private @Nullable String maxUnhealthy;
         private String name;
         private @Nullable Integer nodeDrainTimeout;
@@ -303,6 +316,7 @@ public final class GetClusterV2RkeConfigMachinePool {
     	      this.labels = defaults.labels;
     	      this.machineConfig = defaults.machineConfig;
     	      this.machineLabels = defaults.machineLabels;
+    	      this.machineOs = defaults.machineOs;
     	      this.maxUnhealthy = defaults.maxUnhealthy;
     	      this.name = defaults.name;
     	      this.nodeDrainTimeout = defaults.nodeDrainTimeout;
@@ -317,10 +331,8 @@ public final class GetClusterV2RkeConfigMachinePool {
         }
 
         @CustomType.Setter
-        public Builder annotations(Map<String,String> annotations) {
-            if (annotations == null) {
-              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "annotations");
-            }
+        public Builder annotations(@Nullable Map<String,String> annotations) {
+
             this.annotations = annotations;
             return this;
         }
@@ -355,10 +367,8 @@ public final class GetClusterV2RkeConfigMachinePool {
             return this;
         }
         @CustomType.Setter
-        public Builder labels(Map<String,String> labels) {
-            if (labels == null) {
-              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "labels");
-            }
+        public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
@@ -371,11 +381,15 @@ public final class GetClusterV2RkeConfigMachinePool {
             return this;
         }
         @CustomType.Setter
-        public Builder machineLabels(Map<String,String> machineLabels) {
-            if (machineLabels == null) {
-              throw new MissingRequiredPropertyException("GetClusterV2RkeConfigMachinePool", "machineLabels");
-            }
+        public Builder machineLabels(@Nullable Map<String,String> machineLabels) {
+
             this.machineLabels = machineLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder machineOs(@Nullable String machineOs) {
+
+            this.machineOs = machineOs;
             return this;
         }
         @CustomType.Setter
@@ -460,6 +474,7 @@ public final class GetClusterV2RkeConfigMachinePool {
             _resultValue.labels = labels;
             _resultValue.machineConfig = machineConfig;
             _resultValue.machineLabels = machineLabels;
+            _resultValue.machineOs = machineOs;
             _resultValue.maxUnhealthy = maxUnhealthy;
             _resultValue.name = name;
             _resultValue.nodeDrainTimeout = nodeDrainTimeout;

@@ -107,14 +107,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
     }
 
     /**
-     * Azure tenant ID to use (string)
+     * Required if `tenant_name` not provided. (string)
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Azure tenant ID to use (string)
+     * @return Required if `tenant_name` not provided. (string)
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -326,7 +326,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param tenantId Azure tenant ID to use (string)
+         * @param tenantId Required if `tenant_name` not provided. (string)
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param tenantId Azure tenant ID to use (string)
+         * @param tenantId Required if `tenant_name` not provided. (string)
          * 
          * @return builder
          * 

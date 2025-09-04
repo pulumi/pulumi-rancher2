@@ -5,16 +5,14 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.rancher2.outputs.GetClusterAksConfig;
 import com.pulumi.rancher2.outputs.GetClusterAksConfigV2;
 import com.pulumi.rancher2.outputs.GetClusterClusterAuthEndpoint;
 import com.pulumi.rancher2.outputs.GetClusterClusterRegistrationToken;
 import com.pulumi.rancher2.outputs.GetClusterClusterTemplateAnswers;
 import com.pulumi.rancher2.outputs.GetClusterClusterTemplateQuestion;
-import com.pulumi.rancher2.outputs.GetClusterEksConfig;
 import com.pulumi.rancher2.outputs.GetClusterEksConfigV2;
-import com.pulumi.rancher2.outputs.GetClusterGkeConfig;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2;
+import com.pulumi.rancher2.outputs.GetClusterImportedConfig;
 import com.pulumi.rancher2.outputs.GetClusterK3sConfig;
 import com.pulumi.rancher2.outputs.GetClusterOkeConfig;
 import com.pulumi.rancher2.outputs.GetClusterRke2Config;
@@ -33,12 +31,7 @@ public final class GetClusterResult {
      */
     private List<String> agentEnvVars;
     /**
-     * @return (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-     * 
-     */
-    private GetClusterAksConfig aksConfig;
-    /**
-     * @return (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
     private GetClusterAksConfigV2 aksConfigV2;
@@ -99,12 +92,7 @@ public final class GetClusterResult {
      */
     private String driver;
     /**
-     * @return (Computed) The Amazon eks configuration for `eks` Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-     * 
-     */
-    private GetClusterEksConfig eksConfig;
-    /**
-     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     private GetClusterEksConfigV2 eksConfigV2;
@@ -119,12 +107,7 @@ public final class GetClusterResult {
      */
     private String fleetWorkspaceName;
     /**
-     * @return (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1) (list maxitems:1)
-     * 
-     */
-    private GetClusterGkeConfig gkeConfig;
-    /**
-     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     private GetClusterGkeConfigV2 gkeConfigV2;
@@ -133,8 +116,9 @@ public final class GetClusterResult {
      * 
      */
     private String id;
+    private List<GetClusterImportedConfig> importedConfigs;
     /**
-     * @return (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, and `rke_config` (list maxitems:1)
      * 
      */
     private GetClusterK3sConfig k3sConfig;
@@ -150,17 +134,17 @@ public final class GetClusterResult {
     private Map<String,String> labels;
     private String name;
     /**
-     * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
     private GetClusterOkeConfig okeConfig;
     /**
-     * @return (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
     private GetClusterRke2Config rke2Config;
     /**
-     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2` and `k3s_config` (list maxitems:1)
      * 
      */
     private GetClusterRkeConfig rkeConfig;
@@ -179,14 +163,7 @@ public final class GetClusterResult {
         return this.agentEnvVars;
     }
     /**
-     * @return (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-     * 
-     */
-    public GetClusterAksConfig aksConfig() {
-        return this.aksConfig;
-    }
-    /**
-     * @return (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aks_config`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
     public GetClusterAksConfigV2 aksConfigV2() {
@@ -273,14 +250,7 @@ public final class GetClusterResult {
         return this.driver;
     }
     /**
-     * @return (Computed) The Amazon eks configuration for `eks` Conflicts with `aks_config`, `aks_config_v2`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
-     * 
-     */
-    public GetClusterEksConfig eksConfig() {
-        return this.eksConfig;
-    }
-    /**
-     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     public GetClusterEksConfigV2 eksConfigV2() {
@@ -301,14 +271,7 @@ public final class GetClusterResult {
         return this.fleetWorkspaceName;
     }
     /**
-     * @return (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config_v2`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1) (list maxitems:1)
-     * 
-     */
-    public GetClusterGkeConfig gkeConfig() {
-        return this.gkeConfig;
-    }
-    /**
-     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `oke_config`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     public GetClusterGkeConfigV2 gkeConfigV2() {
@@ -321,8 +284,11 @@ public final class GetClusterResult {
     public String id() {
         return this.id;
     }
+    public List<GetClusterImportedConfig> importedConfigs() {
+        return this.importedConfigs;
+    }
     /**
-     * @return (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, and `rke_config` (list maxitems:1)
      * 
      */
     public GetClusterK3sConfig k3sConfig() {
@@ -346,21 +312,21 @@ public final class GetClusterResult {
         return this.name;
     }
     /**
-     * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
     public GetClusterOkeConfig okeConfig() {
         return this.okeConfig;
     }
     /**
-     * @return (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `gke_config`, `oke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
      * 
      */
     public GetClusterRke2Config rke2Config() {
         return this.rke2Config;
     }
     /**
-     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config`, `aks_config_v2`, `eks_config`, `eks_config_v2`, `gke_config`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2` and `k3s_config` (list maxitems:1)
      * 
      */
     public GetClusterRkeConfig rkeConfig() {
@@ -384,7 +350,6 @@ public final class GetClusterResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> agentEnvVars;
-        private GetClusterAksConfig aksConfig;
         private GetClusterAksConfigV2 aksConfigV2;
         private Map<String,String> annotations;
         private String caCert;
@@ -398,13 +363,12 @@ public final class GetClusterResult {
         private String defaultProjectId;
         private String description;
         private String driver;
-        private GetClusterEksConfig eksConfig;
         private GetClusterEksConfigV2 eksConfigV2;
         private Boolean enableNetworkPolicy;
         private String fleetWorkspaceName;
-        private GetClusterGkeConfig gkeConfig;
         private GetClusterGkeConfigV2 gkeConfigV2;
         private String id;
+        private List<GetClusterImportedConfig> importedConfigs;
         private GetClusterK3sConfig k3sConfig;
         private String kubeConfig;
         private Map<String,String> labels;
@@ -417,7 +381,6 @@ public final class GetClusterResult {
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentEnvVars = defaults.agentEnvVars;
-    	      this.aksConfig = defaults.aksConfig;
     	      this.aksConfigV2 = defaults.aksConfigV2;
     	      this.annotations = defaults.annotations;
     	      this.caCert = defaults.caCert;
@@ -431,13 +394,12 @@ public final class GetClusterResult {
     	      this.defaultProjectId = defaults.defaultProjectId;
     	      this.description = defaults.description;
     	      this.driver = defaults.driver;
-    	      this.eksConfig = defaults.eksConfig;
     	      this.eksConfigV2 = defaults.eksConfigV2;
     	      this.enableNetworkPolicy = defaults.enableNetworkPolicy;
     	      this.fleetWorkspaceName = defaults.fleetWorkspaceName;
-    	      this.gkeConfig = defaults.gkeConfig;
     	      this.gkeConfigV2 = defaults.gkeConfigV2;
     	      this.id = defaults.id;
+    	      this.importedConfigs = defaults.importedConfigs;
     	      this.k3sConfig = defaults.k3sConfig;
     	      this.kubeConfig = defaults.kubeConfig;
     	      this.labels = defaults.labels;
@@ -458,14 +420,6 @@ public final class GetClusterResult {
         }
         public Builder agentEnvVars(String... agentEnvVars) {
             return agentEnvVars(List.of(agentEnvVars));
-        }
-        @CustomType.Setter
-        public Builder aksConfig(GetClusterAksConfig aksConfig) {
-            if (aksConfig == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "aksConfig");
-            }
-            this.aksConfig = aksConfig;
-            return this;
         }
         @CustomType.Setter
         public Builder aksConfigV2(GetClusterAksConfigV2 aksConfigV2) {
@@ -575,14 +529,6 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder eksConfig(GetClusterEksConfig eksConfig) {
-            if (eksConfig == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "eksConfig");
-            }
-            this.eksConfig = eksConfig;
-            return this;
-        }
-        @CustomType.Setter
         public Builder eksConfigV2(GetClusterEksConfigV2 eksConfigV2) {
             if (eksConfigV2 == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "eksConfigV2");
@@ -607,14 +553,6 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder gkeConfig(GetClusterGkeConfig gkeConfig) {
-            if (gkeConfig == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "gkeConfig");
-            }
-            this.gkeConfig = gkeConfig;
-            return this;
-        }
-        @CustomType.Setter
         public Builder gkeConfigV2(GetClusterGkeConfigV2 gkeConfigV2) {
             if (gkeConfigV2 == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "gkeConfigV2");
@@ -629,6 +567,17 @@ public final class GetClusterResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder importedConfigs(List<GetClusterImportedConfig> importedConfigs) {
+            if (importedConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "importedConfigs");
+            }
+            this.importedConfigs = importedConfigs;
+            return this;
+        }
+        public Builder importedConfigs(GetClusterImportedConfig... importedConfigs) {
+            return importedConfigs(List.of(importedConfigs));
         }
         @CustomType.Setter
         public Builder k3sConfig(GetClusterK3sConfig k3sConfig) {
@@ -697,7 +646,6 @@ public final class GetClusterResult {
         public GetClusterResult build() {
             final var _resultValue = new GetClusterResult();
             _resultValue.agentEnvVars = agentEnvVars;
-            _resultValue.aksConfig = aksConfig;
             _resultValue.aksConfigV2 = aksConfigV2;
             _resultValue.annotations = annotations;
             _resultValue.caCert = caCert;
@@ -711,13 +659,12 @@ public final class GetClusterResult {
             _resultValue.defaultProjectId = defaultProjectId;
             _resultValue.description = description;
             _resultValue.driver = driver;
-            _resultValue.eksConfig = eksConfig;
             _resultValue.eksConfigV2 = eksConfigV2;
             _resultValue.enableNetworkPolicy = enableNetworkPolicy;
             _resultValue.fleetWorkspaceName = fleetWorkspaceName;
-            _resultValue.gkeConfig = gkeConfig;
             _resultValue.gkeConfigV2 = gkeConfigV2;
             _resultValue.id = id;
+            _resultValue.importedConfigs = importedConfigs;
             _resultValue.k3sConfig = k3sConfig;
             _resultValue.kubeConfig = kubeConfig;
             _resultValue.labels = labels;

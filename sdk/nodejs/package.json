@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/rancher2",
-    "version": "9.0.0-alpha.0+dev",
+    "version": "10.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing rancher2 resources.",
     "keywords": [
         "pulumi",
@@ -23,6 +23,6 @@
     "pulumi": {
         "resource": true,
         "name": "rancher2",
-        "version": "9.0.0-alpha.0+dev"
+        "version": "10.0.0-alpha.0+dev"
     }
 }

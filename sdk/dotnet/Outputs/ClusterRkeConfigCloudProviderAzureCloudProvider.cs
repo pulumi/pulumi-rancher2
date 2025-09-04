@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? LoadBalancerSku;
         /// <summary>
-        /// Azure Kubernetes cluster location. Default `eastus` (string)
+        /// (string)
         /// </summary>
         public readonly string? Location;
         /// <summary>
@@ -102,11 +102,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SubnetName;
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        /// (string)
         /// </summary>
         public readonly string SubscriptionId;
         /// <summary>
-        /// Azure tenant ID to use (string)
+        /// Required if `tenant_name` not provided. (string)
         /// </summary>
         public readonly string TenantId;
         /// <summary>

@@ -194,7 +194,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String userDomainName;
     /**
-     * @return OpenStack username (string)
+     * @return The username to be set when logging into the virtual machines (string)
      * 
      */
     private @Nullable String username;
@@ -481,7 +481,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.userDomainName);
     }
     /**
-     * @return OpenStack username (string)
+     * @return The username to be set when logging into the virtual machines (string)
      * 
      */
     public Optional<String> username() {

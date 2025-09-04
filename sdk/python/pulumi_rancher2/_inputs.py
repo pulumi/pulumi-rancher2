@@ -35,8 +35,6 @@ __all__ = [
     'CloudCredentialVsphereCredentialConfigArgsDict',
     'ClusterAgentEnvVarArgs',
     'ClusterAgentEnvVarArgsDict',
-    'ClusterAksConfigArgs',
-    'ClusterAksConfigArgsDict',
     'ClusterAksConfigV2Args',
     'ClusterAksConfigV2ArgsDict',
     'ClusterAksConfigV2NodePoolArgs',
@@ -61,8 +59,6 @@ __all__ = [
     'ClusterClusterTemplateAnswersArgsDict',
     'ClusterClusterTemplateQuestionArgs',
     'ClusterClusterTemplateQuestionArgsDict',
-    'ClusterEksConfigArgs',
-    'ClusterEksConfigArgsDict',
     'ClusterEksConfigV2Args',
     'ClusterEksConfigV2ArgsDict',
     'ClusterEksConfigV2NodeGroupArgs',
@@ -75,8 +71,6 @@ __all__ = [
     'ClusterFleetAgentDeploymentCustomizationAppendTolerationArgsDict',
     'ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs',
     'ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict',
-    'ClusterGkeConfigArgs',
-    'ClusterGkeConfigArgsDict',
     'ClusterGkeConfigV2Args',
     'ClusterGkeConfigV2ArgsDict',
     'ClusterGkeConfigV2ClusterAddonsArgs',
@@ -465,6 +459,8 @@ __all__ = [
     'MachineConfigV2AzureConfigArgsDict',
     'MachineConfigV2DigitaloceanConfigArgs',
     'MachineConfigV2DigitaloceanConfigArgsDict',
+    'MachineConfigV2GoogleConfigArgs',
+    'MachineConfigV2GoogleConfigArgsDict',
     'MachineConfigV2HarvesterConfigArgs',
     'MachineConfigV2HarvesterConfigArgsDict',
     'MachineConfigV2LinodeConfigArgs',
@@ -1207,790 +1203,6 @@ class ClusterAgentEnvVarArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
-
-
-if not MYPY:
-    class ClusterAksConfigArgsDict(TypedDict):
-        agent_dns_prefix: pulumi.Input[_builtins.str]
-        """
-        DNS prefix to be used to create the FQDN for the agent pool
-        """
-        client_id: pulumi.Input[_builtins.str]
-        """
-        Azure client ID to use
-        """
-        client_secret: pulumi.Input[_builtins.str]
-        """
-        Azure client secret associated with the "client id"
-        """
-        kubernetes_version: pulumi.Input[_builtins.str]
-        """
-        Specify the version of Kubernetes
-        """
-        master_dns_prefix: pulumi.Input[_builtins.str]
-        """
-        DNS prefix to use the Kubernetes cluster control pane
-        """
-        resource_group: pulumi.Input[_builtins.str]
-        """
-        The name of the Cluster resource group
-        """
-        ssh_public_key_contents: pulumi.Input[_builtins.str]
-        """
-        Contents of the SSH public key used to authenticate with Linux hosts
-        """
-        subnet: pulumi.Input[_builtins.str]
-        """
-        The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
-        """
-        subscription_id: pulumi.Input[_builtins.str]
-        """
-        Subscription credentials which uniquely identify Microsoft Azure subscription
-        """
-        tenant_id: pulumi.Input[_builtins.str]
-        """
-        Azure tenant ID to use
-        """
-        virtual_network: pulumi.Input[_builtins.str]
-        """
-        The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-        """
-        virtual_network_resource_group: pulumi.Input[_builtins.str]
-        """
-        The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-        """
-        aad_server_app_secret: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The secret of an Azure Active Directory server application
-        """
-        aad_tenant_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of an Azure Active Directory tenant
-        """
-        add_client_app_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of an Azure Active Directory client application of type "Native". This application is for user login via kubectl
-        """
-        add_server_app_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of an Azure Active Directory server application of type "Web app/API". This application represents the managed cluster's apiserver (Server application)
-        """
-        admin_username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The administrator username to use for Linux hosts
-        """
-        agent_os_disk_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the "agent vm size" specified
-        """
-        agent_pool_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name for the agent pool, upto 12 alphanumeric characters
-        """
-        agent_storage_profile: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
-        """
-        agent_vm_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Size of machine in the agent pool
-        """
-        auth_base_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Different authentication API url to use
-        """
-        base_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Different resource management API url to use
-        """
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
-        """
-        dns_service_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in "service cidr"
-        """
-        docker_bridge_cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in "service cidr"
-        """
-        enable_http_application_routing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable the Kubernetes ingress with automatic public DNS name creation
-        """
-        enable_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Turn on Azure Log Analytics monitoring. Uses the Log Analytics "Default" workspace if it exists, else creates one. if using an existing workspace, specifies "log analytics workspace resource id"
-        """
-        load_balancer_sku: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Load balancer type (basic | standard). Must be standard for auto-scaling
-        """
-        location: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Azure Kubernetes cluster location
-        """
-        log_analytics_workspace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}'
-        """
-        log_analytics_workspace_resource_group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group
-        """
-        max_pods: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of pods that can run on a node
-        """
-        network_plugin: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
-        """
-        network_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Network policy used for building Kubernetes network. Chooses from [calico]
-        """
-        pod_cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A CIDR notation IP range from which to assign Kubernetes Pod IPs when "network plugin" is specified in "kubenet".
-        """
-        service_cidr: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
-        """
-        tag: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Tags for Kubernetes cluster. For example, foo=bar
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
-        """
-elif False:
-    ClusterAksConfigArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class ClusterAksConfigArgs:
-    def __init__(__self__, *,
-                 agent_dns_prefix: pulumi.Input[_builtins.str],
-                 client_id: pulumi.Input[_builtins.str],
-                 client_secret: pulumi.Input[_builtins.str],
-                 kubernetes_version: pulumi.Input[_builtins.str],
-                 master_dns_prefix: pulumi.Input[_builtins.str],
-                 resource_group: pulumi.Input[_builtins.str],
-                 ssh_public_key_contents: pulumi.Input[_builtins.str],
-                 subnet: pulumi.Input[_builtins.str],
-                 subscription_id: pulumi.Input[_builtins.str],
-                 tenant_id: pulumi.Input[_builtins.str],
-                 virtual_network: pulumi.Input[_builtins.str],
-                 virtual_network_resource_group: pulumi.Input[_builtins.str],
-                 aad_server_app_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 aad_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 add_client_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 add_server_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_os_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 agent_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_storage_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent_vm_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_base_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 count: Optional[pulumi.Input[_builtins.int]] = None,
-                 dns_service_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_bridge_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_http_application_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_sku: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_analytics_workspace: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_analytics_workspace_resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_pods: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] agent_dns_prefix: DNS prefix to be used to create the FQDN for the agent pool
-        :param pulumi.Input[_builtins.str] client_id: Azure client ID to use
-        :param pulumi.Input[_builtins.str] client_secret: Azure client secret associated with the "client id"
-        :param pulumi.Input[_builtins.str] kubernetes_version: Specify the version of Kubernetes
-        :param pulumi.Input[_builtins.str] master_dns_prefix: DNS prefix to use the Kubernetes cluster control pane
-        :param pulumi.Input[_builtins.str] resource_group: The name of the Cluster resource group
-        :param pulumi.Input[_builtins.str] ssh_public_key_contents: Contents of the SSH public key used to authenticate with Linux hosts
-        :param pulumi.Input[_builtins.str] subnet: The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
-        :param pulumi.Input[_builtins.str] subscription_id: Subscription credentials which uniquely identify Microsoft Azure subscription
-        :param pulumi.Input[_builtins.str] tenant_id: Azure tenant ID to use
-        :param pulumi.Input[_builtins.str] virtual_network: The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-        :param pulumi.Input[_builtins.str] virtual_network_resource_group: The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-        :param pulumi.Input[_builtins.str] aad_server_app_secret: The secret of an Azure Active Directory server application
-        :param pulumi.Input[_builtins.str] aad_tenant_id: The ID of an Azure Active Directory tenant
-        :param pulumi.Input[_builtins.str] add_client_app_id: The ID of an Azure Active Directory client application of type "Native". This application is for user login via kubectl
-        :param pulumi.Input[_builtins.str] add_server_app_id: The ID of an Azure Active Directory server application of type "Web app/API". This application represents the managed cluster's apiserver (Server application)
-        :param pulumi.Input[_builtins.str] admin_username: The administrator username to use for Linux hosts
-        :param pulumi.Input[_builtins.int] agent_os_disk_size: GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the "agent vm size" specified
-        :param pulumi.Input[_builtins.str] agent_pool_name: Name for the agent pool, upto 12 alphanumeric characters
-        :param pulumi.Input[_builtins.str] agent_storage_profile: Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
-        :param pulumi.Input[_builtins.str] agent_vm_size: Size of machine in the agent pool
-        :param pulumi.Input[_builtins.str] auth_base_url: Different authentication API url to use
-        :param pulumi.Input[_builtins.str] base_url: Different resource management API url to use
-        :param pulumi.Input[_builtins.int] count: Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
-        :param pulumi.Input[_builtins.str] dns_service_ip: An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in "service cidr"
-        :param pulumi.Input[_builtins.str] docker_bridge_cidr: A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in "service cidr"
-        :param pulumi.Input[_builtins.bool] enable_http_application_routing: Enable the Kubernetes ingress with automatic public DNS name creation
-        :param pulumi.Input[_builtins.bool] enable_monitoring: Turn on Azure Log Analytics monitoring. Uses the Log Analytics "Default" workspace if it exists, else creates one. if using an existing workspace, specifies "log analytics workspace resource id"
-        :param pulumi.Input[_builtins.str] load_balancer_sku: Load balancer type (basic | standard). Must be standard for auto-scaling
-        :param pulumi.Input[_builtins.str] location: Azure Kubernetes cluster location
-        :param pulumi.Input[_builtins.str] log_analytics_workspace: The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}'
-        :param pulumi.Input[_builtins.str] log_analytics_workspace_resource_group: The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group
-        :param pulumi.Input[_builtins.int] max_pods: Maximum number of pods that can run on a node
-        :param pulumi.Input[_builtins.str] network_plugin: Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
-        :param pulumi.Input[_builtins.str] network_policy: Network policy used for building Kubernetes network. Chooses from [calico]
-        :param pulumi.Input[_builtins.str] pod_cidr: A CIDR notation IP range from which to assign Kubernetes Pod IPs when "network plugin" is specified in "kubenet".
-        :param pulumi.Input[_builtins.str] service_cidr: A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tag: Tags for Kubernetes cluster. For example, foo=bar
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
-        """
-        pulumi.set(__self__, "agent_dns_prefix", agent_dns_prefix)
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "client_secret", client_secret)
-        pulumi.set(__self__, "kubernetes_version", kubernetes_version)
-        pulumi.set(__self__, "master_dns_prefix", master_dns_prefix)
-        pulumi.set(__self__, "resource_group", resource_group)
-        pulumi.set(__self__, "ssh_public_key_contents", ssh_public_key_contents)
-        pulumi.set(__self__, "subnet", subnet)
-        pulumi.set(__self__, "subscription_id", subscription_id)
-        pulumi.set(__self__, "tenant_id", tenant_id)
-        pulumi.set(__self__, "virtual_network", virtual_network)
-        pulumi.set(__self__, "virtual_network_resource_group", virtual_network_resource_group)
-        if aad_server_app_secret is not None:
-            pulumi.set(__self__, "aad_server_app_secret", aad_server_app_secret)
-        if aad_tenant_id is not None:
-            pulumi.set(__self__, "aad_tenant_id", aad_tenant_id)
-        if add_client_app_id is not None:
-            pulumi.set(__self__, "add_client_app_id", add_client_app_id)
-        if add_server_app_id is not None:
-            pulumi.set(__self__, "add_server_app_id", add_server_app_id)
-        if admin_username is not None:
-            pulumi.set(__self__, "admin_username", admin_username)
-        if agent_os_disk_size is not None:
-            pulumi.set(__self__, "agent_os_disk_size", agent_os_disk_size)
-        if agent_pool_name is not None:
-            pulumi.set(__self__, "agent_pool_name", agent_pool_name)
-        if agent_storage_profile is not None:
-            pulumi.set(__self__, "agent_storage_profile", agent_storage_profile)
-        if agent_vm_size is not None:
-            pulumi.set(__self__, "agent_vm_size", agent_vm_size)
-        if auth_base_url is not None:
-            pulumi.set(__self__, "auth_base_url", auth_base_url)
-        if base_url is not None:
-            pulumi.set(__self__, "base_url", base_url)
-        if count is not None:
-            pulumi.set(__self__, "count", count)
-        if dns_service_ip is not None:
-            pulumi.set(__self__, "dns_service_ip", dns_service_ip)
-        if docker_bridge_cidr is not None:
-            pulumi.set(__self__, "docker_bridge_cidr", docker_bridge_cidr)
-        if enable_http_application_routing is not None:
-            pulumi.set(__self__, "enable_http_application_routing", enable_http_application_routing)
-        if enable_monitoring is not None:
-            pulumi.set(__self__, "enable_monitoring", enable_monitoring)
-        if load_balancer_sku is not None:
-            pulumi.set(__self__, "load_balancer_sku", load_balancer_sku)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
-        if log_analytics_workspace is not None:
-            pulumi.set(__self__, "log_analytics_workspace", log_analytics_workspace)
-        if log_analytics_workspace_resource_group is not None:
-            pulumi.set(__self__, "log_analytics_workspace_resource_group", log_analytics_workspace_resource_group)
-        if max_pods is not None:
-            pulumi.set(__self__, "max_pods", max_pods)
-        if network_plugin is not None:
-            pulumi.set(__self__, "network_plugin", network_plugin)
-        if network_policy is not None:
-            pulumi.set(__self__, "network_policy", network_policy)
-        if pod_cidr is not None:
-            pulumi.set(__self__, "pod_cidr", pod_cidr)
-        if service_cidr is not None:
-            pulumi.set(__self__, "service_cidr", service_cidr)
-        if tag is not None:
-            warnings.warn("""Use tags argument instead as []string""", DeprecationWarning)
-            pulumi.log.warn("""tag is deprecated: Use tags argument instead as []string""")
-        if tag is not None:
-            pulumi.set(__self__, "tag", tag)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
-
-    @_builtins.property
-    @pulumi.getter(name="agentDnsPrefix")
-    def agent_dns_prefix(self) -> pulumi.Input[_builtins.str]:
-        """
-        DNS prefix to be used to create the FQDN for the agent pool
-        """
-        return pulumi.get(self, "agent_dns_prefix")
-
-    @agent_dns_prefix.setter
-    def agent_dns_prefix(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "agent_dns_prefix", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Azure client ID to use
-        """
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "client_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> pulumi.Input[_builtins.str]:
-        """
-        Azure client secret associated with the "client id"
-        """
-        return pulumi.get(self, "client_secret")
-
-    @client_secret.setter
-    def client_secret(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "client_secret", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kubernetesVersion")
-    def kubernetes_version(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specify the version of Kubernetes
-        """
-        return pulumi.get(self, "kubernetes_version")
-
-    @kubernetes_version.setter
-    def kubernetes_version(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "kubernetes_version", value)
-
-    @_builtins.property
-    @pulumi.getter(name="masterDnsPrefix")
-    def master_dns_prefix(self) -> pulumi.Input[_builtins.str]:
-        """
-        DNS prefix to use the Kubernetes cluster control pane
-        """
-        return pulumi.get(self, "master_dns_prefix")
-
-    @master_dns_prefix.setter
-    def master_dns_prefix(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "master_dns_prefix", value)
-
-    @_builtins.property
-    @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the Cluster resource group
-        """
-        return pulumi.get(self, "resource_group")
-
-    @resource_group.setter
-    def resource_group(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "resource_group", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sshPublicKeyContents")
-    def ssh_public_key_contents(self) -> pulumi.Input[_builtins.str]:
-        """
-        Contents of the SSH public key used to authenticate with Linux hosts
-        """
-        return pulumi.get(self, "ssh_public_key_contents")
-
-    @ssh_public_key_contents.setter
-    def ssh_public_key_contents(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ssh_public_key_contents", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def subnet(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of an existing Azure Virtual Subnet. Composite of agent virtual network subnet ID
-        """
-        return pulumi.get(self, "subnet")
-
-    @subnet.setter
-    def subnet(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "subnet", value)
-
-    @_builtins.property
-    @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Subscription credentials which uniquely identify Microsoft Azure subscription
-        """
-        return pulumi.get(self, "subscription_id")
-
-    @subscription_id.setter
-    def subscription_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "subscription_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Azure tenant ID to use
-        """
-        return pulumi.get(self, "tenant_id")
-
-    @tenant_id.setter
-    def tenant_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "tenant_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="virtualNetwork")
-    def virtual_network(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-        """
-        return pulumi.get(self, "virtual_network")
-
-    @virtual_network.setter
-    def virtual_network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "virtual_network", value)
-
-    @_builtins.property
-    @pulumi.getter(name="virtualNetworkResourceGroup")
-    def virtual_network_resource_group(self) -> pulumi.Input[_builtins.str]:
-        """
-        The resource group of an existing Azure Virtual Network. Composite of agent virtual network subnet ID
-        """
-        return pulumi.get(self, "virtual_network_resource_group")
-
-    @virtual_network_resource_group.setter
-    def virtual_network_resource_group(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "virtual_network_resource_group", value)
-
-    @_builtins.property
-    @pulumi.getter(name="aadServerAppSecret")
-    def aad_server_app_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The secret of an Azure Active Directory server application
-        """
-        return pulumi.get(self, "aad_server_app_secret")
-
-    @aad_server_app_secret.setter
-    def aad_server_app_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "aad_server_app_secret", value)
-
-    @_builtins.property
-    @pulumi.getter(name="aadTenantId")
-    def aad_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of an Azure Active Directory tenant
-        """
-        return pulumi.get(self, "aad_tenant_id")
-
-    @aad_tenant_id.setter
-    def aad_tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "aad_tenant_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="addClientAppId")
-    def add_client_app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of an Azure Active Directory client application of type "Native". This application is for user login via kubectl
-        """
-        return pulumi.get(self, "add_client_app_id")
-
-    @add_client_app_id.setter
-    def add_client_app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "add_client_app_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="addServerAppId")
-    def add_server_app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of an Azure Active Directory server application of type "Web app/API". This application represents the managed cluster's apiserver (Server application)
-        """
-        return pulumi.get(self, "add_server_app_id")
-
-    @add_server_app_id.setter
-    def add_server_app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "add_server_app_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="adminUsername")
-    def admin_username(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The administrator username to use for Linux hosts
-        """
-        return pulumi.get(self, "admin_username")
-
-    @admin_username.setter
-    def admin_username(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "admin_username", value)
-
-    @_builtins.property
-    @pulumi.getter(name="agentOsDiskSize")
-    def agent_os_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        GB size to be used to specify the disk for every machine in the agent pool. If you specify 0, it will apply the default according to the "agent vm size" specified
-        """
-        return pulumi.get(self, "agent_os_disk_size")
-
-    @agent_os_disk_size.setter
-    def agent_os_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "agent_os_disk_size", value)
-
-    @_builtins.property
-    @pulumi.getter(name="agentPoolName")
-    def agent_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name for the agent pool, upto 12 alphanumeric characters
-        """
-        return pulumi.get(self, "agent_pool_name")
-
-    @agent_pool_name.setter
-    def agent_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "agent_pool_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="agentStorageProfile")
-    def agent_storage_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Storage profile specifies what kind of storage used on machine in the agent pool. Chooses from [ManagedDisks StorageAccount]
-        """
-        return pulumi.get(self, "agent_storage_profile")
-
-    @agent_storage_profile.setter
-    def agent_storage_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "agent_storage_profile", value)
-
-    @_builtins.property
-    @pulumi.getter(name="agentVmSize")
-    def agent_vm_size(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Size of machine in the agent pool
-        """
-        return pulumi.get(self, "agent_vm_size")
-
-    @agent_vm_size.setter
-    def agent_vm_size(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "agent_vm_size", value)
-
-    @_builtins.property
-    @pulumi.getter(name="authBaseUrl")
-    def auth_base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Different authentication API url to use
-        """
-        return pulumi.get(self, "auth_base_url")
-
-    @auth_base_url.setter
-    def auth_base_url(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "auth_base_url", value)
-
-    @_builtins.property
-    @pulumi.getter(name="baseUrl")
-    def base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Different resource management API url to use
-        """
-        return pulumi.get(self, "base_url")
-
-    @base_url.setter
-    def base_url(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "base_url", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of machines (VMs) in the agent pool. Allowed values must be in the range of 1 to 100 (inclusive)
-        """
-        return pulumi.get(self, "count")
-
-    @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "count", value)
-
-    @_builtins.property
-    @pulumi.getter(name="dnsServiceIp")
-    def dns_service_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes Service address range specified in "service cidr"
-        """
-        return pulumi.get(self, "dns_service_ip")
-
-    @dns_service_ip.setter
-    def dns_service_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "dns_service_ip", value)
-
-    @_builtins.property
-    @pulumi.getter(name="dockerBridgeCidr")
-    def docker_bridge_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes Service address range specified in "service cidr"
-        """
-        return pulumi.get(self, "docker_bridge_cidr")
-
-    @docker_bridge_cidr.setter
-    def docker_bridge_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "docker_bridge_cidr", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableHttpApplicationRouting")
-    def enable_http_application_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable the Kubernetes ingress with automatic public DNS name creation
-        """
-        return pulumi.get(self, "enable_http_application_routing")
-
-    @enable_http_application_routing.setter
-    def enable_http_application_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_http_application_routing", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableMonitoring")
-    def enable_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Turn on Azure Log Analytics monitoring. Uses the Log Analytics "Default" workspace if it exists, else creates one. if using an existing workspace, specifies "log analytics workspace resource id"
-        """
-        return pulumi.get(self, "enable_monitoring")
-
-    @enable_monitoring.setter
-    def enable_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_monitoring", value)
-
-    @_builtins.property
-    @pulumi.getter(name="loadBalancerSku")
-    def load_balancer_sku(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Load balancer type (basic | standard). Must be standard for auto-scaling
-        """
-        return pulumi.get(self, "load_balancer_sku")
-
-    @load_balancer_sku.setter
-    def load_balancer_sku(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "load_balancer_sku", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Azure Kubernetes cluster location
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "location", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logAnalyticsWorkspace")
-    def log_analytics_workspace(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses '{resource group}-{subscription id}-{location code}'
-        """
-        return pulumi.get(self, "log_analytics_workspace")
-
-    @log_analytics_workspace.setter
-    def log_analytics_workspace(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "log_analytics_workspace", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logAnalyticsWorkspaceResourceGroup")
-    def log_analytics_workspace_resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The resource group of an existing Azure Log Analytics Workspace to use for storing monitoring data. If not specified, uses the 'Cluster' resource group
-        """
-        return pulumi.get(self, "log_analytics_workspace_resource_group")
-
-    @log_analytics_workspace_resource_group.setter
-    def log_analytics_workspace_resource_group(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "log_analytics_workspace_resource_group", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxPods")
-    def max_pods(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Maximum number of pods that can run on a node
-        """
-        return pulumi.get(self, "max_pods")
-
-    @max_pods.setter
-    def max_pods(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_pods", value)
-
-    @_builtins.property
-    @pulumi.getter(name="networkPlugin")
-    def network_plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Network plugin used for building Kubernetes network. Chooses from [azure kubenet]
-        """
-        return pulumi.get(self, "network_plugin")
-
-    @network_plugin.setter
-    def network_plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "network_plugin", value)
-
-    @_builtins.property
-    @pulumi.getter(name="networkPolicy")
-    def network_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Network policy used for building Kubernetes network. Chooses from [calico]
-        """
-        return pulumi.get(self, "network_policy")
-
-    @network_policy.setter
-    def network_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "network_policy", value)
-
-    @_builtins.property
-    @pulumi.getter(name="podCidr")
-    def pod_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A CIDR notation IP range from which to assign Kubernetes Pod IPs when "network plugin" is specified in "kubenet".
-        """
-        return pulumi.get(self, "pod_cidr")
-
-    @pod_cidr.setter
-    def pod_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "pod_cidr", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceCidr")
-    def service_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A CIDR notation IP range from which to assign Kubernetes Service cluster IPs. It must not overlap with any Subnet IP ranges
-        """
-        return pulumi.get(self, "service_cidr")
-
-    @service_cidr.setter
-    def service_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "service_cidr", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Use tags argument instead as []string""")
-    def tag(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Tags for Kubernetes cluster. For example, foo=bar
-        """
-        return pulumi.get(self, "tag")
-
-    @tag.setter
-    def tag(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "tag", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Tags for Kubernetes cluster. For example, `["foo=bar","bar=foo"]`
-        """
-        return pulumi.get(self, "tags")
-
-    @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "tags", value)
 
 
 if not MYPY:
@@ -3896,395 +3108,6 @@ class ClusterClusterTemplateQuestionArgs:
 
 
 if not MYPY:
-    class ClusterEksConfigArgsDict(TypedDict):
-        access_key: pulumi.Input[_builtins.str]
-        """
-        The AWS Client ID to use
-        """
-        kubernetes_version: pulumi.Input[_builtins.str]
-        """
-        The kubernetes master version
-        """
-        secret_key: pulumi.Input[_builtins.str]
-        """
-        The AWS Client Secret associated with the Client ID
-        """
-        ami: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A custom AMI ID to use for the worker nodes instead of the default
-        """
-        associate_worker_node_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Associate public ip EKS worker nodes
-        """
-        desired_nodes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The desired number of worker nodes
-        """
-        ebs_encryption: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables EBS encryption of worker nodes
-        """
-        instance_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of machine to use for worker nodes
-        """
-        key_pair_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Allow user to specify key name to use
-        """
-        maximum_nodes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of worker nodes
-        """
-        minimum_nodes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum number of worker nodes
-        """
-        node_volume_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The volume size for each node
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The AWS Region to create the EKS cluster in
-        """
-        security_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of security groups to use for the cluster
-        """
-        service_role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The service role to use to perform the cluster operations in AWS
-        """
-        session_token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A session token to use with the client key and secret if applicable
-        """
-        subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of subnets in the virtual network to use
-        """
-        user_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Pass user-data to the nodes to perform automated configuration tasks
-        """
-        virtual_network: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the virtual network to use
-        """
-elif False:
-    ClusterEksConfigArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class ClusterEksConfigArgs:
-    def __init__(__self__, *,
-                 access_key: pulumi.Input[_builtins.str],
-                 kubernetes_version: pulumi.Input[_builtins.str],
-                 secret_key: pulumi.Input[_builtins.str],
-                 ami: Optional[pulumi.Input[_builtins.str]] = None,
-                 associate_worker_node_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_nodes: Optional[pulumi.Input[_builtins.int]] = None,
-                 ebs_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_nodes: Optional[pulumi.Input[_builtins.int]] = None,
-                 minimum_nodes: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_network: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] access_key: The AWS Client ID to use
-        :param pulumi.Input[_builtins.str] kubernetes_version: The kubernetes master version
-        :param pulumi.Input[_builtins.str] secret_key: The AWS Client Secret associated with the Client ID
-        :param pulumi.Input[_builtins.str] ami: A custom AMI ID to use for the worker nodes instead of the default
-        :param pulumi.Input[_builtins.bool] associate_worker_node_public_ip: Associate public ip EKS worker nodes
-        :param pulumi.Input[_builtins.int] desired_nodes: The desired number of worker nodes
-        :param pulumi.Input[_builtins.bool] ebs_encryption: Enables EBS encryption of worker nodes
-        :param pulumi.Input[_builtins.str] instance_type: The type of machine to use for worker nodes
-        :param pulumi.Input[_builtins.str] key_pair_name: Allow user to specify key name to use
-        :param pulumi.Input[_builtins.int] maximum_nodes: The maximum number of worker nodes
-        :param pulumi.Input[_builtins.int] minimum_nodes: The minimum number of worker nodes
-        :param pulumi.Input[_builtins.int] node_volume_size: The volume size for each node
-        :param pulumi.Input[_builtins.str] region: The AWS Region to create the EKS cluster in
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: List of security groups to use for the cluster
-        :param pulumi.Input[_builtins.str] service_role: The service role to use to perform the cluster operations in AWS
-        :param pulumi.Input[_builtins.str] session_token: A session token to use with the client key and secret if applicable
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: List of subnets in the virtual network to use
-        :param pulumi.Input[_builtins.str] user_data: Pass user-data to the nodes to perform automated configuration tasks
-        :param pulumi.Input[_builtins.str] virtual_network: The name of the virtual network to use
-        """
-        pulumi.set(__self__, "access_key", access_key)
-        pulumi.set(__self__, "kubernetes_version", kubernetes_version)
-        pulumi.set(__self__, "secret_key", secret_key)
-        if ami is not None:
-            pulumi.set(__self__, "ami", ami)
-        if associate_worker_node_public_ip is not None:
-            pulumi.set(__self__, "associate_worker_node_public_ip", associate_worker_node_public_ip)
-        if desired_nodes is not None:
-            pulumi.set(__self__, "desired_nodes", desired_nodes)
-        if ebs_encryption is not None:
-            pulumi.set(__self__, "ebs_encryption", ebs_encryption)
-        if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
-        if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
-        if maximum_nodes is not None:
-            pulumi.set(__self__, "maximum_nodes", maximum_nodes)
-        if minimum_nodes is not None:
-            pulumi.set(__self__, "minimum_nodes", minimum_nodes)
-        if node_volume_size is not None:
-            pulumi.set(__self__, "node_volume_size", node_volume_size)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
-        if service_role is not None:
-            pulumi.set(__self__, "service_role", service_role)
-        if session_token is not None:
-            pulumi.set(__self__, "session_token", session_token)
-        if subnets is not None:
-            pulumi.set(__self__, "subnets", subnets)
-        if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
-        if virtual_network is not None:
-            pulumi.set(__self__, "virtual_network", virtual_network)
-
-    @_builtins.property
-    @pulumi.getter(name="accessKey")
-    def access_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        The AWS Client ID to use
-        """
-        return pulumi.get(self, "access_key")
-
-    @access_key.setter
-    def access_key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "access_key", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kubernetesVersion")
-    def kubernetes_version(self) -> pulumi.Input[_builtins.str]:
-        """
-        The kubernetes master version
-        """
-        return pulumi.get(self, "kubernetes_version")
-
-    @kubernetes_version.setter
-    def kubernetes_version(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "kubernetes_version", value)
-
-    @_builtins.property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        The AWS Client Secret associated with the Client ID
-        """
-        return pulumi.get(self, "secret_key")
-
-    @secret_key.setter
-    def secret_key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "secret_key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def ami(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A custom AMI ID to use for the worker nodes instead of the default
-        """
-        return pulumi.get(self, "ami")
-
-    @ami.setter
-    def ami(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "ami", value)
-
-    @_builtins.property
-    @pulumi.getter(name="associateWorkerNodePublicIp")
-    def associate_worker_node_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Associate public ip EKS worker nodes
-        """
-        return pulumi.get(self, "associate_worker_node_public_ip")
-
-    @associate_worker_node_public_ip.setter
-    def associate_worker_node_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "associate_worker_node_public_ip", value)
-
-    @_builtins.property
-    @pulumi.getter(name="desiredNodes")
-    def desired_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The desired number of worker nodes
-        """
-        return pulumi.get(self, "desired_nodes")
-
-    @desired_nodes.setter
-    def desired_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "desired_nodes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ebsEncryption")
-    def ebs_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enables EBS encryption of worker nodes
-        """
-        return pulumi.get(self, "ebs_encryption")
-
-    @ebs_encryption.setter
-    def ebs_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "ebs_encryption", value)
-
-    @_builtins.property
-    @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The type of machine to use for worker nodes
-        """
-        return pulumi.get(self, "instance_type")
-
-    @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "instance_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Allow user to specify key name to use
-        """
-        return pulumi.get(self, "key_pair_name")
-
-    @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "key_pair_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maximumNodes")
-    def maximum_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum number of worker nodes
-        """
-        return pulumi.get(self, "maximum_nodes")
-
-    @maximum_nodes.setter
-    def maximum_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "maximum_nodes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="minimumNodes")
-    def minimum_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The minimum number of worker nodes
-        """
-        return pulumi.get(self, "minimum_nodes")
-
-    @minimum_nodes.setter
-    def minimum_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "minimum_nodes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="nodeVolumeSize")
-    def node_volume_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The volume size for each node
-        """
-        return pulumi.get(self, "node_volume_size")
-
-    @node_volume_size.setter
-    def node_volume_size(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "node_volume_size", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The AWS Region to create the EKS cluster in
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of security groups to use for the cluster
-        """
-        return pulumi.get(self, "security_groups")
-
-    @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "security_groups", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceRole")
-    def service_role(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The service role to use to perform the cluster operations in AWS
-        """
-        return pulumi.get(self, "service_role")
-
-    @service_role.setter
-    def service_role(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "service_role", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sessionToken")
-    def session_token(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A session token to use with the client key and secret if applicable
-        """
-        return pulumi.get(self, "session_token")
-
-    @session_token.setter
-    def session_token(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "session_token", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of subnets in the virtual network to use
-        """
-        return pulumi.get(self, "subnets")
-
-    @subnets.setter
-    def subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "subnets", value)
-
-    @_builtins.property
-    @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Pass user-data to the nodes to perform automated configuration tasks
-        """
-        return pulumi.get(self, "user_data")
-
-    @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "user_data", value)
-
-    @_builtins.property
-    @pulumi.getter(name="virtualNetwork")
-    def virtual_network(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the virtual network to use
-        """
-        return pulumi.get(self, "virtual_network")
-
-    @virtual_network.setter
-    def virtual_network(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "virtual_network", value)
-
-
-if not MYPY:
     class ClusterEksConfigV2ArgsDict(TypedDict):
         cloud_credential_id: pulumi.Input[_builtins.str]
         """
@@ -5350,1056 +4173,6 @@ class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs:
     @memory_request.setter
     def memory_request(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "memory_request", value)
-
-
-if not MYPY:
-    class ClusterGkeConfigArgsDict(TypedDict):
-        cluster_ipv4_cidr: pulumi.Input[_builtins.str]
-        """
-        The IP address range of the container pods
-        """
-        credential: pulumi.Input[_builtins.str]
-        """
-        The contents of the GC credential file
-        """
-        disk_type: pulumi.Input[_builtins.str]
-        """
-        Type of the disk attached to each node
-        """
-        image_type: pulumi.Input[_builtins.str]
-        """
-        The image to use for the worker nodes
-        """
-        ip_policy_cluster_ipv4_cidr_block: pulumi.Input[_builtins.str]
-        """
-        The IP address range for the cluster pod IPs
-        """
-        ip_policy_cluster_secondary_range_name: pulumi.Input[_builtins.str]
-        """
-        The name of the secondary range to be used for the cluster CIDR block
-        """
-        ip_policy_node_ipv4_cidr_block: pulumi.Input[_builtins.str]
-        """
-        The IP address range of the instance IPs in this cluster
-        """
-        ip_policy_services_ipv4_cidr_block: pulumi.Input[_builtins.str]
-        """
-        The IP address range of the services IPs in this cluster
-        """
-        ip_policy_services_secondary_range_name: pulumi.Input[_builtins.str]
-        """
-        The name of the secondary range to be used for the services CIDR block
-        """
-        ip_policy_subnetwork_name: pulumi.Input[_builtins.str]
-        """
-        A custom subnetwork name to be used if createSubnetwork is true
-        """
-        locations: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Locations to use for the cluster
-        """
-        machine_type: pulumi.Input[_builtins.str]
-        """
-        The machine type to use for the worker nodes
-        """
-        maintenance_window: pulumi.Input[_builtins.str]
-        """
-        When to performance updates on the nodes, in 24-hour time
-        """
-        master_ipv4_cidr_block: pulumi.Input[_builtins.str]
-        """
-        The IP range in CIDR notation to use for the hosted master network
-        """
-        master_version: pulumi.Input[_builtins.str]
-        """
-        The kubernetes master version
-        """
-        network: pulumi.Input[_builtins.str]
-        """
-        The network to use for the cluster
-        """
-        node_pool: pulumi.Input[_builtins.str]
-        """
-        The ID of the cluster node pool
-        """
-        node_version: pulumi.Input[_builtins.str]
-        """
-        The version of kubernetes to use on the nodes
-        """
-        oauth_scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The set of Google API scopes to be made available on all of the node VMs under the default service account
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        The ID of your project to use when creating a cluster
-        """
-        service_account: pulumi.Input[_builtins.str]
-        """
-        The Google Cloud Platform Service Account to be used by the node VMs
-        """
-        sub_network: pulumi.Input[_builtins.str]
-        """
-        The sub-network to use for the cluster
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description for Cluster (string)
-        """
-        disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Size of the disk attached to each node
-        """
-        enable_alpha_feature: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        To enable kubernetes alpha feature
-        """
-        enable_auto_repair: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the node auto-repair is enabled for the node pool
-        """
-        enable_auto_upgrade: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether node auto-upgrade is enabled for the node pool
-        """
-        enable_horizontal_pod_autoscaling: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable horizontal pod autoscaling for the cluster
-        """
-        enable_http_load_balancing: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable http load balancing for the cluster
-        """
-        enable_kubernetes_dashboard: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable the kubernetes dashboard
-        """
-        enable_legacy_abac: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to enable legacy abac on the cluster
-        """
-        enable_master_authorized_network: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether or not master authorized network is enabled
-        """
-        enable_network_policy_config: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable network policy config for the cluster
-        """
-        enable_nodepool_autoscaling: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable nodepool autoscaling
-        """
-        enable_private_endpoint: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the master's internal IP address is used as the cluster endpoint
-        """
-        enable_private_nodes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether nodes have internal IP address only
-        """
-        enable_stackdriver_logging: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable stackdriver logging
-        """
-        enable_stackdriver_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable stackdriver monitoring
-        """
-        ip_policy_create_subnetwork: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether a new subnetwork will be created automatically for the cluster
-        """
-        issue_client_certificate: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Issue a client certificate
-        """
-        kubernetes_dashboard: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable the kubernetes dashboard
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Labels for the Cluster (map)
-        """
-        local_ssd_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of local SSD disks to be attached to the node
-        """
-        master_authorized_network_cidr_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Define up to 10 external networks that could access Kubernetes master through HTTPS
-        """
-        max_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster
-        """
-        min_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount
-        """
-        node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of nodes to create in this cluster
-        """
-        preemptible: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the nodes are created as preemptible VM instances
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region to launch the cluster. Region or zone should be used
-        """
-        resource_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        The map of Kubernetes labels (key/value pairs) to be applied to each cluster
-        """
-        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of kubernetes taints to be applied to each node
-        """
-        use_ip_aliases: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether alias IPs will be used for pod IPs in the cluster
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The zone to launch the cluster. Zone or region should be used
-        """
-elif False:
-    ClusterGkeConfigArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class ClusterGkeConfigArgs:
-    def __init__(__self__, *,
-                 cluster_ipv4_cidr: pulumi.Input[_builtins.str],
-                 credential: pulumi.Input[_builtins.str],
-                 disk_type: pulumi.Input[_builtins.str],
-                 image_type: pulumi.Input[_builtins.str],
-                 ip_policy_cluster_ipv4_cidr_block: pulumi.Input[_builtins.str],
-                 ip_policy_cluster_secondary_range_name: pulumi.Input[_builtins.str],
-                 ip_policy_node_ipv4_cidr_block: pulumi.Input[_builtins.str],
-                 ip_policy_services_ipv4_cidr_block: pulumi.Input[_builtins.str],
-                 ip_policy_services_secondary_range_name: pulumi.Input[_builtins.str],
-                 ip_policy_subnetwork_name: pulumi.Input[_builtins.str],
-                 locations: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 machine_type: pulumi.Input[_builtins.str],
-                 maintenance_window: pulumi.Input[_builtins.str],
-                 master_ipv4_cidr_block: pulumi.Input[_builtins.str],
-                 master_version: pulumi.Input[_builtins.str],
-                 network: pulumi.Input[_builtins.str],
-                 node_pool: pulumi.Input[_builtins.str],
-                 node_version: pulumi.Input[_builtins.str],
-                 oauth_scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 project_id: pulumi.Input[_builtins.str],
-                 service_account: pulumi.Input[_builtins.str],
-                 sub_network: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_alpha_feature: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_repair: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_horizontal_pod_autoscaling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_http_load_balancing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_kubernetes_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_legacy_abac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_master_authorized_network: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_network_policy_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_nodepool_autoscaling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_private_endpoint: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_private_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_stackdriver_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_policy_create_subnetwork: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issue_client_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kubernetes_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_ssd_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 master_authorized_network_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 preemptible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_ip_aliases: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] cluster_ipv4_cidr: The IP address range of the container pods
-        :param pulumi.Input[_builtins.str] credential: The contents of the GC credential file
-        :param pulumi.Input[_builtins.str] disk_type: Type of the disk attached to each node
-        :param pulumi.Input[_builtins.str] image_type: The image to use for the worker nodes
-        :param pulumi.Input[_builtins.str] ip_policy_cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs
-        :param pulumi.Input[_builtins.str] ip_policy_cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block
-        :param pulumi.Input[_builtins.str] ip_policy_node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster
-        :param pulumi.Input[_builtins.str] ip_policy_services_ipv4_cidr_block: The IP address range of the services IPs in this cluster
-        :param pulumi.Input[_builtins.str] ip_policy_services_secondary_range_name: The name of the secondary range to be used for the services CIDR block
-        :param pulumi.Input[_builtins.str] ip_policy_subnetwork_name: A custom subnetwork name to be used if createSubnetwork is true
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locations: Locations to use for the cluster
-        :param pulumi.Input[_builtins.str] machine_type: The machine type to use for the worker nodes
-        :param pulumi.Input[_builtins.str] maintenance_window: When to performance updates on the nodes, in 24-hour time
-        :param pulumi.Input[_builtins.str] master_ipv4_cidr_block: The IP range in CIDR notation to use for the hosted master network
-        :param pulumi.Input[_builtins.str] master_version: The kubernetes master version
-        :param pulumi.Input[_builtins.str] network: The network to use for the cluster
-        :param pulumi.Input[_builtins.str] node_pool: The ID of the cluster node pool
-        :param pulumi.Input[_builtins.str] node_version: The version of kubernetes to use on the nodes
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the default service account
-        :param pulumi.Input[_builtins.str] project_id: The ID of your project to use when creating a cluster
-        :param pulumi.Input[_builtins.str] service_account: The Google Cloud Platform Service Account to be used by the node VMs
-        :param pulumi.Input[_builtins.str] sub_network: The sub-network to use for the cluster
-        :param pulumi.Input[_builtins.str] description: The description for Cluster (string)
-        :param pulumi.Input[_builtins.int] disk_size_gb: Size of the disk attached to each node
-        :param pulumi.Input[_builtins.bool] enable_alpha_feature: To enable kubernetes alpha feature
-        :param pulumi.Input[_builtins.bool] enable_auto_repair: Specifies whether the node auto-repair is enabled for the node pool
-        :param pulumi.Input[_builtins.bool] enable_auto_upgrade: Specifies whether node auto-upgrade is enabled for the node pool
-        :param pulumi.Input[_builtins.bool] enable_horizontal_pod_autoscaling: Enable horizontal pod autoscaling for the cluster
-        :param pulumi.Input[_builtins.bool] enable_http_load_balancing: Enable http load balancing for the cluster
-        :param pulumi.Input[_builtins.bool] enable_kubernetes_dashboard: Whether to enable the kubernetes dashboard
-        :param pulumi.Input[_builtins.bool] enable_legacy_abac: Whether to enable legacy abac on the cluster
-        :param pulumi.Input[_builtins.bool] enable_master_authorized_network: Whether or not master authorized network is enabled
-        :param pulumi.Input[_builtins.bool] enable_network_policy_config: Enable network policy config for the cluster
-        :param pulumi.Input[_builtins.bool] enable_nodepool_autoscaling: Enable nodepool autoscaling
-        :param pulumi.Input[_builtins.bool] enable_private_endpoint: Whether the master's internal IP address is used as the cluster endpoint
-        :param pulumi.Input[_builtins.bool] enable_private_nodes: Whether nodes have internal IP address only
-        :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Enable stackdriver logging
-        :param pulumi.Input[_builtins.bool] enable_stackdriver_monitoring: Enable stackdriver monitoring
-        :param pulumi.Input[_builtins.bool] ip_policy_create_subnetwork: Whether a new subnetwork will be created automatically for the cluster
-        :param pulumi.Input[_builtins.bool] issue_client_certificate: Issue a client certificate
-        :param pulumi.Input[_builtins.bool] kubernetes_dashboard: Enable the kubernetes dashboard
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for the Cluster (map)
-        :param pulumi.Input[_builtins.int] local_ssd_count: The number of local SSD disks to be attached to the node
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_authorized_network_cidr_blocks: Define up to 10 external networks that could access Kubernetes master through HTTPS
-        :param pulumi.Input[_builtins.int] max_node_count: Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster
-        :param pulumi.Input[_builtins.int] min_node_count: Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount
-        :param pulumi.Input[_builtins.int] node_count: The number of nodes to create in this cluster
-        :param pulumi.Input[_builtins.bool] preemptible: Whether the nodes are created as preemptible VM instances
-        :param pulumi.Input[_builtins.str] region: The region to launch the cluster. Region or zone should be used
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_labels: The map of Kubernetes labels (key/value pairs) to be applied to each cluster
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] taints: List of kubernetes taints to be applied to each node
-        :param pulumi.Input[_builtins.bool] use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster
-        :param pulumi.Input[_builtins.str] zone: The zone to launch the cluster. Zone or region should be used
-        """
-        pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
-        pulumi.set(__self__, "credential", credential)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "image_type", image_type)
-        pulumi.set(__self__, "ip_policy_cluster_ipv4_cidr_block", ip_policy_cluster_ipv4_cidr_block)
-        pulumi.set(__self__, "ip_policy_cluster_secondary_range_name", ip_policy_cluster_secondary_range_name)
-        pulumi.set(__self__, "ip_policy_node_ipv4_cidr_block", ip_policy_node_ipv4_cidr_block)
-        pulumi.set(__self__, "ip_policy_services_ipv4_cidr_block", ip_policy_services_ipv4_cidr_block)
-        pulumi.set(__self__, "ip_policy_services_secondary_range_name", ip_policy_services_secondary_range_name)
-        pulumi.set(__self__, "ip_policy_subnetwork_name", ip_policy_subnetwork_name)
-        pulumi.set(__self__, "locations", locations)
-        pulumi.set(__self__, "machine_type", machine_type)
-        pulumi.set(__self__, "maintenance_window", maintenance_window)
-        pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
-        pulumi.set(__self__, "master_version", master_version)
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "node_pool", node_pool)
-        pulumi.set(__self__, "node_version", node_version)
-        pulumi.set(__self__, "oauth_scopes", oauth_scopes)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "service_account", service_account)
-        pulumi.set(__self__, "sub_network", sub_network)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if disk_size_gb is not None:
-            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
-        if enable_alpha_feature is not None:
-            pulumi.set(__self__, "enable_alpha_feature", enable_alpha_feature)
-        if enable_auto_repair is not None:
-            pulumi.set(__self__, "enable_auto_repair", enable_auto_repair)
-        if enable_auto_upgrade is not None:
-            pulumi.set(__self__, "enable_auto_upgrade", enable_auto_upgrade)
-        if enable_horizontal_pod_autoscaling is not None:
-            pulumi.set(__self__, "enable_horizontal_pod_autoscaling", enable_horizontal_pod_autoscaling)
-        if enable_http_load_balancing is not None:
-            pulumi.set(__self__, "enable_http_load_balancing", enable_http_load_balancing)
-        if enable_kubernetes_dashboard is not None:
-            pulumi.set(__self__, "enable_kubernetes_dashboard", enable_kubernetes_dashboard)
-        if enable_legacy_abac is not None:
-            pulumi.set(__self__, "enable_legacy_abac", enable_legacy_abac)
-        if enable_master_authorized_network is not None:
-            pulumi.set(__self__, "enable_master_authorized_network", enable_master_authorized_network)
-        if enable_network_policy_config is not None:
-            pulumi.set(__self__, "enable_network_policy_config", enable_network_policy_config)
-        if enable_nodepool_autoscaling is not None:
-            pulumi.set(__self__, "enable_nodepool_autoscaling", enable_nodepool_autoscaling)
-        if enable_private_endpoint is not None:
-            pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
-        if enable_private_nodes is not None:
-            pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
-        if enable_stackdriver_logging is not None:
-            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
-        if enable_stackdriver_monitoring is not None:
-            pulumi.set(__self__, "enable_stackdriver_monitoring", enable_stackdriver_monitoring)
-        if ip_policy_create_subnetwork is not None:
-            pulumi.set(__self__, "ip_policy_create_subnetwork", ip_policy_create_subnetwork)
-        if issue_client_certificate is not None:
-            pulumi.set(__self__, "issue_client_certificate", issue_client_certificate)
-        if kubernetes_dashboard is not None:
-            pulumi.set(__self__, "kubernetes_dashboard", kubernetes_dashboard)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if local_ssd_count is not None:
-            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
-        if master_authorized_network_cidr_blocks is not None:
-            pulumi.set(__self__, "master_authorized_network_cidr_blocks", master_authorized_network_cidr_blocks)
-        if max_node_count is not None:
-            pulumi.set(__self__, "max_node_count", max_node_count)
-        if min_node_count is not None:
-            pulumi.set(__self__, "min_node_count", min_node_count)
-        if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
-        if preemptible is not None:
-            pulumi.set(__self__, "preemptible", preemptible)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if resource_labels is not None:
-            pulumi.set(__self__, "resource_labels", resource_labels)
-        if taints is not None:
-            pulumi.set(__self__, "taints", taints)
-        if use_ip_aliases is not None:
-            pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter(name="clusterIpv4Cidr")
-    def cluster_ipv4_cidr(self) -> pulumi.Input[_builtins.str]:
-        """
-        The IP address range of the container pods
-        """
-        return pulumi.get(self, "cluster_ipv4_cidr")
-
-    @cluster_ipv4_cidr.setter
-    def cluster_ipv4_cidr(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "cluster_ipv4_cidr", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def credential(self) -> pulumi.Input[_builtins.str]:
-        """
-        The contents of the GC credential file
-        """
-        return pulumi.get(self, "credential")
-
-    @credential.setter
-    def credential(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "credential", value)
-
-    @_builtins.property
-    @pulumi.getter(name="diskType")
-    def disk_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Type of the disk attached to each node
-        """
-        return pulumi.get(self, "disk_type")
-
-    @disk_type.setter
-    def disk_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "disk_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="imageType")
-    def image_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        The image to use for the worker nodes
-        """
-        return pulumi.get(self, "image_type")
-
-    @image_type.setter
-    def image_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "image_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipPolicyClusterIpv4CidrBlock")
-    def ip_policy_cluster_ipv4_cidr_block(self) -> pulumi.Input[_builtins.str]:
-        """
-        The IP address range for the cluster pod IPs
-        """
-        return pulumi.get(self, "ip_policy_cluster_ipv4_cidr_block")
-
-    @ip_policy_cluster_ipv4_cidr_block.setter
-    def ip_policy_cluster_ipv4_cidr_block(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ip_policy_cluster_ipv4_cidr_block", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipPolicyClusterSecondaryRangeName")
-    def ip_policy_cluster_secondary_range_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the secondary range to be used for the cluster CIDR block
-        """
-        return pulumi.get(self, "ip_policy_cluster_secondary_range_name")
-
-    @ip_policy_cluster_secondary_range_name.setter
-    def ip_policy_cluster_secondary_range_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ip_policy_cluster_secondary_range_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipPolicyNodeIpv4CidrBlock")
-    def ip_policy_node_ipv4_cidr_block(self) -> pulumi.Input[_builtins.str]:
-        """
-        The IP address range of the instance IPs in this cluster
-        """
-        return pulumi.get(self, "ip_policy_node_ipv4_cidr_block")
-
-    @ip_policy_node_ipv4_cidr_block.setter
-    def ip_policy_node_ipv4_cidr_block(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ip_policy_node_ipv4_cidr_block", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipPolicyServicesIpv4CidrBlock")
-    def ip_policy_services_ipv4_cidr_block(self) -> pulumi.Input[_builtins.str]:
-        """
-        The IP address range of the services IPs in this cluster
-        """
-        return pulumi.get(self, "ip_policy_services_ipv4_cidr_block")
-
-    @ip_policy_services_ipv4_cidr_block.setter
-    def ip_policy_services_ipv4_cidr_block(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ip_policy_services_ipv4_cidr_block", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipPolicyServicesSecondaryRangeName")
-    def ip_policy_services_secondary_range_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the secondary range to be used for the services CIDR block
-        """
-        return pulumi.get(self, "ip_policy_services_secondary_range_name")
-
-    @ip_policy_services_secondary_range_name.setter
-    def ip_policy_services_secondary_range_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ip_policy_services_secondary_range_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipPolicySubnetworkName")
-    def ip_policy_subnetwork_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        A custom subnetwork name to be used if createSubnetwork is true
-        """
-        return pulumi.get(self, "ip_policy_subnetwork_name")
-
-    @ip_policy_subnetwork_name.setter
-    def ip_policy_subnetwork_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ip_policy_subnetwork_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def locations(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Locations to use for the cluster
-        """
-        return pulumi.get(self, "locations")
-
-    @locations.setter
-    def locations(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "locations", value)
-
-    @_builtins.property
-    @pulumi.getter(name="machineType")
-    def machine_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        The machine type to use for the worker nodes
-        """
-        return pulumi.get(self, "machine_type")
-
-    @machine_type.setter
-    def machine_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "machine_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> pulumi.Input[_builtins.str]:
-        """
-        When to performance updates on the nodes, in 24-hour time
-        """
-        return pulumi.get(self, "maintenance_window")
-
-    @maintenance_window.setter
-    def maintenance_window(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "maintenance_window", value)
-
-    @_builtins.property
-    @pulumi.getter(name="masterIpv4CidrBlock")
-    def master_ipv4_cidr_block(self) -> pulumi.Input[_builtins.str]:
-        """
-        The IP range in CIDR notation to use for the hosted master network
-        """
-        return pulumi.get(self, "master_ipv4_cidr_block")
-
-    @master_ipv4_cidr_block.setter
-    def master_ipv4_cidr_block(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "master_ipv4_cidr_block", value)
-
-    @_builtins.property
-    @pulumi.getter(name="masterVersion")
-    def master_version(self) -> pulumi.Input[_builtins.str]:
-        """
-        The kubernetes master version
-        """
-        return pulumi.get(self, "master_version")
-
-    @master_version.setter
-    def master_version(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "master_version", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[_builtins.str]:
-        """
-        The network to use for the cluster
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "network", value)
-
-    @_builtins.property
-    @pulumi.getter(name="nodePool")
-    def node_pool(self) -> pulumi.Input[_builtins.str]:
-        """
-        The ID of the cluster node pool
-        """
-        return pulumi.get(self, "node_pool")
-
-    @node_pool.setter
-    def node_pool(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "node_pool", value)
-
-    @_builtins.property
-    @pulumi.getter(name="nodeVersion")
-    def node_version(self) -> pulumi.Input[_builtins.str]:
-        """
-        The version of kubernetes to use on the nodes
-        """
-        return pulumi.get(self, "node_version")
-
-    @node_version.setter
-    def node_version(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "node_version", value)
-
-    @_builtins.property
-    @pulumi.getter(name="oauthScopes")
-    def oauth_scopes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        The set of Google API scopes to be made available on all of the node VMs under the default service account
-        """
-        return pulumi.get(self, "oauth_scopes")
-
-    @oauth_scopes.setter
-    def oauth_scopes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "oauth_scopes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The ID of your project to use when creating a cluster
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "project_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> pulumi.Input[_builtins.str]:
-        """
-        The Google Cloud Platform Service Account to be used by the node VMs
-        """
-        return pulumi.get(self, "service_account")
-
-    @service_account.setter
-    def service_account(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "service_account", value)
-
-    @_builtins.property
-    @pulumi.getter(name="subNetwork")
-    def sub_network(self) -> pulumi.Input[_builtins.str]:
-        """
-        The sub-network to use for the cluster
-        """
-        return pulumi.get(self, "sub_network")
-
-    @sub_network.setter
-    def sub_network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "sub_network", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The description for Cluster (string)
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Size of the disk attached to each node
-        """
-        return pulumi.get(self, "disk_size_gb")
-
-    @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "disk_size_gb", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableAlphaFeature")
-    def enable_alpha_feature(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        To enable kubernetes alpha feature
-        """
-        return pulumi.get(self, "enable_alpha_feature")
-
-    @enable_alpha_feature.setter
-    def enable_alpha_feature(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_alpha_feature", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableAutoRepair")
-    def enable_auto_repair(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the node auto-repair is enabled for the node pool
-        """
-        return pulumi.get(self, "enable_auto_repair")
-
-    @enable_auto_repair.setter
-    def enable_auto_repair(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_auto_repair", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableAutoUpgrade")
-    def enable_auto_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether node auto-upgrade is enabled for the node pool
-        """
-        return pulumi.get(self, "enable_auto_upgrade")
-
-    @enable_auto_upgrade.setter
-    def enable_auto_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_auto_upgrade", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableHorizontalPodAutoscaling")
-    def enable_horizontal_pod_autoscaling(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable horizontal pod autoscaling for the cluster
-        """
-        return pulumi.get(self, "enable_horizontal_pod_autoscaling")
-
-    @enable_horizontal_pod_autoscaling.setter
-    def enable_horizontal_pod_autoscaling(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_horizontal_pod_autoscaling", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableHttpLoadBalancing")
-    def enable_http_load_balancing(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable http load balancing for the cluster
-        """
-        return pulumi.get(self, "enable_http_load_balancing")
-
-    @enable_http_load_balancing.setter
-    def enable_http_load_balancing(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_http_load_balancing", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableKubernetesDashboard")
-    def enable_kubernetes_dashboard(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether to enable the kubernetes dashboard
-        """
-        return pulumi.get(self, "enable_kubernetes_dashboard")
-
-    @enable_kubernetes_dashboard.setter
-    def enable_kubernetes_dashboard(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_kubernetes_dashboard", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableLegacyAbac")
-    def enable_legacy_abac(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether to enable legacy abac on the cluster
-        """
-        return pulumi.get(self, "enable_legacy_abac")
-
-    @enable_legacy_abac.setter
-    def enable_legacy_abac(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_legacy_abac", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableMasterAuthorizedNetwork")
-    def enable_master_authorized_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether or not master authorized network is enabled
-        """
-        return pulumi.get(self, "enable_master_authorized_network")
-
-    @enable_master_authorized_network.setter
-    def enable_master_authorized_network(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_master_authorized_network", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableNetworkPolicyConfig")
-    def enable_network_policy_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable network policy config for the cluster
-        """
-        return pulumi.get(self, "enable_network_policy_config")
-
-    @enable_network_policy_config.setter
-    def enable_network_policy_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_network_policy_config", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableNodepoolAutoscaling")
-    def enable_nodepool_autoscaling(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable nodepool autoscaling
-        """
-        return pulumi.get(self, "enable_nodepool_autoscaling")
-
-    @enable_nodepool_autoscaling.setter
-    def enable_nodepool_autoscaling(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_nodepool_autoscaling", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enablePrivateEndpoint")
-    def enable_private_endpoint(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the master's internal IP address is used as the cluster endpoint
-        """
-        return pulumi.get(self, "enable_private_endpoint")
-
-    @enable_private_endpoint.setter
-    def enable_private_endpoint(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_private_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enablePrivateNodes")
-    def enable_private_nodes(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether nodes have internal IP address only
-        """
-        return pulumi.get(self, "enable_private_nodes")
-
-    @enable_private_nodes.setter
-    def enable_private_nodes(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_private_nodes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableStackdriverLogging")
-    def enable_stackdriver_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable stackdriver logging
-        """
-        return pulumi.get(self, "enable_stackdriver_logging")
-
-    @enable_stackdriver_logging.setter
-    def enable_stackdriver_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_stackdriver_logging", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableStackdriverMonitoring")
-    def enable_stackdriver_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable stackdriver monitoring
-        """
-        return pulumi.get(self, "enable_stackdriver_monitoring")
-
-    @enable_stackdriver_monitoring.setter
-    def enable_stackdriver_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_stackdriver_monitoring", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipPolicyCreateSubnetwork")
-    def ip_policy_create_subnetwork(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether a new subnetwork will be created automatically for the cluster
-        """
-        return pulumi.get(self, "ip_policy_create_subnetwork")
-
-    @ip_policy_create_subnetwork.setter
-    def ip_policy_create_subnetwork(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "ip_policy_create_subnetwork", value)
-
-    @_builtins.property
-    @pulumi.getter(name="issueClientCertificate")
-    def issue_client_certificate(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Issue a client certificate
-        """
-        return pulumi.get(self, "issue_client_certificate")
-
-    @issue_client_certificate.setter
-    def issue_client_certificate(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "issue_client_certificate", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kubernetesDashboard")
-    def kubernetes_dashboard(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable the kubernetes dashboard
-        """
-        return pulumi.get(self, "kubernetes_dashboard")
-
-    @kubernetes_dashboard.setter
-    def kubernetes_dashboard(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "kubernetes_dashboard", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Labels for the Cluster (map)
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "labels", value)
-
-    @_builtins.property
-    @pulumi.getter(name="localSsdCount")
-    def local_ssd_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The number of local SSD disks to be attached to the node
-        """
-        return pulumi.get(self, "local_ssd_count")
-
-    @local_ssd_count.setter
-    def local_ssd_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "local_ssd_count", value)
-
-    @_builtins.property
-    @pulumi.getter(name="masterAuthorizedNetworkCidrBlocks")
-    def master_authorized_network_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Define up to 10 external networks that could access Kubernetes master through HTTPS
-        """
-        return pulumi.get(self, "master_authorized_network_cidr_blocks")
-
-    @master_authorized_network_cidr_blocks.setter
-    def master_authorized_network_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "master_authorized_network_cidr_blocks", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxNodeCount")
-    def max_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Maximum number of nodes in the NodePool. Must be >= minNodeCount. There has to enough quota to scale up the cluster
-        """
-        return pulumi.get(self, "max_node_count")
-
-    @max_node_count.setter
-    def max_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_node_count", value)
-
-    @_builtins.property
-    @pulumi.getter(name="minNodeCount")
-    def min_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Minimmum number of nodes in the NodePool. Must be >= 1 and <= maxNodeCount
-        """
-        return pulumi.get(self, "min_node_count")
-
-    @min_node_count.setter
-    def min_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "min_node_count", value)
-
-    @_builtins.property
-    @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The number of nodes to create in this cluster
-        """
-        return pulumi.get(self, "node_count")
-
-    @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "node_count", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def preemptible(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the nodes are created as preemptible VM instances
-        """
-        return pulumi.get(self, "preemptible")
-
-    @preemptible.setter
-    def preemptible(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "preemptible", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region to launch the cluster. Region or zone should be used
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter(name="resourceLabels")
-    def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The map of Kubernetes labels (key/value pairs) to be applied to each cluster
-        """
-        return pulumi.get(self, "resource_labels")
-
-    @resource_labels.setter
-    def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "resource_labels", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of kubernetes taints to be applied to each node
-        """
-        return pulumi.get(self, "taints")
-
-    @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "taints", value)
-
-    @_builtins.property
-    @pulumi.getter(name="useIpAliases")
-    def use_ip_aliases(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether alias IPs will be used for pod IPs in the cluster
-        """
-        return pulumi.get(self, "use_ip_aliases")
-
-    @use_ip_aliases.setter
-    def use_ip_aliases(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "use_ip_aliases", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The zone to launch the cluster. Zone or region should be used
-        """
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "zone", value)
 
 
 if not MYPY:
@@ -8044,13 +5817,9 @@ if not MYPY:
         """
         The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
         """
-        fingerprint: pulumi.Input[_builtins.str]
-        """
-        The fingerprint corresponding to the specified user's private API Key
-        """
         kubernetes_version: pulumi.Input[_builtins.str]
         """
-        The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+        The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
         """
         node_image: pulumi.Input[_builtins.str]
         """
@@ -8060,10 +5829,6 @@ if not MYPY:
         """
         The shape of the node (determines number of CPUs and  amount of memory on each node)
         """
-        private_key_contents: pulumi.Input[_builtins.str]
-        """
-        The private API key file contents for the specified user, in PEM format
-        """
         region: pulumi.Input[_builtins.str]
         """
         The availability domain within the region to host the OKE cluster
@@ -8072,9 +5837,13 @@ if not MYPY:
         """
         The OCID of the tenancy in which to create resources
         """
-        user_ocid: pulumi.Input[_builtins.str]
+        cluster_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The OCID of a user who has access to the tenancy/compartment
+        Optionally specify a cluster type of basic or enhanced
+        """
+        control_plane_subnet_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
         """
         custom_boot_volume_size: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -8096,9 +5865,29 @@ if not MYPY:
         """
         Whether worker nodes are deployed into a new private subnet
         """
+        eviction_grace_duration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The optional grace period in minutes to allow cordon and drain to complete successfuly
+        """
+        fingerprint: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The fingerprint corresponding to the specified user's private API Key
+        """
+        flex_memory_in_gbs: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Optional amount of memory in GB for nodes (requires flexible node_shape)
+        """
         flex_ocpus: NotRequired[pulumi.Input[_builtins.int]]
         """
         Optional number of OCPUs for nodes (requires flexible node_shape)
+        """
+        force_delete_after_grace_duration: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+        """
+        image_verification_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional specify a comma separated list of master encryption key OCID(s) to verify images
         """
         kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -8122,15 +5911,31 @@ if not MYPY:
         """
         node_pool_subnet_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Optional name for node pool subnet
+        Optional pre-existing subnet (public or private) for nodes
         """
         node_public_key_contents: NotRequired[pulumi.Input[_builtins.str]]
         """
         The contents of the SSH public key file to use for the nodes
         """
+        node_user_data_contents: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+        """
         pod_cidr: NotRequired[pulumi.Input[_builtins.str]]
         """
         Optional specify the pod CIDR, defaults to 10.244.0.0/16
+        """
+        pod_network: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+        """
+        pod_subnet_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+        """
+        private_key_contents: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The private API key file contents for the specified user, in PEM format
         """
         private_key_passphrase: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -8156,6 +5961,10 @@ if not MYPY:
         """
         Whether to skip deleting VCN
         """
+        user_ocid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The OCID of a user who has access to the tenancy/compartment
+        """
         vcn_compartment_id: NotRequired[pulumi.Input[_builtins.str]]
         """
         The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
@@ -8175,20 +5984,24 @@ elif False:
 class ClusterOkeConfigArgs:
     def __init__(__self__, *,
                  compartment_id: pulumi.Input[_builtins.str],
-                 fingerprint: pulumi.Input[_builtins.str],
                  kubernetes_version: pulumi.Input[_builtins.str],
                  node_image: pulumi.Input[_builtins.str],
                  node_shape: pulumi.Input[_builtins.str],
-                 private_key_contents: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  tenancy_id: pulumi.Input[_builtins.str],
-                 user_ocid: pulumi.Input[_builtins.str],
+                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 control_plane_subnet_name: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_boot_volume_size: Optional[pulumi.Input[_builtins.int]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_kubernetes_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_private_control_plane: Optional[pulumi.Input[_builtins.bool]] = None,
                  enable_private_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
+                 eviction_grace_duration: Optional[pulumi.Input[_builtins.str]] = None,
+                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
+                 flex_memory_in_gbs: Optional[pulumi.Input[_builtins.int]] = None,
                  flex_ocpus: Optional[pulumi.Input[_builtins.int]] = None,
+                 force_delete_after_grace_duration: Optional[pulumi.Input[_builtins.bool]] = None,
+                 image_verification_kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  limit_node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  load_balancer_subnet_name1: Optional[pulumi.Input[_builtins.str]] = None,
@@ -8196,59 +6009,74 @@ class ClusterOkeConfigArgs:
                  node_pool_dns_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_pool_subnet_name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_public_key_contents: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_user_data_contents: Optional[pulumi.Input[_builtins.str]] = None,
                  pod_cidr: Optional[pulumi.Input[_builtins.str]] = None,
+                 pod_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 pod_subnet_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_key_contents: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key_passphrase: Optional[pulumi.Input[_builtins.str]] = None,
                  quantity_of_node_subnets: Optional[pulumi.Input[_builtins.int]] = None,
                  quantity_per_subnet: Optional[pulumi.Input[_builtins.int]] = None,
                  service_cidr: Optional[pulumi.Input[_builtins.str]] = None,
                  service_dns_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_vcn_delete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_ocid: Optional[pulumi.Input[_builtins.str]] = None,
                  vcn_compartment_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vcn_name: Optional[pulumi.Input[_builtins.str]] = None,
                  worker_node_ingress_cidr: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] compartment_id: The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
-        :param pulumi.Input[_builtins.str] fingerprint: The fingerprint corresponding to the specified user's private API Key
-        :param pulumi.Input[_builtins.str] kubernetes_version: The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+        :param pulumi.Input[_builtins.str] kubernetes_version: The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
         :param pulumi.Input[_builtins.str] node_image: The OS for the node image
         :param pulumi.Input[_builtins.str] node_shape: The shape of the node (determines number of CPUs and  amount of memory on each node)
-        :param pulumi.Input[_builtins.str] private_key_contents: The private API key file contents for the specified user, in PEM format
         :param pulumi.Input[_builtins.str] region: The availability domain within the region to host the OKE cluster
         :param pulumi.Input[_builtins.str] tenancy_id: The OCID of the tenancy in which to create resources
-        :param pulumi.Input[_builtins.str] user_ocid: The OCID of a user who has access to the tenancy/compartment
+        :param pulumi.Input[_builtins.str] cluster_type: Optionally specify a cluster type of basic or enhanced
+        :param pulumi.Input[_builtins.str] control_plane_subnet_name: The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
         :param pulumi.Input[_builtins.int] custom_boot_volume_size: An optional custom boot volume size (in GB) for the nodes
         :param pulumi.Input[_builtins.str] description: The description for Cluster (string)
         :param pulumi.Input[_builtins.bool] enable_kubernetes_dashboard: Enable the kubernetes dashboard
         :param pulumi.Input[_builtins.bool] enable_private_control_plane: Whether Kubernetes API endpoint is a private IP only accessible from within the VCN
         :param pulumi.Input[_builtins.bool] enable_private_nodes: Whether worker nodes are deployed into a new private subnet
+        :param pulumi.Input[_builtins.str] eviction_grace_duration: The optional grace period in minutes to allow cordon and drain to complete successfuly
+        :param pulumi.Input[_builtins.str] fingerprint: The fingerprint corresponding to the specified user's private API Key
+        :param pulumi.Input[_builtins.int] flex_memory_in_gbs: Optional amount of memory in GB for nodes (requires flexible node_shape)
         :param pulumi.Input[_builtins.int] flex_ocpus: Optional number of OCPUs for nodes (requires flexible node_shape)
+        :param pulumi.Input[_builtins.bool] force_delete_after_grace_duration: Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+        :param pulumi.Input[_builtins.str] image_verification_kms_key_id: Optional specify a comma separated list of master encryption key OCID(s) to verify images
         :param pulumi.Input[_builtins.str] kms_key_id: Optional specify the OCID of the KMS Vault master key
         :param pulumi.Input[_builtins.int] limit_node_count: Optional limit on the total number of nodes in the pool
         :param pulumi.Input[_builtins.str] load_balancer_subnet_name1: The name of the first existing subnet to use for Kubernetes services / LB
         :param pulumi.Input[_builtins.str] load_balancer_subnet_name2: The (optional) name of a second existing subnet to use for Kubernetes services / LB
         :param pulumi.Input[_builtins.str] node_pool_dns_domain_name: Optional name for DNS domain of node pool subnet
-        :param pulumi.Input[_builtins.str] node_pool_subnet_name: Optional name for node pool subnet
+        :param pulumi.Input[_builtins.str] node_pool_subnet_name: Optional pre-existing subnet (public or private) for nodes
         :param pulumi.Input[_builtins.str] node_public_key_contents: The contents of the SSH public key file to use for the nodes
+        :param pulumi.Input[_builtins.str] node_user_data_contents: The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
         :param pulumi.Input[_builtins.str] pod_cidr: Optional specify the pod CIDR, defaults to 10.244.0.0/16
+        :param pulumi.Input[_builtins.str] pod_network: Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+        :param pulumi.Input[_builtins.str] pod_subnet_name: The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+        :param pulumi.Input[_builtins.str] private_key_contents: The private API key file contents for the specified user, in PEM format
         :param pulumi.Input[_builtins.str] private_key_passphrase: The passphrase of the private key for the OKE cluster
         :param pulumi.Input[_builtins.int] quantity_of_node_subnets: Number of node subnets (defaults to creating 1 regional subnet)
         :param pulumi.Input[_builtins.int] quantity_per_subnet: Number of worker nodes in each subnet / availability domain
         :param pulumi.Input[_builtins.str] service_cidr: Optional specify the service CIDR, defaults to 10.96.0.0/16
         :param pulumi.Input[_builtins.str] service_dns_domain_name: Optional name for DNS domain of service subnet
         :param pulumi.Input[_builtins.bool] skip_vcn_delete: Whether to skip deleting VCN
+        :param pulumi.Input[_builtins.str] user_ocid: The OCID of a user who has access to the tenancy/compartment
         :param pulumi.Input[_builtins.str] vcn_compartment_id: The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
         :param pulumi.Input[_builtins.str] vcn_name: The optional name of an existing virtual network to use for the cluster creation. A new VCN will be created if not specified.
         :param pulumi.Input[_builtins.str] worker_node_ingress_cidr: Additional CIDR from which to allow ingress to worker nodes
         """
         pulumi.set(__self__, "compartment_id", compartment_id)
-        pulumi.set(__self__, "fingerprint", fingerprint)
         pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         pulumi.set(__self__, "node_image", node_image)
         pulumi.set(__self__, "node_shape", node_shape)
-        pulumi.set(__self__, "private_key_contents", private_key_contents)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "tenancy_id", tenancy_id)
-        pulumi.set(__self__, "user_ocid", user_ocid)
+        if cluster_type is not None:
+            pulumi.set(__self__, "cluster_type", cluster_type)
+        if control_plane_subnet_name is not None:
+            pulumi.set(__self__, "control_plane_subnet_name", control_plane_subnet_name)
         if custom_boot_volume_size is not None:
             pulumi.set(__self__, "custom_boot_volume_size", custom_boot_volume_size)
         if description is not None:
@@ -8259,8 +6087,18 @@ class ClusterOkeConfigArgs:
             pulumi.set(__self__, "enable_private_control_plane", enable_private_control_plane)
         if enable_private_nodes is not None:
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+        if eviction_grace_duration is not None:
+            pulumi.set(__self__, "eviction_grace_duration", eviction_grace_duration)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if flex_memory_in_gbs is not None:
+            pulumi.set(__self__, "flex_memory_in_gbs", flex_memory_in_gbs)
         if flex_ocpus is not None:
             pulumi.set(__self__, "flex_ocpus", flex_ocpus)
+        if force_delete_after_grace_duration is not None:
+            pulumi.set(__self__, "force_delete_after_grace_duration", force_delete_after_grace_duration)
+        if image_verification_kms_key_id is not None:
+            pulumi.set(__self__, "image_verification_kms_key_id", image_verification_kms_key_id)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
         if limit_node_count is not None:
@@ -8275,8 +6113,16 @@ class ClusterOkeConfigArgs:
             pulumi.set(__self__, "node_pool_subnet_name", node_pool_subnet_name)
         if node_public_key_contents is not None:
             pulumi.set(__self__, "node_public_key_contents", node_public_key_contents)
+        if node_user_data_contents is not None:
+            pulumi.set(__self__, "node_user_data_contents", node_user_data_contents)
         if pod_cidr is not None:
             pulumi.set(__self__, "pod_cidr", pod_cidr)
+        if pod_network is not None:
+            pulumi.set(__self__, "pod_network", pod_network)
+        if pod_subnet_name is not None:
+            pulumi.set(__self__, "pod_subnet_name", pod_subnet_name)
+        if private_key_contents is not None:
+            pulumi.set(__self__, "private_key_contents", private_key_contents)
         if private_key_passphrase is not None:
             pulumi.set(__self__, "private_key_passphrase", private_key_passphrase)
         if quantity_of_node_subnets is not None:
@@ -8289,6 +6135,8 @@ class ClusterOkeConfigArgs:
             pulumi.set(__self__, "service_dns_domain_name", service_dns_domain_name)
         if skip_vcn_delete is not None:
             pulumi.set(__self__, "skip_vcn_delete", skip_vcn_delete)
+        if user_ocid is not None:
+            pulumi.set(__self__, "user_ocid", user_ocid)
         if vcn_compartment_id is not None:
             pulumi.set(__self__, "vcn_compartment_id", vcn_compartment_id)
         if vcn_name is not None:
@@ -8309,22 +6157,10 @@ class ClusterOkeConfigArgs:
         pulumi.set(self, "compartment_id", value)
 
     @_builtins.property
-    @pulumi.getter
-    def fingerprint(self) -> pulumi.Input[_builtins.str]:
-        """
-        The fingerprint corresponding to the specified user's private API Key
-        """
-        return pulumi.get(self, "fingerprint")
-
-    @fingerprint.setter
-    def fingerprint(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "fingerprint", value)
-
-    @_builtins.property
     @pulumi.getter(name="kubernetesVersion")
     def kubernetes_version(self) -> pulumi.Input[_builtins.str]:
         """
-        The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+        The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
         """
         return pulumi.get(self, "kubernetes_version")
 
@@ -8357,18 +6193,6 @@ class ClusterOkeConfigArgs:
         pulumi.set(self, "node_shape", value)
 
     @_builtins.property
-    @pulumi.getter(name="privateKeyContents")
-    def private_key_contents(self) -> pulumi.Input[_builtins.str]:
-        """
-        The private API key file contents for the specified user, in PEM format
-        """
-        return pulumi.get(self, "private_key_contents")
-
-    @private_key_contents.setter
-    def private_key_contents(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "private_key_contents", value)
-
-    @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Input[_builtins.str]:
         """
@@ -8393,16 +6217,28 @@ class ClusterOkeConfigArgs:
         pulumi.set(self, "tenancy_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="userOcid")
-    def user_ocid(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="clusterType")
+    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The OCID of a user who has access to the tenancy/compartment
+        Optionally specify a cluster type of basic or enhanced
         """
-        return pulumi.get(self, "user_ocid")
+        return pulumi.get(self, "cluster_type")
 
-    @user_ocid.setter
-    def user_ocid(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "user_ocid", value)
+    @cluster_type.setter
+    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cluster_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneSubnetName")
+    def control_plane_subnet_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+        """
+        return pulumi.get(self, "control_plane_subnet_name")
+
+    @control_plane_subnet_name.setter
+    def control_plane_subnet_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "control_plane_subnet_name", value)
 
     @_builtins.property
     @pulumi.getter(name="customBootVolumeSize")
@@ -8465,6 +6301,42 @@ class ClusterOkeConfigArgs:
         pulumi.set(self, "enable_private_nodes", value)
 
     @_builtins.property
+    @pulumi.getter(name="evictionGraceDuration")
+    def eviction_grace_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The optional grace period in minutes to allow cordon and drain to complete successfuly
+        """
+        return pulumi.get(self, "eviction_grace_duration")
+
+    @eviction_grace_duration.setter
+    def eviction_grace_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "eviction_grace_duration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The fingerprint corresponding to the specified user's private API Key
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="flexMemoryInGbs")
+    def flex_memory_in_gbs(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Optional amount of memory in GB for nodes (requires flexible node_shape)
+        """
+        return pulumi.get(self, "flex_memory_in_gbs")
+
+    @flex_memory_in_gbs.setter
+    def flex_memory_in_gbs(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "flex_memory_in_gbs", value)
+
+    @_builtins.property
     @pulumi.getter(name="flexOcpus")
     def flex_ocpus(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -8475,6 +6347,30 @@ class ClusterOkeConfigArgs:
     @flex_ocpus.setter
     def flex_ocpus(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "flex_ocpus", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceDeleteAfterGraceDuration")
+    def force_delete_after_grace_duration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+        """
+        return pulumi.get(self, "force_delete_after_grace_duration")
+
+    @force_delete_after_grace_duration.setter
+    def force_delete_after_grace_duration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "force_delete_after_grace_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageVerificationKmsKeyId")
+    def image_verification_kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional specify a comma separated list of master encryption key OCID(s) to verify images
+        """
+        return pulumi.get(self, "image_verification_kms_key_id")
+
+    @image_verification_kms_key_id.setter
+    def image_verification_kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image_verification_kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
@@ -8540,7 +6436,7 @@ class ClusterOkeConfigArgs:
     @pulumi.getter(name="nodePoolSubnetName")
     def node_pool_subnet_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Optional name for node pool subnet
+        Optional pre-existing subnet (public or private) for nodes
         """
         return pulumi.get(self, "node_pool_subnet_name")
 
@@ -8561,6 +6457,18 @@ class ClusterOkeConfigArgs:
         pulumi.set(self, "node_public_key_contents", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeUserDataContents")
+    def node_user_data_contents(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+        """
+        return pulumi.get(self, "node_user_data_contents")
+
+    @node_user_data_contents.setter
+    def node_user_data_contents(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "node_user_data_contents", value)
+
+    @_builtins.property
     @pulumi.getter(name="podCidr")
     def pod_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -8571,6 +6479,42 @@ class ClusterOkeConfigArgs:
     @pod_cidr.setter
     def pod_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pod_cidr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="podNetwork")
+    def pod_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+        """
+        return pulumi.get(self, "pod_network")
+
+    @pod_network.setter
+    def pod_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "pod_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="podSubnetName")
+    def pod_subnet_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+        """
+        return pulumi.get(self, "pod_subnet_name")
+
+    @pod_subnet_name.setter
+    def pod_subnet_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "pod_subnet_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyContents")
+    def private_key_contents(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The private API key file contents for the specified user, in PEM format
+        """
+        return pulumi.get(self, "private_key_contents")
+
+    @private_key_contents.setter
+    def private_key_contents(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "private_key_contents", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyPassphrase")
@@ -8643,6 +6587,18 @@ class ClusterOkeConfigArgs:
     @skip_vcn_delete.setter
     def skip_vcn_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "skip_vcn_delete", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userOcid")
+    def user_ocid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The OCID of a user who has access to the tenancy/compartment
+        """
+        return pulumi.get(self, "user_ocid")
+
+    @user_ocid.setter
+    def user_ocid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_ocid", value)
 
     @_builtins.property
     @pulumi.getter(name="vcnCompartmentId")
@@ -10070,11 +8026,11 @@ if not MYPY:
         """
         subscription_id: pulumi.Input[_builtins.str]
         """
-        Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        (string)
         """
         tenant_id: pulumi.Input[_builtins.str]
         """
-        Azure tenant ID to use (string)
+        Required if `tenant_name` not provided. (string)
         """
         aad_client_cert_password: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -10126,7 +8082,7 @@ if not MYPY:
         """
         location: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Azure Kubernetes cluster location. Default `eastus` (string)
+        (string)
         """
         maximum_load_balancer_rule_count: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -10214,8 +8170,8 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
         """
         :param pulumi.Input[_builtins.str] aad_client_id: (string)
         :param pulumi.Input[_builtins.str] aad_client_secret: (string)
-        :param pulumi.Input[_builtins.str] subscription_id: Subscription credentials which uniquely identify Microsoft Azure subscription (string)
-        :param pulumi.Input[_builtins.str] tenant_id: Azure tenant ID to use (string)
+        :param pulumi.Input[_builtins.str] subscription_id: (string)
+        :param pulumi.Input[_builtins.str] tenant_id: Required if `tenant_name` not provided. (string)
         :param pulumi.Input[_builtins.str] aad_client_cert_password: (string)
         :param pulumi.Input[_builtins.str] aad_client_cert_path: (string)
         :param pulumi.Input[_builtins.str] cloud: (string)
@@ -10228,7 +8184,7 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
         :param pulumi.Input[_builtins.int] cloud_provider_rate_limit_bucket: (int)
         :param pulumi.Input[_builtins.int] cloud_provider_rate_limit_qps: (int)
         :param pulumi.Input[_builtins.str] load_balancer_sku: Load balancer type (basic | standard). Must be standard for auto-scaling
-        :param pulumi.Input[_builtins.str] location: Azure Kubernetes cluster location. Default `eastus` (string)
+        :param pulumi.Input[_builtins.str] location: (string)
         :param pulumi.Input[_builtins.int] maximum_load_balancer_rule_count: (int)
         :param pulumi.Input[_builtins.str] primary_availability_set_name: (string)
         :param pulumi.Input[_builtins.str] primary_scale_set_name: (string)
@@ -10325,7 +8281,7 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @pulumi.getter(name="subscriptionId")
     def subscription_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Subscription credentials which uniquely identify Microsoft Azure subscription (string)
+        (string)
         """
         return pulumi.get(self, "subscription_id")
 
@@ -10337,7 +8293,7 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Azure tenant ID to use (string)
+        Required if `tenant_name` not provided. (string)
         """
         return pulumi.get(self, "tenant_id")
 
@@ -10493,7 +8449,7 @@ class ClusterRkeConfigCloudProviderAzureCloudProviderArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Azure Kubernetes cluster location. Default `eastus` (string)
+        (string)
         """
         return pulumi.get(self, "location")
 
@@ -10861,7 +8817,7 @@ if not MYPY:
         """
         tenant_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Azure tenant ID to use (string)
+        Required if `tenant_name` not provided. (string)
         """
         tenant_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -10895,7 +8851,7 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
         :param pulumi.Input[_builtins.str] domain_id: Required if `domain_name` not provided. (string)
         :param pulumi.Input[_builtins.str] domain_name: Required if `domain_id` not provided. (string)
         :param pulumi.Input[_builtins.str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-        :param pulumi.Input[_builtins.str] tenant_id: Azure tenant ID to use (string)
+        :param pulumi.Input[_builtins.str] tenant_id: Required if `tenant_name` not provided. (string)
         :param pulumi.Input[_builtins.str] tenant_name: Required if `tenant_id` not provided. (string)
         :param pulumi.Input[_builtins.str] trust_id: (string)
         """
@@ -11005,7 +8961,7 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Azure tenant ID to use (string)
+        Required if `tenant_name` not provided. (string)
         """
         return pulumi.get(self, "tenant_id")
 
@@ -16170,7 +14126,7 @@ if not MYPY:
         """
         access_key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The AWS Client ID to use (string)
+        Access key for S3 service (string)
         """
         custom_ca: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -16186,7 +14142,7 @@ if not MYPY:
         """
         secret_key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The AWS Client Secret associated with the Client ID (string)
+        Secret key for S3 service (string)
         """
 elif False:
     ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -16204,11 +14160,11 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
         """
         :param pulumi.Input[_builtins.str] bucket_name: Bucket name for S3 service (string)
         :param pulumi.Input[_builtins.str] endpoint: Endpoint for S3 service (string)
-        :param pulumi.Input[_builtins.str] access_key: The AWS Client ID to use (string)
+        :param pulumi.Input[_builtins.str] access_key: Access key for S3 service (string)
         :param pulumi.Input[_builtins.str] custom_ca: Base64 encoded custom CA for S3 service. Use filebase64(<FILE>) for encoding file. Available from Rancher v2.2.5 (string)
         :param pulumi.Input[_builtins.str] folder: Folder for S3 service. Available from Rancher v2.2.7 (string)
         :param pulumi.Input[_builtins.str] region: The availability domain within the region to host the cluster. See [here](https://docs.cloud.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm) for a list of region names. (string)
-        :param pulumi.Input[_builtins.str] secret_key: The AWS Client Secret associated with the Client ID (string)
+        :param pulumi.Input[_builtins.str] secret_key: Secret key for S3 service (string)
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "endpoint", endpoint)
@@ -16251,7 +14207,7 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The AWS Client ID to use (string)
+        Access key for S3 service (string)
         """
         return pulumi.get(self, "access_key")
 
@@ -16299,7 +14255,7 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The AWS Client Secret associated with the Client ID (string)
+        Secret key for S3 service (string)
         """
         return pulumi.get(self, "secret_key")
 
@@ -26980,7 +24936,11 @@ if not MYPY:
         """
         machine_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
-        Labels of the machine
+        Labels for the machine pool nodes
+        """
+        machine_os: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        OS Type in machine pool
         """
         max_unhealthy: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -27038,6 +24998,7 @@ class ClusterV2RkeConfigMachinePoolArgs:
                  hostname_length_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  machine_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 machine_os: Optional[pulumi.Input[_builtins.str]] = None,
                  max_unhealthy: Optional[pulumi.Input[_builtins.str]] = None,
                  node_drain_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  node_startup_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -27058,7 +25019,8 @@ class ClusterV2RkeConfigMachinePoolArgs:
         :param pulumi.Input[_builtins.bool] etcd_role: Machine pool etcd role
         :param pulumi.Input[_builtins.int] hostname_length_limit: maximum length for autogenerated hostname
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for the Cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] machine_labels: Labels of the machine
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] machine_labels: Labels for the machine pool nodes
+        :param pulumi.Input[_builtins.str] machine_os: OS Type in machine pool
         :param pulumi.Input[_builtins.str] max_unhealthy: max unhealthy nodes for automated replacement to be allowed
         :param pulumi.Input[_builtins.int] node_drain_timeout: seconds to wait for machine pool drain to complete before machine deletion
         :param pulumi.Input[_builtins.int] node_startup_timeout_seconds: seconds a new node has to become active before it is replaced
@@ -27088,6 +25050,8 @@ class ClusterV2RkeConfigMachinePoolArgs:
             pulumi.set(__self__, "labels", labels)
         if machine_labels is not None:
             pulumi.set(__self__, "machine_labels", machine_labels)
+        if machine_os is not None:
+            pulumi.set(__self__, "machine_os", machine_os)
         if max_unhealthy is not None:
             pulumi.set(__self__, "max_unhealthy", max_unhealthy)
         if node_drain_timeout is not None:
@@ -27221,13 +25185,25 @@ class ClusterV2RkeConfigMachinePoolArgs:
     @pulumi.getter(name="machineLabels")
     def machine_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Labels of the machine
+        Labels for the machine pool nodes
         """
         return pulumi.get(self, "machine_labels")
 
     @machine_labels.setter
     def machine_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "machine_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineOs")
+    def machine_os(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OS Type in machine pool
+        """
+        return pulumi.get(self, "machine_os")
+
+    @machine_os.setter
+    def machine_os(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "machine_os", value)
 
     @_builtins.property
     @pulumi.getter(name="maxUnhealthy")
@@ -31132,6 +29108,451 @@ class MachineConfigV2DigitaloceanConfigArgs:
 
 
 if not MYPY:
+    class MachineConfigV2GoogleConfigArgsDict(TypedDict):
+        disk_size: pulumi.Input[_builtins.str]
+        """
+        GCE Instance Disk Size (in GB)
+        """
+        disk_type: pulumi.Input[_builtins.str]
+        """
+        GCE Instance Disk Type
+        """
+        machine_image: pulumi.Input[_builtins.str]
+        """
+        GCE instance image absolute URL
+        """
+        machine_type: pulumi.Input[_builtins.str]
+        """
+        GCE instance type
+        """
+        network: pulumi.Input[_builtins.str]
+        """
+        The network to provision virtual machines within
+        """
+        project: pulumi.Input[_builtins.str]
+        """
+        The GCP project to create virtual machines within
+        """
+        zone: pulumi.Input[_builtins.str]
+        """
+        The region and zone to create virtual machines within (e.g. us-east1-b)
+        """
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        GCE Instance External IP
+        """
+        auth_encoded_json: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        GCE service account auth json file path
+        """
+        external_firewall_rule_prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A prefix to be added to firewall rules created when exposing ports publicly. Required if exposing ports publicly.
+        """
+        internal_firewall_rule_prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A prefix to be added to an internal firewall rule created to ensure virtual machines can communicate with one another.
+        """
+        open_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        A list of ports to be opened publicly. 'external_firewall_rule_prefix' must also be set
+        """
+        preemptable: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the virtual machine can be preempted
+        """
+        scopes: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Access scopes to be set on the virtual machine
+        """
+        sub_network: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The subnetwork to provision virtual machines within
+        """
+        tags: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A set of network tags to be added to each VM, in the format of 'tag1,tag2'
+        """
+        use_existing: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if an existing VM should be used. This is not currently support in Rancher.
+        """
+        use_internal_ip: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the virtual machines should use an internal IP
+        """
+        use_internal_ip_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the virtual machines should use an internal IP only and not be assigned a public IP
+        """
+        user_data: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        GCE user-data file path
+        """
+        username: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The username to be set when logging into the virtual machines
+        """
+        vm_labels: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A set of labels to be added to each VM, in the format of 'key1,value1,key2,value2'
+        """
+elif False:
+    MachineConfigV2GoogleConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MachineConfigV2GoogleConfigArgs:
+    def __init__(__self__, *,
+                 disk_size: pulumi.Input[_builtins.str],
+                 disk_type: pulumi.Input[_builtins.str],
+                 machine_image: pulumi.Input[_builtins.str],
+                 machine_type: pulumi.Input[_builtins.str],
+                 network: pulumi.Input[_builtins.str],
+                 project: pulumi.Input[_builtins.str],
+                 zone: pulumi.Input[_builtins.str],
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_encoded_json: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_firewall_rule_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 internal_firewall_rule_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 open_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preemptable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 scopes: Optional[pulumi.Input[_builtins.str]] = None,
+                 sub_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_existing: Optional[pulumi.Input[_builtins.bool]] = None,
+                 use_internal_ip: Optional[pulumi.Input[_builtins.bool]] = None,
+                 use_internal_ip_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 vm_labels: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] disk_size: GCE Instance Disk Size (in GB)
+        :param pulumi.Input[_builtins.str] disk_type: GCE Instance Disk Type
+        :param pulumi.Input[_builtins.str] machine_image: GCE instance image absolute URL
+        :param pulumi.Input[_builtins.str] machine_type: GCE instance type
+        :param pulumi.Input[_builtins.str] network: The network to provision virtual machines within
+        :param pulumi.Input[_builtins.str] project: The GCP project to create virtual machines within
+        :param pulumi.Input[_builtins.str] zone: The region and zone to create virtual machines within (e.g. us-east1-b)
+        :param pulumi.Input[_builtins.str] address: GCE Instance External IP
+        :param pulumi.Input[_builtins.str] auth_encoded_json: GCE service account auth json file path
+        :param pulumi.Input[_builtins.str] external_firewall_rule_prefix: A prefix to be added to firewall rules created when exposing ports publicly. Required if exposing ports publicly.
+        :param pulumi.Input[_builtins.str] internal_firewall_rule_prefix: A prefix to be added to an internal firewall rule created to ensure virtual machines can communicate with one another.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] open_ports: A list of ports to be opened publicly. 'external_firewall_rule_prefix' must also be set
+        :param pulumi.Input[_builtins.bool] preemptable: Indicates if the virtual machine can be preempted
+        :param pulumi.Input[_builtins.str] scopes: Access scopes to be set on the virtual machine
+        :param pulumi.Input[_builtins.str] sub_network: The subnetwork to provision virtual machines within
+        :param pulumi.Input[_builtins.str] tags: A set of network tags to be added to each VM, in the format of 'tag1,tag2'
+        :param pulumi.Input[_builtins.bool] use_existing: Indicates if an existing VM should be used. This is not currently support in Rancher.
+        :param pulumi.Input[_builtins.bool] use_internal_ip: Indicates if the virtual machines should use an internal IP
+        :param pulumi.Input[_builtins.bool] use_internal_ip_only: Indicates if the virtual machines should use an internal IP only and not be assigned a public IP
+        :param pulumi.Input[_builtins.str] user_data: GCE user-data file path
+        :param pulumi.Input[_builtins.str] username: The username to be set when logging into the virtual machines
+        :param pulumi.Input[_builtins.str] vm_labels: A set of labels to be added to each VM, in the format of 'key1,value1,key2,value2'
+        """
+        pulumi.set(__self__, "disk_size", disk_size)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "machine_image", machine_image)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "zone", zone)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if auth_encoded_json is not None:
+            pulumi.set(__self__, "auth_encoded_json", auth_encoded_json)
+        if external_firewall_rule_prefix is not None:
+            pulumi.set(__self__, "external_firewall_rule_prefix", external_firewall_rule_prefix)
+        if internal_firewall_rule_prefix is not None:
+            pulumi.set(__self__, "internal_firewall_rule_prefix", internal_firewall_rule_prefix)
+        if open_ports is not None:
+            pulumi.set(__self__, "open_ports", open_ports)
+        if preemptable is not None:
+            pulumi.set(__self__, "preemptable", preemptable)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if sub_network is not None:
+            pulumi.set(__self__, "sub_network", sub_network)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if use_existing is not None:
+            pulumi.set(__self__, "use_existing", use_existing)
+        if use_internal_ip is not None:
+            pulumi.set(__self__, "use_internal_ip", use_internal_ip)
+        if use_internal_ip_only is not None:
+            pulumi.set(__self__, "use_internal_ip_only", use_internal_ip_only)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if vm_labels is not None:
+            pulumi.set(__self__, "vm_labels", vm_labels)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> pulumi.Input[_builtins.str]:
+        """
+        GCE Instance Disk Size (in GB)
+        """
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "disk_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        GCE Instance Disk Type
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineImage")
+    def machine_image(self) -> pulumi.Input[_builtins.str]:
+        """
+        GCE instance image absolute URL
+        """
+        return pulumi.get(self, "machine_image")
+
+    @machine_image.setter
+    def machine_image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "machine_image", value)
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        GCE instance type
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "machine_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[_builtins.str]:
+        """
+        The network to provision virtual machines within
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[_builtins.str]:
+        """
+        The GCP project to create virtual machines within
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[_builtins.str]:
+        """
+        The region and zone to create virtual machines within (e.g. us-east1-b)
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        GCE Instance External IP
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authEncodedJson")
+    def auth_encoded_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        GCE service account auth json file path
+        """
+        return pulumi.get(self, "auth_encoded_json")
+
+    @auth_encoded_json.setter
+    def auth_encoded_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "auth_encoded_json", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalFirewallRulePrefix")
+    def external_firewall_rule_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A prefix to be added to firewall rules created when exposing ports publicly. Required if exposing ports publicly.
+        """
+        return pulumi.get(self, "external_firewall_rule_prefix")
+
+    @external_firewall_rule_prefix.setter
+    def external_firewall_rule_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_firewall_rule_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="internalFirewallRulePrefix")
+    def internal_firewall_rule_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A prefix to be added to an internal firewall rule created to ensure virtual machines can communicate with one another.
+        """
+        return pulumi.get(self, "internal_firewall_rule_prefix")
+
+    @internal_firewall_rule_prefix.setter
+    def internal_firewall_rule_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "internal_firewall_rule_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="openPorts")
+    def open_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of ports to be opened publicly. 'external_firewall_rule_prefix' must also be set
+        """
+        return pulumi.get(self, "open_ports")
+
+    @open_ports.setter
+    def open_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "open_ports", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def preemptable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the virtual machine can be preempted
+        """
+        return pulumi.get(self, "preemptable")
+
+    @preemptable.setter
+    def preemptable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "preemptable", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Access scopes to be set on the virtual machine
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subNetwork")
+    def sub_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The subnetwork to provision virtual machines within
+        """
+        return pulumi.get(self, "sub_network")
+
+    @sub_network.setter
+    def sub_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sub_network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A set of network tags to be added to each VM, in the format of 'tag1,tag2'
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useExisting")
+    def use_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if an existing VM should be used. This is not currently support in Rancher.
+        """
+        return pulumi.get(self, "use_existing")
+
+    @use_existing.setter
+    def use_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_existing", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useInternalIp")
+    def use_internal_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the virtual machines should use an internal IP
+        """
+        return pulumi.get(self, "use_internal_ip")
+
+    @use_internal_ip.setter
+    def use_internal_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_internal_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useInternalIpOnly")
+    def use_internal_ip_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the virtual machines should use an internal IP only and not be assigned a public IP
+        """
+        return pulumi.get(self, "use_internal_ip_only")
+
+    @use_internal_ip_only.setter
+    def use_internal_ip_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_internal_ip_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        GCE user-data file path
+        """
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_data", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The username to be set when logging into the virtual machines
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmLabels")
+    def vm_labels(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A set of labels to be added to each VM, in the format of 'key1,value1,key2,value2'
+        """
+        return pulumi.get(self, "vm_labels")
+
+    @vm_labels.setter
+    def vm_labels(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vm_labels", value)
+
+
+if not MYPY:
     class MachineConfigV2HarvesterConfigArgsDict(TypedDict):
         ssh_user: pulumi.Input[_builtins.str]
         """
@@ -31941,7 +30362,7 @@ if not MYPY:
         """
         username: NotRequired[pulumi.Input[_builtins.str]]
         """
-        OpenStack username (string)
+        The username to be set when logging into the virtual machines (string)
         """
         volume_device_path: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -32051,7 +30472,7 @@ class MachineConfigV2OpenstackConfigArgs:
         :param pulumi.Input[_builtins.str] user_data_file: File containing an openstack userdata script (string)
         :param pulumi.Input[_builtins.str] user_domain_id: OpenStack user domain id. Conflicts with `user_domain_name` (string)
         :param pulumi.Input[_builtins.str] user_domain_name: OpenStack user domain name. Conflicts with `user_domain_id` (string)
-        :param pulumi.Input[_builtins.str] username: OpenStack username (string)
+        :param pulumi.Input[_builtins.str] username: The username to be set when logging into the virtual machines (string)
         :param pulumi.Input[_builtins.str] volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
                > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
                > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
@@ -32579,7 +31000,7 @@ class MachineConfigV2OpenstackConfigArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        OpenStack username (string)
+        The username to be set when logging into the virtual machines (string)
         """
         return pulumi.get(self, "username")
 
@@ -32725,6 +31146,10 @@ if not MYPY:
         """
         vSphere network where the virtual machine will be attached
         """
+        os: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of virtual machine OS in vSphere
+        """
         password: NotRequired[pulumi.Input[_builtins.str]]
         """
         vSphere password
@@ -32805,6 +31230,7 @@ class MachineConfigV2VsphereConfigArgs:
                  hostsystem: Optional[pulumi.Input[_builtins.str]] = None,
                  memory_size: Optional[pulumi.Input[_builtins.str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 os: Optional[pulumi.Input[_builtins.str]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  pool: Optional[pulumi.Input[_builtins.str]] = None,
                  ssh_password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32838,6 +31264,7 @@ class MachineConfigV2VsphereConfigArgs:
         :param pulumi.Input[_builtins.str] hostsystem: vSphere compute resource where the docker VM will be instantiated. This can be omitted if using a cluster with DRS
         :param pulumi.Input[_builtins.str] memory_size: vSphere size of memory for docker VM (in MB)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] networks: vSphere network where the virtual machine will be attached
+        :param pulumi.Input[_builtins.str] os: Type of virtual machine OS in vSphere
         :param pulumi.Input[_builtins.str] password: vSphere password
         :param pulumi.Input[_builtins.str] pool: vSphere resource pool for docker VM
         :param pulumi.Input[_builtins.str] ssh_password: If using a non-B2D image you can specify the ssh password
@@ -32889,6 +31316,8 @@ class MachineConfigV2VsphereConfigArgs:
             pulumi.set(__self__, "memory_size", memory_size)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if os is not None:
+            pulumi.set(__self__, "os", os)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if pool is not None:
@@ -33133,6 +31562,18 @@ class MachineConfigV2VsphereConfigArgs:
     @networks.setter
     def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "networks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def os(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of virtual machine OS in vSphere
+        """
+        return pulumi.get(self, "os")
+
+    @os.setter
+    def os(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "os", value)
 
     @_builtins.property
     @pulumi.getter

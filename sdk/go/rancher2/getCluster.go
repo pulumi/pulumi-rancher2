@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v9/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -59,9 +59,7 @@ type LookupClusterArgs struct {
 type LookupClusterResult struct {
 	// (Computed) Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
 	AgentEnvVars []string `pulumi:"agentEnvVars"`
-	// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
-	AksConfig GetClusterAksConfig `pulumi:"aksConfig"`
-	// (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	AksConfigV2 GetClusterAksConfigV2 `pulumi:"aksConfigV2"`
 	// (Computed) Annotations for Node Pool object (map)
 	Annotations map[string]string `pulumi:"annotations"`
@@ -86,32 +84,29 @@ type LookupClusterResult struct {
 	Description string `pulumi:"description"`
 	// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
 	Driver string `pulumi:"driver"`
-	// (Computed) The Amazon eks configuration for `eks` Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
-	EksConfig GetClusterEksConfig `pulumi:"eksConfig"`
-	// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
+	// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
 	EksConfigV2 GetClusterEksConfigV2 `pulumi:"eksConfigV2"`
 	// (Computed) Enable project network isolation. Default `false` (bool)
 	EnableNetworkPolicy bool `pulumi:"enableNetworkPolicy"`
 	// (Computed) Fleet workspace name (string)
 	FleetWorkspaceName string `pulumi:"fleetWorkspaceName"`
-	// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1) (list maxitems:1)
-	GkeConfig GetClusterGkeConfig `pulumi:"gkeConfig"`
-	// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
+	// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 	GkeConfigV2 GetClusterGkeConfigV2 `pulumi:"gkeConfigV2"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
+	Id              string                     `pulumi:"id"`
+	ImportedConfigs []GetClusterImportedConfig `pulumi:"importedConfigs"`
+	// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, and `rkeConfig` (list maxitems:1)
 	K3sConfig GetClusterK3sConfig `pulumi:"k3sConfig"`
 	// (Computed) Kube Config generated for the cluster (string)
 	KubeConfig string `pulumi:"kubeConfig"`
 	// (Computed) Labels for Node Pool object (map)
 	Labels map[string]string `pulumi:"labels"`
 	Name   string            `pulumi:"name"`
-	// (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	OkeConfig GetClusterOkeConfig `pulumi:"okeConfig"`
-	// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+	// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	Rke2Config GetClusterRke2Config `pulumi:"rke2Config"`
-	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
+	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
 	RkeConfig GetClusterRkeConfig `pulumi:"rkeConfig"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId string `pulumi:"systemProjectId"`
@@ -157,12 +152,7 @@ func (o LookupClusterResultOutput) AgentEnvVars() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []string { return v.AgentEnvVars }).(pulumi.StringArrayOutput)
 }
 
-// (Computed) The Azure aks configuration for `aks` Clusters. Conflicts with `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
-func (o LookupClusterResultOutput) AksConfig() GetClusterAksConfigOutput {
-	return o.ApplyT(func(v LookupClusterResult) GetClusterAksConfig { return v.AksConfig }).(GetClusterAksConfigOutput)
-}
-
-// (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `aksConfig`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` `k3sConfig` and `rkeConfig` (list maxitems:1)
+// (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 func (o LookupClusterResultOutput) AksConfigV2() GetClusterAksConfigV2Output {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterAksConfigV2 { return v.AksConfigV2 }).(GetClusterAksConfigV2Output)
 }
@@ -226,12 +216,7 @@ func (o LookupClusterResultOutput) Driver() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Driver }).(pulumi.StringOutput)
 }
 
-// (Computed) The Amazon eks configuration for `eks` Conflicts with `aksConfig`, `aksConfigV2`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
-func (o LookupClusterResultOutput) EksConfig() GetClusterEksConfigOutput {
-	return o.ApplyT(func(v LookupClusterResult) GetClusterEksConfig { return v.EksConfig }).(GetClusterEksConfigOutput)
-}
-
-// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
+// (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
 func (o LookupClusterResultOutput) EksConfigV2() GetClusterEksConfigV2Output {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterEksConfigV2 { return v.EksConfigV2 }).(GetClusterEksConfigV2Output)
 }
@@ -246,12 +231,7 @@ func (o LookupClusterResultOutput) FleetWorkspaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.FleetWorkspaceName }).(pulumi.StringOutput)
 }
 
-// (Computed) The Google gke configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfigV2`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1) (list maxitems:1)
-func (o LookupClusterResultOutput) GkeConfig() GetClusterGkeConfigOutput {
-	return o.ApplyT(func(v LookupClusterResult) GetClusterGkeConfig { return v.GkeConfig }).(GetClusterGkeConfigOutput)
-}
-
-// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
+// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 func (o LookupClusterResultOutput) GkeConfigV2() GetClusterGkeConfigV2Output {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterGkeConfigV2 { return v.GkeConfigV2 }).(GetClusterGkeConfigV2Output)
 }
@@ -261,7 +241,11 @@ func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
+func (o LookupClusterResultOutput) ImportedConfigs() GetClusterImportedConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterImportedConfig { return v.ImportedConfigs }).(GetClusterImportedConfigArrayOutput)
+}
+
+// (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, and `rkeConfig` (list maxitems:1)
 func (o LookupClusterResultOutput) K3sConfig() GetClusterK3sConfigOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterK3sConfig { return v.K3sConfig }).(GetClusterK3sConfigOutput)
 }
@@ -280,17 +264,17 @@ func (o LookupClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+// (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 func (o LookupClusterResultOutput) OkeConfig() GetClusterOkeConfigOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterOkeConfig { return v.OkeConfig }).(GetClusterOkeConfigOutput)
 }
 
-// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `gkeConfig`, `okeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
+// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 func (o LookupClusterResultOutput) Rke2Config() GetClusterRke2ConfigOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterRke2Config { return v.Rke2Config }).(GetClusterRke2ConfigOutput)
 }
 
-// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfig`, `aksConfigV2`, `eksConfig`, `eksConfigV2`, `gkeConfig`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
+// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
 func (o LookupClusterResultOutput) RkeConfig() GetClusterRkeConfigOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterRkeConfig { return v.RkeConfig }).(GetClusterRkeConfigOutput)
 }

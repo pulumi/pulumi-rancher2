@@ -15,10 +15,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterOkeConfig {
     /**
+     * @return Optionally specify a cluster type of basic or enhanced
+     * 
+     */
+    private @Nullable String clusterType;
+    /**
      * @return The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      * 
      */
     private String compartmentId;
+    /**
+     * @return The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+     * 
+     */
+    private @Nullable String controlPlaneSubnetName;
     /**
      * @return An optional custom boot volume size (in GB) for the nodes
      * 
@@ -45,22 +55,42 @@ public final class ClusterOkeConfig {
      */
     private @Nullable Boolean enablePrivateNodes;
     /**
+     * @return The optional grace period in minutes to allow cordon and drain to complete successfuly
+     * 
+     */
+    private @Nullable String evictionGraceDuration;
+    /**
      * @return The fingerprint corresponding to the specified user&#39;s private API Key
      * 
      */
-    private String fingerprint;
+    private @Nullable String fingerprint;
+    /**
+     * @return Optional amount of memory in GB for nodes (requires flexible node_shape)
+     * 
+     */
+    private @Nullable Integer flexMemoryInGbs;
     /**
      * @return Optional number of OCPUs for nodes (requires flexible node_shape)
      * 
      */
     private @Nullable Integer flexOcpus;
     /**
+     * @return Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+     * 
+     */
+    private @Nullable Boolean forceDeleteAfterGraceDuration;
+    /**
+     * @return Optional specify a comma separated list of master encryption key OCID(s) to verify images
+     * 
+     */
+    private @Nullable String imageVerificationKmsKeyId;
+    /**
      * @return Optional specify the OCID of the KMS Vault master key
      * 
      */
     private @Nullable String kmsKeyId;
     /**
-     * @return The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+     * @return The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
      * 
      */
     private String kubernetesVersion;
@@ -90,7 +120,7 @@ public final class ClusterOkeConfig {
      */
     private @Nullable String nodePoolDnsDomainName;
     /**
-     * @return Optional name for node pool subnet
+     * @return Optional pre-existing subnet (public or private) for nodes
      * 
      */
     private @Nullable String nodePoolSubnetName;
@@ -105,15 +135,30 @@ public final class ClusterOkeConfig {
      */
     private String nodeShape;
     /**
+     * @return The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+     * 
+     */
+    private @Nullable String nodeUserDataContents;
+    /**
      * @return Optional specify the pod CIDR, defaults to 10.244.0.0/16
      * 
      */
     private @Nullable String podCidr;
     /**
+     * @return Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+     * 
+     */
+    private @Nullable String podNetwork;
+    /**
+     * @return The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+     * 
+     */
+    private @Nullable String podSubnetName;
+    /**
      * @return The private API key file contents for the specified user, in PEM format
      * 
      */
-    private String privateKeyContents;
+    private @Nullable String privateKeyContents;
     /**
      * @return The passphrase of the private key for the OKE cluster
      * 
@@ -158,7 +203,7 @@ public final class ClusterOkeConfig {
      * @return The OCID of a user who has access to the tenancy/compartment
      * 
      */
-    private String userOcid;
+    private @Nullable String userOcid;
     /**
      * @return The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
      * 
@@ -177,11 +222,25 @@ public final class ClusterOkeConfig {
 
     private ClusterOkeConfig() {}
     /**
+     * @return Optionally specify a cluster type of basic or enhanced
+     * 
+     */
+    public Optional<String> clusterType() {
+        return Optional.ofNullable(this.clusterType);
+    }
+    /**
      * @return The OCID of the compartment in which to create resources (VCN, worker nodes, etc.)
      * 
      */
     public String compartmentId() {
         return this.compartmentId;
+    }
+    /**
+     * @return The (optional) name of a pre-existing subnet (public or private) for the Kubernetes API endpoint
+     * 
+     */
+    public Optional<String> controlPlaneSubnetName() {
+        return Optional.ofNullable(this.controlPlaneSubnetName);
     }
     /**
      * @return An optional custom boot volume size (in GB) for the nodes
@@ -219,11 +278,25 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
     /**
+     * @return The optional grace period in minutes to allow cordon and drain to complete successfuly
+     * 
+     */
+    public Optional<String> evictionGraceDuration() {
+        return Optional.ofNullable(this.evictionGraceDuration);
+    }
+    /**
      * @return The fingerprint corresponding to the specified user&#39;s private API Key
      * 
      */
-    public String fingerprint() {
-        return this.fingerprint;
+    public Optional<String> fingerprint() {
+        return Optional.ofNullable(this.fingerprint);
+    }
+    /**
+     * @return Optional amount of memory in GB for nodes (requires flexible node_shape)
+     * 
+     */
+    public Optional<Integer> flexMemoryInGbs() {
+        return Optional.ofNullable(this.flexMemoryInGbs);
     }
     /**
      * @return Optional number of OCPUs for nodes (requires flexible node_shape)
@@ -233,6 +306,20 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.flexOcpus);
     }
     /**
+     * @return Whether to send a SIGKILL signal if a pod does not terminate within the specified grace period
+     * 
+     */
+    public Optional<Boolean> forceDeleteAfterGraceDuration() {
+        return Optional.ofNullable(this.forceDeleteAfterGraceDuration);
+    }
+    /**
+     * @return Optional specify a comma separated list of master encryption key OCID(s) to verify images
+     * 
+     */
+    public Optional<String> imageVerificationKmsKeyId() {
+        return Optional.ofNullable(this.imageVerificationKmsKeyId);
+    }
+    /**
      * @return Optional specify the OCID of the KMS Vault master key
      * 
      */
@@ -240,7 +327,7 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.kmsKeyId);
     }
     /**
-     * @return The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.19.7
+     * @return The Kubernetes version that will be used for your master *and* worker nodes e.g. v1.33.1
      * 
      */
     public String kubernetesVersion() {
@@ -282,7 +369,7 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.nodePoolDnsDomainName);
     }
     /**
-     * @return Optional name for node pool subnet
+     * @return Optional pre-existing subnet (public or private) for nodes
      * 
      */
     public Optional<String> nodePoolSubnetName() {
@@ -303,6 +390,13 @@ public final class ClusterOkeConfig {
         return this.nodeShape;
     }
     /**
+     * @return The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+     * 
+     */
+    public Optional<String> nodeUserDataContents() {
+        return Optional.ofNullable(this.nodeUserDataContents);
+    }
+    /**
      * @return Optional specify the pod CIDR, defaults to 10.244.0.0/16
      * 
      */
@@ -310,11 +404,25 @@ public final class ClusterOkeConfig {
         return Optional.ofNullable(this.podCidr);
     }
     /**
+     * @return Optional Pod Network plugin. Choose flannel or native. Defaults to flannel
+     * 
+     */
+    public Optional<String> podNetwork() {
+        return Optional.ofNullable(this.podNetwork);
+    }
+    /**
+     * @return The (optional) name of a pre-existing subnet that pods will be assigned IPs from when using native pod networking
+     * 
+     */
+    public Optional<String> podSubnetName() {
+        return Optional.ofNullable(this.podSubnetName);
+    }
+    /**
      * @return The private API key file contents for the specified user, in PEM format
      * 
      */
-    public String privateKeyContents() {
-        return this.privateKeyContents;
+    public Optional<String> privateKeyContents() {
+        return Optional.ofNullable(this.privateKeyContents);
     }
     /**
      * @return The passphrase of the private key for the OKE cluster
@@ -376,8 +484,8 @@ public final class ClusterOkeConfig {
      * @return The OCID of a user who has access to the tenancy/compartment
      * 
      */
-    public String userOcid() {
-        return this.userOcid;
+    public Optional<String> userOcid() {
+        return Optional.ofNullable(this.userOcid);
     }
     /**
      * @return The OCID of the compartment (if different from compartment_id) in which to find the pre-existing virtual network set with vcn_name.
@@ -410,14 +518,20 @@ public final class ClusterOkeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String clusterType;
         private String compartmentId;
+        private @Nullable String controlPlaneSubnetName;
         private @Nullable Integer customBootVolumeSize;
         private @Nullable String description;
         private @Nullable Boolean enableKubernetesDashboard;
         private @Nullable Boolean enablePrivateControlPlane;
         private @Nullable Boolean enablePrivateNodes;
-        private String fingerprint;
+        private @Nullable String evictionGraceDuration;
+        private @Nullable String fingerprint;
+        private @Nullable Integer flexMemoryInGbs;
         private @Nullable Integer flexOcpus;
+        private @Nullable Boolean forceDeleteAfterGraceDuration;
+        private @Nullable String imageVerificationKmsKeyId;
         private @Nullable String kmsKeyId;
         private String kubernetesVersion;
         private @Nullable Integer limitNodeCount;
@@ -428,8 +542,11 @@ public final class ClusterOkeConfig {
         private @Nullable String nodePoolSubnetName;
         private @Nullable String nodePublicKeyContents;
         private String nodeShape;
+        private @Nullable String nodeUserDataContents;
         private @Nullable String podCidr;
-        private String privateKeyContents;
+        private @Nullable String podNetwork;
+        private @Nullable String podSubnetName;
+        private @Nullable String privateKeyContents;
         private @Nullable String privateKeyPassphrase;
         private @Nullable Integer quantityOfNodeSubnets;
         private @Nullable Integer quantityPerSubnet;
@@ -438,21 +555,27 @@ public final class ClusterOkeConfig {
         private @Nullable String serviceDnsDomainName;
         private @Nullable Boolean skipVcnDelete;
         private String tenancyId;
-        private String userOcid;
+        private @Nullable String userOcid;
         private @Nullable String vcnCompartmentId;
         private @Nullable String vcnName;
         private @Nullable String workerNodeIngressCidr;
         public Builder() {}
         public Builder(ClusterOkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clusterType = defaults.clusterType;
     	      this.compartmentId = defaults.compartmentId;
+    	      this.controlPlaneSubnetName = defaults.controlPlaneSubnetName;
     	      this.customBootVolumeSize = defaults.customBootVolumeSize;
     	      this.description = defaults.description;
     	      this.enableKubernetesDashboard = defaults.enableKubernetesDashboard;
     	      this.enablePrivateControlPlane = defaults.enablePrivateControlPlane;
     	      this.enablePrivateNodes = defaults.enablePrivateNodes;
+    	      this.evictionGraceDuration = defaults.evictionGraceDuration;
     	      this.fingerprint = defaults.fingerprint;
+    	      this.flexMemoryInGbs = defaults.flexMemoryInGbs;
     	      this.flexOcpus = defaults.flexOcpus;
+    	      this.forceDeleteAfterGraceDuration = defaults.forceDeleteAfterGraceDuration;
+    	      this.imageVerificationKmsKeyId = defaults.imageVerificationKmsKeyId;
     	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.kubernetesVersion = defaults.kubernetesVersion;
     	      this.limitNodeCount = defaults.limitNodeCount;
@@ -463,7 +586,10 @@ public final class ClusterOkeConfig {
     	      this.nodePoolSubnetName = defaults.nodePoolSubnetName;
     	      this.nodePublicKeyContents = defaults.nodePublicKeyContents;
     	      this.nodeShape = defaults.nodeShape;
+    	      this.nodeUserDataContents = defaults.nodeUserDataContents;
     	      this.podCidr = defaults.podCidr;
+    	      this.podNetwork = defaults.podNetwork;
+    	      this.podSubnetName = defaults.podSubnetName;
     	      this.privateKeyContents = defaults.privateKeyContents;
     	      this.privateKeyPassphrase = defaults.privateKeyPassphrase;
     	      this.quantityOfNodeSubnets = defaults.quantityOfNodeSubnets;
@@ -480,11 +606,23 @@ public final class ClusterOkeConfig {
         }
 
         @CustomType.Setter
+        public Builder clusterType(@Nullable String clusterType) {
+
+            this.clusterType = clusterType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder compartmentId(String compartmentId) {
             if (compartmentId == null) {
               throw new MissingRequiredPropertyException("ClusterOkeConfig", "compartmentId");
             }
             this.compartmentId = compartmentId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder controlPlaneSubnetName(@Nullable String controlPlaneSubnetName) {
+
+            this.controlPlaneSubnetName = controlPlaneSubnetName;
             return this;
         }
         @CustomType.Setter
@@ -518,17 +656,39 @@ public final class ClusterOkeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder fingerprint(String fingerprint) {
-            if (fingerprint == null) {
-              throw new MissingRequiredPropertyException("ClusterOkeConfig", "fingerprint");
-            }
+        public Builder evictionGraceDuration(@Nullable String evictionGraceDuration) {
+
+            this.evictionGraceDuration = evictionGraceDuration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fingerprint(@Nullable String fingerprint) {
+
             this.fingerprint = fingerprint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder flexMemoryInGbs(@Nullable Integer flexMemoryInGbs) {
+
+            this.flexMemoryInGbs = flexMemoryInGbs;
             return this;
         }
         @CustomType.Setter
         public Builder flexOcpus(@Nullable Integer flexOcpus) {
 
             this.flexOcpus = flexOcpus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forceDeleteAfterGraceDuration(@Nullable Boolean forceDeleteAfterGraceDuration) {
+
+            this.forceDeleteAfterGraceDuration = forceDeleteAfterGraceDuration;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder imageVerificationKmsKeyId(@Nullable String imageVerificationKmsKeyId) {
+
+            this.imageVerificationKmsKeyId = imageVerificationKmsKeyId;
             return this;
         }
         @CustomType.Setter
@@ -598,16 +758,32 @@ public final class ClusterOkeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeUserDataContents(@Nullable String nodeUserDataContents) {
+
+            this.nodeUserDataContents = nodeUserDataContents;
+            return this;
+        }
+        @CustomType.Setter
         public Builder podCidr(@Nullable String podCidr) {
 
             this.podCidr = podCidr;
             return this;
         }
         @CustomType.Setter
-        public Builder privateKeyContents(String privateKeyContents) {
-            if (privateKeyContents == null) {
-              throw new MissingRequiredPropertyException("ClusterOkeConfig", "privateKeyContents");
-            }
+        public Builder podNetwork(@Nullable String podNetwork) {
+
+            this.podNetwork = podNetwork;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder podSubnetName(@Nullable String podSubnetName) {
+
+            this.podSubnetName = podSubnetName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder privateKeyContents(@Nullable String privateKeyContents) {
+
             this.privateKeyContents = privateKeyContents;
             return this;
         }
@@ -664,10 +840,8 @@ public final class ClusterOkeConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder userOcid(String userOcid) {
-            if (userOcid == null) {
-              throw new MissingRequiredPropertyException("ClusterOkeConfig", "userOcid");
-            }
+        public Builder userOcid(@Nullable String userOcid) {
+
             this.userOcid = userOcid;
             return this;
         }
@@ -691,14 +865,20 @@ public final class ClusterOkeConfig {
         }
         public ClusterOkeConfig build() {
             final var _resultValue = new ClusterOkeConfig();
+            _resultValue.clusterType = clusterType;
             _resultValue.compartmentId = compartmentId;
+            _resultValue.controlPlaneSubnetName = controlPlaneSubnetName;
             _resultValue.customBootVolumeSize = customBootVolumeSize;
             _resultValue.description = description;
             _resultValue.enableKubernetesDashboard = enableKubernetesDashboard;
             _resultValue.enablePrivateControlPlane = enablePrivateControlPlane;
             _resultValue.enablePrivateNodes = enablePrivateNodes;
+            _resultValue.evictionGraceDuration = evictionGraceDuration;
             _resultValue.fingerprint = fingerprint;
+            _resultValue.flexMemoryInGbs = flexMemoryInGbs;
             _resultValue.flexOcpus = flexOcpus;
+            _resultValue.forceDeleteAfterGraceDuration = forceDeleteAfterGraceDuration;
+            _resultValue.imageVerificationKmsKeyId = imageVerificationKmsKeyId;
             _resultValue.kmsKeyId = kmsKeyId;
             _resultValue.kubernetesVersion = kubernetesVersion;
             _resultValue.limitNodeCount = limitNodeCount;
@@ -709,7 +889,10 @@ public final class ClusterOkeConfig {
             _resultValue.nodePoolSubnetName = nodePoolSubnetName;
             _resultValue.nodePublicKeyContents = nodePublicKeyContents;
             _resultValue.nodeShape = nodeShape;
+            _resultValue.nodeUserDataContents = nodeUserDataContents;
             _resultValue.podCidr = podCidr;
+            _resultValue.podNetwork = podNetwork;
+            _resultValue.podSubnetName = podSubnetName;
             _resultValue.privateKeyContents = privateKeyContents;
             _resultValue.privateKeyPassphrase = privateKeyPassphrase;
             _resultValue.quantityOfNodeSubnets = quantityOfNodeSubnets;
