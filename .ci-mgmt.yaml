@@ -1,5 +1,5 @@
 provider: rancher2
-major-version: 9
+major-version: 10
 setup-script: testing/setup.sh
 env:
   RANCHER_INSECURE: "true"
