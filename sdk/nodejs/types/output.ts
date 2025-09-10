@@ -695,7 +695,7 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
     /**
      * The EKS node group launch template version
      */
-    version?: number;
+    version: number;
 }
 
 export interface ClusterFleetAgentDeploymentCustomization {
@@ -5419,7 +5419,7 @@ export interface GetClusterEksConfigV2NodeGroupLaunchTemplate {
     /**
      * The EKS node group launch template version
      */
-    version?: number;
+    version: number;
 }
 
 export interface GetClusterGkeConfigV2 {

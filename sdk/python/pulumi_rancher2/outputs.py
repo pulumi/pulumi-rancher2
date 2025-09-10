@@ -2939,18 +2939,16 @@ class ClusterEksConfigV2NodeGroup(dict):
 class ClusterEksConfigV2NodeGroupLaunchTemplate(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
-                 name: Optional[_builtins.str] = None,
-                 version: Optional[_builtins.int] = None):
+                 name: _builtins.str,
+                 version: _builtins.int):
         """
         :param _builtins.str id: (Computed) The ID of the resource (string)
         :param _builtins.str name: The name of the Cluster (string)
         :param _builtins.int version: The EKS node group launch template version
         """
         pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -2962,7 +2960,7 @@ class ClusterEksConfigV2NodeGroupLaunchTemplate(dict):
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
         The name of the Cluster (string)
         """
@@ -2970,7 +2968,7 @@ class ClusterEksConfigV2NodeGroupLaunchTemplate(dict):
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[_builtins.int]:
+    def version(self) -> _builtins.int:
         """
         The EKS node group launch template version
         """
@@ -29623,7 +29621,7 @@ class GetClusterEksConfigV2NodeGroupLaunchTemplateResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
                  name: _builtins.str,
-                 version: Optional[_builtins.int] = None):
+                 version: _builtins.int):
         """
         :param _builtins.str id: (Computed) The ID of the resource (string)
         :param _builtins.str name: The name of the Cluster (string)
@@ -29631,8 +29629,7 @@ class GetClusterEksConfigV2NodeGroupLaunchTemplateResult(dict):
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -29652,7 +29649,7 @@ class GetClusterEksConfigV2NodeGroupLaunchTemplateResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[_builtins.int]:
+    def version(self) -> _builtins.int:
         """
         The EKS node group launch template version
         """

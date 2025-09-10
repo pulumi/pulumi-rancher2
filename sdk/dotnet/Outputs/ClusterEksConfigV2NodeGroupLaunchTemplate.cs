@@ -20,19 +20,19 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// The EKS node group launch template version
         /// </summary>
-        public readonly int? Version;
+        public readonly int Version;
 
         [OutputConstructor]
         private ClusterEksConfigV2NodeGroupLaunchTemplate(
             string id,
 
-            string? name,
+            string name,
 
-            int? version)
+            int version)
         {
             Id = id;
             Name = name;

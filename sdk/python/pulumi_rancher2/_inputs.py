@@ -3835,11 +3835,11 @@ if not MYPY:
         """
         (Computed) The ID of the resource (string)
         """
-        name: NotRequired[pulumi.Input[_builtins.str]]
+        name: pulumi.Input[_builtins.str]
         """
         The name of the Cluster (string)
         """
-        version: NotRequired[pulumi.Input[_builtins.int]]
+        version: pulumi.Input[_builtins.int]
         """
         The EKS node group launch template version
         """
@@ -3850,18 +3850,16 @@ elif False:
 class ClusterEksConfigV2NodeGroupLaunchTemplateArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 name: pulumi.Input[_builtins.str],
+                 version: pulumi.Input[_builtins.int]):
         """
         :param pulumi.Input[_builtins.str] id: (Computed) The ID of the resource (string)
         :param pulumi.Input[_builtins.str] name: The name of the Cluster (string)
         :param pulumi.Input[_builtins.int] version: The EKS node group launch template version
         """
         pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -3877,26 +3875,26 @@ class ClusterEksConfigV2NodeGroupLaunchTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[_builtins.str]:
         """
         The name of the Cluster (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[_builtins.int]:
         """
         The EKS node group launch template version
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "version", value)
 
 

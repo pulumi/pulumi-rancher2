@@ -691,11 +691,11 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
     /**
      * The name of the Cluster (string)
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The EKS node group launch template version
      */
-    version?: pulumi.Input<number>;
+    version: pulumi.Input<number>;
 }
 
 export interface ClusterFleetAgentDeploymentCustomization {
