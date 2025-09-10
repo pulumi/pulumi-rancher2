@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
@@ -22,12 +20,12 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
      * @return The name of the Cluster (string)
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return The EKS node group launch template version
      * 
      */
-    private @Nullable Integer version;
+    private Integer version;
 
     private ClusterEksConfigV2NodeGroupLaunchTemplate() {}
     /**
@@ -41,15 +39,15 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
      * @return The name of the Cluster (string)
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return The EKS node group launch template version
      * 
      */
-    public Optional<Integer> version() {
-        return Optional.ofNullable(this.version);
+    public Integer version() {
+        return this.version;
     }
 
     public static Builder builder() {
@@ -62,8 +60,8 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private @Nullable String name;
-        private @Nullable Integer version;
+        private String name;
+        private Integer version;
         public Builder() {}
         public Builder(ClusterEksConfigV2NodeGroupLaunchTemplate defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,14 +79,18 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplate {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ClusterEksConfigV2NodeGroupLaunchTemplate", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder version(@Nullable Integer version) {
-
+        public Builder version(Integer version) {
+            if (version == null) {
+              throw new MissingRequiredPropertyException("ClusterEksConfigV2NodeGroupLaunchTemplate", "version");
+            }
             this.version = version;
             return this;
         }

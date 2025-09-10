@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pulumi.resources.ResourceArgs {
@@ -36,30 +34,30 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
      * The name of the Cluster (string)
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return The name of the Cluster (string)
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
      * The EKS node group launch template version
      * 
      */
-    @Import(name="version")
-    private @Nullable Output<Integer> version;
+    @Import(name="version", required=true)
+    private Output<Integer> version;
 
     /**
      * @return The EKS node group launch template version
      * 
      */
-    public Optional<Output<Integer>> version() {
-        return Optional.ofNullable(this.version);
+    public Output<Integer> version() {
+        return this.version;
     }
 
     private ClusterEksConfigV2NodeGroupLaunchTemplateArgs() {}
@@ -115,7 +113,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -136,7 +134,7 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder version(@Nullable Output<Integer> version) {
+        public Builder version(Output<Integer> version) {
             $.version = version;
             return this;
         }
@@ -154,6 +152,12 @@ public final class ClusterEksConfigV2NodeGroupLaunchTemplateArgs extends com.pul
         public ClusterEksConfigV2NodeGroupLaunchTemplateArgs build() {
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("ClusterEksConfigV2NodeGroupLaunchTemplateArgs", "id");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ClusterEksConfigV2NodeGroupLaunchTemplateArgs", "name");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("ClusterEksConfigV2NodeGroupLaunchTemplateArgs", "version");
             }
             return $;
         }

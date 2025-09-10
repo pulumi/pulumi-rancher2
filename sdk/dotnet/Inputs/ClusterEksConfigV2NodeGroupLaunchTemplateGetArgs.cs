@@ -21,14 +21,14 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// The EKS node group launch template version
         /// </summary>
-        [Input("version")]
-        public Input<int>? Version { get; set; }
+        [Input("version", required: true)]
+        public Input<int> Version { get; set; } = null!;
 
         public ClusterEksConfigV2NodeGroupLaunchTemplateGetArgs()
         {

@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// The EKS node group launch template version
         /// </summary>
-        public readonly int? Version;
+        public readonly int Version;
 
         [OutputConstructor]
         private GetClusterEksConfigV2NodeGroupLaunchTemplateResult(
@@ -32,7 +32,7 @@ namespace Pulumi.Rancher2.Outputs
 
             string name,
 
-            int? version)
+            int version)
         {
             Id = id;
             Name = name;

@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
@@ -27,7 +25,7 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
      * @return The EKS node group launch template version
      * 
      */
-    private @Nullable Integer version;
+    private Integer version;
 
     private GetClusterEksConfigV2NodeGroupLaunchTemplate() {}
     /**
@@ -48,8 +46,8 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
      * @return The EKS node group launch template version
      * 
      */
-    public Optional<Integer> version() {
-        return Optional.ofNullable(this.version);
+    public Integer version() {
+        return this.version;
     }
 
     public static Builder builder() {
@@ -63,7 +61,7 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
     public static final class Builder {
         private String id;
         private String name;
-        private @Nullable Integer version;
+        private Integer version;
         public Builder() {}
         public Builder(GetClusterEksConfigV2NodeGroupLaunchTemplate defaults) {
     	      Objects.requireNonNull(defaults);
@@ -89,8 +87,10 @@ public final class GetClusterEksConfigV2NodeGroupLaunchTemplate {
             return this;
         }
         @CustomType.Setter
-        public Builder version(@Nullable Integer version) {
-
+        public Builder version(Integer version) {
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2NodeGroupLaunchTemplate", "version");
+            }
             this.version = version;
             return this;
         }
