@@ -1,6 +1,8 @@
 provider: rancher2
 major-version: 10
 setup-script: testing/setup.sh
+esc:
+  enabled: true
 env:
   RANCHER_INSECURE: "true"
   RANCHER_URL: https://localhost # docker
