@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The group_principal ID to assign project role template binding (string)
+        /// The GroupPrincipal ID to assign project role template binding (string)
         /// </summary>
         [Output("groupPrincipalId")]
         public Output<string> GroupPrincipalId { get; private set; } = null!;
@@ -66,7 +66,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels of the resource (map)
         /// 
-        /// **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+        /// **Note:** user `UserId | UserPrincipalId` OR group `GroupId | GroupPrincipalId` must be defined
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Rancher2
         public Output<string> UserId { get; private set; } = null!;
 
         /// <summary>
-        /// The user_principal ID to assign project role template binding (string)
+        /// The UserPrincipal ID to assign project role template binding (string)
         /// </summary>
         [Output("userPrincipalId")]
         public Output<string> UserPrincipalId { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Rancher2
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The group_principal ID to assign project role template binding (string)
+        /// The GroupPrincipal ID to assign project role template binding (string)
         /// </summary>
         [Input("groupPrincipalId")]
         public Input<string>? GroupPrincipalId { get; set; }
@@ -177,7 +177,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels of the resource (map)
         /// 
-        /// **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+        /// **Note:** user `UserId | UserPrincipalId` OR group `GroupId | GroupPrincipalId` must be defined
         /// </summary>
         public InputMap<string> Labels
         {
@@ -210,7 +210,7 @@ namespace Pulumi.Rancher2
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// The user_principal ID to assign project role template binding (string)
+        /// The UserPrincipal ID to assign project role template binding (string)
         /// </summary>
         [Input("userPrincipalId")]
         public Input<string>? UserPrincipalId { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.Rancher2
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The group_principal ID to assign project role template binding (string)
+        /// The GroupPrincipal ID to assign project role template binding (string)
         /// </summary>
         [Input("groupPrincipalId")]
         public Input<string>? GroupPrincipalId { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels of the resource (map)
         /// 
-        /// **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+        /// **Note:** user `UserId | UserPrincipalId` OR group `GroupId | GroupPrincipalId` must be defined
         /// </summary>
         public InputMap<string> Labels
         {
@@ -286,7 +286,7 @@ namespace Pulumi.Rancher2
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// The user_principal ID to assign project role template binding (string)
+        /// The UserPrincipal ID to assign project role template binding (string)
         /// </summary>
         [Input("userPrincipalId")]
         public Input<string>? UserPrincipalId { get; set; }

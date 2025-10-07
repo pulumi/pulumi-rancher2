@@ -99,7 +99,7 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not this role should be added to new users. Default `false` (bool)
+        /// Whether or not this role should be added to new users. Default `False` (bool)
         /// </summary>
         [Output("newUserDefault")]
         public Output<bool?> NewUserDefault { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Whether or not this role should be added to new users. Default `false` (bool)
+        /// Whether or not this role should be added to new users. Default `False` (bool)
         /// </summary>
         [Input("newUserDefault")]
         public Input<bool>? NewUserDefault { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Whether or not this role should be added to new users. Default `false` (bool)
+        /// Whether or not this role should be added to new users. Default `False` (bool)
         /// </summary>
         [Input("newUserDefault")]
         public Input<bool>? NewUserDefault { get; set; }

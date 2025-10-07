@@ -21,10 +21,10 @@ public final class MachineConfigV2HarvesterConfig {
      * @return Disk bus
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     private @Nullable String diskBus;
     /**
      * @return A JSON string specifying info for the disks e.g. `{&#34;disks&#34;:[{&#34;imageName&#34;:&#34;harvester-public/image-57hzg&#34;,&#34;bootOrder&#34;:1,&#34;size&#34;:40},{&#34;storageClassName&#34;:&#34;node-driver-test&#34;,&#34;bootOrder&#34;:2,&#34;size&#34;:1}]}`
@@ -35,19 +35,19 @@ public final class MachineConfigV2HarvesterConfig {
      * @return Disk size (in GiB)
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     private @Nullable String diskSize;
     /**
      * @return Image name
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     private @Nullable String imageName;
     /**
      * @return Memory size (in GiB)
@@ -68,19 +68,19 @@ public final class MachineConfigV2HarvesterConfig {
      * @return Network model
      * 
      * @deprecated
-     * Use network_info instead
+     * Use networkInfo instead
      * 
      */
-    @Deprecated /* Use network_info instead */
+    @Deprecated /* Use networkInfo instead */
     private @Nullable String networkModel;
     /**
      * @return Network name
      * 
      * @deprecated
-     * Use network_info instead
+     * Use networkInfo instead
      * 
      */
-    @Deprecated /* Use network_info instead */
+    @Deprecated /* Use networkInfo instead */
     private @Nullable String networkName;
     /**
      * @return SSH password
@@ -120,10 +120,10 @@ public final class MachineConfigV2HarvesterConfig {
      * @return Disk bus
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     public Optional<String> diskBus() {
         return Optional.ofNullable(this.diskBus);
     }
@@ -138,10 +138,10 @@ public final class MachineConfigV2HarvesterConfig {
      * @return Disk size (in GiB)
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     public Optional<String> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
@@ -149,10 +149,10 @@ public final class MachineConfigV2HarvesterConfig {
      * @return Image name
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     public Optional<String> imageName() {
         return Optional.ofNullable(this.imageName);
     }
@@ -181,10 +181,10 @@ public final class MachineConfigV2HarvesterConfig {
      * @return Network model
      * 
      * @deprecated
-     * Use network_info instead
+     * Use networkInfo instead
      * 
      */
-    @Deprecated /* Use network_info instead */
+    @Deprecated /* Use networkInfo instead */
     public Optional<String> networkModel() {
         return Optional.ofNullable(this.networkModel);
     }
@@ -192,10 +192,10 @@ public final class MachineConfigV2HarvesterConfig {
      * @return Network name
      * 
      * @deprecated
-     * Use network_info instead
+     * Use networkInfo instead
      * 
      */
-    @Deprecated /* Use network_info instead */
+    @Deprecated /* Use networkInfo instead */
     public Optional<String> networkName() {
         return Optional.ofNullable(this.networkName);
     }

@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? CaCerts { get; set; }
 
         /// <summary>
-        /// If `enabled` is set to true, nodes will be drained before upgrade.
+        /// If `Enabled` is set to true, nodes will be drained before upgrade.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

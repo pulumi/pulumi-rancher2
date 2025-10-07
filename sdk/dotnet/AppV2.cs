@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ### Create an App from a Helm Chart using a different registry
     /// 
-    /// The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
+    /// The `SystemDefaultRegistry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -96,7 +96,7 @@ namespace Pulumi.Rancher2
         public Output<string> ChartVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
+        /// Cleanup app v2 on failed chart upgrade. Default: `False` (bool)
         /// </summary>
         [Output("cleanupOnFail")]
         public Output<bool?> CleanupOnFail { get; private set; } = null!;
@@ -117,19 +117,19 @@ namespace Pulumi.Rancher2
         public Output<string> DeploymentValues { get; private set; } = null!;
 
         /// <summary>
-        /// Disable app v2 chart hooks. Default: `false` (bool)
+        /// Disable app v2 chart hooks. Default: `False` (bool)
         /// </summary>
         [Output("disableHooks")]
         public Output<bool?> DisableHooks { get; private set; } = null!;
 
         /// <summary>
-        /// Disable app V2 Open API Validation. Default: `false` (bool)
+        /// Disable app V2 Open API Validation. Default: `False` (bool)
         /// </summary>
         [Output("disableOpenApiValidation")]
         public Output<bool?> DisableOpenApiValidation { get; private set; } = null!;
 
         /// <summary>
-        /// Force app V2 chart upgrade. Default: `false` (bool)
+        /// Force app V2 chart upgrade. Default: `False` (bool)
         /// </summary>
         [Output("forceUpgrade")]
         public Output<bool?> ForceUpgrade { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.Rancher2
         public Output<string?> Values { get; private set; } = null!;
 
         /// <summary>
-        /// Wait until app is deployed. Default: `true` (bool)
+        /// Wait until app is deployed. Default: `True` (bool)
         /// </summary>
         [Output("wait")]
         public Output<bool?> Wait { get; private set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.Rancher2
         public Input<string>? ChartVersion { get; set; }
 
         /// <summary>
-        /// Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
+        /// Cleanup app v2 on failed chart upgrade. Default: `False` (bool)
         /// </summary>
         [Input("cleanupOnFail")]
         public Input<bool>? CleanupOnFail { get; set; }
@@ -265,19 +265,19 @@ namespace Pulumi.Rancher2
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Disable app v2 chart hooks. Default: `false` (bool)
+        /// Disable app v2 chart hooks. Default: `False` (bool)
         /// </summary>
         [Input("disableHooks")]
         public Input<bool>? DisableHooks { get; set; }
 
         /// <summary>
-        /// Disable app V2 Open API Validation. Default: `false` (bool)
+        /// Disable app V2 Open API Validation. Default: `False` (bool)
         /// </summary>
         [Input("disableOpenApiValidation")]
         public Input<bool>? DisableOpenApiValidation { get; set; }
 
         /// <summary>
-        /// Force app V2 chart upgrade. Default: `false` (bool)
+        /// Force app V2 chart upgrade. Default: `False` (bool)
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
@@ -331,7 +331,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Values { get; set; }
 
         /// <summary>
-        /// Wait until app is deployed. Default: `true` (bool)
+        /// Wait until app is deployed. Default: `True` (bool)
         /// </summary>
         [Input("wait")]
         public Input<bool>? Wait { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.Rancher2
         public Input<string>? ChartVersion { get; set; }
 
         /// <summary>
-        /// Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
+        /// Cleanup app v2 on failed chart upgrade. Default: `False` (bool)
         /// </summary>
         [Input("cleanupOnFail")]
         public Input<bool>? CleanupOnFail { get; set; }
@@ -390,19 +390,19 @@ namespace Pulumi.Rancher2
         public Input<string>? DeploymentValues { get; set; }
 
         /// <summary>
-        /// Disable app v2 chart hooks. Default: `false` (bool)
+        /// Disable app v2 chart hooks. Default: `False` (bool)
         /// </summary>
         [Input("disableHooks")]
         public Input<bool>? DisableHooks { get; set; }
 
         /// <summary>
-        /// Disable app V2 Open API Validation. Default: `false` (bool)
+        /// Disable app V2 Open API Validation. Default: `False` (bool)
         /// </summary>
         [Input("disableOpenApiValidation")]
         public Input<bool>? DisableOpenApiValidation { get; set; }
 
         /// <summary>
-        /// Force app V2 chart upgrade. Default: `false` (bool)
+        /// Force app V2 chart upgrade. Default: `False` (bool)
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
@@ -456,7 +456,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Values { get; set; }
 
         /// <summary>
-        /// Wait until app is deployed. Default: `true` (bool)
+        /// Wait until app is deployed. Default: `True` (bool)
         /// </summary>
         [Input("wait")]
         public Input<bool>? Wait { get; set; }

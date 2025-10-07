@@ -379,14 +379,14 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+     * The contents of custom cloud-init / userData for the nodes - will be base64 encoded internally if it is not already
      * 
      */
     @Import(name="nodeUserDataContents")
     private @Nullable Output<String> nodeUserDataContents;
 
     /**
-     * @return The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+     * @return The contents of custom cloud-init / userData for the nodes - will be base64 encoded internally if it is not already
      * 
      */
     public Optional<Output<String>> nodeUserDataContents() {
@@ -1202,7 +1202,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeUserDataContents The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+         * @param nodeUserDataContents The contents of custom cloud-init / userData for the nodes - will be base64 encoded internally if it is not already
          * 
          * @return builder
          * 
@@ -1213,7 +1213,7 @@ public final class ClusterOkeConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param nodeUserDataContents The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+         * @param nodeUserDataContents The contents of custom cloud-init / userData for the nodes - will be base64 encoded internally if it is not already
          * 
          * @return builder
          * 
