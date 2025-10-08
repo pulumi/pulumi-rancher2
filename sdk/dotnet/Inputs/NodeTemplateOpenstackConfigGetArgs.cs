@@ -19,13 +19,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? ActiveTimeout { get; set; }
 
         /// <summary>
-        /// OpenStack application credential id. Conflicts with `application_credential_name` (string)
+        /// OpenStack application credential id. Conflicts with `ApplicationCredentialName` (string)
         /// </summary>
         [Input("applicationCredentialId")]
         public Input<string>? ApplicationCredentialId { get; set; }
 
         /// <summary>
-        /// OpenStack application credential name. Conflicts with `application_credential_id` (string)
+        /// OpenStack application credential name. Conflicts with `ApplicationCredentialId` (string)
         /// </summary>
         [Input("applicationCredentialName")]
         public Input<string>? ApplicationCredentialName { get; set; }
@@ -59,7 +59,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> AvailabilityZone { get; set; } = null!;
 
         /// <summary>
-        /// Enable booting from volume. Default is `false` (bool)
+        /// Enable booting from volume. Default is `False` (bool)
         /// </summary>
         [Input("bootFromVolume")]
         public Input<bool>? BootFromVolume { get; set; }
@@ -71,19 +71,19 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Cacert { get; set; }
 
         /// <summary>
-        /// Enables the OpenStack config drive for the instance. Default `false` (bool)
+        /// Enables the OpenStack config drive for the instance. Default `False` (bool)
         /// </summary>
         [Input("configDrive")]
         public Input<bool>? ConfigDrive { get; set; }
 
         /// <summary>
-        /// OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+        /// OpenStack domain ID. Identity v3 only. Conflicts with `DomainName` (string)
         /// </summary>
         [Input("domainId")]
         public Input<string>? DomainId { get; set; }
 
         /// <summary>
-        /// OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+        /// OpenStack domain name. Identity v3 only. Conflicts with `DomainId` (string)
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
@@ -95,13 +95,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? EndpointType { get; set; }
 
         /// <summary>
-        /// OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+        /// OpenStack flavor id to use for the instance. Conflicts with `FlavorName` (string)
         /// </summary>
         [Input("flavorId")]
         public Input<string>? FlavorId { get; set; }
 
         /// <summary>
-        /// OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+        /// OpenStack flavor name to use for the instance. Conflicts with `FlavorId` (string)
         /// </summary>
         [Input("flavorName")]
         public Input<string>? FlavorName { get; set; }
@@ -113,19 +113,19 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? FloatingIpPool { get; set; }
 
         /// <summary>
-        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// OpenStack image id to use for the instance. Conflicts with `ImageName` (string)
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// OpenStack image name to use for the instance. Conflicts with `ImageId` (string)
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
 
         /// <summary>
-        /// Disable TLS credential checking. Default `false` (bool)
+        /// Disable TLS credential checking. Default `False` (bool)
         /// </summary>
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
@@ -143,13 +143,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? KeypairName { get; set; }
 
         /// <summary>
-        /// OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+        /// OpenStack network id the machine will be connected on. Conflicts with `NetName` (string)
         /// </summary>
         [Input("netId")]
         public Input<string>? NetId { get; set; }
 
         /// <summary>
-        /// OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+        /// OpenStack network name the machine will be connected on. Conflicts with `NetId` (string)
         /// </summary>
         [Input("netName")]
         public Input<string>? NetName { get; set; }
@@ -211,19 +211,19 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SshPort { get; set; }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `Docker`. From Rancher v2.3.3 (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
 
         /// <summary>
-        /// OpenStack tenant id. Conflicts with `tenant_name` (string)
+        /// OpenStack tenant id. Conflicts with `TenantName` (string)
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// OpenStack tenant name. Conflicts with `tenant_id` (string)
+        /// OpenStack tenant name. Conflicts with `TenantId` (string)
         /// </summary>
         [Input("tenantName")]
         public Input<string>? TenantName { get; set; }
@@ -241,37 +241,37 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+        /// OpenStack volume device path (attaching). Applicable only when `BootFromVolume` is `True`. Omit for auto `/dev/vdb`. (string)
         /// 
         /// &gt; **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
         /// 
-        /// &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        /// &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `ApplicationCredentialId` is defined.
         /// 
-        /// &gt; **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        /// &gt; **Note for OpenStack users:**: `KeypairName` is required to be in the schema even if there are no references in rancher itself
         /// </summary>
         [Input("volumeDevicePath")]
         public Input<string>? VolumeDevicePath { get; set; }
 
         /// <summary>
-        /// OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        /// OpenStack volume id of existing volume. Applicable only when `BootFromVolume` is `True` (string)
         /// </summary>
         [Input("volumeId")]
         public Input<string>? VolumeId { get; set; }
 
         /// <summary>
-        /// OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+        /// OpenStack volume name of existing volume. Applicable only when `BootFromVolume` is `True` (string)
         /// </summary>
         [Input("volumeName")]
         public Input<string>? VolumeName { get; set; }
 
         /// <summary>
-        /// OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+        /// OpenStack volume size (GiB). Required when `BootFromVolume` is `True` (string)
         /// </summary>
         [Input("volumeSize")]
         public Input<string>? VolumeSize { get; set; }
 
         /// <summary>
-        /// OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+        /// OpenStack volume type. Required when `BootFromVolume` is `True` and openstack cloud does not have a default volume type (string)
         /// </summary>
         [Input("volumeType")]
         public Input<string>? VolumeType { get; set; }

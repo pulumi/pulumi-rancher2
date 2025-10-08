@@ -12,6 +12,79 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new rancher2 RKE Cluster 
+    ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
+    ///     {
+    ///         Name = "foo-custom",
+    ///         Description = "Foo rancher2 custom cluster",
+    ///         Kind = "rke",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///         {
+    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///             {
+    ///                 Plugin = "canal",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Cloud Credential
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Description = "Terraform cloudCredential acceptance test",
+    ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
+    ///         {
+    ///             AccessKey = "XXXXXXXXXXXXXXXXXXXX",
+    ///             SecretKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Node Template
+    ///     var fooNodeTemplate = new Rancher2.NodeTemplate("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Description = "foo test",
+    ///         CloudCredentialId = foo.Id,
+    ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///         {
+    ///             Ami = "&lt;AMI_ID&gt;",
+    ///             Region = "&lt;REGION&gt;",
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 "&lt;AWS_SECURITY_GROUP&gt;",
+    ///             },
+    ///             SubnetId = "&lt;SUBNET_ID&gt;",
+    ///             VpcId = "&lt;VPC_ID&gt;",
+    ///             Zone = "&lt;ZONE&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Node Pool
+    ///     var fooNodePool = new Rancher2.NodePool("foo", new()
+    ///     {
+    ///         ClusterId = foo_custom.Id,
+    ///         Name = "foo",
+    ///         HostnamePrefix = "foo-cluster-0",
+    ///         NodeTemplateId = fooNodeTemplate.Id,
+    ///         Quantity = 1,
+    ///         ControlPlane = true,
+    ///         Etcd = true,
+    ///         Worker = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Node Pool can be imported using the Rancher Node Pool ID
@@ -48,7 +121,7 @@ namespace Pulumi.Rancher2
         public Output<int?> DeleteNotReadyAfterSecs { get; private set; } = null!;
 
         /// <summary>
-        /// Drain nodes before delete. Default: `false` (bool)
+        /// Drain nodes before delete. Default: `False` (bool)
         /// </summary>
         [Output("drainBeforeDelete")]
         public Output<bool?> DrainBeforeDelete { get; private set; } = null!;
@@ -178,7 +251,7 @@ namespace Pulumi.Rancher2
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
 
         /// <summary>
-        /// Drain nodes before delete. Default: `false` (bool)
+        /// Drain nodes before delete. Default: `False` (bool)
         /// </summary>
         [Input("drainBeforeDelete")]
         public Input<bool>? DrainBeforeDelete { get; set; }
@@ -282,7 +355,7 @@ namespace Pulumi.Rancher2
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
 
         /// <summary>
-        /// Drain nodes before delete. Default: `false` (bool)
+        /// Drain nodes before delete. Default: `False` (bool)
         /// </summary>
         [Input("drainBeforeDelete")]
         public Input<bool>? DrainBeforeDelete { get; set; }

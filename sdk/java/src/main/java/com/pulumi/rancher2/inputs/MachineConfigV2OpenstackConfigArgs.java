@@ -33,14 +33,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack application credential id. Conflicts with `application_credential_name` (string)
+     * OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
      * 
      */
     @Import(name="applicationCredentialId")
     private @Nullable Output<String> applicationCredentialId;
 
     /**
-     * @return OpenStack application credential id. Conflicts with `application_credential_name` (string)
+     * @return OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
      * 
      */
     public Optional<Output<String>> applicationCredentialId() {
@@ -48,14 +48,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack application credential name. Conflicts with `application_credential_id` (string)
+     * OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
      * 
      */
     @Import(name="applicationCredentialName")
     private @Nullable Output<String> applicationCredentialName;
 
     /**
-     * @return OpenStack application credential name. Conflicts with `application_credential_id` (string)
+     * @return OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
      * 
      */
     public Optional<Output<String>> applicationCredentialName() {
@@ -153,14 +153,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+     * OpenStack domain ID. Identity v3 only. Conflicts with `domainName` (string)
      * 
      */
     @Import(name="domainId")
     private @Nullable Output<String> domainId;
 
     /**
-     * @return OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+     * @return OpenStack domain ID. Identity v3 only. Conflicts with `domainName` (string)
      * 
      */
     public Optional<Output<String>> domainId() {
@@ -168,14 +168,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+     * OpenStack domain name. Identity v3 only. Conflicts with `domainId` (string)
      * 
      */
     @Import(name="domainName")
     private @Nullable Output<String> domainName;
 
     /**
-     * @return OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+     * @return OpenStack domain name. Identity v3 only. Conflicts with `domainId` (string)
      * 
      */
     public Optional<Output<String>> domainName() {
@@ -198,14 +198,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+     * OpenStack flavor id to use for the instance. Conflicts with `flavorName` (string)
      * 
      */
     @Import(name="flavorId")
     private @Nullable Output<String> flavorId;
 
     /**
-     * @return OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+     * @return OpenStack flavor id to use for the instance. Conflicts with `flavorName` (string)
      * 
      */
     public Optional<Output<String>> flavorId() {
@@ -213,14 +213,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+     * OpenStack flavor name to use for the instance. Conflicts with `flavorId` (string)
      * 
      */
     @Import(name="flavorName")
     private @Nullable Output<String> flavorName;
 
     /**
-     * @return OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+     * @return OpenStack flavor name to use for the instance. Conflicts with `flavorId` (string)
      * 
      */
     public Optional<Output<String>> flavorName() {
@@ -243,14 +243,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * OpenStack image id to use for the instance. Conflicts with `imageName` (string)
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `imageName` (string)
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -258,14 +258,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      * 
      */
     public Optional<Output<String>> imageName() {
@@ -318,14 +318,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+     * OpenStack network id the machine will be connected on. Conflicts with `netName` (string)
      * 
      */
     @Import(name="netId")
     private @Nullable Output<String> netId;
 
     /**
-     * @return OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+     * @return OpenStack network id the machine will be connected on. Conflicts with `netName` (string)
      * 
      */
     public Optional<Output<String>> netId() {
@@ -333,14 +333,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+     * OpenStack network name the machine will be connected on. Conflicts with `netId` (string)
      * 
      */
     @Import(name="netName")
     private @Nullable Output<String> netName;
 
     /**
-     * @return OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+     * @return OpenStack network name the machine will be connected on. Conflicts with `netId` (string)
      * 
      */
     public Optional<Output<String>> netName() {
@@ -453,14 +453,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+     * OpenStack tenant domain id. Conflicts with `tenantDomainName` (string)
      * 
      */
     @Import(name="tenantDomainId")
     private @Nullable Output<String> tenantDomainId;
 
     /**
-     * @return OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+     * @return OpenStack tenant domain id. Conflicts with `tenantDomainName` (string)
      * 
      */
     public Optional<Output<String>> tenantDomainId() {
@@ -468,14 +468,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+     * OpenStack tenant domain name. Conflicts with `tenantDomainId` (string)
      * 
      */
     @Import(name="tenantDomainName")
     private @Nullable Output<String> tenantDomainName;
 
     /**
-     * @return OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+     * @return OpenStack tenant domain name. Conflicts with `tenantDomainId` (string)
      * 
      */
     public Optional<Output<String>> tenantDomainName() {
@@ -483,14 +483,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * OpenStack tenant id. Conflicts with `tenantName` (string)
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return OpenStack tenant id. Conflicts with `tenantName` (string)
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -498,14 +498,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack tenant name. Conflicts with `tenant_id` (string)
+     * OpenStack tenant name. Conflicts with `tenantId` (string)
      * 
      */
     @Import(name="tenantName")
     private @Nullable Output<String> tenantName;
 
     /**
-     * @return OpenStack tenant name. Conflicts with `tenant_id` (string)
+     * @return OpenStack tenant name. Conflicts with `tenantId` (string)
      * 
      */
     public Optional<Output<String>> tenantName() {
@@ -528,14 +528,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack user domain id. Conflicts with `user_domain_name` (string)
+     * OpenStack user domain id. Conflicts with `userDomainName` (string)
      * 
      */
     @Import(name="userDomainId")
     private @Nullable Output<String> userDomainId;
 
     /**
-     * @return OpenStack user domain id. Conflicts with `user_domain_name` (string)
+     * @return OpenStack user domain id. Conflicts with `userDomainName` (string)
      * 
      */
     public Optional<Output<String>> userDomainId() {
@@ -543,14 +543,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack user domain name. Conflicts with `user_domain_id` (string)
+     * OpenStack user domain name. Conflicts with `userDomainId` (string)
      * 
      */
     @Import(name="userDomainName")
     private @Nullable Output<String> userDomainName;
 
     /**
-     * @return OpenStack user domain name. Conflicts with `user_domain_id` (string)
+     * @return OpenStack user domain name. Conflicts with `userDomainId` (string)
      * 
      */
     public Optional<Output<String>> userDomainName() {
@@ -573,20 +573,20 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+     * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
      * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-     * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-     * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+     * **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      * 
      */
     @Import(name="volumeDevicePath")
     private @Nullable Output<String> volumeDevicePath;
 
     /**
-     * @return OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+     * @return OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
      * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-     * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-     * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+     * **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      * 
      */
     public Optional<Output<String>> volumeDevicePath() {
@@ -594,14 +594,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
      * 
      */
     @Import(name="volumeId")
     private @Nullable Output<String> volumeId;
 
     /**
-     * @return OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * @return OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
      * 
      */
     public Optional<Output<String>> volumeId() {
@@ -609,14 +609,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
      * 
      */
     @Import(name="volumeName")
     private @Nullable Output<String> volumeName;
 
     /**
-     * @return OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * @return OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
      * 
      */
     public Optional<Output<String>> volumeName() {
@@ -624,14 +624,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+     * OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
      * 
      */
     @Import(name="volumeSize")
     private @Nullable Output<String> volumeSize;
 
     /**
-     * @return OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+     * @return OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
      * 
      */
     public Optional<Output<String>> volumeSize() {
@@ -639,14 +639,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     @Import(name="volumeType")
     private @Nullable Output<String> volumeType;
 
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     public Optional<Output<String>> volumeType() {
@@ -740,7 +740,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param applicationCredentialId OpenStack application credential id. Conflicts with `application_credential_name` (string)
+         * @param applicationCredentialId OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
          * 
          * @return builder
          * 
@@ -751,7 +751,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param applicationCredentialId OpenStack application credential id. Conflicts with `application_credential_name` (string)
+         * @param applicationCredentialId OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
          * 
          * @return builder
          * 
@@ -761,7 +761,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param applicationCredentialName OpenStack application credential name. Conflicts with `application_credential_id` (string)
+         * @param applicationCredentialName OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
          * 
          * @return builder
          * 
@@ -772,7 +772,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param applicationCredentialName OpenStack application credential name. Conflicts with `application_credential_id` (string)
+         * @param applicationCredentialName OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
          * 
          * @return builder
          * 
@@ -908,7 +908,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param domainId OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+         * @param domainId OpenStack domain ID. Identity v3 only. Conflicts with `domainName` (string)
          * 
          * @return builder
          * 
@@ -919,7 +919,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param domainId OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+         * @param domainId OpenStack domain ID. Identity v3 only. Conflicts with `domainName` (string)
          * 
          * @return builder
          * 
@@ -929,7 +929,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param domainName OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+         * @param domainName OpenStack domain name. Identity v3 only. Conflicts with `domainId` (string)
          * 
          * @return builder
          * 
@@ -940,7 +940,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param domainName OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+         * @param domainName OpenStack domain name. Identity v3 only. Conflicts with `domainId` (string)
          * 
          * @return builder
          * 
@@ -971,7 +971,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param flavorId OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+         * @param flavorId OpenStack flavor id to use for the instance. Conflicts with `flavorName` (string)
          * 
          * @return builder
          * 
@@ -982,7 +982,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param flavorId OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+         * @param flavorId OpenStack flavor id to use for the instance. Conflicts with `flavorName` (string)
          * 
          * @return builder
          * 
@@ -992,7 +992,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param flavorName OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+         * @param flavorName OpenStack flavor name to use for the instance. Conflicts with `flavorId` (string)
          * 
          * @return builder
          * 
@@ -1003,7 +1003,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param flavorName OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+         * @param flavorName OpenStack flavor name to use for the instance. Conflicts with `flavorId` (string)
          * 
          * @return builder
          * 
@@ -1034,7 +1034,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `imageName` (string)
          * 
          * @return builder
          * 
@@ -1045,7 +1045,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `imageName` (string)
          * 
          * @return builder
          * 
@@ -1055,7 +1055,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `imageId` (string)
          * 
          * @return builder
          * 
@@ -1066,7 +1066,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `imageId` (string)
          * 
          * @return builder
          * 
@@ -1139,7 +1139,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param netId OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+         * @param netId OpenStack network id the machine will be connected on. Conflicts with `netName` (string)
          * 
          * @return builder
          * 
@@ -1150,7 +1150,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param netId OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+         * @param netId OpenStack network id the machine will be connected on. Conflicts with `netName` (string)
          * 
          * @return builder
          * 
@@ -1160,7 +1160,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param netName OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+         * @param netName OpenStack network name the machine will be connected on. Conflicts with `netId` (string)
          * 
          * @return builder
          * 
@@ -1171,7 +1171,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param netName OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+         * @param netName OpenStack network name the machine will be connected on. Conflicts with `netId` (string)
          * 
          * @return builder
          * 
@@ -1328,7 +1328,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantDomainId OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+         * @param tenantDomainId OpenStack tenant domain id. Conflicts with `tenantDomainName` (string)
          * 
          * @return builder
          * 
@@ -1339,7 +1339,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantDomainId OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
+         * @param tenantDomainId OpenStack tenant domain id. Conflicts with `tenantDomainName` (string)
          * 
          * @return builder
          * 
@@ -1349,7 +1349,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantDomainName OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+         * @param tenantDomainName OpenStack tenant domain name. Conflicts with `tenantDomainId` (string)
          * 
          * @return builder
          * 
@@ -1360,7 +1360,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantDomainName OpenStack tenant domain name. Conflicts with `tenant_domain_id` (string)
+         * @param tenantDomainName OpenStack tenant domain name. Conflicts with `tenantDomainId` (string)
          * 
          * @return builder
          * 
@@ -1370,7 +1370,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
+         * @param tenantId OpenStack tenant id. Conflicts with `tenantName` (string)
          * 
          * @return builder
          * 
@@ -1381,7 +1381,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantId OpenStack tenant id. Conflicts with `tenant_name` (string)
+         * @param tenantId OpenStack tenant id. Conflicts with `tenantName` (string)
          * 
          * @return builder
          * 
@@ -1391,7 +1391,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantName OpenStack tenant name. Conflicts with `tenant_id` (string)
+         * @param tenantName OpenStack tenant name. Conflicts with `tenantId` (string)
          * 
          * @return builder
          * 
@@ -1402,7 +1402,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tenantName OpenStack tenant name. Conflicts with `tenant_id` (string)
+         * @param tenantName OpenStack tenant name. Conflicts with `tenantId` (string)
          * 
          * @return builder
          * 
@@ -1433,7 +1433,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userDomainId OpenStack user domain id. Conflicts with `user_domain_name` (string)
+         * @param userDomainId OpenStack user domain id. Conflicts with `userDomainName` (string)
          * 
          * @return builder
          * 
@@ -1444,7 +1444,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userDomainId OpenStack user domain id. Conflicts with `user_domain_name` (string)
+         * @param userDomainId OpenStack user domain id. Conflicts with `userDomainName` (string)
          * 
          * @return builder
          * 
@@ -1454,7 +1454,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userDomainName OpenStack user domain name. Conflicts with `user_domain_id` (string)
+         * @param userDomainName OpenStack user domain name. Conflicts with `userDomainId` (string)
          * 
          * @return builder
          * 
@@ -1465,7 +1465,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param userDomainName OpenStack user domain name. Conflicts with `user_domain_id` (string)
+         * @param userDomainName OpenStack user domain name. Conflicts with `userDomainId` (string)
          * 
          * @return builder
          * 
@@ -1496,10 +1496,10 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeDevicePath OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+         * @param volumeDevicePath OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
          * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-         * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-         * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+         * **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+         * **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
          * 
          * @return builder
          * 
@@ -1510,10 +1510,10 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeDevicePath OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+         * @param volumeDevicePath OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
          * &gt; **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-         * **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-         * **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+         * **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+         * **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
          * 
          * @return builder
          * 
@@ -1523,7 +1523,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeId OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+         * @param volumeId OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
          * 
          * @return builder
          * 
@@ -1534,7 +1534,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeId OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+         * @param volumeId OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
          * 
          * @return builder
          * 
@@ -1544,7 +1544,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeName OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+         * @param volumeName OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
          * 
          * @return builder
          * 
@@ -1555,7 +1555,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeName OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+         * @param volumeName OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
          * 
          * @return builder
          * 
@@ -1565,7 +1565,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeSize OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+         * @param volumeSize OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
          * 
          * @return builder
          * 
@@ -1576,7 +1576,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeSize OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+         * @param volumeSize OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
          * 
          * @return builder
          * 
@@ -1586,7 +1586,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+         * @param volumeType OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 
@@ -1597,7 +1597,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param volumeType OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+         * @param volumeType OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
          * 
          * @return builder
          * 

@@ -108,14 +108,14 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
         return this.groupId;
     }
     /**
-     * The group_principal ID to assign cluster role template binding (string)
+     * The groupPrincipal ID to assign cluster role template binding (string)
      * 
      */
     @Export(name="groupPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> groupPrincipalId;
 
     /**
-     * @return The group_principal ID to assign cluster role template binding (string)
+     * @return The groupPrincipal ID to assign cluster role template binding (string)
      * 
      */
     public Output<String> groupPrincipalId() {
@@ -124,7 +124,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
     /**
      * Labels for cluster role template binding (map)
      * 
-     * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -133,7 +133,7 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
     /**
      * @return Labels for cluster role template binding (map)
      * 
-     * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      * 
      */
     public Output<Map<String,String>> labels() {
@@ -182,14 +182,14 @@ public class ClusterRoleTemplateBinding extends com.pulumi.resources.CustomResou
         return this.userId;
     }
     /**
-     * The user_principal ID to assign cluster role template binding (string)
+     * The userPrincipal ID to assign cluster role template binding (string)
      * 
      */
     @Export(name="userPrincipalId", refs={String.class}, tree="[0]")
     private Output<String> userPrincipalId;
 
     /**
-     * @return The user_principal ID to assign cluster role template binding (string)
+     * @return The userPrincipal ID to assign cluster role template binding (string)
      * 
      */
     public Output<String> userPrincipalId() {

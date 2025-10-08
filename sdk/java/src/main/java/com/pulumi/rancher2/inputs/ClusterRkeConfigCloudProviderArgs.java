@@ -95,14 +95,14 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
     }
 
     /**
-     * RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+     * RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtualCenter` configuration. (list maxitems:1)
      * 
      */
     @Import(name="vsphereCloudProvider")
     private @Nullable Output<ClusterRkeConfigCloudProviderVsphereCloudProviderArgs> vsphereCloudProvider;
 
     /**
-     * @return RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+     * @return RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtualCenter` configuration. (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterRkeConfigCloudProviderVsphereCloudProviderArgs>> vsphereCloudProvider() {
@@ -244,7 +244,7 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vsphereCloudProvider RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+         * @param vsphereCloudProvider RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtualCenter` configuration. (list maxitems:1)
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ClusterRkeConfigCloudProviderArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vsphereCloudProvider RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
+         * @param vsphereCloudProvider RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtualCenter` configuration. (list maxitems:1)
          * 
          * @return builder
          * 

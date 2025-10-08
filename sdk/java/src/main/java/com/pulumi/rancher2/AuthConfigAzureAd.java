@@ -76,14 +76,14 @@ public class AuthConfigAzureAd extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessMode);
     }
     /**
-     * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://&lt;USER_ID&gt;`  `azuread_group://&lt;GROUP_ID&gt;` (list)
+     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://&lt;USER_ID&gt;`  `azuread_group://&lt;GROUP_ID&gt;` (list)
      * 
      */
     @Export(name="allowedPrincipalIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedPrincipalIds;
 
     /**
-     * @return Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://&lt;USER_ID&gt;`  `azuread_group://&lt;GROUP_ID&gt;` (list)
+     * @return Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `azuread_user://&lt;USER_ID&gt;`  `azuread_group://&lt;GROUP_ID&gt;` (list)
      * 
      */
     public Output<Optional<List<String>>> allowedPrincipalIds() {

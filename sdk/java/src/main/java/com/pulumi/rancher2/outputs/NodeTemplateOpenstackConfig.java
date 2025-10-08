@@ -19,12 +19,12 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String activeTimeout;
     /**
-     * @return OpenStack application credential id. Conflicts with `application_credential_name` (string)
+     * @return OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
      * 
      */
     private @Nullable String applicationCredentialId;
     /**
-     * @return OpenStack application credential name. Conflicts with `application_credential_id` (string)
+     * @return OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
      * 
      */
     private @Nullable String applicationCredentialName;
@@ -59,12 +59,12 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable Boolean configDrive;
     /**
-     * @return OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+     * @return OpenStack domain ID. Identity v3 only. Conflicts with `domainName` (string)
      * 
      */
     private @Nullable String domainId;
     /**
-     * @return OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+     * @return OpenStack domain name. Identity v3 only. Conflicts with `domainId` (string)
      * 
      */
     private @Nullable String domainName;
@@ -74,12 +74,12 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String endpointType;
     /**
-     * @return OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+     * @return OpenStack flavor id to use for the instance. Conflicts with `flavorName` (string)
      * 
      */
     private @Nullable String flavorId;
     /**
-     * @return OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+     * @return OpenStack flavor name to use for the instance. Conflicts with `flavorId` (string)
      * 
      */
     private @Nullable String flavorName;
@@ -89,12 +89,12 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String floatingIpPool;
     /**
-     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `imageName` (string)
      * 
      */
     private @Nullable String imageId;
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      * 
      */
     private @Nullable String imageName;
@@ -114,12 +114,12 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String keypairName;
     /**
-     * @return OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+     * @return OpenStack network id the machine will be connected on. Conflicts with `netName` (string)
      * 
      */
     private @Nullable String netId;
     /**
-     * @return OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+     * @return OpenStack network name the machine will be connected on. Conflicts with `netId` (string)
      * 
      */
     private @Nullable String netName;
@@ -159,12 +159,12 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String sshUser;
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return OpenStack tenant id. Conflicts with `tenantName` (string)
      * 
      */
     private @Nullable String tenantId;
     /**
-     * @return OpenStack tenant name. Conflicts with `tenant_id` (string)
+     * @return OpenStack tenant name. Conflicts with `tenantId` (string)
      * 
      */
     private @Nullable String tenantName;
@@ -179,33 +179,33 @@ public final class NodeTemplateOpenstackConfig {
      */
     private @Nullable String username;
     /**
-     * @return OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+     * @return OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
      * 
      * &gt; **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
      * 
-     * &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+     * &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
      * 
-     * &gt; **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+     * &gt; **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      * 
      */
     private @Nullable String volumeDevicePath;
     /**
-     * @return OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * @return OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
      * 
      */
     private @Nullable String volumeId;
     /**
-     * @return OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * @return OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
      * 
      */
     private @Nullable String volumeName;
     /**
-     * @return OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+     * @return OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
      * 
      */
     private @Nullable String volumeSize;
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     private @Nullable String volumeType;
@@ -219,14 +219,14 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.activeTimeout);
     }
     /**
-     * @return OpenStack application credential id. Conflicts with `application_credential_name` (string)
+     * @return OpenStack application credential id. Conflicts with `applicationCredentialName` (string)
      * 
      */
     public Optional<String> applicationCredentialId() {
         return Optional.ofNullable(this.applicationCredentialId);
     }
     /**
-     * @return OpenStack application credential name. Conflicts with `application_credential_id` (string)
+     * @return OpenStack application credential name. Conflicts with `applicationCredentialId` (string)
      * 
      */
     public Optional<String> applicationCredentialName() {
@@ -275,14 +275,14 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.configDrive);
     }
     /**
-     * @return OpenStack domain ID. Identity v3 only. Conflicts with `domain_name` (string)
+     * @return OpenStack domain ID. Identity v3 only. Conflicts with `domainName` (string)
      * 
      */
     public Optional<String> domainId() {
         return Optional.ofNullable(this.domainId);
     }
     /**
-     * @return OpenStack domain name. Identity v3 only. Conflicts with `domain_id` (string)
+     * @return OpenStack domain name. Identity v3 only. Conflicts with `domainId` (string)
      * 
      */
     public Optional<String> domainName() {
@@ -296,14 +296,14 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.endpointType);
     }
     /**
-     * @return OpenStack flavor id to use for the instance. Conflicts with `flavor_name` (string)
+     * @return OpenStack flavor id to use for the instance. Conflicts with `flavorName` (string)
      * 
      */
     public Optional<String> flavorId() {
         return Optional.ofNullable(this.flavorId);
     }
     /**
-     * @return OpenStack flavor name to use for the instance. Conflicts with `flavor_id` (string)
+     * @return OpenStack flavor name to use for the instance. Conflicts with `flavorId` (string)
      * 
      */
     public Optional<String> flavorName() {
@@ -317,14 +317,14 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.floatingIpPool);
     }
     /**
-     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `imageName` (string)
      * 
      */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      * 
      */
     public Optional<String> imageName() {
@@ -352,14 +352,14 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.keypairName);
     }
     /**
-     * @return OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
+     * @return OpenStack network id the machine will be connected on. Conflicts with `netName` (string)
      * 
      */
     public Optional<String> netId() {
         return Optional.ofNullable(this.netId);
     }
     /**
-     * @return OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
+     * @return OpenStack network name the machine will be connected on. Conflicts with `netId` (string)
      * 
      */
     public Optional<String> netName() {
@@ -415,14 +415,14 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.sshUser);
     }
     /**
-     * @return OpenStack tenant id. Conflicts with `tenant_name` (string)
+     * @return OpenStack tenant id. Conflicts with `tenantName` (string)
      * 
      */
     public Optional<String> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
     /**
-     * @return OpenStack tenant name. Conflicts with `tenant_id` (string)
+     * @return OpenStack tenant name. Conflicts with `tenantId` (string)
      * 
      */
     public Optional<String> tenantName() {
@@ -443,41 +443,41 @@ public final class NodeTemplateOpenstackConfig {
         return Optional.ofNullable(this.username);
     }
     /**
-     * @return OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
+     * @return OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
      * 
      * &gt; **Note:**: `Required*` denotes that either the _name or _id is required but you cannot use both.
      * 
-     * &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+     * &gt; **Note:**: `Required**` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
      * 
-     * &gt; **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+     * &gt; **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      * 
      */
     public Optional<String> volumeDevicePath() {
         return Optional.ofNullable(this.volumeDevicePath);
     }
     /**
-     * @return OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * @return OpenStack volume id of existing volume. Applicable only when `bootFromVolume` is `true` (string)
      * 
      */
     public Optional<String> volumeId() {
         return Optional.ofNullable(this.volumeId);
     }
     /**
-     * @return OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
+     * @return OpenStack volume name of existing volume. Applicable only when `bootFromVolume` is `true` (string)
      * 
      */
     public Optional<String> volumeName() {
         return Optional.ofNullable(this.volumeName);
     }
     /**
-     * @return OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
+     * @return OpenStack volume size (GiB). Required when `bootFromVolume` is `true` (string)
      * 
      */
     public Optional<String> volumeSize() {
         return Optional.ofNullable(this.volumeSize);
     }
     /**
-     * @return OpenStack volume type. Required when `boot_from_volume` is `true` and openstack cloud does not have a default volume type (string)
+     * @return OpenStack volume type. Required when `bootFromVolume` is `true` and openstack cloud does not have a default volume type (string)
      * 
      */
     public Optional<String> volumeType() {

@@ -106,14 +106,14 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return this.clusterRegistrationToken;
     }
     /**
-     * (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
+     * (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2Sync`).
      * 
      */
     @Export(name="clusterV1Id", refs={String.class}, tree="[0]")
     private Output<String> clusterV1Id;
 
     /**
-     * @return (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
+     * @return (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2Sync`).
      * 
      */
     public Output<String> clusterV1Id() {
@@ -190,14 +190,14 @@ public class ClusterV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fleetNamespace);
     }
     /**
-     * (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
+     * (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected`.
      * 
      */
     @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output<String> kubeConfig;
 
     /**
-     * @return (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
+     * @return (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected`.
      * 
      */
     public Output<String> kubeConfig() {

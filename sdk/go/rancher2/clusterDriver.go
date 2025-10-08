@@ -14,6 +14,43 @@ import (
 
 // Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Rancher2 Cluster Driver
+//			_, err := rancher2.NewClusterDriver(ctx, "foo", &rancher2.ClusterDriverArgs{
+//				Active:      pulumi.Bool(true),
+//				Builtin:     pulumi.Bool(false),
+//				Checksum:    pulumi.String("0x0"),
+//				Description: "Foo description",
+//				ExternalId:  "foo_external",
+//				Name:        pulumi.String("foo"),
+//				UiUrl:       pulumi.String("local://ui"),
+//				Url:         pulumi.String("local://"),
+//				WhitelistDomains: pulumi.StringArray{
+//					pulumi.String("*.foo.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Cluster Driver can be imported using the Rancher Cluster Driver ID

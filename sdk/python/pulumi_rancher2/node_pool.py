@@ -470,6 +470,55 @@ class NodePool(pulumi.CustomResource):
         """
         Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 RKE Cluster 
+        foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
+            description="Foo rancher2 custom cluster",
+            kind="rke",
+            rke_config={
+                "network": {
+                    "plugin": "canal",
+                },
+            })
+        # Create a new rancher2 Cloud Credential
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
+            description="Terraform cloudCredential acceptance test",
+            amazonec2_credential_config={
+                "access_key": "XXXXXXXXXXXXXXXXXXXX",
+                "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            })
+        # Create a new rancher2 Node Template
+        foo_node_template = rancher2.NodeTemplate("foo",
+            name="foo",
+            description="foo test",
+            cloud_credential_id=foo.id,
+            amazonec2_config={
+                "ami": "<AMI_ID>",
+                "region": "<REGION>",
+                "security_groups": ["<AWS_SECURITY_GROUP>"],
+                "subnet_id": "<SUBNET_ID>",
+                "vpc_id": "<VPC_ID>",
+                "zone": "<ZONE>",
+            })
+        # Create a new rancher2 Node Pool
+        foo_node_pool = rancher2.NodePool("foo",
+            cluster_id=foo_custom.id,
+            name="foo",
+            hostname_prefix="foo-cluster-0",
+            node_template_id=foo_node_template.id,
+            quantity=1,
+            control_plane=True,
+            etcd=True,
+            worker=True)
+        ```
+
         ## Import
 
         Node Pool can be imported using the Rancher Node Pool ID
@@ -502,6 +551,55 @@ class NodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 RKE Cluster 
+        foo_custom = rancher2.Cluster("foo-custom",
+            name="foo-custom",
+            description="Foo rancher2 custom cluster",
+            kind="rke",
+            rke_config={
+                "network": {
+                    "plugin": "canal",
+                },
+            })
+        # Create a new rancher2 Cloud Credential
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
+            description="Terraform cloudCredential acceptance test",
+            amazonec2_credential_config={
+                "access_key": "XXXXXXXXXXXXXXXXXXXX",
+                "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            })
+        # Create a new rancher2 Node Template
+        foo_node_template = rancher2.NodeTemplate("foo",
+            name="foo",
+            description="foo test",
+            cloud_credential_id=foo.id,
+            amazonec2_config={
+                "ami": "<AMI_ID>",
+                "region": "<REGION>",
+                "security_groups": ["<AWS_SECURITY_GROUP>"],
+                "subnet_id": "<SUBNET_ID>",
+                "vpc_id": "<VPC_ID>",
+                "zone": "<ZONE>",
+            })
+        # Create a new rancher2 Node Pool
+        foo_node_pool = rancher2.NodePool("foo",
+            cluster_id=foo_custom.id,
+            name="foo",
+            hostname_prefix="foo-cluster-0",
+            node_template_id=foo_node_template.id,
+            quantity=1,
+            control_plane=True,
+            etcd=True,
+            worker=True)
+        ```
 
         ## Import
 
