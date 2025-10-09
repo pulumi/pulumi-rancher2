@@ -13,8 +13,8 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Secret resource. This can be used to create secrets for Rancher v2 environments and retrieve their information.
     /// 
     /// Depending of the availability, there are 2 types of Rancher v2 secrets:
-    /// - Project secret: Available to all namespaces in the `project_id`
-    /// - Namespaced secret: Available to just `namespace_id` in the `project_id`
+    /// - Project secret: Available to all namespaces in the `ProjectId`
+    /// - Namespaced secret: Available to just `NamespaceId` in the `ProjectId`
     /// 
     /// ## Example Usage
     /// 

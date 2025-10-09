@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? FailSwapOn;
         /// <summary>
-        /// [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `false` (bool)
+        /// [Generate a certificate signed by the kube-ca](https://rancher.com/docs/rke/latest/en/config-options/services/#kubelet-serving-certificate-requirements). Default `False` (bool)
         /// </summary>
         public readonly bool? GenerateServingCertificate;
         /// <summary>

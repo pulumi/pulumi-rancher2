@@ -161,7 +161,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The GKE cluster region. Required if `zone` is empty
+        /// The GKE cluster region. Required if `Zone` is empty
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -173,7 +173,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// The GKE cluster zone. Required if `region` is empty
+        /// The GKE cluster zone. Required if `Region` is empty
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

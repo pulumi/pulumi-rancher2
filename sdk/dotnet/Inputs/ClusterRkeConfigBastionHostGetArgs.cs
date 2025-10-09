@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// Use ssh agent auth. Default `false` (bool)
+        /// Use ssh agent auth. Default `False` (bool)
         /// </summary>
         [Input("sshAgentAuth")]
         public Input<bool>? SshAgentAuth { get; set; }

@@ -23,7 +23,7 @@ public final class GetClusterRoleTemplateBindingResult {
      */
     private String groupId;
     /**
-     * @return (Computed) The group_principal ID to assign cluster role template binding (string)
+     * @return (Computed) The groupPrincipal ID to assign cluster role template binding (string)
      * 
      */
     private String groupPrincipalId;
@@ -45,7 +45,7 @@ public final class GetClusterRoleTemplateBindingResult {
      */
     private String userId;
     /**
-     * @return (Computed) The user_principal ID to assign cluster role template binding (string)
+     * @return (Computed) The userPrincipal ID to assign cluster role template binding (string)
      * 
      */
     private String userPrincipalId;
@@ -69,7 +69,7 @@ public final class GetClusterRoleTemplateBindingResult {
         return this.groupId;
     }
     /**
-     * @return (Computed) The group_principal ID to assign cluster role template binding (string)
+     * @return (Computed) The groupPrincipal ID to assign cluster role template binding (string)
      * 
      */
     public String groupPrincipalId() {
@@ -103,7 +103,7 @@ public final class GetClusterRoleTemplateBindingResult {
         return this.userId;
     }
     /**
-     * @return (Computed) The user_principal ID to assign cluster role template binding (string)
+     * @return (Computed) The userPrincipal ID to assign cluster role template binding (string)
      * 
      */
     public String userPrincipalId() {

@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * Node Pool can be imported using the Rancher Node Pool ID
