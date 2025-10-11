@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? Retention;
         /// <summary>
-        /// S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+        /// S3 config options for etcd backup. Valid for `Imported` and `Rke` clusters. (list maxitems:1)
         /// </summary>
         public readonly Outputs.EtcdBackupBackupConfigS3BackupConfig? S3BackupConfig;
         public readonly bool? SafeTimestamp;

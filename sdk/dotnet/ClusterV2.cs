@@ -52,7 +52,7 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterV2ClusterRegistrationToken> ClusterRegistrationToken { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
+        /// (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `Rancher2Sync`).
         /// </summary>
         [Output("clusterV1Id")]
         public Output<string> ClusterV1Id { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.Rancher2
         public Output<string?> FleetNamespace { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
+        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `LocalAuthEndpoint` enabled, the KubeConfig will not be available until the cluster is `Connected`.
         /// </summary>
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
@@ -361,7 +361,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
+        /// (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `Rancher2Sync`).
         /// </summary>
         [Input("clusterV1Id")]
         public Input<string>? ClusterV1Id { get; set; }
@@ -406,7 +406,7 @@ namespace Pulumi.Rancher2
         private Input<string>? _kubeConfig;
 
         /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
+        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `LocalAuthEndpoint` enabled, the KubeConfig will not be available until the cluster is `Connected`.
         /// </summary>
         public Input<string>? KubeConfig
         {

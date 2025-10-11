@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2
     /// * On create, provider will read Feature from Rancher and update its value. It will return an error if feature doesn't exist
     /// * On destroy, provider will not delete feature from Rancher, just from tfstate
     /// 
-    /// **Note:** Some Rancher features as `fleet`, may force a Rancher reboot once updated. The provider will wait until Rancher is rebooted. If you are modifying more than one feature in a row, and any of them requires a Rancher reboot, `pulumi up` may fail on first run. Run `pulumi up` again should work fine.
+    /// **Note:** Some Rancher features as `Fleet`, may force a Rancher reboot once updated. The provider will wait until Rancher is rebooted. If you are modifying more than one feature in a row, and any of them requires a Rancher reboot, `pulumi up` may fail on first run. Run `pulumi up` again should work fine.
     /// 
     /// ## Example Usage
     /// 
@@ -60,7 +60,7 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the feature. Default: `false` (bool)
+        /// The value of the feature. Default: `False` (bool)
         /// </summary>
         [Output("value")]
         public Output<bool?> Value { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The value of the feature. Default: `false` (bool)
+        /// The value of the feature. Default: `False` (bool)
         /// </summary>
         [Input("value")]
         public Input<bool>? Value { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The value of the feature. Default: `false` (bool)
+        /// The value of the feature. Default: `False` (bool)
         /// </summary>
         [Input("value")]
         public Input<bool>? Value { get; set; }

@@ -36,14 +36,14 @@ public final class AuthConfigActiveDirectoryArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `testUsername` must be added too. (list)
      * 
      */
     @Import(name="allowedPrincipalIds")
     private @Nullable Output<List<String>> allowedPrincipalIds;
 
     /**
-     * @return Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+     * @return Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `testUsername` must be added too. (list)
      * 
      */
     public Optional<Output<List<String>>> allowedPrincipalIds() {
@@ -593,7 +593,7 @@ public final class AuthConfigActiveDirectoryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `testUsername` must be added too. (list)
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class AuthConfigActiveDirectoryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `testUsername` must be added too. (list)
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class AuthConfigActiveDirectoryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `testUsername` must be added too. (list)
          * 
          * @return builder
          * 

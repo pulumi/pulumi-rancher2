@@ -109,14 +109,14 @@ namespace Pulumi.Rancher2
         public readonly string CaBundle;
         public readonly string ClusterId;
         /// <summary>
-        /// (Computed) If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
+        /// (Computed) If disabled the repo clone will not be updated or allowed to be installed from. Default: `True` (bool)
         /// </summary>
         public readonly bool Enabled;
         public readonly int ExponentialBackoffMaxRetries;
         public readonly int ExponentialBackoffMaxWait;
         public readonly int ExponentialBackoffMinWait;
         /// <summary>
-        /// (Computed) Git Repository branch containing Helm chart definitions. Default `master` (string)
+        /// (Computed) Git Repository branch containing Helm chart definitions. Default `Master` (string)
         /// </summary>
         public readonly string GitBranch;
         /// <summary>
@@ -128,7 +128,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Computed) Use insecure HTTPS to download the repo's index. Default: `false` (bool)
+        /// (Computed) Use insecure HTTPS to download the repo's index. Default: `False` (bool)
         /// </summary>
         public readonly bool Insecure;
         public readonly bool? InsecurePlainHttp;

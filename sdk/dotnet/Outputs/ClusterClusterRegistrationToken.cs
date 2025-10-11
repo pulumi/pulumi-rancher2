@@ -43,7 +43,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
-        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        /// K8s manifest url to execute with `Kubectl` to import an existing k8s cluster (string)
         /// </summary>
         public readonly string? ManifestUrl;
         /// <summary>

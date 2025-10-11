@@ -26,14 +26,14 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     public static final MachineConfigV2Args Empty = new MachineConfigV2Args();
 
     /**
-     * AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     @Import(name="amazonec2Config")
     private @Nullable Output<MachineConfigV2Amazonec2ConfigArgs> amazonec2Config;
 
     /**
-     * @return AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * @return AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<MachineConfigV2Amazonec2ConfigArgs>> amazonec2Config() {
@@ -56,14 +56,14 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     @Import(name="azureConfig")
     private @Nullable Output<MachineConfigV2AzureConfigArgs> azureConfig;
 
     /**
-     * @return Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * @return Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<MachineConfigV2AzureConfigArgs>> azureConfig() {
@@ -71,14 +71,14 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     @Import(name="digitaloceanConfig")
     private @Nullable Output<MachineConfigV2DigitaloceanConfigArgs> digitaloceanConfig;
 
     /**
-     * @return Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * @return Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<MachineConfigV2DigitaloceanConfigArgs>> digitaloceanConfig() {
@@ -116,14 +116,14 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Google config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+     * Google config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     @Import(name="googleConfig")
     private @Nullable Output<MachineConfigV2GoogleConfigArgs> googleConfig;
 
     /**
-     * @return Google config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+     * @return Google config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<MachineConfigV2GoogleConfigArgs>> googleConfig() {
@@ -131,14 +131,14 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * Harvester config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     @Import(name="harvesterConfig")
     private @Nullable Output<MachineConfigV2HarvesterConfigArgs> harvesterConfig;
 
     /**
-     * @return Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * @return Harvester config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<MachineConfigV2HarvesterConfigArgs>> harvesterConfig() {
@@ -148,7 +148,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     /**
      * Labels for Machine Config V2 object (map)
      * 
-     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      * 
      */
     @Import(name="labels")
@@ -157,7 +157,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     /**
      * @return Labels for Machine Config V2 object (map)
      * 
-     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -165,14 +165,14 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     @Import(name="linodeConfig")
     private @Nullable Output<MachineConfigV2LinodeConfigArgs> linodeConfig;
 
     /**
-     * @return Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * @return Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<MachineConfigV2LinodeConfigArgs>> linodeConfig() {
@@ -180,14 +180,14 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     @Import(name="openstackConfig")
     private @Nullable Output<MachineConfigV2OpenstackConfigArgs> openstackConfig;
 
     /**
-     * @return Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `google_config` and `vsphere_config` (list maxitems:1)
+     * @return Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<MachineConfigV2OpenstackConfigArgs>> openstackConfig() {
@@ -195,14 +195,14 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `google_config` and `openstack_config` (list maxitems:1)
+     * vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `googleConfig` and `openstackConfig` (list maxitems:1)
      * 
      */
     @Import(name="vsphereConfig")
     private @Nullable Output<MachineConfigV2VsphereConfigArgs> vsphereConfig;
 
     /**
-     * @return vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `google_config` and `openstack_config` (list maxitems:1)
+     * @return vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `googleConfig` and `openstackConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<MachineConfigV2VsphereConfigArgs>> vsphereConfig() {
@@ -245,7 +245,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param amazonec2Config AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param amazonec2Config AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param amazonec2Config AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param amazonec2Config AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param azureConfig Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param azureConfig Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param azureConfig Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param azureConfig Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param digitaloceanConfig Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param digitaloceanConfig Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param digitaloceanConfig Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param digitaloceanConfig Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param googleConfig Google config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+         * @param googleConfig Google config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param googleConfig Google config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
+         * @param googleConfig Google config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param harvesterConfig Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param harvesterConfig Harvester config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param harvesterConfig Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param harvesterConfig Harvester config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Labels for Machine Config V2 object (map)
          * 
-         * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+         * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         /**
          * @param labels Labels for Machine Config V2 object (map)
          * 
-         * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Machine Config V2
+         * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param linodeConfig Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param linodeConfig Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param linodeConfig Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param linodeConfig Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param openstackConfig Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param openstackConfig Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param openstackConfig Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `google_config` and `vsphere_config` (list maxitems:1)
+         * @param openstackConfig Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vsphereConfig vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `google_config` and `openstack_config` (list maxitems:1)
+         * @param vsphereConfig vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `googleConfig` and `openstackConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class MachineConfigV2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vsphereConfig vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `google_config` and `openstack_config` (list maxitems:1)
+         * @param vsphereConfig vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `googleConfig` and `openstackConfig` (list maxitems:1)
          * 
          * @return builder
          * 

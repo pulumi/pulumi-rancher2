@@ -157,7 +157,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string> NodeShape { get; set; } = null!;
 
         /// <summary>
-        /// The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+        /// The contents of custom cloud-init / UserData for the nodes - will be base64 encoded internally if it is not already
         /// </summary>
         [Input("nodeUserDataContents")]
         public Input<string>? NodeUserDataContents { get; set; }

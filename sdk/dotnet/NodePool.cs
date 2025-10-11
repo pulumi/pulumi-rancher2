@@ -12,6 +12,8 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
     /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Node Pool can be imported using the Rancher Node Pool ID
@@ -48,7 +50,7 @@ namespace Pulumi.Rancher2
         public Output<int?> DeleteNotReadyAfterSecs { get; private set; } = null!;
 
         /// <summary>
-        /// Drain nodes before delete. Default: `false` (bool)
+        /// Drain nodes before delete. Default: `False` (bool)
         /// </summary>
         [Output("drainBeforeDelete")]
         public Output<bool?> DrainBeforeDelete { get; private set; } = null!;
@@ -178,7 +180,7 @@ namespace Pulumi.Rancher2
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
 
         /// <summary>
-        /// Drain nodes before delete. Default: `false` (bool)
+        /// Drain nodes before delete. Default: `False` (bool)
         /// </summary>
         [Input("drainBeforeDelete")]
         public Input<bool>? DrainBeforeDelete { get; set; }
@@ -282,7 +284,7 @@ namespace Pulumi.Rancher2
         public Input<int>? DeleteNotReadyAfterSecs { get; set; }
 
         /// <summary>
-        /// Drain nodes before delete. Default: `false` (bool)
+        /// Drain nodes before delete. Default: `False` (bool)
         /// </summary>
         [Input("drainBeforeDelete")]
         public Input<bool>? DrainBeforeDelete { get; set; }

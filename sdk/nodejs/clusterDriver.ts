@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Cluster Driver resource. This can be used to create Cluster Driver for Rancher v2.2.x Kontainer Engine clusters and retrieve their information.
  *
+ * ## Example Usage
+ *
  * ## Import
  *
  * Cluster Driver can be imported using the Rancher Cluster Driver ID

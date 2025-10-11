@@ -302,7 +302,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Labels for Node Template object (map)
      * 
-     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      * 
      */
     @Import(name="labels")
@@ -311,7 +311,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Labels for Node Template object (map)
      * 
-     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -889,7 +889,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Labels for Node Template object (map)
          * 
-         * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+         * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
          * 
          * @return builder
          * 
@@ -902,7 +902,7 @@ public final class NodeTemplateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels Labels for Node Template object (map)
          * 
-         * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+         * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
          * 
          * @return builder
          * 

@@ -88,7 +88,7 @@ namespace Pulumi.Rancher2
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set is the user if the user is external. Default: `false` (bool)
+        /// Set is the user if the user is external. Default: `False` (bool)
         /// </summary>
         [Input("isExternal")]
         public bool? IsExternal { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.Rancher2
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set is the user if the user is external. Default: `false` (bool)
+        /// Set is the user if the user is external. Default: `False` (bool)
         /// </summary>
         [Input("isExternal")]
         public Input<bool>? IsExternal { get; set; }

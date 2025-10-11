@@ -130,7 +130,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
      */
     private String subscriptionId;
     /**
-     * @return Required if `tenant_name` not provided. (string)
+     * @return Required if `tenantName` not provided. (string)
      * 
      */
     private String tenantId;
@@ -323,7 +323,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProvider {
         return this.subscriptionId;
     }
     /**
-     * @return Required if `tenant_name` not provided. (string)
+     * @return Required if `tenantName` not provided. (string)
      * 
      */
     public String tenantId() {

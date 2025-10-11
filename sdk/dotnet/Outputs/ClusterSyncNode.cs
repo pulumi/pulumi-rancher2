@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Hostname;
         /// <summary>
-        /// (Computed) The ID of the resource. Same as `cluster_id` (string)
+        /// (Computed) The ID of the resource. Same as `ClusterId` (string)
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? RequestedHostname;
         /// <summary>
-        /// Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+        /// Roles of the node. `Controlplane`, `Etcd` and `Worker`. (list)
         /// </summary>
         public readonly ImmutableArray<string> Roles;
         /// <summary>

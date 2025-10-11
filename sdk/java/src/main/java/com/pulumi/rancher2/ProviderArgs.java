@@ -79,14 +79,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+     * Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
      * 
      */
     @Import(name="insecure", json=true)
     private @Nullable Output<Boolean> insecure;
 
     /**
-     * @return Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+     * @return Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
      * 
      */
     public Optional<Output<Boolean>> insecure() {
@@ -278,7 +278,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param insecure Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+         * @param insecure Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param insecure Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+         * @param insecure Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
          * 
          * @return builder
          * 

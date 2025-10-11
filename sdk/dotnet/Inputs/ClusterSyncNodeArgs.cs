@@ -55,7 +55,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// (Computed) The ID of the resource. Same as `cluster_id` (string)
+        /// (Computed) The ID of the resource. Same as `ClusterId` (string)
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Roles of the node. `controlplane`, `etcd` and `worker`. (list)
+        /// Roles of the node. `Controlplane`, `Etcd` and `Worker`. (list)
         /// </summary>
         public InputList<string> Roles
         {

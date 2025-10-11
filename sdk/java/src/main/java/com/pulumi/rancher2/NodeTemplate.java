@@ -565,7 +565,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
     /**
      * Labels for Node Template object (map)
      * 
-     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -574,7 +574,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return Labels for Node Template object (map)
      * 
-     * **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+     * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Node Template
      * 
      */
     public Output<Map<String,String>> labels() {

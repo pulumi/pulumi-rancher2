@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// Use ssh agent auth. Default `false` (bool)
+        /// Use ssh agent auth. Default `False` (bool)
         /// </summary>
         public readonly bool? SshAgentAuth;
         /// <summary>

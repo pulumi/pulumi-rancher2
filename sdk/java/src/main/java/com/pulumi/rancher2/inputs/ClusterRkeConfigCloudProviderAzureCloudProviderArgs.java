@@ -364,14 +364,14 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
     }
 
     /**
-     * Required if `tenant_name` not provided. (string)
+     * Required if `tenantName` not provided. (string)
      * 
      */
     @Import(name="tenantId", required=true)
     private Output<String> tenantId;
 
     /**
-     * @return Required if `tenant_name` not provided. (string)
+     * @return Required if `tenantName` not provided. (string)
      * 
      */
     public Output<String> tenantId() {
@@ -989,7 +989,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param tenantId Required if `tenant_name` not provided. (string)
+         * @param tenantId Required if `tenantName` not provided. (string)
          * 
          * @return builder
          * 
@@ -1000,7 +1000,7 @@ public final class ClusterRkeConfigCloudProviderAzureCloudProviderArgs extends c
         }
 
         /**
-         * @param tenantId Required if `tenant_name` not provided. (string)
+         * @param tenantId Required if `tenantName` not provided. (string)
          * 
          * @return builder
          * 

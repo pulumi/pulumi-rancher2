@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigServicesEtcdBackupConfig
     {
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable the authorized cluster endpoint. Default `True` (bool)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfig? S3BackupConfig;
         /// <summary>
-        /// Safe timestamp for etcd backup. Default: `false` (bool)
+        /// Safe timestamp for etcd backup. Default: `False` (bool)
         /// </summary>
         public readonly bool? SafeTimestamp;
         /// <summary>

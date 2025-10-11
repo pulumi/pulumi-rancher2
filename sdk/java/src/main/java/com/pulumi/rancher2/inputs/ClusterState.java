@@ -49,14 +49,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+     * The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     @Import(name="aksConfigV2")
     private @Nullable Output<ClusterAksConfigV2Args> aksConfigV2;
 
     /**
-     * @return The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+     * @return The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterAksConfigV2Args>> aksConfigV2() {
@@ -304,14 +304,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     @Import(name="eksConfigV2")
     private @Nullable Output<ClusterEksConfigV2Args> eksConfigV2;
 
     /**
-     * @return The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+     * @return The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterEksConfigV2Args>> eksConfigV2() {
@@ -319,24 +319,24 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
+     * Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
      * 
      * @deprecated
-     * Deploy istio using rancher2_app resource instead
+     * Deploy istio using rancher2App resource instead
      * 
      */
-    @Deprecated /* Deploy istio using rancher2_app resource instead */
+    @Deprecated /* Deploy istio using rancher2App resource instead */
     @Import(name="enableClusterIstio")
     private @Nullable Output<Boolean> enableClusterIstio;
 
     /**
-     * @return Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
+     * @return Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
      * 
      * @deprecated
-     * Deploy istio using rancher2_app resource instead
+     * Deploy istio using rancher2App resource instead
      * 
      */
-    @Deprecated /* Deploy istio using rancher2_app resource instead */
+    @Deprecated /* Deploy istio using rancher2App resource instead */
     public Optional<Output<Boolean>> enableClusterIstio() {
         return Optional.ofNullable(this.enableClusterIstio);
     }
@@ -387,14 +387,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     @Import(name="gkeConfigV2")
     private @Nullable Output<ClusterGkeConfigV2Args> gkeConfigV2;
 
     /**
-     * @return The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+     * @return The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterGkeConfigV2Args>> gkeConfigV2() {
@@ -402,14 +402,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+     * The imported configuration for generic imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
      * 
      */
     @Import(name="importedConfig")
     private @Nullable Output<ClusterImportedConfigArgs> importedConfig;
 
     /**
-     * @return The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+     * @return The imported configuration for generic imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterImportedConfigArgs>> importedConfig() {
@@ -432,14 +432,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     @Import(name="k3sConfig")
     private @Nullable Output<ClusterK3sConfigArgs> k3sConfig;
 
     /**
-     * @return The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+     * @return The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterK3sConfigArgs>> k3sConfig() {
@@ -447,14 +447,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
      * 
      */
     @Import(name="kubeConfig")
     private @Nullable Output<String> kubeConfig;
 
     /**
-     * @return (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+     * @return (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
      * 
      */
     public Optional<Output<String>> kubeConfig() {
@@ -492,14 +492,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     @Import(name="okeConfig")
     private @Nullable Output<ClusterOkeConfigArgs> okeConfig;
 
     /**
-     * @return The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterOkeConfigArgs>> okeConfig() {
@@ -507,14 +507,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     @Import(name="rke2Config")
     private @Nullable Output<ClusterRke2ConfigArgs> rke2Config;
 
     /**
-     * @return The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+     * @return The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterRke2ConfigArgs>> rke2Config() {
@@ -522,14 +522,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      * 
      */
     @Import(name="rkeConfig")
     private @Nullable Output<ClusterRkeConfigArgs> rkeConfig;
 
     /**
-     * @return The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+     * @return The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      * 
      */
     public Optional<Output<ClusterRkeConfigArgs>> rkeConfig() {
@@ -656,7 +656,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aksConfigV2 The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+         * @param aksConfigV2 The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -667,7 +667,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aksConfigV2 The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+         * @param aksConfigV2 The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1033,7 +1033,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eksConfigV2 The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+         * @param eksConfigV2 The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1044,7 +1044,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eksConfigV2 The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+         * @param eksConfigV2 The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1054,30 +1054,30 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableClusterIstio Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
+         * @param enableClusterIstio Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deploy istio using rancher2_app resource instead
+         * Deploy istio using rancher2App resource instead
          * 
          */
-        @Deprecated /* Deploy istio using rancher2_app resource instead */
+        @Deprecated /* Deploy istio using rancher2App resource instead */
         public Builder enableClusterIstio(@Nullable Output<Boolean> enableClusterIstio) {
             $.enableClusterIstio = enableClusterIstio;
             return this;
         }
 
         /**
-         * @param enableClusterIstio Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
+         * @param enableClusterIstio Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deploy istio using rancher2_app resource instead
+         * Deploy istio using rancher2App resource instead
          * 
          */
-        @Deprecated /* Deploy istio using rancher2_app resource instead */
+        @Deprecated /* Deploy istio using rancher2App resource instead */
         public Builder enableClusterIstio(Boolean enableClusterIstio) {
             return enableClusterIstio(Output.of(enableClusterIstio));
         }
@@ -1156,7 +1156,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gkeConfigV2 The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+         * @param gkeConfigV2 The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1167,7 +1167,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gkeConfigV2 The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+         * @param gkeConfigV2 The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1177,7 +1177,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importedConfig The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+         * @param importedConfig The imported configuration for generic imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1188,7 +1188,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importedConfig The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+         * @param importedConfig The imported configuration for generic imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1219,7 +1219,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param k3sConfig The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+         * @param k3sConfig The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1230,7 +1230,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param k3sConfig The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+         * @param k3sConfig The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1240,7 +1240,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubeConfig (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+         * @param kubeConfig (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
          * 
          * @return builder
          * 
@@ -1251,7 +1251,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubeConfig (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+         * @param kubeConfig (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
          * 
          * @return builder
          * 
@@ -1303,7 +1303,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param okeConfig The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+         * @param okeConfig The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1314,7 +1314,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param okeConfig The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+         * @param okeConfig The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1324,7 +1324,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rke2Config The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+         * @param rke2Config The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1335,7 +1335,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rke2Config The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+         * @param rke2Config The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1345,7 +1345,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rkeConfig The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+         * @param rkeConfig The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
          * 
          * @return builder
          * 
@@ -1356,7 +1356,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rkeConfig The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+         * @param rkeConfig The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
          * 
          * @return builder
          * 

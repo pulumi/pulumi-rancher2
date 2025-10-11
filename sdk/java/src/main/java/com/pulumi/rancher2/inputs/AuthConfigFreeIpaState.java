@@ -35,14 +35,14 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
+     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
      * 
      */
     @Import(name="allowedPrincipalIds")
     private @Nullable Output<List<String>> allowedPrincipalIds;
 
     /**
-     * @return Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
+     * @return Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
      * 
      */
     public Optional<Output<List<String>>> allowedPrincipalIds() {
@@ -600,7 +600,7 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
+         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
+         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
          * 
          * @return builder
          * 
@@ -621,7 +621,7 @@ public final class AuthConfigFreeIpaState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
+         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `freeipa_user://&lt;DN&gt;`  `freeipa_group://&lt;DN&gt;` (list)
          * 
          * @return builder
          * 

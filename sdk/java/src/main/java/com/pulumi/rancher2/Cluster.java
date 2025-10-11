@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloud_provider {}`, `name = &#34;&#34;`
+ * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloudProvider {}`, `name = &#34;&#34;`
  * 
  * ### Creating Rancher v2 imported cluster
  * 
@@ -684,7 +684,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
+ * ### Importing EKS cluster to Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
  * 
  * <pre>
  * {@code
@@ -737,7 +737,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
+ * ### Creating EKS cluster from Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
  * 
  * <pre>
  * {@code
@@ -808,9 +808,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
+ * ### Creating EKS cluster from Rancher v2, using `eksConfigV2` and launch template. For Rancher v2.5.6 and above.
  * 
- * Note: To use `launch_template` you must provide the ID (seen as `&lt;EC2_LAUNCH_TEMPLATE_ID&gt;`) to the template either as a static value. Or fetched via AWS data-source using one of: aws_ami, aws_ami_ids, or similar data-sources. You can also create a custom `launch_template` first and provide the ID to that.
+ * Note: To use `launchTemplate` you must provide the ID (seen as `&lt;EC2_LAUNCH_TEMPLATE_ID&gt;`) to the template either as a static value. Or fetched via AWS data-source using one of: aws_ami, aws_ami_ids, or similar data-sources. You can also create a custom `launchTemplate` first and provide the ID to that.
  * 
  * <pre>
  * {@code
@@ -876,7 +876,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
+ * ### Creating AKS cluster from Rancher v2, using `aksConfigV2`. For Rancher v2.6.0 and above.
  * 
  * <pre>
  * {@code
@@ -993,14 +993,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.agentEnvVars);
     }
     /**
-     * The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+     * The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     @Export(name="aksConfigV2", refs={ClusterAksConfigV2.class}, tree="[0]")
     private Output</* @Nullable */ ClusterAksConfigV2> aksConfigV2;
 
     /**
-     * @return The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+     * @return The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public Output<Optional<ClusterAksConfigV2>> aksConfigV2() {
@@ -1231,32 +1231,32 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.driver;
     }
     /**
-     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+     * The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     @Export(name="eksConfigV2", refs={ClusterEksConfigV2.class}, tree="[0]")
     private Output<ClusterEksConfigV2> eksConfigV2;
 
     /**
-     * @return The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+     * @return The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gkeConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     public Output<ClusterEksConfigV2> eksConfigV2() {
         return this.eksConfigV2;
     }
     /**
-     * Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
+     * Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
      * 
      * @deprecated
-     * Deploy istio using rancher2_app resource instead
+     * Deploy istio using rancher2App resource instead
      * 
      */
-    @Deprecated /* Deploy istio using rancher2_app resource instead */
+    @Deprecated /* Deploy istio using rancher2App resource instead */
     @Export(name="enableClusterIstio", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableClusterIstio;
 
     /**
-     * @return Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
+     * @return Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
      * 
      */
     public Output<Boolean> enableClusterIstio() {
@@ -1305,28 +1305,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.fleetWorkspaceName;
     }
     /**
-     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+     * The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     @Export(name="gkeConfigV2", refs={ClusterGkeConfigV2.class}, tree="[0]")
     private Output</* @Nullable */ ClusterGkeConfigV2> gkeConfigV2;
 
     /**
-     * @return The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+     * @return The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     public Output<Optional<ClusterGkeConfigV2>> gkeConfigV2() {
         return Codegen.optional(this.gkeConfigV2);
     }
     /**
-     * The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+     * The imported configuration for generic imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
      * 
      */
     @Export(name="importedConfig", refs={ClusterImportedConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterImportedConfig> importedConfig;
 
     /**
-     * @return The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+     * @return The imported configuration for generic imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `rkeConfig`, `rke2Config` and `k3sConfig` (list maxitems:1)
      * 
      */
     public Output<Optional<ClusterImportedConfig>> importedConfig() {
@@ -1347,28 +1347,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.istioEnabled;
     }
     /**
-     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+     * The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     @Export(name="k3sConfig", refs={ClusterK3sConfig.class}, tree="[0]")
     private Output<ClusterK3sConfig> k3sConfig;
 
     /**
-     * @return The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+     * @return The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public Output<ClusterK3sConfig> k3sConfig() {
         return this.k3sConfig;
     }
     /**
-     * (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+     * (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
      * 
      */
     @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output<String> kubeConfig;
 
     /**
-     * @return (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+     * @return (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `clusterAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected` (string)
      * 
      */
     public Output<String> kubeConfig() {
@@ -1403,42 +1403,42 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     @Export(name="okeConfig", refs={ClusterOkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ ClusterOkeConfig> okeConfig;
 
     /**
-     * @return The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public Output<Optional<ClusterOkeConfig>> okeConfig() {
         return Codegen.optional(this.okeConfig);
     }
     /**
-     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+     * The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     @Export(name="rke2Config", refs={ClusterRke2Config.class}, tree="[0]")
     private Output<ClusterRke2Config> rke2Config;
 
     /**
-     * @return The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+     * @return The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `k3sConfig`, `okeConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public Output<ClusterRke2Config> rke2Config() {
         return this.rke2Config;
     }
     /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      * 
      */
     @Export(name="rkeConfig", refs={ClusterRkeConfig.class}, tree="[0]")
     private Output<ClusterRkeConfig> rkeConfig;
 
     /**
-     * @return The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+     * @return The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
      * 
      */
     public Output<ClusterRkeConfig> rkeConfig() {

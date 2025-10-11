@@ -42,7 +42,7 @@ namespace Pulumi.Rancher2
         public Output<ImmutableDictionary<string, string>> Data { get; private set; } = null!;
 
         /// <summary>
-        /// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
+        /// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `False` (bool)
         /// </summary>
         [Output("immutable")]
         public Output<bool?> Immutable { get; private set; } = null!;
@@ -60,7 +60,7 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The namespaces of the configMap v2. Default: `default` (string)
+        /// The namespaces of the configMap v2. Default: `Default` (string)
         /// </summary>
         [Output("namespace")]
         public Output<string?> Namespace { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
+        /// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `False` (bool)
         /// </summary>
         [Input("immutable")]
         public Input<bool>? Immutable { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The namespaces of the configMap v2. Default: `default` (string)
+        /// The namespaces of the configMap v2. Default: `Default` (string)
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
+        /// If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `False` (bool)
         /// </summary>
         [Input("immutable")]
         public Input<bool>? Immutable { get; set; }
@@ -240,7 +240,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The namespaces of the configMap v2. Default: `default` (string)
+        /// The namespaces of the configMap v2. Default: `Default` (string)
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

@@ -34,11 +34,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DiskResize;
         /// <summary>
-        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// OpenStack image id to use for the instance. Conflicts with `ImageName` (string)
         /// </summary>
         public readonly string? ImageId;
         /// <summary>
-        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// OpenStack image name to use for the instance. Conflicts with `ImageId` (string)
         /// </summary>
         public readonly string? ImageName;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Memory;
         /// <summary>
-        /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        /// Opennebula network ID to connect the machine to. Conflicts with `NetworkName` (string)
         /// </summary>
         public readonly string? NetworkId;
         /// <summary>
-        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        /// Opennebula network to connect the machine to. Conflicts with `NetworkId` (string)
         /// </summary>
         public readonly string? NetworkName;
         /// <summary>
@@ -66,15 +66,15 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `Docker`. From Rancher v2.3.3 (string)
         /// </summary>
         public readonly string? SshUser;
         /// <summary>
-        /// Opennebula template ID to use. Conflicts with `template_name` (string)
+        /// Opennebula template ID to use. Conflicts with `TemplateName` (string)
         /// </summary>
         public readonly string? TemplateId;
         /// <summary>
-        /// Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        /// Name of the Opennbula template to use. Conflicts with `TemplateId` (string)
         /// </summary>
         public readonly string? TemplateName;
         /// <summary>
@@ -84,7 +84,7 @@ namespace Pulumi.Rancher2.Outputs
         /// <summary>
         /// VCPUs for the VM (string)
         /// 
-        /// &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+        /// &gt; **Note:**: `Required*` denotes that one of ImageName / ImageId or TemplateName / TemplateId is required but you cannot combine them.
         /// </summary>
         public readonly string? Vcpu;
         /// <summary>

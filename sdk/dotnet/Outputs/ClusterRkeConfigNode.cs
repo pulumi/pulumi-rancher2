@@ -42,11 +42,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        /// Roles for the node. `Controlplane`, `Etcd` and `Worker` are supported. (list)
         /// </summary>
         public readonly ImmutableArray<string> Roles;
         /// <summary>
-        /// Use ssh agent auth. Default `false` (bool)
+        /// Use ssh agent auth. Default `False` (bool)
         /// </summary>
         public readonly bool? SshAgentAuth;
         /// <summary>

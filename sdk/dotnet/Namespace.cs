@@ -157,7 +157,7 @@ namespace Pulumi.Rancher2
         public Output<Outputs.NamespaceResourceQuota> ResourceQuota { get; private set; } = null!;
 
         /// <summary>
-        /// Wait for cluster becomes active. Default `false` (bool)
+        /// Wait for cluster becomes active. Default `False` (bool)
         /// </summary>
         [Output("waitForCluster")]
         public Output<bool?> WaitForCluster { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NamespaceResourceQuotaArgs>? ResourceQuota { get; set; }
 
         /// <summary>
-        /// Wait for cluster becomes active. Default `false` (bool)
+        /// Wait for cluster becomes active. Default `False` (bool)
         /// </summary>
         [Input("waitForCluster")]
         public Input<bool>? WaitForCluster { get; set; }
@@ -331,7 +331,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.NamespaceResourceQuotaGetArgs>? ResourceQuota { get; set; }
 
         /// <summary>
-        /// Wait for cluster becomes active. Default `false` (bool)
+        /// Wait for cluster becomes active. Default `False` (bool)
         /// </summary>
         [Input("waitForCluster")]
         public Input<bool>? WaitForCluster { get; set; }

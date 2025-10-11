@@ -147,7 +147,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
         /// 
-        /// **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+        /// **Note:** `StateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `Active` state before they are fully installed. For example: setting `StateConfirm = 2` will assure that the cluster has been in `Active` state for at least 5 seconds, `StateConfirm = 3` assure at least 10 seconds, etc
         /// </summary>
         [Output("stateConfirm")]
         public Output<int?> StateConfirm { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Rancher2
         public Output<string> SystemProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Wait until all catalogs are downloaded and active. Default: `false` (bool)
+        /// Wait until all catalogs are downloaded and active. Default: `False` (bool)
         /// </summary>
         [Output("waitCatalogs")]
         public Output<bool?> WaitCatalogs { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
         /// 
-        /// **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+        /// **Note:** `StateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `Active` state before they are fully installed. For example: setting `StateConfirm = 2` will assure that the cluster has been in `Active` state for at least 5 seconds, `StateConfirm = 3` assure at least 10 seconds, etc
         /// </summary>
         [Input("stateConfirm")]
         public Input<int>? StateConfirm { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? Synced { get; set; }
 
         /// <summary>
-        /// Wait until all catalogs are downloaded and active. Default: `false` (bool)
+        /// Wait until all catalogs are downloaded and active. Default: `False` (bool)
         /// </summary>
         [Input("waitCatalogs")]
         public Input<bool>? WaitCatalogs { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
         /// 
-        /// **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+        /// **Note:** `StateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `Active` state before they are fully installed. For example: setting `StateConfirm = 2` will assure that the cluster has been in `Active` state for at least 5 seconds, `StateConfirm = 3` assure at least 10 seconds, etc
         /// </summary>
         [Input("stateConfirm")]
         public Input<int>? StateConfirm { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.Rancher2
         public Input<string>? SystemProjectId { get; set; }
 
         /// <summary>
-        /// Wait until all catalogs are downloaded and active. Default: `false` (bool)
+        /// Wait until all catalogs are downloaded and active. Default: `False` (bool)
         /// </summary>
         [Input("waitCatalogs")]
         public Input<bool>? WaitCatalogs { get; set; }

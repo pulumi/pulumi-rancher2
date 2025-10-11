@@ -18,13 +18,13 @@ namespace Pulumi.Rancher2
     public partial class AuthConfigActiveDirectory : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// Access mode for auth. `Required`, `Restricted`, `Unrestricted` are supported. Default `Unrestricted` (string)
         /// </summary>
         [Output("accessMode")]
         public Output<string?> AccessMode { get; private set; } = null!;
 
         /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+        /// Allowed principal ids for auth. Required if `AccessMode` is `Required` or `Restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `TestUsername` must be added too. (list)
         /// </summary>
         [Output("allowedPrincipalIds")]
         public Output<ImmutableArray<string>> AllowedPrincipalIds { get; private set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.Rancher2
         public Output<string?> DefaultLoginDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Enable auth config provider. Default `true` (bool)
+        /// Enable auth config provider. Default `True` (bool)
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -66,7 +66,7 @@ namespace Pulumi.Rancher2
         public Output<string> GroupDnAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// Group member mapping attribute. Default `member` (string)
+        /// Group member mapping attribute. Default `Member` (string)
         /// </summary>
         [Output("groupMemberMappingAttribute")]
         public Output<string> GroupMemberMappingAttribute { get; private set; } = null!;
@@ -78,13 +78,13 @@ namespace Pulumi.Rancher2
         public Output<string> GroupMemberUserAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// Group name attribute. Default `name` (string)
+        /// Group name attribute. Default `Name` (string)
         /// </summary>
         [Output("groupNameAttribute")]
         public Output<string> GroupNameAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// Group object class. Default `group` (string)
+        /// Group object class. Default `Group` (string)
         /// </summary>
         [Output("groupObjectClass")]
         public Output<string> GroupObjectClass { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Nested group membership enable. Default `false` (bool)
+        /// Nested group membership enable. Default `False` (bool)
         /// </summary>
         [Output("nestedGroupMembershipEnabled")]
         public Output<bool> NestedGroupMembershipEnabled { get; private set; } = null!;
@@ -198,13 +198,13 @@ namespace Pulumi.Rancher2
         public Output<string> UserLoginAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// User name attribute. Default `name` (string)
+        /// User name attribute. Default `Name` (string)
         /// </summary>
         [Output("userNameAttribute")]
         public Output<string> UserNameAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// User object class. Default `person` (string)
+        /// User object class. Default `Person` (string)
         /// </summary>
         [Output("userObjectClass")]
         public Output<string> UserObjectClass { get; private set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.Rancher2
     public sealed class AuthConfigActiveDirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// Access mode for auth. `Required`, `Restricted`, `Unrestricted` are supported. Default `Unrestricted` (string)
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedPrincipalIds;
 
         /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+        /// Allowed principal ids for auth. Required if `AccessMode` is `Required` or `Restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `TestUsername` must be added too. (list)
         /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
@@ -339,7 +339,7 @@ namespace Pulumi.Rancher2
         public Input<string>? DefaultLoginDomain { get; set; }
 
         /// <summary>
-        /// Enable auth config provider. Default `true` (bool)
+        /// Enable auth config provider. Default `True` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -351,7 +351,7 @@ namespace Pulumi.Rancher2
         public Input<string>? GroupDnAttribute { get; set; }
 
         /// <summary>
-        /// Group member mapping attribute. Default `member` (string)
+        /// Group member mapping attribute. Default `Member` (string)
         /// </summary>
         [Input("groupMemberMappingAttribute")]
         public Input<string>? GroupMemberMappingAttribute { get; set; }
@@ -363,13 +363,13 @@ namespace Pulumi.Rancher2
         public Input<string>? GroupMemberUserAttribute { get; set; }
 
         /// <summary>
-        /// Group name attribute. Default `name` (string)
+        /// Group name attribute. Default `Name` (string)
         /// </summary>
         [Input("groupNameAttribute")]
         public Input<string>? GroupNameAttribute { get; set; }
 
         /// <summary>
-        /// Group object class. Default `group` (string)
+        /// Group object class. Default `Group` (string)
         /// </summary>
         [Input("groupObjectClass")]
         public Input<string>? GroupObjectClass { get; set; }
@@ -405,7 +405,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Nested group membership enable. Default `false` (bool)
+        /// Nested group membership enable. Default `False` (bool)
         /// </summary>
         [Input("nestedGroupMembershipEnabled")]
         public Input<bool>? NestedGroupMembershipEnabled { get; set; }
@@ -513,13 +513,13 @@ namespace Pulumi.Rancher2
         public Input<string>? UserLoginAttribute { get; set; }
 
         /// <summary>
-        /// User name attribute. Default `name` (string)
+        /// User name attribute. Default `Name` (string)
         /// </summary>
         [Input("userNameAttribute")]
         public Input<string>? UserNameAttribute { get; set; }
 
         /// <summary>
-        /// User object class. Default `person` (string)
+        /// User object class. Default `Person` (string)
         /// </summary>
         [Input("userObjectClass")]
         public Input<string>? UserObjectClass { get; set; }
@@ -551,7 +551,7 @@ namespace Pulumi.Rancher2
     public sealed class AuthConfigActiveDirectoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// Access mode for auth. `Required`, `Restricted`, `Unrestricted` are supported. Default `Unrestricted` (string)
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
@@ -560,7 +560,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedPrincipalIds;
 
         /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+        /// Allowed principal ids for auth. Required if `AccessMode` is `Required` or `Restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `TestUsername` must be added too. (list)
         /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
@@ -609,7 +609,7 @@ namespace Pulumi.Rancher2
         public Input<string>? DefaultLoginDomain { get; set; }
 
         /// <summary>
-        /// Enable auth config provider. Default `true` (bool)
+        /// Enable auth config provider. Default `True` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -621,7 +621,7 @@ namespace Pulumi.Rancher2
         public Input<string>? GroupDnAttribute { get; set; }
 
         /// <summary>
-        /// Group member mapping attribute. Default `member` (string)
+        /// Group member mapping attribute. Default `Member` (string)
         /// </summary>
         [Input("groupMemberMappingAttribute")]
         public Input<string>? GroupMemberMappingAttribute { get; set; }
@@ -633,13 +633,13 @@ namespace Pulumi.Rancher2
         public Input<string>? GroupMemberUserAttribute { get; set; }
 
         /// <summary>
-        /// Group name attribute. Default `name` (string)
+        /// Group name attribute. Default `Name` (string)
         /// </summary>
         [Input("groupNameAttribute")]
         public Input<string>? GroupNameAttribute { get; set; }
 
         /// <summary>
-        /// Group object class. Default `group` (string)
+        /// Group object class. Default `Group` (string)
         /// </summary>
         [Input("groupObjectClass")]
         public Input<string>? GroupObjectClass { get; set; }
@@ -681,7 +681,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Nested group membership enable. Default `false` (bool)
+        /// Nested group membership enable. Default `False` (bool)
         /// </summary>
         [Input("nestedGroupMembershipEnabled")]
         public Input<bool>? NestedGroupMembershipEnabled { get; set; }
@@ -795,13 +795,13 @@ namespace Pulumi.Rancher2
         public Input<string>? UserLoginAttribute { get; set; }
 
         /// <summary>
-        /// User name attribute. Default `name` (string)
+        /// User name attribute. Default `Name` (string)
         /// </summary>
         [Input("userNameAttribute")]
         public Input<string>? UserNameAttribute { get; set; }
 
         /// <summary>
-        /// User object class. Default `person` (string)
+        /// User object class. Default `Person` (string)
         /// </summary>
         [Input("userObjectClass")]
         public Input<string>? UserObjectClass { get; set; }

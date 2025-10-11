@@ -93,14 +93,14 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Computed) The ID of the resource. Same as `cluster_id` (string)
+     * (Computed) The ID of the resource. Same as `clusterId` (string)
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return (Computed) The ID of the resource. Same as `cluster_id` (string)
+     * @return (Computed) The ID of the resource. Same as `clusterId` (string)
      * 
      */
     public Optional<Output<String>> id() {
@@ -402,7 +402,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id (Computed) The ID of the resource. Same as `cluster_id` (string)
+         * @param id (Computed) The ID of the resource. Same as `clusterId` (string)
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id (Computed) The ID of the resource. Same as `cluster_id` (string)
+         * @param id (Computed) The ID of the resource. Same as `clusterId` (string)
          * 
          * @return builder
          * 

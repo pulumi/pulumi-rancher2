@@ -148,7 +148,7 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ProjectResourceQuota?> ResourceQuota { get; private set; } = null!;
 
         /// <summary>
-        /// Wait for cluster becomes active. Default `false` (bool)
+        /// Wait for cluster becomes active. Default `False` (bool)
         /// </summary>
         [Output("waitForCluster")]
         public Output<bool?> WaitForCluster { get; private set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ProjectResourceQuotaArgs>? ResourceQuota { get; set; }
 
         /// <summary>
-        /// Wait for cluster becomes active. Default `false` (bool)
+        /// Wait for cluster becomes active. Default `False` (bool)
         /// </summary>
         [Input("waitForCluster")]
         public Input<bool>? WaitForCluster { get; set; }
@@ -322,7 +322,7 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ProjectResourceQuotaGetArgs>? ResourceQuota { get; set; }
 
         /// <summary>
-        /// Wait for cluster becomes active. Default `false` (bool)
+        /// Wait for cluster becomes active. Default `False` (bool)
         /// </summary>
         [Input("waitForCluster")]
         public Input<bool>? WaitForCluster { get; set; }

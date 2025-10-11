@@ -154,7 +154,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// (Computed) Manual execution of the Etcd Backup. Default `false` (bool)
+        /// (Computed) Manual execution of the Etcd Backup. Default `False` (bool)
         /// </summary>
         public readonly bool Manual;
         public readonly string Name;

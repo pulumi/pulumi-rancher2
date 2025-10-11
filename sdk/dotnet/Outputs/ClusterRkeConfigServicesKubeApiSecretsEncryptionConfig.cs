@@ -35,7 +35,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CustomConfig;
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable the authorized cluster endpoint. Default `True` (bool)
         /// </summary>
         public readonly bool? Enabled;
 

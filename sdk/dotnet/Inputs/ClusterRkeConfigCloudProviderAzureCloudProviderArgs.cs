@@ -194,7 +194,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _tenantId;
 
         /// <summary>
-        /// Required if `tenant_name` not provided. (string)
+        /// Required if `TenantName` not provided. (string)
         /// </summary>
         public Input<string>? TenantId
         {

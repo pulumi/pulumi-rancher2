@@ -470,6 +470,8 @@ class NodePool(pulumi.CustomResource):
         """
         Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
 
+        ## Example Usage
+
         ## Import
 
         Node Pool can be imported using the Rancher Node Pool ID
@@ -502,6 +504,8 @@ class NodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Rancher v2 Node Pool resource. This can be used to create Node Pool, using Node template for Rancher v2 RKE clusters and retrieve their information.
+
+        ## Example Usage
 
         ## Import
 

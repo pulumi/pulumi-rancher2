@@ -43,13 +43,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DiskResize { get; set; }
 
         /// <summary>
-        /// OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+        /// OpenStack image id to use for the instance. Conflicts with `ImageName` (string)
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+        /// OpenStack image name to use for the instance. Conflicts with `ImageId` (string)
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
@@ -67,13 +67,13 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Memory { get; set; }
 
         /// <summary>
-        /// Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+        /// Opennebula network ID to connect the machine to. Conflicts with `NetworkName` (string)
         /// </summary>
         [Input("networkId")]
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+        /// Opennebula network to connect the machine to. Conflicts with `NetworkId` (string)
         /// </summary>
         [Input("networkName")]
         public Input<string>? NetworkName { get; set; }
@@ -101,19 +101,19 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// If using a non-B2D image you can specify the ssh user. Default `docker`. From Rancher v2.3.3 (string)
+        /// If using a non-B2D image you can specify the ssh user. Default `Docker`. From Rancher v2.3.3 (string)
         /// </summary>
         [Input("sshUser")]
         public Input<string>? SshUser { get; set; }
 
         /// <summary>
-        /// Opennebula template ID to use. Conflicts with `template_name` (string)
+        /// Opennebula template ID to use. Conflicts with `TemplateName` (string)
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// Name of the Opennbula template to use. Conflicts with `template_id` (string)
+        /// Name of the Opennbula template to use. Conflicts with `TemplateId` (string)
         /// </summary>
         [Input("templateName")]
         public Input<string>? TemplateName { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.Rancher2.Inputs
         /// <summary>
         /// VCPUs for the VM (string)
         /// 
-        /// &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+        /// &gt; **Note:**: `Required*` denotes that one of ImageName / ImageId or TemplateName / TemplateId is required but you cannot combine them.
         /// </summary>
         [Input("vcpu")]
         public Input<string>? Vcpu { get; set; }

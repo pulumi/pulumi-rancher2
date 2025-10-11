@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<int>? Retention { get; set; }
 
         /// <summary>
-        /// S3 config options for etcd backup. Valid for `imported` and `rke` clusters. (list maxitems:1)
+        /// S3 config options for etcd backup. Valid for `Imported` and `Rke` clusters. (list maxitems:1)
         /// </summary>
         [Input("s3BackupConfig")]
         public Input<Inputs.EtcdBackupBackupConfigS3BackupConfigArgs>? S3BackupConfig { get; set; }

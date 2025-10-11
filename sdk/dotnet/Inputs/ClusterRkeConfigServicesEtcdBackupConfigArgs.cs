@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigServicesEtcdBackupConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable the authorized cluster endpoint. Default `True` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs>? S3BackupConfig { get; set; }
 
         /// <summary>
-        /// Safe timestamp for etcd backup. Default: `false` (bool)
+        /// Safe timestamp for etcd backup. Default: `False` (bool)
         /// </summary>
         [Input("safeTimestamp")]
         public Input<bool>? SafeTimestamp { get; set; }

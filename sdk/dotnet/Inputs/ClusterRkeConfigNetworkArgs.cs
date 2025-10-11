@@ -55,7 +55,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
+        /// Plugin for RKE network. `Canal` (default), `Flannel`, `Calico`, `None` and `Weave` are supported. (string)
         /// </summary>
         [Input("plugin")]
         public Input<string>? Plugin { get; set; }

@@ -153,7 +153,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string GroupId;
         /// <summary>
-        /// (Computed) The group_principal ID to assign project role template binding (string)
+        /// (Computed) The GroupPrincipal ID to assign project role template binding (string)
         /// </summary>
         public readonly string GroupPrincipalId;
         /// <summary>
@@ -172,7 +172,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string UserId;
         /// <summary>
-        /// (Computed) The user_principal ID to assign project role template binding (string)
+        /// (Computed) The UserPrincipal ID to assign project role template binding (string)
         /// </summary>
         public readonly string UserPrincipalId;
 

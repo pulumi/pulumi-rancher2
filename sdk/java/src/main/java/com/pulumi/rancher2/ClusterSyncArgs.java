@@ -52,7 +52,7 @@ public final class ClusterSyncArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      * 
-     * **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+     * **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
      * 
      */
     @Import(name="stateConfirm")
@@ -61,7 +61,7 @@ public final class ClusterSyncArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      * 
-     * **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+     * **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
      * 
      */
     public Optional<Output<Integer>> stateConfirm() {
@@ -173,7 +173,7 @@ public final class ClusterSyncArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param stateConfirm Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
          * 
-         * **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+         * **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class ClusterSyncArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param stateConfirm Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
          * 
-         * **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
+         * **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
          * 
          * @return builder
          * 

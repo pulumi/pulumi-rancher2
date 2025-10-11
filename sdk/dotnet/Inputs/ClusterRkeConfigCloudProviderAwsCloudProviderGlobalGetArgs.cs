@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigCloudProviderAwsCloudProviderGlobalGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default `false` (bool)
+        /// Default `False` (bool)
         /// </summary>
         [Input("disableSecurityGroupIngress")]
         public Input<bool>? DisableSecurityGroupIngress { get; set; }
 
         /// <summary>
-        /// Default `false` (bool)
+        /// Default `False` (bool)
         /// </summary>
         [Input("disableStrictZoneCheck")]
         public Input<bool>? DisableStrictZoneCheck { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Vpc { get; set; }
 
         /// <summary>
-        /// The GKE cluster zone. Required if `region` not set (string)
+        /// The GKE cluster zone. Required if `Region` not set (string)
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

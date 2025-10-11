@@ -15,8 +15,8 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 certificate.
         /// 
         /// Depending of the availability, there are 2 types of Rancher v2 certificates:
-        /// - Project certificate: Available to all namespaces in the `project_id`
-        /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+        /// - Project certificate: Available to all namespaces in the `ProjectId`
+        /// - Namespaced certificate: Available to just `NamespaceId` in the `ProjectId`
         /// 
         /// ## Example Usage
         /// 
@@ -64,8 +64,8 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 certificate.
         /// 
         /// Depending of the availability, there are 2 types of Rancher v2 certificates:
-        /// - Project certificate: Available to all namespaces in the `project_id`
-        /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+        /// - Project certificate: Available to all namespaces in the `ProjectId`
+        /// - Namespaced certificate: Available to just `NamespaceId` in the `ProjectId`
         /// 
         /// ## Example Usage
         /// 
@@ -113,8 +113,8 @@ namespace Pulumi.Rancher2
         /// Use this data source to retrieve information about a Rancher v2 certificate.
         /// 
         /// Depending of the availability, there are 2 types of Rancher v2 certificates:
-        /// - Project certificate: Available to all namespaces in the `project_id`
-        /// - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+        /// - Project certificate: Available to all namespaces in the `ProjectId`
+        /// - Namespaced certificate: Available to just `NamespaceId` in the `ProjectId`
         /// 
         /// ## Example Usage
         /// 

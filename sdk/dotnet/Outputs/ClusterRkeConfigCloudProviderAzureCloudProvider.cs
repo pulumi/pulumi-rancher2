@@ -106,7 +106,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string SubscriptionId;
         /// <summary>
-        /// Required if `tenant_name` not provided. (string)
+        /// Required if `TenantName` not provided. (string)
         /// </summary>
         public readonly string TenantId;
         /// <summary>

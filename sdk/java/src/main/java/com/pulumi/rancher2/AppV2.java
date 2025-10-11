@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  * ### Create an App from a Helm Chart using a different registry
  * 
- * The `system_default_registry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
+ * The `systemDefaultRegistry` argument can override the global value at App installation. If argument is not provided, the global value for System Default Registry will be used instead.
  * 
  * <pre>
  * {@code

@@ -181,7 +181,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly string ResourceVersion;
         /// <summary>
-        /// (Computed) The RKE configuration for `k3s` and `rke2` Clusters v2. (list maxitems:1)
+        /// (Computed) The RKE configuration for `K3s` and `Rke2` Clusters v2. (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigResult RkeConfig;
 

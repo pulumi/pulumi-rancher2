@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * There are 2 kind of tokens:
  * - not scoped: valid for global system.
- * - scoped: valid for just a specific cluster (`cluster_id` should be provided).
+ * - scoped: valid for just a specific cluster (`clusterId` should be provided).
  * 
  * Tokens can only be created for a Rancher User with at least the `user-base` global role binding in order to enable user login.
  * 

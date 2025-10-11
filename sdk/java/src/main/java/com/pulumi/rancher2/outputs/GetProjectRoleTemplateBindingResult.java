@@ -22,7 +22,7 @@ public final class GetProjectRoleTemplateBindingResult {
      */
     private String groupId;
     /**
-     * @return (Computed) The group_principal ID to assign project role template binding (string)
+     * @return (Computed) The groupPrincipal ID to assign project role template binding (string)
      * 
      */
     private String groupPrincipalId;
@@ -45,7 +45,7 @@ public final class GetProjectRoleTemplateBindingResult {
      */
     private String userId;
     /**
-     * @return (Computed) The user_principal ID to assign project role template binding (string)
+     * @return (Computed) The userPrincipal ID to assign project role template binding (string)
      * 
      */
     private String userPrincipalId;
@@ -66,7 +66,7 @@ public final class GetProjectRoleTemplateBindingResult {
         return this.groupId;
     }
     /**
-     * @return (Computed) The group_principal ID to assign project role template binding (string)
+     * @return (Computed) The groupPrincipal ID to assign project role template binding (string)
      * 
      */
     public String groupPrincipalId() {
@@ -103,7 +103,7 @@ public final class GetProjectRoleTemplateBindingResult {
         return this.userId;
     }
     /**
-     * @return (Computed) The user_principal ID to assign project role template binding (string)
+     * @return (Computed) The userPrincipal ID to assign project role template binding (string)
      * 
      */
     public String userPrincipalId() {

@@ -29,7 +29,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigServicesKubeApiAuditLogConfiguration? Configuration;
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable the authorized cluster endpoint. Default `True` (bool)
         /// </summary>
         public readonly bool? Enabled;
 

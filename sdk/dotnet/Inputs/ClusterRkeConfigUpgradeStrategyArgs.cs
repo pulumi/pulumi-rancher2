@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigUpgradeStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// RKE drain nodes. Default: `false` (bool)
+        /// RKE drain nodes. Default: `False` (bool)
         /// </summary>
         [Input("drain")]
         public Input<bool>? Drain { get; set; }

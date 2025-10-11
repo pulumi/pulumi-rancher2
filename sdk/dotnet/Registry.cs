@@ -13,8 +13,8 @@ namespace Pulumi.Rancher2
     /// Provides a Rancher v2 Registry resource. This resource creates Kubernetes secrets with the type `kubernetes.io/dockerconfigjson` for authenticating against Docker registries for Rancher v2 environments and retrieving their information.
     /// 
     /// Depending on the availability, there are 2 types of Rancher v2 Docker registry resources:
-    /// - Project registry resource: Available to all namespaces in the `project_id`.
-    /// - Namespaced registry resource: Available to `namespace_id` in the `project_id`.
+    /// - Project registry resource: Available to all namespaces in the `ProjectId`.
+    /// - Namespaced registry resource: Available to `NamespaceId` in the `ProjectId`.
     /// 
     /// ## Example Usage
     /// 

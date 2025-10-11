@@ -94,7 +94,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// The GKE cluster region. Required if `zone` is empty
+        /// The GKE cluster region. Required if `Zone` is empty
         /// </summary>
         public readonly string? Region;
         /// <summary>
@@ -102,7 +102,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Subnetwork;
         /// <summary>
-        /// The GKE cluster zone. Required if `region` is empty
+        /// The GKE cluster zone. Required if `Region` is empty
         /// </summary>
         public readonly string? Zone;
 

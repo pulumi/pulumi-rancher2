@@ -35,14 +35,14 @@ public final class AuthConfigGithubArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
+     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
      * 
      */
     @Import(name="allowedPrincipalIds")
     private @Nullable Output<List<String>> allowedPrincipalIds;
 
     /**
-     * @return Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
+     * @return Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
      * 
      */
     public Optional<Output<List<String>>> allowedPrincipalIds() {
@@ -208,7 +208,7 @@ public final class AuthConfigGithubArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
+         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class AuthConfigGithubArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
+         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class AuthConfigGithubArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
+         * @param allowedPrincipalIds Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `github_user://&lt;USER_ID&gt;`  `github_team://&lt;GROUP_ID&gt;` `github_org://&lt;ORG_ID&gt;` (list)
          * 
          * @return builder
          * 

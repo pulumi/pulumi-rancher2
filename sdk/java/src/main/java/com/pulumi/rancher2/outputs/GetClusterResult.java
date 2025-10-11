@@ -31,7 +31,7 @@ public final class GetClusterResult {
      */
     private List<String> agentEnvVars;
     /**
-     * @return (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     private GetClusterAksConfigV2 aksConfigV2;
@@ -92,7 +92,7 @@ public final class GetClusterResult {
      */
     private String driver;
     /**
-     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     private GetClusterEksConfigV2 eksConfigV2;
@@ -107,7 +107,7 @@ public final class GetClusterResult {
      */
     private String fleetWorkspaceName;
     /**
-     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     private GetClusterGkeConfigV2 gkeConfigV2;
@@ -118,7 +118,7 @@ public final class GetClusterResult {
     private String id;
     private List<GetClusterImportedConfig> importedConfigs;
     /**
-     * @return (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, and `rke_config` (list maxitems:1)
+     * @return (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, and `rkeConfig` (list maxitems:1)
      * 
      */
     private GetClusterK3sConfig k3sConfig;
@@ -134,17 +134,17 @@ public final class GetClusterResult {
     private Map<String,String> labels;
     private String name;
     /**
-     * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     private GetClusterOkeConfig okeConfig;
     /**
-     * @return (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     private GetClusterRke2Config rke2Config;
     /**
-     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2` and `k3s_config` (list maxitems:1)
+     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
      * 
      */
     private GetClusterRkeConfig rkeConfig;
@@ -163,7 +163,7 @@ public final class GetClusterResult {
         return this.agentEnvVars;
     }
     /**
-     * @return (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Optional) The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public GetClusterAksConfigV2 aksConfigV2() {
@@ -250,7 +250,7 @@ public final class GetClusterResult {
         return this.driver;
     }
     /**
-     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+     * @return (Computed) The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `aksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
      * 
      */
     public GetClusterEksConfigV2 eksConfigV2() {
@@ -271,7 +271,7 @@ public final class GetClusterResult {
         return this.fleetWorkspaceName;
     }
     /**
-     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+     * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
      */
     public GetClusterGkeConfigV2 gkeConfigV2() {
@@ -288,7 +288,7 @@ public final class GetClusterResult {
         return this.importedConfigs;
     }
     /**
-     * @return (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, and `rke_config` (list maxitems:1)
+     * @return (Computed) The K3S configuration for `k3s` imported Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, and `rkeConfig` (list maxitems:1)
      * 
      */
     public GetClusterK3sConfig k3sConfig() {
@@ -312,21 +312,21 @@ public final class GetClusterResult {
         return this.name;
     }
     /**
-     * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The Oracle OKE configuration for `oke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public GetClusterOkeConfig okeConfig() {
         return this.okeConfig;
     }
     /**
-     * @return (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `gke_config`, `k3s_config` and `rke_config` (list maxitems:1)
+     * @return (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
      * 
      */
     public GetClusterRke2Config rke2Config() {
         return this.rke2Config;
     }
     /**
-     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2` and `k3s_config` (list maxitems:1)
+     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
      * 
      */
     public GetClusterRkeConfig rkeConfig() {

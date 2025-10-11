@@ -47,14 +47,14 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
     }
 
     /**
-     * The group_principal ID to assign project role template binding (string)
+     * The groupPrincipal ID to assign project role template binding (string)
      * 
      */
     @Import(name="groupPrincipalId")
     private @Nullable Output<String> groupPrincipalId;
 
     /**
-     * @return The group_principal ID to assign project role template binding (string)
+     * @return The groupPrincipal ID to assign project role template binding (string)
      * 
      */
     public Optional<Output<String>> groupPrincipalId() {
@@ -64,7 +64,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
     /**
      * Labels of the resource (map)
      * 
-     * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      * 
      */
     @Import(name="labels")
@@ -73,7 +73,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
     /**
      * @return Labels of the resource (map)
      * 
-     * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+     * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -141,14 +141,14 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
     }
 
     /**
-     * The user_principal ID to assign project role template binding (string)
+     * The userPrincipal ID to assign project role template binding (string)
      * 
      */
     @Import(name="userPrincipalId")
     private @Nullable Output<String> userPrincipalId;
 
     /**
-     * @return The user_principal ID to assign project role template binding (string)
+     * @return The userPrincipal ID to assign project role template binding (string)
      * 
      */
     public Optional<Output<String>> userPrincipalId() {
@@ -230,7 +230,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param groupPrincipalId The group_principal ID to assign project role template binding (string)
+         * @param groupPrincipalId The groupPrincipal ID to assign project role template binding (string)
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param groupPrincipalId The group_principal ID to assign project role template binding (string)
+         * @param groupPrincipalId The groupPrincipal ID to assign project role template binding (string)
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         /**
          * @param labels Labels of the resource (map)
          * 
-         * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+         * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         /**
          * @param labels Labels of the resource (map)
          * 
-         * **Note:** user `user_id | user_principal_id` OR group `group_id | group_principal_id` must be defined
+         * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param userPrincipalId The user_principal ID to assign project role template binding (string)
+         * @param userPrincipalId The userPrincipal ID to assign project role template binding (string)
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class ProjectRoleTemplateBindingState extends com.pulumi.resources.
         }
 
         /**
-         * @param userPrincipalId The user_principal ID to assign project role template binding (string)
+         * @param userPrincipalId The userPrincipal ID to assign project role template binding (string)
          * 
          * @return builder
          * 

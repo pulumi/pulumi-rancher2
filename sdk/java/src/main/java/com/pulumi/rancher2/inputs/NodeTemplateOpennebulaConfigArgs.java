@@ -93,14 +93,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * OpenStack image id to use for the instance. Conflicts with `imageName` (string)
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `imageName` (string)
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -108,14 +108,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      * 
      */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      * 
      */
     public Optional<Output<String>> imageName() {
@@ -153,14 +153,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+     * Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
      * 
      */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
     /**
-     * @return Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+     * @return Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
      * 
      */
     public Optional<Output<String>> networkId() {
@@ -168,14 +168,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+     * Opennebula network to connect the machine to. Conflicts with `networkId` (string)
      * 
      */
     @Import(name="networkName")
     private @Nullable Output<String> networkName;
 
     /**
-     * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+     * @return Opennebula network to connect the machine to. Conflicts with `networkId` (string)
      * 
      */
     public Optional<Output<String>> networkName() {
@@ -228,14 +228,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Opennebula template ID to use. Conflicts with `template_name` (string)
+     * Opennebula template ID to use. Conflicts with `templateName` (string)
      * 
      */
     @Import(name="templateId")
     private @Nullable Output<String> templateId;
 
     /**
-     * @return Opennebula template ID to use. Conflicts with `template_name` (string)
+     * @return Opennebula template ID to use. Conflicts with `templateName` (string)
      * 
      */
     public Optional<Output<String>> templateId() {
@@ -243,14 +243,14 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Name of the Opennbula template to use. Conflicts with `template_id` (string)
+     * Name of the Opennbula template to use. Conflicts with `templateId` (string)
      * 
      */
     @Import(name="templateName")
     private @Nullable Output<String> templateName;
 
     /**
-     * @return Name of the Opennbula template to use. Conflicts with `template_id` (string)
+     * @return Name of the Opennbula template to use. Conflicts with `templateId` (string)
      * 
      */
     public Optional<Output<String>> templateName() {
@@ -275,7 +275,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     /**
      * VCPUs for the VM (string)
      * 
-     * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+     * &gt; **Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
      * 
      */
     @Import(name="vcpu")
@@ -284,7 +284,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
     /**
      * @return VCPUs for the VM (string)
      * 
-     * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+     * &gt; **Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
      * 
      */
     public Optional<Output<String>> vcpu() {
@@ -454,7 +454,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `imageName` (string)
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageId OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+         * @param imageId OpenStack image id to use for the instance. Conflicts with `imageName` (string)
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `imageId` (string)
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param imageName OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+         * @param imageName OpenStack image name to use for the instance. Conflicts with `imageId` (string)
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkId Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+         * @param networkId Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
          * 
          * @return builder
          * 
@@ -549,7 +549,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkId Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+         * @param networkId Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
          * 
          * @return builder
          * 
@@ -559,7 +559,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkName Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+         * @param networkName Opennebula network to connect the machine to. Conflicts with `networkId` (string)
          * 
          * @return builder
          * 
@@ -570,7 +570,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param networkName Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+         * @param networkName Opennebula network to connect the machine to. Conflicts with `networkId` (string)
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param templateId Opennebula template ID to use. Conflicts with `template_name` (string)
+         * @param templateId Opennebula template ID to use. Conflicts with `templateName` (string)
          * 
          * @return builder
          * 
@@ -654,7 +654,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param templateId Opennebula template ID to use. Conflicts with `template_name` (string)
+         * @param templateId Opennebula template ID to use. Conflicts with `templateName` (string)
          * 
          * @return builder
          * 
@@ -664,7 +664,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param templateName Name of the Opennbula template to use. Conflicts with `template_id` (string)
+         * @param templateName Name of the Opennbula template to use. Conflicts with `templateId` (string)
          * 
          * @return builder
          * 
@@ -675,7 +675,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param templateName Name of the Opennbula template to use. Conflicts with `template_id` (string)
+         * @param templateName Name of the Opennbula template to use. Conflicts with `templateId` (string)
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         /**
          * @param vcpu VCPUs for the VM (string)
          * 
-         * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+         * &gt; **Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
          * 
          * @return builder
          * 
@@ -721,7 +721,7 @@ public final class NodeTemplateOpennebulaConfigArgs extends com.pulumi.resources
         /**
          * @param vcpu VCPUs for the VM (string)
          * 
-         * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+         * &gt; **Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
          * 
          * @return builder
          * 

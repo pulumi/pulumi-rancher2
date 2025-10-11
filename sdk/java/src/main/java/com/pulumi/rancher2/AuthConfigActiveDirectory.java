@@ -41,14 +41,14 @@ public class AuthConfigActiveDirectory extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.accessMode);
     }
     /**
-     * Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+     * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `testUsername` must be added too. (list)
      * 
      */
     @Export(name="allowedPrincipalIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedPrincipalIds;
 
     /**
-     * @return Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `test_username` must be added too. (list)
+     * @return Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `activedirectory_user://&lt;DN&gt;`  `activedirectory_group://&lt;DN&gt;`. The local admin (`local://&lt;admin id&gt;`) and the `testUsername` must be added too. (list)
      * 
      */
     public Output<Optional<List<String>>> allowedPrincipalIds() {

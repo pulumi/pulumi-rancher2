@@ -35,10 +35,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * Disk bus
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     @Import(name="diskBus")
     private @Nullable Output<String> diskBus;
 
@@ -46,10 +46,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * @return Disk bus
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     public Optional<Output<String>> diskBus() {
         return Optional.ofNullable(this.diskBus);
     }
@@ -73,10 +73,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * Disk size (in GiB)
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     @Import(name="diskSize")
     private @Nullable Output<String> diskSize;
 
@@ -84,10 +84,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * @return Disk size (in GiB)
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     public Optional<Output<String>> diskSize() {
         return Optional.ofNullable(this.diskSize);
     }
@@ -96,10 +96,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * Image name
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     @Import(name="imageName")
     private @Nullable Output<String> imageName;
 
@@ -107,10 +107,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * @return Image name
      * 
      * @deprecated
-     * Use disk_info instead
+     * Use diskInfo instead
      * 
      */
-    @Deprecated /* Use disk_info instead */
+    @Deprecated /* Use diskInfo instead */
     public Optional<Output<String>> imageName() {
         return Optional.ofNullable(this.imageName);
     }
@@ -164,10 +164,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * Network model
      * 
      * @deprecated
-     * Use network_info instead
+     * Use networkInfo instead
      * 
      */
-    @Deprecated /* Use network_info instead */
+    @Deprecated /* Use networkInfo instead */
     @Import(name="networkModel")
     private @Nullable Output<String> networkModel;
 
@@ -175,10 +175,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * @return Network model
      * 
      * @deprecated
-     * Use network_info instead
+     * Use networkInfo instead
      * 
      */
-    @Deprecated /* Use network_info instead */
+    @Deprecated /* Use networkInfo instead */
     public Optional<Output<String>> networkModel() {
         return Optional.ofNullable(this.networkModel);
     }
@@ -187,10 +187,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * Network name
      * 
      * @deprecated
-     * Use network_info instead
+     * Use networkInfo instead
      * 
      */
-    @Deprecated /* Use network_info instead */
+    @Deprecated /* Use networkInfo instead */
     @Import(name="networkName")
     private @Nullable Output<String> networkName;
 
@@ -198,10 +198,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
      * @return Network name
      * 
      * @deprecated
-     * Use network_info instead
+     * Use networkInfo instead
      * 
      */
-    @Deprecated /* Use network_info instead */
+    @Deprecated /* Use networkInfo instead */
     public Optional<Output<String>> networkName() {
         return Optional.ofNullable(this.networkName);
     }
@@ -346,10 +346,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use disk_info instead
+         * Use diskInfo instead
          * 
          */
-        @Deprecated /* Use disk_info instead */
+        @Deprecated /* Use diskInfo instead */
         public Builder diskBus(@Nullable Output<String> diskBus) {
             $.diskBus = diskBus;
             return this;
@@ -361,10 +361,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use disk_info instead
+         * Use diskInfo instead
          * 
          */
-        @Deprecated /* Use disk_info instead */
+        @Deprecated /* Use diskInfo instead */
         public Builder diskBus(String diskBus) {
             return diskBus(Output.of(diskBus));
         }
@@ -396,10 +396,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use disk_info instead
+         * Use diskInfo instead
          * 
          */
-        @Deprecated /* Use disk_info instead */
+        @Deprecated /* Use diskInfo instead */
         public Builder diskSize(@Nullable Output<String> diskSize) {
             $.diskSize = diskSize;
             return this;
@@ -411,10 +411,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use disk_info instead
+         * Use diskInfo instead
          * 
          */
-        @Deprecated /* Use disk_info instead */
+        @Deprecated /* Use diskInfo instead */
         public Builder diskSize(String diskSize) {
             return diskSize(Output.of(diskSize));
         }
@@ -425,10 +425,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use disk_info instead
+         * Use diskInfo instead
          * 
          */
-        @Deprecated /* Use disk_info instead */
+        @Deprecated /* Use diskInfo instead */
         public Builder imageName(@Nullable Output<String> imageName) {
             $.imageName = imageName;
             return this;
@@ -440,10 +440,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use disk_info instead
+         * Use diskInfo instead
          * 
          */
-        @Deprecated /* Use disk_info instead */
+        @Deprecated /* Use diskInfo instead */
         public Builder imageName(String imageName) {
             return imageName(Output.of(imageName));
         }
@@ -517,10 +517,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use network_info instead
+         * Use networkInfo instead
          * 
          */
-        @Deprecated /* Use network_info instead */
+        @Deprecated /* Use networkInfo instead */
         public Builder networkModel(@Nullable Output<String> networkModel) {
             $.networkModel = networkModel;
             return this;
@@ -532,10 +532,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use network_info instead
+         * Use networkInfo instead
          * 
          */
-        @Deprecated /* Use network_info instead */
+        @Deprecated /* Use networkInfo instead */
         public Builder networkModel(String networkModel) {
             return networkModel(Output.of(networkModel));
         }
@@ -546,10 +546,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use network_info instead
+         * Use networkInfo instead
          * 
          */
-        @Deprecated /* Use network_info instead */
+        @Deprecated /* Use networkInfo instead */
         public Builder networkName(@Nullable Output<String> networkName) {
             $.networkName = networkName;
             return this;
@@ -561,10 +561,10 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * Use network_info instead
+         * Use networkInfo instead
          * 
          */
-        @Deprecated /* Use network_info instead */
+        @Deprecated /* Use networkInfo instead */
         public Builder networkName(String networkName) {
             return networkName(Output.of(networkName));
         }

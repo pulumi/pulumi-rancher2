@@ -30,7 +30,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// Enable the authorized cluster endpoint. Default `true` (bool)
+        /// Enable the authorized cluster endpoint. Default `True` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

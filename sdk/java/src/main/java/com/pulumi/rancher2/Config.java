@@ -41,7 +41,7 @@ public final class Config {
         return Codegen.stringProp("caCerts").config(config).get();
     }
 /**
- * Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+ * Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
  * 
  */
     public Optional<Boolean> insecure() {

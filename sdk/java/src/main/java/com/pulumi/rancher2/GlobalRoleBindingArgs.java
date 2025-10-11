@@ -65,7 +65,7 @@ public final class GlobalRoleBindingArgs extends com.pulumi.resources.ResourceAr
     /**
      * Labels for global role binding (map)
      * 
-     * **Note:** user `user_id` OR group `group_principal_id` must be defined
+     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      * 
      */
     @Import(name="labels")
@@ -74,7 +74,7 @@ public final class GlobalRoleBindingArgs extends com.pulumi.resources.ResourceAr
     /**
      * @return Labels for global role binding (map)
      * 
-     * **Note:** user `user_id` OR group `group_principal_id` must be defined
+     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -206,7 +206,7 @@ public final class GlobalRoleBindingArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param labels Labels for global role binding (map)
          * 
-         * **Note:** user `user_id` OR group `group_principal_id` must be defined
+         * **Note:** user `userId` OR group `groupPrincipalId` must be defined
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class GlobalRoleBindingArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param labels Labels for global role binding (map)
          * 
-         * **Note:** user `user_id` OR group `group_principal_id` must be defined
+         * **Note:** user `userId` OR group `groupPrincipalId` must be defined
          * 
          * @return builder
          * 

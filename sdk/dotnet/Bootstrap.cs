@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2
         public Output<string> CurrentPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Initial password for Admin user. Default: `admin` (string)
+        /// Initial password for Admin user. Default: `Admin` (string)
         /// </summary>
         [Output("initialPassword")]
         public Output<string?> InitialPassword { get; private set; } = null!;
@@ -116,13 +116,13 @@ namespace Pulumi.Rancher2
         public Output<int?> TokenTtl { get; private set; } = null!;
 
         /// <summary>
-        /// Regenerate admin token. Default: `false` (bool)
+        /// Regenerate admin token. Default: `False` (bool)
         /// </summary>
         [Output("tokenUpdate")]
         public Output<bool?> TokenUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+        /// Default UI landing for k8s clusters. Available options: `Ember` (cluster manager ui)  and `Vue` (cluster explorer ui). Default: `Ember` (string)
         /// </summary>
         [Output("uiDefaultLanding")]
         public Output<string?> UiDefaultLanding { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.Rancher2
         private Input<string>? _initialPassword;
 
         /// <summary>
-        /// Initial password for Admin user. Default: `admin` (string)
+        /// Initial password for Admin user. Default: `Admin` (string)
         /// </summary>
         public Input<string>? InitialPassword
         {
@@ -232,13 +232,13 @@ namespace Pulumi.Rancher2
         public Input<int>? TokenTtl { get; set; }
 
         /// <summary>
-        /// Regenerate admin token. Default: `false` (bool)
+        /// Regenerate admin token. Default: `False` (bool)
         /// </summary>
         [Input("tokenUpdate")]
         public Input<bool>? TokenUpdate { get; set; }
 
         /// <summary>
-        /// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+        /// Default UI landing for k8s clusters. Available options: `Ember` (cluster manager ui)  and `Vue` (cluster explorer ui). Default: `Ember` (string)
         /// </summary>
         [Input("uiDefaultLanding")]
         public Input<string>? UiDefaultLanding { get; set; }
@@ -271,7 +271,7 @@ namespace Pulumi.Rancher2
         private Input<string>? _initialPassword;
 
         /// <summary>
-        /// Initial password for Admin user. Default: `admin` (string)
+        /// Initial password for Admin user. Default: `Admin` (string)
         /// </summary>
         public Input<string>? InitialPassword
         {
@@ -350,13 +350,13 @@ namespace Pulumi.Rancher2
         public Input<int>? TokenTtl { get; set; }
 
         /// <summary>
-        /// Regenerate admin token. Default: `false` (bool)
+        /// Regenerate admin token. Default: `False` (bool)
         /// </summary>
         [Input("tokenUpdate")]
         public Input<bool>? TokenUpdate { get; set; }
 
         /// <summary>
-        /// Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
+        /// Default UI landing for k8s clusters. Available options: `Ember` (cluster manager ui)  and `Vue` (cluster explorer ui). Default: `Ember` (string)
         /// </summary>
         [Input("uiDefaultLanding")]
         public Input<string>? UiDefaultLanding { get; set; }

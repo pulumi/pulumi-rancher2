@@ -12,7 +12,7 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
     /// 
-    /// `cluster` and `project` scopes are supported for role templates.
+    /// `Cluster` and `Project` scopes are supported for role templates.
     /// 
     /// ## Example Usage
     /// 
@@ -104,7 +104,7 @@ namespace Pulumi.Rancher2
     public partial class RoleTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Administrative role template. Default `false` (bool)
+        /// Administrative role template. Default `False` (bool)
         /// </summary>
         [Output("administrative")]
         public Output<bool?> Administrative { get; private set; } = null!;
@@ -122,13 +122,13 @@ namespace Pulumi.Rancher2
         public Output<bool> Builtin { get; private set; } = null!;
 
         /// <summary>
-        /// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+        /// Role template context. `Cluster` and `Project` values are supported. Default: `Cluster` (string)
         /// </summary>
         [Output("context")]
         public Output<string?> Context { get; private set; } = null!;
 
         /// <summary>
-        /// Default role template for new created cluster or project. Default `false` (bool)
+        /// Default role template for new created cluster or project. Default `False` (bool)
         /// </summary>
         [Output("defaultRole")]
         public Output<bool?> DefaultRole { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Rancher2
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// External role template. Default `false` (bool)
+        /// External role template. Default `False` (bool)
         /// </summary>
         [Output("external")]
         public Output<bool?> External { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Rancher2
         public Output<ImmutableArray<Outputs.RoleTemplateExternalRule>> ExternalRules { get; private set; } = null!;
 
         /// <summary>
-        /// Hidden role template. Default `false` (bool)
+        /// Hidden role template. Default `False` (bool)
         /// </summary>
         [Output("hidden")]
         public Output<bool?> Hidden { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.Rancher2
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Locked role template. Default `false` (bool)
+        /// Locked role template. Default `False` (bool)
         /// </summary>
         [Output("locked")]
         public Output<bool?> Locked { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.Rancher2
     public sealed class RoleTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Administrative role template. Default `false` (bool)
+        /// Administrative role template. Default `False` (bool)
         /// </summary>
         [Input("administrative")]
         public Input<bool>? Administrative { get; set; }
@@ -252,13 +252,13 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+        /// Role template context. `Cluster` and `Project` values are supported. Default: `Cluster` (string)
         /// </summary>
         [Input("context")]
         public Input<string>? Context { get; set; }
 
         /// <summary>
-        /// Default role template for new created cluster or project. Default `false` (bool)
+        /// Default role template for new created cluster or project. Default `False` (bool)
         /// </summary>
         [Input("defaultRole")]
         public Input<bool>? DefaultRole { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// External role template. Default `false` (bool)
+        /// External role template. Default `False` (bool)
         /// </summary>
         [Input("external")]
         public Input<bool>? External { get; set; }
@@ -288,7 +288,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Hidden role template. Default `false` (bool)
+        /// Hidden role template. Default `False` (bool)
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Locked role template. Default `false` (bool)
+        /// Locked role template. Default `False` (bool)
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.Rancher2
     public sealed class RoleTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Administrative role template. Default `false` (bool)
+        /// Administrative role template. Default `False` (bool)
         /// </summary>
         [Input("administrative")]
         public Input<bool>? Administrative { get; set; }
@@ -374,13 +374,13 @@ namespace Pulumi.Rancher2
         public Input<bool>? Builtin { get; set; }
 
         /// <summary>
-        /// Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
+        /// Role template context. `Cluster` and `Project` values are supported. Default: `Cluster` (string)
         /// </summary>
         [Input("context")]
         public Input<string>? Context { get; set; }
 
         /// <summary>
-        /// Default role template for new created cluster or project. Default `false` (bool)
+        /// Default role template for new created cluster or project. Default `False` (bool)
         /// </summary>
         [Input("defaultRole")]
         public Input<bool>? DefaultRole { get; set; }
@@ -392,7 +392,7 @@ namespace Pulumi.Rancher2
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// External role template. Default `false` (bool)
+        /// External role template. Default `False` (bool)
         /// </summary>
         [Input("external")]
         public Input<bool>? External { get; set; }
@@ -410,7 +410,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Hidden role template. Default `false` (bool)
+        /// Hidden role template. Default `False` (bool)
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
@@ -428,7 +428,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Locked role template. Default `false` (bool)
+        /// Locked role template. Default `False` (bool)
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }

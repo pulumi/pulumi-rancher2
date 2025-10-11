@@ -92,7 +92,7 @@ namespace Pulumi.Rancher2
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Manual execution of the Etcd Backup. Default `false` (bool)
+        /// Manual execution of the Etcd Backup. Default `False` (bool)
         /// </summary>
         [Output("manual")]
         public Output<bool?> Manual { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Manual execution of the Etcd Backup. Default `false` (bool)
+        /// Manual execution of the Etcd Backup. Default `False` (bool)
         /// </summary>
         [Input("manual")]
         public Input<bool>? Manual { get; set; }
@@ -266,7 +266,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Manual execution of the Etcd Backup. Default `false` (bool)
+        /// Manual execution of the Etcd Backup. Default `False` (bool)
         /// </summary>
         [Input("manual")]
         public Input<bool>? Manual { get; set; }

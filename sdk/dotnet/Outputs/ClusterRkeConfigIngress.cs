@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigIngress
     {
         /// <summary>
-        /// Enable ingress default backend. Default: `true` (bool)
+        /// Enable ingress default backend. Default: `True` (bool)
         /// </summary>
         public readonly bool? DefaultBackend;
         /// <summary>

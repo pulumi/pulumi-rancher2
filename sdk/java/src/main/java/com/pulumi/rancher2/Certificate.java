@@ -20,8 +20,8 @@ import javax.annotation.Nullable;
  * Provides a Rancher v2 certificate resource. This can be used to create certificates for Rancher v2 environments and retrieve their information.
  * 
  * There are 2 types of Rancher v2 certificates:
- * - Project certificate: Available to all namespaces in the `project_id`
- * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+ * - Project certificate: Available to all namespaces in the `projectId`
+ * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
  * 
  */
 @ResourceType(type="rancher2:index/certificate:Certificate")

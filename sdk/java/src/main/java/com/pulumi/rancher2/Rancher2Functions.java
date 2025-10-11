@@ -132,8 +132,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 certificate.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 certificates:
-     * - Project certificate: Available to all namespaces in the `project_id`
-     * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+     * - Project certificate: Available to all namespaces in the `projectId`
+     * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -212,8 +212,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 certificate.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 certificates:
-     * - Project certificate: Available to all namespaces in the `project_id`
-     * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+     * - Project certificate: Available to all namespaces in the `projectId`
+     * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -292,8 +292,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 certificate.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 certificates:
-     * - Project certificate: Available to all namespaces in the `project_id`
-     * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+     * - Project certificate: Available to all namespaces in the `projectId`
+     * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -372,8 +372,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 certificate.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 certificates:
-     * - Project certificate: Available to all namespaces in the `project_id`
-     * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+     * - Project certificate: Available to all namespaces in the `projectId`
+     * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -452,8 +452,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 certificate.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 certificates:
-     * - Project certificate: Available to all namespaces in the `project_id`
-     * - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+     * - Project certificate: Available to all namespaces in the `projectId`
+     * - Namespaced certificate: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -3847,8 +3847,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 docker registry.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 docker registries:
-     * - Project registry: Available to all namespaces in the `project_id`
-     * - Namespaced registry: Available to just `namespace_id` in the `project_id`
+     * - Project registry: Available to all namespaces in the `projectId`
+     * - Namespaced registry: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -3927,8 +3927,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 docker registry.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 docker registries:
-     * - Project registry: Available to all namespaces in the `project_id`
-     * - Namespaced registry: Available to just `namespace_id` in the `project_id`
+     * - Project registry: Available to all namespaces in the `projectId`
+     * - Namespaced registry: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -4007,8 +4007,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 docker registry.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 docker registries:
-     * - Project registry: Available to all namespaces in the `project_id`
-     * - Namespaced registry: Available to just `namespace_id` in the `project_id`
+     * - Project registry: Available to all namespaces in the `projectId`
+     * - Namespaced registry: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -4087,8 +4087,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 docker registry.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 docker registries:
-     * - Project registry: Available to all namespaces in the `project_id`
-     * - Namespaced registry: Available to just `namespace_id` in the `project_id`
+     * - Project registry: Available to all namespaces in the `projectId`
+     * - Namespaced registry: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -4167,8 +4167,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 docker registry.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 docker registries:
-     * - Project registry: Available to all namespaces in the `project_id`
-     * - Namespaced registry: Available to just `namespace_id` in the `project_id`
+     * - Project registry: Available to all namespaces in the `projectId`
+     * - Namespaced registry: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -4447,8 +4447,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 secret.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 secrets:
-     * - Project secret: Available to all namespaces in the `project_id`
-     * - Namespaced secret: Available to just `namespace_id` in the `project_id`
+     * - Project secret: Available to all namespaces in the `projectId`
+     * - Namespaced secret: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -4527,8 +4527,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 secret.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 secrets:
-     * - Project secret: Available to all namespaces in the `project_id`
-     * - Namespaced secret: Available to just `namespace_id` in the `project_id`
+     * - Project secret: Available to all namespaces in the `projectId`
+     * - Namespaced secret: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -4607,8 +4607,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 secret.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 secrets:
-     * - Project secret: Available to all namespaces in the `project_id`
-     * - Namespaced secret: Available to just `namespace_id` in the `project_id`
+     * - Project secret: Available to all namespaces in the `projectId`
+     * - Namespaced secret: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -4687,8 +4687,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 secret.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 secrets:
-     * - Project secret: Available to all namespaces in the `project_id`
-     * - Namespaced secret: Available to just `namespace_id` in the `project_id`
+     * - Project secret: Available to all namespaces in the `projectId`
+     * - Namespaced secret: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 
@@ -4767,8 +4767,8 @@ public final class Rancher2Functions {
      * Use this data source to retrieve information about a Rancher v2 secret.
      * 
      * Depending of the availability, there are 2 types of Rancher v2 secrets:
-     * - Project secret: Available to all namespaces in the `project_id`
-     * - Namespaced secret: Available to just `namespace_id` in the `project_id`
+     * - Project secret: Available to all namespaces in the `projectId`
+     * - Namespaced secret: Available to just `namespaceId` in the `projectId`
      * 
      * ## Example Usage
      * 

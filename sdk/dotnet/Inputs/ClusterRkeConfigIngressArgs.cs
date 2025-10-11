@@ -13,7 +13,7 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterRkeConfigIngressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable ingress default backend. Default: `true` (bool)
+        /// Enable ingress default backend. Default: `True` (bool)
         /// </summary>
         [Input("defaultBackend")]
         public Input<bool>? DefaultBackend { get; set; }

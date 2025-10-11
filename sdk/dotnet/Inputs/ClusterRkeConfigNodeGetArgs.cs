@@ -64,7 +64,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Roles for the node. `controlplane`, `etcd` and `worker` are supported. (list)
+        /// Roles for the node. `Controlplane`, `Etcd` and `Worker` are supported. (list)
         /// </summary>
         public InputList<string> Roles
         {
@@ -73,7 +73,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Use ssh agent auth. Default `false` (bool)
+        /// Use ssh agent auth. Default `False` (bool)
         /// </summary>
         [Input("sshAgentAuth")]
         public Input<bool>? SshAgentAuth { get; set; }

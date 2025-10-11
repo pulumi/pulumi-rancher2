@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _domainId;
 
         /// <summary>
-        /// Required if `domain_name` not provided. (string)
+        /// Required if `DomainName` not provided. (string)
         /// </summary>
         public Input<string>? DomainId
         {
@@ -41,7 +41,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Required if `domain_id` not provided. (string)
+        /// Required if `DomainId` not provided. (string)
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
@@ -72,7 +72,7 @@ namespace Pulumi.Rancher2.Inputs
         private Input<string>? _tenantId;
 
         /// <summary>
-        /// Required if `tenant_name` not provided. (string)
+        /// Required if `TenantName` not provided. (string)
         /// </summary>
         public Input<string>? TenantId
         {
@@ -85,7 +85,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// Required if `tenant_id` not provided. (string)
+        /// Required if `TenantId` not provided. (string)
         /// </summary>
         [Input("tenantName")]
         public Input<string>? TenantName { get; set; }

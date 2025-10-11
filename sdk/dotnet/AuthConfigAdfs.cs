@@ -44,13 +44,13 @@ namespace Pulumi.Rancher2
     public partial class AuthConfigAdfs : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// Access mode for auth. `Required`, `Restricted`, `Unrestricted` are supported. Default `Unrestricted` (string)
         /// </summary>
         [Output("accessMode")]
         public Output<string?> AccessMode { get; private set; } = null!;
 
         /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `adfs_user://&lt;USER_ID&gt;`  `adfs_group://&lt;GROUP_ID&gt;` (list)
+        /// Allowed principal ids for auth. Required if `AccessMode` is `Required` or `Restricted`. Ex: `adfs_user://&lt;USER_ID&gt;`  `adfs_group://&lt;GROUP_ID&gt;` (list)
         /// </summary>
         [Output("allowedPrincipalIds")]
         public Output<ImmutableArray<string>> AllowedPrincipalIds { get; private set; } = null!;
@@ -68,7 +68,7 @@ namespace Pulumi.Rancher2
         public Output<string> DisplayNameField { get; private set; } = null!;
 
         /// <summary>
-        /// Enable auth config provider. Default `true` (bool)
+        /// Enable auth config provider. Default `True` (bool)
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.Rancher2
     public sealed class AuthConfigAdfsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// Access mode for auth. `Required`, `Restricted`, `Unrestricted` are supported. Default `Unrestricted` (string)
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedPrincipalIds;
 
         /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `adfs_user://&lt;USER_ID&gt;`  `adfs_group://&lt;GROUP_ID&gt;` (list)
+        /// Allowed principal ids for auth. Required if `AccessMode` is `Required` or `Restricted`. Ex: `adfs_user://&lt;USER_ID&gt;`  `adfs_group://&lt;GROUP_ID&gt;` (list)
         /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
@@ -222,7 +222,7 @@ namespace Pulumi.Rancher2
         public Input<string> DisplayNameField { get; set; } = null!;
 
         /// <summary>
-        /// Enable auth config provider. Default `true` (bool)
+        /// Enable auth config provider. Default `True` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.Rancher2
     public sealed class AuthConfigAdfsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
+        /// Access mode for auth. `Required`, `Restricted`, `Unrestricted` are supported. Default `Unrestricted` (string)
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.Rancher2
         private InputList<string>? _allowedPrincipalIds;
 
         /// <summary>
-        /// Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `adfs_user://&lt;USER_ID&gt;`  `adfs_group://&lt;GROUP_ID&gt;` (list)
+        /// Allowed principal ids for auth. Required if `AccessMode` is `Required` or `Restricted`. Ex: `adfs_user://&lt;USER_ID&gt;`  `adfs_group://&lt;GROUP_ID&gt;` (list)
         /// </summary>
         public InputList<string> AllowedPrincipalIds
         {
@@ -356,7 +356,7 @@ namespace Pulumi.Rancher2
         public Input<string>? DisplayNameField { get; set; }
 
         /// <summary>
-        /// Enable auth config provider. Default `true` (bool)
+        /// Enable auth config provider. Default `True` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

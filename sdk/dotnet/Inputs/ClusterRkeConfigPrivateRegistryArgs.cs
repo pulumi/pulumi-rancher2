@@ -19,7 +19,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs>? EcrCredentialPlugin { get; set; }
 
         /// <summary>
-        /// Set as default registry. Default `false` (bool)
+        /// Set as default registry. Default `False` (bool)
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }

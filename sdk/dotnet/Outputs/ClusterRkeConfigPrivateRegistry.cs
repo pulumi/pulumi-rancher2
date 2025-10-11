@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.ClusterRkeConfigPrivateRegistryEcrCredentialPlugin? EcrCredentialPlugin;
         /// <summary>
-        /// Set as default registry. Default `false` (bool)
+        /// Set as default registry. Default `False` (bool)
         /// </summary>
         public readonly bool? IsDefault;
         /// <summary>
