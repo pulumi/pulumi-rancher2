@@ -22,11 +22,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CaFile;
         /// <summary>
-        /// Required if `domain_name` not provided. (string)
+        /// Required if `DomainName` not provided. (string)
         /// </summary>
         public readonly string? DomainId;
         /// <summary>
-        /// Required if `domain_id` not provided. (string)
+        /// Required if `DomainId` not provided. (string)
         /// </summary>
         public readonly string? DomainName;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Required if `tenant_name` not provided. (string)
+        /// Required if `TenantName` not provided. (string)
         /// </summary>
         public readonly string? TenantId;
         /// <summary>
-        /// Required if `tenant_id` not provided. (string)
+        /// Required if `TenantId` not provided. (string)
         /// </summary>
         public readonly string? TenantName;
         /// <summary>

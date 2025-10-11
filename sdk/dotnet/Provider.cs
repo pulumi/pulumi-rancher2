@@ -129,7 +129,7 @@ namespace Pulumi.Rancher2
         public Input<string>? CaCerts { get; set; }
 
         /// <summary>
-        /// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+        /// Allow insecure connections to Rancher. Mandatory if self signed tls and not CaCerts provided
         /// </summary>
         [Input("insecure", json: true)]
         public Input<bool>? Insecure { get; set; }

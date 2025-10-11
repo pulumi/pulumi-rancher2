@@ -206,7 +206,7 @@ namespace Pulumi.Rancher2
     /// 
     /// **Important** This process could update `rancher2.NodeTemplate` data on tfstate file. Be sure to save a copy of tfstate file before proceed
     /// 
-    /// Due to [this feature](https://github.com/rancher/rancher/pull/23718) included on Rancher v2.3.3, `rancher2.NodeTemplate` are now global scoped objects with RBAC around them, instead of user scoped objects as they were. This means that existing node templates `id` field is changing on upgrade. Provider implements `fixNodeTemplateID()` that will update tfstate with proper id.
+    /// Due to [this feature](https://github.com/rancher/rancher/pull/23718) included on Rancher v2.3.3, `rancher2.NodeTemplate` are now global scoped objects with RBAC around them, instead of user scoped objects as they were. This means that existing node templates `Id` field is changing on upgrade. Provider implements `fixNodeTemplateID()` that will update tfstate with proper id.
     /// 
     /// ## Import
     /// 
@@ -336,7 +336,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for Node Template object (map)
         /// 
-        /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+        /// **Note:** `Labels` and `NodeTaints` will be applied to nodes deployed using the Node Template
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -610,7 +610,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for Node Template object (map)
         /// 
-        /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+        /// **Note:** `Labels` and `NodeTaints` will be applied to nodes deployed using the Node Template
         /// </summary>
         public InputMap<string> Labels
         {
@@ -856,7 +856,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for Node Template object (map)
         /// 
-        /// **Note:** `labels` and `node_taints` will be applied to nodes deployed using the Node Template
+        /// **Note:** `Labels` and `NodeTaints` will be applied to nodes deployed using the Node Template
         /// </summary>
         public InputMap<string> Labels
         {

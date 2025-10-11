@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * There are 2 kind of tokens:
  * - no scoped: valid for global system.
- * - scoped: valid for just a specific cluster (`cluster_id` should be provided).
+ * - scoped: valid for just a specific cluster (`clusterId` should be provided).
  * 
  * Tokens can&#39;t be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
  * 

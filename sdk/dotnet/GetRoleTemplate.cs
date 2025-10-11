@@ -88,7 +88,7 @@ namespace Pulumi.Rancher2
     public sealed class GetRoleTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Role template context. `cluster` and `project` values are supported (string)
+        /// Role template context. `Cluster` and `Project` values are supported (string)
         /// </summary>
         [Input("context")]
         public string? Context { get; set; }
@@ -120,7 +120,7 @@ namespace Pulumi.Rancher2
     public sealed class GetRoleTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Role template context. `cluster` and `project` values are supported (string)
+        /// Role template context. `Cluster` and `Project` values are supported (string)
         /// </summary>
         [Input("context")]
         public Input<string>? Context { get; set; }
