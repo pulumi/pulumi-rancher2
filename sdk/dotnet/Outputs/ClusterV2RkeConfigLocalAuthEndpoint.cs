@@ -18,7 +18,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? CaCerts;
         /// <summary>
-        /// If `enabled` is set to true, nodes will be drained before upgrade.
+        /// If `Enabled` is set to true, nodes will be drained before upgrade.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigUpgradeStrategyDrainInput
     {
         /// <summary>
-        /// Delete RKE node local data. Default: `false` (bool)
+        /// Delete RKE node local data. Default: `False` (bool)
         /// </summary>
         public readonly bool? DeleteLocalData;
         /// <summary>
-        /// Force RKE node drain. Default: `false` (bool)
+        /// Force RKE node drain. Default: `False` (bool)
         /// </summary>
         public readonly bool? Force;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly int? GracePeriod;
         /// <summary>
-        /// Ignore RKE daemon sets. Default: `true` (bool)
+        /// Ignore RKE daemon sets. Default: `True` (bool)
         /// </summary>
         public readonly bool? IgnoreDaemonSets;
         /// <summary>

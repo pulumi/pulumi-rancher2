@@ -135,7 +135,7 @@ public final class GetClusterOkeConfig {
      */
     private String nodeShape;
     /**
-     * @return The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+     * @return The contents of custom cloud-init / userData for the nodes - will be base64 encoded internally if it is not already
      * 
      */
     private @Nullable String nodeUserDataContents;
@@ -390,7 +390,7 @@ public final class GetClusterOkeConfig {
         return this.nodeShape;
     }
     /**
-     * @return The contents of custom cloud-init / user_data for the nodes - will be base64 encoded internally if it is not already
+     * @return The contents of custom cloud-init / userData for the nodes - will be base64 encoded internally if it is not already
      * 
      */
     public Optional<String> nodeUserDataContents() {

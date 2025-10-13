@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
-    /// **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloud_provider {}`, `name = ""`
+    /// **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `CloudProvider {}`, `name = ""`
     /// 
     /// ### Creating Rancher v2 imported cluster
     /// 
@@ -544,7 +544,7 @@ namespace Pulumi.Rancher2
     /// });
     /// ```
     /// 
-    /// ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
+    /// ### Importing EKS cluster to Rancher v2, using `EksConfigV2`. For Rancher v2.5.x and above.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -581,7 +581,7 @@ namespace Pulumi.Rancher2
     /// });
     /// ```
     /// 
-    /// ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
+    /// ### Creating EKS cluster from Rancher v2, using `EksConfigV2`. For Rancher v2.5.x and above.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -642,9 +642,9 @@ namespace Pulumi.Rancher2
     /// });
     /// ```
     /// 
-    /// ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
+    /// ### Creating EKS cluster from Rancher v2, using `EksConfigV2` and launch template. For Rancher v2.5.6 and above.
     /// 
-    /// Note: To use `launch_template` you must provide the ID (seen as `&lt;EC2_LAUNCH_TEMPLATE_ID&gt;`) to the template either as a static value. Or fetched via AWS data-source using one of: aws_ami, aws_ami_ids, or similar data-sources. You can also create a custom `launch_template` first and provide the ID to that.
+    /// Note: To use `LaunchTemplate` you must provide the ID (seen as `&lt;EC2_LAUNCH_TEMPLATE_ID&gt;`) to the template either as a static value. Or fetched via AWS data-source using one of: aws_ami, aws_ami_ids, or similar data-sources. You can also create a custom `LaunchTemplate` first and provide the ID to that.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -704,7 +704,7 @@ namespace Pulumi.Rancher2
     /// });
     /// ```
     /// 
-    /// ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
+    /// ### Creating AKS cluster from Rancher v2, using `AksConfigV2`. For Rancher v2.6.0 and above.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -809,7 +809,7 @@ namespace Pulumi.Rancher2
         public Output<ImmutableArray<Outputs.ClusterAgentEnvVar>> AgentEnvVars { get; private set; } = null!;
 
         /// <summary>
-        /// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+        /// The Azure AKS v2 configuration for creating/import `Aks` Clusters. Conflicts with `EksConfigV2`, `GkeConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Output("aksConfigV2")]
         public Output<Outputs.ClusterAksConfigV2?> AksConfigV2 { get; private set; } = null!;
@@ -905,19 +905,19 @@ namespace Pulumi.Rancher2
         public Output<string> DockerRootDir { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+        /// (Computed) The driver used for the Cluster. `Imported`, `Azurekubernetesservice`, `Amazonelasticcontainerservice`, `Googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         /// </summary>
         [Output("driver")]
         public Output<string> Driver { get; private set; } = null!;
 
         /// <summary>
-        /// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+        /// The Amazon EKS V2 configuration to create or import `Eks` Clusters. Conflicts with `GkeConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
         /// </summary>
         [Output("eksConfigV2")]
         public Output<Outputs.ClusterEksConfigV2> EksConfigV2 { get; private set; } = null!;
 
         /// <summary>
-        /// Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
+        /// Deploy istio on `System` project and `istio-system` namespace, using Rancher2App resource instead. See above example.
         /// </summary>
         [Output("enableClusterIstio")]
         public Output<bool> EnableClusterIstio { get; private set; } = null!;
@@ -941,13 +941,13 @@ namespace Pulumi.Rancher2
         public Output<string> FleetWorkspaceName { get; private set; } = null!;
 
         /// <summary>
-        /// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+        /// The Google GKE V2 configuration for `Gke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
         /// </summary>
         [Output("gkeConfigV2")]
         public Output<Outputs.ClusterGkeConfigV2?> GkeConfigV2 { get; private set; } = null!;
 
         /// <summary>
-        /// The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+        /// The imported configuration for generic imported Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `RkeConfig`, `Rke2Config` and `K3sConfig` (list maxitems:1)
         /// </summary>
         [Output("importedConfig")]
         public Output<Outputs.ClusterImportedConfig?> ImportedConfig { get; private set; } = null!;
@@ -959,13 +959,13 @@ namespace Pulumi.Rancher2
         public Output<bool> IstioEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        /// The K3S configuration for `K3s` imported Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `OkeConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Output("k3sConfig")]
         public Output<Outputs.ClusterK3sConfig> K3sConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `ClusterAuthEndpoint` enabled, the KubeConfig will not be available until the cluster is `Connected` (string)
         /// </summary>
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
@@ -983,19 +983,19 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        /// The Oracle OKE configuration for `Oke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `K3sConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Output("okeConfig")]
         public Output<Outputs.ClusterOkeConfig?> OkeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+        /// The RKE2 configuration for `Rke2` Clusters. Conflicts with `AksConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Output("rke2Config")]
         public Output<Outputs.ClusterRke2Config> Rke2Config { get; private set; } = null!;
 
         /// <summary>
-        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        /// The RKE configuration for `Rke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `OkeConfig` and `K3sConfig` (list maxitems:1)
         /// </summary>
         [Output("rkeConfig")]
         public Output<Outputs.ClusterRkeConfig> RkeConfig { get; private set; } = null!;
@@ -1007,7 +1007,7 @@ namespace Pulumi.Rancher2
         public Output<string> SystemProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Windows preferred cluster. Default: `false` (bool)
+        /// Windows preferred cluster. Default: `False` (bool)
         /// </summary>
         [Output("windowsPreferedCluster")]
         public Output<bool?> WindowsPreferedCluster { get; private set; } = null!;
@@ -1076,7 +1076,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+        /// The Azure AKS v2 configuration for creating/import `Aks` Clusters. Conflicts with `EksConfigV2`, `GkeConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Input("aksConfigV2")]
         public Input<Inputs.ClusterAksConfigV2Args>? AksConfigV2 { get; set; }
@@ -1172,13 +1172,13 @@ namespace Pulumi.Rancher2
         public Input<string>? DockerRootDir { get; set; }
 
         /// <summary>
-        /// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+        /// (Computed) The driver used for the Cluster. `Imported`, `Azurekubernetesservice`, `Amazonelasticcontainerservice`, `Googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         /// </summary>
         [Input("driver")]
         public Input<string>? Driver { get; set; }
 
         /// <summary>
-        /// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+        /// The Amazon EKS V2 configuration to create or import `Eks` Clusters. Conflicts with `GkeConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
         /// </summary>
         [Input("eksConfigV2")]
         public Input<Inputs.ClusterEksConfigV2Args>? EksConfigV2 { get; set; }
@@ -1208,19 +1208,19 @@ namespace Pulumi.Rancher2
         public Input<string>? FleetWorkspaceName { get; set; }
 
         /// <summary>
-        /// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+        /// The Google GKE V2 configuration for `Gke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
         /// </summary>
         [Input("gkeConfigV2")]
         public Input<Inputs.ClusterGkeConfigV2Args>? GkeConfigV2 { get; set; }
 
         /// <summary>
-        /// The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+        /// The imported configuration for generic imported Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `RkeConfig`, `Rke2Config` and `K3sConfig` (list maxitems:1)
         /// </summary>
         [Input("importedConfig")]
         public Input<Inputs.ClusterImportedConfigArgs>? ImportedConfig { get; set; }
 
         /// <summary>
-        /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        /// The K3S configuration for `K3s` imported Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `OkeConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Input("k3sConfig")]
         public Input<Inputs.ClusterK3sConfigArgs>? K3sConfig { get; set; }
@@ -1244,25 +1244,25 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        /// The Oracle OKE configuration for `Oke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `K3sConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Input("okeConfig")]
         public Input<Inputs.ClusterOkeConfigArgs>? OkeConfig { get; set; }
 
         /// <summary>
-        /// The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+        /// The RKE2 configuration for `Rke2` Clusters. Conflicts with `AksConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Input("rke2Config")]
         public Input<Inputs.ClusterRke2ConfigArgs>? Rke2Config { get; set; }
 
         /// <summary>
-        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        /// The RKE configuration for `Rke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `OkeConfig` and `K3sConfig` (list maxitems:1)
         /// </summary>
         [Input("rkeConfig")]
         public Input<Inputs.ClusterRkeConfigArgs>? RkeConfig { get; set; }
 
         /// <summary>
-        /// Windows preferred cluster. Default: `false` (bool)
+        /// Windows preferred cluster. Default: `False` (bool)
         /// </summary>
         [Input("windowsPreferedCluster")]
         public Input<bool>? WindowsPreferedCluster { get; set; }
@@ -1288,7 +1288,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+        /// The Azure AKS v2 configuration for creating/import `Aks` Clusters. Conflicts with `EksConfigV2`, `GkeConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Input("aksConfigV2")]
         public Input<Inputs.ClusterAksConfigV2GetArgs>? AksConfigV2 { get; set; }
@@ -1412,19 +1412,19 @@ namespace Pulumi.Rancher2
         public Input<string>? DockerRootDir { get; set; }
 
         /// <summary>
-        /// (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
+        /// (Computed) The driver used for the Cluster. `Imported`, `Azurekubernetesservice`, `Amazonelasticcontainerservice`, `Googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         /// </summary>
         [Input("driver")]
         public Input<string>? Driver { get; set; }
 
         /// <summary>
-        /// The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
+        /// The Amazon EKS V2 configuration to create or import `Eks` Clusters. Conflicts with `GkeConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig`. For Rancher v2.5.x and above (list maxitems:1)
         /// </summary>
         [Input("eksConfigV2")]
         public Input<Inputs.ClusterEksConfigV2GetArgs>? EksConfigV2 { get; set; }
 
         /// <summary>
-        /// Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
+        /// Deploy istio on `System` project and `istio-system` namespace, using Rancher2App resource instead. See above example.
         /// </summary>
         [Input("enableClusterIstio")]
         public Input<bool>? EnableClusterIstio { get; set; }
@@ -1454,13 +1454,13 @@ namespace Pulumi.Rancher2
         public Input<string>? FleetWorkspaceName { get; set; }
 
         /// <summary>
-        /// The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
+        /// The Google GKE V2 configuration for `Gke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
         /// </summary>
         [Input("gkeConfigV2")]
         public Input<Inputs.ClusterGkeConfigV2GetArgs>? GkeConfigV2 { get; set; }
 
         /// <summary>
-        /// The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
+        /// The imported configuration for generic imported Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `RkeConfig`, `Rke2Config` and `K3sConfig` (list maxitems:1)
         /// </summary>
         [Input("importedConfig")]
         public Input<Inputs.ClusterImportedConfigGetArgs>? ImportedConfig { get; set; }
@@ -1472,7 +1472,7 @@ namespace Pulumi.Rancher2
         public Input<bool>? IstioEnabled { get; set; }
 
         /// <summary>
-        /// The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
+        /// The K3S configuration for `K3s` imported Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `OkeConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Input("k3sConfig")]
         public Input<Inputs.ClusterK3sConfigGetArgs>? K3sConfig { get; set; }
@@ -1481,7 +1481,7 @@ namespace Pulumi.Rancher2
         private Input<string>? _kubeConfig;
 
         /// <summary>
-        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
+        /// (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `ClusterAuthEndpoint` enabled, the KubeConfig will not be available until the cluster is `Connected` (string)
         /// </summary>
         public Input<string>? KubeConfig
         {
@@ -1512,19 +1512,19 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
+        /// The Oracle OKE configuration for `Oke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `K3sConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Input("okeConfig")]
         public Input<Inputs.ClusterOkeConfigGetArgs>? OkeConfig { get; set; }
 
         /// <summary>
-        /// The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
+        /// The RKE2 configuration for `Rke2` Clusters. Conflicts with `AksConfigV2`, `K3sConfig`, `OkeConfig` and `RkeConfig` (list maxitems:1)
         /// </summary>
         [Input("rke2Config")]
         public Input<Inputs.ClusterRke2ConfigGetArgs>? Rke2Config { get; set; }
 
         /// <summary>
-        /// The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
+        /// The RKE configuration for `Rke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `OkeConfig` and `K3sConfig` (list maxitems:1)
         /// </summary>
         [Input("rkeConfig")]
         public Input<Inputs.ClusterRkeConfigGetArgs>? RkeConfig { get; set; }
@@ -1536,7 +1536,7 @@ namespace Pulumi.Rancher2
         public Input<string>? SystemProjectId { get; set; }
 
         /// <summary>
-        /// Windows preferred cluster. Default: `false` (bool)
+        /// Windows preferred cluster. Default: `False` (bool)
         /// </summary>
         [Input("windowsPreferedCluster")]
         public Input<bool>? WindowsPreferedCluster { get; set; }

@@ -94,7 +94,7 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
+        /// The type of the identity (string). Defaults to `User`. Only `User` and `Group` values are supported (string)
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.Rancher2
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
+        /// The type of the identity (string). Defaults to `User`. Only `User` and `Group` values are supported (string)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

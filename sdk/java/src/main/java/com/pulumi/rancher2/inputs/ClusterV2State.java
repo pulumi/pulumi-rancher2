@@ -100,14 +100,14 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
+     * (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2Sync`).
      * 
      */
     @Import(name="clusterV1Id")
     private @Nullable Output<String> clusterV1Id;
 
     /**
-     * @return (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
+     * @return (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2Sync`).
      * 
      */
     public Optional<Output<String>> clusterV1Id() {
@@ -190,14 +190,14 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
+     * (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected`.
      * 
      */
     @Import(name="kubeConfig")
     private @Nullable Output<String> kubeConfig;
 
     /**
-     * @return (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
+     * @return (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected`.
      * 
      */
     public Optional<Output<String>> kubeConfig() {
@@ -461,7 +461,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterV1Id (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
+         * @param clusterV1Id (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2Sync`).
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterV1Id (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2_sync`).
+         * @param clusterV1Id (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2Sync`).
          * 
          * @return builder
          * 
@@ -597,7 +597,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubeConfig (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
+         * @param kubeConfig (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected`.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class ClusterV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kubeConfig (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `local_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected`.
+         * @param kubeConfig (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected`.
          * 
          * @return builder
          * 
