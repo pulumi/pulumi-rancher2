@@ -64,7 +64,7 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
     /**
      * Labels for global role binding (map)
      * 
-     * **Note:** user `user_id` OR group `group_principal_id` must be defined
+     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      * 
      */
     @Import(name="labels")
@@ -73,7 +73,7 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
     /**
      * @return Labels for global role binding (map)
      * 
-     * **Note:** user `user_id` OR group `group_principal_id` must be defined
+     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -205,7 +205,7 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
         /**
          * @param labels Labels for global role binding (map)
          * 
-         * **Note:** user `user_id` OR group `group_principal_id` must be defined
+         * **Note:** user `userId` OR group `groupPrincipalId` must be defined
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
         /**
          * @param labels Labels for global role binding (map)
          * 
-         * **Note:** user `user_id` OR group `group_principal_id` must be defined
+         * **Note:** user `userId` OR group `groupPrincipalId` must be defined
          * 
          * @return builder
          * 

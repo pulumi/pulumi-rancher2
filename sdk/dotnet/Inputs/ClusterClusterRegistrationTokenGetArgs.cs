@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// K8s manifest url to execute with `kubectl` to import an existing k8s cluster (string)
+        /// K8s manifest url to execute with `Kubectl` to import an existing k8s cluster (string)
         /// </summary>
         [Input("manifestUrl")]
         public Input<string>? ManifestUrl { get; set; }

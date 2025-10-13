@@ -39,7 +39,7 @@ public final class ClusterSyncNode {
      */
     private @Nullable String hostname;
     /**
-     * @return (Computed) The ID of the resource. Same as `cluster_id` (string)
+     * @return (Computed) The ID of the resource. Same as `clusterId` (string)
      * 
      */
     private @Nullable String id;
@@ -131,7 +131,7 @@ public final class ClusterSyncNode {
         return Optional.ofNullable(this.hostname);
     }
     /**
-     * @return (Computed) The ID of the resource. Same as `cluster_id` (string)
+     * @return (Computed) The ID of the resource. Same as `clusterId` (string)
      * 
      */
     public Optional<String> id() {

@@ -47,14 +47,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
     }
 
     /**
-     * Required if `domain_name` not provided. (string)
+     * Required if `domainName` not provided. (string)
      * 
      */
     @Import(name="domainId")
     private @Nullable Output<String> domainId;
 
     /**
-     * @return Required if `domain_name` not provided. (string)
+     * @return Required if `domainName` not provided. (string)
      * 
      */
     public Optional<Output<String>> domainId() {
@@ -62,14 +62,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
     }
 
     /**
-     * Required if `domain_id` not provided. (string)
+     * Required if `domainId` not provided. (string)
      * 
      */
     @Import(name="domainName")
     private @Nullable Output<String> domainName;
 
     /**
-     * @return Required if `domain_id` not provided. (string)
+     * @return Required if `domainId` not provided. (string)
      * 
      */
     public Optional<Output<String>> domainName() {
@@ -107,14 +107,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
     }
 
     /**
-     * Required if `tenant_name` not provided. (string)
+     * Required if `tenantName` not provided. (string)
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Required if `tenant_name` not provided. (string)
+     * @return Required if `tenantName` not provided. (string)
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -122,14 +122,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
     }
 
     /**
-     * Required if `tenant_id` not provided. (string)
+     * Required if `tenantId` not provided. (string)
      * 
      */
     @Import(name="tenantName")
     private @Nullable Output<String> tenantName;
 
     /**
-     * @return Required if `tenant_id` not provided. (string)
+     * @return Required if `tenantId` not provided. (string)
      * 
      */
     public Optional<Output<String>> tenantName() {
@@ -242,7 +242,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param domainId Required if `domain_name` not provided. (string)
+         * @param domainId Required if `domainName` not provided. (string)
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param domainId Required if `domain_name` not provided. (string)
+         * @param domainId Required if `domainName` not provided. (string)
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param domainName Required if `domain_id` not provided. (string)
+         * @param domainName Required if `domainId` not provided. (string)
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param domainName Required if `domain_id` not provided. (string)
+         * @param domainName Required if `domainId` not provided. (string)
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param tenantId Required if `tenant_name` not provided. (string)
+         * @param tenantId Required if `tenantName` not provided. (string)
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param tenantId Required if `tenant_name` not provided. (string)
+         * @param tenantId Required if `tenantName` not provided. (string)
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param tenantName Required if `tenant_id` not provided. (string)
+         * @param tenantName Required if `tenantId` not provided. (string)
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobalArgs
         }
 
         /**
-         * @param tenantName Required if `tenant_id` not provided. (string)
+         * @param tenantName Required if `tenantId` not provided. (string)
          * 
          * @return builder
          * 

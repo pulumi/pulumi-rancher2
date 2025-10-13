@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterRkeConfigUpgradeStrategy
     {
         /// <summary>
-        /// RKE drain nodes. Default: `false` (bool)
+        /// RKE drain nodes. Default: `False` (bool)
         /// </summary>
         public readonly bool? Drain;
         /// <summary>

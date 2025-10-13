@@ -23,12 +23,12 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     private @Nullable String caFile;
     /**
-     * @return Required if `domain_name` not provided. (string)
+     * @return Required if `domainName` not provided. (string)
      * 
      */
     private @Nullable String domainId;
     /**
-     * @return Required if `domain_id` not provided. (string)
+     * @return Required if `domainId` not provided. (string)
      * 
      */
     private @Nullable String domainName;
@@ -43,12 +43,12 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
      */
     private @Nullable String region;
     /**
-     * @return Required if `tenant_name` not provided. (string)
+     * @return Required if `tenantName` not provided. (string)
      * 
      */
     private @Nullable String tenantId;
     /**
-     * @return Required if `tenant_id` not provided. (string)
+     * @return Required if `tenantId` not provided. (string)
      * 
      */
     private @Nullable String tenantName;
@@ -79,14 +79,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
         return Optional.ofNullable(this.caFile);
     }
     /**
-     * @return Required if `domain_name` not provided. (string)
+     * @return Required if `domainName` not provided. (string)
      * 
      */
     public Optional<String> domainId() {
         return Optional.ofNullable(this.domainId);
     }
     /**
-     * @return Required if `domain_id` not provided. (string)
+     * @return Required if `domainId` not provided. (string)
      * 
      */
     public Optional<String> domainName() {
@@ -107,14 +107,14 @@ public final class ClusterRkeConfigCloudProviderOpenstackCloudProviderGlobal {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Required if `tenant_name` not provided. (string)
+     * @return Required if `tenantName` not provided. (string)
      * 
      */
     public Optional<String> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
     /**
-     * @return Required if `tenant_id` not provided. (string)
+     * @return Required if `tenantId` not provided. (string)
      * 
      */
     public Optional<String> tenantName() {

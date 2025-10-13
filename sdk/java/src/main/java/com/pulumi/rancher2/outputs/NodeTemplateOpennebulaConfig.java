@@ -39,12 +39,12 @@ public final class NodeTemplateOpennebulaConfig {
      */
     private @Nullable String diskResize;
     /**
-     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `imageName` (string)
      * 
      */
     private @Nullable String imageId;
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      * 
      */
     private @Nullable String imageName;
@@ -59,12 +59,12 @@ public final class NodeTemplateOpennebulaConfig {
      */
     private @Nullable String memory;
     /**
-     * @return Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+     * @return Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
      * 
      */
     private @Nullable String networkId;
     /**
-     * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+     * @return Opennebula network to connect the machine to. Conflicts with `networkId` (string)
      * 
      */
     private @Nullable String networkName;
@@ -84,12 +84,12 @@ public final class NodeTemplateOpennebulaConfig {
      */
     private @Nullable String sshUser;
     /**
-     * @return Opennebula template ID to use. Conflicts with `template_name` (string)
+     * @return Opennebula template ID to use. Conflicts with `templateName` (string)
      * 
      */
     private @Nullable String templateId;
     /**
-     * @return Name of the Opennbula template to use. Conflicts with `template_id` (string)
+     * @return Name of the Opennbula template to use. Conflicts with `templateId` (string)
      * 
      */
     private @Nullable String templateName;
@@ -101,7 +101,7 @@ public final class NodeTemplateOpennebulaConfig {
     /**
      * @return VCPUs for the VM (string)
      * 
-     * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+     * &gt; **Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
      * 
      */
     private @Nullable String vcpu;
@@ -148,14 +148,14 @@ public final class NodeTemplateOpennebulaConfig {
         return Optional.ofNullable(this.diskResize);
     }
     /**
-     * @return OpenStack image id to use for the instance. Conflicts with `image_name` (string)
+     * @return OpenStack image id to use for the instance. Conflicts with `imageName` (string)
      * 
      */
     public Optional<String> imageId() {
         return Optional.ofNullable(this.imageId);
     }
     /**
-     * @return OpenStack image name to use for the instance. Conflicts with `image_id` (string)
+     * @return OpenStack image name to use for the instance. Conflicts with `imageId` (string)
      * 
      */
     public Optional<String> imageName() {
@@ -176,14 +176,14 @@ public final class NodeTemplateOpennebulaConfig {
         return Optional.ofNullable(this.memory);
     }
     /**
-     * @return Opennebula network ID to connect the machine to. Conflicts with `network_name` (string)
+     * @return Opennebula network ID to connect the machine to. Conflicts with `networkName` (string)
      * 
      */
     public Optional<String> networkId() {
         return Optional.ofNullable(this.networkId);
     }
     /**
-     * @return Opennebula network to connect the machine to. Conflicts with `network_id` (string)
+     * @return Opennebula network to connect the machine to. Conflicts with `networkId` (string)
      * 
      */
     public Optional<String> networkName() {
@@ -211,14 +211,14 @@ public final class NodeTemplateOpennebulaConfig {
         return Optional.ofNullable(this.sshUser);
     }
     /**
-     * @return Opennebula template ID to use. Conflicts with `template_name` (string)
+     * @return Opennebula template ID to use. Conflicts with `templateName` (string)
      * 
      */
     public Optional<String> templateId() {
         return Optional.ofNullable(this.templateId);
     }
     /**
-     * @return Name of the Opennbula template to use. Conflicts with `template_id` (string)
+     * @return Name of the Opennbula template to use. Conflicts with `templateId` (string)
      * 
      */
     public Optional<String> templateName() {
@@ -234,7 +234,7 @@ public final class NodeTemplateOpennebulaConfig {
     /**
      * @return VCPUs for the VM (string)
      * 
-     * &gt; **Note:**: `Required*` denotes that one of image_name / image_id or template_name / template_id is required but you cannot combine them.
+     * &gt; **Note:**: `Required*` denotes that one of imageName / imageId or templateName / templateId is required but you cannot combine them.
      * 
      */
     public Optional<String> vcpu() {

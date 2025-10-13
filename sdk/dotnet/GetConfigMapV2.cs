@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The namespaces of the configMap v2. Default: `default` (string)
+        /// The namespaces of the configMap v2. Default: `Default` (string)
         /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
@@ -72,7 +72,7 @@ namespace Pulumi.Rancher2
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The namespaces of the configMap v2. Default: `default` (string)
+        /// The namespaces of the configMap v2. Default: `Default` (string)
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

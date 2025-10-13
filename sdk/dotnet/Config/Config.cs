@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2
 
         private static readonly __Value<bool?> _insecure = new __Value<bool?>(() => __config.GetBoolean("insecure") ?? Utilities.GetEnvBoolean("RANCHER_INSECURE") ?? false);
         /// <summary>
-        /// Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
+        /// Allow insecure connections to Rancher. Mandatory if self signed tls and not CaCerts provided
         /// </summary>
         public static bool? Insecure
         {

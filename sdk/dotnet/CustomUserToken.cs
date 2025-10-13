@@ -14,7 +14,7 @@ namespace Pulumi.Rancher2
     /// 
     /// There are 2 kind of tokens:
     /// - not scoped: valid for global system.
-    /// - scoped: valid for just a specific cluster (`cluster_id` should be provided).
+    /// - scoped: valid for just a specific cluster (`ClusterId` should be provided).
     /// 
     /// Tokens can only be created for a Rancher User with at least the `user-base` global role binding in order to enable user login.
     /// 
@@ -153,7 +153,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Token time to live in seconds. Default `0` (int) 
         /// 
-        /// From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        /// From Rancher v2.4.6 `Ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         /// </summary>
         [Output("ttl")]
         public Output<int?> Ttl { get; private set; } = null!;
@@ -284,7 +284,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Token time to live in seconds. Default `0` (int) 
         /// 
-        /// From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        /// From Rancher v2.4.6 `Ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
@@ -442,7 +442,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Token time to live in seconds. Default `0` (int) 
         /// 
-        /// From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        /// From Rancher v2.4.6 `Ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
