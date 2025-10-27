@@ -9,9 +9,3 @@ env:
 makeTemplate: bridged
 pulumiConvert: 1
 registryDocs: true
-plugins:
-    - name: std
-      version: "2.2.0"
-    - name: terraform
-      version: "1.0.16"
-      kind: converter
