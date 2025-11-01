@@ -59,18 +59,18 @@ import (
 //					CpuCount:    pulumi.String("2"),
 //					MemorySize:  pulumi.String("4"),
 //					DiskInfo: pulumi.String(`    {
-//	        "disks": [{
-//	            "imageName": "harvester-public/image-57hzg",
-//	            "size": 40,
-//	            "bootOrder": 1
+//	        \"disks\": [{
+//	            \"imageName\": \"harvester-public/image-57hzg\",
+//	            \"size\": 40,
+//	            \"bootOrder\": 1
 //	        }]
 //	    }
 //
 // `),
 //
 //					NetworkInfo: pulumi.String(`    {
-//	        "interfaces": [{
-//	            "networkName": "harvester-public/vlan1"
+//	        \"interfaces\": [{
+//	            \"networkName\": \"harvester-public/vlan1\"
 //	        }]
 //	    }
 //

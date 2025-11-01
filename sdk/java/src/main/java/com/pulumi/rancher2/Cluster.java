@@ -173,8 +173,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterSyncArgs;
  * import com.pulumi.rancher2.Namespace;
  * import com.pulumi.rancher2.NamespaceArgs;
- * import com.pulumi.rancher2.app;
- * import com.pulumi.rancher2.appArgs;
+ * import com.pulumi.rancher2.App;
+ * import com.pulumi.rancher2.AppArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -221,44 +221,44 @@ import javax.annotation.Nullable;
  *             .templateVersion("0.1.1")
  *             .targetNamespace(foo_istio.id())
  *             .answers(Map.ofEntries(
- *                 Map.entry("enabled", false),
+ *                 Map.entry("certmanager.enabled", false),
  *                 Map.entry("enableCRDs", true),
- *                 Map.entry("enabled", true),
- *                 Map.entry("enabled", false),
- *                 Map.entry("cpu", "2000m"),
- *                 Map.entry("memory", "1024Mi"),
- *                 Map.entry("cpu", "100m"),
- *                 Map.entry("memory", "128Mi"),
- *                 Map.entry("type", "NodePort"),
- *                 Map.entry("clusterId", foo_customClusterSync.clusterId()),
- *                 Map.entry("enabled", "false"),
- *                 Map.entry("enabled", "false"),
- *                 Map.entry("enabled", "true"),
- *                 Map.entry("enabled", "true"),
- *                 Map.entry("enabled", "true"),
- *                 Map.entry("cpu", "4800m"),
- *                 Map.entry("memory", "4096Mi"),
- *                 Map.entry("cpu", "1000m"),
- *                 Map.entry("memory", "1024Mi"),
- *                 Map.entry("cpu", "4800m"),
- *                 Map.entry("memory", "4096Mi"),
- *                 Map.entry("cpu", "1000m"),
- *                 Map.entry("memory", "1024Mi"),
- *                 Map.entry("enabled", false),
- *                 Map.entry("enabled", false),
- *                 Map.entry("enabled", true),
- *                 Map.entry("cpu", "1000m"),
- *                 Map.entry("memory", "4096Mi"),
- *                 Map.entry("cpu", "500m"),
- *                 Map.entry("memory", "2048Mi"),
- *                 Map.entry("traceSampling", "1"),
- *                 Map.entry("enabled", true),
- *                 Map.entry("enabled", true),
- *                 Map.entry("enabled", true),
- *                 Map.entry("cpu", "500m"),
- *                 Map.entry("memory", "1024Mi"),
- *                 Map.entry("cpu", "100m"),
- *                 Map.entry("memory", "100Mi")
+ *                 Map.entry("galley.enabled", true),
+ *                 Map.entry("gateways.enabled", false),
+ *                 Map.entry("gateways.istio-ingressgateway.resources.limits.cpu", "2000m"),
+ *                 Map.entry("gateways.istio-ingressgateway.resources.limits.memory", "1024Mi"),
+ *                 Map.entry("gateways.istio-ingressgateway.resources.requests.cpu", "100m"),
+ *                 Map.entry("gateways.istio-ingressgateway.resources.requests.memory", "128Mi"),
+ *                 Map.entry("gateways.istio-ingressgateway.type", "NodePort"),
+ *                 Map.entry("global.rancher.clusterId", foo_customClusterSync.clusterId()),
+ *                 Map.entry("istio_cni.enabled", "false"),
+ *                 Map.entry("istiocoredns.enabled", "false"),
+ *                 Map.entry("kiali.enabled", "true"),
+ *                 Map.entry("mixer.enabled", "true"),
+ *                 Map.entry("mixer.policy.enabled", "true"),
+ *                 Map.entry("mixer.policy.resources.limits.cpu", "4800m"),
+ *                 Map.entry("mixer.policy.resources.limits.memory", "4096Mi"),
+ *                 Map.entry("mixer.policy.resources.requests.cpu", "1000m"),
+ *                 Map.entry("mixer.policy.resources.requests.memory", "1024Mi"),
+ *                 Map.entry("mixer.telemetry.resources.limits.cpu", "4800m"),
+ *                 Map.entry("mixer.telemetry.resources.limits.memory", "4096Mi"),
+ *                 Map.entry("mixer.telemetry.resources.requests.cpu", "1000m"),
+ *                 Map.entry("mixer.telemetry.resources.requests.memory", "1024Mi"),
+ *                 Map.entry("mtls.enabled", false),
+ *                 Map.entry("nodeagent.enabled", false),
+ *                 Map.entry("pilot.enabled", true),
+ *                 Map.entry("pilot.resources.limits.cpu", "1000m"),
+ *                 Map.entry("pilot.resources.limits.memory", "4096Mi"),
+ *                 Map.entry("pilot.resources.requests.cpu", "500m"),
+ *                 Map.entry("pilot.resources.requests.memory", "2048Mi"),
+ *                 Map.entry("pilot.traceSampling", "1"),
+ *                 Map.entry("security.enabled", true),
+ *                 Map.entry("sidecarInjectorWebhook.enabled", true),
+ *                 Map.entry("tracing.enabled", true),
+ *                 Map.entry("tracing.jaeger.resources.limits.cpu", "500m"),
+ *                 Map.entry("tracing.jaeger.resources.limits.memory", "1024Mi"),
+ *                 Map.entry("tracing.jaeger.resources.requests.cpu", "100m"),
+ *                 Map.entry("tracing.jaeger.resources.requests.memory", "100Mi")
  *             ))
  *             .build());
  * 
@@ -539,14 +539,14 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .overrideAffinity("""
  * {
- *   "nodeAffinity": {
- *     "requiredDuringSchedulingIgnoredDuringExecution": {
- *       "nodeSelectorTerms": [{
- *         "matchExpressions": [{
- *           "key": "not.this/nodepool",
- *           "operator": "In",
- *           "values": [
- *             "true"
+ *   \"nodeAffinity\": {
+ *     \"requiredDuringSchedulingIgnoredDuringExecution\": {
+ *       \"nodeSelectorTerms\": [{
+ *         \"matchExpressions\": [{
+ *           \"key\": \"not.this/nodepool\",
+ *           \"operator\": \"In\",
+ *           \"values\": [
+ *             \"true\"
  *           ]
  *         }]
  *       }]

@@ -84,17 +84,17 @@ import javax.annotation.Nullable;
  *                 .memorySize("4")
  *                 .diskInfo("""
  *     {
- *         "disks": [{
- *             "imageName": "harvester-public/image-57hzg",
- *             "size": 40,
- *             "bootOrder": 1
+ *         \"disks\": [{
+ *             \"imageName\": \"harvester-public/image-57hzg\",
+ *             \"size\": 40,
+ *             \"bootOrder\": 1
  *         }]
  *     }
  *                 """)
  *                 .networkInfo("""
  *     {
- *         "interfaces": [{
- *             "networkName": "harvester-public/vlan1"
+ *         \"interfaces\": [{
+ *             \"networkName\": \"harvester-public/vlan1\"
  *         }]
  *     }
  *                 """)

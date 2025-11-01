@@ -132,16 +132,16 @@ namespace Pulumi.Rancher2
     ///             CpuCount = "2",
     ///             MemorySize = "4",
     ///             DiskInfo = @"    {
-    ///         ""disks"": [{
-    ///             ""imageName"": ""harvester-public/image-57hzg"",
-    ///             ""size"": 40,
-    ///             ""bootOrder"": 1
+    ///         \""disks\"": [{
+    ///             \""imageName\"": \""harvester-public/image-57hzg\"",
+    ///             \""size\"": 40,
+    ///             \""bootOrder\"": 1
     ///         }]
     ///     }
     /// ",
     ///             NetworkInfo = @"    {
-    ///         ""interfaces"": [{
-    ///             ""networkName"": ""harvester-public/vlan1""
+    ///         \""interfaces\"": [{
+    ///             \""networkName\"": \""harvester-public/vlan1\""
     ///         }]
     ///     }
     /// ",
