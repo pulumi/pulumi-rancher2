@@ -523,16 +523,16 @@ class MachineConfigV2(pulumi.CustomResource):
                 "cpu_count": "2",
                 "memory_size": "4",
                 "disk_info": \"\"\"    {
-                "disks": [{
-                    "imageName": "harvester-public/image-57hzg",
-                    "size": 40,
-                    "bootOrder": 1
+                \\"disks\\": [{
+                    \\"imageName\\": \\"harvester-public/image-57hzg\\",
+                    \\"size\\": 40,
+                    \\"bootOrder\\": 1
                 }]
             }
         \"\"\",
                 "network_info": \"\"\"    {
-                "interfaces": [{
-                    "networkName": "harvester-public/vlan1"
+                \\"interfaces\\": [{
+                    \\"networkName\\": \\"harvester-public/vlan1\\"
                 }]
             }
         \"\"\",
@@ -604,16 +604,16 @@ class MachineConfigV2(pulumi.CustomResource):
                 "cpu_count": "2",
                 "memory_size": "4",
                 "disk_info": \"\"\"    {
-                "disks": [{
-                    "imageName": "harvester-public/image-57hzg",
-                    "size": 40,
-                    "bootOrder": 1
+                \\"disks\\": [{
+                    \\"imageName\\": \\"harvester-public/image-57hzg\\",
+                    \\"size\\": 40,
+                    \\"bootOrder\\": 1
                 }]
             }
         \"\"\",
                 "network_info": \"\"\"    {
-                "interfaces": [{
-                    "networkName": "harvester-public/vlan1"
+                \\"interfaces\\": [{
+                    \\"networkName\\": \\"harvester-public/vlan1\\"
                 }]
             }
         \"\"\",
