@@ -24,6 +24,18 @@ namespace Pulumi.Rancher2.Inputs
         [Input("chartValues")]
         public Input<string>? ChartValues { get; set; }
 
+        [Input("dataDirectories")]
+        private InputList<Inputs.ClusterV2RkeConfigDataDirectoryGetArgs>? _dataDirectories;
+
+        /// <summary>
+        /// Cluster V2 data directories
+        /// </summary>
+        public InputList<Inputs.ClusterV2RkeConfigDataDirectoryGetArgs> DataDirectories
+        {
+            get => _dataDirectories ?? (_dataDirectories = new InputList<Inputs.ClusterV2RkeConfigDataDirectoryGetArgs>());
+            set => _dataDirectories = value;
+        }
+
         /// <summary>
         /// Cluster V2 etcd
         /// </summary>

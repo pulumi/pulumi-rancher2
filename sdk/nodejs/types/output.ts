@@ -4356,6 +4356,10 @@ export interface ClusterV2RkeConfig {
      */
     chartValues?: string;
     /**
+     * Cluster V2 data directories
+     */
+    dataDirectories?: outputs.ClusterV2RkeConfigDataDirectory[];
+    /**
      * Cluster V2 etcd
      */
     etcd: outputs.ClusterV2RkeConfigEtcd;
@@ -4405,6 +4409,21 @@ export interface ClusterV2RkeConfig {
      * Cluster V2 upgrade strategy
      */
     upgradeStrategy?: outputs.ClusterV2RkeConfigUpgradeStrategy;
+}
+
+export interface ClusterV2RkeConfigDataDirectory {
+    /**
+     * Desired k8s distro data directory.
+     */
+    k8sDistro?: string;
+    /**
+     * Desired provisioning data directory.
+     */
+    provisioning?: string;
+    /**
+     * Desired System Agent data directory.
+     */
+    systemAgent?: string;
 }
 
 export interface ClusterV2RkeConfigEtcd {
@@ -7629,6 +7648,10 @@ export interface GetClusterV2RkeConfig {
      */
     chartValues?: string;
     /**
+     * Cluster V2 data directories
+     */
+    dataDirectories?: outputs.GetClusterV2RkeConfigDataDirectory[];
+    /**
      * Cluster V2 etcd
      */
     etcd: outputs.GetClusterV2RkeConfigEtcd;
@@ -7678,6 +7701,21 @@ export interface GetClusterV2RkeConfig {
      * Cluster V2 upgrade strategy
      */
     upgradeStrategy?: outputs.GetClusterV2RkeConfigUpgradeStrategy;
+}
+
+export interface GetClusterV2RkeConfigDataDirectory {
+    /**
+     * Desired k8s distro data directory.
+     */
+    k8sDistro?: string;
+    /**
+     * Desired provisioning data directory.
+     */
+    provisioning?: string;
+    /**
+     * Desired System Agent data directory.
+     */
+    systemAgent?: string;
 }
 
 export interface GetClusterV2RkeConfigEtcd {

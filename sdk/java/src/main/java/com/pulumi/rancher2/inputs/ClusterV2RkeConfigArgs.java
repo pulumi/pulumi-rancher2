@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.rancher2.inputs.ClusterV2RkeConfigDataDirectoryArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigEtcdArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigEtcdSnapshotCreateArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigEtcdSnapshotRestoreArgs;
@@ -55,6 +56,21 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> chartValues() {
         return Optional.ofNullable(this.chartValues);
+    }
+
+    /**
+     * Cluster V2 data directories
+     * 
+     */
+    @Import(name="dataDirectories")
+    private @Nullable Output<List<ClusterV2RkeConfigDataDirectoryArgs>> dataDirectories;
+
+    /**
+     * @return Cluster V2 data directories
+     * 
+     */
+    public Optional<Output<List<ClusterV2RkeConfigDataDirectoryArgs>>> dataDirectories() {
+        return Optional.ofNullable(this.dataDirectories);
     }
 
     /**
@@ -250,6 +266,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     private ClusterV2RkeConfigArgs(ClusterV2RkeConfigArgs $) {
         this.additionalManifest = $.additionalManifest;
         this.chartValues = $.chartValues;
+        this.dataDirectories = $.dataDirectories;
         this.etcd = $.etcd;
         this.etcdSnapshotCreate = $.etcdSnapshotCreate;
         this.etcdSnapshotRestore = $.etcdSnapshotRestore;
@@ -322,6 +339,37 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder chartValues(String chartValues) {
             return chartValues(Output.of(chartValues));
+        }
+
+        /**
+         * @param dataDirectories Cluster V2 data directories
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDirectories(@Nullable Output<List<ClusterV2RkeConfigDataDirectoryArgs>> dataDirectories) {
+            $.dataDirectories = dataDirectories;
+            return this;
+        }
+
+        /**
+         * @param dataDirectories Cluster V2 data directories
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDirectories(List<ClusterV2RkeConfigDataDirectoryArgs> dataDirectories) {
+            return dataDirectories(Output.of(dataDirectories));
+        }
+
+        /**
+         * @param dataDirectories Cluster V2 data directories
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataDirectories(ClusterV2RkeConfigDataDirectoryArgs... dataDirectories) {
+            return dataDirectories(List.of(dataDirectories));
         }
 
         /**

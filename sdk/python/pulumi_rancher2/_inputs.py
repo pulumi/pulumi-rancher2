@@ -391,6 +391,8 @@ __all__ = [
     'ClusterV2LocalAuthEndpointArgsDict',
     'ClusterV2RkeConfigArgs',
     'ClusterV2RkeConfigArgsDict',
+    'ClusterV2RkeConfigDataDirectoryArgs',
+    'ClusterV2RkeConfigDataDirectoryArgsDict',
     'ClusterV2RkeConfigEtcdArgs',
     'ClusterV2RkeConfigEtcdArgsDict',
     'ClusterV2RkeConfigEtcdS3ConfigArgs',
@@ -24193,6 +24195,10 @@ if not MYPY:
         """
         Cluster V2 chart values. It should be in YAML format
         """
+        data_directories: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigDataDirectoryArgsDict']]]]
+        """
+        Cluster V2 data directories
+        """
         etcd: NotRequired[pulumi.Input['ClusterV2RkeConfigEtcdArgsDict']]
         """
         Cluster V2 etcd
@@ -24249,6 +24255,7 @@ class ClusterV2RkeConfigArgs:
     def __init__(__self__, *,
                  additional_manifest: Optional[pulumi.Input[_builtins.str]] = None,
                  chart_values: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_directories: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigDataDirectoryArgs']]]] = None,
                  etcd: Optional[pulumi.Input['ClusterV2RkeConfigEtcdArgs']] = None,
                  etcd_snapshot_create: Optional[pulumi.Input['ClusterV2RkeConfigEtcdSnapshotCreateArgs']] = None,
                  etcd_snapshot_restore: Optional[pulumi.Input['ClusterV2RkeConfigEtcdSnapshotRestoreArgs']] = None,
@@ -24264,6 +24271,7 @@ class ClusterV2RkeConfigArgs:
         """
         :param pulumi.Input[_builtins.str] additional_manifest: Cluster V2 additional manifest
         :param pulumi.Input[_builtins.str] chart_values: Cluster V2 chart values. It should be in YAML format
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigDataDirectoryArgs']]] data_directories: Cluster V2 data directories
         :param pulumi.Input['ClusterV2RkeConfigEtcdArgs'] etcd: Cluster V2 etcd
         :param pulumi.Input['ClusterV2RkeConfigEtcdSnapshotCreateArgs'] etcd_snapshot_create: Cluster V2 etcd snapshot create
         :param pulumi.Input['ClusterV2RkeConfigEtcdSnapshotRestoreArgs'] etcd_snapshot_restore: Cluster V2 etcd snapshot restore
@@ -24281,6 +24289,8 @@ class ClusterV2RkeConfigArgs:
             pulumi.set(__self__, "additional_manifest", additional_manifest)
         if chart_values is not None:
             pulumi.set(__self__, "chart_values", chart_values)
+        if data_directories is not None:
+            pulumi.set(__self__, "data_directories", data_directories)
         if etcd is not None:
             pulumi.set(__self__, "etcd", etcd)
         if etcd_snapshot_create is not None:
@@ -24332,6 +24342,18 @@ class ClusterV2RkeConfigArgs:
     @chart_values.setter
     def chart_values(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "chart_values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataDirectories")
+    def data_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigDataDirectoryArgs']]]]:
+        """
+        Cluster V2 data directories
+        """
+        return pulumi.get(self, "data_directories")
+
+    @data_directories.setter
+    def data_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterV2RkeConfigDataDirectoryArgs']]]]):
+        pulumi.set(self, "data_directories", value)
 
     @_builtins.property
     @pulumi.getter
@@ -24477,6 +24499,78 @@ class ClusterV2RkeConfigArgs:
     @upgrade_strategy.setter
     def upgrade_strategy(self, value: Optional[pulumi.Input['ClusterV2RkeConfigUpgradeStrategyArgs']]):
         pulumi.set(self, "upgrade_strategy", value)
+
+
+if not MYPY:
+    class ClusterV2RkeConfigDataDirectoryArgsDict(TypedDict):
+        k8s_distro: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Desired k8s distro data directory.
+        """
+        provisioning: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Desired provisioning data directory.
+        """
+        system_agent: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Desired System Agent data directory.
+        """
+elif False:
+    ClusterV2RkeConfigDataDirectoryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterV2RkeConfigDataDirectoryArgs:
+    def __init__(__self__, *,
+                 k8s_distro: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning: Optional[pulumi.Input[_builtins.str]] = None,
+                 system_agent: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] k8s_distro: Desired k8s distro data directory.
+        :param pulumi.Input[_builtins.str] provisioning: Desired provisioning data directory.
+        :param pulumi.Input[_builtins.str] system_agent: Desired System Agent data directory.
+        """
+        if k8s_distro is not None:
+            pulumi.set(__self__, "k8s_distro", k8s_distro)
+        if provisioning is not None:
+            pulumi.set(__self__, "provisioning", provisioning)
+        if system_agent is not None:
+            pulumi.set(__self__, "system_agent", system_agent)
+
+    @_builtins.property
+    @pulumi.getter(name="k8sDistro")
+    def k8s_distro(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Desired k8s distro data directory.
+        """
+        return pulumi.get(self, "k8s_distro")
+
+    @k8s_distro.setter
+    def k8s_distro(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "k8s_distro", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def provisioning(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Desired provisioning data directory.
+        """
+        return pulumi.get(self, "provisioning")
+
+    @provisioning.setter
+    def provisioning(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning", value)
+
+    @_builtins.property
+    @pulumi.getter(name="systemAgent")
+    def system_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Desired System Agent data directory.
+        """
+        return pulumi.get(self, "system_agent")
+
+    @system_agent.setter
+    def system_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "system_agent", value)
 
 
 if not MYPY:

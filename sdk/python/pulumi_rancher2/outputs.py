@@ -204,6 +204,7 @@ __all__ = [
     'ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement',
     'ClusterV2LocalAuthEndpoint',
     'ClusterV2RkeConfig',
+    'ClusterV2RkeConfigDataDirectory',
     'ClusterV2RkeConfigEtcd',
     'ClusterV2RkeConfigEtcdS3Config',
     'ClusterV2RkeConfigEtcdSnapshotCreate',
@@ -425,6 +426,7 @@ __all__ = [
     'GetClusterV2AgentEnvVarResult',
     'GetClusterV2ClusterRegistrationTokenResult',
     'GetClusterV2RkeConfigResult',
+    'GetClusterV2RkeConfigDataDirectoryResult',
     'GetClusterV2RkeConfigEtcdResult',
     'GetClusterV2RkeConfigEtcdS3ConfigResult',
     'GetClusterV2RkeConfigEtcdSnapshotCreateResult',
@@ -18481,6 +18483,8 @@ class ClusterV2RkeConfig(dict):
             suggest = "additional_manifest"
         elif key == "chartValues":
             suggest = "chart_values"
+        elif key == "dataDirectories":
+            suggest = "data_directories"
         elif key == "etcdSnapshotCreate":
             suggest = "etcd_snapshot_create"
         elif key == "etcdSnapshotRestore":
@@ -18516,6 +18520,7 @@ class ClusterV2RkeConfig(dict):
     def __init__(__self__, *,
                  additional_manifest: Optional[_builtins.str] = None,
                  chart_values: Optional[_builtins.str] = None,
+                 data_directories: Optional[Sequence['outputs.ClusterV2RkeConfigDataDirectory']] = None,
                  etcd: Optional['outputs.ClusterV2RkeConfigEtcd'] = None,
                  etcd_snapshot_create: Optional['outputs.ClusterV2RkeConfigEtcdSnapshotCreate'] = None,
                  etcd_snapshot_restore: Optional['outputs.ClusterV2RkeConfigEtcdSnapshotRestore'] = None,
@@ -18531,6 +18536,7 @@ class ClusterV2RkeConfig(dict):
         """
         :param _builtins.str additional_manifest: Cluster V2 additional manifest
         :param _builtins.str chart_values: Cluster V2 chart values. It should be in YAML format
+        :param Sequence['ClusterV2RkeConfigDataDirectoryArgs'] data_directories: Cluster V2 data directories
         :param 'ClusterV2RkeConfigEtcdArgs' etcd: Cluster V2 etcd
         :param 'ClusterV2RkeConfigEtcdSnapshotCreateArgs' etcd_snapshot_create: Cluster V2 etcd snapshot create
         :param 'ClusterV2RkeConfigEtcdSnapshotRestoreArgs' etcd_snapshot_restore: Cluster V2 etcd snapshot restore
@@ -18548,6 +18554,8 @@ class ClusterV2RkeConfig(dict):
             pulumi.set(__self__, "additional_manifest", additional_manifest)
         if chart_values is not None:
             pulumi.set(__self__, "chart_values", chart_values)
+        if data_directories is not None:
+            pulumi.set(__self__, "data_directories", data_directories)
         if etcd is not None:
             pulumi.set(__self__, "etcd", etcd)
         if etcd_snapshot_create is not None:
@@ -18588,6 +18596,14 @@ class ClusterV2RkeConfig(dict):
         Cluster V2 chart values. It should be in YAML format
         """
         return pulumi.get(self, "chart_values")
+
+    @_builtins.property
+    @pulumi.getter(name="dataDirectories")
+    def data_directories(self) -> Optional[Sequence['outputs.ClusterV2RkeConfigDataDirectory']]:
+        """
+        Cluster V2 data directories
+        """
+        return pulumi.get(self, "data_directories")
 
     @_builtins.property
     @pulumi.getter
@@ -18685,6 +18701,68 @@ class ClusterV2RkeConfig(dict):
         Cluster V2 upgrade strategy
         """
         return pulumi.get(self, "upgrade_strategy")
+
+
+@pulumi.output_type
+class ClusterV2RkeConfigDataDirectory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "k8sDistro":
+            suggest = "k8s_distro"
+        elif key == "systemAgent":
+            suggest = "system_agent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2RkeConfigDataDirectory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2RkeConfigDataDirectory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2RkeConfigDataDirectory.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 k8s_distro: Optional[_builtins.str] = None,
+                 provisioning: Optional[_builtins.str] = None,
+                 system_agent: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str k8s_distro: Desired k8s distro data directory.
+        :param _builtins.str provisioning: Desired provisioning data directory.
+        :param _builtins.str system_agent: Desired System Agent data directory.
+        """
+        if k8s_distro is not None:
+            pulumi.set(__self__, "k8s_distro", k8s_distro)
+        if provisioning is not None:
+            pulumi.set(__self__, "provisioning", provisioning)
+        if system_agent is not None:
+            pulumi.set(__self__, "system_agent", system_agent)
+
+    @_builtins.property
+    @pulumi.getter(name="k8sDistro")
+    def k8s_distro(self) -> Optional[_builtins.str]:
+        """
+        Desired k8s distro data directory.
+        """
+        return pulumi.get(self, "k8s_distro")
+
+    @_builtins.property
+    @pulumi.getter
+    def provisioning(self) -> Optional[_builtins.str]:
+        """
+        Desired provisioning data directory.
+        """
+        return pulumi.get(self, "provisioning")
+
+    @_builtins.property
+    @pulumi.getter(name="systemAgent")
+    def system_agent(self) -> Optional[_builtins.str]:
+        """
+        Desired System Agent data directory.
+        """
+        return pulumi.get(self, "system_agent")
 
 
 @pulumi.output_type
@@ -38880,6 +38958,7 @@ class GetClusterV2RkeConfigResult(dict):
                  machine_selector_files: Sequence['outputs.GetClusterV2RkeConfigMachineSelectorFileResult'],
                  additional_manifest: Optional[_builtins.str] = None,
                  chart_values: Optional[_builtins.str] = None,
+                 data_directories: Optional[Sequence['outputs.GetClusterV2RkeConfigDataDirectoryResult']] = None,
                  etcd_snapshot_create: Optional['outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult'] = None,
                  etcd_snapshot_restore: Optional['outputs.GetClusterV2RkeConfigEtcdSnapshotRestoreResult'] = None,
                  local_auth_endpoint: Optional['outputs.GetClusterV2RkeConfigLocalAuthEndpointResult'] = None,
@@ -38895,6 +38974,7 @@ class GetClusterV2RkeConfigResult(dict):
         :param Sequence['GetClusterV2RkeConfigMachineSelectorFileArgs'] machine_selector_files: Cluster V2 machine selector files
         :param _builtins.str additional_manifest: Cluster V2 additional manifest
         :param _builtins.str chart_values: Cluster V2 chart values. It should be in YAML format
+        :param Sequence['GetClusterV2RkeConfigDataDirectoryArgs'] data_directories: Cluster V2 data directories
         :param 'GetClusterV2RkeConfigEtcdSnapshotCreateArgs' etcd_snapshot_create: Cluster V2 etcd snapshot create
         :param 'GetClusterV2RkeConfigEtcdSnapshotRestoreArgs' etcd_snapshot_restore: Cluster V2 etcd snapshot restore
         :param 'GetClusterV2RkeConfigLocalAuthEndpointArgs' local_auth_endpoint: Cluster V2 local auth endpoint
@@ -38912,6 +38992,8 @@ class GetClusterV2RkeConfigResult(dict):
             pulumi.set(__self__, "additional_manifest", additional_manifest)
         if chart_values is not None:
             pulumi.set(__self__, "chart_values", chart_values)
+        if data_directories is not None:
+            pulumi.set(__self__, "data_directories", data_directories)
         if etcd_snapshot_create is not None:
             pulumi.set(__self__, "etcd_snapshot_create", etcd_snapshot_create)
         if etcd_snapshot_restore is not None:
@@ -38984,6 +39066,14 @@ class GetClusterV2RkeConfigResult(dict):
         return pulumi.get(self, "chart_values")
 
     @_builtins.property
+    @pulumi.getter(name="dataDirectories")
+    def data_directories(self) -> Optional[Sequence['outputs.GetClusterV2RkeConfigDataDirectoryResult']]:
+        """
+        Cluster V2 data directories
+        """
+        return pulumi.get(self, "data_directories")
+
+    @_builtins.property
     @pulumi.getter(name="etcdSnapshotCreate")
     def etcd_snapshot_create(self) -> Optional['outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult']:
         """
@@ -39039,6 +39129,49 @@ class GetClusterV2RkeConfigResult(dict):
         Cluster V2 upgrade strategy
         """
         return pulumi.get(self, "upgrade_strategy")
+
+
+@pulumi.output_type
+class GetClusterV2RkeConfigDataDirectoryResult(dict):
+    def __init__(__self__, *,
+                 k8s_distro: Optional[_builtins.str] = None,
+                 provisioning: Optional[_builtins.str] = None,
+                 system_agent: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str k8s_distro: Desired k8s distro data directory.
+        :param _builtins.str provisioning: Desired provisioning data directory.
+        :param _builtins.str system_agent: Desired System Agent data directory.
+        """
+        if k8s_distro is not None:
+            pulumi.set(__self__, "k8s_distro", k8s_distro)
+        if provisioning is not None:
+            pulumi.set(__self__, "provisioning", provisioning)
+        if system_agent is not None:
+            pulumi.set(__self__, "system_agent", system_agent)
+
+    @_builtins.property
+    @pulumi.getter(name="k8sDistro")
+    def k8s_distro(self) -> Optional[_builtins.str]:
+        """
+        Desired k8s distro data directory.
+        """
+        return pulumi.get(self, "k8s_distro")
+
+    @_builtins.property
+    @pulumi.getter
+    def provisioning(self) -> Optional[_builtins.str]:
+        """
+        Desired provisioning data directory.
+        """
+        return pulumi.get(self, "provisioning")
+
+    @_builtins.property
+    @pulumi.getter(name="systemAgent")
+    def system_agent(self) -> Optional[_builtins.str]:
+        """
+        Desired System Agent data directory.
+        """
+        return pulumi.get(self, "system_agent")
 
 
 @pulumi.output_type
