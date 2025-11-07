@@ -7576,6 +7576,13 @@
                     "type": "string",
                     "description": "Cluster V2 chart values. It should be in YAML format\n"
                 },
+                "dataDirectories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:index/ClusterV2RkeConfigDataDirectory:ClusterV2RkeConfigDataDirectory"
+                    },
+                    "description": "Cluster V2 data directories\n"
+                },
                 "etcd": {
                     "$ref": "#/types/rancher2:index/ClusterV2RkeConfigEtcd:ClusterV2RkeConfigEtcd",
                     "description": "Cluster V2 etcd\n"
@@ -7650,6 +7657,23 @@
                     ]
                 }
             }
+        },
+        "rancher2:index/ClusterV2RkeConfigDataDirectory:ClusterV2RkeConfigDataDirectory": {
+            "properties": {
+                "k8sDistro": {
+                    "type": "string",
+                    "description": "Desired k8s distro data directory.\n"
+                },
+                "provisioning": {
+                    "type": "string",
+                    "description": "Desired provisioning data directory.\n"
+                },
+                "systemAgent": {
+                    "type": "string",
+                    "description": "Desired System Agent data directory.\n"
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/ClusterV2RkeConfigEtcd:ClusterV2RkeConfigEtcd": {
             "properties": {
@@ -17297,6 +17321,13 @@
                     "type": "string",
                     "description": "Cluster V2 chart values. It should be in YAML format\n"
                 },
+                "dataDirectories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/rancher2:index/getClusterV2RkeConfigDataDirectory:getClusterV2RkeConfigDataDirectory"
+                    },
+                    "description": "Cluster V2 data directories\n"
+                },
                 "etcd": {
                     "$ref": "#/types/rancher2:index/getClusterV2RkeConfigEtcd:getClusterV2RkeConfigEtcd",
                     "description": "Cluster V2 etcd\n"
@@ -17372,6 +17403,23 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "rancher2:index/getClusterV2RkeConfigDataDirectory:getClusterV2RkeConfigDataDirectory": {
+            "properties": {
+                "k8sDistro": {
+                    "type": "string",
+                    "description": "Desired k8s distro data directory.\n"
+                },
+                "provisioning": {
+                    "type": "string",
+                    "description": "Desired provisioning data directory.\n"
+                },
+                "systemAgent": {
+                    "type": "string",
+                    "description": "Desired System Agent data directory.\n"
+                }
+            },
+            "type": "object"
         },
         "rancher2:index/getClusterV2RkeConfigEtcd:getClusterV2RkeConfigEtcd": {
             "properties": {
