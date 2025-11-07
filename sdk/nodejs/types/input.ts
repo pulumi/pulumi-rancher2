@@ -4356,6 +4356,10 @@ export interface ClusterV2RkeConfig {
      */
     chartValues?: pulumi.Input<string>;
     /**
+     * Cluster V2 data directories
+     */
+    dataDirectories?: pulumi.Input<pulumi.Input<inputs.ClusterV2RkeConfigDataDirectory>[]>;
+    /**
      * Cluster V2 etcd
      */
     etcd?: pulumi.Input<inputs.ClusterV2RkeConfigEtcd>;
@@ -4405,6 +4409,21 @@ export interface ClusterV2RkeConfig {
      * Cluster V2 upgrade strategy
      */
     upgradeStrategy?: pulumi.Input<inputs.ClusterV2RkeConfigUpgradeStrategy>;
+}
+
+export interface ClusterV2RkeConfigDataDirectory {
+    /**
+     * Desired k8s distro data directory.
+     */
+    k8sDistro?: pulumi.Input<string>;
+    /**
+     * Desired provisioning data directory.
+     */
+    provisioning?: pulumi.Input<string>;
+    /**
+     * Desired System Agent data directory.
+     */
+    systemAgent?: pulumi.Input<string>;
 }
 
 export interface ClusterV2RkeConfigEtcd {

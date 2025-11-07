@@ -1173,6 +1173,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "data_directories": {
+                                    "maxItemsOne": false
+                                },
                                 "etcd": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -2695,6 +2698,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "data_directories": {
+                                    "maxItemsOne": false
+                                },
                                 "etcd": {
                                     "maxItemsOne": true,
                                     "elem": {

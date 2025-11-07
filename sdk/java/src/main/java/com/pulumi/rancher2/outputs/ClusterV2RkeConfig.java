@@ -4,6 +4,7 @@
 package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.rancher2.outputs.ClusterV2RkeConfigDataDirectory;
 import com.pulumi.rancher2.outputs.ClusterV2RkeConfigEtcd;
 import com.pulumi.rancher2.outputs.ClusterV2RkeConfigEtcdSnapshotCreate;
 import com.pulumi.rancher2.outputs.ClusterV2RkeConfigEtcdSnapshotRestore;
@@ -33,6 +34,11 @@ public final class ClusterV2RkeConfig {
      * 
      */
     private @Nullable String chartValues;
+    /**
+     * @return Cluster V2 data directories
+     * 
+     */
+    private @Nullable List<ClusterV2RkeConfigDataDirectory> dataDirectories;
     /**
      * @return Cluster V2 etcd
      * 
@@ -112,6 +118,13 @@ public final class ClusterV2RkeConfig {
      */
     public Optional<String> chartValues() {
         return Optional.ofNullable(this.chartValues);
+    }
+    /**
+     * @return Cluster V2 data directories
+     * 
+     */
+    public List<ClusterV2RkeConfigDataDirectory> dataDirectories() {
+        return this.dataDirectories == null ? List.of() : this.dataDirectories;
     }
     /**
      * @return Cluster V2 etcd
@@ -213,6 +226,7 @@ public final class ClusterV2RkeConfig {
     public static final class Builder {
         private @Nullable String additionalManifest;
         private @Nullable String chartValues;
+        private @Nullable List<ClusterV2RkeConfigDataDirectory> dataDirectories;
         private @Nullable ClusterV2RkeConfigEtcd etcd;
         private @Nullable ClusterV2RkeConfigEtcdSnapshotCreate etcdSnapshotCreate;
         private @Nullable ClusterV2RkeConfigEtcdSnapshotRestore etcdSnapshotRestore;
@@ -230,6 +244,7 @@ public final class ClusterV2RkeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.additionalManifest = defaults.additionalManifest;
     	      this.chartValues = defaults.chartValues;
+    	      this.dataDirectories = defaults.dataDirectories;
     	      this.etcd = defaults.etcd;
     	      this.etcdSnapshotCreate = defaults.etcdSnapshotCreate;
     	      this.etcdSnapshotRestore = defaults.etcdSnapshotRestore;
@@ -255,6 +270,15 @@ public final class ClusterV2RkeConfig {
 
             this.chartValues = chartValues;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dataDirectories(@Nullable List<ClusterV2RkeConfigDataDirectory> dataDirectories) {
+
+            this.dataDirectories = dataDirectories;
+            return this;
+        }
+        public Builder dataDirectories(ClusterV2RkeConfigDataDirectory... dataDirectories) {
+            return dataDirectories(List.of(dataDirectories));
         }
         @CustomType.Setter
         public Builder etcd(@Nullable ClusterV2RkeConfigEtcd etcd) {
@@ -344,6 +368,7 @@ public final class ClusterV2RkeConfig {
             final var _resultValue = new ClusterV2RkeConfig();
             _resultValue.additionalManifest = additionalManifest;
             _resultValue.chartValues = chartValues;
+            _resultValue.dataDirectories = dataDirectories;
             _resultValue.etcd = etcd;
             _resultValue.etcdSnapshotCreate = etcdSnapshotCreate;
             _resultValue.etcdSnapshotRestore = etcdSnapshotRestore;

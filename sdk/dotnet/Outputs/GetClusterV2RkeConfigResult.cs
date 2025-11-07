@@ -22,6 +22,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ChartValues;
         /// <summary>
+        /// Cluster V2 data directories
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterV2RkeConfigDataDirectoryResult> DataDirectories;
+        /// <summary>
         /// Cluster V2 etcd
         /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigEtcdResult Etcd;
@@ -76,6 +80,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? chartValues,
 
+            ImmutableArray<Outputs.GetClusterV2RkeConfigDataDirectoryResult> dataDirectories,
+
             Outputs.GetClusterV2RkeConfigEtcdResult etcd,
 
             Outputs.GetClusterV2RkeConfigEtcdSnapshotCreateResult? etcdSnapshotCreate,
@@ -102,6 +108,7 @@ namespace Pulumi.Rancher2.Outputs
         {
             AdditionalManifest = additionalManifest;
             ChartValues = chartValues;
+            DataDirectories = dataDirectories;
             Etcd = etcd;
             EtcdSnapshotCreate = etcdSnapshotCreate;
             EtcdSnapshotRestore = etcdSnapshotRestore;
