@@ -16,6 +16,83 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 RKE Cluster
+//			foo_custom, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo-custom"),
+//				Description: pulumi.String("Foo rancher2 custom cluster"),
+//				Kind:        "rke",
+//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
+//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
+//						Plugin: pulumi.String("canal"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a new rancher2 Cloud Credential
+//			foo, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("Terraform cloudCredential acceptance test"),
+//				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
+//					AccessKey: pulumi.String("XXXXXXXXXXXXXXXXXXXX"),
+//					SecretKey: pulumi.String("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a new rancher2 Node Template
+//			fooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
+//				Name:              pulumi.String("foo"),
+//				Description:       pulumi.String("foo test"),
+//				CloudCredentialId: foo.ID(),
+//				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
+//					Ami:    pulumi.String("<AMI_ID>"),
+//					Region: pulumi.String("<REGION>"),
+//					SecurityGroups: pulumi.StringArray{
+//						pulumi.String("<AWS_SECURITY_GROUP>"),
+//					},
+//					SubnetId: pulumi.String("<SUBNET_ID>"),
+//					VpcId:    pulumi.String("<VPC_ID>"),
+//					Zone:     pulumi.String("<ZONE>"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a new rancher2 Node Pool
+//			_, err = rancher2.NewNodePool(ctx, "foo", &rancher2.NodePoolArgs{
+//				ClusterId:      foo_custom.ID(),
+//				Name:           pulumi.String("foo"),
+//				HostnamePrefix: pulumi.String("foo-cluster-0"),
+//				NodeTemplateId: fooNodeTemplate.ID(),
+//				Quantity:       pulumi.Int(1),
+//				ControlPlane:   pulumi.Bool(true),
+//				Etcd:           pulumi.Bool(true),
+//				Worker:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # Node Pool can be imported using the Rancher Node Pool ID
