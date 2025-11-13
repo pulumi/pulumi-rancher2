@@ -9,6 +9,24 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create a new Rancher2 Cluster Driver
+ * const foo = new rancher2.ClusterDriver("foo", {
+ *     active: true,
+ *     builtin: false,
+ *     checksum: "0x0",
+ *     description: "Foo description",
+ *     externalId: "foo_external",
+ *     name: "foo",
+ *     uiUrl: "local://ui",
+ *     url: "local://",
+ *     whitelistDomains: ["*.foo.com"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Cluster Driver can be imported using the Rancher Cluster Driver ID
