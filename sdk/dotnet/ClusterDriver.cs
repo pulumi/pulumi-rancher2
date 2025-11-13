@@ -14,6 +14,34 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Rancher2 Cluster Driver
+    ///     var foo = new Rancher2.ClusterDriver("foo", new()
+    ///     {
+    ///         Active = true,
+    ///         Builtin = false,
+    ///         Checksum = "0x0",
+    ///         Description = "Foo description",
+    ///         ExternalId = "foo_external",
+    ///         Name = "foo",
+    ///         UiUrl = "local://ui",
+    ///         Url = "local://",
+    ///         WhitelistDomains = new[]
+    ///         {
+    ///             "*.foo.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Cluster Driver can be imported using the Rancher Cluster Driver ID
