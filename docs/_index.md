@@ -65,6 +65,7 @@ const foo = new rancher2.index.Catalog("foo", {
     url: "http://foo.com:8080",
 });
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```python
@@ -78,6 +79,7 @@ foo = rancher2.index.Catalog("foo",
     name=test,
     url=http://foo.com:8080)
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```csharp
@@ -104,6 +106,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```go
@@ -135,6 +138,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -151,6 +155,7 @@ resources:
       name: test
       url: http://foo.com:8080
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```java
@@ -190,6 +195,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Configuration Reference
