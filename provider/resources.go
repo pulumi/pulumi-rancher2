@@ -29,7 +29,7 @@ import (
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/pulumi/pulumi-rancher2/provider/v10/pkg/version"
+	"github.com/pulumi/pulumi-rancher2/provider/v11/pkg/version"
 )
 
 // all of the token components used below.

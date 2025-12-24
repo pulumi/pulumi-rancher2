@@ -21,8 +21,8 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 
-	rancher2 "github.com/pulumi/pulumi-rancher2/provider/v10"
-	"github.com/pulumi/pulumi-rancher2/provider/v10/pkg/version"
+	rancher2 "github.com/pulumi/pulumi-rancher2/provider/v11"
+	"github.com/pulumi/pulumi-rancher2/provider/v11/pkg/version"
 )
 
 //go:embed schema-embed.json
