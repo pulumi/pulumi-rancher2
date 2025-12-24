@@ -11,7 +11,9 @@ from .auth_config_active_directory import *
 from .auth_config_adfs import *
 from .auth_config_azure_ad import *
 from .auth_config_free_ipa import *
+from .auth_config_generic_oidc import *
 from .auth_config_github import *
+from .auth_config_githubapp import *
 from .auth_config_keycloak import *
 from .auth_config_okta import *
 from .auth_config_open_ldap import *
@@ -22,30 +24,27 @@ from .certificate import *
 from .cloud_credential import *
 from .cluster import *
 from .cluster_driver import *
+from .cluster_proxy_config_v2 import *
 from .cluster_role_template_binding import *
 from .cluster_sync import *
-from .cluster_template import *
 from .cluster_v2 import *
 from .config_map_v2 import *
 from .custom_user_token import *
-from .etcd_backup import *
 from .feature import *
 from .get_catalog_v2 import *
 from .get_certificate import *
 from .get_cloud_credential import *
 from .get_cluster import *
 from .get_cluster_driver import *
+from .get_cluster_proxy_config_v2 import *
 from .get_cluster_role_template_binding import *
-from .get_cluster_template import *
 from .get_cluster_v2 import *
 from .get_config_map_v2 import *
-from .get_etcd_backup import *
 from .get_global_role import *
 from .get_global_role_binding import *
 from .get_namespace import *
 from .get_node_driver import *
 from .get_node_pool import *
-from .get_node_template import *
 from .get_pod_security_admission_configuration_template import *
 from .get_principal import *
 from .get_project import *
@@ -63,7 +62,6 @@ from .machine_config_v2 import *
 from .namespace import *
 from .node_driver import *
 from .node_pool import *
-from .node_template import *
 from .pod_security_admission_configuration_template import *
 from .project import *
 from .project_role_template_binding import *
@@ -131,10 +129,26 @@ _utilities.register(
  },
  {
   "pkg": "rancher2",
+  "mod": "index/authConfigGenericOidc",
+  "fqn": "pulumi_rancher2",
+  "classes": {
+   "rancher2:index/authConfigGenericOidc:AuthConfigGenericOidc": "AuthConfigGenericOidc"
+  }
+ },
+ {
+  "pkg": "rancher2",
   "mod": "index/authConfigGithub",
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/authConfigGithub:AuthConfigGithub": "AuthConfigGithub"
+  }
+ },
+ {
+  "pkg": "rancher2",
+  "mod": "index/authConfigGithubapp",
+  "fqn": "pulumi_rancher2",
+  "classes": {
+   "rancher2:index/authConfigGithubapp:AuthConfigGithubapp": "AuthConfigGithubapp"
   }
  },
  {
@@ -219,6 +233,14 @@ _utilities.register(
  },
  {
   "pkg": "rancher2",
+  "mod": "index/clusterProxyConfigV2",
+  "fqn": "pulumi_rancher2",
+  "classes": {
+   "rancher2:index/clusterProxyConfigV2:ClusterProxyConfigV2": "ClusterProxyConfigV2"
+  }
+ },
+ {
+  "pkg": "rancher2",
   "mod": "index/clusterRoleTemplateBinding",
   "fqn": "pulumi_rancher2",
   "classes": {
@@ -231,14 +253,6 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/clusterSync:ClusterSync": "ClusterSync"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/clusterTemplate",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/clusterTemplate:ClusterTemplate": "ClusterTemplate"
   }
  },
  {
@@ -263,14 +277,6 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/customUserToken:CustomUserToken": "CustomUserToken"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/etcdBackup",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/etcdBackup:EtcdBackup": "EtcdBackup"
   }
  },
  {
@@ -327,14 +333,6 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/nodePool:NodePool": "NodePool"
-  }
- },
- {
-  "pkg": "rancher2",
-  "mod": "index/nodeTemplate",
-  "fqn": "pulumi_rancher2",
-  "classes": {
-   "rancher2:index/nodeTemplate:NodeTemplate": "NodeTemplate"
   }
  },
  {

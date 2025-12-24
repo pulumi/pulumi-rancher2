@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )

@@ -50,22 +50,25 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Node Template
-    ///     var fooNodeTemplate = new Rancher2.NodeTemplate("foo", new()
+    ///     var fooNodeTemplate = new Rancher2.Index.NodeTemplate("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "foo test",
     ///         CloudCredentialId = foo.Id,
-    ///         Amazonec2Config = new Rancher2.Inputs.NodeTemplateAmazonec2ConfigArgs
+    ///         Amazonec2Config = new[]
     ///         {
-    ///             Ami = "&lt;AMI_ID&gt;",
-    ///             Region = "&lt;REGION&gt;",
-    ///             SecurityGroups = new[]
+    ///             
     ///             {
-    ///                 "&lt;AWS_SECURITY_GROUP&gt;",
+    ///                 { "ami", "&lt;AMI_ID&gt;" },
+    ///                 { "region", "&lt;REGION&gt;" },
+    ///                 { "securityGroup", new[]
+    ///                 {
+    ///                     "&lt;AWS_SECURITY_GROUP&gt;",
+    ///                 } },
+    ///                 { "subnetId", "&lt;SUBNET_ID&gt;" },
+    ///                 { "vpcId", "&lt;VPC_ID&gt;" },
+    ///                 { "zone", "&lt;ZONE&gt;" },
     ///             },
-    ///             SubnetId = "&lt;SUBNET_ID&gt;",
-    ///             VpcId = "&lt;VPC_ID&gt;",
-    ///             Zone = "&lt;ZONE&gt;",
     ///         },
     ///     });
     /// 

@@ -36,18 +36,18 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Node Template
- * const fooNodeTemplate = new rancher2.NodeTemplate("foo", {
+ * const fooNodeTemplate = new rancher2.index.NodeTemplate("foo", {
  *     name: "foo",
  *     description: "foo test",
  *     cloudCredentialId: foo.id,
- *     amazonec2Config: {
+ *     amazonec2Config: [{
  *         ami: "<AMI_ID>",
  *         region: "<REGION>",
- *         securityGroups: ["<AWS_SECURITY_GROUP>"],
+ *         securityGroup: ["<AWS_SECURITY_GROUP>"],
  *         subnetId: "<SUBNET_ID>",
  *         vpcId: "<VPC_ID>",
  *         zone: "<ZONE>",
- *     },
+ *     }],
  * });
  * // Create a new rancher2 Node Pool
  * const fooNodePool = new rancher2.NodePool("foo", {

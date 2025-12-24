@@ -14,6 +14,7 @@ import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolDefaultArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachineSelectorConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachineSelectorFileArgs;
+import com.pulumi.rancher2.inputs.ClusterV2RkeConfigNetworkingArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigRegistriesArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigRotateCertificatesArgs;
 import com.pulumi.rancher2.inputs.ClusterV2RkeConfigUpgradeStrategyArgs;
@@ -217,6 +218,21 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Cluster V2 networking
+     * 
+     */
+    @Import(name="networking")
+    private @Nullable Output<ClusterV2RkeConfigNetworkingArgs> networking;
+
+    /**
+     * @return Cluster V2 networking
+     * 
+     */
+    public Optional<Output<ClusterV2RkeConfigNetworkingArgs>> networking() {
+        return Optional.ofNullable(this.networking);
+    }
+
+    /**
      * Cluster V2 registries
      * 
      */
@@ -276,6 +292,7 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
         this.machinePools = $.machinePools;
         this.machineSelectorConfigs = $.machineSelectorConfigs;
         this.machineSelectorFiles = $.machineSelectorFiles;
+        this.networking = $.networking;
         this.registries = $.registries;
         this.rotateCertificates = $.rotateCertificates;
         this.upgradeStrategy = $.upgradeStrategy;
@@ -607,6 +624,27 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder machineSelectorFiles(ClusterV2RkeConfigMachineSelectorFileArgs... machineSelectorFiles) {
             return machineSelectorFiles(List.of(machineSelectorFiles));
+        }
+
+        /**
+         * @param networking Cluster V2 networking
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networking(@Nullable Output<ClusterV2RkeConfigNetworkingArgs> networking) {
+            $.networking = networking;
+            return this;
+        }
+
+        /**
+         * @param networking Cluster V2 networking
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networking(ClusterV2RkeConfigNetworkingArgs networking) {
+            return networking(Output.of(networking));
         }
 
         /**

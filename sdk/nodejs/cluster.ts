@@ -7,13 +7,44 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
+ * Provides a Rancher v2 Cluster resource. This can be used to create imported Clusters for Rancher v2 environments and retrieve their information.
+ *
+ * **Hint**: To create node-driver and custom RKE2 and K3s Clusters, use the Rancher v2 Cluster v2 resource instead.
+ *
+ * **Important:**
+ *
+ * Rancher Kubernetes Engine (RKE/RKE1) has reached end of life as of July 31, 2025.
+ * Rancher versions **2.12.0 and later** no longer support provisioning or managing downstream RKE1 clusters.
+ * We recommend replatforming RKE1 clusters to RKE2 to ensure continued support and security updates. Learn more about the transition [here](https://support.scc.suse.com/s/kb/RKE-to-RKE2-replatforming-instructions-and-FAQs).
  *
  * ## Example Usage
  *
  * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloudProvider {}`, `name = ""`
  *
- * ### Creating Rancher v2 imported cluster
+ * ### Creating a Rancher v2 imported cluster and retrieving the registration commands
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * export = async () => {
+ *     // Create a new rancher2 imported Cluster
+ *     const foo_imported = new rancher2.Cluster("foo-imported", {
+ *         name: "foo-imported",
+ *         description: "Foo rancher2 imported cluster",
+ *     });
+ *     return {
+ *         "kubectl-command": [foo_imported.clusterRegistrationToken.apply(clusterRegistrationToken => clusterRegistrationToken.command)],
+ *         "insecure-kubectl-command": [foo_imported.clusterRegistrationToken.apply(clusterRegistrationToken => clusterRegistrationToken.insecureCommand)],
+ *     };
+ * }
+ * ```
+ *
+ * ### Creating an imported cluster and configuring the version-management feature. For Rancher v2.11.0 and above.
+ *
+ * The `rancher.io/imported-cluster-version-management` annotation controls the version-management feature for an imported cluster.
+ *
+ * Expected values: "true", "false", or "system-default".
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,10 +54,13 @@ import * as utilities from "./utilities";
  * const foo_imported = new rancher2.Cluster("foo-imported", {
  *     name: "foo-imported",
  *     description: "Foo rancher2 imported cluster",
+ *     annotations: {
+ *         "rancher.io/imported-cluster-version-management": "false",
+ *     },
  * });
  * ```
  *
- * ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+ * ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.0 and above.
  *
  * This configuration can be used to indicate that system images (such as the rancher-agent) should be pulled from an unauthenticated private registry. This can be used for all imported cluster types, including imported hosted clusters (AKS, EKS, GKE).
  *
@@ -39,344 +73,6 @@ import * as utilities from "./utilities";
  *     name: "foo-imported",
  *     importedConfig: {
  *         privateRegistryUrl: "test.io",
- *     },
- * });
- * ```
- *
- * ### Creating Rancher v2 RKE cluster enabling
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 RKE Cluster
- * const foo_custom = new rancher2.Cluster("foo-custom", {
- *     name: "foo-custom",
- *     description: "Foo rancher2 custom cluster",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
- * });
- * ```
- *
- * ### Creating Rancher v2 RKE cluster enabling/customizing istio
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 RKE Cluster
- * const foo_custom = new rancher2.Cluster("foo-custom", {
- *     name: "foo-custom",
- *     description: "Foo rancher2 custom cluster",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
- * });
- * // Create a new rancher2 Cluster Sync for foo-custom cluster
- * const foo_customClusterSync = new rancher2.ClusterSync("foo-custom", {clusterId: foo_custom.id});
- * // Create a new rancher2 Namespace
- * const foo_istio = new rancher2.Namespace("foo-istio", {
- *     name: "istio-system",
- *     projectId: foo_customClusterSync.systemProjectId,
- *     description: "istio namespace",
- * });
- * // Create a new rancher2 App deploying istio
- * const istio = new rancher2.index.App("istio", {
- *     catalogName: "system-library",
- *     name: "cluster-istio",
- *     description: "Terraform app acceptance test",
- *     projectId: foo_istio.projectId,
- *     templateName: "rancher-istio",
- *     templateVersion: "0.1.1",
- *     targetNamespace: foo_istio.id,
- *     answers: {
- *         "certmanager.enabled": false,
- *         enableCRDs: true,
- *         "galley.enabled": true,
- *         "gateways.enabled": false,
- *         "gateways.istio-ingressgateway.resources.limits.cpu": "2000m",
- *         "gateways.istio-ingressgateway.resources.limits.memory": "1024Mi",
- *         "gateways.istio-ingressgateway.resources.requests.cpu": "100m",
- *         "gateways.istio-ingressgateway.resources.requests.memory": "128Mi",
- *         "gateways.istio-ingressgateway.type": "NodePort",
- *         "global.rancher.clusterId": foo_customClusterSync.clusterId,
- *         "istio_cni.enabled": "false",
- *         "istiocoredns.enabled": "false",
- *         "kiali.enabled": "true",
- *         "mixer.enabled": "true",
- *         "mixer.policy.enabled": "true",
- *         "mixer.policy.resources.limits.cpu": "4800m",
- *         "mixer.policy.resources.limits.memory": "4096Mi",
- *         "mixer.policy.resources.requests.cpu": "1000m",
- *         "mixer.policy.resources.requests.memory": "1024Mi",
- *         "mixer.telemetry.resources.limits.cpu": "4800m",
- *         "mixer.telemetry.resources.limits.memory": "4096Mi",
- *         "mixer.telemetry.resources.requests.cpu": "1000m",
- *         "mixer.telemetry.resources.requests.memory": "1024Mi",
- *         "mtls.enabled": false,
- *         "nodeagent.enabled": false,
- *         "pilot.enabled": true,
- *         "pilot.resources.limits.cpu": "1000m",
- *         "pilot.resources.limits.memory": "4096Mi",
- *         "pilot.resources.requests.cpu": "500m",
- *         "pilot.resources.requests.memory": "2048Mi",
- *         "pilot.traceSampling": "1",
- *         "security.enabled": true,
- *         "sidecarInjectorWebhook.enabled": true,
- *         "tracing.enabled": true,
- *         "tracing.jaeger.resources.limits.cpu": "500m",
- *         "tracing.jaeger.resources.limits.memory": "1024Mi",
- *         "tracing.jaeger.resources.requests.cpu": "100m",
- *         "tracing.jaeger.resources.requests.memory": "100Mi",
- *     },
- * });
- * ```
- *
- * ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 RKE Cluster
- * const foo_custom = new rancher2.Cluster("foo-custom", {
- *     name: "foo-custom",
- *     description: "Foo rancher2 custom cluster",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
- * });
- * // Create a new rancher2 Node Template
- * const foo = new rancher2.NodeTemplate("foo", {
- *     name: "foo",
- *     description: "foo test",
- *     amazonec2Config: {
- *         accessKey: "<AWS_ACCESS_KEY>",
- *         secretKey: "<AWS_SECRET_KEY>",
- *         ami: "<AMI_ID>",
- *         region: "<REGION>",
- *         securityGroups: ["<AWS_SECURITY_GROUP>"],
- *         subnetId: "<SUBNET_ID>",
- *         vpcId: "<VPC_ID>",
- *         zone: "<ZONE>",
- *     },
- * });
- * // Create a new rancher2 Node Pool
- * const fooNodePool = new rancher2.NodePool("foo", {
- *     clusterId: foo_custom.id,
- *     name: "foo",
- *     hostnamePrefix: "foo-cluster-0",
- *     nodeTemplateId: foo.id,
- *     quantity: 3,
- *     controlPlane: true,
- *     etcd: true,
- *     worker: true,
- * });
- * ```
- *
- * ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Create a new rancher2 cluster template
- * const foo = new rancher2.ClusterTemplate("foo", {
- *     name: "foo",
- *     members: [{
- *         accessType: "owner",
- *         userPrincipalId: "local://user-XXXXX",
- *     }],
- *     templateRevisions: [{
- *         name: "V1",
- *         clusterConfig: {
- *             rkeConfig: {
- *                 network: {
- *                     plugin: "canal",
- *                 },
- *                 services: {
- *                     etcd: {
- *                         creation: "6h",
- *                         retention: "24h",
- *                     },
- *                 },
- *             },
- *         },
- *         "default": true,
- *     }],
- *     description: "Test cluster template v2",
- * });
- * // Create a new rancher2 RKE Cluster from template
- * const fooCluster = new rancher2.Cluster("foo", {
- *     name: "foo",
- *     clusterTemplateId: foo.id,
- *     clusterTemplateRevisionId: foo.templateRevisions.apply(templateRevisions => templateRevisions[0].id),
- * });
- * ```
- *
- * ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = new rancher2.Cluster("foo", {
- *     name: "foo",
- *     description: "Terraform custom cluster",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *         services: {
- *             etcd: {
- *                 creation: "6h",
- *                 retention: "24h",
- *             },
- *             kubeApi: {
- *                 auditLog: {
- *                     enabled: true,
- *                     configuration: {
- *                         maxAge: 5,
- *                         maxBackup: 5,
- *                         maxSize: 100,
- *                         path: "-",
- *                         format: "json",
- *                         policy: `apiVersion: audit.k8s.io/v1
- * kind: Policy
- * metadata:
- *   creationTimestamp: null
- * omitStages:
- * - RequestReceived
- * rules:
- * - level: RequestResponse
- *   resources:
- *   - resources:
- *     - pods
- * `,
- *                     },
- *                 },
- *             },
- *         },
- *         upgradeStrategy: {
- *             drain: true,
- *             maxUnavailableWorker: "20%",
- *         },
- *     },
- * });
- * ```
- *
- * ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = new rancher2.Cluster("foo", {
- *     name: "foo",
- *     description: "Terraform cluster with agent customization",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
- *     clusterAgentDeploymentCustomizations: [{
- *         appendTolerations: [{
- *             effect: "NoSchedule",
- *             key: "tolerate/control-plane",
- *             value: "true",
- *         }],
- *         overrideAffinity: `{
- *   \\"nodeAffinity\\": {
- *     \\"requiredDuringSchedulingIgnoredDuringExecution\\": {
- *       \\"nodeSelectorTerms\\": [{
- *         \\"matchExpressions\\": [{
- *           \\"key\\": \\"not.this/nodepool\\",
- *           \\"operator\\": \\"In\\",
- *           \\"values\\": [
- *             \\"true\\"
- *           ]
- *         }]
- *       }]
- *     }
- *   }
- * }
- * `,
- *         overrideResourceRequirements: [{
- *             cpuLimit: "800",
- *             cpuRequest: "500",
- *             memoryLimit: "800",
- *             memoryRequest: "500",
- *         }],
- *     }],
- * });
- * ```
- *
- * ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * const foo = new rancher2.Cluster("foo", {
- *     name: "foo",
- *     description: "Terraform cluster with agent customization",
- *     rkeConfig: {},
- *     clusterAgentDeploymentCustomizations: [{
- *         schedulingCustomizations: [{
- *             priorityClasses: [{
- *                 preemptionPolicy: "PreemptLowerPriority",
- *                 value: 1000000000,
- *             }],
- *             podDisruptionBudgets: [{
- *                 minAvailable: "1",
- *             }],
- *         }],
- *     }],
- * });
- * ```
- *
- * ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as rancher2 from "@pulumi/rancher2";
- *
- * // Custom PSACT (if you wish to use your own)
- * const foo = new rancher2.PodSecurityAdmissionConfigurationTemplate("foo", {
- *     name: "custom-psact",
- *     description: "This is my custom Pod Security Admission Configuration Template",
- *     defaults: {
- *         audit: "restricted",
- *         auditVersion: "latest",
- *         enforce: "restricted",
- *         enforceVersion: "latest",
- *         warn: "restricted",
- *         warnVersion: "latest",
- *     },
- *     exemptions: {
- *         usernames: ["testuser"],
- *         runtimeClasses: ["testclass"],
- *         namespaces: [
- *             "ingress-nginx",
- *             "kube-system",
- *         ],
- *     },
- * });
- * const fooCluster = new rancher2.Cluster("foo", {
- *     name: "foo",
- *     description: "Terraform cluster with PSACT",
- *     defaultPodSecurityAdmissionConfigurationTemplateName: "<name>",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
  *     },
  * });
  * ```

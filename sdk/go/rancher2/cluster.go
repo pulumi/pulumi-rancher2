@@ -7,24 +7,74 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
+// Provides a Rancher v2 Cluster resource. This can be used to create imported Clusters for Rancher v2 environments and retrieve their information.
+//
+// **Hint**: To create node-driver and custom RKE2 and K3s Clusters, use the Rancher v2 Cluster v2 resource instead.
+//
+// **Important:**
+//
+// Rancher Kubernetes Engine (RKE/RKE1) has reached end of life as of July 31, 2025.
+// Rancher versions **2.12.0 and later** no longer support provisioning or managing downstream RKE1 clusters.
+// We recommend replatforming RKE1 clusters to RKE2 to ensure continued support and security updates. Learn more about the transition [here](https://support.scc.suse.com/s/kb/RKE-to-RKE2-replatforming-instructions-and-FAQs).
 //
 // ## Example Usage
 //
 // **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloudProvider {}`, `name = ""`
 //
-// ### Creating Rancher v2 imported cluster
+// ### Creating a Rancher v2 imported cluster and retrieving the registration commands
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new rancher2 imported Cluster
+//			foo_imported, err := rancher2.NewCluster(ctx, "foo-imported", &rancher2.ClusterArgs{
+//				Name:        pulumi.String("foo-imported"),
+//				Description: pulumi.String("Foo rancher2 imported cluster"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("kubectl-command", pulumi.StringArray{
+//				foo_imported.ClusterRegistrationToken.ApplyT(func(clusterRegistrationToken rancher2.ClusterClusterRegistrationToken) (*string, error) {
+//					return &clusterRegistrationToken.Command, nil
+//				}).(pulumi.StringPtrOutput),
+//			})
+//			ctx.Export("insecure-kubectl-command", pulumi.StringArray{
+//				foo_imported.ClusterRegistrationToken.ApplyT(func(clusterRegistrationToken rancher2.ClusterClusterRegistrationToken) (*string, error) {
+//					return &clusterRegistrationToken.InsecureCommand, nil
+//				}).(pulumi.StringPtrOutput),
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating an imported cluster and configuring the version-management feature. For Rancher v2.11.0 and above.
+//
+// The `rancher.io/imported-cluster-version-management` annotation controls the version-management feature for an imported cluster.
+//
+// Expected values: "true", "false", or "system-default".
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -35,6 +85,9 @@ import (
 //			_, err := rancher2.NewCluster(ctx, "foo-imported", &rancher2.ClusterArgs{
 //				Name:        pulumi.String("foo-imported"),
 //				Description: pulumi.String("Foo rancher2 imported cluster"),
+//				Annotations: pulumi.StringMap{
+//					"rancher.io/imported-cluster-version-management": pulumi.String("false"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -45,7 +98,7 @@ import (
 //
 // ```
 //
-// ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+// ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.0 and above.
 //
 // This configuration can be used to indicate that system images (such as the rancher-agent) should be pulled from an unauthenticated private registry. This can be used for all imported cluster types, including imported hosted clusters (AKS, EKS, GKE).
 //
@@ -54,7 +107,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,520 +130,6 @@ import (
 //
 // ```
 //
-// ### Creating Rancher v2 RKE cluster enabling
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a new rancher2 RKE Cluster
-//			_, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
-//				Name:        pulumi.String("foo-custom"),
-//				Description: pulumi.String("Foo rancher2 custom cluster"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating Rancher v2 RKE cluster enabling/customizing istio
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a new rancher2 RKE Cluster
-//			foo_custom, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
-//				Name:        pulumi.String("foo-custom"),
-//				Description: pulumi.String("Foo rancher2 custom cluster"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a new rancher2 Cluster Sync for foo-custom cluster
-//			foo_customClusterSync, err := rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
-//				ClusterId: foo_custom.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a new rancher2 Namespace
-//			foo_istio, err := rancher2.NewNamespace(ctx, "foo-istio", &rancher2.NamespaceArgs{
-//				Name:        pulumi.String("istio-system"),
-//				ProjectId:   foo_customClusterSync.SystemProjectId,
-//				Description: pulumi.String("istio namespace"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a new rancher2 App deploying istio
-//			_, err = rancher2.NewApp(ctx, "istio", &rancher2.AppArgs{
-//				CatalogName:     "system-library",
-//				Name:            "cluster-istio",
-//				Description:     "Terraform app acceptance test",
-//				ProjectId:       foo_istio.ProjectId,
-//				TemplateName:    "rancher-istio",
-//				TemplateVersion: "0.1.1",
-//				TargetNamespace: foo_istio.ID(),
-//				Answers: map[string]interface{}{
-//					"certmanager.enabled": false,
-//					"enableCRDs":          true,
-//					"galley.enabled":      true,
-//					"gateways.enabled":    false,
-//					"gateways.istio-ingressgateway.resources.limits.cpu":      "2000m",
-//					"gateways.istio-ingressgateway.resources.limits.memory":   "1024Mi",
-//					"gateways.istio-ingressgateway.resources.requests.cpu":    "100m",
-//					"gateways.istio-ingressgateway.resources.requests.memory": "128Mi",
-//					"gateways.istio-ingressgateway.type":                      "NodePort",
-//					"global.rancher.clusterId":                                foo_customClusterSync.ClusterId,
-//					"istio_cni.enabled":                                       "false",
-//					"istiocoredns.enabled":                                    "false",
-//					"kiali.enabled":                                           "true",
-//					"mixer.enabled":                                           "true",
-//					"mixer.policy.enabled":                                    "true",
-//					"mixer.policy.resources.limits.cpu":                       "4800m",
-//					"mixer.policy.resources.limits.memory":                    "4096Mi",
-//					"mixer.policy.resources.requests.cpu":                     "1000m",
-//					"mixer.policy.resources.requests.memory":                  "1024Mi",
-//					"mixer.telemetry.resources.limits.cpu":                    "4800m",
-//					"mixer.telemetry.resources.limits.memory":                 "4096Mi",
-//					"mixer.telemetry.resources.requests.cpu":                  "1000m",
-//					"mixer.telemetry.resources.requests.memory":               "1024Mi",
-//					"mtls.enabled":                                            false,
-//					"nodeagent.enabled":                                       false,
-//					"pilot.enabled":                                           true,
-//					"pilot.resources.limits.cpu":                              "1000m",
-//					"pilot.resources.limits.memory":                           "4096Mi",
-//					"pilot.resources.requests.cpu":                            "500m",
-//					"pilot.resources.requests.memory":                         "2048Mi",
-//					"pilot.traceSampling":                                     "1",
-//					"security.enabled":                                        true,
-//					"sidecarInjectorWebhook.enabled":                          true,
-//					"tracing.enabled":                                         true,
-//					"tracing.jaeger.resources.limits.cpu":                     "500m",
-//					"tracing.jaeger.resources.limits.memory":                  "1024Mi",
-//					"tracing.jaeger.resources.requests.cpu":                   "100m",
-//					"tracing.jaeger.resources.requests.memory":                "100Mi",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a new rancher2 RKE Cluster
-//			foo_custom, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
-//				Name:        pulumi.String("foo-custom"),
-//				Description: pulumi.String("Foo rancher2 custom cluster"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a new rancher2 Node Template
-//			foo, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
-//				Name:        pulumi.String("foo"),
-//				Description: pulumi.String("foo test"),
-//				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
-//					AccessKey: pulumi.String("<AWS_ACCESS_KEY>"),
-//					SecretKey: pulumi.String("<AWS_SECRET_KEY>"),
-//					Ami:       pulumi.String("<AMI_ID>"),
-//					Region:    pulumi.String("<REGION>"),
-//					SecurityGroups: pulumi.StringArray{
-//						pulumi.String("<AWS_SECURITY_GROUP>"),
-//					},
-//					SubnetId: pulumi.String("<SUBNET_ID>"),
-//					VpcId:    pulumi.String("<VPC_ID>"),
-//					Zone:     pulumi.String("<ZONE>"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a new rancher2 Node Pool
-//			_, err = rancher2.NewNodePool(ctx, "foo", &rancher2.NodePoolArgs{
-//				ClusterId:      foo_custom.ID(),
-//				Name:           pulumi.String("foo"),
-//				HostnamePrefix: pulumi.String("foo-cluster-0"),
-//				NodeTemplateId: foo.ID(),
-//				Quantity:       pulumi.Int(3),
-//				ControlPlane:   pulumi.Bool(true),
-//				Etcd:           pulumi.Bool(true),
-//				Worker:         pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a new rancher2 cluster template
-//			foo, err := rancher2.NewClusterTemplate(ctx, "foo", &rancher2.ClusterTemplateArgs{
-//				Name: pulumi.String("foo"),
-//				Members: rancher2.ClusterTemplateMemberArray{
-//					&rancher2.ClusterTemplateMemberArgs{
-//						AccessType:      pulumi.String("owner"),
-//						UserPrincipalId: pulumi.String("local://user-XXXXX"),
-//					},
-//				},
-//				TemplateRevisions: rancher2.ClusterTemplateTemplateRevisionArray{
-//					&rancher2.ClusterTemplateTemplateRevisionArgs{
-//						Name: pulumi.String("V1"),
-//						ClusterConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigArgs{
-//							RkeConfig: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs{
-//								Network: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs{
-//									Plugin: pulumi.String("canal"),
-//								},
-//								Services: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs{
-//									Etcd: &rancher2.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs{
-//										Creation:  pulumi.String("6h"),
-//										Retention: pulumi.String("24h"),
-//									},
-//								},
-//							},
-//						},
-//						Default: pulumi.Bool(true),
-//					},
-//				},
-//				Description: pulumi.String("Test cluster template v2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Create a new rancher2 RKE Cluster from template
-//			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
-//				Name:              pulumi.String("foo"),
-//				ClusterTemplateId: foo.ID(),
-//				ClusterTemplateRevisionId: pulumi.String(foo.TemplateRevisions.ApplyT(func(templateRevisions []rancher2.ClusterTemplateTemplateRevision) (*string, error) {
-//					return &templateRevisions[0].Id, nil
-//				}).(pulumi.StringPtrOutput)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
-//				Name:        pulumi.String("foo"),
-//				Description: pulumi.String("Terraform custom cluster"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
-//					},
-//					Services: &rancher2.ClusterRkeConfigServicesArgs{
-//						Etcd: &rancher2.ClusterRkeConfigServicesEtcdArgs{
-//							Creation:  pulumi.String("6h"),
-//							Retention: pulumi.String("24h"),
-//						},
-//						KubeApi: &rancher2.ClusterRkeConfigServicesKubeApiArgs{
-//							AuditLog: &rancher2.ClusterRkeConfigServicesKubeApiAuditLogArgs{
-//								Enabled: pulumi.Bool(true),
-//								Configuration: &rancher2.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs{
-//									MaxAge:    pulumi.Int(5),
-//									MaxBackup: pulumi.Int(5),
-//									MaxSize:   pulumi.Int(100),
-//									Path:      pulumi.String("-"),
-//									Format:    pulumi.String("json"),
-//									Policy: pulumi.String(`apiVersion: audit.k8s.io/v1
-//
-// kind: Policy
-// metadata:
-//
-//	creationTimestamp: null
-//
-// omitStages:
-// - RequestReceived
-// rules:
-//   - level: RequestResponse
-//     resources:
-//   - resources:
-//   - pods
-//
-// `),
-//
-//								},
-//							},
-//						},
-//					},
-//					UpgradeStrategy: &rancher2.ClusterRkeConfigUpgradeStrategyArgs{
-//						Drain:                pulumi.Bool(true),
-//						MaxUnavailableWorker: pulumi.String("20%"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
-//				Name:        pulumi.String("foo"),
-//				Description: pulumi.String("Terraform cluster with agent customization"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
-//					},
-//				},
-//				ClusterAgentDeploymentCustomizations: rancher2.ClusterClusterAgentDeploymentCustomizationArray{
-//					&rancher2.ClusterClusterAgentDeploymentCustomizationArgs{
-//						AppendTolerations: rancher2.ClusterClusterAgentDeploymentCustomizationAppendTolerationArray{
-//							&rancher2.ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs{
-//								Effect: pulumi.String("NoSchedule"),
-//								Key:    pulumi.String("tolerate/control-plane"),
-//								Value:  pulumi.String("true"),
-//							},
-//						},
-//						OverrideAffinity: pulumi.String(`{
-//	  \"nodeAffinity\": {
-//	    \"requiredDuringSchedulingIgnoredDuringExecution\": {
-//	      \"nodeSelectorTerms\": [{
-//	        \"matchExpressions\": [{
-//	          \"key\": \"not.this/nodepool\",
-//	          \"operator\": \"In\",
-//	          \"values\": [
-//	            \"true\"
-//	          ]
-//	        }]
-//	      }]
-//	    }
-//	  }
-//	}
-//
-// `),
-//
-//						OverrideResourceRequirements: rancher2.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArray{
-//							&rancher2.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs{
-//								CpuLimit:      pulumi.String("800"),
-//								CpuRequest:    pulumi.String("500"),
-//								MemoryLimit:   pulumi.String("800"),
-//								MemoryRequest: pulumi.String("500"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
-//				Name:        pulumi.String("foo"),
-//				Description: pulumi.String("Terraform cluster with agent customization"),
-//				RkeConfig:   &rancher2.ClusterRkeConfigArgs{},
-//				ClusterAgentDeploymentCustomizations: rancher2.ClusterClusterAgentDeploymentCustomizationArray{
-//					&rancher2.ClusterClusterAgentDeploymentCustomizationArgs{
-//						SchedulingCustomizations: rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArray{
-//							&rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs{
-//								PriorityClasses: rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{
-//									&rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{
-//										PreemptionPolicy: pulumi.String("PreemptLowerPriority"),
-//										Value:            pulumi.Int(1000000000),
-//									},
-//								},
-//								PodDisruptionBudgets: rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{
-//									&rancher2.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{
-//										MinAvailable: pulumi.String("1"),
-//									},
-//								},
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Custom PSACT (if you wish to use your own)
-//			_, err := rancher2.NewPodSecurityAdmissionConfigurationTemplate(ctx, "foo", &rancher2.PodSecurityAdmissionConfigurationTemplateArgs{
-//				Name:        pulumi.String("custom-psact"),
-//				Description: pulumi.String("This is my custom Pod Security Admission Configuration Template"),
-//				Defaults: &rancher2.PodSecurityAdmissionConfigurationTemplateDefaultsArgs{
-//					Audit:          pulumi.String("restricted"),
-//					AuditVersion:   pulumi.String("latest"),
-//					Enforce:        pulumi.String("restricted"),
-//					EnforceVersion: pulumi.String("latest"),
-//					Warn:           pulumi.String("restricted"),
-//					WarnVersion:    pulumi.String("latest"),
-//				},
-//				Exemptions: &rancher2.PodSecurityAdmissionConfigurationTemplateExemptionsArgs{
-//					Usernames: pulumi.StringArray{
-//						pulumi.String("testuser"),
-//					},
-//					RuntimeClasses: pulumi.StringArray{
-//						pulumi.String("testclass"),
-//					},
-//					Namespaces: pulumi.StringArray{
-//						pulumi.String("ingress-nginx"),
-//						pulumi.String("kube-system"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
-//				Name:        pulumi.String("foo"),
-//				Description: pulumi.String("Terraform cluster with PSACT"),
-//				DefaultPodSecurityAdmissionConfigurationTemplateName: pulumi.String("<name>"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ### Importing EKS cluster to Rancher v2, using `eksConfigV2`. For Rancher v2.5.x and above.
 //
 // ```go
@@ -598,7 +137,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -642,7 +181,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -708,7 +247,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -770,7 +309,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

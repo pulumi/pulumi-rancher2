@@ -72,6 +72,12 @@ namespace Pulumi.Rancher2.Inputs
         [Input("networkName")]
         public Input<string>? NetworkName { get; set; }
 
+        /// <summary>
+        /// Reserved memory size (in MiB)
+        /// </summary>
+        [Input("reservedMemorySize")]
+        public Input<string>? ReservedMemorySize { get; set; }
+
         [Input("sshPassword")]
         private Input<string>? _sshPassword;
 

@@ -14,6 +14,7 @@ import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachinePool;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachinePoolDefault;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachineSelectorConfig;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigMachineSelectorFile;
+import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigNetworking;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigRegistries;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigRotateCertificates;
 import com.pulumi.rancher2.outputs.GetClusterV2RkeConfigUpgradeStrategy;
@@ -89,6 +90,11 @@ public final class GetClusterV2RkeConfig {
      * 
      */
     private List<GetClusterV2RkeConfigMachineSelectorFile> machineSelectorFiles;
+    /**
+     * @return Cluster V2 networking
+     * 
+     */
+    private GetClusterV2RkeConfigNetworking networking;
     /**
      * @return Cluster V2 registries
      * 
@@ -195,6 +201,13 @@ public final class GetClusterV2RkeConfig {
         return this.machineSelectorFiles;
     }
     /**
+     * @return Cluster V2 networking
+     * 
+     */
+    public GetClusterV2RkeConfigNetworking networking() {
+        return this.networking;
+    }
+    /**
      * @return Cluster V2 registries
      * 
      */
@@ -237,6 +250,7 @@ public final class GetClusterV2RkeConfig {
         private List<GetClusterV2RkeConfigMachinePool> machinePools;
         private List<GetClusterV2RkeConfigMachineSelectorConfig> machineSelectorConfigs;
         private List<GetClusterV2RkeConfigMachineSelectorFile> machineSelectorFiles;
+        private GetClusterV2RkeConfigNetworking networking;
         private @Nullable GetClusterV2RkeConfigRegistries registries;
         private @Nullable GetClusterV2RkeConfigRotateCertificates rotateCertificates;
         private @Nullable GetClusterV2RkeConfigUpgradeStrategy upgradeStrategy;
@@ -255,6 +269,7 @@ public final class GetClusterV2RkeConfig {
     	      this.machinePools = defaults.machinePools;
     	      this.machineSelectorConfigs = defaults.machineSelectorConfigs;
     	      this.machineSelectorFiles = defaults.machineSelectorFiles;
+    	      this.networking = defaults.networking;
     	      this.registries = defaults.registries;
     	      this.rotateCertificates = defaults.rotateCertificates;
     	      this.upgradeStrategy = defaults.upgradeStrategy;
@@ -358,6 +373,14 @@ public final class GetClusterV2RkeConfig {
             return machineSelectorFiles(List.of(machineSelectorFiles));
         }
         @CustomType.Setter
+        public Builder networking(GetClusterV2RkeConfigNetworking networking) {
+            if (networking == null) {
+              throw new MissingRequiredPropertyException("GetClusterV2RkeConfig", "networking");
+            }
+            this.networking = networking;
+            return this;
+        }
+        @CustomType.Setter
         public Builder registries(@Nullable GetClusterV2RkeConfigRegistries registries) {
 
             this.registries = registries;
@@ -389,6 +412,7 @@ public final class GetClusterV2RkeConfig {
             _resultValue.machinePools = machinePools;
             _resultValue.machineSelectorConfigs = machineSelectorConfigs;
             _resultValue.machineSelectorFiles = machineSelectorFiles;
+            _resultValue.networking = networking;
             _resultValue.registries = registries;
             _resultValue.rotateCertificates = rotateCertificates;
             _resultValue.upgradeStrategy = upgradeStrategy;

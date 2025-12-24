@@ -35,6 +35,11 @@ public final class MachineConfigV2Amazonec2Config {
      */
     private @Nullable String deviceName;
     /**
+     * @return Indicates whether the first IPv6 address assigned to the instance should be marked as the primary IPv6 address. Enable this option if the instance requires a stable, non-changing IPv6 address. This option does not affect whether IPv6 addresses are assigned to the instance.
+     * 
+     */
+    private @Nullable Boolean enablePrimaryIpv6;
+    /**
      * @return Encrypt EBS volume
      * 
      */
@@ -49,6 +54,11 @@ public final class MachineConfigV2Amazonec2Config {
      * 
      */
     private @Nullable String httpEndpoint;
+    /**
+     * @return Enables or disables the IPv6 endpoint for the instance metadata service. Options: enabled, disabled
+     * 
+     */
+    private @Nullable String httpProtocolIpv6;
     /**
      * @return The state of token usage for your instance metadata requests
      * 
@@ -69,6 +79,16 @@ public final class MachineConfigV2Amazonec2Config {
      * 
      */
     private @Nullable String instanceType;
+    /**
+     * @return The number of IPv6 addresses to assign to the network interface (default: 0). Must be greater than zero when ipv6AddressOnly is true.
+     * 
+     */
+    private @Nullable String ipv6AddressCount;
+    /**
+     * @return Indicates whether the instance has only IPv6 address. Useful when the VPC or subnet is configured as IPv6-only. When set to true, the instance will have IPv6 as its sole address. When set to true, ipv6AddressCount must be greater than zero.
+     * 
+     */
+    private @Nullable Boolean ipv6AddressOnly;
     /**
      * @return Custom KMS key ID using the AWS Managed CMK
      * 
@@ -215,6 +235,13 @@ public final class MachineConfigV2Amazonec2Config {
         return Optional.ofNullable(this.deviceName);
     }
     /**
+     * @return Indicates whether the first IPv6 address assigned to the instance should be marked as the primary IPv6 address. Enable this option if the instance requires a stable, non-changing IPv6 address. This option does not affect whether IPv6 addresses are assigned to the instance.
+     * 
+     */
+    public Optional<Boolean> enablePrimaryIpv6() {
+        return Optional.ofNullable(this.enablePrimaryIpv6);
+    }
+    /**
      * @return Encrypt EBS volume
      * 
      */
@@ -234,6 +261,13 @@ public final class MachineConfigV2Amazonec2Config {
      */
     public Optional<String> httpEndpoint() {
         return Optional.ofNullable(this.httpEndpoint);
+    }
+    /**
+     * @return Enables or disables the IPv6 endpoint for the instance metadata service. Options: enabled, disabled
+     * 
+     */
+    public Optional<String> httpProtocolIpv6() {
+        return Optional.ofNullable(this.httpProtocolIpv6);
     }
     /**
      * @return The state of token usage for your instance metadata requests
@@ -262,6 +296,20 @@ public final class MachineConfigV2Amazonec2Config {
      */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
+    }
+    /**
+     * @return The number of IPv6 addresses to assign to the network interface (default: 0). Must be greater than zero when ipv6AddressOnly is true.
+     * 
+     */
+    public Optional<String> ipv6AddressCount() {
+        return Optional.ofNullable(this.ipv6AddressCount);
+    }
+    /**
+     * @return Indicates whether the instance has only IPv6 address. Useful when the VPC or subnet is configured as IPv6-only. When set to true, the instance will have IPv6 as its sole address. When set to true, ipv6AddressCount must be greater than zero.
+     * 
+     */
+    public Optional<Boolean> ipv6AddressOnly() {
+        return Optional.ofNullable(this.ipv6AddressOnly);
     }
     /**
      * @return Custom KMS key ID using the AWS Managed CMK
@@ -438,13 +486,17 @@ public final class MachineConfigV2Amazonec2Config {
         private String ami;
         private @Nullable String blockDurationMinutes;
         private @Nullable String deviceName;
+        private @Nullable Boolean enablePrimaryIpv6;
         private @Nullable Boolean encryptEbsVolume;
         private @Nullable String endpoint;
         private @Nullable String httpEndpoint;
+        private @Nullable String httpProtocolIpv6;
         private @Nullable String httpTokens;
         private @Nullable String iamInstanceProfile;
         private @Nullable Boolean insecureTransport;
         private @Nullable String instanceType;
+        private @Nullable String ipv6AddressCount;
+        private @Nullable Boolean ipv6AddressOnly;
         private @Nullable String kmsKey;
         private @Nullable Boolean monitoring;
         private @Nullable List<String> openPorts;
@@ -475,13 +527,17 @@ public final class MachineConfigV2Amazonec2Config {
     	      this.ami = defaults.ami;
     	      this.blockDurationMinutes = defaults.blockDurationMinutes;
     	      this.deviceName = defaults.deviceName;
+    	      this.enablePrimaryIpv6 = defaults.enablePrimaryIpv6;
     	      this.encryptEbsVolume = defaults.encryptEbsVolume;
     	      this.endpoint = defaults.endpoint;
     	      this.httpEndpoint = defaults.httpEndpoint;
+    	      this.httpProtocolIpv6 = defaults.httpProtocolIpv6;
     	      this.httpTokens = defaults.httpTokens;
     	      this.iamInstanceProfile = defaults.iamInstanceProfile;
     	      this.insecureTransport = defaults.insecureTransport;
     	      this.instanceType = defaults.instanceType;
+    	      this.ipv6AddressCount = defaults.ipv6AddressCount;
+    	      this.ipv6AddressOnly = defaults.ipv6AddressOnly;
     	      this.kmsKey = defaults.kmsKey;
     	      this.monitoring = defaults.monitoring;
     	      this.openPorts = defaults.openPorts;
@@ -534,6 +590,12 @@ public final class MachineConfigV2Amazonec2Config {
             return this;
         }
         @CustomType.Setter
+        public Builder enablePrimaryIpv6(@Nullable Boolean enablePrimaryIpv6) {
+
+            this.enablePrimaryIpv6 = enablePrimaryIpv6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder encryptEbsVolume(@Nullable Boolean encryptEbsVolume) {
 
             this.encryptEbsVolume = encryptEbsVolume;
@@ -549,6 +611,12 @@ public final class MachineConfigV2Amazonec2Config {
         public Builder httpEndpoint(@Nullable String httpEndpoint) {
 
             this.httpEndpoint = httpEndpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpProtocolIpv6(@Nullable String httpProtocolIpv6) {
+
+            this.httpProtocolIpv6 = httpProtocolIpv6;
             return this;
         }
         @CustomType.Setter
@@ -573,6 +641,18 @@ public final class MachineConfigV2Amazonec2Config {
         public Builder instanceType(@Nullable String instanceType) {
 
             this.instanceType = instanceType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6AddressCount(@Nullable String ipv6AddressCount) {
+
+            this.ipv6AddressCount = ipv6AddressCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6AddressOnly(@Nullable Boolean ipv6AddressOnly) {
+
+            this.ipv6AddressOnly = ipv6AddressOnly;
             return this;
         }
         @CustomType.Setter
@@ -735,13 +815,17 @@ public final class MachineConfigV2Amazonec2Config {
             _resultValue.ami = ami;
             _resultValue.blockDurationMinutes = blockDurationMinutes;
             _resultValue.deviceName = deviceName;
+            _resultValue.enablePrimaryIpv6 = enablePrimaryIpv6;
             _resultValue.encryptEbsVolume = encryptEbsVolume;
             _resultValue.endpoint = endpoint;
             _resultValue.httpEndpoint = httpEndpoint;
+            _resultValue.httpProtocolIpv6 = httpProtocolIpv6;
             _resultValue.httpTokens = httpTokens;
             _resultValue.iamInstanceProfile = iamInstanceProfile;
             _resultValue.insecureTransport = insecureTransport;
             _resultValue.instanceType = instanceType;
+            _resultValue.ipv6AddressCount = ipv6AddressCount;
+            _resultValue.ipv6AddressOnly = ipv6AddressOnly;
             _resultValue.kmsKey = kmsKey;
             _resultValue.monitoring = monitoring;
             _resultValue.openPorts = openPorts;

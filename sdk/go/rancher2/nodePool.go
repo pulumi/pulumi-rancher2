@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -56,18 +56,20 @@ import (
 //			}
 //			// Create a new rancher2 Node Template
 //			fooNodeTemplate, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
-//				Name:              pulumi.String("foo"),
-//				Description:       pulumi.String("foo test"),
+//				Name:              "foo",
+//				Description:       "foo test",
 //				CloudCredentialId: foo.ID(),
-//				Amazonec2Config: &rancher2.NodeTemplateAmazonec2ConfigArgs{
-//					Ami:    pulumi.String("<AMI_ID>"),
-//					Region: pulumi.String("<REGION>"),
-//					SecurityGroups: pulumi.StringArray{
-//						pulumi.String("<AWS_SECURITY_GROUP>"),
+//				Amazonec2Config: []map[string]interface{}{
+//					map[string]interface{}{
+//						"ami":    "<AMI_ID>",
+//						"region": "<REGION>",
+//						"securityGroup": []string{
+//							"<AWS_SECURITY_GROUP>",
+//						},
+//						"subnetId": "<SUBNET_ID>",
+//						"vpcId":    "<VPC_ID>",
+//						"zone":     "<ZONE>",
 //					},
-//					SubnetId: pulumi.String("<SUBNET_ID>"),
-//					VpcId:    pulumi.String("<VPC_ID>"),
-//					Zone:     pulumi.String("<ZONE>"),
 //				},
 //			})
 //			if err != nil {
@@ -78,7 +80,7 @@ import (
 //				ClusterId:      foo_custom.ID(),
 //				Name:           pulumi.String("foo"),
 //				HostnamePrefix: pulumi.String("foo-cluster-0"),
-//				NodeTemplateId: fooNodeTemplate.ID(),
+//				NodeTemplateId: fooNodeTemplate.Id,
 //				Quantity:       pulumi.Int(1),
 //				ControlPlane:   pulumi.Bool(true),
 //				Etcd:           pulumi.Bool(true),

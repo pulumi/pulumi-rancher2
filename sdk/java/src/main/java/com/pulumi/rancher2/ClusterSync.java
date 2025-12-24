@@ -34,7 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
  * import com.pulumi.rancher2.NodeTemplate;
  * import com.pulumi.rancher2.NodeTemplateArgs;
- * import com.pulumi.rancher2.inputs.NodeTemplateAmazonec2ConfigArgs;
  * import com.pulumi.rancher2.NodePool;
  * import com.pulumi.rancher2.NodePoolArgs;
  * import com.pulumi.rancher2.ClusterSync;
@@ -73,16 +72,16 @@ import javax.annotation.Nullable;
  *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()
  *             .name("foo")
  *             .description("foo test")
- *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
- *                 .accessKey("<AWS_ACCESS_KEY>")
- *                 .secretKey("<AWS_SECRET_KEY>")
- *                 .ami("<AMI_ID>")
- *                 .region("<REGION>")
- *                 .securityGroups("<AWS_SECURITY_GROUP>")
- *                 .subnetId("<SUBNET_ID>")
- *                 .vpcId("<VPC_ID>")
- *                 .zone("<ZONE>")
- *                 .build())
+ *             .amazonec2Config(List.of(Map.ofEntries(
+ *                 Map.entry("accessKey", "<AWS_ACCESS_KEY>"),
+ *                 Map.entry("secretKey", "<AWS_SECRET_KEY>"),
+ *                 Map.entry("ami", "<AMI_ID>"),
+ *                 Map.entry("region", "<REGION>"),
+ *                 Map.entry("securityGroup", List.of("<AWS_SECURITY_GROUP>")),
+ *                 Map.entry("subnetId", "<SUBNET_ID>"),
+ *                 Map.entry("vpcId", "<VPC_ID>"),
+ *                 Map.entry("zone", "<ZONE>")
+ *             )))
  *             .build());
  * 
  *         // Create a new rancher2 Node Pool

@@ -115,6 +115,12 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
+        /// Cluster V2 networking
+        /// </summary>
+        [Input("networking")]
+        public Input<Inputs.ClusterV2RkeConfigNetworkingArgs>? Networking { get; set; }
+
+        /// <summary>
         /// Cluster V2 registries
         /// </summary>
         [Input("registries")]
