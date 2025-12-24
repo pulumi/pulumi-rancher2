@@ -12,7 +12,7 @@ func getGoBaseOptions() integration.ProgramTestOptions {
 	base := getBaseOptions()
 	goBase := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-rancher2/sdk/v9",
+			"github.com/pulumi/pulumi-rancher2/sdk/v11",
 		},
 	})
 
