@@ -207,6 +207,21 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Reserved memory size (in MiB)
+     * 
+     */
+    @Import(name="reservedMemorySize")
+    private @Nullable Output<String> reservedMemorySize;
+
+    /**
+     * @return Reserved memory size (in MiB)
+     * 
+     */
+    public Optional<Output<String>> reservedMemorySize() {
+        return Optional.ofNullable(this.reservedMemorySize);
+    }
+
+    /**
      * SSH password
      * 
      */
@@ -294,6 +309,7 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         this.networkInfo = $.networkInfo;
         this.networkModel = $.networkModel;
         this.networkName = $.networkName;
+        this.reservedMemorySize = $.reservedMemorySize;
         this.sshPassword = $.sshPassword;
         this.sshUser = $.sshUser;
         this.userData = $.userData;
@@ -567,6 +583,27 @@ public final class MachineConfigV2HarvesterConfigArgs extends com.pulumi.resourc
         @Deprecated /* Use networkInfo instead */
         public Builder networkName(String networkName) {
             return networkName(Output.of(networkName));
+        }
+
+        /**
+         * @param reservedMemorySize Reserved memory size (in MiB)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedMemorySize(@Nullable Output<String> reservedMemorySize) {
+            $.reservedMemorySize = reservedMemorySize;
+            return this;
+        }
+
+        /**
+         * @param reservedMemorySize Reserved memory size (in MiB)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedMemorySize(String reservedMemorySize) {
+            return reservedMemorySize(Output.of(reservedMemorySize));
         }
 
         /**

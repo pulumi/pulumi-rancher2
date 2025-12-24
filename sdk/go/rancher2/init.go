@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-rancher2/sdk/v10/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,8 +31,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthConfigAzureAd{}
 	case "rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa":
 		r = &AuthConfigFreeIpa{}
+	case "rancher2:index/authConfigGenericOidc:AuthConfigGenericOidc":
+		r = &AuthConfigGenericOidc{}
 	case "rancher2:index/authConfigGithub:AuthConfigGithub":
 		r = &AuthConfigGithub{}
+	case "rancher2:index/authConfigGithubapp:AuthConfigGithubapp":
+		r = &AuthConfigGithubapp{}
 	case "rancher2:index/authConfigKeycloak:AuthConfigKeycloak":
 		r = &AuthConfigKeycloak{}
 	case "rancher2:index/authConfigOkta:AuthConfigOkta":
@@ -53,20 +57,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "rancher2:index/clusterDriver:ClusterDriver":
 		r = &ClusterDriver{}
+	case "rancher2:index/clusterProxyConfigV2:ClusterProxyConfigV2":
+		r = &ClusterProxyConfigV2{}
 	case "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
 		r = &ClusterRoleTemplateBinding{}
 	case "rancher2:index/clusterSync:ClusterSync":
 		r = &ClusterSync{}
-	case "rancher2:index/clusterTemplate:ClusterTemplate":
-		r = &ClusterTemplate{}
 	case "rancher2:index/clusterV2:ClusterV2":
 		r = &ClusterV2{}
 	case "rancher2:index/configMapV2:ConfigMapV2":
 		r = &ConfigMapV2{}
 	case "rancher2:index/customUserToken:CustomUserToken":
 		r = &CustomUserToken{}
-	case "rancher2:index/etcdBackup:EtcdBackup":
-		r = &EtcdBackup{}
 	case "rancher2:index/feature:Feature":
 		r = &Feature{}
 	case "rancher2:index/globalRole:GlobalRole":
@@ -81,8 +83,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NodeDriver{}
 	case "rancher2:index/nodePool:NodePool":
 		r = &NodePool{}
-	case "rancher2:index/nodeTemplate:NodeTemplate":
-		r = &NodeTemplate{}
 	case "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate":
 		r = &PodSecurityAdmissionConfigurationTemplate{}
 	case "rancher2:index/project:Project":
@@ -163,7 +163,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
+		"index/authConfigGenericOidc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
 		"index/authConfigGithub",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/authConfigGithubapp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -218,17 +228,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
+		"index/clusterProxyConfigV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
 		"index/clusterRoleTemplateBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/clusterSync",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/clusterTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -244,11 +254,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/customUserToken",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/etcdBackup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -284,11 +289,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/nodePool",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"rancher2",
-		"index/nodeTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

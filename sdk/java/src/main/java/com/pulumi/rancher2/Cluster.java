@@ -33,13 +33,21 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
+ * Provides a Rancher v2 Cluster resource. This can be used to create imported Clusters for Rancher v2 environments and retrieve their information.
+ * 
+ * **Hint**: To create node-driver and custom RKE2 and K3s Clusters, use the Rancher v2 Cluster v2 resource instead.
+ * 
+ * **Important:**
+ * 
+ * Rancher Kubernetes Engine (RKE/RKE1) has reached end of life as of July 31, 2025.
+ * Rancher versions **2.12.0 and later** no longer support provisioning or managing downstream RKE1 clusters.
+ * We recommend replatforming RKE1 clusters to RKE2 to ensure continued support and security updates. Learn more about the transition [here](https://support.scc.suse.com/s/kb/RKE-to-RKE2-replatforming-instructions-and-FAQs).
  * 
  * ## Example Usage
  * 
  * **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloudProvider {}`, `name = &#34;&#34;`
  * 
- * ### Creating Rancher v2 imported cluster
+ * ### Creating a Rancher v2 imported cluster and retrieving the registration commands
  * 
  * <pre>
  * {@code
@@ -69,12 +77,54 @@ import javax.annotation.Nullable;
  *             .description("Foo rancher2 imported cluster")
  *             .build());
  * 
+ *         ctx.export("kubectl-command", foo_imported.clusterRegistrationToken().applyValue(_clusterRegistrationToken -> _clusterRegistrationToken.command()));
+ *         ctx.export("insecure-kubectl-command", foo_imported.clusterRegistrationToken().applyValue(_clusterRegistrationToken -> _clusterRegistrationToken.insecureCommand()));
  *     }
  * }
  * }
  * </pre>
  * 
- * ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+ * ### Creating an imported cluster and configuring the version-management feature. For Rancher v2.11.0 and above.
+ * 
+ * The `rancher.io/imported-cluster-version-management` annotation controls the version-management feature for an imported cluster.
+ * 
+ * Expected values: &#34;true&#34;, &#34;false&#34;, or &#34;system-default&#34;.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.Cluster;
+ * import com.pulumi.rancher2.ClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create a new rancher2 imported Cluster
+ *         var foo_imported = new Cluster("foo-imported", ClusterArgs.builder()
+ *             .name("foo-imported")
+ *             .description("Foo rancher2 imported cluster")
+ *             .annotations(Map.of("rancher.io/imported-cluster-version-management", "false"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.0 and above.
  * 
  * This configuration can be used to indicate that system images (such as the rancher-agent) should be pulled from an unauthenticated private registry. This can be used for all imported cluster types, including imported hosted clusters (AKS, EKS, GKE).
  * 
@@ -106,576 +156,6 @@ import javax.annotation.Nullable;
  *             .name("foo-imported")
  *             .importedConfig(ClusterImportedConfigArgs.builder()
  *                 .privateRegistryUrl("test.io")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Creating Rancher v2 RKE cluster enabling
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.Cluster;
- * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create a new rancher2 RKE Cluster
- *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()
- *             .name("foo-custom")
- *             .description("Foo rancher2 custom cluster")
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin("canal")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Creating Rancher v2 RKE cluster enabling/customizing istio
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.Cluster;
- * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
- * import com.pulumi.rancher2.ClusterSync;
- * import com.pulumi.rancher2.ClusterSyncArgs;
- * import com.pulumi.rancher2.Namespace;
- * import com.pulumi.rancher2.NamespaceArgs;
- * import com.pulumi.rancher2.App;
- * import com.pulumi.rancher2.AppArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create a new rancher2 RKE Cluster
- *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()
- *             .name("foo-custom")
- *             .description("Foo rancher2 custom cluster")
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin("canal")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         // Create a new rancher2 Cluster Sync for foo-custom cluster
- *         var foo_customClusterSync = new ClusterSync("foo-customClusterSync", ClusterSyncArgs.builder()
- *             .clusterId(foo_custom.id())
- *             .build());
- * 
- *         // Create a new rancher2 Namespace
- *         var foo_istio = new Namespace("foo-istio", NamespaceArgs.builder()
- *             .name("istio-system")
- *             .projectId(foo_customClusterSync.systemProjectId())
- *             .description("istio namespace")
- *             .build());
- * 
- *         // Create a new rancher2 App deploying istio
- *         var istio = new App("istio", AppArgs.builder()
- *             .catalogName("system-library")
- *             .name("cluster-istio")
- *             .description("Terraform app acceptance test")
- *             .projectId(foo_istio.projectId())
- *             .templateName("rancher-istio")
- *             .templateVersion("0.1.1")
- *             .targetNamespace(foo_istio.id())
- *             .answers(Map.ofEntries(
- *                 Map.entry("certmanager.enabled", false),
- *                 Map.entry("enableCRDs", true),
- *                 Map.entry("galley.enabled", true),
- *                 Map.entry("gateways.enabled", false),
- *                 Map.entry("gateways.istio-ingressgateway.resources.limits.cpu", "2000m"),
- *                 Map.entry("gateways.istio-ingressgateway.resources.limits.memory", "1024Mi"),
- *                 Map.entry("gateways.istio-ingressgateway.resources.requests.cpu", "100m"),
- *                 Map.entry("gateways.istio-ingressgateway.resources.requests.memory", "128Mi"),
- *                 Map.entry("gateways.istio-ingressgateway.type", "NodePort"),
- *                 Map.entry("global.rancher.clusterId", foo_customClusterSync.clusterId()),
- *                 Map.entry("istio_cni.enabled", "false"),
- *                 Map.entry("istiocoredns.enabled", "false"),
- *                 Map.entry("kiali.enabled", "true"),
- *                 Map.entry("mixer.enabled", "true"),
- *                 Map.entry("mixer.policy.enabled", "true"),
- *                 Map.entry("mixer.policy.resources.limits.cpu", "4800m"),
- *                 Map.entry("mixer.policy.resources.limits.memory", "4096Mi"),
- *                 Map.entry("mixer.policy.resources.requests.cpu", "1000m"),
- *                 Map.entry("mixer.policy.resources.requests.memory", "1024Mi"),
- *                 Map.entry("mixer.telemetry.resources.limits.cpu", "4800m"),
- *                 Map.entry("mixer.telemetry.resources.limits.memory", "4096Mi"),
- *                 Map.entry("mixer.telemetry.resources.requests.cpu", "1000m"),
- *                 Map.entry("mixer.telemetry.resources.requests.memory", "1024Mi"),
- *                 Map.entry("mtls.enabled", false),
- *                 Map.entry("nodeagent.enabled", false),
- *                 Map.entry("pilot.enabled", true),
- *                 Map.entry("pilot.resources.limits.cpu", "1000m"),
- *                 Map.entry("pilot.resources.limits.memory", "4096Mi"),
- *                 Map.entry("pilot.resources.requests.cpu", "500m"),
- *                 Map.entry("pilot.resources.requests.memory", "2048Mi"),
- *                 Map.entry("pilot.traceSampling", "1"),
- *                 Map.entry("security.enabled", true),
- *                 Map.entry("sidecarInjectorWebhook.enabled", true),
- *                 Map.entry("tracing.enabled", true),
- *                 Map.entry("tracing.jaeger.resources.limits.cpu", "500m"),
- *                 Map.entry("tracing.jaeger.resources.limits.memory", "1024Mi"),
- *                 Map.entry("tracing.jaeger.resources.requests.cpu", "100m"),
- *                 Map.entry("tracing.jaeger.resources.requests.memory", "100Mi")
- *             ))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.Cluster;
- * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
- * import com.pulumi.rancher2.NodeTemplate;
- * import com.pulumi.rancher2.NodeTemplateArgs;
- * import com.pulumi.rancher2.inputs.NodeTemplateAmazonec2ConfigArgs;
- * import com.pulumi.rancher2.NodePool;
- * import com.pulumi.rancher2.NodePoolArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create a new rancher2 RKE Cluster
- *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()
- *             .name("foo-custom")
- *             .description("Foo rancher2 custom cluster")
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin("canal")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         // Create a new rancher2 Node Template
- *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()
- *             .name("foo")
- *             .description("foo test")
- *             .amazonec2Config(NodeTemplateAmazonec2ConfigArgs.builder()
- *                 .accessKey("<AWS_ACCESS_KEY>")
- *                 .secretKey("<AWS_SECRET_KEY>")
- *                 .ami("<AMI_ID>")
- *                 .region("<REGION>")
- *                 .securityGroups("<AWS_SECURITY_GROUP>")
- *                 .subnetId("<SUBNET_ID>")
- *                 .vpcId("<VPC_ID>")
- *                 .zone("<ZONE>")
- *                 .build())
- *             .build());
- * 
- *         // Create a new rancher2 Node Pool
- *         var fooNodePool = new NodePool("fooNodePool", NodePoolArgs.builder()
- *             .clusterId(foo_custom.id())
- *             .name("foo")
- *             .hostnamePrefix("foo-cluster-0")
- *             .nodeTemplateId(foo.id())
- *             .quantity(3)
- *             .controlPlane(true)
- *             .etcd(true)
- *             .worker(true)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.ClusterTemplate;
- * import com.pulumi.rancher2.ClusterTemplateArgs;
- * import com.pulumi.rancher2.inputs.ClusterTemplateMemberArgs;
- * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionArgs;
- * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs;
- * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs;
- * import com.pulumi.rancher2.inputs.ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs;
- * import com.pulumi.rancher2.Cluster;
- * import com.pulumi.rancher2.ClusterArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create a new rancher2 cluster template
- *         var foo = new ClusterTemplate("foo", ClusterTemplateArgs.builder()
- *             .name("foo")
- *             .members(ClusterTemplateMemberArgs.builder()
- *                 .accessType("owner")
- *                 .userPrincipalId("local://user-XXXXX")
- *                 .build())
- *             .templateRevisions(ClusterTemplateTemplateRevisionArgs.builder()
- *                 .name("V1")
- *                 .clusterConfig(ClusterTemplateTemplateRevisionClusterConfigArgs.builder()
- *                     .rkeConfig(ClusterTemplateTemplateRevisionClusterConfigRkeConfigArgs.builder()
- *                         .network(ClusterTemplateTemplateRevisionClusterConfigRkeConfigNetworkArgs.builder()
- *                             .plugin("canal")
- *                             .build())
- *                         .services(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesArgs.builder()
- *                             .etcd(ClusterTemplateTemplateRevisionClusterConfigRkeConfigServicesEtcdArgs.builder()
- *                                 .creation("6h")
- *                                 .retention("24h")
- *                                 .build())
- *                             .build())
- *                         .build())
- *                     .build())
- *                 .default_(true)
- *                 .build())
- *             .description("Test cluster template v2")
- *             .build());
- * 
- *         // Create a new rancher2 RKE Cluster from template
- *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()
- *             .name("foo")
- *             .clusterTemplateId(foo.id())
- *             .clusterTemplateRevisionId(foo.templateRevisions().applyValue(_templateRevisions -> _templateRevisions[0].id()))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.Cluster;
- * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesEtcdArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiAuditLogArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigUpgradeStrategyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new Cluster("foo", ClusterArgs.builder()
- *             .name("foo")
- *             .description("Terraform custom cluster")
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin("canal")
- *                     .build())
- *                 .services(ClusterRkeConfigServicesArgs.builder()
- *                     .etcd(ClusterRkeConfigServicesEtcdArgs.builder()
- *                         .creation("6h")
- *                         .retention("24h")
- *                         .build())
- *                     .kubeApi(ClusterRkeConfigServicesKubeApiArgs.builder()
- *                         .auditLog(ClusterRkeConfigServicesKubeApiAuditLogArgs.builder()
- *                             .enabled(true)
- *                             .configuration(ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs.builder()
- *                                 .maxAge(5)
- *                                 .maxBackup(5)
- *                                 .maxSize(100)
- *                                 .path("-")
- *                                 .format("json")
- *                                 .policy("""
- * apiVersion: audit.k8s.io/v1
- * kind: Policy
- * metadata:
- *   creationTimestamp: null
- * omitStages:
- * - RequestReceived
- * rules:
- * - level: RequestResponse
- *   resources:
- *   - resources:
- *     - pods
- *                                 """)
- *                                 .build())
- *                             .build())
- *                         .build())
- *                     .build())
- *                 .upgradeStrategy(ClusterRkeConfigUpgradeStrategyArgs.builder()
- *                     .drain(true)
- *                     .maxUnavailableWorker("20%")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.Cluster;
- * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
- * import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new Cluster("foo", ClusterArgs.builder()
- *             .name("foo")
- *             .description("Terraform cluster with agent customization")
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin("canal")
- *                     .build())
- *                 .build())
- *             .clusterAgentDeploymentCustomizations(ClusterClusterAgentDeploymentCustomizationArgs.builder()
- *                 .appendTolerations(ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs.builder()
- *                     .effect("NoSchedule")
- *                     .key("tolerate/control-plane")
- *                     .value("true")
- *                     .build())
- *                 .overrideAffinity("""
- * {
- *   \"nodeAffinity\": {
- *     \"requiredDuringSchedulingIgnoredDuringExecution\": {
- *       \"nodeSelectorTerms\": [{
- *         \"matchExpressions\": [{
- *           \"key\": \"not.this/nodepool\",
- *           \"operator\": \"In\",
- *           \"values\": [
- *             \"true\"
- *           ]
- *         }]
- *       }]
- *     }
- *   }
- * }
- *                 """)
- *                 .overrideResourceRequirements(ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs.builder()
- *                     .cpuLimit("800")
- *                     .cpuRequest("500")
- *                     .memoryLimit("800")
- *                     .memoryRequest("500")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.Cluster;
- * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new Cluster("foo", ClusterArgs.builder()
- *             .name("foo")
- *             .description("Terraform cluster with agent customization")
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .build())
- *             .clusterAgentDeploymentCustomizations(ClusterClusterAgentDeploymentCustomizationArgs.builder()
- *                 .schedulingCustomizations(ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs.builder()
- *                     .priorityClasses(ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs.builder()
- *                         .preemptionPolicy("PreemptLowerPriority")
- *                         .value(1000000000)
- *                         .build())
- *                     .podDisruptionBudgets(ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs.builder()
- *                         .minAvailable("1")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.rancher2.PodSecurityAdmissionConfigurationTemplate;
- * import com.pulumi.rancher2.PodSecurityAdmissionConfigurationTemplateArgs;
- * import com.pulumi.rancher2.inputs.PodSecurityAdmissionConfigurationTemplateDefaultsArgs;
- * import com.pulumi.rancher2.inputs.PodSecurityAdmissionConfigurationTemplateExemptionsArgs;
- * import com.pulumi.rancher2.Cluster;
- * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Custom PSACT (if you wish to use your own)
- *         var foo = new PodSecurityAdmissionConfigurationTemplate("foo", PodSecurityAdmissionConfigurationTemplateArgs.builder()
- *             .name("custom-psact")
- *             .description("This is my custom Pod Security Admission Configuration Template")
- *             .defaults(PodSecurityAdmissionConfigurationTemplateDefaultsArgs.builder()
- *                 .audit("restricted")
- *                 .auditVersion("latest")
- *                 .enforce("restricted")
- *                 .enforceVersion("latest")
- *                 .warn("restricted")
- *                 .warnVersion("latest")
- *                 .build())
- *             .exemptions(PodSecurityAdmissionConfigurationTemplateExemptionsArgs.builder()
- *                 .usernames("testuser")
- *                 .runtimeClasses("testclass")
- *                 .namespaces(                
- *                     "ingress-nginx",
- *                     "kube-system")
- *                 .build())
- *             .build());
- * 
- *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()
- *             .name("foo")
- *             .description("Terraform cluster with PSACT")
- *             .defaultPodSecurityAdmissionConfigurationTemplateName("<name>")
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin("canal")
- *                     .build())
  *                 .build())
  *             .build());
  * 

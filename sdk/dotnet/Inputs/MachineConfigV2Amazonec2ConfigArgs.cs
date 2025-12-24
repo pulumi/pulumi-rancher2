@@ -47,6 +47,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? DeviceName { get; set; }
 
         /// <summary>
+        /// Indicates whether the first IPv6 address assigned to the instance should be marked as the primary IPv6 address. Enable this option if the instance requires a stable, non-changing IPv6 address. This option does not affect whether IPv6 addresses are assigned to the instance.
+        /// </summary>
+        [Input("enablePrimaryIpv6")]
+        public Input<bool>? EnablePrimaryIpv6 { get; set; }
+
+        /// <summary>
         /// Encrypt EBS volume
         /// </summary>
         [Input("encryptEbsVolume")]
@@ -63,6 +69,12 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("httpEndpoint")]
         public Input<string>? HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// Enables or disables the IPv6 endpoint for the instance metadata service. Options: enabled, disabled
+        /// </summary>
+        [Input("httpProtocolIpv6")]
+        public Input<string>? HttpProtocolIpv6 { get; set; }
 
         /// <summary>
         /// The state of token usage for your instance metadata requests
@@ -87,6 +99,18 @@ namespace Pulumi.Rancher2.Inputs
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// The number of IPv6 addresses to assign to the network interface (default: 0). Must be greater than zero when Ipv6AddressOnly is true.
+        /// </summary>
+        [Input("ipv6AddressCount")]
+        public Input<string>? Ipv6AddressCount { get; set; }
+
+        /// <summary>
+        /// Indicates whether the instance has only IPv6 address. Useful when the VPC or subnet is configured as IPv6-only. When set to true, the instance will have IPv6 as its sole address. When set to true, Ipv6AddressCount must be greater than zero.
+        /// </summary>
+        [Input("ipv6AddressOnly")]
+        public Input<bool>? Ipv6AddressOnly { get; set; }
 
         /// <summary>
         /// Custom KMS key ID using the AWS Managed CMK

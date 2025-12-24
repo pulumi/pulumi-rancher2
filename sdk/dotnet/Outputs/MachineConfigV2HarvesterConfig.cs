@@ -54,6 +54,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? NetworkName;
         /// <summary>
+        /// Reserved memory size (in MiB)
+        /// </summary>
+        public readonly string? ReservedMemorySize;
+        /// <summary>
         /// SSH password
         /// </summary>
         public readonly string? SshPassword;
@@ -96,6 +100,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? networkName,
 
+            string? reservedMemorySize,
+
             string? sshPassword,
 
             string sshUser,
@@ -116,6 +122,7 @@ namespace Pulumi.Rancher2.Outputs
             NetworkInfo = networkInfo;
             NetworkModel = networkModel;
             NetworkName = networkName;
+            ReservedMemorySize = reservedMemorySize;
             SshPassword = sshPassword;
             SshUser = sshUser;
             UserData = userData;

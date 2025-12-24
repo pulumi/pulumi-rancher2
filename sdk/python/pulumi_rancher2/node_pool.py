@@ -495,24 +495,24 @@ class NodePool(pulumi.CustomResource):
                 "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             })
         # Create a new rancher2 Node Template
-        foo_node_template = rancher2.NodeTemplate("foo",
-            name="foo",
-            description="foo test",
+        foo_node_template = rancher2.index.NodeTemplate("foo",
+            name=foo,
+            description=foo test,
             cloud_credential_id=foo.id,
-            amazonec2_config={
-                "ami": "<AMI_ID>",
-                "region": "<REGION>",
-                "security_groups": ["<AWS_SECURITY_GROUP>"],
-                "subnet_id": "<SUBNET_ID>",
-                "vpc_id": "<VPC_ID>",
-                "zone": "<ZONE>",
-            })
+            amazonec2_config=[{
+                ami: <AMI_ID>,
+                region: <REGION>,
+                securityGroup: [<AWS_SECURITY_GROUP>],
+                subnetId: <SUBNET_ID>,
+                vpcId: <VPC_ID>,
+                zone: <ZONE>,
+            }])
         # Create a new rancher2 Node Pool
         foo_node_pool = rancher2.NodePool("foo",
             cluster_id=foo_custom.id,
             name="foo",
             hostname_prefix="foo-cluster-0",
-            node_template_id=foo_node_template.id,
+            node_template_id=foo_node_template["id"],
             quantity=1,
             control_plane=True,
             etcd=True,
@@ -577,24 +577,24 @@ class NodePool(pulumi.CustomResource):
                 "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             })
         # Create a new rancher2 Node Template
-        foo_node_template = rancher2.NodeTemplate("foo",
-            name="foo",
-            description="foo test",
+        foo_node_template = rancher2.index.NodeTemplate("foo",
+            name=foo,
+            description=foo test,
             cloud_credential_id=foo.id,
-            amazonec2_config={
-                "ami": "<AMI_ID>",
-                "region": "<REGION>",
-                "security_groups": ["<AWS_SECURITY_GROUP>"],
-                "subnet_id": "<SUBNET_ID>",
-                "vpc_id": "<VPC_ID>",
-                "zone": "<ZONE>",
-            })
+            amazonec2_config=[{
+                ami: <AMI_ID>,
+                region: <REGION>,
+                securityGroup: [<AWS_SECURITY_GROUP>],
+                subnetId: <SUBNET_ID>,
+                vpcId: <VPC_ID>,
+                zone: <ZONE>,
+            }])
         # Create a new rancher2 Node Pool
         foo_node_pool = rancher2.NodePool("foo",
             cluster_id=foo_custom.id,
             name="foo",
             hostname_prefix="foo-cluster-0",
-            node_template_id=foo_node_template.id,
+            node_template_id=foo_node_template["id"],
             quantity=1,
             control_plane=True,
             etcd=True,

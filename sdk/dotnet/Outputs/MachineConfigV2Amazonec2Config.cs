@@ -30,6 +30,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? DeviceName;
         /// <summary>
+        /// Indicates whether the first IPv6 address assigned to the instance should be marked as the primary IPv6 address. Enable this option if the instance requires a stable, non-changing IPv6 address. This option does not affect whether IPv6 addresses are assigned to the instance.
+        /// </summary>
+        public readonly bool? EnablePrimaryIpv6;
+        /// <summary>
         /// Encrypt EBS volume
         /// </summary>
         public readonly bool? EncryptEbsVolume;
@@ -41,6 +45,10 @@ namespace Pulumi.Rancher2.Outputs
         /// Enables or disables the HTTP metadata endpoint on your instances
         /// </summary>
         public readonly string? HttpEndpoint;
+        /// <summary>
+        /// Enables or disables the IPv6 endpoint for the instance metadata service. Options: enabled, disabled
+        /// </summary>
+        public readonly string? HttpProtocolIpv6;
         /// <summary>
         /// The state of token usage for your instance metadata requests
         /// </summary>
@@ -57,6 +65,14 @@ namespace Pulumi.Rancher2.Outputs
         /// AWS instance type
         /// </summary>
         public readonly string? InstanceType;
+        /// <summary>
+        /// The number of IPv6 addresses to assign to the network interface (default: 0). Must be greater than zero when Ipv6AddressOnly is true.
+        /// </summary>
+        public readonly string? Ipv6AddressCount;
+        /// <summary>
+        /// Indicates whether the instance has only IPv6 address. Useful when the VPC or subnet is configured as IPv6-only. When set to true, the instance will have IPv6 as its sole address. When set to true, Ipv6AddressCount must be greater than zero.
+        /// </summary>
+        public readonly bool? Ipv6AddressOnly;
         /// <summary>
         /// Custom KMS key ID using the AWS Managed CMK
         /// </summary>
@@ -160,11 +176,15 @@ namespace Pulumi.Rancher2.Outputs
 
             string? deviceName,
 
+            bool? enablePrimaryIpv6,
+
             bool? encryptEbsVolume,
 
             string? endpoint,
 
             string? httpEndpoint,
+
+            string? httpProtocolIpv6,
 
             string? httpTokens,
 
@@ -173,6 +193,10 @@ namespace Pulumi.Rancher2.Outputs
             bool? insecureTransport,
 
             string? instanceType,
+
+            string? ipv6AddressCount,
+
+            bool? ipv6AddressOnly,
 
             string? kmsKey,
 
@@ -224,13 +248,17 @@ namespace Pulumi.Rancher2.Outputs
             Ami = ami;
             BlockDurationMinutes = blockDurationMinutes;
             DeviceName = deviceName;
+            EnablePrimaryIpv6 = enablePrimaryIpv6;
             EncryptEbsVolume = encryptEbsVolume;
             Endpoint = endpoint;
             HttpEndpoint = httpEndpoint;
+            HttpProtocolIpv6 = httpProtocolIpv6;
             HttpTokens = httpTokens;
             IamInstanceProfile = iamInstanceProfile;
             InsecureTransport = insecureTransport;
             InstanceType = instanceType;
+            Ipv6AddressCount = ipv6AddressCount;
+            Ipv6AddressOnly = ipv6AddressOnly;
             KmsKey = kmsKey;
             Monitoring = monitoring;
             OpenPorts = openPorts;

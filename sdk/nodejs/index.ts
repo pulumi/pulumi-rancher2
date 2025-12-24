@@ -30,10 +30,20 @@ export type AuthConfigFreeIpa = import("./authConfigFreeIpa").AuthConfigFreeIpa;
 export const AuthConfigFreeIpa: typeof import("./authConfigFreeIpa").AuthConfigFreeIpa = null as any;
 utilities.lazyLoad(exports, ["AuthConfigFreeIpa"], () => require("./authConfigFreeIpa"));
 
+export { AuthConfigGenericOidcArgs, AuthConfigGenericOidcState } from "./authConfigGenericOidc";
+export type AuthConfigGenericOidc = import("./authConfigGenericOidc").AuthConfigGenericOidc;
+export const AuthConfigGenericOidc: typeof import("./authConfigGenericOidc").AuthConfigGenericOidc = null as any;
+utilities.lazyLoad(exports, ["AuthConfigGenericOidc"], () => require("./authConfigGenericOidc"));
+
 export { AuthConfigGithubArgs, AuthConfigGithubState } from "./authConfigGithub";
 export type AuthConfigGithub = import("./authConfigGithub").AuthConfigGithub;
 export const AuthConfigGithub: typeof import("./authConfigGithub").AuthConfigGithub = null as any;
 utilities.lazyLoad(exports, ["AuthConfigGithub"], () => require("./authConfigGithub"));
+
+export { AuthConfigGithubappArgs, AuthConfigGithubappState } from "./authConfigGithubapp";
+export type AuthConfigGithubapp = import("./authConfigGithubapp").AuthConfigGithubapp;
+export const AuthConfigGithubapp: typeof import("./authConfigGithubapp").AuthConfigGithubapp = null as any;
+utilities.lazyLoad(exports, ["AuthConfigGithubapp"], () => require("./authConfigGithubapp"));
 
 export { AuthConfigKeycloakArgs, AuthConfigKeycloakState } from "./authConfigKeycloak";
 export type AuthConfigKeycloak = import("./authConfigKeycloak").AuthConfigKeycloak;
@@ -85,6 +95,11 @@ export type ClusterDriver = import("./clusterDriver").ClusterDriver;
 export const ClusterDriver: typeof import("./clusterDriver").ClusterDriver = null as any;
 utilities.lazyLoad(exports, ["ClusterDriver"], () => require("./clusterDriver"));
 
+export { ClusterProxyConfigV2Args, ClusterProxyConfigV2State } from "./clusterProxyConfigV2";
+export type ClusterProxyConfigV2 = import("./clusterProxyConfigV2").ClusterProxyConfigV2;
+export const ClusterProxyConfigV2: typeof import("./clusterProxyConfigV2").ClusterProxyConfigV2 = null as any;
+utilities.lazyLoad(exports, ["ClusterProxyConfigV2"], () => require("./clusterProxyConfigV2"));
+
 export { ClusterRoleTemplateBindingArgs, ClusterRoleTemplateBindingState } from "./clusterRoleTemplateBinding";
 export type ClusterRoleTemplateBinding = import("./clusterRoleTemplateBinding").ClusterRoleTemplateBinding;
 export const ClusterRoleTemplateBinding: typeof import("./clusterRoleTemplateBinding").ClusterRoleTemplateBinding = null as any;
@@ -94,11 +109,6 @@ export { ClusterSyncArgs, ClusterSyncState } from "./clusterSync";
 export type ClusterSync = import("./clusterSync").ClusterSync;
 export const ClusterSync: typeof import("./clusterSync").ClusterSync = null as any;
 utilities.lazyLoad(exports, ["ClusterSync"], () => require("./clusterSync"));
-
-export { ClusterTemplateArgs, ClusterTemplateState } from "./clusterTemplate";
-export type ClusterTemplate = import("./clusterTemplate").ClusterTemplate;
-export const ClusterTemplate: typeof import("./clusterTemplate").ClusterTemplate = null as any;
-utilities.lazyLoad(exports, ["ClusterTemplate"], () => require("./clusterTemplate"));
 
 export { ClusterV2Args, ClusterV2State } from "./clusterV2";
 export type ClusterV2 = import("./clusterV2").ClusterV2;
@@ -114,11 +124,6 @@ export { CustomUserTokenArgs, CustomUserTokenState } from "./customUserToken";
 export type CustomUserToken = import("./customUserToken").CustomUserToken;
 export const CustomUserToken: typeof import("./customUserToken").CustomUserToken = null as any;
 utilities.lazyLoad(exports, ["CustomUserToken"], () => require("./customUserToken"));
-
-export { EtcdBackupArgs, EtcdBackupState } from "./etcdBackup";
-export type EtcdBackup = import("./etcdBackup").EtcdBackup;
-export const EtcdBackup: typeof import("./etcdBackup").EtcdBackup = null as any;
-utilities.lazyLoad(exports, ["EtcdBackup"], () => require("./etcdBackup"));
 
 export { FeatureArgs, FeatureState } from "./feature";
 export type Feature = import("./feature").Feature;
@@ -150,15 +155,15 @@ export const getClusterDriver: typeof import("./getClusterDriver").getClusterDri
 export const getClusterDriverOutput: typeof import("./getClusterDriver").getClusterDriverOutput = null as any;
 utilities.lazyLoad(exports, ["getClusterDriver","getClusterDriverOutput"], () => require("./getClusterDriver"));
 
+export { GetClusterProxyConfigV2Result } from "./getClusterProxyConfigV2";
+export const getClusterProxyConfigV2: typeof import("./getClusterProxyConfigV2").getClusterProxyConfigV2 = null as any;
+export const getClusterProxyConfigV2Output: typeof import("./getClusterProxyConfigV2").getClusterProxyConfigV2Output = null as any;
+utilities.lazyLoad(exports, ["getClusterProxyConfigV2","getClusterProxyConfigV2Output"], () => require("./getClusterProxyConfigV2"));
+
 export { GetClusterRoleTemplateBindingArgs, GetClusterRoleTemplateBindingResult, GetClusterRoleTemplateBindingOutputArgs } from "./getClusterRoleTemplateBinding";
 export const getClusterRoleTemplateBinding: typeof import("./getClusterRoleTemplateBinding").getClusterRoleTemplateBinding = null as any;
 export const getClusterRoleTemplateBindingOutput: typeof import("./getClusterRoleTemplateBinding").getClusterRoleTemplateBindingOutput = null as any;
 utilities.lazyLoad(exports, ["getClusterRoleTemplateBinding","getClusterRoleTemplateBindingOutput"], () => require("./getClusterRoleTemplateBinding"));
-
-export { GetClusterTemplateArgs, GetClusterTemplateResult, GetClusterTemplateOutputArgs } from "./getClusterTemplate";
-export const getClusterTemplate: typeof import("./getClusterTemplate").getClusterTemplate = null as any;
-export const getClusterTemplateOutput: typeof import("./getClusterTemplate").getClusterTemplateOutput = null as any;
-utilities.lazyLoad(exports, ["getClusterTemplate","getClusterTemplateOutput"], () => require("./getClusterTemplate"));
 
 export { GetClusterV2Args, GetClusterV2Result, GetClusterV2OutputArgs } from "./getClusterV2";
 export const getClusterV2: typeof import("./getClusterV2").getClusterV2 = null as any;
@@ -169,11 +174,6 @@ export { GetConfigMapV2Args, GetConfigMapV2Result, GetConfigMapV2OutputArgs } fr
 export const getConfigMapV2: typeof import("./getConfigMapV2").getConfigMapV2 = null as any;
 export const getConfigMapV2Output: typeof import("./getConfigMapV2").getConfigMapV2Output = null as any;
 utilities.lazyLoad(exports, ["getConfigMapV2","getConfigMapV2Output"], () => require("./getConfigMapV2"));
-
-export { GetEtcdBackupArgs, GetEtcdBackupResult, GetEtcdBackupOutputArgs } from "./getEtcdBackup";
-export const getEtcdBackup: typeof import("./getEtcdBackup").getEtcdBackup = null as any;
-export const getEtcdBackupOutput: typeof import("./getEtcdBackup").getEtcdBackupOutput = null as any;
-utilities.lazyLoad(exports, ["getEtcdBackup","getEtcdBackupOutput"], () => require("./getEtcdBackup"));
 
 export { GetGlobalRoleArgs, GetGlobalRoleResult, GetGlobalRoleOutputArgs } from "./getGlobalRole";
 export const getGlobalRole: typeof import("./getGlobalRole").getGlobalRole = null as any;
@@ -199,11 +199,6 @@ export { GetNodePoolArgs, GetNodePoolResult, GetNodePoolOutputArgs } from "./get
 export const getNodePool: typeof import("./getNodePool").getNodePool = null as any;
 export const getNodePoolOutput: typeof import("./getNodePool").getNodePoolOutput = null as any;
 utilities.lazyLoad(exports, ["getNodePool","getNodePoolOutput"], () => require("./getNodePool"));
-
-export { GetNodeTemplateArgs, GetNodeTemplateResult, GetNodeTemplateOutputArgs } from "./getNodeTemplate";
-export const getNodeTemplate: typeof import("./getNodeTemplate").getNodeTemplate = null as any;
-export const getNodeTemplateOutput: typeof import("./getNodeTemplate").getNodeTemplateOutput = null as any;
-utilities.lazyLoad(exports, ["getNodeTemplate","getNodeTemplateOutput"], () => require("./getNodeTemplate"));
 
 export { GetPodSecurityAdmissionConfigurationTemplateArgs, GetPodSecurityAdmissionConfigurationTemplateResult, GetPodSecurityAdmissionConfigurationTemplateOutputArgs } from "./getPodSecurityAdmissionConfigurationTemplate";
 export const getPodSecurityAdmissionConfigurationTemplate: typeof import("./getPodSecurityAdmissionConfigurationTemplate").getPodSecurityAdmissionConfigurationTemplate = null as any;
@@ -290,11 +285,6 @@ export type NodePool = import("./nodePool").NodePool;
 export const NodePool: typeof import("./nodePool").NodePool = null as any;
 utilities.lazyLoad(exports, ["NodePool"], () => require("./nodePool"));
 
-export { NodeTemplateArgs, NodeTemplateState } from "./nodeTemplate";
-export type NodeTemplate = import("./nodeTemplate").NodeTemplate;
-export const NodeTemplate: typeof import("./nodeTemplate").NodeTemplate = null as any;
-utilities.lazyLoad(exports, ["NodeTemplate"], () => require("./nodeTemplate"));
-
 export { PodSecurityAdmissionConfigurationTemplateArgs, PodSecurityAdmissionConfigurationTemplateState } from "./podSecurityAdmissionConfigurationTemplate";
 export type PodSecurityAdmissionConfigurationTemplate = import("./podSecurityAdmissionConfigurationTemplate").PodSecurityAdmissionConfigurationTemplate;
 export const PodSecurityAdmissionConfigurationTemplate: typeof import("./podSecurityAdmissionConfigurationTemplate").PodSecurityAdmissionConfigurationTemplate = null as any;
@@ -377,8 +367,12 @@ const _module = {
                 return new AuthConfigAzureAd(name, <any>undefined, { urn })
             case "rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa":
                 return new AuthConfigFreeIpa(name, <any>undefined, { urn })
+            case "rancher2:index/authConfigGenericOidc:AuthConfigGenericOidc":
+                return new AuthConfigGenericOidc(name, <any>undefined, { urn })
             case "rancher2:index/authConfigGithub:AuthConfigGithub":
                 return new AuthConfigGithub(name, <any>undefined, { urn })
+            case "rancher2:index/authConfigGithubapp:AuthConfigGithubapp":
+                return new AuthConfigGithubapp(name, <any>undefined, { urn })
             case "rancher2:index/authConfigKeycloak:AuthConfigKeycloak":
                 return new AuthConfigKeycloak(name, <any>undefined, { urn })
             case "rancher2:index/authConfigOkta:AuthConfigOkta":
@@ -399,20 +393,18 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "rancher2:index/clusterDriver:ClusterDriver":
                 return new ClusterDriver(name, <any>undefined, { urn })
+            case "rancher2:index/clusterProxyConfigV2:ClusterProxyConfigV2":
+                return new ClusterProxyConfigV2(name, <any>undefined, { urn })
             case "rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding":
                 return new ClusterRoleTemplateBinding(name, <any>undefined, { urn })
             case "rancher2:index/clusterSync:ClusterSync":
                 return new ClusterSync(name, <any>undefined, { urn })
-            case "rancher2:index/clusterTemplate:ClusterTemplate":
-                return new ClusterTemplate(name, <any>undefined, { urn })
             case "rancher2:index/clusterV2:ClusterV2":
                 return new ClusterV2(name, <any>undefined, { urn })
             case "rancher2:index/configMapV2:ConfigMapV2":
                 return new ConfigMapV2(name, <any>undefined, { urn })
             case "rancher2:index/customUserToken:CustomUserToken":
                 return new CustomUserToken(name, <any>undefined, { urn })
-            case "rancher2:index/etcdBackup:EtcdBackup":
-                return new EtcdBackup(name, <any>undefined, { urn })
             case "rancher2:index/feature:Feature":
                 return new Feature(name, <any>undefined, { urn })
             case "rancher2:index/globalRole:GlobalRole":
@@ -427,8 +419,6 @@ const _module = {
                 return new NodeDriver(name, <any>undefined, { urn })
             case "rancher2:index/nodePool:NodePool":
                 return new NodePool(name, <any>undefined, { urn })
-            case "rancher2:index/nodeTemplate:NodeTemplate":
-                return new NodeTemplate(name, <any>undefined, { urn })
             case "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate":
                 return new PodSecurityAdmissionConfigurationTemplate(name, <any>undefined, { urn })
             case "rancher2:index/project:Project":
@@ -461,7 +451,9 @@ pulumi.runtime.registerResourceModule("rancher2", "index/authConfigActiveDirecto
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigAdfs", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigAzureAd", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigFreeIpa", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/authConfigGenericOidc", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigGithub", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/authConfigGithubapp", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigKeycloak", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigOkta", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigOpenLdap", _module)
@@ -472,13 +464,12 @@ pulumi.runtime.registerResourceModule("rancher2", "index/certificate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/cloudCredential", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/cluster", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterDriver", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/clusterProxyConfigV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterRoleTemplateBinding", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterSync", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/clusterTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/clusterV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/configMapV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/customUserToken", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/etcdBackup", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/feature", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalRole", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/globalRoleBinding", _module)
@@ -486,7 +477,6 @@ pulumi.runtime.registerResourceModule("rancher2", "index/machineConfigV2", _modu
 pulumi.runtime.registerResourceModule("rancher2", "index/namespace", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodeDriver", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodePool", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/nodeTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/podSecurityAdmissionConfigurationTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/project", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/projectRoleTemplateBinding", _module)

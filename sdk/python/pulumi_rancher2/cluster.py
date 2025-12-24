@@ -1082,13 +1082,21 @@ class Cluster(pulumi.CustomResource):
                  windows_prefered_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
+        Provides a Rancher v2 Cluster resource. This can be used to create imported Clusters for Rancher v2 environments and retrieve their information.
+
+        **Hint**: To create node-driver and custom RKE2 and K3s Clusters, use the Rancher v2 Cluster v2 resource instead.
+
+        **Important:**
+
+        Rancher Kubernetes Engine (RKE/RKE1) has reached end of life as of July 31, 2025.
+        Rancher versions **2.12.0 and later** no longer support provisioning or managing downstream RKE1 clusters.
+        We recommend replatforming RKE1 clusters to RKE2 to ensure continued support and security updates. Learn more about the transition [here](https://support.scc.suse.com/s/kb/RKE-to-RKE2-replatforming-instructions-and-FAQs).
 
         ## Example Usage
 
         **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloud_provider {}`, `name = ""`
 
-        ### Creating Rancher v2 imported cluster
+        ### Creating a Rancher v2 imported cluster and retrieving the registration commands
 
         ```python
         import pulumi
@@ -1098,9 +1106,30 @@ class Cluster(pulumi.CustomResource):
         foo_imported = rancher2.Cluster("foo-imported",
             name="foo-imported",
             description="Foo rancher2 imported cluster")
+        pulumi.export("kubectl-command", [foo_imported.cluster_registration_token.command])
+        pulumi.export("insecure-kubectl-command", [foo_imported.cluster_registration_token.insecure_command])
         ```
 
-        ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+        ### Creating an imported cluster and configuring the version-management feature. For Rancher v2.11.0 and above.
+
+        The `rancher.io/imported-cluster-version-management` annotation controls the version-management feature for an imported cluster.
+
+        Expected values: "true", "false", or "system-default".
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 imported Cluster
+        foo_imported = rancher2.Cluster("foo-imported",
+            name="foo-imported",
+            description="Foo rancher2 imported cluster",
+            annotations={
+                "rancher.io/imported-cluster-version-management": "false",
+            })
+        ```
+
+        ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.0 and above.
 
         This configuration can be used to indicate that system images (such as the rancher-agent) should be pulled from an unauthenticated private registry. This can be used for all imported cluster types, including imported hosted clusters (AKS, EKS, GKE).
 
@@ -1113,330 +1142,6 @@ class Cluster(pulumi.CustomResource):
             name="foo-imported",
             imported_config={
                 "private_registry_url": "test.io",
-            })
-        ```
-
-        ### Creating Rancher v2 RKE cluster enabling
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-            })
-        ```
-
-        ### Creating Rancher v2 RKE cluster enabling/customizing istio
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-            })
-        # Create a new rancher2 Cluster Sync for foo-custom cluster
-        foo_custom_cluster_sync = rancher2.ClusterSync("foo-custom", cluster_id=foo_custom.id)
-        # Create a new rancher2 Namespace
-        foo_istio = rancher2.Namespace("foo-istio",
-            name="istio-system",
-            project_id=foo_custom_cluster_sync.system_project_id,
-            description="istio namespace")
-        # Create a new rancher2 App deploying istio
-        istio = rancher2.index.App("istio",
-            catalog_name=system-library,
-            name=cluster-istio,
-            description=Terraform app acceptance test,
-            project_id=foo_istio.project_id,
-            template_name=rancher-istio,
-            template_version=0.1.1,
-            target_namespace=foo_istio.id,
-            answers={
-                certmanager.enabled: False,
-                enableCRDs: True,
-                galley.enabled: True,
-                gateways.enabled: False,
-                gateways.istio-ingressgateway.resources.limits.cpu: 2000m,
-                gateways.istio-ingressgateway.resources.limits.memory: 1024Mi,
-                gateways.istio-ingressgateway.resources.requests.cpu: 100m,
-                gateways.istio-ingressgateway.resources.requests.memory: 128Mi,
-                gateways.istio-ingressgateway.type: NodePort,
-                global.rancher.clusterId: foo_custom_cluster_sync.cluster_id,
-                istio_cni.enabled: false,
-                istiocoredns.enabled: false,
-                kiali.enabled: true,
-                mixer.enabled: true,
-                mixer.policy.enabled: true,
-                mixer.policy.resources.limits.cpu: 4800m,
-                mixer.policy.resources.limits.memory: 4096Mi,
-                mixer.policy.resources.requests.cpu: 1000m,
-                mixer.policy.resources.requests.memory: 1024Mi,
-                mixer.telemetry.resources.limits.cpu: 4800m,
-                mixer.telemetry.resources.limits.memory: 4096Mi,
-                mixer.telemetry.resources.requests.cpu: 1000m,
-                mixer.telemetry.resources.requests.memory: 1024Mi,
-                mtls.enabled: False,
-                nodeagent.enabled: False,
-                pilot.enabled: True,
-                pilot.resources.limits.cpu: 1000m,
-                pilot.resources.limits.memory: 4096Mi,
-                pilot.resources.requests.cpu: 500m,
-                pilot.resources.requests.memory: 2048Mi,
-                pilot.traceSampling: 1,
-                security.enabled: True,
-                sidecarInjectorWebhook.enabled: True,
-                tracing.enabled: True,
-                tracing.jaeger.resources.limits.cpu: 500m,
-                tracing.jaeger.resources.limits.memory: 1024Mi,
-                tracing.jaeger.resources.requests.cpu: 100m,
-                tracing.jaeger.resources.requests.memory: 100Mi,
-            })
-        ```
-
-        ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-            })
-        # Create a new rancher2 Node Template
-        foo = rancher2.NodeTemplate("foo",
-            name="foo",
-            description="foo test",
-            amazonec2_config={
-                "access_key": "<AWS_ACCESS_KEY>",
-                "secret_key": "<AWS_SECRET_KEY>",
-                "ami": "<AMI_ID>",
-                "region": "<REGION>",
-                "security_groups": ["<AWS_SECURITY_GROUP>"],
-                "subnet_id": "<SUBNET_ID>",
-                "vpc_id": "<VPC_ID>",
-                "zone": "<ZONE>",
-            })
-        # Create a new rancher2 Node Pool
-        foo_node_pool = rancher2.NodePool("foo",
-            cluster_id=foo_custom.id,
-            name="foo",
-            hostname_prefix="foo-cluster-0",
-            node_template_id=foo.id,
-            quantity=3,
-            control_plane=True,
-            etcd=True,
-            worker=True)
-        ```
-
-        ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 cluster template
-        foo = rancher2.ClusterTemplate("foo",
-            name="foo",
-            members=[{
-                "access_type": "owner",
-                "user_principal_id": "local://user-XXXXX",
-            }],
-            template_revisions=[{
-                "name": "V1",
-                "cluster_config": {
-                    "rke_config": {
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                    },
-                },
-                "default": True,
-            }],
-            description="Test cluster template v2")
-        # Create a new rancher2 RKE Cluster from template
-        foo_cluster = rancher2.Cluster("foo",
-            name="foo",
-            cluster_template_id=foo.id,
-            cluster_template_revision_id=foo.template_revisions[0].id)
-        ```
-
-        ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform custom cluster",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-                "services": {
-                    "etcd": {
-                        "creation": "6h",
-                        "retention": "24h",
-                    },
-                    "kube_api": {
-                        "audit_log": {
-                            "enabled": True,
-                            "configuration": {
-                                "max_age": 5,
-                                "max_backup": 5,
-                                "max_size": 100,
-                                "path": "-",
-                                "format": "json",
-                                "policy": \"\"\"apiVersion: audit.k8s.io/v1
-        kind: Policy
-        metadata:
-          creationTimestamp: null
-        omitStages:
-        - RequestReceived
-        rules:
-        - level: RequestResponse
-          resources:
-          - resources:
-            - pods
-        \"\"\",
-                            },
-                        },
-                    },
-                },
-                "upgrade_strategy": {
-                    "drain": True,
-                    "max_unavailable_worker": "20%",
-                },
-            })
-        ```
-
-        ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform cluster with agent customization",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-            },
-            cluster_agent_deployment_customizations=[{
-                "append_tolerations": [{
-                    "effect": "NoSchedule",
-                    "key": "tolerate/control-plane",
-                    "value": "true",
-                }],
-                "override_affinity": \"\"\"{
-          \\"nodeAffinity\\": {
-            \\"requiredDuringSchedulingIgnoredDuringExecution\\": {
-              \\"nodeSelectorTerms\\": [{
-                \\"matchExpressions\\": [{
-                  \\"key\\": \\"not.this/nodepool\\",
-                  \\"operator\\": \\"In\\",
-                  \\"values\\": [
-                    \\"true\\"
-                  ]
-                }]
-              }]
-            }
-          }
-        }
-        \"\"\",
-                "override_resource_requirements": [{
-                    "cpu_limit": "800",
-                    "cpu_request": "500",
-                    "memory_limit": "800",
-                    "memory_request": "500",
-                }],
-            }])
-        ```
-
-        ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform cluster with agent customization",
-            rke_config={},
-            cluster_agent_deployment_customizations=[{
-                "scheduling_customizations": [{
-                    "priority_classes": [{
-                        "preemption_policy": "PreemptLowerPriority",
-                        "value": 1000000000,
-                    }],
-                    "pod_disruption_budgets": [{
-                        "min_available": "1",
-                    }],
-                }],
-            }])
-        ```
-
-        ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Custom PSACT (if you wish to use your own)
-        foo = rancher2.PodSecurityAdmissionConfigurationTemplate("foo",
-            name="custom-psact",
-            description="This is my custom Pod Security Admission Configuration Template",
-            defaults={
-                "audit": "restricted",
-                "audit_version": "latest",
-                "enforce": "restricted",
-                "enforce_version": "latest",
-                "warn": "restricted",
-                "warn_version": "latest",
-            },
-            exemptions={
-                "usernames": ["testuser"],
-                "runtime_classes": ["testclass"],
-                "namespaces": [
-                    "ingress-nginx",
-                    "kube-system",
-                ],
-            })
-        foo_cluster = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform cluster with PSACT",
-            default_pod_security_admission_configuration_template_name="<name>",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
             })
         ```
 
@@ -1659,13 +1364,21 @@ class Cluster(pulumi.CustomResource):
                  args: Optional[ClusterArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Rancher v2 Cluster resource. This can be used to create Clusters for Rancher v2 environments and retrieve their information.
+        Provides a Rancher v2 Cluster resource. This can be used to create imported Clusters for Rancher v2 environments and retrieve their information.
+
+        **Hint**: To create node-driver and custom RKE2 and K3s Clusters, use the Rancher v2 Cluster v2 resource instead.
+
+        **Important:**
+
+        Rancher Kubernetes Engine (RKE/RKE1) has reached end of life as of July 31, 2025.
+        Rancher versions **2.12.0 and later** no longer support provisioning or managing downstream RKE1 clusters.
+        We recommend replatforming RKE1 clusters to RKE2 to ensure continued support and security updates. Learn more about the transition [here](https://support.scc.suse.com/s/kb/RKE-to-RKE2-replatforming-instructions-and-FAQs).
 
         ## Example Usage
 
         **Note optional/computed arguments** If any `optional/computed` argument of this resource is defined by the user, removing it from tf file will NOT reset its value. To reset it, let its definition at tf file as empty/false object. Ex: `cloud_provider {}`, `name = ""`
 
-        ### Creating Rancher v2 imported cluster
+        ### Creating a Rancher v2 imported cluster and retrieving the registration commands
 
         ```python
         import pulumi
@@ -1675,9 +1388,30 @@ class Cluster(pulumi.CustomResource):
         foo_imported = rancher2.Cluster("foo-imported",
             name="foo-imported",
             description="Foo rancher2 imported cluster")
+        pulumi.export("kubectl-command", [foo_imported.cluster_registration_token.command])
+        pulumi.export("insecure-kubectl-command", [foo_imported.cluster_registration_token.insecure_command])
         ```
 
-        ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.x and above.
+        ### Creating an imported cluster and configuring the version-management feature. For Rancher v2.11.0 and above.
+
+        The `rancher.io/imported-cluster-version-management` annotation controls the version-management feature for an imported cluster.
+
+        Expected values: "true", "false", or "system-default".
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a new rancher2 imported Cluster
+        foo_imported = rancher2.Cluster("foo-imported",
+            name="foo-imported",
+            description="Foo rancher2 imported cluster",
+            annotations={
+                "rancher.io/imported-cluster-version-management": "false",
+            })
+        ```
+
+        ### Creating Rancher v2 imported cluster with custom configuration. For Rancher v2.11.0 and above.
 
         This configuration can be used to indicate that system images (such as the rancher-agent) should be pulled from an unauthenticated private registry. This can be used for all imported cluster types, including imported hosted clusters (AKS, EKS, GKE).
 
@@ -1690,330 +1424,6 @@ class Cluster(pulumi.CustomResource):
             name="foo-imported",
             imported_config={
                 "private_registry_url": "test.io",
-            })
-        ```
-
-        ### Creating Rancher v2 RKE cluster enabling
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-            })
-        ```
-
-        ### Creating Rancher v2 RKE cluster enabling/customizing istio
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-            })
-        # Create a new rancher2 Cluster Sync for foo-custom cluster
-        foo_custom_cluster_sync = rancher2.ClusterSync("foo-custom", cluster_id=foo_custom.id)
-        # Create a new rancher2 Namespace
-        foo_istio = rancher2.Namespace("foo-istio",
-            name="istio-system",
-            project_id=foo_custom_cluster_sync.system_project_id,
-            description="istio namespace")
-        # Create a new rancher2 App deploying istio
-        istio = rancher2.index.App("istio",
-            catalog_name=system-library,
-            name=cluster-istio,
-            description=Terraform app acceptance test,
-            project_id=foo_istio.project_id,
-            template_name=rancher-istio,
-            template_version=0.1.1,
-            target_namespace=foo_istio.id,
-            answers={
-                certmanager.enabled: False,
-                enableCRDs: True,
-                galley.enabled: True,
-                gateways.enabled: False,
-                gateways.istio-ingressgateway.resources.limits.cpu: 2000m,
-                gateways.istio-ingressgateway.resources.limits.memory: 1024Mi,
-                gateways.istio-ingressgateway.resources.requests.cpu: 100m,
-                gateways.istio-ingressgateway.resources.requests.memory: 128Mi,
-                gateways.istio-ingressgateway.type: NodePort,
-                global.rancher.clusterId: foo_custom_cluster_sync.cluster_id,
-                istio_cni.enabled: false,
-                istiocoredns.enabled: false,
-                kiali.enabled: true,
-                mixer.enabled: true,
-                mixer.policy.enabled: true,
-                mixer.policy.resources.limits.cpu: 4800m,
-                mixer.policy.resources.limits.memory: 4096Mi,
-                mixer.policy.resources.requests.cpu: 1000m,
-                mixer.policy.resources.requests.memory: 1024Mi,
-                mixer.telemetry.resources.limits.cpu: 4800m,
-                mixer.telemetry.resources.limits.memory: 4096Mi,
-                mixer.telemetry.resources.requests.cpu: 1000m,
-                mixer.telemetry.resources.requests.memory: 1024Mi,
-                mtls.enabled: False,
-                nodeagent.enabled: False,
-                pilot.enabled: True,
-                pilot.resources.limits.cpu: 1000m,
-                pilot.resources.limits.memory: 4096Mi,
-                pilot.resources.requests.cpu: 500m,
-                pilot.resources.requests.memory: 2048Mi,
-                pilot.traceSampling: 1,
-                security.enabled: True,
-                sidecarInjectorWebhook.enabled: True,
-                tracing.enabled: True,
-                tracing.jaeger.resources.limits.cpu: 500m,
-                tracing.jaeger.resources.limits.memory: 1024Mi,
-                tracing.jaeger.resources.requests.cpu: 100m,
-                tracing.jaeger.resources.requests.memory: 100Mi,
-            })
-        ```
-
-        ### Creating Rancher v2 RKE cluster assigning a node pool (overlapped planes)
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 RKE Cluster
-        foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-            })
-        # Create a new rancher2 Node Template
-        foo = rancher2.NodeTemplate("foo",
-            name="foo",
-            description="foo test",
-            amazonec2_config={
-                "access_key": "<AWS_ACCESS_KEY>",
-                "secret_key": "<AWS_SECRET_KEY>",
-                "ami": "<AMI_ID>",
-                "region": "<REGION>",
-                "security_groups": ["<AWS_SECURITY_GROUP>"],
-                "subnet_id": "<SUBNET_ID>",
-                "vpc_id": "<VPC_ID>",
-                "zone": "<ZONE>",
-            })
-        # Create a new rancher2 Node Pool
-        foo_node_pool = rancher2.NodePool("foo",
-            cluster_id=foo_custom.id,
-            name="foo",
-            hostname_prefix="foo-cluster-0",
-            node_template_id=foo.id,
-            quantity=3,
-            control_plane=True,
-            etcd=True,
-            worker=True)
-        ```
-
-        ### Creating Rancher v2 RKE cluster from template. For Rancher v2.3.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Create a new rancher2 cluster template
-        foo = rancher2.ClusterTemplate("foo",
-            name="foo",
-            members=[{
-                "access_type": "owner",
-                "user_principal_id": "local://user-XXXXX",
-            }],
-            template_revisions=[{
-                "name": "V1",
-                "cluster_config": {
-                    "rke_config": {
-                        "network": {
-                            "plugin": "canal",
-                        },
-                        "services": {
-                            "etcd": {
-                                "creation": "6h",
-                                "retention": "24h",
-                            },
-                        },
-                    },
-                },
-                "default": True,
-            }],
-            description="Test cluster template v2")
-        # Create a new rancher2 RKE Cluster from template
-        foo_cluster = rancher2.Cluster("foo",
-            name="foo",
-            cluster_template_id=foo.id,
-            cluster_template_revision_id=foo.template_revisions[0].id)
-        ```
-
-        ### Creating Rancher v2 RKE cluster with upgrade strategy. For Rancher v2.4.x and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform custom cluster",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-                "services": {
-                    "etcd": {
-                        "creation": "6h",
-                        "retention": "24h",
-                    },
-                    "kube_api": {
-                        "audit_log": {
-                            "enabled": True,
-                            "configuration": {
-                                "max_age": 5,
-                                "max_backup": 5,
-                                "max_size": 100,
-                                "path": "-",
-                                "format": "json",
-                                "policy": \"\"\"apiVersion: audit.k8s.io/v1
-        kind: Policy
-        metadata:
-          creationTimestamp: null
-        omitStages:
-        - RequestReceived
-        rules:
-        - level: RequestResponse
-          resources:
-          - resources:
-            - pods
-        \"\"\",
-                            },
-                        },
-                    },
-                },
-                "upgrade_strategy": {
-                    "drain": True,
-                    "max_unavailable_worker": "20%",
-                },
-            })
-        ```
-
-        ### Creating Rancher v2 RKE cluster with cluster agent customization. For Rancher v2.7.5 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform cluster with agent customization",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
-            },
-            cluster_agent_deployment_customizations=[{
-                "append_tolerations": [{
-                    "effect": "NoSchedule",
-                    "key": "tolerate/control-plane",
-                    "value": "true",
-                }],
-                "override_affinity": \"\"\"{
-          \\"nodeAffinity\\": {
-            \\"requiredDuringSchedulingIgnoredDuringExecution\\": {
-              \\"nodeSelectorTerms\\": [{
-                \\"matchExpressions\\": [{
-                  \\"key\\": \\"not.this/nodepool\\",
-                  \\"operator\\": \\"In\\",
-                  \\"values\\": [
-                    \\"true\\"
-                  ]
-                }]
-              }]
-            }
-          }
-        }
-        \"\"\",
-                "override_resource_requirements": [{
-                    "cpu_limit": "800",
-                    "cpu_request": "500",
-                    "memory_limit": "800",
-                    "memory_request": "500",
-                }],
-            }])
-        ```
-
-        ### Creating Rancher v2 RKE cluster with cluster agent scheduling customization. For Custom and Imported clusters provisioned by Rancher v2.11.0 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        foo = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform cluster with agent customization",
-            rke_config={},
-            cluster_agent_deployment_customizations=[{
-                "scheduling_customizations": [{
-                    "priority_classes": [{
-                        "preemption_policy": "PreemptLowerPriority",
-                        "value": 1000000000,
-                    }],
-                    "pod_disruption_budgets": [{
-                        "min_available": "1",
-                    }],
-                }],
-            }])
-        ```
-
-        ### Creating Rancher v2 RKE cluster with Pod Security Admission Configuration Template (PSACT). For Rancher v2.7.2 and above.
-
-        ```python
-        import pulumi
-        import pulumi_rancher2 as rancher2
-
-        # Custom PSACT (if you wish to use your own)
-        foo = rancher2.PodSecurityAdmissionConfigurationTemplate("foo",
-            name="custom-psact",
-            description="This is my custom Pod Security Admission Configuration Template",
-            defaults={
-                "audit": "restricted",
-                "audit_version": "latest",
-                "enforce": "restricted",
-                "enforce_version": "latest",
-                "warn": "restricted",
-                "warn_version": "latest",
-            },
-            exemptions={
-                "usernames": ["testuser"],
-                "runtime_classes": ["testclass"],
-                "namespaces": [
-                    "ingress-nginx",
-                    "kube-system",
-                ],
-            })
-        foo_cluster = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform cluster with PSACT",
-            default_pod_security_admission_configuration_template_name="<name>",
-            rke_config={
-                "network": {
-                    "plugin": "canal",
-                },
             })
         ```
 

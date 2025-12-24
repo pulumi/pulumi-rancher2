@@ -79,6 +79,21 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Indicates whether the first IPv6 address assigned to the instance should be marked as the primary IPv6 address. Enable this option if the instance requires a stable, non-changing IPv6 address. This option does not affect whether IPv6 addresses are assigned to the instance.
+     * 
+     */
+    @Import(name="enablePrimaryIpv6")
+    private @Nullable Output<Boolean> enablePrimaryIpv6;
+
+    /**
+     * @return Indicates whether the first IPv6 address assigned to the instance should be marked as the primary IPv6 address. Enable this option if the instance requires a stable, non-changing IPv6 address. This option does not affect whether IPv6 addresses are assigned to the instance.
+     * 
+     */
+    public Optional<Output<Boolean>> enablePrimaryIpv6() {
+        return Optional.ofNullable(this.enablePrimaryIpv6);
+    }
+
+    /**
      * Encrypt EBS volume
      * 
      */
@@ -121,6 +136,21 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
      */
     public Optional<Output<String>> httpEndpoint() {
         return Optional.ofNullable(this.httpEndpoint);
+    }
+
+    /**
+     * Enables or disables the IPv6 endpoint for the instance metadata service. Options: enabled, disabled
+     * 
+     */
+    @Import(name="httpProtocolIpv6")
+    private @Nullable Output<String> httpProtocolIpv6;
+
+    /**
+     * @return Enables or disables the IPv6 endpoint for the instance metadata service. Options: enabled, disabled
+     * 
+     */
+    public Optional<Output<String>> httpProtocolIpv6() {
+        return Optional.ofNullable(this.httpProtocolIpv6);
     }
 
     /**
@@ -181,6 +211,36 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
      */
     public Optional<Output<String>> instanceType() {
         return Optional.ofNullable(this.instanceType);
+    }
+
+    /**
+     * The number of IPv6 addresses to assign to the network interface (default: 0). Must be greater than zero when ipv6AddressOnly is true.
+     * 
+     */
+    @Import(name="ipv6AddressCount")
+    private @Nullable Output<String> ipv6AddressCount;
+
+    /**
+     * @return The number of IPv6 addresses to assign to the network interface (default: 0). Must be greater than zero when ipv6AddressOnly is true.
+     * 
+     */
+    public Optional<Output<String>> ipv6AddressCount() {
+        return Optional.ofNullable(this.ipv6AddressCount);
+    }
+
+    /**
+     * Indicates whether the instance has only IPv6 address. Useful when the VPC or subnet is configured as IPv6-only. When set to true, the instance will have IPv6 as its sole address. When set to true, ipv6AddressCount must be greater than zero.
+     * 
+     */
+    @Import(name="ipv6AddressOnly")
+    private @Nullable Output<Boolean> ipv6AddressOnly;
+
+    /**
+     * @return Indicates whether the instance has only IPv6 address. Useful when the VPC or subnet is configured as IPv6-only. When set to true, the instance will have IPv6 as its sole address. When set to true, ipv6AddressCount must be greater than zero.
+     * 
+     */
+    public Optional<Output<Boolean>> ipv6AddressOnly() {
+        return Optional.ofNullable(this.ipv6AddressOnly);
     }
 
     /**
@@ -535,13 +595,17 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         this.ami = $.ami;
         this.blockDurationMinutes = $.blockDurationMinutes;
         this.deviceName = $.deviceName;
+        this.enablePrimaryIpv6 = $.enablePrimaryIpv6;
         this.encryptEbsVolume = $.encryptEbsVolume;
         this.endpoint = $.endpoint;
         this.httpEndpoint = $.httpEndpoint;
+        this.httpProtocolIpv6 = $.httpProtocolIpv6;
         this.httpTokens = $.httpTokens;
         this.iamInstanceProfile = $.iamInstanceProfile;
         this.insecureTransport = $.insecureTransport;
         this.instanceType = $.instanceType;
+        this.ipv6AddressCount = $.ipv6AddressCount;
+        this.ipv6AddressOnly = $.ipv6AddressOnly;
         this.kmsKey = $.kmsKey;
         this.monitoring = $.monitoring;
         this.openPorts = $.openPorts;
@@ -670,6 +734,27 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param enablePrimaryIpv6 Indicates whether the first IPv6 address assigned to the instance should be marked as the primary IPv6 address. Enable this option if the instance requires a stable, non-changing IPv6 address. This option does not affect whether IPv6 addresses are assigned to the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePrimaryIpv6(@Nullable Output<Boolean> enablePrimaryIpv6) {
+            $.enablePrimaryIpv6 = enablePrimaryIpv6;
+            return this;
+        }
+
+        /**
+         * @param enablePrimaryIpv6 Indicates whether the first IPv6 address assigned to the instance should be marked as the primary IPv6 address. Enable this option if the instance requires a stable, non-changing IPv6 address. This option does not affect whether IPv6 addresses are assigned to the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePrimaryIpv6(Boolean enablePrimaryIpv6) {
+            return enablePrimaryIpv6(Output.of(enablePrimaryIpv6));
+        }
+
+        /**
          * @param encryptEbsVolume Encrypt EBS volume
          * 
          * @return builder
@@ -730,6 +815,27 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
          */
         public Builder httpEndpoint(String httpEndpoint) {
             return httpEndpoint(Output.of(httpEndpoint));
+        }
+
+        /**
+         * @param httpProtocolIpv6 Enables or disables the IPv6 endpoint for the instance metadata service. Options: enabled, disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpProtocolIpv6(@Nullable Output<String> httpProtocolIpv6) {
+            $.httpProtocolIpv6 = httpProtocolIpv6;
+            return this;
+        }
+
+        /**
+         * @param httpProtocolIpv6 Enables or disables the IPv6 endpoint for the instance metadata service. Options: enabled, disabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpProtocolIpv6(String httpProtocolIpv6) {
+            return httpProtocolIpv6(Output.of(httpProtocolIpv6));
         }
 
         /**
@@ -814,6 +920,48 @@ public final class MachineConfigV2Amazonec2ConfigArgs extends com.pulumi.resourc
          */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
+        }
+
+        /**
+         * @param ipv6AddressCount The number of IPv6 addresses to assign to the network interface (default: 0). Must be greater than zero when ipv6AddressOnly is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressCount(@Nullable Output<String> ipv6AddressCount) {
+            $.ipv6AddressCount = ipv6AddressCount;
+            return this;
+        }
+
+        /**
+         * @param ipv6AddressCount The number of IPv6 addresses to assign to the network interface (default: 0). Must be greater than zero when ipv6AddressOnly is true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressCount(String ipv6AddressCount) {
+            return ipv6AddressCount(Output.of(ipv6AddressCount));
+        }
+
+        /**
+         * @param ipv6AddressOnly Indicates whether the instance has only IPv6 address. Useful when the VPC or subnet is configured as IPv6-only. When set to true, the instance will have IPv6 as its sole address. When set to true, ipv6AddressCount must be greater than zero.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressOnly(@Nullable Output<Boolean> ipv6AddressOnly) {
+            $.ipv6AddressOnly = ipv6AddressOnly;
+            return this;
+        }
+
+        /**
+         * @param ipv6AddressOnly Indicates whether the instance has only IPv6 address. Useful when the VPC or subnet is configured as IPv6-only. When set to true, the instance will have IPv6 as its sole address. When set to true, ipv6AddressCount must be greater than zero.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6AddressOnly(Boolean ipv6AddressOnly) {
+            return ipv6AddressOnly(Output.of(ipv6AddressOnly));
         }
 
         /**

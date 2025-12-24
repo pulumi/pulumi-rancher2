@@ -83,6 +83,11 @@ public final class MachineConfigV2HarvesterConfig {
     @Deprecated /* Use networkInfo instead */
     private @Nullable String networkName;
     /**
+     * @return Reserved memory size (in MiB)
+     * 
+     */
+    private @Nullable String reservedMemorySize;
+    /**
      * @return SSH password
      * 
      */
@@ -200,6 +205,13 @@ public final class MachineConfigV2HarvesterConfig {
         return Optional.ofNullable(this.networkName);
     }
     /**
+     * @return Reserved memory size (in MiB)
+     * 
+     */
+    public Optional<String> reservedMemorySize() {
+        return Optional.ofNullable(this.reservedMemorySize);
+    }
+    /**
      * @return SSH password
      * 
      */
@@ -254,6 +266,7 @@ public final class MachineConfigV2HarvesterConfig {
         private @Nullable String networkInfo;
         private @Nullable String networkModel;
         private @Nullable String networkName;
+        private @Nullable String reservedMemorySize;
         private @Nullable String sshPassword;
         private String sshUser;
         private @Nullable String userData;
@@ -272,6 +285,7 @@ public final class MachineConfigV2HarvesterConfig {
     	      this.networkInfo = defaults.networkInfo;
     	      this.networkModel = defaults.networkModel;
     	      this.networkName = defaults.networkName;
+    	      this.reservedMemorySize = defaults.reservedMemorySize;
     	      this.sshPassword = defaults.sshPassword;
     	      this.sshUser = defaults.sshUser;
     	      this.userData = defaults.userData;
@@ -340,6 +354,12 @@ public final class MachineConfigV2HarvesterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder reservedMemorySize(@Nullable String reservedMemorySize) {
+
+            this.reservedMemorySize = reservedMemorySize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sshPassword(@Nullable String sshPassword) {
 
             this.sshPassword = sshPassword;
@@ -385,6 +405,7 @@ public final class MachineConfigV2HarvesterConfig {
             _resultValue.networkInfo = networkInfo;
             _resultValue.networkModel = networkModel;
             _resultValue.networkName = networkName;
+            _resultValue.reservedMemorySize = reservedMemorySize;
             _resultValue.sshPassword = sshPassword;
             _resultValue.sshUser = sshUser;
             _resultValue.userData = userData;

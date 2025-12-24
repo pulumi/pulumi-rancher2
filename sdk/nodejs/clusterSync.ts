@@ -24,19 +24,19 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // Create a new rancher2 Node Template
- * const foo = new rancher2.NodeTemplate("foo", {
+ * const foo = new rancher2.index.NodeTemplate("foo", {
  *     name: "foo",
  *     description: "foo test",
- *     amazonec2Config: {
+ *     amazonec2Config: [{
  *         accessKey: "<AWS_ACCESS_KEY>",
  *         secretKey: "<AWS_SECRET_KEY>",
  *         ami: "<AMI_ID>",
  *         region: "<REGION>",
- *         securityGroups: ["<AWS_SECURITY_GROUP>"],
+ *         securityGroup: ["<AWS_SECURITY_GROUP>"],
  *         subnetId: "<SUBNET_ID>",
  *         vpcId: "<VPC_ID>",
  *         zone: "<ZONE>",
- *     },
+ *     }],
  * });
  * // Create a new rancher2 Node Pool
  * const fooNodePool = new rancher2.NodePool("foo", {
