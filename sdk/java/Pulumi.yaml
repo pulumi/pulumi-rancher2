@@ -1,0 +1,3 @@
+name: rancher2
+description: A Pulumi resource provider for rancher2.
+language: java
