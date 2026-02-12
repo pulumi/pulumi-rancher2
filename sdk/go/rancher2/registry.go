@@ -96,6 +96,7 @@ import (
 // ```sh
 // $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
 // ```
+//
 // `<namespace_id>` is optional, just needed for namespaced registry.
 type Registry struct {
 	pulumi.CustomResourceState

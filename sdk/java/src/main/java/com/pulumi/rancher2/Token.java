@@ -143,14 +143,14 @@ public class Token extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Renew expired or disabled token
+     * Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it&#39;s disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
      * 
      */
     @Export(name="renew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> renew;
 
     /**
-     * @return Renew expired or disabled token
+     * @return Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it&#39;s disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
      * 
      */
     public Output<Optional<Boolean>> renew() {

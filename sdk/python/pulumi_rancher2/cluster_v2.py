@@ -567,6 +567,626 @@ class ClusterV2(pulumi.CustomResource):
                  rke_config: Optional[pulumi.Input[Union['ClusterV2RkeConfigArgs', 'ClusterV2RkeConfigArgsDict']]] = None,
                  __props__=None):
         """
+        Provides a Rancher v2 Cluster v2 resource. This can be used to create node-driver and custom RKE2 and K3s Clusters for Rancher v2 environments and retrieve their information.
+
+        This resource is available in Rancher v2.6.0 and above.
+
+        **Hint**: To create an imported cluster for registering a standalone Kubernetes cluster into rancher, use the Rancher v2 Cluster resource instead.
+
+        ## Example Usage
+
+        You can create a Rancher v2 cluster v2 that runs either RKE2 or K3s.
+
+        There are some distribution-specific arguments, especially the ones under the `rke_config` section, that you can utilize to configure your RKE2 or K3s cluster.
+        More details and examples can be found on this page.
+
+        You can create two types of clusters depending on how nodes are managed:
+
+        - a custom cluster to which your existing VM(s) can be registered
+        - a node-driver cluster in which Rancher provisions and manages the VM(s) on the specified infrastructure provider
+
+        The cluster will be created as a custom cluster if there are no `machine_pools` in the configuration;
+        otherwise, it will be created as a node-driver cluster.
+
+        All arguments, except some distribution-specific ones, are applied to both custom and node-driver clusters of both distributions.
+
+        ### Create a custom cluster
+
+        Below is the minimum configuration for creating a custom cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2-/k3s-version")
+        ```
+
+        Once the cluster is created, you get the node registration command from `rancher2_cluster_v2.foo.cluster_registration_token`.
+
+        ### Create a node-driver cluster
+
+        Before creating a node-driver cluster, you need to create a `MachineConfigV2` resource which will be referred to in the machine pool(s) of the cluster.
+
+        The example below demonstrates how to create a `MachineConfigV2` resource with `AmazonEC2` as the infrastructure provider:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create AmazonEC2 cloud credential
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
+            amazonec2_credential_config={
+                "access_key": "<ACCESS_KEY>",
+                "secret_key": "<SECRET_KEY>",
+            })
+        # Create AmazonEC2 machine config v2
+        foo_machine_config_v2 = rancher2.MachineConfigV2("foo",
+            generate_name="test-foo",
+            amazonec2_config={
+                "ami": "ami-id",
+                "region": "region",
+                "security_groups": ["security-group"],
+                "subnet_id": "subnet-id",
+                "vpc_id": "vpc-id",
+                "zone": "zone",
+            })
+        ```
+
+        For the full list of supported infrastructure providers and their arguments, please refer to the page for the `MachineConfigV2` resource.
+
+        Now, you can create an RKE2 or K3s node-driver cluster with one or more machine pools:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a cluster with multiple machine pools
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [
+                    {
+                        "name": "pool1",
+                        "cloud_credential_secret_name": foo_rancher2_cloud_credential["id"],
+                        "control_plane_role": True,
+                        "etcd_role": True,
+                        "worker_role": False,
+                        "quantity": 1,
+                        "drain_before_delete": True,
+                        "machine_config": {
+                            "kind": foo_rancher2_machine_config_v2["kind"],
+                            "name": foo_rancher2_machine_config_v2["name"],
+                        },
+                    },
+                    {
+                        "name": "pool2",
+                        "cloud_credential_secret_name": foo_rancher2_cloud_credential["id"],
+                        "control_plane_role": False,
+                        "etcd_role": False,
+                        "worker_role": True,
+                        "quantity": 2,
+                        "drain_before_delete": True,
+                        "machine_config": {
+                            "kind": foo_rancher2_machine_config_v2["kind"],
+                            "name": foo_rancher2_machine_config_v2["name"],
+                        },
+                    },
+                ],
+            })
+        # Create a cluster with a single machine pool
+        foo_k3s = rancher2.ClusterV2("foo-k3s",
+            name="foo-k3s",
+            kubernetes_version="rke2/k3s-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [{
+                    "name": "pool",
+                    "cloud_credential_secret_name": foo_rancher2_cloud_credential["id"],
+                    "control_plane_role": True,
+                    "etcd_role": True,
+                    "worker_role": True,
+                    "quantity": 1,
+                    "machine_config": {
+                        "kind": foo_rancher2_machine_config_v2["kind"],
+                        "name": foo_rancher2_machine_config_v2["name"],
+                    },
+                }],
+            })
+        ```
+
+        ### Create a node-driver cluster with Harvester as the infrastructure provider
+
+        ### Create a node-driver cluster with Harvester as both the infrastructure provider and cloud provider
+
+        The example below utilizes the arguments such as `machine_selector_config`, `machine_global_config`, and `chart_values`.
+        More explanations and examples for those arguments can be found on this page.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Get imported harvester cluster info
+        foo_harvester = rancher2.get_cluster_v2(name="foo-harvester")
+        ```
+
+        You need the kubeconfig file of the Harvester cluster to use it as the cloud provider for your cluster.
+
+        ### Customize the agent environment variables
+
+        The example below demonstrates how to set agent environment variables on a cluster.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="cluster-with-agent-env-vars",
+            kubernetes_version="rke2/k3s-version",
+            agent_env_vars=[
+                {
+                    "name": "foo1",
+                    "value": "boo1",
+                },
+                {
+                    "name": "foo2",
+                    "value": "boo2",
+                },
+            ],
+            rke_config={})
+        ```
+
+        ### Customize the cluster agent and the fleet agent
+
+        This argument is available in Rancher v2.7.5 and above.
+
+        You can configure the tolerations, affinity rules, and resource requirements for the `cattle-cluster-agent` and `fleet-agent` deployments.
+
+        The example below demonstrates how to set `cluster_agent_deployment_customization` and `fleet_agent_deployment_customization`:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            fleet_agent_deployment_customizations=[{}],
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            cluster_agent_deployment_customizations=[{
+                "append_tolerations": [
+                    {
+                        "key": "tolerate/control-plane",
+                        "effect": "NoSchedule",
+                        "value": "true",
+                    },
+                    {
+                        "key": "tolerate/etcd",
+                        "effect": "NoSchedule",
+                        "value": "true",
+                    },
+                ],
+                "override_affinity": \"\"\"{
+          \\"nodeAffinity\\": {
+            \\"requiredDuringSchedulingIgnoredDuringExecution\\": {
+              \\"nodeSelectorTerms\\": [{
+                \\"matchExpressions\\": [{
+                  \\"key\\": \\"not.this/nodepool\\",
+                  \\"operator\\": \\"In\\",
+                  \\"values\\": [
+                    \\"true\\"
+                  ]
+                }]
+              }]
+            }
+          }
+        }
+        \"\"\",
+                "override_resource_requirements": [{
+                    "cpu_limit": "800m",
+                    "cpu_request": "500m",
+                    "memory_limit": "800Mi",
+                    "memory_request": "500Mi",
+                }],
+            }],
+            rke_config={
+                "machine_pools": [{}],
+            })
+        ```
+
+        ### Customize scheduling for the cluster agent
+
+        This argument is available in Rancher 2.11.0 and above.
+
+        You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent when provisioning or updating downstream clusters.
+
+        In order to use this field, you must ensure that the `cluster-agent-scheduling-customization` feature is enabled in the Rancher server.
+
+        The example below demonstrates how to set the `scheduling_customization` field to deploy a Priority Class and Pod Disruption Budget. Currently, this field is only supported for the cluster agent.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            cluster_agent_deployment_customizations=[{
+                "scheduling_customizations": [{
+                    "priority_classes": [{
+                        "preemption_policy": "PreemptLowerPriority",
+                        "value": 1000000000,
+                    }],
+                    "pod_disruption_budgets": [{
+                        "min_available": "1",
+                    }],
+                }],
+            }],
+            rke_config={
+                "machine_pools": [{}],
+            })
+        ```
+
+        ### Create a cluster that uses a cluster-level authenticated `system-default-registry`
+
+        The `<auth-config-secret-name>` represents a generic Kubernetes secret that contains two keys with base64 encoded values: the `username` and `password` for the specified custom registry. If the `system-default-registry` is not authenticated, no secret is required and the section within the `rke_config` can be omitted if not otherwise needed. While the below example shows how to create a registry secret, storing plain text credentials in terraform files is never a good idea. Significant care should be taken to ensure that the username and password values are not committed or otherwise leaked.
+
+        Many registries may be specified in the `rke_config`s `registries` section, however, the `system-default-registry` from which core system images are pulled is always denoted via the `system-default-registry` key of the `machine_selector_config` or the `machine_global_config`. For more information on private registries, please refer to [the Rancher documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry#setting-a-private-registry-with-credentials-when-deploying-a-cluster).
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_cluster_v2 = rancher2.ClusterV2("foo_cluster_v2",
+            name="cluster-with-custom-registry",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "machine_pools": [{}],
+                "machine_selector_configs": [{
+                    "config": "system-default-registry: registry_domain_name",
+                }],
+                "registries": {
+                    "configs": [{
+                        "hostname": "registry_domain_name",
+                        "auth_config_secret_name": registry_secret_name,
+                        "insecure": "<tls-insecure-bool>",
+                        "tls_secret_name": "",
+                        "ca_bundle": "",
+                    }],
+                },
+            })
+        # create registry auth secret
+        my_registry = rancher2.SecretV2("my_registry",
+            cluster_id="local",
+            name=registry_secret_name,
+            namespace="fleet-default",
+            type="kubernetes.io/basic-auth",
+            data={
+                "username": registry_username,
+                "password": registry_password,
+            })
+        ```
+
+        ### Creating Rancher V2 Cluster with Machine Selector Files
+
+        This argument is available in Rancher v2.7.2 and above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [{}],
+                "machine_selector_files": [{
+                    "machine_label_selector": {
+                        "match_labels": {
+                            "rke.cattle.io/control-plane-role": "true",
+                            "rke.cattle.io/etcd-role": "true",
+                        },
+                        "match_expressions": [
+                            {
+                                "key": "name",
+                                "values": [
+                                    "a",
+                                    "b",
+                                ],
+                                "operator": "In",
+                            },
+                            {
+                                "key": "department",
+                                "operator": "In",
+                                "values": [
+                                    "a",
+                                    "b",
+                                ],
+                            },
+                        ],
+                    },
+                    "file_sources": [{
+                        "secret": {
+                            "name": "config-file-v1",
+                            "default_permissions": "644",
+                            "items": [{
+                                "key": "audit-policy",
+                                "path": "/etc/rancher/rke2/custom/policy-v1.yaml",
+                                "permissions": "666",
+                            }],
+                        },
+                    }],
+                }],
+            })
+        ```
+
+        ### Create a cluster with machine global config or machine selector config
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [{}],
+                "machine_selector_configs": [
+                    {
+                        "machine_label_selector": {
+                            "match_labels": {
+                                "rke.cattle.io/control-plane-role": "true",
+                                "rke.cattle.io/etcd-role": "true",
+                            },
+                            "match_expressions": [
+                                {
+                                    "key": "name",
+                                    "values": [
+                                        "a",
+                                        "b",
+                                    ],
+                                    "operator": "In",
+                                },
+                                {
+                                    "key": "department",
+                                    "operator": "In",
+                                    "values": [
+                                        "a",
+                                        "b",
+                                    ],
+                                },
+                            ],
+                        },
+                        "config": \"\"\"        kubelet-arg:
+                  - cloud-provider-name=external
+        \"\"\",
+                    },
+                    {
+                        "config": \"\"\"        kube-proxy-arg:
+                  - log_file_max_size=1800
+        \"\"\",
+                    },
+                ],
+                "machine_global_config": \"\"\"disable-kube-proxy: false
+        etcd-expose-metrics: false
+        kubelet-arg:
+          - xxx=xxx
+        kube-proxy-arg:
+          - xxx=xxx
+        kube-apiserver-arg:
+          - xxx=xxx
+        kube-scheduler-arg:
+          - xxx=xxx
+        kube-cloud-controller-manager-arg:
+          - xxx=xxx
+        \"\"\",
+            })
+        ```
+
+        ### Create a cluster with additional manifest
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "machine_pools": [{}],
+                "additional_manifest": \"\"\"apiVersion: v1
+        kind: Namespace
+        metadata:
+          name: testing-namespace-1
+        ---
+        apiVersion: v1
+        kind: Namespace
+        metadata:
+          name: testing-namespace-2
+        \"\"\",
+            })
+        ```
+
+        ### Customize the ETCD snapshot feature on the cluster
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        credentials = rancher2.CloudCredential("credentials",
+            name="rancher-creds",
+            s3_credential_config={
+                "access_key": "<ACCESS_KEY>",
+                "secret_key": "<SECRET_KEY>",
+            })
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "etcd": {
+                    "snapshot_schedule_cron": "0 */12 * * *",
+                    "snapshot_retention": 10,
+                    "s3_config": {
+                        "bucket": "backups",
+                        "endpoint": "https://minio.host:9000",
+                        "cloud_credential_name": credentials.id,
+                    },
+                },
+            })
+        ```
+
+        ### Customize distribution-specified server configurations in a cluster
+
+        You can customize all server configurations on the cluster by utilizing the `machine_global_config` argument.
+
+        For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) and [K3s server configuration](https://docs.k3s.io/cli/server).
+
+        The example below demonstrates how to disable the system services in a K3s cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="k3s-version",
+            rke_config={
+                "machine_global_config": \"\"\"disable:
+          - coredns
+          - servicelb
+          - traefik
+          - local-storage
+          - metrics-server
+        \"\"\",
+            })
+        ```
+
+        The example below demonstrates how to disable the system services in an RKE2 cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="rke2-version",
+            rke_config={
+                "machine_global_config": \"\"\"disable:
+          - rke2-coredns
+          - rke2-ingress-nginx
+          - rke2-metrics-server
+          - metrics-server
+        \"\"\",
+            })
+        ```
+
+        The example below demonstrates how to add additional hostnames or IPv4/IPv6 addresses as Subject Alternative Names on the server TLS cert in an RKE2/K3s cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "machine_global_config": "tls-san: [\\\\\\"example-website.com\\\\\\", \\\\\\"100.100.100.100\\\\\\", \\\\\\"2002:db8:3333:4444:5555:6666:7777:8888\\\\\\"]\\n",
+            })
+        ```
+
+        The example below demonstrates how to configure the IPv4/IPv6 network CIDRs to use for pod IPs and service IPs in an RKE2/K3s cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "machine_global_config": \"\"\"cluster-cidr: \\"0.42.0.0/16\\"
+        service-cidr: \\"0.42.0.0/16\\"
+        \"\"\",
+            })
+        ```
+
+        ### Customize chart values in a cluster
+
+        You can specify the values for the system charts installed by RKE2 or K3s.
+
+        For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+
+        The example below demonstrates how to customize chart values in an RKE2 cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [{}],
+                "chart_values": \"\"\"rke2-calico:
+          calicoctl:
+            image: rancher/mirrored-calico-ctl
+            tag: v3.19.2
+          certs:
+            node:
+              cert: null
+              commonName: null
+              key: null
+            typha:
+              caBundle: null
+              cert: null
+              commonName: null
+              key: null
+          felixConfiguration:
+            featureDetectOverride: ChecksumOffloadBroken=true
+          global:
+            systemDefaultRegistry: \\"\\"
+          imagePullSecrets: {}
+          installation:
+            calicoNetwork:
+              bgp: Disabled
+              ipPools:
+              - blockSize: 24
+                cidr: 10.42.0.0/16
+                encapsulation: VXLAN
+                natOutgoing: Enabled
+            controlPlaneTolerations:
+            - effect: NoSchedule
+              key: node-role.kubernetes.io/control-plane
+              operator: Exists
+            - effect: NoExecute
+              key: node-role.kubernetes.io/etcd
+              operator: Exists
+            enabled: true
+            imagePath: rancher
+            imagePrefix: mirrored-calico-
+            kubernetesProvider: \\"\\"
+          ipamConfig:
+            autoAllocateBlocks: true
+            strictAffinity: true
+          tigeraOperator:
+            image: rancher/mirrored-calico-operator
+            registry: docker.io
+            version: v1.17.6
+        \"\"\",
+            })
+        ```
+
         ## Import
 
         Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;
@@ -599,6 +1219,626 @@ class ClusterV2(pulumi.CustomResource):
                  args: ClusterV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Rancher v2 Cluster v2 resource. This can be used to create node-driver and custom RKE2 and K3s Clusters for Rancher v2 environments and retrieve their information.
+
+        This resource is available in Rancher v2.6.0 and above.
+
+        **Hint**: To create an imported cluster for registering a standalone Kubernetes cluster into rancher, use the Rancher v2 Cluster resource instead.
+
+        ## Example Usage
+
+        You can create a Rancher v2 cluster v2 that runs either RKE2 or K3s.
+
+        There are some distribution-specific arguments, especially the ones under the `rke_config` section, that you can utilize to configure your RKE2 or K3s cluster.
+        More details and examples can be found on this page.
+
+        You can create two types of clusters depending on how nodes are managed:
+
+        - a custom cluster to which your existing VM(s) can be registered
+        - a node-driver cluster in which Rancher provisions and manages the VM(s) on the specified infrastructure provider
+
+        The cluster will be created as a custom cluster if there are no `machine_pools` in the configuration;
+        otherwise, it will be created as a node-driver cluster.
+
+        All arguments, except some distribution-specific ones, are applied to both custom and node-driver clusters of both distributions.
+
+        ### Create a custom cluster
+
+        Below is the minimum configuration for creating a custom cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2-/k3s-version")
+        ```
+
+        Once the cluster is created, you get the node registration command from `rancher2_cluster_v2.foo.cluster_registration_token`.
+
+        ### Create a node-driver cluster
+
+        Before creating a node-driver cluster, you need to create a `MachineConfigV2` resource which will be referred to in the machine pool(s) of the cluster.
+
+        The example below demonstrates how to create a `MachineConfigV2` resource with `AmazonEC2` as the infrastructure provider:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create AmazonEC2 cloud credential
+        foo = rancher2.CloudCredential("foo",
+            name="foo",
+            amazonec2_credential_config={
+                "access_key": "<ACCESS_KEY>",
+                "secret_key": "<SECRET_KEY>",
+            })
+        # Create AmazonEC2 machine config v2
+        foo_machine_config_v2 = rancher2.MachineConfigV2("foo",
+            generate_name="test-foo",
+            amazonec2_config={
+                "ami": "ami-id",
+                "region": "region",
+                "security_groups": ["security-group"],
+                "subnet_id": "subnet-id",
+                "vpc_id": "vpc-id",
+                "zone": "zone",
+            })
+        ```
+
+        For the full list of supported infrastructure providers and their arguments, please refer to the page for the `MachineConfigV2` resource.
+
+        Now, you can create an RKE2 or K3s node-driver cluster with one or more machine pools:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create a cluster with multiple machine pools
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [
+                    {
+                        "name": "pool1",
+                        "cloud_credential_secret_name": foo_rancher2_cloud_credential["id"],
+                        "control_plane_role": True,
+                        "etcd_role": True,
+                        "worker_role": False,
+                        "quantity": 1,
+                        "drain_before_delete": True,
+                        "machine_config": {
+                            "kind": foo_rancher2_machine_config_v2["kind"],
+                            "name": foo_rancher2_machine_config_v2["name"],
+                        },
+                    },
+                    {
+                        "name": "pool2",
+                        "cloud_credential_secret_name": foo_rancher2_cloud_credential["id"],
+                        "control_plane_role": False,
+                        "etcd_role": False,
+                        "worker_role": True,
+                        "quantity": 2,
+                        "drain_before_delete": True,
+                        "machine_config": {
+                            "kind": foo_rancher2_machine_config_v2["kind"],
+                            "name": foo_rancher2_machine_config_v2["name"],
+                        },
+                    },
+                ],
+            })
+        # Create a cluster with a single machine pool
+        foo_k3s = rancher2.ClusterV2("foo-k3s",
+            name="foo-k3s",
+            kubernetes_version="rke2/k3s-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [{
+                    "name": "pool",
+                    "cloud_credential_secret_name": foo_rancher2_cloud_credential["id"],
+                    "control_plane_role": True,
+                    "etcd_role": True,
+                    "worker_role": True,
+                    "quantity": 1,
+                    "machine_config": {
+                        "kind": foo_rancher2_machine_config_v2["kind"],
+                        "name": foo_rancher2_machine_config_v2["name"],
+                    },
+                }],
+            })
+        ```
+
+        ### Create a node-driver cluster with Harvester as the infrastructure provider
+
+        ### Create a node-driver cluster with Harvester as both the infrastructure provider and cloud provider
+
+        The example below utilizes the arguments such as `machine_selector_config`, `machine_global_config`, and `chart_values`.
+        More explanations and examples for those arguments can be found on this page.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Get imported harvester cluster info
+        foo_harvester = rancher2.get_cluster_v2(name="foo-harvester")
+        ```
+
+        You need the kubeconfig file of the Harvester cluster to use it as the cloud provider for your cluster.
+
+        ### Customize the agent environment variables
+
+        The example below demonstrates how to set agent environment variables on a cluster.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="cluster-with-agent-env-vars",
+            kubernetes_version="rke2/k3s-version",
+            agent_env_vars=[
+                {
+                    "name": "foo1",
+                    "value": "boo1",
+                },
+                {
+                    "name": "foo2",
+                    "value": "boo2",
+                },
+            ],
+            rke_config={})
+        ```
+
+        ### Customize the cluster agent and the fleet agent
+
+        This argument is available in Rancher v2.7.5 and above.
+
+        You can configure the tolerations, affinity rules, and resource requirements for the `cattle-cluster-agent` and `fleet-agent` deployments.
+
+        The example below demonstrates how to set `cluster_agent_deployment_customization` and `fleet_agent_deployment_customization`:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            fleet_agent_deployment_customizations=[{}],
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            cluster_agent_deployment_customizations=[{
+                "append_tolerations": [
+                    {
+                        "key": "tolerate/control-plane",
+                        "effect": "NoSchedule",
+                        "value": "true",
+                    },
+                    {
+                        "key": "tolerate/etcd",
+                        "effect": "NoSchedule",
+                        "value": "true",
+                    },
+                ],
+                "override_affinity": \"\"\"{
+          \\"nodeAffinity\\": {
+            \\"requiredDuringSchedulingIgnoredDuringExecution\\": {
+              \\"nodeSelectorTerms\\": [{
+                \\"matchExpressions\\": [{
+                  \\"key\\": \\"not.this/nodepool\\",
+                  \\"operator\\": \\"In\\",
+                  \\"values\\": [
+                    \\"true\\"
+                  ]
+                }]
+              }]
+            }
+          }
+        }
+        \"\"\",
+                "override_resource_requirements": [{
+                    "cpu_limit": "800m",
+                    "cpu_request": "500m",
+                    "memory_limit": "800Mi",
+                    "memory_request": "500Mi",
+                }],
+            }],
+            rke_config={
+                "machine_pools": [{}],
+            })
+        ```
+
+        ### Customize scheduling for the cluster agent
+
+        This argument is available in Rancher 2.11.0 and above.
+
+        You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent when provisioning or updating downstream clusters.
+
+        In order to use this field, you must ensure that the `cluster-agent-scheduling-customization` feature is enabled in the Rancher server.
+
+        The example below demonstrates how to set the `scheduling_customization` field to deploy a Priority Class and Pod Disruption Budget. Currently, this field is only supported for the cluster agent.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            cluster_agent_deployment_customizations=[{
+                "scheduling_customizations": [{
+                    "priority_classes": [{
+                        "preemption_policy": "PreemptLowerPriority",
+                        "value": 1000000000,
+                    }],
+                    "pod_disruption_budgets": [{
+                        "min_available": "1",
+                    }],
+                }],
+            }],
+            rke_config={
+                "machine_pools": [{}],
+            })
+        ```
+
+        ### Create a cluster that uses a cluster-level authenticated `system-default-registry`
+
+        The `<auth-config-secret-name>` represents a generic Kubernetes secret that contains two keys with base64 encoded values: the `username` and `password` for the specified custom registry. If the `system-default-registry` is not authenticated, no secret is required and the section within the `rke_config` can be omitted if not otherwise needed. While the below example shows how to create a registry secret, storing plain text credentials in terraform files is never a good idea. Significant care should be taken to ensure that the username and password values are not committed or otherwise leaked.
+
+        Many registries may be specified in the `rke_config`s `registries` section, however, the `system-default-registry` from which core system images are pulled is always denoted via the `system-default-registry` key of the `machine_selector_config` or the `machine_global_config`. For more information on private registries, please refer to [the Rancher documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry#setting-a-private-registry-with-credentials-when-deploying-a-cluster).
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo_cluster_v2 = rancher2.ClusterV2("foo_cluster_v2",
+            name="cluster-with-custom-registry",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "machine_pools": [{}],
+                "machine_selector_configs": [{
+                    "config": "system-default-registry: registry_domain_name",
+                }],
+                "registries": {
+                    "configs": [{
+                        "hostname": "registry_domain_name",
+                        "auth_config_secret_name": registry_secret_name,
+                        "insecure": "<tls-insecure-bool>",
+                        "tls_secret_name": "",
+                        "ca_bundle": "",
+                    }],
+                },
+            })
+        # create registry auth secret
+        my_registry = rancher2.SecretV2("my_registry",
+            cluster_id="local",
+            name=registry_secret_name,
+            namespace="fleet-default",
+            type="kubernetes.io/basic-auth",
+            data={
+                "username": registry_username,
+                "password": registry_password,
+            })
+        ```
+
+        ### Creating Rancher V2 Cluster with Machine Selector Files
+
+        This argument is available in Rancher v2.7.2 and above.
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [{}],
+                "machine_selector_files": [{
+                    "machine_label_selector": {
+                        "match_labels": {
+                            "rke.cattle.io/control-plane-role": "true",
+                            "rke.cattle.io/etcd-role": "true",
+                        },
+                        "match_expressions": [
+                            {
+                                "key": "name",
+                                "values": [
+                                    "a",
+                                    "b",
+                                ],
+                                "operator": "In",
+                            },
+                            {
+                                "key": "department",
+                                "operator": "In",
+                                "values": [
+                                    "a",
+                                    "b",
+                                ],
+                            },
+                        ],
+                    },
+                    "file_sources": [{
+                        "secret": {
+                            "name": "config-file-v1",
+                            "default_permissions": "644",
+                            "items": [{
+                                "key": "audit-policy",
+                                "path": "/etc/rancher/rke2/custom/policy-v1.yaml",
+                                "permissions": "666",
+                            }],
+                        },
+                    }],
+                }],
+            })
+        ```
+
+        ### Create a cluster with machine global config or machine selector config
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [{}],
+                "machine_selector_configs": [
+                    {
+                        "machine_label_selector": {
+                            "match_labels": {
+                                "rke.cattle.io/control-plane-role": "true",
+                                "rke.cattle.io/etcd-role": "true",
+                            },
+                            "match_expressions": [
+                                {
+                                    "key": "name",
+                                    "values": [
+                                        "a",
+                                        "b",
+                                    ],
+                                    "operator": "In",
+                                },
+                                {
+                                    "key": "department",
+                                    "operator": "In",
+                                    "values": [
+                                        "a",
+                                        "b",
+                                    ],
+                                },
+                            ],
+                        },
+                        "config": \"\"\"        kubelet-arg:
+                  - cloud-provider-name=external
+        \"\"\",
+                    },
+                    {
+                        "config": \"\"\"        kube-proxy-arg:
+                  - log_file_max_size=1800
+        \"\"\",
+                    },
+                ],
+                "machine_global_config": \"\"\"disable-kube-proxy: false
+        etcd-expose-metrics: false
+        kubelet-arg:
+          - xxx=xxx
+        kube-proxy-arg:
+          - xxx=xxx
+        kube-apiserver-arg:
+          - xxx=xxx
+        kube-scheduler-arg:
+          - xxx=xxx
+        kube-cloud-controller-manager-arg:
+          - xxx=xxx
+        \"\"\",
+            })
+        ```
+
+        ### Create a cluster with additional manifest
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "machine_pools": [{}],
+                "additional_manifest": \"\"\"apiVersion: v1
+        kind: Namespace
+        metadata:
+          name: testing-namespace-1
+        ---
+        apiVersion: v1
+        kind: Namespace
+        metadata:
+          name: testing-namespace-2
+        \"\"\",
+            })
+        ```
+
+        ### Customize the ETCD snapshot feature on the cluster
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        credentials = rancher2.CloudCredential("credentials",
+            name="rancher-creds",
+            s3_credential_config={
+                "access_key": "<ACCESS_KEY>",
+                "secret_key": "<SECRET_KEY>",
+            })
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "etcd": {
+                    "snapshot_schedule_cron": "0 */12 * * *",
+                    "snapshot_retention": 10,
+                    "s3_config": {
+                        "bucket": "backups",
+                        "endpoint": "https://minio.host:9000",
+                        "cloud_credential_name": credentials.id,
+                    },
+                },
+            })
+        ```
+
+        ### Customize distribution-specified server configurations in a cluster
+
+        You can customize all server configurations on the cluster by utilizing the `machine_global_config` argument.
+
+        For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) and [K3s server configuration](https://docs.k3s.io/cli/server).
+
+        The example below demonstrates how to disable the system services in a K3s cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="k3s-version",
+            rke_config={
+                "machine_global_config": \"\"\"disable:
+          - coredns
+          - servicelb
+          - traefik
+          - local-storage
+          - metrics-server
+        \"\"\",
+            })
+        ```
+
+        The example below demonstrates how to disable the system services in an RKE2 cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="rke2-version",
+            rke_config={
+                "machine_global_config": \"\"\"disable:
+          - rke2-coredns
+          - rke2-ingress-nginx
+          - rke2-metrics-server
+          - metrics-server
+        \"\"\",
+            })
+        ```
+
+        The example below demonstrates how to add additional hostnames or IPv4/IPv6 addresses as Subject Alternative Names on the server TLS cert in an RKE2/K3s cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "machine_global_config": "tls-san: [\\\\\\"example-website.com\\\\\\", \\\\\\"100.100.100.100\\\\\\", \\\\\\"2002:db8:3333:4444:5555:6666:7777:8888\\\\\\"]\\n",
+            })
+        ```
+
+        The example below demonstrates how to configure the IPv4/IPv6 network CIDRs to use for pod IPs and service IPs in an RKE2/K3s cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            machine_pools=[{}],
+            name="foo",
+            kubernetes_version="rke2/k3s-version",
+            rke_config={
+                "machine_global_config": \"\"\"cluster-cidr: \\"0.42.0.0/16\\"
+        service-cidr: \\"0.42.0.0/16\\"
+        \"\"\",
+            })
+        ```
+
+        ### Customize chart values in a cluster
+
+        You can specify the values for the system charts installed by RKE2 or K3s.
+
+        For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+
+        The example below demonstrates how to customize chart values in an RKE2 cluster:
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        foo = rancher2.ClusterV2("foo",
+            name="foo",
+            kubernetes_version="rke2-version",
+            enable_network_policy=False,
+            rke_config={
+                "machine_pools": [{}],
+                "chart_values": \"\"\"rke2-calico:
+          calicoctl:
+            image: rancher/mirrored-calico-ctl
+            tag: v3.19.2
+          certs:
+            node:
+              cert: null
+              commonName: null
+              key: null
+            typha:
+              caBundle: null
+              cert: null
+              commonName: null
+              key: null
+          felixConfiguration:
+            featureDetectOverride: ChecksumOffloadBroken=true
+          global:
+            systemDefaultRegistry: \\"\\"
+          imagePullSecrets: {}
+          installation:
+            calicoNetwork:
+              bgp: Disabled
+              ipPools:
+              - blockSize: 24
+                cidr: 10.42.0.0/16
+                encapsulation: VXLAN
+                natOutgoing: Enabled
+            controlPlaneTolerations:
+            - effect: NoSchedule
+              key: node-role.kubernetes.io/control-plane
+              operator: Exists
+            - effect: NoExecute
+              key: node-role.kubernetes.io/etcd
+              operator: Exists
+            enabled: true
+            imagePath: rancher
+            imagePrefix: mirrored-calico-
+            kubernetesProvider: \\"\\"
+          ipamConfig:
+            autoAllocateBlocks: true
+            strictAffinity: true
+          tigeraOperator:
+            image: rancher/mirrored-calico-operator
+            registry: docker.io
+            version: v1.17.6
+        \"\"\",
+            })
+        ```
+
         ## Import
 
         Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;

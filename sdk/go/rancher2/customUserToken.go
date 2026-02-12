@@ -91,7 +91,7 @@ type CustomUserToken struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The user password (string)
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew pulumi.BoolPtrOutput `pulumi:"renew"`
 	// (Computed/Sensitive) Token secret key part (string)
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
@@ -175,7 +175,7 @@ type customUserTokenState struct {
 	Name *string `pulumi:"name"`
 	// The user password (string)
 	Password *string `pulumi:"password"`
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew *bool `pulumi:"renew"`
 	// (Computed/Sensitive) Token secret key part (string)
 	SecretKey *string `pulumi:"secretKey"`
@@ -214,7 +214,7 @@ type CustomUserTokenState struct {
 	Name pulumi.StringPtrInput
 	// The user password (string)
 	Password pulumi.StringPtrInput
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew pulumi.BoolPtrInput
 	// (Computed/Sensitive) Token secret key part (string)
 	SecretKey pulumi.StringPtrInput
@@ -249,7 +249,7 @@ type customUserTokenArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The user password (string)
 	Password string `pulumi:"password"`
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew *bool `pulumi:"renew"`
 	// Token time to live in seconds. Default `0` (int)
 	//
@@ -271,7 +271,7 @@ type CustomUserTokenArgs struct {
 	Labels pulumi.StringMapInput
 	// The user password (string)
 	Password pulumi.StringInput
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew pulumi.BoolPtrInput
 	// Token time to live in seconds. Default `0` (int)
 	//
@@ -413,7 +413,7 @@ func (o CustomUserTokenOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomUserToken) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Renew expired or disabled token
+// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 func (o CustomUserTokenOutput) Renew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CustomUserToken) pulumi.BoolPtrOutput { return v.Renew }).(pulumi.BoolPtrOutput)
 }

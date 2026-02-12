@@ -3003,35 +3003,50 @@ public final class Rancher2Functions {
         return Deployment.getInstance().invokeAsync("rancher2:index/getPrincipal:getPrincipal", TypeShape.of(GetPrincipalResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
+     * Use this data source to retrieve information about a Rancher v2 project.
+     * This data source can be used in conjunction with the Terraform
+     * Kubernetes provider
+     * to associate Namespaces with projects.
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
         return getProject(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * Use this data source to retrieve information about a Rancher v2 project.
+     * This data source can be used in conjunction with the Terraform
+     * Kubernetes provider
+     * to associate Namespaces with projects.
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
         return getProjectPlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## Example Usage
+     * Use this data source to retrieve information about a Rancher v2 project.
+     * This data source can be used in conjunction with the Terraform
+     * Kubernetes provider
+     * to associate Namespaces with projects.
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("rancher2:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
+     * Use this data source to retrieve information about a Rancher v2 project.
+     * This data source can be used in conjunction with the Terraform
+     * Kubernetes provider
+     * to associate Namespaces with projects.
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("rancher2:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## Example Usage
+     * Use this data source to retrieve information about a Rancher v2 project.
+     * This data source can be used in conjunction with the Terraform
+     * Kubernetes provider
+     * to associate Namespaces with projects.
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {

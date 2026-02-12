@@ -10,6 +10,917 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
+    /// Provides a Rancher v2 Cluster v2 resource. This can be used to create node-driver and custom RKE2 and K3s Clusters for Rancher v2 environments and retrieve their information.
+    /// 
+    /// This resource is available in Rancher v2.6.0 and above.
+    /// 
+    /// **Hint**: To create an imported cluster for registering a standalone Kubernetes cluster into rancher, use the Rancher v2 Cluster resource instead.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// You can create a Rancher v2 cluster v2 that runs either RKE2 or K3s.
+    /// 
+    /// There are some distribution-specific arguments, especially the ones under the `RkeConfig` section, that you can utilize to configure your RKE2 or K3s cluster.
+    /// More details and examples can be found on this page.
+    /// 
+    /// You can create two types of clusters depending on how nodes are managed:
+    /// 
+    /// - a custom cluster to which your existing VM(s) can be registered
+    /// - a node-driver cluster in which Rancher provisions and manages the VM(s) on the specified infrastructure provider
+    /// 
+    /// The cluster will be created as a custom cluster if there are no `MachinePools` in the configuration;
+    /// otherwise, it will be created as a node-driver cluster.
+    /// 
+    /// All arguments, except some distribution-specific ones, are applied to both custom and node-driver clusters of both distributions.
+    /// 
+    /// ### Create a custom cluster
+    /// 
+    /// Below is the minimum configuration for creating a custom cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2-/k3s-version",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Once the cluster is created, you get the node registration command from `rancher2_cluster_v2.foo.cluster_registration_token`.
+    /// 
+    /// ### Create a node-driver cluster
+    /// 
+    /// Before creating a node-driver cluster, you need to create a `rancher2.MachineConfigV2` resource which will be referred to in the machine pool(s) of the cluster.
+    /// 
+    /// The example below demonstrates how to create a `rancher2.MachineConfigV2` resource with `AmazonEC2` as the infrastructure provider:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create AmazonEC2 cloud credential
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
+    ///         {
+    ///             AccessKey = "&lt;ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;SECRET_KEY&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     // Create AmazonEC2 machine config v2
+    ///     var fooMachineConfigV2 = new Rancher2.MachineConfigV2("foo", new()
+    ///     {
+    ///         GenerateName = "test-foo",
+    ///         Amazonec2Config = new Rancher2.Inputs.MachineConfigV2Amazonec2ConfigArgs
+    ///         {
+    ///             Ami = "ami-id",
+    ///             Region = "region",
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 "security-group",
+    ///             },
+    ///             SubnetId = "subnet-id",
+    ///             VpcId = "vpc-id",
+    ///             Zone = "zone",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// For the full list of supported infrastructure providers and their arguments, please refer to the page for the `rancher2.MachineConfigV2` resource.
+    /// 
+    /// Now, you can create an RKE2 or K3s node-driver cluster with one or more machine pools:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a cluster with multiple machine pools
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         EnableNetworkPolicy = false,
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolArgs
+    ///                 {
+    ///                     Name = "pool1",
+    ///                     CloudCredentialSecretName = fooRancher2CloudCredential.Id,
+    ///                     ControlPlaneRole = true,
+    ///                     EtcdRole = true,
+    ///                     WorkerRole = false,
+    ///                     Quantity = 1,
+    ///                     DrainBeforeDelete = true,
+    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
+    ///                     {
+    ///                         Kind = fooRancher2MachineConfigV2.Kind,
+    ///                         Name = fooRancher2MachineConfigV2.Name,
+    ///                     },
+    ///                 },
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolArgs
+    ///                 {
+    ///                     Name = "pool2",
+    ///                     CloudCredentialSecretName = fooRancher2CloudCredential.Id,
+    ///                     ControlPlaneRole = false,
+    ///                     EtcdRole = false,
+    ///                     WorkerRole = true,
+    ///                     Quantity = 2,
+    ///                     DrainBeforeDelete = true,
+    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
+    ///                     {
+    ///                         Kind = fooRancher2MachineConfigV2.Kind,
+    ///                         Name = fooRancher2MachineConfigV2.Name,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a cluster with a single machine pool
+    ///     var foo_k3s = new Rancher2.ClusterV2("foo-k3s", new()
+    ///     {
+    ///         Name = "foo-k3s",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         EnableNetworkPolicy = false,
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolArgs
+    ///                 {
+    ///                     Name = "pool",
+    ///                     CloudCredentialSecretName = fooRancher2CloudCredential.Id,
+    ///                     ControlPlaneRole = true,
+    ///                     EtcdRole = true,
+    ///                     WorkerRole = true,
+    ///                     Quantity = 1,
+    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
+    ///                     {
+    ///                         Kind = fooRancher2MachineConfigV2.Kind,
+    ///                         Name = fooRancher2MachineConfigV2.Name,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a node-driver cluster with Harvester as the infrastructure provider
+    /// 
+    /// ### Create a node-driver cluster with Harvester as both the infrastructure provider and cloud provider
+    /// 
+    /// The example below utilizes the arguments such as `MachineSelectorConfig`, `MachineGlobalConfig`, and `ChartValues`.
+    /// More explanations and examples for those arguments can be found on this page.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Get imported harvester cluster info
+    ///     var foo_harvester = Rancher2.GetClusterV2.Invoke(new()
+    ///     {
+    ///         Name = "foo-harvester",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// You need the kubeconfig file of the Harvester cluster to use it as the cloud provider for your cluster.
+    /// 
+    /// ### Customize the agent environment variables
+    /// 
+    /// The example below demonstrates how to set agent environment variables on a cluster.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         Name = "cluster-with-agent-env-vars",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         AgentEnvVars = new[]
+    ///         {
+    ///             new Rancher2.Inputs.ClusterV2AgentEnvVarArgs
+    ///             {
+    ///                 Name = "foo1",
+    ///                 Value = "boo1",
+    ///             },
+    ///             new Rancher2.Inputs.ClusterV2AgentEnvVarArgs
+    ///             {
+    ///                 Name = "foo2",
+    ///                 Value = "boo2",
+    ///             },
+    ///         },
+    ///         RkeConfig = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Customize the cluster agent and the fleet agent
+    /// 
+    /// This argument is available in Rancher v2.7.5 and above.
+    /// 
+    /// You can configure the tolerations, affinity rules, and resource requirements for the `cattle-cluster-agent` and `fleet-agent` deployments.
+    /// 
+    /// The example below demonstrates how to set `ClusterAgentDeploymentCustomization` and `FleetAgentDeploymentCustomization`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         FleetAgentDeploymentCustomizations = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         ClusterAgentDeploymentCustomizations = new[]
+    ///         {
+    ///             new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs
+    ///             {
+    ///                 AppendTolerations = new[]
+    ///                 {
+    ///                     new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs
+    ///                     {
+    ///                         Key = "tolerate/control-plane",
+    ///                         Effect = "NoSchedule",
+    ///                         Value = "true",
+    ///                     },
+    ///                     new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs
+    ///                     {
+    ///                         Key = "tolerate/etcd",
+    ///                         Effect = "NoSchedule",
+    ///                         Value = "true",
+    ///                     },
+    ///                 },
+    ///                 OverrideAffinity = @"{
+    ///   \""nodeAffinity\"": {
+    ///     \""requiredDuringSchedulingIgnoredDuringExecution\"": {
+    ///       \""nodeSelectorTerms\"": [{
+    ///         \""matchExpressions\"": [{
+    ///           \""key\"": \""not.this/nodepool\"",
+    ///           \""operator\"": \""In\"",
+    ///           \""values\"": [
+    ///             \""true\""
+    ///           ]
+    ///         }]
+    ///       }]
+    ///     }
+    ///   }
+    /// }
+    /// ",
+    ///                 OverrideResourceRequirements = new[]
+    ///                 {
+    ///                     new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs
+    ///                     {
+    ///                         CpuLimit = "800m",
+    ///                         CpuRequest = "500m",
+    ///                         MemoryLimit = "800Mi",
+    ///                         MemoryRequest = "500Mi",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Customize scheduling for the cluster agent
+    /// 
+    /// This argument is available in Rancher 2.11.0 and above.
+    /// 
+    /// You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent when provisioning or updating downstream clusters.
+    /// 
+    /// In order to use this field, you must ensure that the `cluster-agent-scheduling-customization` feature is enabled in the Rancher server.
+    /// 
+    /// The example below demonstrates how to set the `SchedulingCustomization` field to deploy a Priority Class and Pod Disruption Budget. Currently, this field is only supported for the cluster agent.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         ClusterAgentDeploymentCustomizations = new[]
+    ///         {
+    ///             new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs
+    ///             {
+    ///                 SchedulingCustomizations = new[]
+    ///                 {
+    ///                     new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs
+    ///                     {
+    ///                         PriorityClasses = new[]
+    ///                         {
+    ///                             new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs
+    ///                             {
+    ///                                 PreemptionPolicy = "PreemptLowerPriority",
+    ///                                 Value = 1000000000,
+    ///                             },
+    ///                         },
+    ///                         PodDisruptionBudgets = new[]
+    ///                         {
+    ///                             new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs
+    ///                             {
+    ///                                 MinAvailable = "1",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a cluster that uses a cluster-level authenticated `system-default-registry`
+    /// 
+    /// The `&lt;auth-config-secret-name&gt;` represents a generic Kubernetes secret that contains two keys with base64 encoded values: the `Username` and `Password` for the specified custom registry. If the `system-default-registry` is not authenticated, no secret is required and the section within the `RkeConfig` can be omitted if not otherwise needed. While the below example shows how to create a registry secret, storing plain text credentials in terraform files is never a good idea. Significant care should be taken to ensure that the username and password values are not committed or otherwise leaked.
+    /// 
+    /// Many registries may be specified in the `RkeConfig`s `Registries` section, however, the `system-default-registry` from which core system images are pulled is always denoted via the `system-default-registry` key of the `MachineSelectorConfig` or the `MachineGlobalConfig`. For more information on private registries, please refer to [the Rancher documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry#setting-a-private-registry-with-credentials-when-deploying-a-cluster).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooClusterV2 = new Rancher2.ClusterV2("foo_cluster_v2", new()
+    ///     {
+    ///         Name = "cluster-with-custom-registry",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
+    ///             MachineSelectorConfigs = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigArgs
+    ///                 {
+    ///                     Config = "system-default-registry: registry_domain_name",
+    ///                 },
+    ///             },
+    ///             Registries = new Rancher2.Inputs.ClusterV2RkeConfigRegistriesArgs
+    ///             {
+    ///                 Configs = new[]
+    ///                 {
+    ///                     new Rancher2.Inputs.ClusterV2RkeConfigRegistriesConfigArgs
+    ///                     {
+    ///                         Hostname = "registry_domain_name",
+    ///                         AuthConfigSecretName = registrySecretName,
+    ///                         Insecure = "&lt;tls-insecure-bool&gt;",
+    ///                         TlsSecretName = "",
+    ///                         CaBundle = "",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // create registry auth secret
+    ///     var myRegistry = new Rancher2.SecretV2("my_registry", new()
+    ///     {
+    ///         ClusterId = "local",
+    ///         Name = registrySecretName,
+    ///         Namespace = "fleet-default",
+    ///         Type = "kubernetes.io/basic-auth",
+    ///         Data = 
+    ///         {
+    ///             { "username", registryUsername },
+    ///             { "password", registryPassword },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating Rancher V2 Cluster with Machine Selector Files
+    /// 
+    /// This argument is available in Rancher v2.7.2 and above.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         EnableNetworkPolicy = false,
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
+    ///             MachineSelectorFiles = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileArgs
+    ///                 {
+    ///                     MachineLabelSelector = new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs
+    ///                     {
+    ///                         MatchLabels = 
+    ///                         {
+    ///                             { "rke.cattle.io/control-plane-role", "true" },
+    ///                             { "rke.cattle.io/etcd-role", "true" },
+    ///                         },
+    ///                         MatchExpressions = new[]
+    ///                         {
+    ///                             new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs
+    ///                             {
+    ///                                 Key = "name",
+    ///                                 Values = new[]
+    ///                                 {
+    ///                                     "a",
+    ///                                     "b",
+    ///                                 },
+    ///                                 Operator = "In",
+    ///                             },
+    ///                             new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs
+    ///                             {
+    ///                                 Key = "department",
+    ///                                 Operator = "In",
+    ///                                 Values = new[]
+    ///                                 {
+    ///                                     "a",
+    ///                                     "b",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     FileSources = new[]
+    ///                     {
+    ///                         new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceArgs
+    ///                         {
+    ///                             Secret = new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs
+    ///                             {
+    ///                                 Name = "config-file-v1",
+    ///                                 DefaultPermissions = "644",
+    ///                                 Items = new[]
+    ///                                 {
+    ///                                     new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
+    ///                                     {
+    ///                                         Key = "audit-policy",
+    ///                                         Path = "/etc/rancher/rke2/custom/policy-v1.yaml",
+    ///                                         Permissions = "666",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a cluster with machine global config or machine selector config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2-version",
+    ///         EnableNetworkPolicy = false,
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
+    ///             MachineSelectorConfigs = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigArgs
+    ///                 {
+    ///                     MachineLabelSelector = new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs
+    ///                     {
+    ///                         MatchLabels = 
+    ///                         {
+    ///                             { "rke.cattle.io/control-plane-role", "true" },
+    ///                             { "rke.cattle.io/etcd-role", "true" },
+    ///                         },
+    ///                         MatchExpressions = new[]
+    ///                         {
+    ///                             new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs
+    ///                             {
+    ///                                 Key = "name",
+    ///                                 Values = new[]
+    ///                                 {
+    ///                                     "a",
+    ///                                     "b",
+    ///                                 },
+    ///                                 Operator = "In",
+    ///                             },
+    ///                             new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs
+    ///                             {
+    ///                                 Key = "department",
+    ///                                 Operator = "In",
+    ///                                 Values = new[]
+    ///                                 {
+    ///                                     "a",
+    ///                                     "b",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Config = @"        kubelet-arg:
+    ///           - cloud-provider-name=external
+    /// ",
+    ///                 },
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigArgs
+    ///                 {
+    ///                     Config = @"        kube-proxy-arg:
+    ///           - log_file_max_size=1800
+    /// ",
+    ///                 },
+    ///             },
+    ///             MachineGlobalConfig = @"disable-kube-proxy: false
+    /// etcd-expose-metrics: false
+    /// kubelet-arg:
+    ///   - xxx=xxx
+    /// kube-proxy-arg:
+    ///   - xxx=xxx
+    /// kube-apiserver-arg:
+    ///   - xxx=xxx
+    /// kube-scheduler-arg:
+    ///   - xxx=xxx
+    /// kube-cloud-controller-manager-arg:
+    ///   - xxx=xxx
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Create a cluster with additional manifest
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
+    ///             AdditionalManifest = @"apiVersion: v1
+    /// kind: Namespace
+    /// metadata:
+    ///   name: testing-namespace-1
+    /// ---
+    /// apiVersion: v1
+    /// kind: Namespace
+    /// metadata:
+    ///   name: testing-namespace-2
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Customize the ETCD snapshot feature on the cluster
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var credentials = new Rancher2.CloudCredential("credentials", new()
+    ///     {
+    ///         Name = "rancher-creds",
+    ///         S3CredentialConfig = new Rancher2.Inputs.CloudCredentialS3CredentialConfigArgs
+    ///         {
+    ///             AccessKey = "&lt;ACCESS_KEY&gt;",
+    ///             SecretKey = "&lt;SECRET_KEY&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         MachinePools = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             Etcd = new Rancher2.Inputs.ClusterV2RkeConfigEtcdArgs
+    ///             {
+    ///                 SnapshotScheduleCron = "0 */12 * * *",
+    ///                 SnapshotRetention = 10,
+    ///                 S3Config = new Rancher2.Inputs.ClusterV2RkeConfigEtcdS3ConfigArgs
+    ///                 {
+    ///                     Bucket = "backups",
+    ///                     Endpoint = "https://minio.host:9000",
+    ///                     CloudCredentialName = credentials.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Customize distribution-specified server configurations in a cluster
+    /// 
+    /// You can customize all server configurations on the cluster by utilizing the `MachineGlobalConfig` argument.
+    /// 
+    /// For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) and [K3s server configuration](https://docs.k3s.io/cli/server).
+    /// 
+    /// The example below demonstrates how to disable the system services in a K3s cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         MachinePools = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "k3s-version",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachineGlobalConfig = @"disable:
+    ///   - coredns
+    ///   - servicelb
+    ///   - traefik
+    ///   - local-storage
+    ///   - metrics-server
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The example below demonstrates how to disable the system services in an RKE2 cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         MachinePools = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2-version",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachineGlobalConfig = @"disable:
+    ///   - rke2-coredns
+    ///   - rke2-ingress-nginx
+    ///   - rke2-metrics-server
+    ///   - metrics-server
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The example below demonstrates how to add additional hostnames or IPv4/IPv6 addresses as Subject Alternative Names on the server TLS cert in an RKE2/K3s cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         MachinePools = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachineGlobalConfig = @"tls-san: [\""example-website.com\"", \""100.100.100.100\"", \""2002:db8:3333:4444:5555:6666:7777:8888\""]
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The example below demonstrates how to configure the IPv4/IPv6 network CIDRs to use for pod IPs and service IPs in an RKE2/K3s cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         MachinePools = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachineGlobalConfig = @"cluster-cidr: \""0.42.0.0/16\""
+    /// service-cidr: \""0.42.0.0/16\""
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Customize chart values in a cluster
+    /// 
+    /// You can specify the values for the system charts installed by RKE2 or K3s.
+    /// 
+    /// For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+    /// 
+    /// The example below demonstrates how to customize chart values in an RKE2 cluster:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2-version",
+    ///         EnableNetworkPolicy = false,
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
+    ///             ChartValues = @"rke2-calico:
+    ///   calicoctl:
+    ///     image: rancher/mirrored-calico-ctl
+    ///     tag: v3.19.2
+    ///   certs:
+    ///     node:
+    ///       cert: null
+    ///       commonName: null
+    ///       key: null
+    ///     typha:
+    ///       caBundle: null
+    ///       cert: null
+    ///       commonName: null
+    ///       key: null
+    ///   felixConfiguration:
+    ///     featureDetectOverride: ChecksumOffloadBroken=true
+    ///   global:
+    ///     systemDefaultRegistry: \""\""
+    ///   imagePullSecrets: {}
+    ///   installation:
+    ///     calicoNetwork:
+    ///       bgp: Disabled
+    ///       ipPools:
+    ///       - blockSize: 24
+    ///         cidr: 10.42.0.0/16
+    ///         encapsulation: VXLAN
+    ///         natOutgoing: Enabled
+    ///     controlPlaneTolerations:
+    ///     - effect: NoSchedule
+    ///       key: node-role.kubernetes.io/control-plane
+    ///       operator: Exists
+    ///     - effect: NoExecute
+    ///       key: node-role.kubernetes.io/etcd
+    ///       operator: Exists
+    ///     enabled: true
+    ///     imagePath: rancher
+    ///     imagePrefix: mirrored-calico-
+    ///     kubernetesProvider: \""\""
+    ///   ipamConfig:
+    ///     autoAllocateBlocks: true
+    ///     strictAffinity: true
+    ///   tigeraOperator:
+    ///     image: rancher/mirrored-calico-operator
+    ///     registry: docker.io
+    ///     version: v1.17.6
+    /// ",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &amp;lt;FLEET_NAMESPACE&amp;gt;/&amp;lt;CLUSTER_NAME&amp;gt;

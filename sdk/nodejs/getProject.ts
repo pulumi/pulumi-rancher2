@@ -7,7 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
+ * Use this data source to retrieve information about a Rancher v2 project.
+ * This data source can be used in conjunction with the Terraform
+ * Kubernetes provider
+ * to associate Namespaces with projects.
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,7 +70,10 @@ export interface GetProjectResult {
     readonly uuid: string;
 }
 /**
- * ## Example Usage
+ * Use this data source to retrieve information about a Rancher v2 project.
+ * This data source can be used in conjunction with the Terraform
+ * Kubernetes provider
+ * to associate Namespaces with projects.
  */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

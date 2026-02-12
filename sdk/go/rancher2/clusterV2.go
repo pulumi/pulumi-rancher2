@@ -12,6 +12,982 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Rancher v2 Cluster v2 resource. This can be used to create node-driver and custom RKE2 and K3s Clusters for Rancher v2 environments and retrieve their information.
+//
+// This resource is available in Rancher v2.6.0 and above.
+//
+// **Hint**: To create an imported cluster for registering a standalone Kubernetes cluster into rancher, use the Rancher v2 Cluster resource instead.
+//
+// ## Example Usage
+//
+// You can create a Rancher v2 cluster v2 that runs either RKE2 or K3s.
+//
+// There are some distribution-specific arguments, especially the ones under the `rkeConfig` section, that you can utilize to configure your RKE2 or K3s cluster.
+// More details and examples can be found on this page.
+//
+// You can create two types of clusters depending on how nodes are managed:
+//
+// - a custom cluster to which your existing VM(s) can be registered
+// - a node-driver cluster in which Rancher provisions and manages the VM(s) on the specified infrastructure provider
+//
+// The cluster will be created as a custom cluster if there are no `machinePools` in the configuration;
+// otherwise, it will be created as a node-driver cluster.
+//
+// All arguments, except some distribution-specific ones, are applied to both custom and node-driver clusters of both distributions.
+//
+// ### Create a custom cluster
+//
+// Below is the minimum configuration for creating a custom cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2-/k3s-version"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Once the cluster is created, you get the node registration command from `rancher2_cluster_v2.foo.cluster_registration_token`.
+//
+// ### Create a node-driver cluster
+//
+// Before creating a node-driver cluster, you need to create a `MachineConfigV2` resource which will be referred to in the machine pool(s) of the cluster.
+//
+// The example below demonstrates how to create a `MachineConfigV2` resource with `AmazonEC2` as the infrastructure provider:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create AmazonEC2 cloud credential
+//			_, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
+//				Name: pulumi.String("foo"),
+//				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
+//					AccessKey: pulumi.String("<ACCESS_KEY>"),
+//					SecretKey: pulumi.String("<SECRET_KEY>"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create AmazonEC2 machine config v2
+//			_, err = rancher2.NewMachineConfigV2(ctx, "foo", &rancher2.MachineConfigV2Args{
+//				GenerateName: pulumi.String("test-foo"),
+//				Amazonec2Config: &rancher2.MachineConfigV2Amazonec2ConfigArgs{
+//					Ami:    pulumi.String("ami-id"),
+//					Region: pulumi.String("region"),
+//					SecurityGroups: pulumi.StringArray{
+//						pulumi.String("security-group"),
+//					},
+//					SubnetId: pulumi.String("subnet-id"),
+//					VpcId:    pulumi.String("vpc-id"),
+//					Zone:     pulumi.String("zone"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// For the full list of supported infrastructure providers and their arguments, please refer to the page for the `MachineConfigV2` resource.
+//
+// Now, you can create an RKE2 or K3s node-driver cluster with one or more machine pools:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a cluster with multiple machine pools
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				Name:                pulumi.String("foo"),
+//				KubernetesVersion:   pulumi.String("rke2/k3s-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{
+//							Name:                      pulumi.String("pool1"),
+//							CloudCredentialSecretName: pulumi.Any(fooRancher2CloudCredential.Id),
+//							ControlPlaneRole:          pulumi.Bool(true),
+//							EtcdRole:                  pulumi.Bool(true),
+//							WorkerRole:                pulumi.Bool(false),
+//							Quantity:                  pulumi.Int(1),
+//							DrainBeforeDelete:         pulumi.Bool(true),
+//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
+//								Kind: pulumi.Any(fooRancher2MachineConfigV2.Kind),
+//								Name: pulumi.Any(fooRancher2MachineConfigV2.Name),
+//							},
+//						},
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{
+//							Name:                      pulumi.String("pool2"),
+//							CloudCredentialSecretName: pulumi.Any(fooRancher2CloudCredential.Id),
+//							ControlPlaneRole:          pulumi.Bool(false),
+//							EtcdRole:                  pulumi.Bool(false),
+//							WorkerRole:                pulumi.Bool(true),
+//							Quantity:                  pulumi.Int(2),
+//							DrainBeforeDelete:         pulumi.Bool(true),
+//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
+//								Kind: pulumi.Any(fooRancher2MachineConfigV2.Kind),
+//								Name: pulumi.Any(fooRancher2MachineConfigV2.Name),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a cluster with a single machine pool
+//			_, err = rancher2.NewClusterV2(ctx, "foo-k3s", &rancher2.ClusterV2Args{
+//				Name:                pulumi.String("foo-k3s"),
+//				KubernetesVersion:   pulumi.String("rke2/k3s-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{
+//							Name:                      pulumi.String("pool"),
+//							CloudCredentialSecretName: pulumi.Any(fooRancher2CloudCredential.Id),
+//							ControlPlaneRole:          pulumi.Bool(true),
+//							EtcdRole:                  pulumi.Bool(true),
+//							WorkerRole:                pulumi.Bool(true),
+//							Quantity:                  pulumi.Int(1),
+//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
+//								Kind: pulumi.Any(fooRancher2MachineConfigV2.Kind),
+//								Name: pulumi.Any(fooRancher2MachineConfigV2.Name),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a node-driver cluster with Harvester as the infrastructure provider
+//
+// ### Create a node-driver cluster with Harvester as both the infrastructure provider and cloud provider
+//
+// The example below utilizes the arguments such as `machineSelectorConfig`, `machineGlobalConfig`, and `chartValues`.
+// More explanations and examples for those arguments can be found on this page.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Get imported harvester cluster info
+//			_, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
+//				Name: "foo-harvester",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// You need the kubeconfig file of the Harvester cluster to use it as the cloud provider for your cluster.
+//
+// ### Customize the agent environment variables
+//
+// The example below demonstrates how to set agent environment variables on a cluster.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				Name:              pulumi.String("cluster-with-agent-env-vars"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				AgentEnvVars: rancher2.ClusterV2AgentEnvVarArray{
+//					&rancher2.ClusterV2AgentEnvVarArgs{
+//						Name:  pulumi.String("foo1"),
+//						Value: pulumi.String("boo1"),
+//					},
+//					&rancher2.ClusterV2AgentEnvVarArgs{
+//						Name:  pulumi.String("foo2"),
+//						Value: pulumi.String("boo2"),
+//					},
+//				},
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Customize the cluster agent and the fleet agent
+//
+// This argument is available in Rancher v2.7.5 and above.
+//
+// You can configure the tolerations, affinity rules, and resource requirements for the `cattle-cluster-agent` and `fleet-agent` deployments.
+//
+// The example below demonstrates how to set `clusterAgentDeploymentCustomization` and `fleetAgentDeploymentCustomization`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				FleetAgentDeploymentCustomizations: rancher2.ClusterV2FleetAgentDeploymentCustomizationArray{
+//					&rancher2.ClusterV2FleetAgentDeploymentCustomizationArgs{},
+//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				ClusterAgentDeploymentCustomizations: rancher2.ClusterV2ClusterAgentDeploymentCustomizationArray{
+//					&rancher2.ClusterV2ClusterAgentDeploymentCustomizationArgs{
+//						AppendTolerations: rancher2.ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArray{
+//							&rancher2.ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs{
+//								Key:    pulumi.String("tolerate/control-plane"),
+//								Effect: pulumi.String("NoSchedule"),
+//								Value:  pulumi.String("true"),
+//							},
+//							&rancher2.ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs{
+//								Key:    pulumi.String("tolerate/etcd"),
+//								Effect: pulumi.String("NoSchedule"),
+//								Value:  pulumi.String("true"),
+//							},
+//						},
+//						OverrideAffinity: pulumi.String(`{
+//	  \"nodeAffinity\": {
+//	    \"requiredDuringSchedulingIgnoredDuringExecution\": {
+//	      \"nodeSelectorTerms\": [{
+//	        \"matchExpressions\": [{
+//	          \"key\": \"not.this/nodepool\",
+//	          \"operator\": \"In\",
+//	          \"values\": [
+//	            \"true\"
+//	          ]
+//	        }]
+//	      }]
+//	    }
+//	  }
+//	}
+//
+// `),
+//
+//						OverrideResourceRequirements: rancher2.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArray{
+//							&rancher2.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs{
+//								CpuLimit:      pulumi.String("800m"),
+//								CpuRequest:    pulumi.String("500m"),
+//								MemoryLimit:   pulumi.String("800Mi"),
+//								MemoryRequest: pulumi.String("500Mi"),
+//							},
+//						},
+//					},
+//				},
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Customize scheduling for the cluster agent
+//
+// This argument is available in Rancher 2.11.0 and above.
+//
+// You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent when provisioning or updating downstream clusters.
+//
+// In order to use this field, you must ensure that the `cluster-agent-scheduling-customization` feature is enabled in the Rancher server.
+//
+// The example below demonstrates how to set the `schedulingCustomization` field to deploy a Priority Class and Pod Disruption Budget. Currently, this field is only supported for the cluster agent.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				ClusterAgentDeploymentCustomizations: rancher2.ClusterV2ClusterAgentDeploymentCustomizationArray{
+//					&rancher2.ClusterV2ClusterAgentDeploymentCustomizationArgs{
+//						SchedulingCustomizations: rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArray{
+//							&rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs{
+//								PriorityClasses: rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{
+//									&rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{
+//										PreemptionPolicy: pulumi.String("PreemptLowerPriority"),
+//										Value:            pulumi.Int(1000000000),
+//									},
+//								},
+//								PodDisruptionBudgets: rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{
+//									&rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{
+//										MinAvailable: pulumi.String("1"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a cluster that uses a cluster-level authenticated `system-default-registry`
+//
+// The `<auth-config-secret-name>` represents a generic Kubernetes secret that contains two keys with base64 encoded values: the `username` and `password` for the specified custom registry. If the `system-default-registry` is not authenticated, no secret is required and the section within the `rkeConfig` can be omitted if not otherwise needed. While the below example shows how to create a registry secret, storing plain text credentials in terraform files is never a good idea. Significant care should be taken to ensure that the username and password values are not committed or otherwise leaked.
+//
+// Many registries may be specified in the `rkeConfig`s `registries` section, however, the `system-default-registry` from which core system images are pulled is always denoted via the `system-default-registry` key of the `machineSelectorConfig` or the `machineGlobalConfig`. For more information on private registries, please refer to [the Rancher documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry#setting-a-private-registry-with-credentials-when-deploying-a-cluster).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo_cluster_v2", &rancher2.ClusterV2Args{
+//				Name:              pulumi.String("cluster-with-custom-registry"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
+//					MachineSelectorConfigs: rancher2.ClusterV2RkeConfigMachineSelectorConfigArray{
+//						&rancher2.ClusterV2RkeConfigMachineSelectorConfigArgs{
+//							Config: pulumi.String("system-default-registry: registry_domain_name"),
+//						},
+//					},
+//					Registries: &rancher2.ClusterV2RkeConfigRegistriesArgs{
+//						Configs: rancher2.ClusterV2RkeConfigRegistriesConfigArray{
+//							&rancher2.ClusterV2RkeConfigRegistriesConfigArgs{
+//								Hostname:             pulumi.String("registry_domain_name"),
+//								AuthConfigSecretName: pulumi.Any(registrySecretName),
+//								Insecure:             pulumi.Bool("<tls-insecure-bool>"),
+//								TlsSecretName:        pulumi.String(""),
+//								CaBundle:             pulumi.String(""),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// create registry auth secret
+//			_, err = rancher2.NewSecretV2(ctx, "my_registry", &rancher2.SecretV2Args{
+//				ClusterId: pulumi.String("local"),
+//				Name:      pulumi.Any(registrySecretName),
+//				Namespace: pulumi.String("fleet-default"),
+//				Type:      pulumi.String("kubernetes.io/basic-auth"),
+//				Data: pulumi.StringMap{
+//					"username": pulumi.Any(registryUsername),
+//					"password": pulumi.Any(registryPassword),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating Rancher V2 Cluster with Machine Selector Files
+//
+// This argument is available in Rancher v2.7.2 and above.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				Name:                pulumi.String("foo"),
+//				KubernetesVersion:   pulumi.String("rke2/k3s-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
+//					MachineSelectorFiles: rancher2.ClusterV2RkeConfigMachineSelectorFileArray{
+//						&rancher2.ClusterV2RkeConfigMachineSelectorFileArgs{
+//							MachineLabelSelector: &rancher2.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs{
+//								MatchLabels: pulumi.StringMap{
+//									"rke.cattle.io/control-plane-role": pulumi.String("true"),
+//									"rke.cattle.io/etcd-role":          pulumi.String("true"),
+//								},
+//								MatchExpressions: rancher2.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArray{
+//									&rancher2.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs{
+//										Key: pulumi.String("name"),
+//										Values: pulumi.StringArray{
+//											pulumi.String("a"),
+//											pulumi.String("b"),
+//										},
+//										Operator: pulumi.String("In"),
+//									},
+//									&rancher2.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs{
+//										Key:      pulumi.String("department"),
+//										Operator: pulumi.String("In"),
+//										Values: pulumi.StringArray{
+//											pulumi.String("a"),
+//											pulumi.String("b"),
+//										},
+//									},
+//								},
+//							},
+//							FileSources: rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceArray{
+//								&rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceArgs{
+//									Secret: &rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs{
+//										Name:               pulumi.String("config-file-v1"),
+//										DefaultPermissions: pulumi.String("644"),
+//										Items: rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArray{
+//											&rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs{
+//												Key:         pulumi.String("audit-policy"),
+//												Path:        pulumi.String("/etc/rancher/rke2/custom/policy-v1.yaml"),
+//												Permissions: pulumi.String("666"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a cluster with machine global config or machine selector config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				Name:                pulumi.String("foo"),
+//				KubernetesVersion:   pulumi.String("rke2-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
+//					MachineSelectorConfigs: rancher2.ClusterV2RkeConfigMachineSelectorConfigArray{
+//						&rancher2.ClusterV2RkeConfigMachineSelectorConfigArgs{
+//							MachineLabelSelector: &rancher2.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs{
+//								MatchLabels: pulumi.StringMap{
+//									"rke.cattle.io/control-plane-role": pulumi.String("true"),
+//									"rke.cattle.io/etcd-role":          pulumi.String("true"),
+//								},
+//								MatchExpressions: rancher2.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArray{
+//									&rancher2.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs{
+//										Key: pulumi.String("name"),
+//										Values: pulumi.StringArray{
+//											pulumi.String("a"),
+//											pulumi.String("b"),
+//										},
+//										Operator: pulumi.String("In"),
+//									},
+//									&rancher2.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs{
+//										Key:      pulumi.String("department"),
+//										Operator: pulumi.String("In"),
+//										Values: pulumi.StringArray{
+//											pulumi.String("a"),
+//											pulumi.String("b"),
+//										},
+//									},
+//								},
+//							},
+//							Config: pulumi.String("        kubelet-arg:\n          - cloud-provider-name=external\n"),
+//						},
+//						&rancher2.ClusterV2RkeConfigMachineSelectorConfigArgs{
+//							Config: pulumi.String("        kube-proxy-arg:\n          - log_file_max_size=1800\n"),
+//						},
+//					},
+//					MachineGlobalConfig: pulumi.String(`disable-kube-proxy: false
+//
+// etcd-expose-metrics: false
+// kubelet-arg:
+//   - xxx=xxx
+//
+// kube-proxy-arg:
+//   - xxx=xxx
+//
+// kube-apiserver-arg:
+//   - xxx=xxx
+//
+// kube-scheduler-arg:
+//   - xxx=xxx
+//
+// kube-cloud-controller-manager-arg:
+//   - xxx=xxx
+//
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Create a cluster with additional manifest
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
+//					AdditionalManifest: pulumi.String(`apiVersion: v1
+//
+// kind: Namespace
+// metadata:
+//
+//	name: testing-namespace-1
+//
+// ---
+// apiVersion: v1
+// kind: Namespace
+// metadata:
+//
+//	name: testing-namespace-2
+//
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Customize the ETCD snapshot feature on the cluster
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			credentials, err := rancher2.NewCloudCredential(ctx, "credentials", &rancher2.CloudCredentialArgs{
+//				Name: pulumi.String("rancher-creds"),
+//				S3CredentialConfig: &rancher2.CloudCredentialS3CredentialConfigArgs{
+//					AccessKey: pulumi.String("<ACCESS_KEY>"),
+//					SecretKey: pulumi.String("<SECRET_KEY>"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				MachinePools: []map[string]interface{}{
+//					map[string]interface{}{},
+//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					Etcd: &rancher2.ClusterV2RkeConfigEtcdArgs{
+//						SnapshotScheduleCron: pulumi.String("0 */12 * * *"),
+//						SnapshotRetention:    pulumi.Int(10),
+//						S3Config: &rancher2.ClusterV2RkeConfigEtcdS3ConfigArgs{
+//							Bucket:              pulumi.String("backups"),
+//							Endpoint:            pulumi.String("https://minio.host:9000"),
+//							CloudCredentialName: credentials.ID(),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Customize distribution-specified server configurations in a cluster
+//
+// You can customize all server configurations on the cluster by utilizing the `machineGlobalConfig` argument.
+//
+// For the full list of server configurations, please refer to [RKE2 server configuration](https://docs.rke2.io/reference/server_config) and [K3s server configuration](https://docs.k3s.io/cli/server).
+//
+// The example below demonstrates how to disable the system services in a K3s cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				MachinePools: []map[string]interface{}{
+//					map[string]interface{}{},
+//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("k3s-version"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachineGlobalConfig: pulumi.String(`disable:
+//	  - coredns
+//	  - servicelb
+//	  - traefik
+//	  - local-storage
+//	  - metrics-server
+//
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The example below demonstrates how to disable the system services in an RKE2 cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				MachinePools: []map[string]interface{}{
+//					map[string]interface{}{},
+//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2-version"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachineGlobalConfig: pulumi.String(`disable:
+//	  - rke2-coredns
+//	  - rke2-ingress-nginx
+//	  - rke2-metrics-server
+//	  - metrics-server
+//
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The example below demonstrates how to add additional hostnames or IPv4/IPv6 addresses as Subject Alternative Names on the server TLS cert in an RKE2/K3s cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				MachinePools: []map[string]interface{}{
+//					map[string]interface{}{},
+//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachineGlobalConfig: pulumi.String("tls-san: [\\\"example-website.com\\\", \\\"100.100.100.100\\\", \\\"2002:db8:3333:4444:5555:6666:7777:8888\\\"]\n"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The example below demonstrates how to configure the IPv4/IPv6 network CIDRs to use for pod IPs and service IPs in an RKE2/K3s cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				MachinePools: []map[string]interface{}{
+//					map[string]interface{}{},
+//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachineGlobalConfig: pulumi.String("cluster-cidr: \\\"0.42.0.0/16\\\"\nservice-cidr: \\\"0.42.0.0/16\\\"\n"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Customize chart values in a cluster
+//
+// You can specify the values for the system charts installed by RKE2 or K3s.
+//
+// For more information about how RKE2 or K3s manage packaged components, please refer to [RKE2 documentation](https://docs.rke2.io/helm) or [K3s documentation](https://docs.k3s.io/installation/packaged-components).
+//
+// The example below demonstrates how to customize chart values in an RKE2 cluster:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				Name:                pulumi.String("foo"),
+//				KubernetesVersion:   pulumi.String("rke2-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
+//					ChartValues: pulumi.String(`rke2-calico:
+//	  calicoctl:
+//	    image: rancher/mirrored-calico-ctl
+//	    tag: v3.19.2
+//	  certs:
+//	    node:
+//	      cert: null
+//	      commonName: null
+//	      key: null
+//	    typha:
+//	      caBundle: null
+//	      cert: null
+//	      commonName: null
+//	      key: null
+//	  felixConfiguration:
+//	    featureDetectOverride: ChecksumOffloadBroken=true
+//	  global:
+//	    systemDefaultRegistry: \"\"
+//	  imagePullSecrets: {}
+//	  installation:
+//	    calicoNetwork:
+//	      bgp: Disabled
+//	      ipPools:
+//	      - blockSize: 24
+//	        cidr: 10.42.0.0/16
+//	        encapsulation: VXLAN
+//	        natOutgoing: Enabled
+//	    controlPlaneTolerations:
+//	    - effect: NoSchedule
+//	      key: node-role.kubernetes.io/control-plane
+//	      operator: Exists
+//	    - effect: NoExecute
+//	      key: node-role.kubernetes.io/etcd
+//	      operator: Exists
+//	    enabled: true
+//	    imagePath: rancher
+//	    imagePrefix: mirrored-calico-
+//	    kubernetesProvider: \"\"
+//	  ipamConfig:
+//	    autoAllocateBlocks: true
+//	    strictAffinity: true
+//	  tigeraOperator:
+//	    image: rancher/mirrored-calico-operator
+//	    registry: docker.io
+//	    version: v1.17.6
+//
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Clusters v2 can be imported using the Rancher Cluster v2 ID, that is in the form &lt;FLEET_NAMESPACE&gt;/&lt;CLUSTER_NAME&gt;

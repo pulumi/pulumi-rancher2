@@ -31,7 +31,7 @@ class TokenArgs:
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[_builtins.str] description: Token description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: (Computed) Labels of the token (map)
-        :param pulumi.Input[_builtins.bool] renew: Renew expired or disabled token
+        :param pulumi.Input[_builtins.bool] renew: Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
         :param pulumi.Input[_builtins.int] ttl: Token time to live in seconds. Default `0` (int) 
                
                From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
@@ -101,7 +101,7 @@ class TokenArgs:
     @pulumi.getter
     def renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Renew expired or disabled token
+        Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
         """
         return pulumi.get(self, "renew")
 
@@ -150,7 +150,7 @@ class _TokenState:
         :param pulumi.Input[_builtins.bool] expired: (Computed) Token is expired (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[_builtins.str] name: (Computed) Token name (string)
-        :param pulumi.Input[_builtins.bool] renew: Renew expired or disabled token
+        :param pulumi.Input[_builtins.bool] renew: Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
         :param pulumi.Input[_builtins.str] secret_key: (Computed/Sensitive) Token secret key part (string)
         :param pulumi.Input[_builtins.str] token: (Computed/Sensitive) Token value (string)
         :param pulumi.Input[_builtins.int] ttl: Token time to live in seconds. Default `0` (int) 
@@ -285,7 +285,7 @@ class _TokenState:
     @pulumi.getter
     def renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Renew expired or disabled token
+        Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
         """
         return pulumi.get(self, "renew")
 
@@ -372,7 +372,7 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[_builtins.str] description: Token description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: (Computed) Labels of the token (map)
-        :param pulumi.Input[_builtins.bool] renew: Renew expired or disabled token
+        :param pulumi.Input[_builtins.bool] renew: Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
         :param pulumi.Input[_builtins.int] ttl: Token time to live in seconds. Default `0` (int) 
                
                From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
@@ -475,7 +475,7 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] expired: (Computed) Token is expired (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[_builtins.str] name: (Computed) Token name (string)
-        :param pulumi.Input[_builtins.bool] renew: Renew expired or disabled token
+        :param pulumi.Input[_builtins.bool] renew: Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
         :param pulumi.Input[_builtins.str] secret_key: (Computed/Sensitive) Token secret key part (string)
         :param pulumi.Input[_builtins.str] token: (Computed/Sensitive) Token value (string)
         :param pulumi.Input[_builtins.int] ttl: Token time to live in seconds. Default `0` (int) 
@@ -570,7 +570,7 @@ class Token(pulumi.CustomResource):
     @pulumi.getter
     def renew(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Renew expired or disabled token
+        Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
         """
         return pulumi.get(self, "renew")
 

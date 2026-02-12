@@ -154,14 +154,14 @@ public final class CustomUserTokenState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Renew expired or disabled token
+     * Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it&#39;s disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
      * 
      */
     @Import(name="renew")
     private @Nullable Output<Boolean> renew;
 
     /**
-     * @return Renew expired or disabled token
+     * @return Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it&#39;s disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
      * 
      */
     public Optional<Output<Boolean>> renew() {
@@ -507,7 +507,7 @@ public final class CustomUserTokenState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param renew Renew expired or disabled token
+         * @param renew Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it&#39;s disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class CustomUserTokenState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param renew Renew expired or disabled token
+         * @param renew Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it&#39;s disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
          * 
          * @return builder
          * 
