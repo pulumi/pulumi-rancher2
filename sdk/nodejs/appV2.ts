@@ -106,6 +106,9 @@ export class AppV2 extends pulumi.CustomResource {
      * (Computed) The cluster name of the app (string)
      */
     declare public /*out*/ readonly clusterName: pulumi.Output<string>;
+    /**
+     * Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
+     */
     declare public /*out*/ readonly deploymentValues: pulumi.Output<string>;
     /**
      * Disable app v2 chart hooks. Default: `false` (bool)
@@ -249,6 +252,9 @@ export interface AppV2State {
      * (Computed) The cluster name of the app (string)
      */
     clusterName?: pulumi.Input<string>;
+    /**
+     * Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
+     */
     deploymentValues?: pulumi.Input<string>;
     /**
      * Disable app v2 chart hooks. Default: `false` (bool)

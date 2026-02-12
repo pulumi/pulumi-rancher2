@@ -317,6 +317,21 @@ class Bootstrap(pulumi.CustomResource):
                  ui_default_landing: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a Rancher v2 bootstrap resource. This can be used to bootstrap Rancher v2 environments and output information. It just works if `bootstrap` provider config is added to the .tf file. More info at rancher2 provider
+
+        This resource bootstraps a Rancher system by performing the following tasks:
+        - Updates the default admin password, provided by setting `password` or generating a random one.
+        - Sets `server-url` setting, based on `api_url`.
+        - Creates a token for admin user with concrete TTL.
+
+        **Note:** Starting from Rancher v2.6.0, the Rancher2 installation is setting a random initial admin password by default. To specify the initial password during rancher2 installation, helm chart [`bootstrapPassword`](https://github.com/rancher/rancher/blob/release/v2.6/chart/values.yaml#L157) value for HA installation or docker env variable [`CATTLE_BOOTSTRAP_PASSWORD`](https://github.com/rancher/rancher/blob/release/v2.6/chart/templates/deployment.yaml#L135) for single node installation can be used. To properly use this resource for Rancher v2.6.0 and above, set the `initial_password` argument to the password generated or set during installation.
+
+        Rancher2 admin password can be updated after the initial run of terraform by setting `password` field and applying this resource again.
+
+        Rancher2 admin `token` can also be regenerated if `token_update` is set to true. Refresh resource function will check if token is expired. If it is expired, `token_update` will be set to true to force token regeneration on next `pulumi up`.
+
+        To login Rancher2, the provider tries until success using `token`, then `current_password` and then `initial_password`. If the admin password has been changed outside of terraform and the `token` is expired, the login will fails and the resource will be regenerated. To recover the bootstrap resource, set `initial_password` argument to the proper password and apply.
+
         ## Example Usage
 
         ```python
@@ -360,6 +375,21 @@ class Bootstrap(pulumi.CustomResource):
                  args: Optional[BootstrapArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Rancher v2 bootstrap resource. This can be used to bootstrap Rancher v2 environments and output information. It just works if `bootstrap` provider config is added to the .tf file. More info at rancher2 provider
+
+        This resource bootstraps a Rancher system by performing the following tasks:
+        - Updates the default admin password, provided by setting `password` or generating a random one.
+        - Sets `server-url` setting, based on `api_url`.
+        - Creates a token for admin user with concrete TTL.
+
+        **Note:** Starting from Rancher v2.6.0, the Rancher2 installation is setting a random initial admin password by default. To specify the initial password during rancher2 installation, helm chart [`bootstrapPassword`](https://github.com/rancher/rancher/blob/release/v2.6/chart/values.yaml#L157) value for HA installation or docker env variable [`CATTLE_BOOTSTRAP_PASSWORD`](https://github.com/rancher/rancher/blob/release/v2.6/chart/templates/deployment.yaml#L135) for single node installation can be used. To properly use this resource for Rancher v2.6.0 and above, set the `initial_password` argument to the password generated or set during installation.
+
+        Rancher2 admin password can be updated after the initial run of terraform by setting `password` field and applying this resource again.
+
+        Rancher2 admin `token` can also be regenerated if `token_update` is set to true. Refresh resource function will check if token is expired. If it is expired, `token_update` will be set to true to force token regeneration on next `pulumi up`.
+
+        To login Rancher2, the provider tries until success using `token`, then `current_password` and then `initial_password`. If the admin password has been changed outside of terraform and the `token` is expired, the login will fails and the resource will be regenerated. To recover the bootstrap resource, set `initial_password` argument to the proper password and apply.
+
         ## Example Usage
 
         ```python

@@ -82,6 +82,7 @@ namespace Pulumi.Rancher2
     /// ```sh
     /// $ pulumi import rancher2:index/registry:Registry foo &amp;lt;namespace_id&amp;gt;.&amp;lt;project_id&amp;gt;.&amp;lt;registry_id&amp;gt;
     /// ```
+    /// 
     /// `&lt;namespace_id&gt;` is optional, just needed for namespaced registry.
     /// </summary>
     [Rancher2ResourceType("rancher2:index/registry:Registry")]

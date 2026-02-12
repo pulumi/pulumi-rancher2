@@ -12,19 +12,28 @@ namespace Pulumi.Rancher2
     public static class GetProject
     {
         /// <summary>
-        /// ## Example Usage
+        /// Use this data source to retrieve information about a Rancher v2 project.
+        /// This data source can be used in conjunction with the Terraform
+        /// Kubernetes provider
+        /// to associate Namespaces with projects.
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("rancher2:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Example Usage
+        /// Use this data source to retrieve information about a Rancher v2 project.
+        /// This data source can be used in conjunction with the Terraform
+        /// Kubernetes provider
+        /// to associate Namespaces with projects.
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("rancher2:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## Example Usage
+        /// Use this data source to retrieve information about a Rancher v2 project.
+        /// This data source can be used in conjunction with the Terraform
+        /// Kubernetes provider
+        /// to associate Namespaces with projects.
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("rancher2:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());

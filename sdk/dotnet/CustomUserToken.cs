@@ -121,7 +121,7 @@ namespace Pulumi.Rancher2
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Renew expired or disabled token
+        /// Renew token if expired or disabled. If `True`, a terraform diff would be generated to renew the token if it's disabled or expired. If `False`, the token will not be renewed. Default `True` (bool)
         /// </summary>
         [Output("renew")]
         public Output<bool?> Renew { get; private set; } = null!;
@@ -276,7 +276,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Renew expired or disabled token
+        /// Renew token if expired or disabled. If `True`, a terraform diff would be generated to renew the token if it's disabled or expired. If `False`, the token will not be renewed. Default `True` (bool)
         /// </summary>
         [Input("renew")]
         public Input<bool>? Renew { get; set; }
@@ -380,7 +380,7 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Renew expired or disabled token
+        /// Renew token if expired or disabled. If `True`, a terraform diff would be generated to renew the token if it's disabled or expired. If `False`, the token will not be renewed. Default `True` (bool)
         /// </summary>
         [Input("renew")]
         public Input<bool>? Renew { get; set; }

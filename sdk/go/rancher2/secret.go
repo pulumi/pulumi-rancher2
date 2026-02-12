@@ -26,7 +26,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,7 +77,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -130,6 +130,7 @@ import (
 // ```sh
 // $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
 // ```
+//
 // `<namespace_id>` is optional, just needed for namespaced secret.
 type Secret struct {
 	pulumi.CustomResourceState

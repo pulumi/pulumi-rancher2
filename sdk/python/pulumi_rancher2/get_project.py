@@ -144,7 +144,10 @@ def get_project(cluster_id: Optional[_builtins.str] = None,
                 name: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    ## Example Usage
+    Use this data source to retrieve information about a Rancher v2 project.
+    This data source can be used in conjunction with the Terraform
+    Kubernetes provider
+    to associate Namespaces with projects.
 
 
     :param _builtins.str cluster_id: ID of the Rancher 2 cluster (string)
@@ -170,7 +173,10 @@ def get_project_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                        name: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
-    ## Example Usage
+    Use this data source to retrieve information about a Rancher v2 project.
+    This data source can be used in conjunction with the Terraform
+    Kubernetes provider
+    to associate Namespaces with projects.
 
 
     :param _builtins.str cluster_id: ID of the Rancher 2 cluster (string)

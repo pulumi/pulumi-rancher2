@@ -10,6 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Rancher2
 {
     /// <summary>
+    /// Provides a Rancher v2 bootstrap resource. This can be used to bootstrap Rancher v2 environments and output information. It just works if `Bootstrap` provider config is added to the .tf file. More info at rancher2 provider
+    /// 
+    /// This resource bootstraps a Rancher system by performing the following tasks:
+    /// - Updates the default admin password, provided by setting `Password` or generating a random one.
+    /// - Sets `server-url` setting, based on `ApiUrl`.
+    /// - Creates a token for admin user with concrete TTL.
+    /// 
+    /// **Note:** Starting from Rancher v2.6.0, the Rancher2 installation is setting a random initial admin password by default. To specify the initial password during rancher2 installation, helm chart [`bootstrapPassword`](https://github.com/rancher/rancher/blob/release/v2.6/chart/values.yaml#L157) value for HA installation or docker env variable [`CATTLE_BOOTSTRAP_PASSWORD`](https://github.com/rancher/rancher/blob/release/v2.6/chart/templates/deployment.yaml#L135) for single node installation can be used. To properly use this resource for Rancher v2.6.0 and above, set the `InitialPassword` argument to the password generated or set during installation.
+    /// 
+    /// Rancher2 admin password can be updated after the initial run of terraform by setting `Password` field and applying this resource again.
+    /// 
+    /// Rancher2 admin `Token` can also be regenerated if `TokenUpdate` is set to true. Refresh resource function will check if token is expired. If it is expired, `TokenUpdate` will be set to true to force token regeneration on next `pulumi up`.
+    /// 
+    /// To login Rancher2, the provider tries until success using `Token`, then `CurrentPassword` and then `InitialPassword`. If the admin password has been changed outside of terraform and the `Token` is expired, the login will fails and the resource will be regenerated. To recover the bootstrap resource, set `InitialPassword` argument to the proper password and apply.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

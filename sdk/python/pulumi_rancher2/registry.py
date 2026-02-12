@@ -319,6 +319,7 @@ class Registry(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
         ```
+
         `<namespace_id>` is optional, just needed for namespaced registry.
 
         :param str resource_name: The name of the resource.
@@ -386,6 +387,7 @@ class Registry(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/registry:Registry foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;registry_id&gt;
         ```
+
         `<namespace_id>` is optional, just needed for namespaced registry.
 
         :param str resource_name: The name of the resource.

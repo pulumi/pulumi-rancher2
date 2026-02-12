@@ -22,7 +22,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -108,7 +108,8 @@ type AppV2 struct {
 	// The cluster id of the app (string)
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// (Computed) The cluster name of the app (string)
-	ClusterName      pulumi.StringOutput `pulumi:"clusterName"`
+	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
+	// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
 	DeploymentValues pulumi.StringOutput `pulumi:"deploymentValues"`
 	// Disable app v2 chart hooks. Default: `false` (bool)
 	DisableHooks pulumi.BoolPtrOutput `pulumi:"disableHooks"`
@@ -187,7 +188,8 @@ type appV2State struct {
 	// The cluster id of the app (string)
 	ClusterId *string `pulumi:"clusterId"`
 	// (Computed) The cluster name of the app (string)
-	ClusterName      *string `pulumi:"clusterName"`
+	ClusterName *string `pulumi:"clusterName"`
+	// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
 	DeploymentValues *string `pulumi:"deploymentValues"`
 	// Disable app v2 chart hooks. Default: `false` (bool)
 	DisableHooks *bool `pulumi:"disableHooks"`
@@ -225,7 +227,8 @@ type AppV2State struct {
 	// The cluster id of the app (string)
 	ClusterId pulumi.StringPtrInput
 	// (Computed) The cluster name of the app (string)
-	ClusterName      pulumi.StringPtrInput
+	ClusterName pulumi.StringPtrInput
+	// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
 	DeploymentValues pulumi.StringPtrInput
 	// Disable app v2 chart hooks. Default: `false` (bool)
 	DisableHooks pulumi.BoolPtrInput
@@ -443,6 +446,7 @@ func (o AppV2Output) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
 }
 
+// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
 func (o AppV2Output) DeploymentValues() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.DeploymentValues }).(pulumi.StringOutput)
 }

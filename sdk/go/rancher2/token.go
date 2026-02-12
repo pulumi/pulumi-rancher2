@@ -37,7 +37,7 @@ type Token struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// (Computed) Token name (string)
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew pulumi.BoolPtrOutput `pulumi:"renew"`
 	// (Computed/Sensitive) Token secret key part (string)
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
@@ -102,7 +102,7 @@ type tokenState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// (Computed) Token name (string)
 	Name *string `pulumi:"name"`
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew *bool `pulumi:"renew"`
 	// (Computed/Sensitive) Token secret key part (string)
 	SecretKey *string `pulumi:"secretKey"`
@@ -133,7 +133,7 @@ type TokenState struct {
 	Labels pulumi.StringMapInput
 	// (Computed) Token name (string)
 	Name pulumi.StringPtrInput
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew pulumi.BoolPtrInput
 	// (Computed/Sensitive) Token secret key part (string)
 	SecretKey pulumi.StringPtrInput
@@ -160,7 +160,7 @@ type tokenArgs struct {
 	Description *string `pulumi:"description"`
 	// (Computed) Labels of the token (map)
 	Labels map[string]string `pulumi:"labels"`
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew *bool `pulumi:"renew"`
 	// Token time to live in seconds. Default `0` (int)
 	//
@@ -178,7 +178,7 @@ type TokenArgs struct {
 	Description pulumi.StringPtrInput
 	// (Computed) Labels of the token (map)
 	Labels pulumi.StringMapInput
-	// Renew expired or disabled token
+	// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 	Renew pulumi.BoolPtrInput
 	// Token time to live in seconds. Default `0` (int)
 	//
@@ -313,7 +313,7 @@ func (o TokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Renew expired or disabled token
+// Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
 func (o TokenOutput) Renew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.BoolPtrOutput { return v.Renew }).(pulumi.BoolPtrOutput)
 }

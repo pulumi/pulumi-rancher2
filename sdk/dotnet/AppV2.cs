@@ -113,6 +113,9 @@ namespace Pulumi.Rancher2
         [Output("clusterName")]
         public Output<string> ClusterName { get; private set; } = null!;
 
+        /// <summary>
+        /// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
+        /// </summary>
         [Output("deploymentValues")]
         public Output<string> DeploymentValues { get; private set; } = null!;
 
@@ -386,6 +389,9 @@ namespace Pulumi.Rancher2
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
 
+        /// <summary>
+        /// Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
+        /// </summary>
         [Input("deploymentValues")]
         public Input<string>? DeploymentValues { get; set; }
 

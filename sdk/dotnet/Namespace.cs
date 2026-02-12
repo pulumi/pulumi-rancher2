@@ -105,6 +105,7 @@ namespace Pulumi.Rancher2
     /// ```sh
     /// $ pulumi import rancher2:index/namespace:Namespace foo &amp;lt;project_id&amp;gt;.&amp;lt;namespaces_id&amp;gt;
     /// ```
+    /// 
     /// `&lt;project_id&gt;` is in the format `&lt;cluster_id&gt;:&lt;id&gt;`, this is the output from `data.rancher2_cluster.downstream_cluster.default_project_id`
     /// 
     /// The `&lt;project_id&gt;` must match the actual resource, importing will error on project mismatch.

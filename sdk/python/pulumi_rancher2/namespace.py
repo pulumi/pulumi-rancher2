@@ -373,6 +373,7 @@ class Namespace(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/namespace:Namespace foo &lt;project_id&gt;.&lt;namespaces_id&gt;
         ```
+
         `<project_id>` is in the format `<cluster_id>:<id>`, this is the output from `data.rancher2_cluster.downstream_cluster.default_project_id`
 
         The `<project_id>` must match the actual resource, importing will error on project mismatch.
@@ -465,6 +466,7 @@ class Namespace(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/namespace:Namespace foo &lt;project_id&gt;.&lt;namespaces_id&gt;
         ```
+
         `<project_id>` is in the format `<cluster_id>:<id>`, this is the output from `data.rancher2_cluster.downstream_cluster.default_project_id`
 
         The `<project_id>` must match the actual resource, importing will error on project mismatch.

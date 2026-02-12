@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Rancher v2 Cluster Sync dummy resource. This can be used to create a Cluster Sync to wait for a Rancher v2 Cluster resource `active` state.
+ *
+ * This dummy resource doesn't create anything at Rancher side. It's used to sync terraform resources that depends of Rancher v2 Cluster resource in `active` state. This resource will wait until `clusterId` is `active` on `pulumi up`. It also helps to sync `terraform destroy` dependencies, specially useful if cluster is using node pools.
+ *
+ * This resource will also compute attributes with useful cluster related data (see Attributes Reference section).
+ *
  * ## Example Usage
  *
  * ```typescript

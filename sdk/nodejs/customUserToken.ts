@@ -108,7 +108,7 @@ export class CustomUserToken extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string>;
     /**
-     * Renew expired or disabled token
+     * Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
      */
     declare public readonly renew: pulumi.Output<boolean | undefined>;
     /**
@@ -246,7 +246,7 @@ export interface CustomUserTokenState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Renew expired or disabled token
+     * Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
      */
     renew?: pulumi.Input<boolean>;
     /**
@@ -306,7 +306,7 @@ export interface CustomUserTokenArgs {
      */
     password: pulumi.Input<string>;
     /**
-     * Renew expired or disabled token
+     * Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
      */
     renew?: pulumi.Input<boolean>;
     /**

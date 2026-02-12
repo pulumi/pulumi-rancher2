@@ -69,6 +69,7 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import rancher2:index/secret:Secret foo &lt;namespace_id&gt;.&lt;project_id&gt;.&lt;secret_id&gt;
  * ```
+ *
  * `<namespace_id>` is optional, just needed for namespaced secret.
  */
 export class Secret extends pulumi.CustomResource {
