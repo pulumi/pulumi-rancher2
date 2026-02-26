@@ -31,6 +31,7 @@ class ProjectArgs:
                  wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id where create project (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input['ProjectContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on project (List maxitem:1)
@@ -166,6 +167,7 @@ class _ProjectState:
                  wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id where create project (string)
         :param pulumi.Input['ProjectContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on project (List maxitem:1)
@@ -373,6 +375,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import rancher2:index/project:Project foo &lt;project_id&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
@@ -458,6 +461,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/project:Project foo &lt;project_id&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

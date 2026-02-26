@@ -54,6 +54,7 @@ class AuthConfigActiveDirectoryArgs:
                  user_search_filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthConfigActiveDirectory resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: ActiveDirectory servers list (list)
         :param pulumi.Input[_builtins.str] service_account_password: Service account password for access ActiveDirectory service (string)
         :param pulumi.Input[_builtins.str] service_account_username: Service account DN for access ActiveDirectory service (string)
@@ -586,6 +587,7 @@ class _AuthConfigActiveDirectoryState:
                  user_search_filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigActiveDirectory resources.
+
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -1159,6 +1161,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -1205,6 +1208,7 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+
 
         :param str resource_name: The name of the resource.
         :param AuthConfigActiveDirectoryArgs args: The arguments to use to populate this resource's properties.

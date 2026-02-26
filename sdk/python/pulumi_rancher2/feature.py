@@ -25,6 +25,7 @@ class FeatureArgs:
                  value: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Feature resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for feature object (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for feature object (map)
         :param pulumi.Input[_builtins.str] name: The name of the feature (string)
@@ -97,6 +98,7 @@ class _FeatureState:
                  value: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Feature resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for feature object (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for feature object (map)
         :param pulumi.Input[_builtins.str] name: The name of the feature (string)
@@ -192,6 +194,7 @@ class Feature(pulumi.CustomResource):
             value="<VALUE>")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for feature object (map)
@@ -225,6 +228,7 @@ class Feature(pulumi.CustomResource):
             name="fleet",
             value="<VALUE>")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FeatureArgs args: The arguments to use to populate this resource's properties.

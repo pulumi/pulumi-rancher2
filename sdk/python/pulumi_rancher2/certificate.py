@@ -29,6 +29,7 @@ class CertificateArgs:
                  namespace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] certs: Base64 encoded public certs (string)
         :param pulumi.Input[_builtins.str] key: Base64 encoded private key (string)
         :param pulumi.Input[_builtins.str] project_id: The project id where the certificate should be created  (string)
@@ -162,6 +163,7 @@ class _CertificateState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for certificate object (map)
         :param pulumi.Input[_builtins.str] certs: Base64 encoded public certs (string)
         :param pulumi.Input[_builtins.str] description: A certificate description (string)
@@ -307,6 +309,7 @@ class Certificate(pulumi.CustomResource):
         - Project certificate: Available to all namespaces in the `project_id`
         - Namespaced certificate: Available to just `namespace_id` in the `project_id`
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for certificate object (map)
@@ -330,6 +333,7 @@ class Certificate(pulumi.CustomResource):
         There are 2 types of Rancher v2 certificates:
         - Project certificate: Available to all namespaces in the `project_id`
         - Namespaced certificate: Available to just `namespace_id` in the `project_id`
+
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

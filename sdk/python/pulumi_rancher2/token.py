@@ -27,6 +27,7 @@ class TokenArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Token resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: (Computed) Annotations of the token (map)
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID for scoped token (string)
         :param pulumi.Input[_builtins.str] description: Token description (string)
@@ -142,6 +143,7 @@ class _TokenState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Token resources.
+
         :param pulumi.Input[_builtins.str] access_key: (Computed) Token access key part (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: (Computed) Annotations of the token (map)
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID for scoped token (string)
@@ -366,6 +368,7 @@ class Token(pulumi.CustomResource):
 
         Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: (Computed) Annotations of the token (map)
@@ -391,6 +394,7 @@ class Token(pulumi.CustomResource):
         - scoped: valid for just a specific cluster (`cluster_id` should be provided).
 
         Tokens can't be updated once created. Any diff in token data will recreate the token. If any token expire, Rancher2 provider will generate a diff to regenerate it.
+
 
         :param str resource_name: The name of the resource.
         :param TokenArgs args: The arguments to use to populate this resource's properties.

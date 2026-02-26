@@ -54,6 +54,7 @@ class AuthConfigOpenLdapArgs:
                  user_search_filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthConfigOpenLdap resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: OpenLdap servers list (list)
         :param pulumi.Input[_builtins.str] service_account_distinguished_name: Service account DN for access OpenLdap service (string)
         :param pulumi.Input[_builtins.str] service_account_password: Service account password for access OpenLdap service (string)
@@ -574,6 +575,7 @@ class _AuthConfigOpenLdapState:
                  user_search_filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigOpenLdap resources.
+
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `openldap_user://<DN>`  `openldap_group://<DN>` (list)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -1135,6 +1137,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -1178,6 +1181,7 @@ class AuthConfigOpenLdap(pulumi.CustomResource):
         Provides a Rancher v2 Auth Config OpenLdap resource. This can be used to configure and enable Auth Config OpenLdap for Rancher v2 RKE clusters and retrieve their information.
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+
 
         :param str resource_name: The name of the resource.
         :param AuthConfigOpenLdapArgs args: The arguments to use to populate this resource's properties.

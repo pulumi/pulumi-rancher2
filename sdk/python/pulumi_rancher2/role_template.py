@@ -36,6 +36,7 @@ class RoleTemplateArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]] = None):
         """
         The set of arguments for constructing a RoleTemplate resource.
+
         :param pulumi.Input[_builtins.bool] administrative: Administrative role template. Default `false` (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for role template object (map)
         :param pulumi.Input[_builtins.str] context: Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
@@ -253,6 +254,7 @@ class _RoleTemplateState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering RoleTemplate resources.
+
         :param pulumi.Input[_builtins.bool] administrative: Administrative role template. Default `false` (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for role template object (map)
         :param pulumi.Input[_builtins.bool] builtin: (Computed) Builtin role template (string)
@@ -535,6 +537,7 @@ class RoleTemplate(pulumi.CustomResource):
         $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] administrative: Administrative role template. Default `false` (bool)
@@ -605,6 +608,7 @@ class RoleTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/roleTemplate:RoleTemplate foo &lt;role_template_id&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RoleTemplateArgs args: The arguments to use to populate this resource's properties.

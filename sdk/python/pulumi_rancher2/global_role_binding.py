@@ -27,6 +27,7 @@ class GlobalRoleBindingArgs:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalRoleBinding resource.
+
         :param pulumi.Input[_builtins.str] global_role_id: The role id from create global role binding (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role binding (map)
         :param pulumi.Input[_builtins.str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
@@ -134,6 +135,7 @@ class _GlobalRoleBindingState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalRoleBinding resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role binding (map)
         :param pulumi.Input[_builtins.str] global_role_id: The role id from create global role binding (string)
         :param pulumi.Input[_builtins.str] group_principal_id: The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
@@ -273,6 +275,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
         $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &lt;GLOBAL_ROLE_BINDING_ID&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role binding (map)
@@ -318,6 +321,7 @@ class GlobalRoleBinding(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/globalRoleBinding:GlobalRoleBinding foo &lt;GLOBAL_ROLE_BINDING_ID&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlobalRoleBindingArgs args: The arguments to use to populate this resource's properties.

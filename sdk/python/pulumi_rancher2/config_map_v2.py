@@ -28,6 +28,7 @@ class ConfigMapV2Args:
                  namespace: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConfigMapV2 resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id of the configMap V2 (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The data of the configMap v2 (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the configMap v2 (map)
@@ -147,6 +148,7 @@ class _ConfigMapV2State:
                  resource_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConfigMapV2 resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the configMap v2 (map)
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id of the configMap V2 (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The data of the configMap v2 (map)
@@ -295,6 +297,7 @@ class ConfigMapV2(pulumi.CustomResource):
         $ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the configMap v2 (map)
@@ -321,6 +324,7 @@ class ConfigMapV2(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConfigMapV2Args args: The arguments to use to populate this resource's properties.

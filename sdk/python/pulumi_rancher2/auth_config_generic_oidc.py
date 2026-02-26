@@ -39,6 +39,7 @@ class AuthConfigGenericOidcArgs:
                  userinfo_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthConfigGenericOidc resource.
+
         :param pulumi.Input[_builtins.str] client_id: The OIDC Client ID.
         :param pulumi.Input[_builtins.str] client_secret: The OIDC Client Secret.
         :param pulumi.Input[_builtins.str] issuer: The OIDC issuer URL.
@@ -333,6 +334,7 @@ class _AuthConfigGenericOidcState:
                  userinfo_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigGenericOidc resources.
+
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_principal_ids: Allowed principal IDs for auth. Required if `access_mode` is `required` or `restricted`. Ex: `genericoidc_user://<USER_ID>` `genericoidc_group://<GROUP_ID>` (list)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -693,6 +695,7 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         $ pulumi import rancher2:index/authConfigGenericOidc:AuthConfigGenericOidc generic_oidc genericoidc
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -751,6 +754,7 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/authConfigGenericOidc:AuthConfigGenericOidc generic_oidc genericoidc
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthConfigGenericOidcArgs args: The arguments to use to populate this resource's properties.

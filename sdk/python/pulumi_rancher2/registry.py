@@ -30,6 +30,7 @@ class RegistryArgs:
                  namespace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Registry resource.
+
         :param pulumi.Input[_builtins.str] project_id: The project id where to assign the registry (string)
         :param pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]] registries: Registries data for registry (list)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Registry object (map)
@@ -148,6 +149,7 @@ class _RegistryState:
                  registries: Optional[pulumi.Input[Sequence[pulumi.Input['RegistryRegistryArgs']]]] = None):
         """
         Input properties used for looking up and filtering Registry resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Registry object (map)
         :param pulumi.Input[_builtins.str] description: A registry description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for Registry object (map)
@@ -322,6 +324,7 @@ class Registry(pulumi.CustomResource):
 
         `<namespace_id>` is optional, just needed for namespaced registry.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Registry object (map)
@@ -389,6 +392,7 @@ class Registry(pulumi.CustomResource):
         ```
 
         `<namespace_id>` is optional, just needed for namespaced registry.
+
 
         :param str resource_name: The name of the resource.
         :param RegistryArgs args: The arguments to use to populate this resource's properties.

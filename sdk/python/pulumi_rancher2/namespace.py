@@ -31,6 +31,7 @@ class NamespaceArgs:
                  wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Namespace resource.
+
         :param pulumi.Input[_builtins.str] project_id: The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input['NamespaceContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
@@ -166,6 +167,7 @@ class _NamespaceState:
                  wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input['NamespaceContainerResourceLimitArgs'] container_resource_limit: Default containers resource limits on namespace (List maxitem:1)
         :param pulumi.Input[_builtins.str] description: A namespace description (string)
@@ -380,6 +382,7 @@ class Namespace(pulumi.CustomResource):
 
         In past versions you could modify the namespace while importing it, this functionality is no longer available.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
@@ -472,6 +475,7 @@ class Namespace(pulumi.CustomResource):
         The `<project_id>` must match the actual resource, importing will error on project mismatch.
 
         In past versions you could modify the namespace while importing it, this functionality is no longer available.
+
 
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.

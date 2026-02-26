@@ -35,6 +35,7 @@ class AuthConfigAzureAdArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AuthConfigAzureAd resource.
+
         :param pulumi.Input[_builtins.str] application_id: AzureAD auth application ID (string)
         :param pulumi.Input[_builtins.str] application_secret: AzureAD auth application secret (string)
         :param pulumi.Input[_builtins.str] auth_endpoint: AzureAD auth endpoint (string)
@@ -258,6 +259,7 @@ class _AuthConfigAzureAdState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigAzureAd resources.
+
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `azuread_user://<USER_ID>`  `azuread_group://<GROUP_ID>` (list)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -551,6 +553,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
             token_endpoint="<AZUREAD_TOKEN_ENDPOINT>")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -605,6 +608,7 @@ class AuthConfigAzureAd(pulumi.CustomResource):
             tenant_id="<AZUREAD_TENANT_ID>",
             token_endpoint="<AZUREAD_TOKEN_ENDPOINT>")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthConfigAzureAdArgs args: The arguments to use to populate this resource's properties.

@@ -37,6 +37,7 @@ class AppV2Args:
                  wait: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AppV2 resource.
+
         :param pulumi.Input[_builtins.str] chart_name: The app v2 chart name (string)
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id of the app (string)
         :param pulumi.Input[_builtins.str] namespace: The namespace of the app v2 (string)
@@ -299,6 +300,7 @@ class _AppV2State:
                  wait: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AppV2 resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the app v2 (map)
         :param pulumi.Input[_builtins.str] chart_name: The app v2 chart name (string)
         :param pulumi.Input[_builtins.str] chart_version: The app v2 chart version (string)
@@ -641,6 +643,7 @@ class AppV2(pulumi.CustomResource):
         $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the app v2 (map)
@@ -711,6 +714,7 @@ class AppV2(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppV2Args args: The arguments to use to populate this resource's properties.

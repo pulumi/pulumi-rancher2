@@ -29,6 +29,7 @@ class CustomUserTokenArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a CustomUserToken resource.
+
         :param pulumi.Input[_builtins.str] password: The user password (string)
         :param pulumi.Input[_builtins.str] username: The user username (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: (Computed) Annotations of the token (map)
@@ -176,6 +177,7 @@ class _CustomUserTokenState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomUserToken resources.
+
         :param pulumi.Input[_builtins.str] access_key: (Computed) Token access key part (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: (Computed) Annotations of the token (map)
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID for scoped token (string)
@@ -488,6 +490,7 @@ class CustomUserToken(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[foo_login]))
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: (Computed) Annotations of the token (map)
@@ -541,6 +544,7 @@ class CustomUserToken(pulumi.CustomResource):
             ttl=0,
             opts = pulumi.ResourceOptions(depends_on=[foo_login]))
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomUserTokenArgs args: The arguments to use to populate this resource's properties.

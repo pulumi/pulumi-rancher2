@@ -36,6 +36,7 @@ class NodePoolArgs:
                  worker: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a NodePool resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The RKE cluster id to use Node Pool (string)
         :param pulumi.Input[_builtins.str] hostname_prefix: The prefix for created nodes of the Node Pool (string)
         :param pulumi.Input[_builtins.str] node_template_id: The Node Template ID to use for node creation (string)
@@ -249,6 +250,7 @@ class _NodePoolState:
                  worker: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering NodePool resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[_builtins.str] cluster_id: The RKE cluster id to use Node Pool (string)
         :param pulumi.Input[_builtins.bool] control_plane: RKE control plane role for created nodes (bool)
@@ -527,6 +529,7 @@ class NodePool(pulumi.CustomResource):
         $ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
@@ -608,6 +611,7 @@ class NodePool(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/nodePool:NodePool foo &lt;node_pool_id&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodePoolArgs args: The arguments to use to populate this resource's properties.

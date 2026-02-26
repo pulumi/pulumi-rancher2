@@ -51,6 +51,7 @@ class ClusterArgs:
                  windows_prefered_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         :param pulumi.Input['ClusterAksConfigV2Args'] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the Cluster (map)
@@ -514,6 +515,7 @@ class _ClusterState:
                  windows_prefered_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]] agent_env_vars: Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         :param pulumi.Input['ClusterAksConfigV2Args'] aks_config_v2: The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the Cluster (map)
@@ -1326,6 +1328,7 @@ class Cluster(pulumi.CustomResource):
         $ pulumi import rancher2:index/cluster:Cluster foo &lt;CLUSTER_ID&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterAgentEnvVarArgs', 'ClusterAgentEnvVarArgsDict']]]] agent_env_vars: Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
@@ -1607,6 +1610,7 @@ class Cluster(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/cluster:Cluster foo &lt;CLUSTER_ID&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.

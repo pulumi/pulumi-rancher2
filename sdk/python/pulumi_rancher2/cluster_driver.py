@@ -31,6 +31,7 @@ class ClusterDriverArgs:
                  whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ClusterDriver resource.
+
         :param pulumi.Input[_builtins.bool] active: Specify the cluster driver state (bool)
         :param pulumi.Input[_builtins.bool] builtin: Specify whether the cluster driver is an internal cluster driver or not (bool)
         :param pulumi.Input[_builtins.str] url: The URL to download the machine driver binary for 64-bit Linux (string)
@@ -196,6 +197,7 @@ class _ClusterDriverState:
                  whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ClusterDriver resources.
+
         :param pulumi.Input[_builtins.bool] active: Specify the cluster driver state (bool)
         :param pulumi.Input[_builtins.str] actual_url: Actual url of the cluster driver (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -396,6 +398,7 @@ class ClusterDriver(pulumi.CustomResource):
         $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Specify the cluster driver state (bool)
@@ -444,6 +447,7 @@ class ClusterDriver(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/clusterDriver:ClusterDriver foo &lt;CLUSTER_DRIVER_ID&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterDriverArgs args: The arguments to use to populate this resource's properties.

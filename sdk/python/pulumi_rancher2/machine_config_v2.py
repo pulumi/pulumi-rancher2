@@ -35,6 +35,7 @@ class MachineConfigV2Args:
                  vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None):
         """
         The set of arguments for constructing a MachineConfigV2 resource.
+
         :param pulumi.Input[_builtins.str] generate_name: Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\\"prod-pool1\\" will generate \\"nc-prod-pool1-?????\\" name computed at `name` attribute (string)
         :param pulumi.Input['MachineConfigV2Amazonec2ConfigArgs'] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Machine Config V2 object (map)
@@ -241,6 +242,7 @@ class _MachineConfigV2State:
                  vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None):
         """
         Input properties used for looking up and filtering MachineConfigV2 resources.
+
         :param pulumi.Input['MachineConfigV2Amazonec2ConfigArgs'] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Machine Config V2 object (map)
         :param pulumi.Input['MachineConfigV2AzureConfigArgs'] azure_config: Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
@@ -550,6 +552,7 @@ class MachineConfigV2(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MachineConfigV2Amazonec2ConfigArgs', 'MachineConfigV2Amazonec2ConfigArgsDict']] amazonec2_config: AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
@@ -630,6 +633,7 @@ class MachineConfigV2(pulumi.CustomResource):
         \"\"\",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MachineConfigV2Args args: The arguments to use to populate this resource's properties.

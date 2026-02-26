@@ -39,6 +39,7 @@ class CatalogV2Args:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CatalogV2 resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id of the catalog V2 (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the catalog v2 (map)
         :param pulumi.Input[_builtins.str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
@@ -335,6 +336,7 @@ class _CatalogV2State:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CatalogV2 resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the catalog v2 (map)
         :param pulumi.Input[_builtins.str] ca_bundle: CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id of the catalog V2 (string)
@@ -659,6 +661,7 @@ class CatalogV2(pulumi.CustomResource):
         $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the catalog v2 (map)
@@ -696,6 +699,7 @@ class CatalogV2(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/catalogV2:CatalogV2 foo &lt;CLUSTER_ID&gt;.&lt;CATALOG_V2_NAME&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CatalogV2Args args: The arguments to use to populate this resource's properties.

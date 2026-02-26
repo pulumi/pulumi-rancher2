@@ -54,6 +54,7 @@ class AuthConfigFreeIpaArgs:
                  user_search_filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthConfigFreeIpa resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: FreeIpa servers list (list)
         :param pulumi.Input[_builtins.str] service_account_distinguished_name: Service account DN for access FreeIpa service (string)
         :param pulumi.Input[_builtins.str] service_account_password: Service account password for access FreeIpa service (string)
@@ -574,6 +575,7 @@ class _AuthConfigFreeIpaState:
                  user_search_filter: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigFreeIpa resources.
+
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `freeipa_user://<DN>`  `freeipa_group://<DN>` (list)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -1135,6 +1137,7 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -1178,6 +1181,7 @@ class AuthConfigFreeIpa(pulumi.CustomResource):
         Provides a Rancher v2 Auth Config FreeIpa resource. This can be used to configure and enable Auth Config FreeIpa for Rancher v2 RKE clusters and retrieve their information.
 
         In addition to the built-in local auth, only one external auth config provider can be enabled at a time.
+
 
         :param str resource_name: The name of the resource.
         :param AuthConfigFreeIpaArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class ClusterRoleTemplateBindingArgs:
                  user_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterRoleTemplateBinding resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id where bind cluster role template binding (string)
         :param pulumi.Input[_builtins.str] role_template_id: The role template id from create cluster role template binding (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for cluster role template binding (map)
@@ -184,6 +185,7 @@ class _ClusterRoleTemplateBindingState:
                  user_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterRoleTemplateBinding resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for cluster role template binding (map)
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id where bind cluster role template binding (string)
         :param pulumi.Input[_builtins.str] group_id: The group ID to assign cluster role template binding (string)
@@ -367,6 +369,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
         $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for cluster role template binding (map)
@@ -411,6 +414,7 @@ class ClusterRoleTemplateBinding(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding foo &lt;CLUSTER_ROLE_TEMPLATE_BINDING_ID&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterRoleTemplateBindingArgs args: The arguments to use to populate this resource's properties.

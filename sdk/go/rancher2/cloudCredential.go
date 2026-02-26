@@ -88,6 +88,10 @@ import (
 //
 // Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
 //
+// ```sh
+// $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
+// ```
+//
 // The following drivers are supported:
 //
 // * amazonec2

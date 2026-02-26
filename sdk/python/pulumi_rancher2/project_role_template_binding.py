@@ -30,6 +30,7 @@ class ProjectRoleTemplateBindingArgs:
                  user_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectRoleTemplateBinding resource.
+
         :param pulumi.Input[_builtins.str] project_id: The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         :param pulumi.Input[_builtins.str] role_template_id: The role template id from create project role template binding (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -184,6 +185,7 @@ class _ProjectRoleTemplateBindingState:
                  user_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectRoleTemplateBinding resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[_builtins.str] group_id: The group ID to assign project role template binding (string)
         :param pulumi.Input[_builtins.str] group_principal_id: The group_principal ID to assign project role template binding (string)
@@ -367,6 +369,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -411,6 +414,7 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding foo &lt;project_role_template_binding_id&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectRoleTemplateBindingArgs args: The arguments to use to populate this resource's properties.
