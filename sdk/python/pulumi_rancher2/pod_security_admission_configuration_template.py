@@ -29,6 +29,7 @@ class PodSecurityAdmissionConfigurationTemplateArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PodSecurityAdmissionConfigurationTemplate resource.
+
         :param pulumi.Input['PodSecurityAdmissionConfigurationTemplateDefaultsArgs'] defaults: The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[_builtins.str] description: The description of the pod security admission configuration template (string)
@@ -132,6 +133,7 @@ class _PodSecurityAdmissionConfigurationTemplateState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PodSecurityAdmissionConfigurationTemplate resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input['PodSecurityAdmissionConfigurationTemplateDefaultsArgs'] defaults: The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
         :param pulumi.Input[_builtins.str] description: The description of the pod security admission configuration template (string)
@@ -280,6 +282,7 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
         $ pulumi import rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate foo &lt;resource_id&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -336,6 +339,7 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate foo &lt;resource_id&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PodSecurityAdmissionConfigurationTemplateArgs args: The arguments to use to populate this resource's properties.

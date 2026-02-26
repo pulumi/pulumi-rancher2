@@ -28,6 +28,7 @@ class ClusterSyncArgs:
                  wait_catalogs: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ClusterSync resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
         :param pulumi.Input[_builtins.int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
@@ -119,6 +120,7 @@ class _ClusterSyncState:
                  wait_catalogs: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ClusterSync resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[_builtins.str] default_project_id: (Computed) Default project ID for the cluster sync (string)
         :param pulumi.Input[_builtins.str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster sync (string)
@@ -344,6 +346,7 @@ class ClusterSync(pulumi.CustomResource):
             })
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID that is syncing (string)
@@ -433,6 +436,7 @@ class ClusterSync(pulumi.CustomResource):
                 "requests_memory": "1Mi",
             })
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterSyncArgs args: The arguments to use to populate this resource's properties.

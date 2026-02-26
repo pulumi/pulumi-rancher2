@@ -30,6 +30,7 @@ class GlobalRoleArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalRoleRuleArgs']]]] = None):
         """
         The set of arguments for constructing a GlobalRole resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role object (map)
         :param pulumi.Input[_builtins.str] description: Global role description (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
@@ -152,6 +153,7 @@ class _GlobalRoleState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalRole resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role object (map)
         :param pulumi.Input[_builtins.bool] builtin: (Computed) Builtin global role (bool)
         :param pulumi.Input[_builtins.str] description: Global role description (string)
@@ -333,6 +335,7 @@ class GlobalRole(pulumi.CustomResource):
         $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role object (map)
@@ -377,6 +380,7 @@ class GlobalRole(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/globalRole:GlobalRole foo &lt;global_role_id&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GlobalRoleArgs args: The arguments to use to populate this resource's properties.

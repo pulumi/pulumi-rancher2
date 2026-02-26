@@ -28,6 +28,7 @@ class UserArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] password: The user password (string)
         :param pulumi.Input[_builtins.str] username: The user username (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role binding (map)
@@ -143,6 +144,7 @@ class _UserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role binding (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for global role binding (map)
         :param pulumi.Input[_builtins.bool] must_change_password: The user must change password at first login (bool)
@@ -309,6 +311,7 @@ class User(pulumi.CustomResource):
         $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role binding (map)
@@ -356,6 +359,7 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/user:User foo &lt;user_id&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

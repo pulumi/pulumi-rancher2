@@ -72,6 +72,10 @@ namespace Pulumi.Rancher2
     /// 
     /// Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
     /// 
+    /// ```sh
+    /// $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &amp;lt;CLOUD_CREDENTIAL_ID&amp;gt;.&amp;lt;DRIVER&amp;gt;
+    /// ```
+    /// 
     /// The following drivers are supported:
     /// 
     /// * amazonec2

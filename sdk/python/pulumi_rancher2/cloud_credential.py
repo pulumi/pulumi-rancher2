@@ -36,6 +36,7 @@ class CloudCredentialArgs:
                  vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None):
         """
         The set of arguments for constructing a CloudCredential resource.
+
         :param pulumi.Input['CloudCredentialAmazonec2CredentialConfigArgs'] amazonec2_credential_config: AWS config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Cloud Credential object (map)
         :param pulumi.Input['CloudCredentialAzureCredentialConfigArgs'] azure_credential_config: Azure config for the Cloud Credential (list maxitems:1)
@@ -253,6 +254,7 @@ class _CloudCredentialState:
                  vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None):
         """
         Input properties used for looking up and filtering CloudCredential resources.
+
         :param pulumi.Input['CloudCredentialAmazonec2CredentialConfigArgs'] amazonec2_credential_config: AWS config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Cloud Credential object (map)
         :param pulumi.Input['CloudCredentialAzureCredentialConfigArgs'] azure_credential_config: Azure config for the Cloud Credential (list maxitems:1)
@@ -527,6 +529,10 @@ class CloudCredential(pulumi.CustomResource):
 
         Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
 
+        ```sh
+        $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
+        ```
+
         The following drivers are supported:
 
         * amazonec2
@@ -537,6 +543,7 @@ class CloudCredential(pulumi.CustomResource):
         * openstack
         * s3
         * vmwarevsphere
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -601,6 +608,10 @@ class CloudCredential(pulumi.CustomResource):
 
         Cloud Credential can be imported using the Cloud Credential ID and the Driver name.
 
+        ```sh
+        $ pulumi import rancher2:index/cloudCredential:CloudCredential foo &lt;CLOUD_CREDENTIAL_ID&gt;.&lt;DRIVER&gt;
+        ```
+
         The following drivers are supported:
 
         * amazonec2
@@ -611,6 +622,7 @@ class CloudCredential(pulumi.CustomResource):
         * openstack
         * s3
         * vmwarevsphere
+
 
         :param str resource_name: The name of the resource.
         :param CloudCredentialArgs args: The arguments to use to populate this resource's properties.

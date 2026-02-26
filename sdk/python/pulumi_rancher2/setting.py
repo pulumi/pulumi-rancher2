@@ -25,6 +25,7 @@ class SettingArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Setting resource.
+
         :param pulumi.Input[_builtins.str] value: The value of the setting (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for setting object (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for setting object (map)
@@ -96,6 +97,7 @@ class _SettingState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Setting resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for setting object (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for setting object (map)
         :param pulumi.Input[_builtins.str] name: The name of the setting (string)
@@ -197,6 +199,7 @@ class Setting(pulumi.CustomResource):
         $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for setting object (map)
@@ -236,6 +239,7 @@ class Setting(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/setting:Setting foo &lt;setting_id&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SettingArgs args: The arguments to use to populate this resource's properties.

@@ -35,6 +35,7 @@ class AuthConfigKeycloakArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AuthConfigKeycloak resource.
+
         :param pulumi.Input[_builtins.str] display_name_field: KeyCloak display name field (string)
         :param pulumi.Input[_builtins.str] groups_field: KeyCloak group field (string)
         :param pulumi.Input[_builtins.str] idp_metadata_content: KeyCloak IDP metadata content (string)
@@ -261,6 +262,7 @@ class _AuthConfigKeycloakState:
                  user_name_field: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigKeycloak resources.
+
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -548,6 +550,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
             user_name_field="<USER_NAME_FIELD>")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -593,6 +596,7 @@ class AuthConfigKeycloak(pulumi.CustomResource):
             uid_field="<UID_FIELD>",
             user_name_field="<USER_NAME_FIELD>")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthConfigKeycloakArgs args: The arguments to use to populate this resource's properties.

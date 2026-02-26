@@ -34,6 +34,7 @@ class AuthConfigOktaArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AuthConfigOkta resource.
+
         :param pulumi.Input[_builtins.str] display_name_field: OKTA display name field (string)
         :param pulumi.Input[_builtins.str] groups_field: OKTA group field (string)
         :param pulumi.Input[_builtins.str] idp_metadata_content: OKTA IDP metadata content (string)
@@ -244,6 +245,7 @@ class _AuthConfigOktaState:
                  user_name_field: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigOkta resources.
+
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -515,6 +517,7 @@ class AuthConfigOkta(pulumi.CustomResource):
             user_name_field="<USER_NAME_FIELD>")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -559,6 +562,7 @@ class AuthConfigOkta(pulumi.CustomResource):
             uid_field="<UID_FIELD>",
             user_name_field="<USER_NAME_FIELD>")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthConfigOktaArgs args: The arguments to use to populate this resource's properties.

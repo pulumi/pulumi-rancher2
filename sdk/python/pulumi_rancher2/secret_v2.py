@@ -29,6 +29,7 @@ class SecretV2Args:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecretV2 resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id of the secret V2 (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The data of the secret v2 (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the secret v2 (map)
@@ -164,6 +165,7 @@ class _SecretV2State:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretV2 resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the secret v2 (map)
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id of the secret V2 (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: The data of the secret v2 (map)
@@ -328,6 +330,7 @@ class SecretV2(pulumi.CustomResource):
         $ pulumi import rancher2:index/secretV2:SecretV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the secret v2 (map)
@@ -355,6 +358,7 @@ class SecretV2(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/secretV2:SecretV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecretV2Args args: The arguments to use to populate this resource's properties.

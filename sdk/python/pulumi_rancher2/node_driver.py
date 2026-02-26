@@ -32,6 +32,7 @@ class NodeDriverArgs:
                  whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a NodeDriver resource.
+
         :param pulumi.Input[_builtins.bool] active: Specify if the node driver state (bool)
         :param pulumi.Input[_builtins.bool] builtin: Specify wheter the node driver is an internal node driver or not (bool)
         :param pulumi.Input[_builtins.str] url: The URL to download the machine driver binary for 64-bit Linux (string)
@@ -213,6 +214,7 @@ class _NodeDriverState:
                  whitelist_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering NodeDriver resources.
+
         :param pulumi.Input[_builtins.bool] active: Specify if the node driver state (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[_builtins.bool] builtin: Specify wheter the node driver is an internal node driver or not (bool)
@@ -429,6 +431,7 @@ class NodeDriver(pulumi.CustomResource):
         $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Specify if the node driver state (bool)
@@ -478,6 +481,7 @@ class NodeDriver(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/nodeDriver:NodeDriver foo &lt;node_driver_id&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeDriverArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class BootstrapArgs:
                  ui_default_landing: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Bootstrap resource.
+
         :param pulumi.Input[_builtins.str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[_builtins.str] password: Password for Admin user or random generated if empty (string)
         :param pulumi.Input[_builtins.int] token_ttl: TTL in seconds for generated admin token. Default: `0`  (int)
@@ -121,6 +122,7 @@ class _BootstrapState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Bootstrap resources.
+
         :param pulumi.Input[_builtins.str] current_password: (Computed/Sensitive) Current password for Admin user (string)
         :param pulumi.Input[_builtins.str] initial_password: Initial password for Admin user. Default: `admin` (string)
         :param pulumi.Input[_builtins.str] password: Password for Admin user or random generated if empty (string)
@@ -360,6 +362,7 @@ class Bootstrap(pulumi.CustomResource):
         admin = rancher2.Bootstrap("admin", password="blahblah")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] initial_password: Initial password for Admin user. Default: `admin` (string)
@@ -417,6 +420,7 @@ class Bootstrap(pulumi.CustomResource):
         # Create a new rancher2_bootstrap using bootstrap provider config
         admin = rancher2.Bootstrap("admin", password="blahblah")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param BootstrapArgs args: The arguments to use to populate this resource's properties.

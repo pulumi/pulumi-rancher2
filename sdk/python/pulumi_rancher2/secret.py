@@ -28,6 +28,7 @@ class SecretArgs:
                  namespace_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Secret resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: Secret key/value data. Base64 encoding required for values (map)
         :param pulumi.Input[_builtins.str] project_id: The project id where to assign the secret (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for secret object (map)
@@ -146,6 +147,7 @@ class _SecretState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for secret object (map)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: Secret key/value data. Base64 encoding required for values (map)
         :param pulumi.Input[_builtins.str] description: A secret description (string)
@@ -322,6 +324,7 @@ class Secret(pulumi.CustomResource):
 
         `<namespace_id>` is optional, just needed for namespaced secret.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for secret object (map)
@@ -391,6 +394,7 @@ class Secret(pulumi.CustomResource):
         ```
 
         `<namespace_id>` is optional, just needed for namespaced secret.
+
 
         :param str resource_name: The name of the resource.
         :param SecretArgs args: The arguments to use to populate this resource's properties.

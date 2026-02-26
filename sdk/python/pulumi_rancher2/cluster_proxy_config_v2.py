@@ -25,6 +25,7 @@ class ClusterProxyConfigV2Args:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ClusterProxyConfigV2 resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID where the ClusterProxyConfig should be created
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether downstream proxy requests for service account tokens is enabled
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource
@@ -95,6 +96,7 @@ class _ClusterProxyConfigV2State:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ClusterProxyConfigV2 resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID where the ClusterProxyConfig should be created
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether downstream proxy requests for service account tokens is enabled
@@ -171,6 +173,7 @@ class ClusterProxyConfigV2(pulumi.CustomResource):
                  __props__=None):
         """
         Create a ClusterProxyConfigV2 resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource
@@ -186,6 +189,7 @@ class ClusterProxyConfigV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a ClusterProxyConfigV2 resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param ClusterProxyConfigV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

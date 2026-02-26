@@ -31,6 +31,7 @@ class StorageClassV2Args:
                  volume_binding_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageClassV2 resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id of the storageClass V2 (string)
         :param pulumi.Input[_builtins.str] k8s_provisioner: The provisioner of the storageClass v2 (string)
         :param pulumi.Input[_builtins.bool] allow_volume_expansion: Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
@@ -198,6 +199,7 @@ class _StorageClassV2State:
                  volume_binding_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageClassV2 resources.
+
         :param pulumi.Input[_builtins.bool] allow_volume_expansion: Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the storageClass v2 (map)
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id of the storageClass V2 (string)
@@ -394,6 +396,7 @@ class StorageClassV2(pulumi.CustomResource):
         $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_volume_expansion: Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
@@ -423,6 +426,7 @@ class StorageClassV2(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/storageClassV2:StorageClassV2 foo &lt;CLUSTER_ID&gt;.&lt;STORAGE_CLASS_V2_NAME&gt;
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StorageClassV2Args args: The arguments to use to populate this resource's properties.

@@ -37,6 +37,7 @@ class ClusterV2Args:
                  rke_config: Optional[pulumi.Input['ClusterV2RkeConfigArgs']] = None):
         """
         The set of arguments for constructing a ClusterV2 resource.
+
         :param pulumi.Input[_builtins.str] kubernetes_version: The RKE2 or K3s version for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]] agent_env_vars: Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the Cluster.
@@ -272,6 +273,7 @@ class _ClusterV2State:
                  rke_config: Optional[pulumi.Input['ClusterV2RkeConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ClusterV2 resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['ClusterV2AgentEnvVarArgs']]] agent_env_vars: Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the Cluster.
         :param pulumi.Input[_builtins.str] cloud_credential_secret_name: Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
@@ -1195,6 +1197,7 @@ class ClusterV2(pulumi.CustomResource):
         $ pulumi import rancher2:index/clusterV2:ClusterV2 foo <FLEET_NAMESPACE>/<CLUSTER_NAME>
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterV2AgentEnvVarArgs', 'ClusterV2AgentEnvVarArgsDict']]]] agent_env_vars: Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
@@ -1846,6 +1849,7 @@ class ClusterV2(pulumi.CustomResource):
         ```sh
         $ pulumi import rancher2:index/clusterV2:ClusterV2 foo <FLEET_NAMESPACE>/<CLUSTER_NAME>
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ClusterV2Args args: The arguments to use to populate this resource's properties.

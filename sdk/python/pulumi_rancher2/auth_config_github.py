@@ -30,6 +30,7 @@ class AuthConfigGithubArgs:
                  tls: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AuthConfigGithub resource.
+
         :param pulumi.Input[_builtins.str] client_id: Github auth Client ID (string)
         :param pulumi.Input[_builtins.str] client_secret: Github auth Client secret (string)
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -182,6 +183,7 @@ class _AuthConfigGithubState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigGithub resources.
+
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_principal_ids: Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `github_user://<USER_ID>`  `github_team://<GROUP_ID>` `github_org://<ORG_ID>` (list)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
@@ -383,6 +385,7 @@ class AuthConfigGithub(pulumi.CustomResource):
             client_secret="<GITHUB_CLIENT_SECRET>")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_mode: Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
@@ -417,6 +420,7 @@ class AuthConfigGithub(pulumi.CustomResource):
             client_id="<GITHUB_CLIENT_ID>",
             client_secret="<GITHUB_CLIENT_SECRET>")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AuthConfigGithubArgs args: The arguments to use to populate this resource's properties.

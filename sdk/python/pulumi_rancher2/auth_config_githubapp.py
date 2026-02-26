@@ -33,6 +33,7 @@ class AuthConfigGithubappArgs:
                  tls: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AuthConfigGithubapp resource.
+
         :param pulumi.Input[_builtins.str] app_id: The GitHub App ID is provided on the GitHub apps page.
         :param pulumi.Input[_builtins.str] private_key: PEM format private key for signing requests.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource
@@ -203,6 +204,7 @@ class _AuthConfigGithubappState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigGithubapp resources.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource
         :param pulumi.Input[_builtins.str] app_id: The GitHub App ID is provided on the GitHub apps page.
         :param pulumi.Input[_builtins.str] installation_id: If the Installation ID is not provided, all installations for the App will be queried.
@@ -401,6 +403,7 @@ class AuthConfigGithubapp(pulumi.CustomResource):
                  __props__=None):
         """
         Create a AuthConfigGithubapp resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource
@@ -417,6 +420,7 @@ class AuthConfigGithubapp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a AuthConfigGithubapp resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param AuthConfigGithubappArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
