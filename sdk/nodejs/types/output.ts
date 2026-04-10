@@ -79,6 +79,25 @@ export interface CloudCredentialLinodeCredentialConfig {
     token: string;
 }
 
+export interface CloudCredentialNutanixCredentialConfig {
+    /**
+     * Nutanix management endpoint IP address/FQDN
+     */
+    endpoint: string;
+    /**
+     * Nutanix management password
+     */
+    password: string;
+    /**
+     * Nutanix management endpoint port
+     */
+    port?: string;
+    /**
+     * Nutanix management username
+     */
+    username: string;
+}
+
 export interface CloudCredentialOpenstackCredentialConfig {
     /**
      * OpenStack password
@@ -7247,6 +7266,97 @@ export interface MachineConfigV2LinodeConfig {
     uaPrefix?: string;
 }
 
+export interface MachineConfigV2NutanixConfig {
+    /**
+     * Boot type of the VM. Supported values: legacy, uefi
+     */
+    bootType?: string;
+    /**
+     * Cloud-init configuration
+     */
+    cloudInit?: string;
+    /**
+     * Nutanix cluster to install VM on
+     */
+    cluster: string;
+    /**
+     * Size of the additional disk (GiB)
+     */
+    diskSize?: string;
+    /**
+     * Nutanix management endpoint IP address/FQDN
+     */
+    endpoint?: string;
+    /**
+     * Allow insecure SSL requests
+     */
+    insecure?: boolean;
+    /**
+     * Nutanix management password
+     */
+    password?: string;
+    /**
+     * Nutanix management endpoint port
+     */
+    port?: string;
+    /**
+     * Name of the project to assign the VM
+     */
+    project?: string;
+    /**
+     * UUID of the storage container for additional disk
+     */
+    storageContainer?: string;
+    /**
+     * Timeout for Nutanix operations in seconds
+     */
+    timeout?: string;
+    /**
+     * Nutanix management username
+     */
+    username?: string;
+    /**
+     * Categories to apply to the VM
+     */
+    vmCategories?: string[];
+    /**
+     * Number of cores per VCPU of the VM to be created
+     */
+    vmCores?: string;
+    /**
+     * Enable passthrough of host CPU features to the VM
+     */
+    vmCpuPassthrough?: boolean;
+    /**
+     * Number of VCPUs of the VM to be created
+     */
+    vmCpus?: string;
+    /**
+     * GPU devices to attach to the VM
+     */
+    vmGpus?: string[];
+    /**
+     * Name of the VM disk image to clone from
+     */
+    vmImage: string;
+    /**
+     * Increase the size of the template image (GiB)
+     */
+    vmImageSize?: string;
+    /**
+     * Memory in MB of the VM to be created
+     */
+    vmMem?: string;
+    /**
+     * Network names or UUIDs to attach to the VM
+     */
+    vmNetworks: string[];
+    /**
+     * Attach a serial port to the VM
+     */
+    vmSerialPort?: boolean;
+}
+
 export interface MachineConfigV2OpenstackConfig {
     /**
      * OpenStack active timeout Default `200` (string)
@@ -7317,7 +7427,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     imageName?: string;
     /**
-     * Disable TLS credential checking. Default `false` (bool)
+     * Allow insecure SSL requests. Default `false` (bool)
      */
     insecure?: boolean;
     /**
@@ -7341,7 +7451,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     novaNetwork?: boolean;
     /**
-     * OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      */
     password?: string;
     /**
@@ -7393,7 +7503,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     userDomainName?: string;
     /**
-     * The username to be set when logging into the virtual machines (string)
+     * Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      */
     username?: string;
     /**

@@ -144,6 +144,52 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Create a node-driver cluster with Nutanix as the infrastructure provider
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as rancher2 from "@pulumi/rancher2";
+ *
+ * // Create Nutanix cloud credential
+ * const fooNutanix = new rancher2.CloudCredential("foo_nutanix", {
+ *     name: "foo-nutanix",
+ *     nutanixCredentialConfig: {
+ *         endpoint: "<PRISM_ENDPOINT>",
+ *         username: "X-ntnx-api-key",
+ *         password: "<NUTANIX_API_KEY_OR_PASSWORD>",
+ *         port: "9440",
+ *     },
+ * });
+ * // Create Nutanix machine config v2
+ * const fooNutanixMachineConfigV2 = new rancher2.MachineConfigV2("foo_nutanix", {
+ *     generateName: "foo-nutanix",
+ *     nutanixConfig: {
+ *         cluster: "<NUTANIX_CLUSTER_NAME>",
+ *         vmNetworks: ["<NETWORK_NAME_OR_UUID>"],
+ *         vmImage: "<IMAGE_NAME>",
+ *     },
+ * });
+ * // Create a cluster using Nutanix machine config and cloud credential
+ * const fooNutanixClusterV2 = new rancher2.ClusterV2("foo_nutanix", {
+ *     name: "foo-nutanix",
+ *     kubernetesVersion: "<rke2/k3s-version>",
+ *     rkeConfig: {
+ *         machinePools: [{
+ *             name: "pool1",
+ *             cloudCredentialSecretName: fooNutanix.id,
+ *             controlPlaneRole: true,
+ *             etcdRole: true,
+ *             workerRole: true,
+ *             quantity: 1,
+ *             machineConfig: {
+ *                 kind: fooNutanixMachineConfigV2.kind,
+ *                 name: fooNutanixMachineConfigV2.name,
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
+ *
  * ### Create a node-driver cluster with Harvester as the infrastructure provider
  *
  * ### Create a node-driver cluster with Harvester as both the infrastructure provider and cloud provider

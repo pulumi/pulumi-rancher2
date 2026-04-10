@@ -13,7 +13,7 @@ import (
 
 // Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
 //
-// amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+// amazonec2, azure, digitalocean, harvester, linode, nutanix, openstack and vsphere credentials config are supported for Cloud Credential.
 //
 // ## Example Usage
 //
@@ -99,6 +99,7 @@ import (
 // * digitalocean
 // * googlekubernetesengine
 // * linode
+// * nutanix
 // * openstack
 // * s3
 // * vmwarevsphere
@@ -127,6 +128,8 @@ type CloudCredential struct {
 	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrOutput `pulumi:"linodeCredentialConfig"`
 	// The name of the Cloud Credential (string)
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Nutanix config for the Cloud Credential (list maxitems:1)
+	NutanixCredentialConfig CloudCredentialNutanixCredentialConfigPtrOutput `pulumi:"nutanixCredentialConfig"`
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig CloudCredentialOpenstackCredentialConfigPtrOutput `pulumi:"openstackCredentialConfig"`
 	// S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
@@ -187,6 +190,8 @@ type cloudCredentialState struct {
 	LinodeCredentialConfig *CloudCredentialLinodeCredentialConfig `pulumi:"linodeCredentialConfig"`
 	// The name of the Cloud Credential (string)
 	Name *string `pulumi:"name"`
+	// Nutanix config for the Cloud Credential (list maxitems:1)
+	NutanixCredentialConfig *CloudCredentialNutanixCredentialConfig `pulumi:"nutanixCredentialConfig"`
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig *CloudCredentialOpenstackCredentialConfig `pulumi:"openstackCredentialConfig"`
 	// S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
@@ -218,6 +223,8 @@ type CloudCredentialState struct {
 	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrInput
 	// The name of the Cloud Credential (string)
 	Name pulumi.StringPtrInput
+	// Nutanix config for the Cloud Credential (list maxitems:1)
+	NutanixCredentialConfig CloudCredentialNutanixCredentialConfigPtrInput
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig CloudCredentialOpenstackCredentialConfigPtrInput
 	// S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
@@ -251,6 +258,8 @@ type cloudCredentialArgs struct {
 	LinodeCredentialConfig *CloudCredentialLinodeCredentialConfig `pulumi:"linodeCredentialConfig"`
 	// The name of the Cloud Credential (string)
 	Name *string `pulumi:"name"`
+	// Nutanix config for the Cloud Credential (list maxitems:1)
+	NutanixCredentialConfig *CloudCredentialNutanixCredentialConfig `pulumi:"nutanixCredentialConfig"`
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig *CloudCredentialOpenstackCredentialConfig `pulumi:"openstackCredentialConfig"`
 	// S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
@@ -281,6 +290,8 @@ type CloudCredentialArgs struct {
 	LinodeCredentialConfig CloudCredentialLinodeCredentialConfigPtrInput
 	// The name of the Cloud Credential (string)
 	Name pulumi.StringPtrInput
+	// Nutanix config for the Cloud Credential (list maxitems:1)
+	NutanixCredentialConfig CloudCredentialNutanixCredentialConfigPtrInput
 	// OpenStack config for the Cloud Credential (list maxitems:1)
 	OpenstackCredentialConfig CloudCredentialOpenstackCredentialConfigPtrInput
 	// S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
@@ -439,6 +450,13 @@ func (o CloudCredentialOutput) LinodeCredentialConfig() CloudCredentialLinodeCre
 // The name of the Cloud Credential (string)
 func (o CloudCredentialOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudCredential) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Nutanix config for the Cloud Credential (list maxitems:1)
+func (o CloudCredentialOutput) NutanixCredentialConfig() CloudCredentialNutanixCredentialConfigPtrOutput {
+	return o.ApplyT(func(v *CloudCredential) CloudCredentialNutanixCredentialConfigPtrOutput {
+		return v.NutanixCredentialConfig
+	}).(CloudCredentialNutanixCredentialConfigPtrOutput)
 }
 
 // OpenStack config for the Cloud Credential (list maxitems:1)

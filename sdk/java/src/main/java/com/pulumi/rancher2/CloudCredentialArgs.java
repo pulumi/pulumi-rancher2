@@ -11,6 +11,7 @@ import com.pulumi.rancher2.inputs.CloudCredentialDigitaloceanCredentialConfigArg
 import com.pulumi.rancher2.inputs.CloudCredentialGoogleCredentialConfigArgs;
 import com.pulumi.rancher2.inputs.CloudCredentialHarvesterCredentialConfigArgs;
 import com.pulumi.rancher2.inputs.CloudCredentialLinodeCredentialConfigArgs;
+import com.pulumi.rancher2.inputs.CloudCredentialNutanixCredentialConfigArgs;
 import com.pulumi.rancher2.inputs.CloudCredentialOpenstackCredentialConfigArgs;
 import com.pulumi.rancher2.inputs.CloudCredentialS3CredentialConfigArgs;
 import com.pulumi.rancher2.inputs.CloudCredentialVsphereCredentialConfigArgs;
@@ -176,6 +177,21 @@ public final class CloudCredentialArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Nutanix config for the Cloud Credential (list maxitems:1)
+     * 
+     */
+    @Import(name="nutanixCredentialConfig")
+    private @Nullable Output<CloudCredentialNutanixCredentialConfigArgs> nutanixCredentialConfig;
+
+    /**
+     * @return Nutanix config for the Cloud Credential (list maxitems:1)
+     * 
+     */
+    public Optional<Output<CloudCredentialNutanixCredentialConfigArgs>> nutanixCredentialConfig() {
+        return Optional.ofNullable(this.nutanixCredentialConfig);
+    }
+
+    /**
      * OpenStack config for the Cloud Credential (list maxitems:1)
      * 
      */
@@ -233,6 +249,7 @@ public final class CloudCredentialArgs extends com.pulumi.resources.ResourceArgs
         this.labels = $.labels;
         this.linodeCredentialConfig = $.linodeCredentialConfig;
         this.name = $.name;
+        this.nutanixCredentialConfig = $.nutanixCredentialConfig;
         this.openstackCredentialConfig = $.openstackCredentialConfig;
         this.s3CredentialConfig = $.s3CredentialConfig;
         this.vsphereCredentialConfig = $.vsphereCredentialConfig;
@@ -464,6 +481,27 @@ public final class CloudCredentialArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nutanixCredentialConfig Nutanix config for the Cloud Credential (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nutanixCredentialConfig(@Nullable Output<CloudCredentialNutanixCredentialConfigArgs> nutanixCredentialConfig) {
+            $.nutanixCredentialConfig = nutanixCredentialConfig;
+            return this;
+        }
+
+        /**
+         * @param nutanixCredentialConfig Nutanix config for the Cloud Credential (list maxitems:1)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nutanixCredentialConfig(CloudCredentialNutanixCredentialConfigArgs nutanixCredentialConfig) {
+            return nutanixCredentialConfig(Output.of(nutanixCredentialConfig));
         }
 
         /**

@@ -701,6 +701,49 @@ class ClusterV2(pulumi.CustomResource):
             })
         ```
 
+        ### Create a node-driver cluster with Nutanix as the infrastructure provider
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create Nutanix cloud credential
+        foo_nutanix = rancher2.CloudCredential("foo_nutanix",
+            name="foo-nutanix",
+            nutanix_credential_config={
+                "endpoint": "<PRISM_ENDPOINT>",
+                "username": "X-ntnx-api-key",
+                "password": "<NUTANIX_API_KEY_OR_PASSWORD>",
+                "port": "9440",
+            })
+        # Create Nutanix machine config v2
+        foo_nutanix_machine_config_v2 = rancher2.MachineConfigV2("foo_nutanix",
+            generate_name="foo-nutanix",
+            nutanix_config={
+                "cluster": "<NUTANIX_CLUSTER_NAME>",
+                "vm_networks": ["<NETWORK_NAME_OR_UUID>"],
+                "vm_image": "<IMAGE_NAME>",
+            })
+        # Create a cluster using Nutanix machine config and cloud credential
+        foo_nutanix_cluster_v2 = rancher2.ClusterV2("foo_nutanix",
+            name="foo-nutanix",
+            kubernetes_version="<rke2/k3s-version>",
+            rke_config={
+                "machine_pools": [{
+                    "name": "pool1",
+                    "cloud_credential_secret_name": foo_nutanix.id,
+                    "control_plane_role": True,
+                    "etcd_role": True,
+                    "worker_role": True,
+                    "quantity": 1,
+                    "machine_config": {
+                        "kind": foo_nutanix_machine_config_v2.kind,
+                        "name": foo_nutanix_machine_config_v2.name,
+                    },
+                }],
+            })
+        ```
+
         ### Create a node-driver cluster with Harvester as the infrastructure provider
 
         ### Create a node-driver cluster with Harvester as both the infrastructure provider and cloud provider
@@ -1349,6 +1392,49 @@ class ClusterV2(pulumi.CustomResource):
                     "machine_config": {
                         "kind": foo_rancher2_machine_config_v2["kind"],
                         "name": foo_rancher2_machine_config_v2["name"],
+                    },
+                }],
+            })
+        ```
+
+        ### Create a node-driver cluster with Nutanix as the infrastructure provider
+
+        ```python
+        import pulumi
+        import pulumi_rancher2 as rancher2
+
+        # Create Nutanix cloud credential
+        foo_nutanix = rancher2.CloudCredential("foo_nutanix",
+            name="foo-nutanix",
+            nutanix_credential_config={
+                "endpoint": "<PRISM_ENDPOINT>",
+                "username": "X-ntnx-api-key",
+                "password": "<NUTANIX_API_KEY_OR_PASSWORD>",
+                "port": "9440",
+            })
+        # Create Nutanix machine config v2
+        foo_nutanix_machine_config_v2 = rancher2.MachineConfigV2("foo_nutanix",
+            generate_name="foo-nutanix",
+            nutanix_config={
+                "cluster": "<NUTANIX_CLUSTER_NAME>",
+                "vm_networks": ["<NETWORK_NAME_OR_UUID>"],
+                "vm_image": "<IMAGE_NAME>",
+            })
+        # Create a cluster using Nutanix machine config and cloud credential
+        foo_nutanix_cluster_v2 = rancher2.ClusterV2("foo_nutanix",
+            name="foo-nutanix",
+            kubernetes_version="<rke2/k3s-version>",
+            rke_config={
+                "machine_pools": [{
+                    "name": "pool1",
+                    "cloud_credential_secret_name": foo_nutanix.id,
+                    "control_plane_role": True,
+                    "etcd_role": True,
+                    "worker_role": True,
+                    "quantity": 1,
+                    "machine_config": {
+                        "kind": foo_nutanix_machine_config_v2.kind,
+                        "name": foo_nutanix_machine_config_v2.name,
                     },
                 }],
             })

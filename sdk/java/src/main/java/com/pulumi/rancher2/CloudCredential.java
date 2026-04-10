@@ -16,6 +16,7 @@ import com.pulumi.rancher2.outputs.CloudCredentialDigitaloceanCredentialConfig;
 import com.pulumi.rancher2.outputs.CloudCredentialGoogleCredentialConfig;
 import com.pulumi.rancher2.outputs.CloudCredentialHarvesterCredentialConfig;
 import com.pulumi.rancher2.outputs.CloudCredentialLinodeCredentialConfig;
+import com.pulumi.rancher2.outputs.CloudCredentialNutanixCredentialConfig;
 import com.pulumi.rancher2.outputs.CloudCredentialOpenstackCredentialConfig;
 import com.pulumi.rancher2.outputs.CloudCredentialS3CredentialConfig;
 import com.pulumi.rancher2.outputs.CloudCredentialVsphereCredentialConfig;
@@ -27,7 +28,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
  * 
- * amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+ * amazonec2, azure, digitalocean, harvester, linode, nutanix, openstack and vsphere credentials config are supported for Cloud Credential.
  * 
  * ## Example Usage
  * 
@@ -129,6 +130,7 @@ import javax.annotation.Nullable;
  * * digitalocean
  * * googlekubernetesengine
  * * linode
+ * * nutanix
  * * openstack
  * * s3
  * * vmwarevsphere
@@ -289,6 +291,20 @@ public class CloudCredential extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Nutanix config for the Cloud Credential (list maxitems:1)
+     * 
+     */
+    @Export(name="nutanixCredentialConfig", refs={CloudCredentialNutanixCredentialConfig.class}, tree="[0]")
+    private Output</* @Nullable */ CloudCredentialNutanixCredentialConfig> nutanixCredentialConfig;
+
+    /**
+     * @return Nutanix config for the Cloud Credential (list maxitems:1)
+     * 
+     */
+    public Output<Optional<CloudCredentialNutanixCredentialConfig>> nutanixCredentialConfig() {
+        return Codegen.optional(this.nutanixCredentialConfig);
     }
     /**
      * OpenStack config for the Cloud Credential (list maxitems:1)

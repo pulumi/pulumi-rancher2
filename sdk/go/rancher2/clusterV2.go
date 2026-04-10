@@ -204,6 +204,77 @@ import (
 //
 // ```
 //
+// ### Create a node-driver cluster with Nutanix as the infrastructure provider
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create Nutanix cloud credential
+//			fooNutanix, err := rancher2.NewCloudCredential(ctx, "foo_nutanix", &rancher2.CloudCredentialArgs{
+//				Name: pulumi.String("foo-nutanix"),
+//				NutanixCredentialConfig: &rancher2.CloudCredentialNutanixCredentialConfigArgs{
+//					Endpoint: pulumi.String("<PRISM_ENDPOINT>"),
+//					Username: pulumi.String("X-ntnx-api-key"),
+//					Password: pulumi.String("<NUTANIX_API_KEY_OR_PASSWORD>"),
+//					Port:     pulumi.String("9440"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create Nutanix machine config v2
+//			fooNutanixMachineConfigV2, err := rancher2.NewMachineConfigV2(ctx, "foo_nutanix", &rancher2.MachineConfigV2Args{
+//				GenerateName: pulumi.String("foo-nutanix"),
+//				NutanixConfig: &rancher2.MachineConfigV2NutanixConfigArgs{
+//					Cluster: pulumi.String("<NUTANIX_CLUSTER_NAME>"),
+//					VmNetworks: pulumi.StringArray{
+//						pulumi.String("<NETWORK_NAME_OR_UUID>"),
+//					},
+//					VmImage: pulumi.String("<IMAGE_NAME>"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a cluster using Nutanix machine config and cloud credential
+//			_, err = rancher2.NewClusterV2(ctx, "foo_nutanix", &rancher2.ClusterV2Args{
+//				Name:              pulumi.String("foo-nutanix"),
+//				KubernetesVersion: pulumi.String("<rke2/k3s-version>"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{
+//							Name:                      pulumi.String("pool1"),
+//							CloudCredentialSecretName: fooNutanix.ID(),
+//							ControlPlaneRole:          pulumi.Bool(true),
+//							EtcdRole:                  pulumi.Bool(true),
+//							WorkerRole:                pulumi.Bool(true),
+//							Quantity:                  pulumi.Int(1),
+//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
+//								Kind: fooNutanixMachineConfigV2.Kind,
+//								Name: fooNutanixMachineConfigV2.Name,
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Create a node-driver cluster with Harvester as the infrastructure provider
 //
 // ### Create a node-driver cluster with Harvester as both the infrastructure provider and cloud provider
