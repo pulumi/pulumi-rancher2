@@ -79,6 +79,25 @@ export interface CloudCredentialLinodeCredentialConfig {
     token: pulumi.Input<string>;
 }
 
+export interface CloudCredentialNutanixCredentialConfig {
+    /**
+     * Nutanix management endpoint IP address/FQDN
+     */
+    endpoint: pulumi.Input<string>;
+    /**
+     * Nutanix management password
+     */
+    password: pulumi.Input<string>;
+    /**
+     * Nutanix management endpoint port
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Nutanix management username
+     */
+    username: pulumi.Input<string>;
+}
+
 export interface CloudCredentialOpenstackCredentialConfig {
     /**
      * OpenStack password
@@ -4740,6 +4759,97 @@ export interface MachineConfigV2LinodeConfig {
     uaPrefix?: pulumi.Input<string>;
 }
 
+export interface MachineConfigV2NutanixConfig {
+    /**
+     * Boot type of the VM. Supported values: legacy, uefi
+     */
+    bootType?: pulumi.Input<string>;
+    /**
+     * Cloud-init configuration
+     */
+    cloudInit?: pulumi.Input<string>;
+    /**
+     * Nutanix cluster to install VM on
+     */
+    cluster: pulumi.Input<string>;
+    /**
+     * Size of the additional disk (GiB)
+     */
+    diskSize?: pulumi.Input<string>;
+    /**
+     * Nutanix management endpoint IP address/FQDN
+     */
+    endpoint?: pulumi.Input<string>;
+    /**
+     * Allow insecure SSL requests
+     */
+    insecure?: pulumi.Input<boolean>;
+    /**
+     * Nutanix management password
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Nutanix management endpoint port
+     */
+    port?: pulumi.Input<string>;
+    /**
+     * Name of the project to assign the VM
+     */
+    project?: pulumi.Input<string>;
+    /**
+     * UUID of the storage container for additional disk
+     */
+    storageContainer?: pulumi.Input<string>;
+    /**
+     * Timeout for Nutanix operations in seconds
+     */
+    timeout?: pulumi.Input<string>;
+    /**
+     * Nutanix management username
+     */
+    username?: pulumi.Input<string>;
+    /**
+     * Categories to apply to the VM
+     */
+    vmCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Number of cores per VCPU of the VM to be created
+     */
+    vmCores?: pulumi.Input<string>;
+    /**
+     * Enable passthrough of host CPU features to the VM
+     */
+    vmCpuPassthrough?: pulumi.Input<boolean>;
+    /**
+     * Number of VCPUs of the VM to be created
+     */
+    vmCpus?: pulumi.Input<string>;
+    /**
+     * GPU devices to attach to the VM
+     */
+    vmGpus?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the VM disk image to clone from
+     */
+    vmImage: pulumi.Input<string>;
+    /**
+     * Increase the size of the template image (GiB)
+     */
+    vmImageSize?: pulumi.Input<string>;
+    /**
+     * Memory in MB of the VM to be created
+     */
+    vmMem?: pulumi.Input<string>;
+    /**
+     * Network names or UUIDs to attach to the VM
+     */
+    vmNetworks: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Attach a serial port to the VM
+     */
+    vmSerialPort?: pulumi.Input<boolean>;
+}
+
 export interface MachineConfigV2OpenstackConfig {
     /**
      * OpenStack active timeout Default `200` (string)
@@ -4810,7 +4920,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     imageName?: pulumi.Input<string>;
     /**
-     * Disable TLS credential checking. Default `false` (bool)
+     * Allow insecure SSL requests. Default `false` (bool)
      */
     insecure?: pulumi.Input<boolean>;
     /**
@@ -4834,7 +4944,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     novaNetwork?: pulumi.Input<boolean>;
     /**
-     * OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      */
     password?: pulumi.Input<string>;
     /**
@@ -4886,7 +4996,7 @@ export interface MachineConfigV2OpenstackConfig {
      */
     userDomainName?: pulumi.Input<string>;
     /**
-     * The username to be set when logging into the virtual machines (string)
+     * Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      */
     username?: pulumi.Input<string>;
     /**

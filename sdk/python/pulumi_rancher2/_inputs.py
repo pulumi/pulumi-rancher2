@@ -27,6 +27,8 @@ __all__ = [
     'CloudCredentialHarvesterCredentialConfigArgsDict',
     'CloudCredentialLinodeCredentialConfigArgs',
     'CloudCredentialLinodeCredentialConfigArgsDict',
+    'CloudCredentialNutanixCredentialConfigArgs',
+    'CloudCredentialNutanixCredentialConfigArgsDict',
     'CloudCredentialOpenstackCredentialConfigArgs',
     'CloudCredentialOpenstackCredentialConfigArgsDict',
     'CloudCredentialS3CredentialConfigArgs',
@@ -331,6 +333,8 @@ __all__ = [
     'MachineConfigV2HarvesterConfigArgsDict',
     'MachineConfigV2LinodeConfigArgs',
     'MachineConfigV2LinodeConfigArgsDict',
+    'MachineConfigV2NutanixConfigArgs',
+    'MachineConfigV2NutanixConfigArgsDict',
     'MachineConfigV2OpenstackConfigArgs',
     'MachineConfigV2OpenstackConfigArgsDict',
     'MachineConfigV2VsphereConfigArgs',
@@ -687,6 +691,92 @@ class CloudCredentialLinodeCredentialConfigArgs:
     @token.setter
     def token(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "token", value)
+
+
+class CloudCredentialNutanixCredentialConfigArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    Nutanix management endpoint IP address/FQDN
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    Nutanix management password
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    Nutanix management username
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Nutanix management endpoint port
+    """
+
+@pulumi.input_type
+class CloudCredentialNutanixCredentialConfigArgs:
+    def __init__(__self__, *,
+                 endpoint: pulumi.Input[_builtins.str],
+                 password: pulumi.Input[_builtins.str],
+                 username: pulumi.Input[_builtins.str],
+                 port: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] endpoint: Nutanix management endpoint IP address/FQDN
+        :param pulumi.Input[_builtins.str] password: Nutanix management password
+        :param pulumi.Input[_builtins.str] username: Nutanix management username
+        :param pulumi.Input[_builtins.str] port: Nutanix management endpoint port
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[_builtins.str]:
+        """
+        Nutanix management endpoint IP address/FQDN
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[_builtins.str]:
+        """
+        Nutanix management password
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[_builtins.str]:
+        """
+        Nutanix management username
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Nutanix management endpoint port
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "port", value)
 
 
 class CloudCredentialOpenstackCredentialConfigArgsDict(TypedDict):
@@ -22615,6 +22705,452 @@ class MachineConfigV2LinodeConfigArgs:
         pulumi.set(self, "ua_prefix", value)
 
 
+class MachineConfigV2NutanixConfigArgsDict(TypedDict):
+    cluster: pulumi.Input[_builtins.str]
+    """
+    Nutanix cluster to install VM on
+    """
+    vm_image: pulumi.Input[_builtins.str]
+    """
+    Name of the VM disk image to clone from
+    """
+    vm_networks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Network names or UUIDs to attach to the VM
+    """
+    boot_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Boot type of the VM. Supported values: legacy, uefi
+    """
+    cloud_init: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cloud-init configuration
+    """
+    disk_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Size of the additional disk (GiB)
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Nutanix management endpoint IP address/FQDN
+    """
+    insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Allow insecure SSL requests
+    """
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Nutanix management password
+    """
+    port: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Nutanix management endpoint port
+    """
+    project: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the project to assign the VM
+    """
+    storage_container: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the storage container for additional disk
+    """
+    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for Nutanix operations in seconds
+    """
+    username: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Nutanix management username
+    """
+    vm_categories: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Categories to apply to the VM
+    """
+    vm_cores: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Number of cores per VCPU of the VM to be created
+    """
+    vm_cpu_passthrough: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable passthrough of host CPU features to the VM
+    """
+    vm_cpus: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Number of VCPUs of the VM to be created
+    """
+    vm_gpus: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    GPU devices to attach to the VM
+    """
+    vm_image_size: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Increase the size of the template image (GiB)
+    """
+    vm_mem: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Memory in MB of the VM to be created
+    """
+    vm_serial_port: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Attach a serial port to the VM
+    """
+
+@pulumi.input_type
+class MachineConfigV2NutanixConfigArgs:
+    def __init__(__self__, *,
+                 cluster: pulumi.Input[_builtins.str],
+                 vm_image: pulumi.Input[_builtins.str],
+                 vm_networks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 boot_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_init: Optional[pulumi.Input[_builtins.str]] = None,
+                 disk_size: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
+                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.str]] = None,
+                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 storage_container: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
+                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 vm_categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vm_cores: Optional[pulumi.Input[_builtins.str]] = None,
+                 vm_cpu_passthrough: Optional[pulumi.Input[_builtins.bool]] = None,
+                 vm_cpus: Optional[pulumi.Input[_builtins.str]] = None,
+                 vm_gpus: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vm_image_size: Optional[pulumi.Input[_builtins.str]] = None,
+                 vm_mem: Optional[pulumi.Input[_builtins.str]] = None,
+                 vm_serial_port: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cluster: Nutanix cluster to install VM on
+        :param pulumi.Input[_builtins.str] vm_image: Name of the VM disk image to clone from
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vm_networks: Network names or UUIDs to attach to the VM
+        :param pulumi.Input[_builtins.str] boot_type: Boot type of the VM. Supported values: legacy, uefi
+        :param pulumi.Input[_builtins.str] cloud_init: Cloud-init configuration
+        :param pulumi.Input[_builtins.str] disk_size: Size of the additional disk (GiB)
+        :param pulumi.Input[_builtins.str] endpoint: Nutanix management endpoint IP address/FQDN
+        :param pulumi.Input[_builtins.bool] insecure: Allow insecure SSL requests
+        :param pulumi.Input[_builtins.str] password: Nutanix management password
+        :param pulumi.Input[_builtins.str] port: Nutanix management endpoint port
+        :param pulumi.Input[_builtins.str] project: Name of the project to assign the VM
+        :param pulumi.Input[_builtins.str] storage_container: UUID of the storage container for additional disk
+        :param pulumi.Input[_builtins.str] timeout: Timeout for Nutanix operations in seconds
+        :param pulumi.Input[_builtins.str] username: Nutanix management username
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vm_categories: Categories to apply to the VM
+        :param pulumi.Input[_builtins.str] vm_cores: Number of cores per VCPU of the VM to be created
+        :param pulumi.Input[_builtins.bool] vm_cpu_passthrough: Enable passthrough of host CPU features to the VM
+        :param pulumi.Input[_builtins.str] vm_cpus: Number of VCPUs of the VM to be created
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vm_gpus: GPU devices to attach to the VM
+        :param pulumi.Input[_builtins.str] vm_image_size: Increase the size of the template image (GiB)
+        :param pulumi.Input[_builtins.str] vm_mem: Memory in MB of the VM to be created
+        :param pulumi.Input[_builtins.bool] vm_serial_port: Attach a serial port to the VM
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "vm_image", vm_image)
+        pulumi.set(__self__, "vm_networks", vm_networks)
+        if boot_type is not None:
+            pulumi.set(__self__, "boot_type", boot_type)
+        if cloud_init is not None:
+            pulumi.set(__self__, "cloud_init", cloud_init)
+        if disk_size is not None:
+            pulumi.set(__self__, "disk_size", disk_size)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if insecure is not None:
+            pulumi.set(__self__, "insecure", insecure)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if storage_container is not None:
+            pulumi.set(__self__, "storage_container", storage_container)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if vm_categories is not None:
+            pulumi.set(__self__, "vm_categories", vm_categories)
+        if vm_cores is not None:
+            pulumi.set(__self__, "vm_cores", vm_cores)
+        if vm_cpu_passthrough is not None:
+            pulumi.set(__self__, "vm_cpu_passthrough", vm_cpu_passthrough)
+        if vm_cpus is not None:
+            pulumi.set(__self__, "vm_cpus", vm_cpus)
+        if vm_gpus is not None:
+            pulumi.set(__self__, "vm_gpus", vm_gpus)
+        if vm_image_size is not None:
+            pulumi.set(__self__, "vm_image_size", vm_image_size)
+        if vm_mem is not None:
+            pulumi.set(__self__, "vm_mem", vm_mem)
+        if vm_serial_port is not None:
+            pulumi.set(__self__, "vm_serial_port", vm_serial_port)
+
+    @_builtins.property
+    @pulumi.getter
+    def cluster(self) -> pulumi.Input[_builtins.str]:
+        """
+        Nutanix cluster to install VM on
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "cluster", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmImage")
+    def vm_image(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the VM disk image to clone from
+        """
+        return pulumi.get(self, "vm_image")
+
+    @vm_image.setter
+    def vm_image(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "vm_image", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmNetworks")
+    def vm_networks(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Network names or UUIDs to attach to the VM
+        """
+        return pulumi.get(self, "vm_networks")
+
+    @vm_networks.setter
+    def vm_networks(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "vm_networks", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootType")
+    def boot_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Boot type of the VM. Supported values: legacy, uefi
+        """
+        return pulumi.get(self, "boot_type")
+
+    @boot_type.setter
+    def boot_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "boot_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudInit")
+    def cloud_init(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cloud-init configuration
+        """
+        return pulumi.get(self, "cloud_init")
+
+    @cloud_init.setter
+    def cloud_init(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cloud_init", value)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSize")
+    def disk_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Size of the additional disk (GiB)
+        """
+        return pulumi.get(self, "disk_size")
+
+    @disk_size.setter
+    def disk_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "disk_size", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Nutanix management endpoint IP address/FQDN
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allow insecure SSL requests
+        """
+        return pulumi.get(self, "insecure")
+
+    @insecure.setter
+    def insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "insecure", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Nutanix management password
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Nutanix management endpoint port
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the project to assign the VM
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageContainer")
+    def storage_container(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the storage container for additional disk
+        """
+        return pulumi.get(self, "storage_container")
+
+    @storage_container.setter
+    def storage_container(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "storage_container", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for Nutanix operations in seconds
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Nutanix management username
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmCategories")
+    def vm_categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Categories to apply to the VM
+        """
+        return pulumi.get(self, "vm_categories")
+
+    @vm_categories.setter
+    def vm_categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "vm_categories", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmCores")
+    def vm_cores(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Number of cores per VCPU of the VM to be created
+        """
+        return pulumi.get(self, "vm_cores")
+
+    @vm_cores.setter
+    def vm_cores(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vm_cores", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmCpuPassthrough")
+    def vm_cpu_passthrough(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable passthrough of host CPU features to the VM
+        """
+        return pulumi.get(self, "vm_cpu_passthrough")
+
+    @vm_cpu_passthrough.setter
+    def vm_cpu_passthrough(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "vm_cpu_passthrough", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmCpus")
+    def vm_cpus(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Number of VCPUs of the VM to be created
+        """
+        return pulumi.get(self, "vm_cpus")
+
+    @vm_cpus.setter
+    def vm_cpus(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vm_cpus", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmGpus")
+    def vm_gpus(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        GPU devices to attach to the VM
+        """
+        return pulumi.get(self, "vm_gpus")
+
+    @vm_gpus.setter
+    def vm_gpus(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "vm_gpus", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmImageSize")
+    def vm_image_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Increase the size of the template image (GiB)
+        """
+        return pulumi.get(self, "vm_image_size")
+
+    @vm_image_size.setter
+    def vm_image_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vm_image_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmMem")
+    def vm_mem(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Memory in MB of the VM to be created
+        """
+        return pulumi.get(self, "vm_mem")
+
+    @vm_mem.setter
+    def vm_mem(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "vm_mem", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vmSerialPort")
+    def vm_serial_port(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Attach a serial port to the VM
+        """
+        return pulumi.get(self, "vm_serial_port")
+
+    @vm_serial_port.setter
+    def vm_serial_port(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "vm_serial_port", value)
+
+
 class MachineConfigV2OpenstackConfigArgsDict(TypedDict):
     auth_url: pulumi.Input[_builtins.str]
     """
@@ -22690,7 +23226,7 @@ class MachineConfigV2OpenstackConfigArgsDict(TypedDict):
     """
     insecure: NotRequired[pulumi.Input[_builtins.bool]]
     """
-    Disable TLS credential checking. Default `false` (bool)
+    Allow insecure SSL requests. Default `false` (bool)
     """
     ip_version: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -22714,7 +23250,7 @@ class MachineConfigV2OpenstackConfigArgsDict(TypedDict):
     """
     password: NotRequired[pulumi.Input[_builtins.str]]
     """
-    OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+    Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
     """
     private_key_file: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -22762,7 +23298,7 @@ class MachineConfigV2OpenstackConfigArgsDict(TypedDict):
     """
     username: NotRequired[pulumi.Input[_builtins.str]]
     """
-    The username to be set when logging into the virtual machines (string)
+    Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
     """
     volume_device_path: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -22852,13 +23388,13 @@ class MachineConfigV2OpenstackConfigArgs:
         :param pulumi.Input[_builtins.str] floating_ip_pool: OpenStack floating IP pool to get an IP from to assign to the instance (string)
         :param pulumi.Input[_builtins.str] image_id: OpenStack image id to use for the instance. Conflicts with `image_name` (string)
         :param pulumi.Input[_builtins.str] image_name: OpenStack image name to use for the instance. Conflicts with `image_id` (string)
-        :param pulumi.Input[_builtins.bool] insecure: Disable TLS credential checking. Default `false` (bool)
+        :param pulumi.Input[_builtins.bool] insecure: Allow insecure SSL requests. Default `false` (bool)
         :param pulumi.Input[_builtins.str] ip_version: OpenStack version of IP address assigned for the machine Default `4` (string)
         :param pulumi.Input[_builtins.str] keypair_name: OpenStack keypair to use to SSH to the instance (string)
         :param pulumi.Input[_builtins.str] net_id: OpenStack network id the machine will be connected on. Conflicts with `net_name` (string)
         :param pulumi.Input[_builtins.str] net_name: OpenStack network name the machine will be connected on. Conflicts with `net_id` (string)
         :param pulumi.Input[_builtins.bool] nova_network: Use the nova networking services instead of neutron (string)
-        :param pulumi.Input[_builtins.str] password: OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        :param pulumi.Input[_builtins.str] password: Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
         :param pulumi.Input[_builtins.str] private_key_file: Private key content to use for SSH (string)
         :param pulumi.Input[_builtins.str] sec_groups: OpenStack comma separated security groups for the machine (string)
         :param pulumi.Input[_builtins.str] ssh_port: If using a non-B2D image you can specify the ssh port. Default `22` (string)
@@ -22870,7 +23406,7 @@ class MachineConfigV2OpenstackConfigArgs:
         :param pulumi.Input[_builtins.str] user_data_file: File containing an openstack userdata script (string)
         :param pulumi.Input[_builtins.str] user_domain_id: OpenStack user domain id. Conflicts with `user_domain_name` (string)
         :param pulumi.Input[_builtins.str] user_domain_name: OpenStack user domain name. Conflicts with `user_domain_id` (string)
-        :param pulumi.Input[_builtins.str] username: The username to be set when logging into the virtual machines (string)
+        :param pulumi.Input[_builtins.str] username: Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
         :param pulumi.Input[_builtins.str] volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
                > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
                > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
@@ -23182,7 +23718,7 @@ class MachineConfigV2OpenstackConfigArgs:
     @pulumi.getter
     def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Disable TLS credential checking. Default `false` (bool)
+        Allow insecure SSL requests. Default `false` (bool)
         """
         return pulumi.get(self, "insecure")
 
@@ -23254,7 +23790,7 @@ class MachineConfigV2OpenstackConfigArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+        Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
         """
         return pulumi.get(self, "password")
 
@@ -23398,7 +23934,7 @@ class MachineConfigV2OpenstackConfigArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The username to be set when logging into the virtual machines (string)
+        Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
         """
         return pulumi.get(self, "username")
 

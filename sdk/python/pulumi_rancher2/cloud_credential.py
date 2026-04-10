@@ -31,6 +31,7 @@ class CloudCredentialArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  linode_credential_config: Optional[pulumi.Input['CloudCredentialLinodeCredentialConfigArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 nutanix_credential_config: Optional[pulumi.Input['CloudCredentialNutanixCredentialConfigArgs']] = None,
                  openstack_credential_config: Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']] = None,
                  s3_credential_config: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']] = None,
                  vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None):
@@ -47,6 +48,7 @@ class CloudCredentialArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for Cloud Credential object (map)
         :param pulumi.Input['CloudCredentialLinodeCredentialConfigArgs'] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[_builtins.str] name: The name of the Cloud Credential (string)
+        :param pulumi.Input['CloudCredentialNutanixCredentialConfigArgs'] nutanix_credential_config: Nutanix config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs'] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input['CloudCredentialS3CredentialConfigArgs'] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input['CloudCredentialVsphereCredentialConfigArgs'] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
@@ -71,6 +73,8 @@ class CloudCredentialArgs:
             pulumi.set(__self__, "linode_credential_config", linode_credential_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nutanix_credential_config is not None:
+            pulumi.set(__self__, "nutanix_credential_config", nutanix_credential_config)
         if openstack_credential_config is not None:
             pulumi.set(__self__, "openstack_credential_config", openstack_credential_config)
         if s3_credential_config is not None:
@@ -199,6 +203,18 @@ class CloudCredentialArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="nutanixCredentialConfig")
+    def nutanix_credential_config(self) -> Optional[pulumi.Input['CloudCredentialNutanixCredentialConfigArgs']]:
+        """
+        Nutanix config for the Cloud Credential (list maxitems:1)
+        """
+        return pulumi.get(self, "nutanix_credential_config")
+
+    @nutanix_credential_config.setter
+    def nutanix_credential_config(self, value: Optional[pulumi.Input['CloudCredentialNutanixCredentialConfigArgs']]):
+        pulumi.set(self, "nutanix_credential_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="openstackCredentialConfig")
     def openstack_credential_config(self) -> Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']]:
         """
@@ -249,6 +265,7 @@ class _CloudCredentialState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  linode_credential_config: Optional[pulumi.Input['CloudCredentialLinodeCredentialConfigArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 nutanix_credential_config: Optional[pulumi.Input['CloudCredentialNutanixCredentialConfigArgs']] = None,
                  openstack_credential_config: Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']] = None,
                  s3_credential_config: Optional[pulumi.Input['CloudCredentialS3CredentialConfigArgs']] = None,
                  vsphere_credential_config: Optional[pulumi.Input['CloudCredentialVsphereCredentialConfigArgs']] = None):
@@ -266,6 +283,7 @@ class _CloudCredentialState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for Cloud Credential object (map)
         :param pulumi.Input['CloudCredentialLinodeCredentialConfigArgs'] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[_builtins.str] name: The name of the Cloud Credential (string)
+        :param pulumi.Input['CloudCredentialNutanixCredentialConfigArgs'] nutanix_credential_config: Nutanix config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs'] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input['CloudCredentialS3CredentialConfigArgs'] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input['CloudCredentialVsphereCredentialConfigArgs'] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
@@ -292,6 +310,8 @@ class _CloudCredentialState:
             pulumi.set(__self__, "linode_credential_config", linode_credential_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nutanix_credential_config is not None:
+            pulumi.set(__self__, "nutanix_credential_config", nutanix_credential_config)
         if openstack_credential_config is not None:
             pulumi.set(__self__, "openstack_credential_config", openstack_credential_config)
         if s3_credential_config is not None:
@@ -432,6 +452,18 @@ class _CloudCredentialState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="nutanixCredentialConfig")
+    def nutanix_credential_config(self) -> Optional[pulumi.Input['CloudCredentialNutanixCredentialConfigArgs']]:
+        """
+        Nutanix config for the Cloud Credential (list maxitems:1)
+        """
+        return pulumi.get(self, "nutanix_credential_config")
+
+    @nutanix_credential_config.setter
+    def nutanix_credential_config(self, value: Optional[pulumi.Input['CloudCredentialNutanixCredentialConfigArgs']]):
+        pulumi.set(self, "nutanix_credential_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="openstackCredentialConfig")
     def openstack_credential_config(self) -> Optional[pulumi.Input['CloudCredentialOpenstackCredentialConfigArgs']]:
         """
@@ -484,6 +516,7 @@ class CloudCredential(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  linode_credential_config: Optional[pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 nutanix_credential_config: Optional[pulumi.Input[Union['CloudCredentialNutanixCredentialConfigArgs', 'CloudCredentialNutanixCredentialConfigArgsDict']]] = None,
                  openstack_credential_config: Optional[pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']]] = None,
                  s3_credential_config: Optional[pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']]] = None,
                  vsphere_credential_config: Optional[pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']]] = None,
@@ -491,7 +524,7 @@ class CloudCredential(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
 
-        amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+        amazonec2, azure, digitalocean, harvester, linode, nutanix, openstack and vsphere credentials config are supported for Cloud Credential.
 
         ## Example Usage
 
@@ -540,6 +573,7 @@ class CloudCredential(pulumi.CustomResource):
         * digitalocean
         * googlekubernetesengine
         * linode
+        * nutanix
         * openstack
         * s3
         * vmwarevsphere
@@ -557,6 +591,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for Cloud Credential object (map)
         :param pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[_builtins.str] name: The name of the Cloud Credential (string)
+        :param pulumi.Input[Union['CloudCredentialNutanixCredentialConfigArgs', 'CloudCredentialNutanixCredentialConfigArgsDict']] nutanix_credential_config: Nutanix config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
@@ -570,7 +605,7 @@ class CloudCredential(pulumi.CustomResource):
         """
         Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
 
-        amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+        amazonec2, azure, digitalocean, harvester, linode, nutanix, openstack and vsphere credentials config are supported for Cloud Credential.
 
         ## Example Usage
 
@@ -619,6 +654,7 @@ class CloudCredential(pulumi.CustomResource):
         * digitalocean
         * googlekubernetesengine
         * linode
+        * nutanix
         * openstack
         * s3
         * vmwarevsphere
@@ -649,6 +685,7 @@ class CloudCredential(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  linode_credential_config: Optional[pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 nutanix_credential_config: Optional[pulumi.Input[Union['CloudCredentialNutanixCredentialConfigArgs', 'CloudCredentialNutanixCredentialConfigArgsDict']]] = None,
                  openstack_credential_config: Optional[pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']]] = None,
                  s3_credential_config: Optional[pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']]] = None,
                  vsphere_credential_config: Optional[pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']]] = None,
@@ -671,6 +708,7 @@ class CloudCredential(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["linode_credential_config"] = linode_credential_config
             __props__.__dict__["name"] = name
+            __props__.__dict__["nutanix_credential_config"] = nutanix_credential_config
             __props__.__dict__["openstack_credential_config"] = openstack_credential_config
             __props__.__dict__["s3_credential_config"] = s3_credential_config
             __props__.__dict__["vsphere_credential_config"] = vsphere_credential_config
@@ -696,6 +734,7 @@ class CloudCredential(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             linode_credential_config: Optional[pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            nutanix_credential_config: Optional[pulumi.Input[Union['CloudCredentialNutanixCredentialConfigArgs', 'CloudCredentialNutanixCredentialConfigArgsDict']]] = None,
             openstack_credential_config: Optional[pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']]] = None,
             s3_credential_config: Optional[pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']]] = None,
             vsphere_credential_config: Optional[pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']]] = None) -> 'CloudCredential':
@@ -717,6 +756,7 @@ class CloudCredential(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for Cloud Credential object (map)
         :param pulumi.Input[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict']] linode_credential_config: Linode config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[_builtins.str] name: The name of the Cloud Credential (string)
+        :param pulumi.Input[Union['CloudCredentialNutanixCredentialConfigArgs', 'CloudCredentialNutanixCredentialConfigArgsDict']] nutanix_credential_config: Nutanix config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict']] openstack_credential_config: OpenStack config for the Cloud Credential (list maxitems:1)
         :param pulumi.Input[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict']] s3_credential_config: S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
         :param pulumi.Input[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict']] vsphere_credential_config: vSphere config for the Cloud Credential (list maxitems:1)
@@ -736,6 +776,7 @@ class CloudCredential(pulumi.CustomResource):
         __props__.__dict__["labels"] = labels
         __props__.__dict__["linode_credential_config"] = linode_credential_config
         __props__.__dict__["name"] = name
+        __props__.__dict__["nutanix_credential_config"] = nutanix_credential_config
         __props__.__dict__["openstack_credential_config"] = openstack_credential_config
         __props__.__dict__["s3_credential_config"] = s3_credential_config
         __props__.__dict__["vsphere_credential_config"] = vsphere_credential_config
@@ -828,6 +869,14 @@ class CloudCredential(pulumi.CustomResource):
         The name of the Cloud Credential (string)
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="nutanixCredentialConfig")
+    def nutanix_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialNutanixCredentialConfig']]:
+        """
+        Nutanix config for the Cloud Credential (list maxitems:1)
+        """
+        return pulumi.get(self, "nutanix_credential_config")
 
     @_builtins.property
     @pulumi.getter(name="openstackCredentialConfig")

@@ -987,6 +987,200 @@ func (o CloudCredentialLinodeCredentialConfigPtrOutput) Token() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type CloudCredentialNutanixCredentialConfig struct {
+	// Nutanix management endpoint IP address/FQDN
+	Endpoint string `pulumi:"endpoint"`
+	// Nutanix management password
+	Password string `pulumi:"password"`
+	// Nutanix management endpoint port
+	Port *string `pulumi:"port"`
+	// Nutanix management username
+	Username string `pulumi:"username"`
+}
+
+// CloudCredentialNutanixCredentialConfigInput is an input type that accepts CloudCredentialNutanixCredentialConfigArgs and CloudCredentialNutanixCredentialConfigOutput values.
+// You can construct a concrete instance of `CloudCredentialNutanixCredentialConfigInput` via:
+//
+//	CloudCredentialNutanixCredentialConfigArgs{...}
+type CloudCredentialNutanixCredentialConfigInput interface {
+	pulumi.Input
+
+	ToCloudCredentialNutanixCredentialConfigOutput() CloudCredentialNutanixCredentialConfigOutput
+	ToCloudCredentialNutanixCredentialConfigOutputWithContext(context.Context) CloudCredentialNutanixCredentialConfigOutput
+}
+
+type CloudCredentialNutanixCredentialConfigArgs struct {
+	// Nutanix management endpoint IP address/FQDN
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Nutanix management password
+	Password pulumi.StringInput `pulumi:"password"`
+	// Nutanix management endpoint port
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Nutanix management username
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (CloudCredentialNutanixCredentialConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudCredentialNutanixCredentialConfig)(nil)).Elem()
+}
+
+func (i CloudCredentialNutanixCredentialConfigArgs) ToCloudCredentialNutanixCredentialConfigOutput() CloudCredentialNutanixCredentialConfigOutput {
+	return i.ToCloudCredentialNutanixCredentialConfigOutputWithContext(context.Background())
+}
+
+func (i CloudCredentialNutanixCredentialConfigArgs) ToCloudCredentialNutanixCredentialConfigOutputWithContext(ctx context.Context) CloudCredentialNutanixCredentialConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialNutanixCredentialConfigOutput)
+}
+
+func (i CloudCredentialNutanixCredentialConfigArgs) ToCloudCredentialNutanixCredentialConfigPtrOutput() CloudCredentialNutanixCredentialConfigPtrOutput {
+	return i.ToCloudCredentialNutanixCredentialConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CloudCredentialNutanixCredentialConfigArgs) ToCloudCredentialNutanixCredentialConfigPtrOutputWithContext(ctx context.Context) CloudCredentialNutanixCredentialConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialNutanixCredentialConfigOutput).ToCloudCredentialNutanixCredentialConfigPtrOutputWithContext(ctx)
+}
+
+// CloudCredentialNutanixCredentialConfigPtrInput is an input type that accepts CloudCredentialNutanixCredentialConfigArgs, CloudCredentialNutanixCredentialConfigPtr and CloudCredentialNutanixCredentialConfigPtrOutput values.
+// You can construct a concrete instance of `CloudCredentialNutanixCredentialConfigPtrInput` via:
+//
+//	        CloudCredentialNutanixCredentialConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudCredentialNutanixCredentialConfigPtrInput interface {
+	pulumi.Input
+
+	ToCloudCredentialNutanixCredentialConfigPtrOutput() CloudCredentialNutanixCredentialConfigPtrOutput
+	ToCloudCredentialNutanixCredentialConfigPtrOutputWithContext(context.Context) CloudCredentialNutanixCredentialConfigPtrOutput
+}
+
+type cloudCredentialNutanixCredentialConfigPtrType CloudCredentialNutanixCredentialConfigArgs
+
+func CloudCredentialNutanixCredentialConfigPtr(v *CloudCredentialNutanixCredentialConfigArgs) CloudCredentialNutanixCredentialConfigPtrInput {
+	return (*cloudCredentialNutanixCredentialConfigPtrType)(v)
+}
+
+func (*cloudCredentialNutanixCredentialConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudCredentialNutanixCredentialConfig)(nil)).Elem()
+}
+
+func (i *cloudCredentialNutanixCredentialConfigPtrType) ToCloudCredentialNutanixCredentialConfigPtrOutput() CloudCredentialNutanixCredentialConfigPtrOutput {
+	return i.ToCloudCredentialNutanixCredentialConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudCredentialNutanixCredentialConfigPtrType) ToCloudCredentialNutanixCredentialConfigPtrOutputWithContext(ctx context.Context) CloudCredentialNutanixCredentialConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudCredentialNutanixCredentialConfigPtrOutput)
+}
+
+type CloudCredentialNutanixCredentialConfigOutput struct{ *pulumi.OutputState }
+
+func (CloudCredentialNutanixCredentialConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudCredentialNutanixCredentialConfig)(nil)).Elem()
+}
+
+func (o CloudCredentialNutanixCredentialConfigOutput) ToCloudCredentialNutanixCredentialConfigOutput() CloudCredentialNutanixCredentialConfigOutput {
+	return o
+}
+
+func (o CloudCredentialNutanixCredentialConfigOutput) ToCloudCredentialNutanixCredentialConfigOutputWithContext(ctx context.Context) CloudCredentialNutanixCredentialConfigOutput {
+	return o
+}
+
+func (o CloudCredentialNutanixCredentialConfigOutput) ToCloudCredentialNutanixCredentialConfigPtrOutput() CloudCredentialNutanixCredentialConfigPtrOutput {
+	return o.ToCloudCredentialNutanixCredentialConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CloudCredentialNutanixCredentialConfigOutput) ToCloudCredentialNutanixCredentialConfigPtrOutputWithContext(ctx context.Context) CloudCredentialNutanixCredentialConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudCredentialNutanixCredentialConfig) *CloudCredentialNutanixCredentialConfig {
+		return &v
+	}).(CloudCredentialNutanixCredentialConfigPtrOutput)
+}
+
+// Nutanix management endpoint IP address/FQDN
+func (o CloudCredentialNutanixCredentialConfigOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudCredentialNutanixCredentialConfig) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Nutanix management password
+func (o CloudCredentialNutanixCredentialConfigOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudCredentialNutanixCredentialConfig) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Nutanix management endpoint port
+func (o CloudCredentialNutanixCredentialConfigOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudCredentialNutanixCredentialConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management username
+func (o CloudCredentialNutanixCredentialConfigOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudCredentialNutanixCredentialConfig) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type CloudCredentialNutanixCredentialConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudCredentialNutanixCredentialConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudCredentialNutanixCredentialConfig)(nil)).Elem()
+}
+
+func (o CloudCredentialNutanixCredentialConfigPtrOutput) ToCloudCredentialNutanixCredentialConfigPtrOutput() CloudCredentialNutanixCredentialConfigPtrOutput {
+	return o
+}
+
+func (o CloudCredentialNutanixCredentialConfigPtrOutput) ToCloudCredentialNutanixCredentialConfigPtrOutputWithContext(ctx context.Context) CloudCredentialNutanixCredentialConfigPtrOutput {
+	return o
+}
+
+func (o CloudCredentialNutanixCredentialConfigPtrOutput) Elem() CloudCredentialNutanixCredentialConfigOutput {
+	return o.ApplyT(func(v *CloudCredentialNutanixCredentialConfig) CloudCredentialNutanixCredentialConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CloudCredentialNutanixCredentialConfig
+		return ret
+	}).(CloudCredentialNutanixCredentialConfigOutput)
+}
+
+// Nutanix management endpoint IP address/FQDN
+func (o CloudCredentialNutanixCredentialConfigPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudCredentialNutanixCredentialConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management password
+func (o CloudCredentialNutanixCredentialConfigPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudCredentialNutanixCredentialConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management endpoint port
+func (o CloudCredentialNutanixCredentialConfigPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudCredentialNutanixCredentialConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management username
+func (o CloudCredentialNutanixCredentialConfigPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudCredentialNutanixCredentialConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type CloudCredentialOpenstackCredentialConfig struct {
 	// OpenStack password
 	Password string `pulumi:"password"`
@@ -34529,6 +34723,542 @@ func (o MachineConfigV2LinodeConfigPtrOutput) UaPrefix() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type MachineConfigV2NutanixConfig struct {
+	// Boot type of the VM. Supported values: legacy, uefi
+	BootType *string `pulumi:"bootType"`
+	// Cloud-init configuration
+	CloudInit *string `pulumi:"cloudInit"`
+	// Nutanix cluster to install VM on
+	Cluster string `pulumi:"cluster"`
+	// Size of the additional disk (GiB)
+	DiskSize *string `pulumi:"diskSize"`
+	// Nutanix management endpoint IP address/FQDN
+	Endpoint *string `pulumi:"endpoint"`
+	// Allow insecure SSL requests
+	Insecure *bool `pulumi:"insecure"`
+	// Nutanix management password
+	Password *string `pulumi:"password"`
+	// Nutanix management endpoint port
+	Port *string `pulumi:"port"`
+	// Name of the project to assign the VM
+	Project *string `pulumi:"project"`
+	// UUID of the storage container for additional disk
+	StorageContainer *string `pulumi:"storageContainer"`
+	// Timeout for Nutanix operations in seconds
+	Timeout *string `pulumi:"timeout"`
+	// Nutanix management username
+	Username *string `pulumi:"username"`
+	// Categories to apply to the VM
+	VmCategories []string `pulumi:"vmCategories"`
+	// Number of cores per VCPU of the VM to be created
+	VmCores *string `pulumi:"vmCores"`
+	// Enable passthrough of host CPU features to the VM
+	VmCpuPassthrough *bool `pulumi:"vmCpuPassthrough"`
+	// Number of VCPUs of the VM to be created
+	VmCpus *string `pulumi:"vmCpus"`
+	// GPU devices to attach to the VM
+	VmGpus []string `pulumi:"vmGpus"`
+	// Name of the VM disk image to clone from
+	VmImage string `pulumi:"vmImage"`
+	// Increase the size of the template image (GiB)
+	VmImageSize *string `pulumi:"vmImageSize"`
+	// Memory in MB of the VM to be created
+	VmMem *string `pulumi:"vmMem"`
+	// Network names or UUIDs to attach to the VM
+	VmNetworks []string `pulumi:"vmNetworks"`
+	// Attach a serial port to the VM
+	VmSerialPort *bool `pulumi:"vmSerialPort"`
+}
+
+// MachineConfigV2NutanixConfigInput is an input type that accepts MachineConfigV2NutanixConfigArgs and MachineConfigV2NutanixConfigOutput values.
+// You can construct a concrete instance of `MachineConfigV2NutanixConfigInput` via:
+//
+//	MachineConfigV2NutanixConfigArgs{...}
+type MachineConfigV2NutanixConfigInput interface {
+	pulumi.Input
+
+	ToMachineConfigV2NutanixConfigOutput() MachineConfigV2NutanixConfigOutput
+	ToMachineConfigV2NutanixConfigOutputWithContext(context.Context) MachineConfigV2NutanixConfigOutput
+}
+
+type MachineConfigV2NutanixConfigArgs struct {
+	// Boot type of the VM. Supported values: legacy, uefi
+	BootType pulumi.StringPtrInput `pulumi:"bootType"`
+	// Cloud-init configuration
+	CloudInit pulumi.StringPtrInput `pulumi:"cloudInit"`
+	// Nutanix cluster to install VM on
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// Size of the additional disk (GiB)
+	DiskSize pulumi.StringPtrInput `pulumi:"diskSize"`
+	// Nutanix management endpoint IP address/FQDN
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Allow insecure SSL requests
+	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	// Nutanix management password
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Nutanix management endpoint port
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// Name of the project to assign the VM
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// UUID of the storage container for additional disk
+	StorageContainer pulumi.StringPtrInput `pulumi:"storageContainer"`
+	// Timeout for Nutanix operations in seconds
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// Nutanix management username
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Categories to apply to the VM
+	VmCategories pulumi.StringArrayInput `pulumi:"vmCategories"`
+	// Number of cores per VCPU of the VM to be created
+	VmCores pulumi.StringPtrInput `pulumi:"vmCores"`
+	// Enable passthrough of host CPU features to the VM
+	VmCpuPassthrough pulumi.BoolPtrInput `pulumi:"vmCpuPassthrough"`
+	// Number of VCPUs of the VM to be created
+	VmCpus pulumi.StringPtrInput `pulumi:"vmCpus"`
+	// GPU devices to attach to the VM
+	VmGpus pulumi.StringArrayInput `pulumi:"vmGpus"`
+	// Name of the VM disk image to clone from
+	VmImage pulumi.StringInput `pulumi:"vmImage"`
+	// Increase the size of the template image (GiB)
+	VmImageSize pulumi.StringPtrInput `pulumi:"vmImageSize"`
+	// Memory in MB of the VM to be created
+	VmMem pulumi.StringPtrInput `pulumi:"vmMem"`
+	// Network names or UUIDs to attach to the VM
+	VmNetworks pulumi.StringArrayInput `pulumi:"vmNetworks"`
+	// Attach a serial port to the VM
+	VmSerialPort pulumi.BoolPtrInput `pulumi:"vmSerialPort"`
+}
+
+func (MachineConfigV2NutanixConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineConfigV2NutanixConfig)(nil)).Elem()
+}
+
+func (i MachineConfigV2NutanixConfigArgs) ToMachineConfigV2NutanixConfigOutput() MachineConfigV2NutanixConfigOutput {
+	return i.ToMachineConfigV2NutanixConfigOutputWithContext(context.Background())
+}
+
+func (i MachineConfigV2NutanixConfigArgs) ToMachineConfigV2NutanixConfigOutputWithContext(ctx context.Context) MachineConfigV2NutanixConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigV2NutanixConfigOutput)
+}
+
+func (i MachineConfigV2NutanixConfigArgs) ToMachineConfigV2NutanixConfigPtrOutput() MachineConfigV2NutanixConfigPtrOutput {
+	return i.ToMachineConfigV2NutanixConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MachineConfigV2NutanixConfigArgs) ToMachineConfigV2NutanixConfigPtrOutputWithContext(ctx context.Context) MachineConfigV2NutanixConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigV2NutanixConfigOutput).ToMachineConfigV2NutanixConfigPtrOutputWithContext(ctx)
+}
+
+// MachineConfigV2NutanixConfigPtrInput is an input type that accepts MachineConfigV2NutanixConfigArgs, MachineConfigV2NutanixConfigPtr and MachineConfigV2NutanixConfigPtrOutput values.
+// You can construct a concrete instance of `MachineConfigV2NutanixConfigPtrInput` via:
+//
+//	        MachineConfigV2NutanixConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MachineConfigV2NutanixConfigPtrInput interface {
+	pulumi.Input
+
+	ToMachineConfigV2NutanixConfigPtrOutput() MachineConfigV2NutanixConfigPtrOutput
+	ToMachineConfigV2NutanixConfigPtrOutputWithContext(context.Context) MachineConfigV2NutanixConfigPtrOutput
+}
+
+type machineConfigV2NutanixConfigPtrType MachineConfigV2NutanixConfigArgs
+
+func MachineConfigV2NutanixConfigPtr(v *MachineConfigV2NutanixConfigArgs) MachineConfigV2NutanixConfigPtrInput {
+	return (*machineConfigV2NutanixConfigPtrType)(v)
+}
+
+func (*machineConfigV2NutanixConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineConfigV2NutanixConfig)(nil)).Elem()
+}
+
+func (i *machineConfigV2NutanixConfigPtrType) ToMachineConfigV2NutanixConfigPtrOutput() MachineConfigV2NutanixConfigPtrOutput {
+	return i.ToMachineConfigV2NutanixConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *machineConfigV2NutanixConfigPtrType) ToMachineConfigV2NutanixConfigPtrOutputWithContext(ctx context.Context) MachineConfigV2NutanixConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigV2NutanixConfigPtrOutput)
+}
+
+type MachineConfigV2NutanixConfigOutput struct{ *pulumi.OutputState }
+
+func (MachineConfigV2NutanixConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineConfigV2NutanixConfig)(nil)).Elem()
+}
+
+func (o MachineConfigV2NutanixConfigOutput) ToMachineConfigV2NutanixConfigOutput() MachineConfigV2NutanixConfigOutput {
+	return o
+}
+
+func (o MachineConfigV2NutanixConfigOutput) ToMachineConfigV2NutanixConfigOutputWithContext(ctx context.Context) MachineConfigV2NutanixConfigOutput {
+	return o
+}
+
+func (o MachineConfigV2NutanixConfigOutput) ToMachineConfigV2NutanixConfigPtrOutput() MachineConfigV2NutanixConfigPtrOutput {
+	return o.ToMachineConfigV2NutanixConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MachineConfigV2NutanixConfigOutput) ToMachineConfigV2NutanixConfigPtrOutputWithContext(ctx context.Context) MachineConfigV2NutanixConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineConfigV2NutanixConfig) *MachineConfigV2NutanixConfig {
+		return &v
+	}).(MachineConfigV2NutanixConfigPtrOutput)
+}
+
+// Boot type of the VM. Supported values: legacy, uefi
+func (o MachineConfigV2NutanixConfigOutput) BootType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.BootType }).(pulumi.StringPtrOutput)
+}
+
+// Cloud-init configuration
+func (o MachineConfigV2NutanixConfigOutput) CloudInit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.CloudInit }).(pulumi.StringPtrOutput)
+}
+
+// Nutanix cluster to install VM on
+func (o MachineConfigV2NutanixConfigOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// Size of the additional disk (GiB)
+func (o MachineConfigV2NutanixConfigOutput) DiskSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.DiskSize }).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management endpoint IP address/FQDN
+func (o MachineConfigV2NutanixConfigOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Allow insecure SSL requests
+func (o MachineConfigV2NutanixConfigOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+// Nutanix management password
+func (o MachineConfigV2NutanixConfigOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management endpoint port
+func (o MachineConfigV2NutanixConfigOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// Name of the project to assign the VM
+func (o MachineConfigV2NutanixConfigOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the storage container for additional disk
+func (o MachineConfigV2NutanixConfigOutput) StorageContainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.StorageContainer }).(pulumi.StringPtrOutput)
+}
+
+// Timeout for Nutanix operations in seconds
+func (o MachineConfigV2NutanixConfigOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management username
+func (o MachineConfigV2NutanixConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Categories to apply to the VM
+func (o MachineConfigV2NutanixConfigOutput) VmCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) []string { return v.VmCategories }).(pulumi.StringArrayOutput)
+}
+
+// Number of cores per VCPU of the VM to be created
+func (o MachineConfigV2NutanixConfigOutput) VmCores() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.VmCores }).(pulumi.StringPtrOutput)
+}
+
+// Enable passthrough of host CPU features to the VM
+func (o MachineConfigV2NutanixConfigOutput) VmCpuPassthrough() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *bool { return v.VmCpuPassthrough }).(pulumi.BoolPtrOutput)
+}
+
+// Number of VCPUs of the VM to be created
+func (o MachineConfigV2NutanixConfigOutput) VmCpus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.VmCpus }).(pulumi.StringPtrOutput)
+}
+
+// GPU devices to attach to the VM
+func (o MachineConfigV2NutanixConfigOutput) VmGpus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) []string { return v.VmGpus }).(pulumi.StringArrayOutput)
+}
+
+// Name of the VM disk image to clone from
+func (o MachineConfigV2NutanixConfigOutput) VmImage() pulumi.StringOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) string { return v.VmImage }).(pulumi.StringOutput)
+}
+
+// Increase the size of the template image (GiB)
+func (o MachineConfigV2NutanixConfigOutput) VmImageSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.VmImageSize }).(pulumi.StringPtrOutput)
+}
+
+// Memory in MB of the VM to be created
+func (o MachineConfigV2NutanixConfigOutput) VmMem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *string { return v.VmMem }).(pulumi.StringPtrOutput)
+}
+
+// Network names or UUIDs to attach to the VM
+func (o MachineConfigV2NutanixConfigOutput) VmNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) []string { return v.VmNetworks }).(pulumi.StringArrayOutput)
+}
+
+// Attach a serial port to the VM
+func (o MachineConfigV2NutanixConfigOutput) VmSerialPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2NutanixConfig) *bool { return v.VmSerialPort }).(pulumi.BoolPtrOutput)
+}
+
+type MachineConfigV2NutanixConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineConfigV2NutanixConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineConfigV2NutanixConfig)(nil)).Elem()
+}
+
+func (o MachineConfigV2NutanixConfigPtrOutput) ToMachineConfigV2NutanixConfigPtrOutput() MachineConfigV2NutanixConfigPtrOutput {
+	return o
+}
+
+func (o MachineConfigV2NutanixConfigPtrOutput) ToMachineConfigV2NutanixConfigPtrOutputWithContext(ctx context.Context) MachineConfigV2NutanixConfigPtrOutput {
+	return o
+}
+
+func (o MachineConfigV2NutanixConfigPtrOutput) Elem() MachineConfigV2NutanixConfigOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) MachineConfigV2NutanixConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MachineConfigV2NutanixConfig
+		return ret
+	}).(MachineConfigV2NutanixConfigOutput)
+}
+
+// Boot type of the VM. Supported values: legacy, uefi
+func (o MachineConfigV2NutanixConfigPtrOutput) BootType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud-init configuration
+func (o MachineConfigV2NutanixConfigPtrOutput) CloudInit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudInit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nutanix cluster to install VM on
+func (o MachineConfigV2NutanixConfigPtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of the additional disk (GiB)
+func (o MachineConfigV2NutanixConfigPtrOutput) DiskSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management endpoint IP address/FQDN
+func (o MachineConfigV2NutanixConfigPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allow insecure SSL requests
+func (o MachineConfigV2NutanixConfigPtrOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Insecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Nutanix management password
+func (o MachineConfigV2NutanixConfigPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management endpoint port
+func (o MachineConfigV2NutanixConfigPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the project to assign the VM
+func (o MachineConfigV2NutanixConfigPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID of the storage container for additional disk
+func (o MachineConfigV2NutanixConfigPtrOutput) StorageContainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageContainer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout for Nutanix operations in seconds
+func (o MachineConfigV2NutanixConfigPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nutanix management username
+func (o MachineConfigV2NutanixConfigPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Categories to apply to the VM
+func (o MachineConfigV2NutanixConfigPtrOutput) VmCategories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VmCategories
+	}).(pulumi.StringArrayOutput)
+}
+
+// Number of cores per VCPU of the VM to be created
+func (o MachineConfigV2NutanixConfigPtrOutput) VmCores() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmCores
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable passthrough of host CPU features to the VM
+func (o MachineConfigV2NutanixConfigPtrOutput) VmCpuPassthrough() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.VmCpuPassthrough
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of VCPUs of the VM to be created
+func (o MachineConfigV2NutanixConfigPtrOutput) VmCpus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmCpus
+	}).(pulumi.StringPtrOutput)
+}
+
+// GPU devices to attach to the VM
+func (o MachineConfigV2NutanixConfigPtrOutput) VmGpus() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VmGpus
+	}).(pulumi.StringArrayOutput)
+}
+
+// Name of the VM disk image to clone from
+func (o MachineConfigV2NutanixConfigPtrOutput) VmImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VmImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Increase the size of the template image (GiB)
+func (o MachineConfigV2NutanixConfigPtrOutput) VmImageSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmImageSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory in MB of the VM to be created
+func (o MachineConfigV2NutanixConfigPtrOutput) VmMem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmMem
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network names or UUIDs to attach to the VM
+func (o MachineConfigV2NutanixConfigPtrOutput) VmNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VmNetworks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Attach a serial port to the VM
+func (o MachineConfigV2NutanixConfigPtrOutput) VmSerialPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2NutanixConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.VmSerialPort
+	}).(pulumi.BoolPtrOutput)
+}
+
 type MachineConfigV2OpenstackConfig struct {
 	// OpenStack active timeout Default `200` (string)
 	ActiveTimeout *string `pulumi:"activeTimeout"`
@@ -34564,7 +35294,7 @@ type MachineConfigV2OpenstackConfig struct {
 	ImageId *string `pulumi:"imageId"`
 	// OpenStack image name to use for the instance. Conflicts with `imageId` (string)
 	ImageName *string `pulumi:"imageName"`
-	// Disable TLS credential checking. Default `false` (bool)
+	// Allow insecure SSL requests. Default `false` (bool)
 	Insecure *bool `pulumi:"insecure"`
 	// OpenStack version of IP address assigned for the machine Default `4` (string)
 	IpVersion *string `pulumi:"ipVersion"`
@@ -34576,7 +35306,7 @@ type MachineConfigV2OpenstackConfig struct {
 	NetName *string `pulumi:"netName"`
 	// Use the nova networking services instead of neutron (string)
 	NovaNetwork *bool `pulumi:"novaNetwork"`
-	// OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+	// Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
 	Password *string `pulumi:"password"`
 	// Private key content to use for SSH (string)
 	PrivateKeyFile *string `pulumi:"privateKeyFile"`
@@ -34602,7 +35332,7 @@ type MachineConfigV2OpenstackConfig struct {
 	UserDomainId *string `pulumi:"userDomainId"`
 	// OpenStack user domain name. Conflicts with `userDomainId` (string)
 	UserDomainName *string `pulumi:"userDomainName"`
-	// The username to be set when logging into the virtual machines (string)
+	// Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
 	Username *string `pulumi:"username"`
 	// OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
 	// > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
@@ -34665,7 +35395,7 @@ type MachineConfigV2OpenstackConfigArgs struct {
 	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
 	// OpenStack image name to use for the instance. Conflicts with `imageId` (string)
 	ImageName pulumi.StringPtrInput `pulumi:"imageName"`
-	// Disable TLS credential checking. Default `false` (bool)
+	// Allow insecure SSL requests. Default `false` (bool)
 	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
 	// OpenStack version of IP address assigned for the machine Default `4` (string)
 	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
@@ -34677,7 +35407,7 @@ type MachineConfigV2OpenstackConfigArgs struct {
 	NetName pulumi.StringPtrInput `pulumi:"netName"`
 	// Use the nova networking services instead of neutron (string)
 	NovaNetwork pulumi.BoolPtrInput `pulumi:"novaNetwork"`
-	// OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+	// Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Private key content to use for SSH (string)
 	PrivateKeyFile pulumi.StringPtrInput `pulumi:"privateKeyFile"`
@@ -34703,7 +35433,7 @@ type MachineConfigV2OpenstackConfigArgs struct {
 	UserDomainId pulumi.StringPtrInput `pulumi:"userDomainId"`
 	// OpenStack user domain name. Conflicts with `userDomainId` (string)
 	UserDomainName pulumi.StringPtrInput `pulumi:"userDomainName"`
-	// The username to be set when logging into the virtual machines (string)
+	// Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
 	Username pulumi.StringPtrInput `pulumi:"username"`
 	// OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
 	// > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
@@ -34882,7 +35612,7 @@ func (o MachineConfigV2OpenstackConfigOutput) ImageName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v MachineConfigV2OpenstackConfig) *string { return v.ImageName }).(pulumi.StringPtrOutput)
 }
 
-// Disable TLS credential checking. Default `false` (bool)
+// Allow insecure SSL requests. Default `false` (bool)
 func (o MachineConfigV2OpenstackConfigOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MachineConfigV2OpenstackConfig) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
 }
@@ -34912,7 +35642,7 @@ func (o MachineConfigV2OpenstackConfigOutput) NovaNetwork() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v MachineConfigV2OpenstackConfig) *bool { return v.NovaNetwork }).(pulumi.BoolPtrOutput)
 }
 
-// OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+// Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
 func (o MachineConfigV2OpenstackConfigOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MachineConfigV2OpenstackConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -34977,7 +35707,7 @@ func (o MachineConfigV2OpenstackConfigOutput) UserDomainName() pulumi.StringPtrO
 	return o.ApplyT(func(v MachineConfigV2OpenstackConfig) *string { return v.UserDomainName }).(pulumi.StringPtrOutput)
 }
 
-// The username to be set when logging into the virtual machines (string)
+// Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
 func (o MachineConfigV2OpenstackConfigOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MachineConfigV2OpenstackConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -35204,7 +35934,7 @@ func (o MachineConfigV2OpenstackConfigPtrOutput) ImageName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Disable TLS credential checking. Default `false` (bool)
+// Allow insecure SSL requests. Default `false` (bool)
 func (o MachineConfigV2OpenstackConfigPtrOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MachineConfigV2OpenstackConfig) *bool {
 		if v == nil {
@@ -35264,7 +35994,7 @@ func (o MachineConfigV2OpenstackConfigPtrOutput) NovaNetwork() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `CloudCredential` from Rancher v2.2.x (string)
+// Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
 func (o MachineConfigV2OpenstackConfigPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MachineConfigV2OpenstackConfig) *string {
 		if v == nil {
@@ -35394,7 +36124,7 @@ func (o MachineConfigV2OpenstackConfigPtrOutput) UserDomainName() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The username to be set when logging into the virtual machines (string)
+// Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
 func (o MachineConfigV2OpenstackConfigPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MachineConfigV2OpenstackConfig) *string {
 		if v == nil {
@@ -59046,6 +59776,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialHarvesterCredentialConfigPtrInput)(nil)).Elem(), CloudCredentialHarvesterCredentialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialLinodeCredentialConfigInput)(nil)).Elem(), CloudCredentialLinodeCredentialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialLinodeCredentialConfigPtrInput)(nil)).Elem(), CloudCredentialLinodeCredentialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialNutanixCredentialConfigInput)(nil)).Elem(), CloudCredentialNutanixCredentialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialNutanixCredentialConfigPtrInput)(nil)).Elem(), CloudCredentialNutanixCredentialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialOpenstackCredentialConfigInput)(nil)).Elem(), CloudCredentialOpenstackCredentialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialOpenstackCredentialConfigPtrInput)(nil)).Elem(), CloudCredentialOpenstackCredentialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudCredentialS3CredentialConfigInput)(nil)).Elem(), CloudCredentialS3CredentialConfigArgs{})
@@ -59349,6 +60081,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2HarvesterConfigPtrInput)(nil)).Elem(), MachineConfigV2HarvesterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2LinodeConfigInput)(nil)).Elem(), MachineConfigV2LinodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2LinodeConfigPtrInput)(nil)).Elem(), MachineConfigV2LinodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2NutanixConfigInput)(nil)).Elem(), MachineConfigV2NutanixConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2NutanixConfigPtrInput)(nil)).Elem(), MachineConfigV2NutanixConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2OpenstackConfigInput)(nil)).Elem(), MachineConfigV2OpenstackConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2OpenstackConfigPtrInput)(nil)).Elem(), MachineConfigV2OpenstackConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigV2VsphereConfigInput)(nil)).Elem(), MachineConfigV2VsphereConfigArgs{})
@@ -59610,6 +60344,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudCredentialHarvesterCredentialConfigPtrOutput{})
 	pulumi.RegisterOutputType(CloudCredentialLinodeCredentialConfigOutput{})
 	pulumi.RegisterOutputType(CloudCredentialLinodeCredentialConfigPtrOutput{})
+	pulumi.RegisterOutputType(CloudCredentialNutanixCredentialConfigOutput{})
+	pulumi.RegisterOutputType(CloudCredentialNutanixCredentialConfigPtrOutput{})
 	pulumi.RegisterOutputType(CloudCredentialOpenstackCredentialConfigOutput{})
 	pulumi.RegisterOutputType(CloudCredentialOpenstackCredentialConfigPtrOutput{})
 	pulumi.RegisterOutputType(CloudCredentialS3CredentialConfigOutput{})
@@ -59913,6 +60649,8 @@ func init() {
 	pulumi.RegisterOutputType(MachineConfigV2HarvesterConfigPtrOutput{})
 	pulumi.RegisterOutputType(MachineConfigV2LinodeConfigOutput{})
 	pulumi.RegisterOutputType(MachineConfigV2LinodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(MachineConfigV2NutanixConfigOutput{})
+	pulumi.RegisterOutputType(MachineConfigV2NutanixConfigPtrOutput{})
 	pulumi.RegisterOutputType(MachineConfigV2OpenstackConfigOutput{})
 	pulumi.RegisterOutputType(MachineConfigV2OpenstackConfigPtrOutput{})
 	pulumi.RegisterOutputType(MachineConfigV2VsphereConfigOutput{})

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
  *
- * amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+ * amazonec2, azure, digitalocean, harvester, linode, nutanix, openstack and vsphere credentials config are supported for Cloud Credential.
  *
  * ## Example Usage
  *
@@ -62,6 +62,7 @@ import * as utilities from "./utilities";
  * * digitalocean
  * * googlekubernetesengine
  * * linode
+ * * nutanix
  * * openstack
  * * s3
  * * vmwarevsphere
@@ -139,6 +140,10 @@ export class CloudCredential extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Nutanix config for the Cloud Credential (list maxitems:1)
+     */
+    declare public readonly nutanixCredentialConfig: pulumi.Output<outputs.CloudCredentialNutanixCredentialConfig | undefined>;
+    /**
      * OpenStack config for the Cloud Credential (list maxitems:1)
      */
     declare public readonly openstackCredentialConfig: pulumi.Output<outputs.CloudCredentialOpenstackCredentialConfig | undefined>;
@@ -175,6 +180,7 @@ export class CloudCredential extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["linodeCredentialConfig"] = state?.linodeCredentialConfig;
             resourceInputs["name"] = state?.name;
+            resourceInputs["nutanixCredentialConfig"] = state?.nutanixCredentialConfig;
             resourceInputs["openstackCredentialConfig"] = state?.openstackCredentialConfig;
             resourceInputs["s3CredentialConfig"] = state?.s3CredentialConfig;
             resourceInputs["vsphereCredentialConfig"] = state?.vsphereCredentialConfig;
@@ -190,6 +196,7 @@ export class CloudCredential extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["linodeCredentialConfig"] = args?.linodeCredentialConfig;
             resourceInputs["name"] = args?.name;
+            resourceInputs["nutanixCredentialConfig"] = args?.nutanixCredentialConfig;
             resourceInputs["openstackCredentialConfig"] = args?.openstackCredentialConfig;
             resourceInputs["s3CredentialConfig"] = args?.s3CredentialConfig;
             resourceInputs["vsphereCredentialConfig"] = args?.vsphereCredentialConfig;
@@ -249,6 +256,10 @@ export interface CloudCredentialState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Nutanix config for the Cloud Credential (list maxitems:1)
+     */
+    nutanixCredentialConfig?: pulumi.Input<inputs.CloudCredentialNutanixCredentialConfig>;
+    /**
      * OpenStack config for the Cloud Credential (list maxitems:1)
      */
     openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
@@ -306,6 +317,10 @@ export interface CloudCredentialArgs {
      * The name of the Cloud Credential (string)
      */
     name?: pulumi.Input<string>;
+    /**
+     * Nutanix config for the Cloud Credential (list maxitems:1)
+     */
+    nutanixCredentialConfig?: pulumi.Input<inputs.CloudCredentialNutanixCredentialConfig>;
     /**
      * OpenStack config for the Cloud Credential (list maxitems:1)
      */

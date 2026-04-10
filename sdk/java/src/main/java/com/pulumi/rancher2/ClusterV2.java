@@ -233,6 +233,83 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Create a node-driver cluster with Nutanix as the infrastructure provider
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.rancher2.CloudCredential;
+ * import com.pulumi.rancher2.CloudCredentialArgs;
+ * import com.pulumi.rancher2.inputs.CloudCredentialNutanixCredentialConfigArgs;
+ * import com.pulumi.rancher2.MachineConfigV2;
+ * import com.pulumi.rancher2.MachineConfigV2Args;
+ * import com.pulumi.rancher2.inputs.MachineConfigV2NutanixConfigArgs;
+ * import com.pulumi.rancher2.ClusterV2;
+ * import com.pulumi.rancher2.ClusterV2Args;
+ * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create Nutanix cloud credential
+ *         var fooNutanix = new CloudCredential("fooNutanix", CloudCredentialArgs.builder()
+ *             .name("foo-nutanix")
+ *             .nutanixCredentialConfig(CloudCredentialNutanixCredentialConfigArgs.builder()
+ *                 .endpoint("<PRISM_ENDPOINT>")
+ *                 .username("X-ntnx-api-key")
+ *                 .password("<NUTANIX_API_KEY_OR_PASSWORD>")
+ *                 .port("9440")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Create Nutanix machine config v2
+ *         var fooNutanixMachineConfigV2 = new MachineConfigV2("fooNutanixMachineConfigV2", MachineConfigV2Args.builder()
+ *             .generateName("foo-nutanix")
+ *             .nutanixConfig(MachineConfigV2NutanixConfigArgs.builder()
+ *                 .cluster("<NUTANIX_CLUSTER_NAME>")
+ *                 .vmNetworks("<NETWORK_NAME_OR_UUID>")
+ *                 .vmImage("<IMAGE_NAME>")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Create a cluster using Nutanix machine config and cloud credential
+ *         var fooNutanixClusterV2 = new ClusterV2("fooNutanixClusterV2", ClusterV2Args.builder()
+ *             .name("foo-nutanix")
+ *             .kubernetesVersion("<rke2/k3s-version>")
+ *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
+ *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
+ *                     .name("pool1")
+ *                     .cloudCredentialSecretName(fooNutanix.id())
+ *                     .controlPlaneRole(true)
+ *                     .etcdRole(true)
+ *                     .workerRole(true)
+ *                     .quantity(1)
+ *                     .machineConfig(ClusterV2RkeConfigMachinePoolMachineConfigArgs.builder()
+ *                         .kind(fooNutanixMachineConfigV2.kind())
+ *                         .name(fooNutanixMachineConfigV2.name())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ### Create a node-driver cluster with Harvester as the infrastructure provider
  * 
  * ### Create a node-driver cluster with Harvester as both the infrastructure provider and cloud provider

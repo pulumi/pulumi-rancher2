@@ -189,6 +189,74 @@ namespace Pulumi.Rancher2
     /// });
     /// ```
     /// 
+    /// ### Create a node-driver cluster with Nutanix as the infrastructure provider
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Rancher2 = Pulumi.Rancher2;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create Nutanix cloud credential
+    ///     var fooNutanix = new Rancher2.CloudCredential("foo_nutanix", new()
+    ///     {
+    ///         Name = "foo-nutanix",
+    ///         NutanixCredentialConfig = new Rancher2.Inputs.CloudCredentialNutanixCredentialConfigArgs
+    ///         {
+    ///             Endpoint = "&lt;PRISM_ENDPOINT&gt;",
+    ///             Username = "X-ntnx-api-key",
+    ///             Password = "&lt;NUTANIX_API_KEY_OR_PASSWORD&gt;",
+    ///             Port = "9440",
+    ///         },
+    ///     });
+    /// 
+    ///     // Create Nutanix machine config v2
+    ///     var fooNutanixMachineConfigV2 = new Rancher2.MachineConfigV2("foo_nutanix", new()
+    ///     {
+    ///         GenerateName = "foo-nutanix",
+    ///         NutanixConfig = new Rancher2.Inputs.MachineConfigV2NutanixConfigArgs
+    ///         {
+    ///             Cluster = "&lt;NUTANIX_CLUSTER_NAME&gt;",
+    ///             VmNetworks = new[]
+    ///             {
+    ///                 "&lt;NETWORK_NAME_OR_UUID&gt;",
+    ///             },
+    ///             VmImage = "&lt;IMAGE_NAME&gt;",
+    ///         },
+    ///     });
+    /// 
+    ///     // Create a cluster using Nutanix machine config and cloud credential
+    ///     var fooNutanixClusterV2 = new Rancher2.ClusterV2("foo_nutanix", new()
+    ///     {
+    ///         Name = "foo-nutanix",
+    ///         KubernetesVersion = "&lt;rke2/k3s-version&gt;",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolArgs
+    ///                 {
+    ///                     Name = "pool1",
+    ///                     CloudCredentialSecretName = fooNutanix.Id,
+    ///                     ControlPlaneRole = true,
+    ///                     EtcdRole = true,
+    ///                     WorkerRole = true,
+    ///                     Quantity = 1,
+    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
+    ///                     {
+    ///                         Kind = fooNutanixMachineConfigV2.Kind,
+    ///                         Name = fooNutanixMachineConfigV2.Name,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Create a node-driver cluster with Harvester as the infrastructure provider
     /// 
     /// ### Create a node-driver cluster with Harvester as both the infrastructure provider and cloud provider

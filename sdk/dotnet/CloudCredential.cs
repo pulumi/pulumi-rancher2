@@ -12,7 +12,7 @@ namespace Pulumi.Rancher2
     /// <summary>
     /// Provides a Rancher v2 Cloud Credential resource. This can be used to create Cloud Credential for Rancher v2.2.x and retrieve their information.
     /// 
-    /// amazonec2, azure, digitalocean, harvester, linode, openstack and vsphere credentials config are supported for Cloud Credential.
+    /// amazonec2, azure, digitalocean, harvester, linode, nutanix, openstack and vsphere credentials config are supported for Cloud Credential.
     /// 
     /// ## Example Usage
     /// 
@@ -83,6 +83,7 @@ namespace Pulumi.Rancher2
     /// * digitalocean
     /// * googlekubernetesengine
     /// * linode
+    /// * nutanix
     /// * openstack
     /// * s3
     /// * vmwarevsphere
@@ -155,6 +156,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Nutanix config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Output("nutanixCredentialConfig")]
+        public Output<Outputs.CloudCredentialNutanixCredentialConfig?> NutanixCredentialConfig { get; private set; } = null!;
 
         /// <summary>
         /// OpenStack config for the Cloud Credential (list maxitems:1)
@@ -293,6 +300,12 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Nutanix config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Input("nutanixCredentialConfig")]
+        public Input<Inputs.CloudCredentialNutanixCredentialConfigArgs>? NutanixCredentialConfig { get; set; }
+
+        /// <summary>
         /// OpenStack config for the Cloud Credential (list maxitems:1)
         /// </summary>
         [Input("openstackCredentialConfig")]
@@ -395,6 +408,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Nutanix config for the Cloud Credential (list maxitems:1)
+        /// </summary>
+        [Input("nutanixCredentialConfig")]
+        public Input<Inputs.CloudCredentialNutanixCredentialConfigGetArgs>? NutanixCredentialConfig { get; set; }
 
         /// <summary>
         /// OpenStack config for the Cloud Credential (list maxitems:1)

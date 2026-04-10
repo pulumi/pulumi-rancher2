@@ -82,7 +82,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? ImageName;
         /// <summary>
-        /// Disable TLS credential checking. Default `False` (bool)
+        /// Allow insecure SSL requests. Default `False` (bool)
         /// </summary>
         public readonly bool? Insecure;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? NovaNetwork;
         /// <summary>
-        /// OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+        /// Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
         /// </summary>
         public readonly string? Password;
         /// <summary>
@@ -158,7 +158,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? UserDomainName;
         /// <summary>
-        /// The username to be set when logging into the virtual machines (string)
+        /// Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
         /// </summary>
         public readonly string? Username;
         /// <summary>

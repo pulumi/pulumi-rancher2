@@ -99,7 +99,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String imageName;
     /**
-     * @return Disable TLS credential checking. Default `false` (bool)
+     * @return Allow insecure SSL requests. Default `false` (bool)
      * 
      */
     private @Nullable Boolean insecure;
@@ -129,7 +129,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable Boolean novaNetwork;
     /**
-     * @return OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      * 
      */
     private @Nullable String password;
@@ -194,7 +194,7 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String userDomainName;
     /**
-     * @return The username to be set when logging into the virtual machines (string)
+     * @return Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      * 
      */
     private @Nullable String username;
@@ -348,7 +348,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.imageName);
     }
     /**
-     * @return Disable TLS credential checking. Default `false` (bool)
+     * @return Allow insecure SSL requests. Default `false` (bool)
      * 
      */
     public Optional<Boolean> insecure() {
@@ -390,7 +390,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.novaNetwork);
     }
     /**
-     * @return OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      * 
      */
     public Optional<String> password() {
@@ -481,7 +481,7 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.userDomainName);
     }
     /**
-     * @return The username to be set when logging into the virtual machines (string)
+     * @return Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      * 
      */
     public Optional<String> username() {

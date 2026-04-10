@@ -273,14 +273,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Disable TLS credential checking. Default `false` (bool)
+     * Allow insecure SSL requests. Default `false` (bool)
      * 
      */
     @Import(name="insecure")
     private @Nullable Output<Boolean> insecure;
 
     /**
-     * @return Disable TLS credential checking. Default `false` (bool)
+     * @return Allow insecure SSL requests. Default `false` (bool)
      * 
      */
     public Optional<Output<Boolean>> insecure() {
@@ -363,14 +363,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+     * @return Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      * 
      */
     public Optional<Output<String>> password() {
@@ -558,14 +558,14 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * The username to be set when logging into the virtual machines (string)
+     * Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The username to be set when logging into the virtual machines (string)
+     * @return Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
      * 
      */
     public Optional<Output<String>> username() {
@@ -1076,7 +1076,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param insecure Disable TLS credential checking. Default `false` (bool)
+         * @param insecure Allow insecure SSL requests. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1087,7 +1087,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param insecure Disable TLS credential checking. Default `false` (bool)
+         * @param insecure Allow insecure SSL requests. Default `false` (bool)
          * 
          * @return builder
          * 
@@ -1202,7 +1202,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param password OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param password Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
          * 
          * @return builder
          * 
@@ -1213,7 +1213,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param password OpenStack password. Mandatory on Rancher v2.0.x and v2.1.x. Use `rancher2.CloudCredential` from Rancher v2.2.x (string)
+         * @param password Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
          * 
          * @return builder
          * 
@@ -1475,7 +1475,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param username The username to be set when logging into the virtual machines (string)
+         * @param username Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
          * 
          * @return builder
          * 
@@ -1486,7 +1486,7 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param username The username to be set when logging into the virtual machines (string)
+         * @param username Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
          * 
          * @return builder
          * 
