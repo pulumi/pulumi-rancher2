@@ -80,7 +80,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.125.0
 	github.com/pulumi/pulumi/sdk/v3 v3.226.0
-	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20251219183425-0c86ddc98930
+	github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20260409232514-3aa67765906a
 )
 
 require (

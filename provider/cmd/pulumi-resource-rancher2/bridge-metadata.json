@@ -147,6 +147,9 @@
                     "linode_credential_config": {
                         "maxItemsOne": true
                     },
+                    "nutanix_credential_config": {
+                        "maxItemsOne": true
+                    },
                     "openstack_credential_config": {
                         "maxItemsOne": true
                     },
@@ -1068,6 +1071,22 @@
                     },
                     "linode_config": {
                         "maxItemsOne": true
+                    },
+                    "nutanix_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "vm_categories": {
+                                    "maxItemsOne": false
+                                },
+                                "vm_gpu": {
+                                    "maxItemsOne": false
+                                },
+                                "vm_network": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "openstack_config": {
                         "maxItemsOne": true

@@ -3943,8 +3943,8 @@ github.com/rancher/rancher/pkg/client v0.0.0-20251023101703-73e6898b0472 h1:Muba
 github.com/rancher/rancher/pkg/client v0.0.0-20251023101703-73e6898b0472/go.mod h1:kN5U1qD97yp9EUzm6LeoPENApyZsMzQdYES1GTJJbJw=
 github.com/rancher/rke v1.8.0-rc.4 h1:jowVyaF3LsJonC7vNsAwWf3MONHAtEFUD/j3UzNSE5U=
 github.com/rancher/rke v1.8.0-rc.4/go.mod h1:x9N1abruzDFMwTpqq2cnaDYpKCptlNoW8VraNWB6Pc4=
-github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20251219183425-0c86ddc98930 h1:vs29xUEB47iUheAamHoz2zn8JdQbZrudzZ24LnvyY/8=
-github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20251219183425-0c86ddc98930/go.mod h1:Wh6oEWGGJzwRPegOjeczKMuu4t2Qrn7iSUUVahJDw4M=
+github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20260409232514-3aa67765906a h1:Dhb6qnhrIhhYU5lGBIUPQTdRzz547xUxQCBZOJ0ToNE=
+github.com/rancher/terraform-provider-rancher2 v1.25.1-0.20260409232514-3aa67765906a/go.mod h1:Wh6oEWGGJzwRPegOjeczKMuu4t2Qrn7iSUUVahJDw4M=
 github.com/rancher/wrangler/v3 v3.3.1 h1:YFqRfhxjuLNudUrvWrn+64wUPZ8pnn2KWbTsha75JLg=
 github.com/rancher/wrangler/v3 v3.3.1/go.mod h1:0D4kZDaOUkP5W2Zfww/75tQwF9w7kaZgzpZG+4XQDAI=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
