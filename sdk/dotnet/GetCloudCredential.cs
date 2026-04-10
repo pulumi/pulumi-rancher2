@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Rancher2.GetCloudCredential.Invoke(new()
+        ///     var test = Rancher2.Index.GetCloudCredential.Invoke(new()
         ///     {
         ///         Name = "test",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Rancher2.GetCloudCredential.Invoke(new()
+        ///     var test = Rancher2.Index.GetCloudCredential.Invoke(new()
         ///     {
         ///         Name = "test",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Rancher2.GetCloudCredential.Invoke(new()
+        ///     var test = Rancher2.Index.GetCloudCredential.Invoke(new()
         ///     {
         ///         Name = "test",
         ///     });

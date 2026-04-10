@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var server_image = Rancher2.GetSetting.Invoke(new()
+        ///     var server_image = Rancher2.Index.GetSetting.Invoke(new()
         ///     {
         ///         Name = "server-image",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var server_image = Rancher2.GetSetting.Invoke(new()
+        ///     var server_image = Rancher2.Index.GetSetting.Invoke(new()
         ///     {
         ///         Name = "server-image",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var server_image = Rancher2.GetSetting.Invoke(new()
+        ///     var server_image = Rancher2.Index.GetSetting.Invoke(new()
         ///     {
         ///         Name = "server-image",
         ///     });

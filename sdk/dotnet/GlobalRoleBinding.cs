@@ -23,7 +23,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Global Role Binding using user_id
-    ///     var foo = new Rancher2.GlobalRoleBinding("foo", new()
+    ///     var foo = new Rancher2.Index.GlobalRoleBinding("foo", new()
     ///     {
     ///         Name = "foo",
     ///         GlobalRoleId = "admin",
@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Global Role Binding using group_principal_id
-    ///     var foo2 = new Rancher2.GlobalRoleBinding("foo2", new()
+    ///     var foo2 = new Rancher2.Index.GlobalRoleBinding("foo2", new()
     ///     {
     ///         Name = "foo2",
     ///         GlobalRoleId = "admin",

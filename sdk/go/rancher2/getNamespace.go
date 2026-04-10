@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupNamespace(ctx, &rancher2.LookupNamespaceArgs{
+//			_, err := rancher2.GetNamespace(ctx, &rancher2.LookupNamespaceArgs{
 //				Name:      "foo",
 //				ProjectId: foo_custom.DefaultProjectId,
 //			}, nil)

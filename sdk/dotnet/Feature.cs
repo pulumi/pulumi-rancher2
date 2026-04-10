@@ -29,7 +29,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Feature
-    ///     var fleet = new Rancher2.Feature("fleet", new()
+    ///     var fleet = new Rancher2.Index.Feature("fleet", new()
     ///     {
     ///         Name = "fleet",
     ///         Value = "&lt;VALUE&gt;",

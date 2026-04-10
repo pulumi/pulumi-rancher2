@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 User
-    ///     var foo = new Rancher2.User("foo", new()
+    ///     var foo = new Rancher2.Index.User("foo", new()
     ///     {
     ///         Name = "Foo user",
     ///         Username = "foo",
@@ -35,7 +35,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 global_role_binding for User
-    ///     var fooGlobalRoleBinding = new Rancher2.GlobalRoleBinding("foo", new()
+    ///     var fooGlobalRoleBinding = new Rancher2.Index.GlobalRoleBinding("foo", new()
     ///     {
     ///         Name = "foo",
     ///         GlobalRoleId = "user-base",

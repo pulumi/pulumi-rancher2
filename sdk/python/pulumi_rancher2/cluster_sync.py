@@ -294,7 +294,7 @@ class ClusterSync(pulumi.CustomResource):
                 },
             })
         # Create a new rancher2 Node Template
-        foo = rancher2.index.NodeTemplate("foo",
+        foo = rancher2.NodeTemplate("foo",
             name=foo,
             description=foo test,
             amazonec2_config=[{
@@ -385,7 +385,7 @@ class ClusterSync(pulumi.CustomResource):
                 },
             })
         # Create a new rancher2 Node Template
-        foo = rancher2.index.NodeTemplate("foo",
+        foo = rancher2.NodeTemplate("foo",
             name=foo,
             description=foo test,
             amazonec2_config=[{

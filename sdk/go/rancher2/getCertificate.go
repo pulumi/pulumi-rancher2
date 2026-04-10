@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Retrieve a rancher2 Project Certificate
-//			_, err := rancher2.LookupCertificate(ctx, &rancher2.LookupCertificateArgs{
+//			_, err := rancher2.GetCertificate(ctx, &rancher2.LookupCertificateArgs{
 //				Name:      "<name>",
 //				ProjectId: "<project_id>",
 //			}, nil)
@@ -58,7 +58,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Retrieve a rancher2 Namespaced Certificate
-//			_, err := rancher2.LookupCertificate(ctx, &rancher2.LookupCertificateArgs{
+//			_, err := rancher2.GetCertificate(ctx, &rancher2.LookupCertificateArgs{
 //				Name:        "<name>",
 //				ProjectId:   "<project_id>",
 //				NamespaceId: pulumi.StringRef("<namespace_id>"),

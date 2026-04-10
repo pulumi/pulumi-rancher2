@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupCloudCredential(ctx, &rancher2.LookupCloudCredentialArgs{
+//			_, err := rancher2.GetCloudCredential(ctx, &rancher2.LookupCloudCredentialArgs{
 //				Name: "test",
 //			}, nil)
 //			if err != nil {

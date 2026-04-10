@@ -295,7 +295,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Get imported harvester cluster info
-//			_, err := rancher2.LookupClusterV2(ctx, &rancher2.LookupClusterV2Args{
+//			_, err := rancher2.GetClusterV2(ctx, &rancher2.LookupClusterV2Args{
 //				Name: "foo-harvester",
 //			}, nil)
 //			if err != nil {
