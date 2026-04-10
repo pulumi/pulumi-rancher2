@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Rancher2 App V2 using
-    ///     var foo = new Rancher2.AppV2("foo", new()
+    ///     var foo = new Rancher2.Index.AppV2("foo", new()
     ///     {
     ///         ClusterId = "&lt;CLUSTER_ID&gt;",
     ///         Name = "rancher-monitoring",
@@ -32,7 +32,7 @@ namespace Pulumi.Rancher2
     ///         RepoName = "rancher-charts",
     ///         ChartName = "rancher-monitoring",
     ///         ChartVersion = "9.4.200",
-    ///         Values = Std.File.Invoke(new()
+    ///         Values = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "values.yaml",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -53,7 +53,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cisBenchmark = new Rancher2.AppV2("cis_benchmark", new()
+    ///     var cisBenchmark = new Rancher2.Index.AppV2("cis_benchmark", new()
     ///     {
     ///         ClusterId = "&lt;CLUSTER_ID&gt;",
     ///         Name = "rancher-cis-benchmark",

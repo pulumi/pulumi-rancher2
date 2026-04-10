@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 cluster Role Template
-    ///     var foo = new Rancher2.RoleTemplate("foo", new()
+    ///     var foo = new Rancher2.Index.RoleTemplate("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Context = "cluster",
@@ -63,7 +63,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 project Role Template
-    ///     var foo = new Rancher2.RoleTemplate("foo", new()
+    ///     var foo = new Rancher2.Index.RoleTemplate("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Context = "project",

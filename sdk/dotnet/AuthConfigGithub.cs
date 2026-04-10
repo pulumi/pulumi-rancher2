@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Auth Config Github
-    ///     var github = new Rancher2.AuthConfigGithub("github", new()
+    ///     var github = new Rancher2.Index.AuthConfigGithub("github", new()
     ///     {
     ///         ClientId = "&lt;GITHUB_CLIENT_ID&gt;",
     ///         ClientSecret = "&lt;GITHUB_CLIENT_SECRET&gt;",

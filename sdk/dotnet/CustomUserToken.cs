@@ -31,7 +31,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a rancher2 Token
-    ///     var foo = new Rancher2.User("foo", new()
+    ///     var foo = new Rancher2.Index.User("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Username = "foo",
@@ -39,14 +39,14 @@ namespace Pulumi.Rancher2
     ///         Enabled = true,
     ///     });
     /// 
-    ///     var foo_login = new Rancher2.GlobalRoleBinding("foo-login", new()
+    ///     var foo_login = new Rancher2.Index.GlobalRoleBinding("foo-login", new()
     ///     {
     ///         Name = "foo-login-binding",
     ///         GlobalRoleId = "user-base",
     ///         UserId = foo.Id,
     ///     });
     /// 
-    ///     var fooCustomUserToken = new Rancher2.CustomUserToken("foo", new()
+    ///     var fooCustomUserToken = new Rancher2.Index.CustomUserToken("foo", new()
     ///     {
     ///         Username = foo.Username,
     ///         Password = foo.Password,

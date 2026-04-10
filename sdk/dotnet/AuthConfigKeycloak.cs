@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Auth Config KeyCloak
-    ///     var keycloak = new Rancher2.AuthConfigKeycloak("keycloak", new()
+    ///     var keycloak = new Rancher2.Index.AuthConfigKeycloak("keycloak", new()
     ///     {
     ///         DisplayNameField = "&lt;DISPLAY_NAME_FIELD&gt;",
     ///         GroupsField = "&lt;GROUPS_FIELD&gt;",

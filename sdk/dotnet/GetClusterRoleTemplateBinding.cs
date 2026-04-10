@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.GetClusterRoleTemplateBinding.Invoke(new()
+        ///     var foo = Rancher2.Index.GetClusterRoleTemplateBinding.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         ClusterId = "foo_id",
@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.GetClusterRoleTemplateBinding.Invoke(new()
+        ///     var foo = Rancher2.Index.GetClusterRoleTemplateBinding.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         ClusterId = "foo_id",
@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.GetClusterRoleTemplateBinding.Invoke(new()
+        ///     var foo = Rancher2.Index.GetClusterRoleTemplateBinding.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         ClusterId = "foo_id",

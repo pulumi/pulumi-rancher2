@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Cloud Credential
-    ///     var foo = new Rancher2.CloudCredential("foo", new()
+    ///     var foo = new Rancher2.Index.CloudCredential("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "foo test",
@@ -48,13 +48,13 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Get imported harvester cluster info
-    ///     var foo_harvester = Rancher2.GetClusterV2.Invoke(new()
+    ///     var foo_harvester = Rancher2.Index.GetClusterV2.Invoke(new()
     ///     {
     ///         Name = "foo-harvester",
     ///     });
     /// 
     ///     // Create a new Cloud Credential for an imported Harvester cluster
-    ///     var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvester", new()
+    ///     var foo_harvesterCloudCredential = new Rancher2.Index.CloudCredential("foo-harvester", new()
     ///     {
     ///         Name = "foo-harvester",
     ///         HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs

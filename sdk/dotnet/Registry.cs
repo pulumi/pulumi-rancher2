@@ -27,7 +27,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Project Registry
-    ///     var foo = new Rancher2.Registry("foo", new()
+    ///     var foo = new Rancher2.Index.Registry("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Terraform registry foo",
@@ -55,7 +55,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Namespaced Registry
-    ///     var foo = new Rancher2.Registry("foo", new()
+    ///     var foo = new Rancher2.Index.Registry("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Terraform registry foo",

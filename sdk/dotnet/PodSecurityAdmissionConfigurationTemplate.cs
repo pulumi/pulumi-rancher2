@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a Pod Security Admission Configuration Template resource
-    ///     var foo = new Rancher2.PodSecurityAdmissionConfigurationTemplate("foo", new()
+    ///     var foo = new Rancher2.Index.PodSecurityAdmissionConfigurationTemplate("foo", new()
     ///     {
     ///         Name = "custom-psact",
     ///         Description = "This is my custom Pod Security Admission Configuration Template",

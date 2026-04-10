@@ -23,7 +23,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Project Role Template Binding
-    ///     var foo = new Rancher2.ProjectRoleTemplateBinding("foo", new()
+    ///     var foo = new Rancher2.Index.ProjectRoleTemplateBinding("foo", new()
     ///     {
     ///         Name = "foo",
     ///         ProjectId = "&lt;project_id&gt;",

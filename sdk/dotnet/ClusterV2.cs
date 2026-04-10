@@ -45,7 +45,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         Name = "foo",
     ///         KubernetesVersion = "rke2-/k3s-version",
@@ -71,7 +71,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create AmazonEC2 cloud credential
-    ///     var foo = new Rancher2.CloudCredential("foo", new()
+    ///     var foo = new Rancher2.Index.CloudCredential("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
@@ -82,7 +82,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create AmazonEC2 machine config v2
-    ///     var fooMachineConfigV2 = new Rancher2.MachineConfigV2("foo", new()
+    ///     var fooMachineConfigV2 = new Rancher2.Index.MachineConfigV2("foo", new()
     ///     {
     ///         GenerateName = "test-foo",
     ///         Amazonec2Config = new Rancher2.Inputs.MachineConfigV2Amazonec2ConfigArgs
@@ -115,7 +115,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a cluster with multiple machine pools
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         Name = "foo",
     ///         KubernetesVersion = "rke2/k3s-version",
@@ -159,7 +159,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a cluster with a single machine pool
-    ///     var foo_k3s = new Rancher2.ClusterV2("foo-k3s", new()
+    ///     var foo_k3s = new Rancher2.Index.ClusterV2("foo-k3s", new()
     ///     {
     ///         Name = "foo-k3s",
     ///         KubernetesVersion = "rke2/k3s-version",
@@ -200,7 +200,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create Nutanix cloud credential
-    ///     var fooNutanix = new Rancher2.CloudCredential("foo_nutanix", new()
+    ///     var fooNutanix = new Rancher2.Index.CloudCredential("foo_nutanix", new()
     ///     {
     ///         Name = "foo-nutanix",
     ///         NutanixCredentialConfig = new Rancher2.Inputs.CloudCredentialNutanixCredentialConfigArgs
@@ -213,7 +213,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create Nutanix machine config v2
-    ///     var fooNutanixMachineConfigV2 = new Rancher2.MachineConfigV2("foo_nutanix", new()
+    ///     var fooNutanixMachineConfigV2 = new Rancher2.Index.MachineConfigV2("foo_nutanix", new()
     ///     {
     ///         GenerateName = "foo-nutanix",
     ///         NutanixConfig = new Rancher2.Inputs.MachineConfigV2NutanixConfigArgs
@@ -228,7 +228,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a cluster using Nutanix machine config and cloud credential
-    ///     var fooNutanixClusterV2 = new Rancher2.ClusterV2("foo_nutanix", new()
+    ///     var fooNutanixClusterV2 = new Rancher2.Index.ClusterV2("foo_nutanix", new()
     ///     {
     ///         Name = "foo-nutanix",
     ///         KubernetesVersion = "&lt;rke2/k3s-version&gt;",
@@ -273,7 +273,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Get imported harvester cluster info
-    ///     var foo_harvester = Rancher2.GetClusterV2.Invoke(new()
+    ///     var foo_harvester = Rancher2.Index.GetClusterV2.Invoke(new()
     ///     {
     ///         Name = "foo-harvester",
     ///     });
@@ -295,7 +295,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         Name = "cluster-with-agent-env-vars",
     ///         KubernetesVersion = "rke2/k3s-version",
@@ -334,7 +334,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         FleetAgentDeploymentCustomizations = new[]
     ///         {
@@ -419,7 +419,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         Name = "foo",
     ///         KubernetesVersion = "rke2/k3s-version",
@@ -476,7 +476,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooClusterV2 = new Rancher2.ClusterV2("foo_cluster_v2", new()
+    ///     var fooClusterV2 = new Rancher2.Index.ClusterV2("foo_cluster_v2", new()
     ///     {
     ///         Name = "cluster-with-custom-registry",
     ///         KubernetesVersion = "rke2/k3s-version",
@@ -511,7 +511,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // create registry auth secret
-    ///     var myRegistry = new Rancher2.SecretV2("my_registry", new()
+    ///     var myRegistry = new Rancher2.Index.SecretV2("my_registry", new()
     ///     {
     ///         ClusterId = "local",
     ///         Name = registrySecretName,
@@ -539,7 +539,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         Name = "foo",
     ///         KubernetesVersion = "rke2/k3s-version",
@@ -623,7 +623,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         Name = "foo",
     ///         KubernetesVersion = "rke2-version",
@@ -709,7 +709,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         Name = "foo",
     ///         KubernetesVersion = "rke2/k3s-version",
@@ -745,7 +745,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var credentials = new Rancher2.CloudCredential("credentials", new()
+    ///     var credentials = new Rancher2.Index.CloudCredential("credentials", new()
     ///     {
     ///         Name = "rancher-creds",
     ///         S3CredentialConfig = new Rancher2.Inputs.CloudCredentialS3CredentialConfigArgs
@@ -755,7 +755,7 @@ namespace Pulumi.Rancher2
     ///         },
     ///     });
     /// 
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         MachinePools = new[]
     ///         {
@@ -798,7 +798,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         MachinePools = new[]
     ///         {
@@ -831,7 +831,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         MachinePools = new[]
     ///         {
@@ -863,7 +863,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         MachinePools = new[]
     ///         {
@@ -891,7 +891,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         MachinePools = new[]
     ///         {
@@ -926,7 +926,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.ClusterV2("foo", new()
+    ///     var foo = new Rancher2.Index.ClusterV2("foo", new()
     ///     {
     ///         Name = "foo",
     ///         KubernetesVersion = "rke2-version",

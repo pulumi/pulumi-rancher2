@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.GetNodePool.Invoke(new()
+        ///     var foo = Rancher2.Index.GetNodePool.Invoke(new()
         ///     {
         ///         ClusterId = foo_custom.Id,
         ///         Name = "foo",
@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.GetNodePool.Invoke(new()
+        ///     var foo = Rancher2.Index.GetNodePool.Invoke(new()
         ///     {
         ///         ClusterId = foo_custom.Id,
         ///         Name = "foo",
@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.GetNodePool.Invoke(new()
+        ///     var foo = Rancher2.Index.GetNodePool.Invoke(new()
         ///     {
         ///         ClusterId = foo_custom.Id,
         ///         Name = "foo",

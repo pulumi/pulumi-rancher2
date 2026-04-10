@@ -497,7 +497,7 @@ class NodePool(pulumi.CustomResource):
                 "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             })
         # Create a new rancher2 Node Template
-        foo_node_template = rancher2.index.NodeTemplate("foo",
+        foo_node_template = rancher2.NodeTemplate("foo",
             name=foo,
             description=foo test,
             cloud_credential_id=foo.id,
@@ -580,7 +580,7 @@ class NodePool(pulumi.CustomResource):
                 "secret_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             })
         # Create a new rancher2 Node Template
-        foo_node_template = rancher2.index.NodeTemplate("foo",
+        foo_node_template = rancher2.NodeTemplate("foo",
             name=foo,
             description=foo test,
             cloud_credential_id=foo.id,

@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Auth Config ADFS
-    ///     var adfs = new Rancher2.AuthConfigAdfs("adfs", new()
+    ///     var adfs = new Rancher2.Index.AuthConfigAdfs("adfs", new()
     ///     {
     ///         DisplayNameField = "&lt;DISPLAY_NAME_FIELD&gt;",
     ///         GroupsField = "&lt;GROUPS_FIELD&gt;",

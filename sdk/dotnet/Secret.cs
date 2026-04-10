@@ -28,22 +28,22 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Project Secret
-    ///     var foo = new Rancher2.Secret("foo", new()
+    ///     var foo = new Rancher2.Index.Secret("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Terraform secret foo",
     ///         ProjectId = "&lt;project_id&gt;",
     ///         Data = 
     ///         {
-    ///             { "address", Std.Base64encode.Invoke(new()
+    ///             { "address", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "test.io",
     ///             }).Apply(invoke =&gt; invoke.Result) },
-    ///             { "username", Std.Base64encode.Invoke(new()
+    ///             { "username", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "user2",
     ///             }).Apply(invoke =&gt; invoke.Result) },
-    ///             { "password", Std.Base64encode.Invoke(new()
+    ///             { "password", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "pass",
     ///             }).Apply(invoke =&gt; invoke.Result) },
@@ -63,7 +63,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Namespaced Secret
-    ///     var foo = new Rancher2.Secret("foo", new()
+    ///     var foo = new Rancher2.Index.Secret("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Terraform secret foo",
@@ -71,15 +71,15 @@ namespace Pulumi.Rancher2
     ///         NamespaceId = "&lt;namespace_id&gt;",
     ///         Data = 
     ///         {
-    ///             { "address", Std.Base64encode.Invoke(new()
+    ///             { "address", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "test.io",
     ///             }).Apply(invoke =&gt; invoke.Result) },
-    ///             { "username", Std.Base64encode.Invoke(new()
+    ///             { "username", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "user2",
     ///             }).Apply(invoke =&gt; invoke.Result) },
-    ///             { "password", Std.Base64encode.Invoke(new()
+    ///             { "password", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "pass",
     ///             }).Apply(invoke =&gt; invoke.Result) },

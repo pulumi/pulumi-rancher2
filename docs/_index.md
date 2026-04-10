@@ -75,7 +75,7 @@ import pulumi_rancher2 as rancher2
 # Create a new rancher2_bootstrap using bootstrap provider config
 admin = rancher2.Bootstrap("admin", password="blahblah")
 # Create a new rancher2 resource using admin provider config
-foo = rancher2.index.Catalog("foo",
+foo = rancher2.Catalog("foo",
     name=test,
     url=http://foo.com:8080)
 ```
@@ -91,7 +91,7 @@ using Rancher2 = Pulumi.Rancher2;
 return await Deployment.RunAsync(() =>
 {
     // Create a new rancher2_bootstrap using bootstrap provider config
-    var admin = new Rancher2.Bootstrap("admin", new()
+    var admin = new Rancher2.Index.Bootstrap("admin", new()
     {
         Password = "blahblah",
     });

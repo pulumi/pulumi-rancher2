@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rancher2.LookupClusterRoleTemplateBinding(ctx, &rancher2.LookupClusterRoleTemplateBindingArgs{
+//			_, err := rancher2.GetClusterRoleTemplateBinding(ctx, &rancher2.LookupClusterRoleTemplateBindingArgs{
 //				Name:      "foo",
 //				ClusterId: "foo_id",
 //			}, nil)
