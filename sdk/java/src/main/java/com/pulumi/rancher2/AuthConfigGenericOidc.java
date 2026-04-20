@@ -174,6 +174,20 @@ public class AuthConfigGenericOidc extends com.pulumi.resources.CustomResource {
         return this.clientSecret;
     }
     /**
+     * The OIDC Claim to use for the user email.
+     * 
+     */
+    @Export(name="emailClaim", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> emailClaim;
+
+    /**
+     * @return The OIDC Claim to use for the user email.
+     * 
+     */
+    public Output<Optional<String>> emailClaim() {
+        return Codegen.optional(this.emailClaim);
+    }
+    /**
      * Enable the auth config provider. Default `true` (bool)
      * 
      */
@@ -186,6 +200,20 @@ public class AuthConfigGenericOidc extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
+    }
+    /**
+     * The provider specific URL used for logging a user out of their session.
+     * 
+     */
+    @Export(name="endSessionEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> endSessionEndpoint;
+
+    /**
+     * @return The provider specific URL used for logging a user out of their session.
+     * 
+     */
+    public Output<Optional<String>> endSessionEndpoint() {
+        return Codegen.optional(this.endSessionEndpoint);
     }
     /**
      * Enable group search. Default `false` (bool)
@@ -258,6 +286,34 @@ public class AuthConfigGenericOidc extends com.pulumi.resources.CustomResource {
         return this.labels;
     }
     /**
+     * Allow the user to choose whether or not to logout of their session with the IdP.
+     * 
+     */
+    @Export(name="logoutAllEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> logoutAllEnabled;
+
+    /**
+     * @return Allow the user to choose whether or not to logout of their session with the IdP.
+     * 
+     */
+    public Output<Optional<Boolean>> logoutAllEnabled() {
+        return Codegen.optional(this.logoutAllEnabled);
+    }
+    /**
+     * Force the user to logout of their session with the IdP.
+     * 
+     */
+    @Export(name="logoutAllForced", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> logoutAllForced;
+
+    /**
+     * @return Force the user to logout of their session with the IdP.
+     * 
+     */
+    public Output<Optional<Boolean>> logoutAllForced() {
+        return Codegen.optional(this.logoutAllForced);
+    }
+    /**
      * (Computed) The name of the resource (string)
      * 
      */
@@ -270,6 +326,20 @@ public class AuthConfigGenericOidc extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The OIDC Claim to use for the user name.
+     * 
+     */
+    @Export(name="nameClaim", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> nameClaim;
+
+    /**
+     * @return The OIDC Claim to use for the user name.
+     * 
+     */
+    public Output<Optional<String>> nameClaim() {
+        return Codegen.optional(this.nameClaim);
     }
     /**
      * A PEM-encoded private key for the OIDC provider.

@@ -14,6 +14,7 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class GetProjectResourceQuotaNamespaceDefaultLimitResult
     {
         public readonly string? ConfigMaps;
+        public readonly ImmutableDictionary<string, string>? Extended;
         public readonly string? LimitsCpu;
         public readonly string? LimitsMemory;
         public readonly string? PersistentVolumeClaims;
@@ -30,6 +31,8 @@ namespace Pulumi.Rancher2.Outputs
         [OutputConstructor]
         private GetProjectResourceQuotaNamespaceDefaultLimitResult(
             string? configMaps,
+
+            ImmutableDictionary<string, string>? extended,
 
             string? limitsCpu,
 
@@ -56,6 +59,7 @@ namespace Pulumi.Rancher2.Outputs
             string? servicesNodePorts)
         {
             ConfigMaps = configMaps;
+            Extended = extended;
             LimitsCpu = limitsCpu;
             LimitsMemory = limitsMemory;
             PersistentVolumeClaims = persistentVolumeClaims;

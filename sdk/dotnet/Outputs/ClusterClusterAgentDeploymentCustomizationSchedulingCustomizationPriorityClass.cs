@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass
     {
         /// <summary>
-        /// The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        /// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
         /// </summary>
         public readonly string? PreemptionPolicy;
         /// <summary>
-        /// The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        /// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
         /// </summary>
         public readonly int Value;
 

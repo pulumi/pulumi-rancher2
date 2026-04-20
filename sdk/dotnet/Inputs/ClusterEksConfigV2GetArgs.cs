@@ -25,6 +25,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<bool>? Imported { get; set; }
 
         /// <summary>
+        /// The IP family used to assign Kubernetes pod and service addresses. Valid values are `Ipv4` (default) and `Ipv6`
+        /// </summary>
+        [Input("ipFamily")]
+        public Input<string>? IpFamily { get; set; }
+
+        /// <summary>
         /// The AWS kms key to use
         /// </summary>
         [Input("kmsKey")]

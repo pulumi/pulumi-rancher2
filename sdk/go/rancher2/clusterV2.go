@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,7 +44,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,7 +77,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -127,7 +127,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -211,7 +211,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -287,7 +287,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -318,7 +318,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -362,7 +362,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -434,20 +434,20 @@ import (
 //
 // ### Customize scheduling for the cluster agent
 //
-// This argument is available in Rancher 2.11.0 and above.
+// This argument is available in Rancher 2.11.0 and above for the cluster agent. Support for the fleet agent is available in Rancher 2.14.0 and above.
 //
-// You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent when provisioning or updating downstream clusters.
+// You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent and fleet agent when provisioning or updating downstream clusters.
 //
 // In order to use this field, you must ensure that the `cluster-agent-scheduling-customization` feature is enabled in the Rancher server.
 //
-// The example below demonstrates how to set the `schedulingCustomization` field to deploy a Priority Class and Pod Disruption Budget. Currently, this field is only supported for the cluster agent.
+// The example below demonstrates how to set the `schedulingCustomization` field to deploy a Priority Class and Pod Disruption Budget for both the cattle cluster agent and fleet agent.
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -469,6 +469,25 @@ import (
 //								},
 //								PodDisruptionBudgets: rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{
 //									&rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{
+//										MinAvailable: pulumi.String("1"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				FleetAgentDeploymentCustomizations: rancher2.ClusterV2FleetAgentDeploymentCustomizationArray{
+//					&rancher2.ClusterV2FleetAgentDeploymentCustomizationArgs{
+//						SchedulingCustomizations: rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArray{
+//							&rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs{
+//								PriorityClasses: rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{
+//									&rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{
+//										PreemptionPolicy: pulumi.String("PreemptLowerPriority"),
+//										Value:            pulumi.Int(999999999),
+//									},
+//								},
+//								PodDisruptionBudgets: rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{
+//									&rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{
 //										MinAvailable: pulumi.String("1"),
 //									},
 //								},
@@ -502,7 +521,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -566,7 +585,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -642,7 +661,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -727,7 +746,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -775,7 +794,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -832,7 +851,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -873,7 +892,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -913,7 +932,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -946,7 +965,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -985,7 +1004,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

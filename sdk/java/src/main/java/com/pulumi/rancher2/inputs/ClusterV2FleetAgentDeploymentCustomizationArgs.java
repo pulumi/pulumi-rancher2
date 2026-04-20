@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs;
 import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs;
+import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,14 +20,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
     public static final ClusterV2FleetAgentDeploymentCustomizationArgs Empty = new ClusterV2FleetAgentDeploymentCustomizationArgs();
 
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      * 
      */
     @Import(name="appendTolerations")
     private @Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs>> appendTolerations;
 
     /**
-     * @return User defined tolerations to append to agent
+     * @return User-defined tolerations to append to agent
      * 
      */
     public Optional<Output<List<ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs>>> appendTolerations() {
@@ -34,14 +35,14 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
     }
 
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      * 
      */
     @Import(name="overrideAffinity")
     private @Nullable Output<String> overrideAffinity;
 
     /**
-     * @return User defined affinity to override default agent affinity
+     * @return User-defined affinity to override default agent affinity
      * 
      */
     public Optional<Output<String>> overrideAffinity() {
@@ -49,18 +50,33 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
     }
 
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      * 
      */
     @Import(name="overrideResourceRequirements")
     private @Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs>> overrideResourceRequirements;
 
     /**
-     * @return User defined resource requirements to set on the agent
+     * @return User-defined resource requirements to set on the agent
      * 
      */
     public Optional<Output<List<ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs>>> overrideResourceRequirements() {
         return Optional.ofNullable(this.overrideResourceRequirements);
+    }
+
+    /**
+     * User-defined scheduling customization for the cattle or fleet cluster agent
+     * 
+     */
+    @Import(name="schedulingCustomizations")
+    private @Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs>> schedulingCustomizations;
+
+    /**
+     * @return User-defined scheduling customization for the cattle or fleet cluster agent
+     * 
+     */
+    public Optional<Output<List<ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs>>> schedulingCustomizations() {
+        return Optional.ofNullable(this.schedulingCustomizations);
     }
 
     private ClusterV2FleetAgentDeploymentCustomizationArgs() {}
@@ -69,6 +85,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         this.appendTolerations = $.appendTolerations;
         this.overrideAffinity = $.overrideAffinity;
         this.overrideResourceRequirements = $.overrideResourceRequirements;
+        this.schedulingCustomizations = $.schedulingCustomizations;
     }
 
     public static Builder builder() {
@@ -90,7 +107,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param appendTolerations User defined tolerations to append to agent
+         * @param appendTolerations User-defined tolerations to append to agent
          * 
          * @return builder
          * 
@@ -101,7 +118,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param appendTolerations User defined tolerations to append to agent
+         * @param appendTolerations User-defined tolerations to append to agent
          * 
          * @return builder
          * 
@@ -111,7 +128,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param appendTolerations User defined tolerations to append to agent
+         * @param appendTolerations User-defined tolerations to append to agent
          * 
          * @return builder
          * 
@@ -121,7 +138,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideAffinity User defined affinity to override default agent affinity
+         * @param overrideAffinity User-defined affinity to override default agent affinity
          * 
          * @return builder
          * 
@@ -132,7 +149,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideAffinity User defined affinity to override default agent affinity
+         * @param overrideAffinity User-defined affinity to override default agent affinity
          * 
          * @return builder
          * 
@@ -142,7 +159,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideResourceRequirements User defined resource requirements to set on the agent
+         * @param overrideResourceRequirements User-defined resource requirements to set on the agent
          * 
          * @return builder
          * 
@@ -153,7 +170,7 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideResourceRequirements User defined resource requirements to set on the agent
+         * @param overrideResourceRequirements User-defined resource requirements to set on the agent
          * 
          * @return builder
          * 
@@ -163,13 +180,44 @@ public final class ClusterV2FleetAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideResourceRequirements User defined resource requirements to set on the agent
+         * @param overrideResourceRequirements User-defined resource requirements to set on the agent
          * 
          * @return builder
          * 
          */
         public Builder overrideResourceRequirements(ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs... overrideResourceRequirements) {
             return overrideResourceRequirements(List.of(overrideResourceRequirements));
+        }
+
+        /**
+         * @param schedulingCustomizations User-defined scheduling customization for the cattle or fleet cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingCustomizations(@Nullable Output<List<ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs>> schedulingCustomizations) {
+            $.schedulingCustomizations = schedulingCustomizations;
+            return this;
+        }
+
+        /**
+         * @param schedulingCustomizations User-defined scheduling customization for the cattle or fleet cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingCustomizations(List<ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs> schedulingCustomizations) {
+            return schedulingCustomizations(Output.of(schedulingCustomizations));
+        }
+
+        /**
+         * @param schedulingCustomizations User-defined scheduling customization for the cattle or fleet cluster agent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedulingCustomizations(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs... schedulingCustomizations) {
+            return schedulingCustomizations(List.of(schedulingCustomizations));
         }
 
         public ClusterV2FleetAgentDeploymentCustomizationArgs build() {

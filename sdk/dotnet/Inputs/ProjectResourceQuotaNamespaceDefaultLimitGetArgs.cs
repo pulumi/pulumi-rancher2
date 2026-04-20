@@ -18,6 +18,14 @@ namespace Pulumi.Rancher2.Inputs
         [Input("configMaps")]
         public Input<string>? ConfigMaps { get; set; }
 
+        [Input("extended")]
+        private InputMap<string>? _extended;
+        public InputMap<string> Extended
+        {
+            get => _extended ?? (_extended = new InputMap<string>());
+            set => _extended = value;
+        }
+
         /// <summary>
         /// Limit for limits cpu in project (string)
         /// </summary>

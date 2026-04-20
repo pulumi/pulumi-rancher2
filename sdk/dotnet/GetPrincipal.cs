@@ -88,6 +88,12 @@ namespace Pulumi.Rancher2
     public sealed class GetPrincipalArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// If set to `True`, only the exactly matched result is returned. Defaults to `False`, which means a partially matched result can be returned (for example: `Foo2` also matches for `Foo` search input) (bool)
+        /// </summary>
+        [Input("exactMatch")]
+        public bool? ExactMatch { get; set; }
+
+        /// <summary>
         /// The full name of the principal (string)
         /// </summary>
         [Input("name", required: true)]
@@ -107,6 +113,12 @@ namespace Pulumi.Rancher2
 
     public sealed class GetPrincipalInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// If set to `True`, only the exactly matched result is returned. Defaults to `False`, which means a partially matched result can be returned (for example: `Foo2` also matches for `Foo` search input) (bool)
+        /// </summary>
+        [Input("exactMatch")]
+        public Input<bool>? ExactMatch { get; set; }
+
         /// <summary>
         /// The full name of the principal (string)
         /// </summary>
@@ -129,6 +141,7 @@ namespace Pulumi.Rancher2
     [OutputType]
     public sealed class GetPrincipalResult
     {
+        public readonly bool? ExactMatch;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -138,12 +151,15 @@ namespace Pulumi.Rancher2
 
         [OutputConstructor]
         private GetPrincipalResult(
+            bool? exactMatch,
+
             string id,
 
             string name,
 
             string? type)
         {
+            ExactMatch = exactMatch;
             Id = id;
             Name = name;
             Type = type;

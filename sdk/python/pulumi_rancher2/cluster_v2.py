@@ -844,13 +844,13 @@ class ClusterV2(pulumi.CustomResource):
 
         ### Customize scheduling for the cluster agent
 
-        This argument is available in Rancher 2.11.0 and above.
+        This argument is available in Rancher 2.11.0 and above for the cluster agent. Support for the fleet agent is available in Rancher 2.14.0 and above.
 
-        You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent when provisioning or updating downstream clusters.
+        You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent and fleet agent when provisioning or updating downstream clusters.
 
         In order to use this field, you must ensure that the `cluster-agent-scheduling-customization` feature is enabled in the Rancher server.
 
-        The example below demonstrates how to set the `scheduling_customization` field to deploy a Priority Class and Pod Disruption Budget. Currently, this field is only supported for the cluster agent.
+        The example below demonstrates how to set the `scheduling_customization` field to deploy a Priority Class and Pod Disruption Budget for both the cattle cluster agent and fleet agent.
 
         ```python
         import pulumi
@@ -864,6 +864,17 @@ class ClusterV2(pulumi.CustomResource):
                     "priority_classes": [{
                         "preemption_policy": "PreemptLowerPriority",
                         "value": 1000000000,
+                    }],
+                    "pod_disruption_budgets": [{
+                        "min_available": "1",
+                    }],
+                }],
+            }],
+            fleet_agent_deployment_customizations=[{
+                "scheduling_customizations": [{
+                    "priority_classes": [{
+                        "preemption_policy": "PreemptLowerPriority",
+                        "value": 999999999,
                     }],
                     "pod_disruption_budgets": [{
                         "min_available": "1",
@@ -1540,13 +1551,13 @@ class ClusterV2(pulumi.CustomResource):
 
         ### Customize scheduling for the cluster agent
 
-        This argument is available in Rancher 2.11.0 and above.
+        This argument is available in Rancher 2.11.0 and above for the cluster agent. Support for the fleet agent is available in Rancher 2.14.0 and above.
 
-        You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent when provisioning or updating downstream clusters.
+        You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent and fleet agent when provisioning or updating downstream clusters.
 
         In order to use this field, you must ensure that the `cluster-agent-scheduling-customization` feature is enabled in the Rancher server.
 
-        The example below demonstrates how to set the `scheduling_customization` field to deploy a Priority Class and Pod Disruption Budget. Currently, this field is only supported for the cluster agent.
+        The example below demonstrates how to set the `scheduling_customization` field to deploy a Priority Class and Pod Disruption Budget for both the cattle cluster agent and fleet agent.
 
         ```python
         import pulumi
@@ -1560,6 +1571,17 @@ class ClusterV2(pulumi.CustomResource):
                     "priority_classes": [{
                         "preemption_policy": "PreemptLowerPriority",
                         "value": 1000000000,
+                    }],
+                    "pod_disruption_budgets": [{
+                        "min_available": "1",
+                    }],
+                }],
+            }],
+            fleet_agent_deployment_customizations=[{
+                "scheduling_customizations": [{
+                    "priority_classes": [{
+                        "preemption_policy": "PreemptLowerPriority",
+                        "value": 999999999,
                     }],
                     "pod_disruption_budgets": [{
                         "min_available": "1",

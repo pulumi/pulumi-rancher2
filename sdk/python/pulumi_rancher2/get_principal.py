@@ -26,7 +26,10 @@ class GetPrincipalResult:
     """
     A collection of values returned by getPrincipal.
     """
-    def __init__(__self__, id=None, name=None, type=None):
+    def __init__(__self__, exact_match=None, id=None, name=None, type=None):
+        if exact_match and not isinstance(exact_match, bool):
+            raise TypeError("Expected argument 'exact_match' to be a bool")
+        pulumi.set(__self__, "exact_match", exact_match)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -36,6 +39,11 @@ class GetPrincipalResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="exactMatch")
+    def exact_match(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "exact_match")
 
     @_builtins.property
     @pulumi.getter
@@ -62,12 +70,14 @@ class AwaitableGetPrincipalResult(GetPrincipalResult):
         if False:
             yield self
         return GetPrincipalResult(
+            exact_match=self.exact_match,
             id=self.id,
             name=self.name,
             type=self.type)
 
 
-def get_principal(name: Optional[_builtins.str] = None,
+def get_principal(exact_match: Optional[_builtins.bool] = None,
+                  name: Optional[_builtins.str] = None,
                   type: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrincipalResult:
     """
@@ -83,20 +93,24 @@ def get_principal(name: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.bool exact_match: If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
     :param _builtins.str name: The full name of the principal (string)
     :param _builtins.str type: The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
     """
     __args__ = dict()
+    __args__['exactMatch'] = exact_match
     __args__['name'] = name
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('rancher2:index/getPrincipal:getPrincipal', __args__, opts=opts, typ=GetPrincipalResult).value
 
     return AwaitableGetPrincipalResult(
+        exact_match=pulumi.get(__ret__, 'exact_match'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'))
-def get_principal_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_principal_output(exact_match: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                         name: Optional[pulumi.Input[_builtins.str]] = None,
                          type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrincipalResult]:
     """
@@ -112,15 +126,18 @@ def get_principal_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     ```
 
 
+    :param _builtins.bool exact_match: If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
     :param _builtins.str name: The full name of the principal (string)
     :param _builtins.str type: The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
     """
     __args__ = dict()
+    __args__['exactMatch'] = exact_match
     __args__['name'] = name
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getPrincipal:getPrincipal', __args__, opts=opts, typ=GetPrincipalResult)
     return __ret__.apply(lambda __response__: GetPrincipalResult(
+        exact_match=pulumi.get(__response__, 'exact_match'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         type=pulumi.get(__response__, 'type')))

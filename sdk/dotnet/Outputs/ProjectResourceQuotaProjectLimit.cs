@@ -17,6 +17,7 @@ namespace Pulumi.Rancher2.Outputs
         /// Limit for config maps in project (string)
         /// </summary>
         public readonly string? ConfigMaps;
+        public readonly ImmutableDictionary<string, string>? Extended;
         /// <summary>
         /// Limit for limits cpu in project (string)
         /// </summary>
@@ -69,6 +70,8 @@ namespace Pulumi.Rancher2.Outputs
         private ProjectResourceQuotaProjectLimit(
             string? configMaps,
 
+            ImmutableDictionary<string, string>? extended,
+
             string? limitsCpu,
 
             string? limitsMemory,
@@ -94,6 +97,7 @@ namespace Pulumi.Rancher2.Outputs
             string? servicesNodePorts)
         {
             ConfigMaps = configMaps;
+            Extended = extended;
             LimitsCpu = limitsCpu;
             LimitsMemory = limitsMemory;
             PersistentVolumeClaims = persistentVolumeClaims;

@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationAppendTolerationGetArgs>? _appendTolerations;
 
         /// <summary>
-        /// User defined tolerations to append to agent
+        /// User-defined tolerations to append to agent
         /// </summary>
         public InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationAppendTolerationGetArgs> AppendTolerations
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// User defined affinity to override default agent affinity
+        /// User-defined affinity to override default agent affinity
         /// </summary>
         [Input("overrideAffinity")]
         public Input<string>? OverrideAffinity { get; set; }
@@ -34,12 +34,24 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementGetArgs>? _overrideResourceRequirements;
 
         /// <summary>
-        /// User defined resource requirements to set on the agent
+        /// User-defined resource requirements to set on the agent
         /// </summary>
         public InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementGetArgs> OverrideResourceRequirements
         {
             get => _overrideResourceRequirements ?? (_overrideResourceRequirements = new InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementGetArgs>());
             set => _overrideResourceRequirements = value;
+        }
+
+        [Input("schedulingCustomizations")]
+        private InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationGetArgs>? _schedulingCustomizations;
+
+        /// <summary>
+        /// User-defined scheduling customization for the cattle or fleet cluster agent
+        /// </summary>
+        public InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationGetArgs> SchedulingCustomizations
+        {
+            get => _schedulingCustomizations ?? (_schedulingCustomizations = new InputList<Inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationGetArgs>());
+            set => _schedulingCustomizations = value;
         }
 
         public ClusterV2FleetAgentDeploymentCustomizationGetArgs()

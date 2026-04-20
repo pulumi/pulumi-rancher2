@@ -6,6 +6,7 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.rancher2.outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration;
 import com.pulumi.rancher2.outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement;
+import com.pulumi.rancher2.outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomization;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,42 +16,54 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterFleetAgentDeploymentCustomization {
     /**
-     * @return User defined tolerations to append to agent
+     * @return User-defined tolerations to append to agent
      * 
      */
     private @Nullable List<ClusterFleetAgentDeploymentCustomizationAppendToleration> appendTolerations;
     /**
-     * @return User defined affinity to override default agent affinity
+     * @return User-defined affinity to override default agent affinity
      * 
      */
     private @Nullable String overrideAffinity;
     /**
-     * @return User defined resource requirements to set on the agent
+     * @return User-defined resource requirements to set on the agent
      * 
      */
     private @Nullable List<ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
+    /**
+     * @return User-defined scheduling customization for the cattle or fleet cluster agent
+     * 
+     */
+    private @Nullable List<ClusterFleetAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations;
 
     private ClusterFleetAgentDeploymentCustomization() {}
     /**
-     * @return User defined tolerations to append to agent
+     * @return User-defined tolerations to append to agent
      * 
      */
     public List<ClusterFleetAgentDeploymentCustomizationAppendToleration> appendTolerations() {
         return this.appendTolerations == null ? List.of() : this.appendTolerations;
     }
     /**
-     * @return User defined affinity to override default agent affinity
+     * @return User-defined affinity to override default agent affinity
      * 
      */
     public Optional<String> overrideAffinity() {
         return Optional.ofNullable(this.overrideAffinity);
     }
     /**
-     * @return User defined resource requirements to set on the agent
+     * @return User-defined resource requirements to set on the agent
      * 
      */
     public List<ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements() {
         return this.overrideResourceRequirements == null ? List.of() : this.overrideResourceRequirements;
+    }
+    /**
+     * @return User-defined scheduling customization for the cattle or fleet cluster agent
+     * 
+     */
+    public List<ClusterFleetAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations() {
+        return this.schedulingCustomizations == null ? List.of() : this.schedulingCustomizations;
     }
 
     public static Builder builder() {
@@ -65,12 +78,14 @@ public final class ClusterFleetAgentDeploymentCustomization {
         private @Nullable List<ClusterFleetAgentDeploymentCustomizationAppendToleration> appendTolerations;
         private @Nullable String overrideAffinity;
         private @Nullable List<ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
+        private @Nullable List<ClusterFleetAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations;
         public Builder() {}
         public Builder(ClusterFleetAgentDeploymentCustomization defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appendTolerations = defaults.appendTolerations;
     	      this.overrideAffinity = defaults.overrideAffinity;
     	      this.overrideResourceRequirements = defaults.overrideResourceRequirements;
+    	      this.schedulingCustomizations = defaults.schedulingCustomizations;
         }
 
         @CustomType.Setter
@@ -97,11 +112,21 @@ public final class ClusterFleetAgentDeploymentCustomization {
         public Builder overrideResourceRequirements(ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement... overrideResourceRequirements) {
             return overrideResourceRequirements(List.of(overrideResourceRequirements));
         }
+        @CustomType.Setter
+        public Builder schedulingCustomizations(@Nullable List<ClusterFleetAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations) {
+
+            this.schedulingCustomizations = schedulingCustomizations;
+            return this;
+        }
+        public Builder schedulingCustomizations(ClusterFleetAgentDeploymentCustomizationSchedulingCustomization... schedulingCustomizations) {
+            return schedulingCustomizations(List.of(schedulingCustomizations));
+        }
         public ClusterFleetAgentDeploymentCustomization build() {
             final var _resultValue = new ClusterFleetAgentDeploymentCustomization();
             _resultValue.appendTolerations = appendTolerations;
             _resultValue.overrideAffinity = overrideAffinity;
             _resultValue.overrideResourceRequirements = overrideResourceRequirements;
+            _resultValue.schedulingCustomizations = schedulingCustomizations;
             return _resultValue;
         }
     }

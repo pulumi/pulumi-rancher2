@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -75,8 +75,12 @@ type AuthConfigGenericOidc struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The OIDC Client Secret.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	// The OIDC Claim to use for the user email.
+	EmailClaim pulumi.StringPtrOutput `pulumi:"emailClaim"`
 	// Enable the auth config provider. Default `true` (bool)
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// The provider specific URL used for logging a user out of their session.
+	EndSessionEndpoint pulumi.StringPtrOutput `pulumi:"endSessionEndpoint"`
 	// Enable group search. Default `false` (bool)
 	GroupSearchEnabled pulumi.BoolPtrOutput `pulumi:"groupSearchEnabled"`
 	// The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
@@ -87,8 +91,14 @@ type AuthConfigGenericOidc struct {
 	JwksUrl pulumi.StringOutput `pulumi:"jwksUrl"`
 	// Labels of the resource (map)
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Allow the user to choose whether or not to logout of their session with the IdP.
+	LogoutAllEnabled pulumi.BoolPtrOutput `pulumi:"logoutAllEnabled"`
+	// Force the user to logout of their session with the IdP.
+	LogoutAllForced pulumi.BoolPtrOutput `pulumi:"logoutAllForced"`
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The OIDC Claim to use for the user name.
+	NameClaim pulumi.StringPtrOutput `pulumi:"nameClaim"`
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -178,8 +188,12 @@ type authConfigGenericOidcState struct {
 	ClientId *string `pulumi:"clientId"`
 	// The OIDC Client Secret.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// The OIDC Claim to use for the user email.
+	EmailClaim *string `pulumi:"emailClaim"`
 	// Enable the auth config provider. Default `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
+	// The provider specific URL used for logging a user out of their session.
+	EndSessionEndpoint *string `pulumi:"endSessionEndpoint"`
 	// Enable group search. Default `false` (bool)
 	GroupSearchEnabled *bool `pulumi:"groupSearchEnabled"`
 	// The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
@@ -190,8 +204,14 @@ type authConfigGenericOidcState struct {
 	JwksUrl *string `pulumi:"jwksUrl"`
 	// Labels of the resource (map)
 	Labels map[string]string `pulumi:"labels"`
+	// Allow the user to choose whether or not to logout of their session with the IdP.
+	LogoutAllEnabled *bool `pulumi:"logoutAllEnabled"`
+	// Force the user to logout of their session with the IdP.
+	LogoutAllForced *bool `pulumi:"logoutAllForced"`
 	// (Computed) The name of the resource (string)
 	Name *string `pulumi:"name"`
+	// The OIDC Claim to use for the user name.
+	NameClaim *string `pulumi:"nameClaim"`
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey *string `pulumi:"privateKey"`
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -221,8 +241,12 @@ type AuthConfigGenericOidcState struct {
 	ClientId pulumi.StringPtrInput
 	// The OIDC Client Secret.
 	ClientSecret pulumi.StringPtrInput
+	// The OIDC Claim to use for the user email.
+	EmailClaim pulumi.StringPtrInput
 	// Enable the auth config provider. Default `true` (bool)
 	Enabled pulumi.BoolPtrInput
+	// The provider specific URL used for logging a user out of their session.
+	EndSessionEndpoint pulumi.StringPtrInput
 	// Enable group search. Default `false` (bool)
 	GroupSearchEnabled pulumi.BoolPtrInput
 	// The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
@@ -233,8 +257,14 @@ type AuthConfigGenericOidcState struct {
 	JwksUrl pulumi.StringPtrInput
 	// Labels of the resource (map)
 	Labels pulumi.StringMapInput
+	// Allow the user to choose whether or not to logout of their session with the IdP.
+	LogoutAllEnabled pulumi.BoolPtrInput
+	// Force the user to logout of their session with the IdP.
+	LogoutAllForced pulumi.BoolPtrInput
 	// (Computed) The name of the resource (string)
 	Name pulumi.StringPtrInput
+	// The OIDC Claim to use for the user name.
+	NameClaim pulumi.StringPtrInput
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey pulumi.StringPtrInput
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -268,8 +298,12 @@ type authConfigGenericOidcArgs struct {
 	ClientId string `pulumi:"clientId"`
 	// The OIDC Client Secret.
 	ClientSecret string `pulumi:"clientSecret"`
+	// The OIDC Claim to use for the user email.
+	EmailClaim *string `pulumi:"emailClaim"`
 	// Enable the auth config provider. Default `true` (bool)
 	Enabled *bool `pulumi:"enabled"`
+	// The provider specific URL used for logging a user out of their session.
+	EndSessionEndpoint *string `pulumi:"endSessionEndpoint"`
 	// Enable group search. Default `false` (bool)
 	GroupSearchEnabled *bool `pulumi:"groupSearchEnabled"`
 	// The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
@@ -280,6 +314,12 @@ type authConfigGenericOidcArgs struct {
 	JwksUrl *string `pulumi:"jwksUrl"`
 	// Labels of the resource (map)
 	Labels map[string]string `pulumi:"labels"`
+	// Allow the user to choose whether or not to logout of their session with the IdP.
+	LogoutAllEnabled *bool `pulumi:"logoutAllEnabled"`
+	// Force the user to logout of their session with the IdP.
+	LogoutAllForced *bool `pulumi:"logoutAllForced"`
+	// The OIDC Claim to use for the user name.
+	NameClaim *string `pulumi:"nameClaim"`
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey *string `pulumi:"privateKey"`
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -308,8 +348,12 @@ type AuthConfigGenericOidcArgs struct {
 	ClientId pulumi.StringInput
 	// The OIDC Client Secret.
 	ClientSecret pulumi.StringInput
+	// The OIDC Claim to use for the user email.
+	EmailClaim pulumi.StringPtrInput
 	// Enable the auth config provider. Default `true` (bool)
 	Enabled pulumi.BoolPtrInput
+	// The provider specific URL used for logging a user out of their session.
+	EndSessionEndpoint pulumi.StringPtrInput
 	// Enable group search. Default `false` (bool)
 	GroupSearchEnabled pulumi.BoolPtrInput
 	// The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
@@ -320,6 +364,12 @@ type AuthConfigGenericOidcArgs struct {
 	JwksUrl pulumi.StringPtrInput
 	// Labels of the resource (map)
 	Labels pulumi.StringMapInput
+	// Allow the user to choose whether or not to logout of their session with the IdP.
+	LogoutAllEnabled pulumi.BoolPtrInput
+	// Force the user to logout of their session with the IdP.
+	LogoutAllForced pulumi.BoolPtrInput
+	// The OIDC Claim to use for the user name.
+	NameClaim pulumi.StringPtrInput
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey pulumi.StringPtrInput
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -454,9 +504,19 @@ func (o AuthConfigGenericOidcOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthConfigGenericOidc) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
+// The OIDC Claim to use for the user email.
+func (o AuthConfigGenericOidcOutput) EmailClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigGenericOidc) pulumi.StringPtrOutput { return v.EmailClaim }).(pulumi.StringPtrOutput)
+}
+
 // Enable the auth config provider. Default `true` (bool)
 func (o AuthConfigGenericOidcOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AuthConfigGenericOidc) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The provider specific URL used for logging a user out of their session.
+func (o AuthConfigGenericOidcOutput) EndSessionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigGenericOidc) pulumi.StringPtrOutput { return v.EndSessionEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Enable group search. Default `false` (bool)
@@ -484,9 +544,24 @@ func (o AuthConfigGenericOidcOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AuthConfigGenericOidc) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Allow the user to choose whether or not to logout of their session with the IdP.
+func (o AuthConfigGenericOidcOutput) LogoutAllEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigGenericOidc) pulumi.BoolPtrOutput { return v.LogoutAllEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Force the user to logout of their session with the IdP.
+func (o AuthConfigGenericOidcOutput) LogoutAllForced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AuthConfigGenericOidc) pulumi.BoolPtrOutput { return v.LogoutAllForced }).(pulumi.BoolPtrOutput)
+}
+
 // (Computed) The name of the resource (string)
 func (o AuthConfigGenericOidcOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthConfigGenericOidc) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The OIDC Claim to use for the user name.
+func (o AuthConfigGenericOidcOutput) NameClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthConfigGenericOidc) pulumi.StringPtrOutput { return v.NameClaim }).(pulumi.StringPtrOutput)
 }
 
 // A PEM-encoded private key for the OIDC provider.

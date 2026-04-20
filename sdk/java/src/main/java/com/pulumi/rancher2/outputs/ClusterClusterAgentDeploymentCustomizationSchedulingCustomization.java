@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterAgentDeploymentCustomizationSchedulingCustomization {
     /**
-     * @return The Pod Disruption Budget created for the cattle cluster agent
+     * @return The Pod Disruption Budget created for the cattle cluster agent or fleet agent
      * 
      */
     private @Nullable List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget> podDisruptionBudgets;
     /**
-     * @return The Priority Class created for the cattle cluster agent
+     * @return The Priority Class created for the cattle cluster agent or fleet agent
      * 
      */
     private @Nullable List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass> priorityClasses;
 
     private ClusterClusterAgentDeploymentCustomizationSchedulingCustomization() {}
     /**
-     * @return The Pod Disruption Budget created for the cattle cluster agent
+     * @return The Pod Disruption Budget created for the cattle cluster agent or fleet agent
      * 
      */
     public List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget> podDisruptionBudgets() {
         return this.podDisruptionBudgets == null ? List.of() : this.podDisruptionBudgets;
     }
     /**
-     * @return The Priority Class created for the cattle cluster agent
+     * @return The Priority Class created for the cattle cluster agent or fleet agent
      * 
      */
     public List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass> priorityClasses() {

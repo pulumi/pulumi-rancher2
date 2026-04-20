@@ -45,6 +45,9 @@ __all__ = [
     'ClusterFleetAgentDeploymentCustomization',
     'ClusterFleetAgentDeploymentCustomizationAppendToleration',
     'ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement',
+    'ClusterFleetAgentDeploymentCustomizationSchedulingCustomization',
+    'ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget',
+    'ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass',
     'ClusterGkeConfigV2',
     'ClusterGkeConfigV2ClusterAddons',
     'ClusterGkeConfigV2IpAllocationPolicy',
@@ -136,6 +139,9 @@ __all__ = [
     'ClusterV2FleetAgentDeploymentCustomization',
     'ClusterV2FleetAgentDeploymentCustomizationAppendToleration',
     'ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement',
+    'ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization',
+    'ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget',
+    'ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass',
     'ClusterV2LocalAuthEndpoint',
     'ClusterV2RkeConfig',
     'ClusterV2RkeConfigDataDirectory',
@@ -1636,10 +1642,10 @@ class ClusterClusterAgentDeploymentCustomization(dict):
                  override_resource_requirements: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement']] = None,
                  scheduling_customizations: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomization']] = None):
         """
-        :param Sequence['ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent
-        :param _builtins.str override_affinity: User defined affinity to override default agent affinity
-        :param Sequence['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent
-        :param Sequence['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs'] scheduling_customizations: User defined scheduling customization for the cattle cluster agent
+        :param Sequence['ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User-defined tolerations to append to agent
+        :param _builtins.str override_affinity: User-defined affinity to override default agent affinity
+        :param Sequence['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User-defined resource requirements to set on the agent
+        :param Sequence['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs'] scheduling_customizations: User-defined scheduling customization for the cattle or fleet cluster agent
         """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
@@ -1654,7 +1660,7 @@ class ClusterClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration']]:
         """
-        User defined tolerations to append to agent
+        User-defined tolerations to append to agent
         """
         return pulumi.get(self, "append_tolerations")
 
@@ -1662,7 +1668,7 @@ class ClusterClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[_builtins.str]:
         """
-        User defined affinity to override default agent affinity
+        User-defined affinity to override default agent affinity
         """
         return pulumi.get(self, "override_affinity")
 
@@ -1670,7 +1676,7 @@ class ClusterClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement']]:
         """
-        User defined resource requirements to set on the agent
+        User-defined resource requirements to set on the agent
         """
         return pulumi.get(self, "override_resource_requirements")
 
@@ -1678,7 +1684,7 @@ class ClusterClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="schedulingCustomizations")
     def scheduling_customizations(self) -> Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomization']]:
         """
-        User defined scheduling customization for the cattle cluster agent
+        User-defined scheduling customization for the cattle or fleet cluster agent
         """
         return pulumi.get(self, "scheduling_customizations")
 
@@ -1852,8 +1858,8 @@ class ClusterClusterAgentDeploymentCustomizationSchedulingCustomization(dict):
                  pod_disruption_budgets: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget']] = None,
                  priority_classes: Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass']] = None):
         """
-        :param Sequence['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs'] pod_disruption_budgets: The Pod Disruption Budget created for the cattle cluster agent
-        :param Sequence['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs'] priority_classes: The Priority Class created for the cattle cluster agent
+        :param Sequence['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs'] pod_disruption_budgets: The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+        :param Sequence['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs'] priority_classes: The Priority Class created for the cattle cluster agent or fleet agent
         """
         if pod_disruption_budgets is not None:
             pulumi.set(__self__, "pod_disruption_budgets", pod_disruption_budgets)
@@ -1864,7 +1870,7 @@ class ClusterClusterAgentDeploymentCustomizationSchedulingCustomization(dict):
     @pulumi.getter(name="podDisruptionBudgets")
     def pod_disruption_budgets(self) -> Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget']]:
         """
-        The Pod Disruption Budget created for the cattle cluster agent
+        The Pod Disruption Budget created for the cattle cluster agent or fleet agent
         """
         return pulumi.get(self, "pod_disruption_budgets")
 
@@ -1872,7 +1878,7 @@ class ClusterClusterAgentDeploymentCustomizationSchedulingCustomization(dict):
     @pulumi.getter(name="priorityClasses")
     def priority_classes(self) -> Optional[Sequence['outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass']]:
         """
-        The Priority Class created for the cattle cluster agent
+        The Priority Class created for the cattle cluster agent or fleet agent
         """
         return pulumi.get(self, "priority_classes")
 
@@ -1902,8 +1908,8 @@ class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisrup
                  max_unavailable: Optional[_builtins.str] = None,
                  min_available: Optional[_builtins.str] = None):
         """
-        :param _builtins.str max_unavailable: The maximum number of cattle cluster agent replicas that can be down at a given time.
-        :param _builtins.str min_available: The minimum number of cattle cluster agent replicas that must be running at a given time.
+        :param _builtins.str max_unavailable: The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+        :param _builtins.str min_available: The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
         """
         if max_unavailable is not None:
             pulumi.set(__self__, "max_unavailable", max_unavailable)
@@ -1914,7 +1920,7 @@ class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisrup
     @pulumi.getter(name="maxUnavailable")
     def max_unavailable(self) -> Optional[_builtins.str]:
         """
-        The maximum number of cattle cluster agent replicas that can be down at a given time.
+        The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
         """
         return pulumi.get(self, "max_unavailable")
 
@@ -1922,7 +1928,7 @@ class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisrup
     @pulumi.getter(name="minAvailable")
     def min_available(self) -> Optional[_builtins.str]:
         """
-        The minimum number of cattle cluster agent replicas that must be running at a given time.
+        The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
         """
         return pulumi.get(self, "min_available")
 
@@ -1950,8 +1956,8 @@ class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityC
                  value: _builtins.int,
                  preemption_policy: Optional[_builtins.str] = None):
         """
-        :param _builtins.int value: The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
-        :param _builtins.str preemption_policy: The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        :param _builtins.int value: The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+        :param _builtins.str preemption_policy: The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
         """
         pulumi.set(__self__, "value", value)
         if preemption_policy is not None:
@@ -1961,7 +1967,7 @@ class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityC
     @pulumi.getter
     def value(self) -> _builtins.int:
         """
-        The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
         """
         return pulumi.get(self, "value")
 
@@ -1969,7 +1975,7 @@ class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityC
     @pulumi.getter(name="preemptionPolicy")
     def preemption_policy(self) -> Optional[_builtins.str]:
         """
-        The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
         """
         return pulumi.get(self, "preemption_policy")
 
@@ -2340,6 +2346,8 @@ class ClusterEksConfigV2(dict):
         suggest = None
         if key == "cloudCredentialId":
             suggest = "cloud_credential_id"
+        elif key == "ipFamily":
+            suggest = "ip_family"
         elif key == "kmsKey":
             suggest = "kms_key"
         elif key == "kubernetesVersion":
@@ -2375,6 +2383,7 @@ class ClusterEksConfigV2(dict):
     def __init__(__self__, *,
                  cloud_credential_id: _builtins.str,
                  imported: Optional[_builtins.bool] = None,
+                 ip_family: Optional[_builtins.str] = None,
                  kms_key: Optional[_builtins.str] = None,
                  kubernetes_version: Optional[_builtins.str] = None,
                  logging_types: Optional[Sequence[_builtins.str]] = None,
@@ -2392,6 +2401,7 @@ class ClusterEksConfigV2(dict):
         """
         :param _builtins.str cloud_credential_id: The AWS Cloud Credential ID to use
         :param _builtins.bool imported: Is EKS cluster imported?
+        :param _builtins.str ip_family: The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
         :param _builtins.str kms_key: The AWS kms key to use
         :param _builtins.str kubernetes_version: The kubernetes master version
         :param Sequence[_builtins.str] logging_types: The AWS logging types
@@ -2410,6 +2420,8 @@ class ClusterEksConfigV2(dict):
         pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
         if imported is not None:
             pulumi.set(__self__, "imported", imported)
+        if ip_family is not None:
+            pulumi.set(__self__, "ip_family", ip_family)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if kubernetes_version is not None:
@@ -2454,6 +2466,14 @@ class ClusterEksConfigV2(dict):
         Is EKS cluster imported?
         """
         return pulumi.get(self, "imported")
+
+    @_builtins.property
+    @pulumi.getter(name="ipFamily")
+    def ip_family(self) -> Optional[_builtins.str]:
+        """
+        The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+        """
+        return pulumi.get(self, "ip_family")
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
@@ -2894,6 +2914,8 @@ class ClusterFleetAgentDeploymentCustomization(dict):
             suggest = "override_affinity"
         elif key == "overrideResourceRequirements":
             suggest = "override_resource_requirements"
+        elif key == "schedulingCustomizations":
+            suggest = "scheduling_customizations"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterFleetAgentDeploymentCustomization. Access the value via the '{suggest}' property getter instead.")
@@ -2909,11 +2931,13 @@ class ClusterFleetAgentDeploymentCustomization(dict):
     def __init__(__self__, *,
                  append_tolerations: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration']] = None,
                  override_affinity: Optional[_builtins.str] = None,
-                 override_resource_requirements: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+                 override_resource_requirements: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None,
+                 scheduling_customizations: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomization']] = None):
         """
-        :param Sequence['ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent
-        :param _builtins.str override_affinity: User defined affinity to override default agent affinity
-        :param Sequence['ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent
+        :param Sequence['ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User-defined tolerations to append to agent
+        :param _builtins.str override_affinity: User-defined affinity to override default agent affinity
+        :param Sequence['ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User-defined resource requirements to set on the agent
+        :param Sequence['ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs'] scheduling_customizations: User-defined scheduling customization for the cattle or fleet cluster agent
         """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
@@ -2921,12 +2945,14 @@ class ClusterFleetAgentDeploymentCustomization(dict):
             pulumi.set(__self__, "override_affinity", override_affinity)
         if override_resource_requirements is not None:
             pulumi.set(__self__, "override_resource_requirements", override_resource_requirements)
+        if scheduling_customizations is not None:
+            pulumi.set(__self__, "scheduling_customizations", scheduling_customizations)
 
     @_builtins.property
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration']]:
         """
-        User defined tolerations to append to agent
+        User-defined tolerations to append to agent
         """
         return pulumi.get(self, "append_tolerations")
 
@@ -2934,7 +2960,7 @@ class ClusterFleetAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[_builtins.str]:
         """
-        User defined affinity to override default agent affinity
+        User-defined affinity to override default agent affinity
         """
         return pulumi.get(self, "override_affinity")
 
@@ -2942,9 +2968,17 @@ class ClusterFleetAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement']]:
         """
-        User defined resource requirements to set on the agent
+        User-defined resource requirements to set on the agent
         """
         return pulumi.get(self, "override_resource_requirements")
+
+    @_builtins.property
+    @pulumi.getter(name="schedulingCustomizations")
+    def scheduling_customizations(self) -> Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomization']]:
+        """
+        User-defined scheduling customization for the cattle or fleet cluster agent
+        """
+        return pulumi.get(self, "scheduling_customizations")
 
 
 @pulumi.output_type
@@ -3089,6 +3123,153 @@ class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement(dict):
         The minimum memory required for agent
         """
         return pulumi.get(self, "memory_request")
+
+
+@pulumi.output_type
+class ClusterFleetAgentDeploymentCustomizationSchedulingCustomization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podDisruptionBudgets":
+            suggest = "pod_disruption_budgets"
+        elif key == "priorityClasses":
+            suggest = "priority_classes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterFleetAgentDeploymentCustomizationSchedulingCustomization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterFleetAgentDeploymentCustomizationSchedulingCustomization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterFleetAgentDeploymentCustomizationSchedulingCustomization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pod_disruption_budgets: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget']] = None,
+                 priority_classes: Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass']] = None):
+        """
+        :param Sequence['ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs'] pod_disruption_budgets: The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+        :param Sequence['ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs'] priority_classes: The Priority Class created for the cattle cluster agent or fleet agent
+        """
+        if pod_disruption_budgets is not None:
+            pulumi.set(__self__, "pod_disruption_budgets", pod_disruption_budgets)
+        if priority_classes is not None:
+            pulumi.set(__self__, "priority_classes", priority_classes)
+
+    @_builtins.property
+    @pulumi.getter(name="podDisruptionBudgets")
+    def pod_disruption_budgets(self) -> Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget']]:
+        """
+        The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+        """
+        return pulumi.get(self, "pod_disruption_budgets")
+
+    @_builtins.property
+    @pulumi.getter(name="priorityClasses")
+    def priority_classes(self) -> Optional[Sequence['outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass']]:
+        """
+        The Priority Class created for the cattle cluster agent or fleet agent
+        """
+        return pulumi.get(self, "priority_classes")
+
+
+@pulumi.output_type
+class ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxUnavailable":
+            suggest = "max_unavailable"
+        elif key == "minAvailable":
+            suggest = "min_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_unavailable: Optional[_builtins.str] = None,
+                 min_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str max_unavailable: The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+        :param _builtins.str min_available: The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+        """
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+        if min_available is not None:
+            pulumi.set(__self__, "min_available", min_available)
+
+    @_builtins.property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[_builtins.str]:
+        """
+        The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @_builtins.property
+    @pulumi.getter(name="minAvailable")
+    def min_available(self) -> Optional[_builtins.str]:
+        """
+        The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+        """
+        return pulumi.get(self, "min_available")
+
+
+@pulumi.output_type
+class ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preemptionPolicy":
+            suggest = "preemption_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 value: _builtins.int,
+                 preemption_policy: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int value: The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+        :param _builtins.str preemption_policy: The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+        pulumi.set(__self__, "value", value)
+        if preemption_policy is not None:
+            pulumi.set(__self__, "preemption_policy", preemption_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.int:
+        """
+        The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter(name="preemptionPolicy")
+    def preemption_policy(self) -> Optional[_builtins.str]:
+        """
+        The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+        return pulumi.get(self, "preemption_policy")
 
 
 @pulumi.output_type
@@ -12035,10 +12216,10 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
                  override_resource_requirements: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement']] = None,
                  scheduling_customizations: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization']] = None):
         """
-        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent
-        :param _builtins.str override_affinity: User defined affinity to override default agent affinity
-        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent
-        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs'] scheduling_customizations: User defined scheduling customization for the cattle cluster agent
+        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User-defined tolerations to append to agent
+        :param _builtins.str override_affinity: User-defined affinity to override default agent affinity
+        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User-defined resource requirements to set on the agent
+        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs'] scheduling_customizations: User-defined scheduling customization for the cattle or fleet cluster agent
         """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
@@ -12053,7 +12234,7 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration']]:
         """
-        User defined tolerations to append to agent
+        User-defined tolerations to append to agent
         """
         return pulumi.get(self, "append_tolerations")
 
@@ -12061,7 +12242,7 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[_builtins.str]:
         """
-        User defined affinity to override default agent affinity
+        User-defined affinity to override default agent affinity
         """
         return pulumi.get(self, "override_affinity")
 
@@ -12069,7 +12250,7 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement']]:
         """
-        User defined resource requirements to set on the agent
+        User-defined resource requirements to set on the agent
         """
         return pulumi.get(self, "override_resource_requirements")
 
@@ -12077,7 +12258,7 @@ class ClusterV2ClusterAgentDeploymentCustomization(dict):
     @pulumi.getter(name="schedulingCustomizations")
     def scheduling_customizations(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization']]:
         """
-        User defined scheduling customization for the cattle cluster agent
+        User-defined scheduling customization for the cattle or fleet cluster agent
         """
         return pulumi.get(self, "scheduling_customizations")
 
@@ -12251,8 +12432,8 @@ class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization(dict):
                  pod_disruption_budgets: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget']] = None,
                  priority_classes: Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass']] = None):
         """
-        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs'] pod_disruption_budgets: The Pod Disruption Budget created for the cattle cluster agent
-        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs'] priority_classes: The Priority Class created for the cattle cluster agent
+        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs'] pod_disruption_budgets: The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+        :param Sequence['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs'] priority_classes: The Priority Class created for the cattle cluster agent or fleet agent
         """
         if pod_disruption_budgets is not None:
             pulumi.set(__self__, "pod_disruption_budgets", pod_disruption_budgets)
@@ -12263,7 +12444,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization(dict):
     @pulumi.getter(name="podDisruptionBudgets")
     def pod_disruption_budgets(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget']]:
         """
-        The Pod Disruption Budget created for the cattle cluster agent
+        The Pod Disruption Budget created for the cattle cluster agent or fleet agent
         """
         return pulumi.get(self, "pod_disruption_budgets")
 
@@ -12271,7 +12452,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization(dict):
     @pulumi.getter(name="priorityClasses")
     def priority_classes(self) -> Optional[Sequence['outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass']]:
         """
-        The Priority Class created for the cattle cluster agent
+        The Priority Class created for the cattle cluster agent or fleet agent
         """
         return pulumi.get(self, "priority_classes")
 
@@ -12301,8 +12482,8 @@ class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisr
                  max_unavailable: Optional[_builtins.str] = None,
                  min_available: Optional[_builtins.str] = None):
         """
-        :param _builtins.str max_unavailable: The maximum number of cattle cluster agent replicas that can be down at a given time.
-        :param _builtins.str min_available: The minimum number of cattle cluster agent replicas that must be running at a given time.
+        :param _builtins.str max_unavailable: The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+        :param _builtins.str min_available: The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
         """
         if max_unavailable is not None:
             pulumi.set(__self__, "max_unavailable", max_unavailable)
@@ -12313,7 +12494,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisr
     @pulumi.getter(name="maxUnavailable")
     def max_unavailable(self) -> Optional[_builtins.str]:
         """
-        The maximum number of cattle cluster agent replicas that can be down at a given time.
+        The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
         """
         return pulumi.get(self, "max_unavailable")
 
@@ -12321,7 +12502,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisr
     @pulumi.getter(name="minAvailable")
     def min_available(self) -> Optional[_builtins.str]:
         """
-        The minimum number of cattle cluster agent replicas that must be running at a given time.
+        The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
         """
         return pulumi.get(self, "min_available")
 
@@ -12349,8 +12530,8 @@ class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorit
                  value: _builtins.int,
                  preemption_policy: Optional[_builtins.str] = None):
         """
-        :param _builtins.int value: The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
-        :param _builtins.str preemption_policy: The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        :param _builtins.int value: The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+        :param _builtins.str preemption_policy: The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
         """
         pulumi.set(__self__, "value", value)
         if preemption_policy is not None:
@@ -12360,7 +12541,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorit
     @pulumi.getter
     def value(self) -> _builtins.int:
         """
-        The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
         """
         return pulumi.get(self, "value")
 
@@ -12368,7 +12549,7 @@ class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorit
     @pulumi.getter(name="preemptionPolicy")
     def preemption_policy(self) -> Optional[_builtins.str]:
         """
-        The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
         """
         return pulumi.get(self, "preemption_policy")
 
@@ -12576,6 +12757,8 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
             suggest = "override_affinity"
         elif key == "overrideResourceRequirements":
             suggest = "override_resource_requirements"
+        elif key == "schedulingCustomizations":
+            suggest = "scheduling_customizations"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterV2FleetAgentDeploymentCustomization. Access the value via the '{suggest}' property getter instead.")
@@ -12591,11 +12774,13 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
     def __init__(__self__, *,
                  append_tolerations: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration']] = None,
                  override_affinity: Optional[_builtins.str] = None,
-                 override_resource_requirements: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None):
+                 override_resource_requirements: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']] = None,
+                 scheduling_customizations: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization']] = None):
         """
-        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User defined tolerations to append to agent
-        :param _builtins.str override_affinity: User defined affinity to override default agent affinity
-        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User defined resource requirements to set on the agent
+        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs'] append_tolerations: User-defined tolerations to append to agent
+        :param _builtins.str override_affinity: User-defined affinity to override default agent affinity
+        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs'] override_resource_requirements: User-defined resource requirements to set on the agent
+        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs'] scheduling_customizations: User-defined scheduling customization for the cattle or fleet cluster agent
         """
         if append_tolerations is not None:
             pulumi.set(__self__, "append_tolerations", append_tolerations)
@@ -12603,12 +12788,14 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
             pulumi.set(__self__, "override_affinity", override_affinity)
         if override_resource_requirements is not None:
             pulumi.set(__self__, "override_resource_requirements", override_resource_requirements)
+        if scheduling_customizations is not None:
+            pulumi.set(__self__, "scheduling_customizations", scheduling_customizations)
 
     @_builtins.property
     @pulumi.getter(name="appendTolerations")
     def append_tolerations(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration']]:
         """
-        User defined tolerations to append to agent
+        User-defined tolerations to append to agent
         """
         return pulumi.get(self, "append_tolerations")
 
@@ -12616,7 +12803,7 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideAffinity")
     def override_affinity(self) -> Optional[_builtins.str]:
         """
-        User defined affinity to override default agent affinity
+        User-defined affinity to override default agent affinity
         """
         return pulumi.get(self, "override_affinity")
 
@@ -12624,9 +12811,17 @@ class ClusterV2FleetAgentDeploymentCustomization(dict):
     @pulumi.getter(name="overrideResourceRequirements")
     def override_resource_requirements(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement']]:
         """
-        User defined resource requirements to set on the agent
+        User-defined resource requirements to set on the agent
         """
         return pulumi.get(self, "override_resource_requirements")
+
+    @_builtins.property
+    @pulumi.getter(name="schedulingCustomizations")
+    def scheduling_customizations(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization']]:
+        """
+        User-defined scheduling customization for the cattle or fleet cluster agent
+        """
+        return pulumi.get(self, "scheduling_customizations")
 
 
 @pulumi.output_type
@@ -12771,6 +12966,153 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement(dict
         The minimum memory required for agent
         """
         return pulumi.get(self, "memory_request")
+
+
+@pulumi.output_type
+class ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podDisruptionBudgets":
+            suggest = "pod_disruption_budgets"
+        elif key == "priorityClasses":
+            suggest = "priority_classes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pod_disruption_budgets: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget']] = None,
+                 priority_classes: Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass']] = None):
+        """
+        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs'] pod_disruption_budgets: The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+        :param Sequence['ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs'] priority_classes: The Priority Class created for the cattle cluster agent or fleet agent
+        """
+        if pod_disruption_budgets is not None:
+            pulumi.set(__self__, "pod_disruption_budgets", pod_disruption_budgets)
+        if priority_classes is not None:
+            pulumi.set(__self__, "priority_classes", priority_classes)
+
+    @_builtins.property
+    @pulumi.getter(name="podDisruptionBudgets")
+    def pod_disruption_budgets(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget']]:
+        """
+        The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+        """
+        return pulumi.get(self, "pod_disruption_budgets")
+
+    @_builtins.property
+    @pulumi.getter(name="priorityClasses")
+    def priority_classes(self) -> Optional[Sequence['outputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass']]:
+        """
+        The Priority Class created for the cattle cluster agent or fleet agent
+        """
+        return pulumi.get(self, "priority_classes")
+
+
+@pulumi.output_type
+class ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxUnavailable":
+            suggest = "max_unavailable"
+        elif key == "minAvailable":
+            suggest = "min_available"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_unavailable: Optional[_builtins.str] = None,
+                 min_available: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str max_unavailable: The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+        :param _builtins.str min_available: The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+        """
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+        if min_available is not None:
+            pulumi.set(__self__, "min_available", min_available)
+
+    @_builtins.property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[_builtins.str]:
+        """
+        The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @_builtins.property
+    @pulumi.getter(name="minAvailable")
+    def min_available(self) -> Optional[_builtins.str]:
+        """
+        The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+        """
+        return pulumi.get(self, "min_available")
+
+
+@pulumi.output_type
+class ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preemptionPolicy":
+            suggest = "preemption_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 value: _builtins.int,
+                 preemption_policy: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int value: The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+        :param _builtins.str preemption_policy: The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+        pulumi.set(__self__, "value", value)
+        if preemption_policy is not None:
+            pulumi.set(__self__, "preemption_policy", preemption_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.int:
+        """
+        The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter(name="preemptionPolicy")
+    def preemption_policy(self) -> Optional[_builtins.str]:
+        """
+        The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+        """
+        return pulumi.get(self, "preemption_policy")
 
 
 @pulumi.output_type
@@ -19237,6 +19579,7 @@ class ProjectResourceQuotaNamespaceDefaultLimit(dict):
 
     def __init__(__self__, *,
                  config_maps: Optional[_builtins.str] = None,
+                 extended: Optional[Mapping[str, _builtins.str]] = None,
                  limits_cpu: Optional[_builtins.str] = None,
                  limits_memory: Optional[_builtins.str] = None,
                  persistent_volume_claims: Optional[_builtins.str] = None,
@@ -19267,6 +19610,8 @@ class ProjectResourceQuotaNamespaceDefaultLimit(dict):
         """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
+        if extended is not None:
+            pulumi.set(__self__, "extended", extended)
         if limits_cpu is not None:
             pulumi.set(__self__, "limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -19299,6 +19644,11 @@ class ProjectResourceQuotaNamespaceDefaultLimit(dict):
         Limit for config maps in project (string)
         """
         return pulumi.get(self, "config_maps")
+
+    @_builtins.property
+    @pulumi.getter
+    def extended(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "extended")
 
     @_builtins.property
     @pulumi.getter(name="limitsCpu")
@@ -19435,6 +19785,7 @@ class ProjectResourceQuotaProjectLimit(dict):
 
     def __init__(__self__, *,
                  config_maps: Optional[_builtins.str] = None,
+                 extended: Optional[Mapping[str, _builtins.str]] = None,
                  limits_cpu: Optional[_builtins.str] = None,
                  limits_memory: Optional[_builtins.str] = None,
                  persistent_volume_claims: Optional[_builtins.str] = None,
@@ -19465,6 +19816,8 @@ class ProjectResourceQuotaProjectLimit(dict):
         """
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
+        if extended is not None:
+            pulumi.set(__self__, "extended", extended)
         if limits_cpu is not None:
             pulumi.set(__self__, "limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -19497,6 +19850,11 @@ class ProjectResourceQuotaProjectLimit(dict):
         Limit for config maps in project (string)
         """
         return pulumi.get(self, "config_maps")
+
+    @_builtins.property
+    @pulumi.getter
+    def extended(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "extended")
 
     @_builtins.property
     @pulumi.getter(name="limitsCpu")
@@ -20604,6 +20962,7 @@ class GetClusterClusterTemplateQuestionResult(dict):
 class GetClusterEksConfigV2Result(dict):
     def __init__(__self__, *,
                  cloud_credential_id: _builtins.str,
+                 ip_family: _builtins.str,
                  kubernetes_version: _builtins.str,
                  name: _builtins.str,
                  node_groups: Sequence['outputs.GetClusterEksConfigV2NodeGroupResult'],
@@ -20621,6 +20980,7 @@ class GetClusterEksConfigV2Result(dict):
                  tags: Optional[Mapping[str, _builtins.str]] = None):
         """
         :param _builtins.str cloud_credential_id: The AWS Cloud Credential ID to use
+        :param _builtins.str ip_family: The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
         :param _builtins.str kubernetes_version: The kubernetes master version
         :param _builtins.str name: The name of the Cluster (string)
         :param Sequence['GetClusterEksConfigV2NodeGroupArgs'] node_groups: The AWS node groups to use
@@ -20638,6 +20998,7 @@ class GetClusterEksConfigV2Result(dict):
         :param Mapping[str, _builtins.str] tags: The EKS cluster tags
         """
         pulumi.set(__self__, "cloud_credential_id", cloud_credential_id)
+        pulumi.set(__self__, "ip_family", ip_family)
         pulumi.set(__self__, "kubernetes_version", kubernetes_version)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "node_groups", node_groups)
@@ -20669,6 +21030,14 @@ class GetClusterEksConfigV2Result(dict):
         The AWS Cloud Credential ID to use
         """
         return pulumi.get(self, "cloud_credential_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipFamily")
+    def ip_family(self) -> _builtins.str:
+        """
+        The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+        """
+        return pulumi.get(self, "ip_family")
 
     @_builtins.property
     @pulumi.getter(name="kubernetesVersion")
@@ -28524,6 +28893,7 @@ class GetProjectResourceQuotaResult(dict):
 class GetProjectResourceQuotaNamespaceDefaultLimitResult(dict):
     def __init__(__self__, *,
                  config_maps: Optional[_builtins.str] = None,
+                 extended: Optional[Mapping[str, _builtins.str]] = None,
                  limits_cpu: Optional[_builtins.str] = None,
                  limits_memory: Optional[_builtins.str] = None,
                  persistent_volume_claims: Optional[_builtins.str] = None,
@@ -28538,6 +28908,8 @@ class GetProjectResourceQuotaNamespaceDefaultLimitResult(dict):
                  services_node_ports: Optional[_builtins.str] = None):
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
+        if extended is not None:
+            pulumi.set(__self__, "extended", extended)
         if limits_cpu is not None:
             pulumi.set(__self__, "limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -28567,6 +28939,11 @@ class GetProjectResourceQuotaNamespaceDefaultLimitResult(dict):
     @pulumi.getter(name="configMaps")
     def config_maps(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "config_maps")
+
+    @_builtins.property
+    @pulumi.getter
+    def extended(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "extended")
 
     @_builtins.property
     @pulumi.getter(name="limitsCpu")
@@ -28633,6 +29010,7 @@ class GetProjectResourceQuotaNamespaceDefaultLimitResult(dict):
 class GetProjectResourceQuotaProjectLimitResult(dict):
     def __init__(__self__, *,
                  config_maps: Optional[_builtins.str] = None,
+                 extended: Optional[Mapping[str, _builtins.str]] = None,
                  limits_cpu: Optional[_builtins.str] = None,
                  limits_memory: Optional[_builtins.str] = None,
                  persistent_volume_claims: Optional[_builtins.str] = None,
@@ -28647,6 +29025,8 @@ class GetProjectResourceQuotaProjectLimitResult(dict):
                  services_node_ports: Optional[_builtins.str] = None):
         if config_maps is not None:
             pulumi.set(__self__, "config_maps", config_maps)
+        if extended is not None:
+            pulumi.set(__self__, "extended", extended)
         if limits_cpu is not None:
             pulumi.set(__self__, "limits_cpu", limits_cpu)
         if limits_memory is not None:
@@ -28676,6 +29056,11 @@ class GetProjectResourceQuotaProjectLimitResult(dict):
     @pulumi.getter(name="configMaps")
     def config_maps(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "config_maps")
+
+    @_builtins.property
+    @pulumi.getter
+    def extended(self) -> Optional[Mapping[str, _builtins.str]]:
+        return pulumi.get(self, "extended")
 
     @_builtins.property
     @pulumi.getter(name="limitsCpu")

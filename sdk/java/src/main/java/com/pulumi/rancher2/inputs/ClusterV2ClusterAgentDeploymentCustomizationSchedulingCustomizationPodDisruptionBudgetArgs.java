@@ -16,14 +16,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
     public static final ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs Empty = new ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs();
 
     /**
-     * The maximum number of cattle cluster agent replicas that can be down at a given time.
+     * The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
      * 
      */
     @Import(name="maxUnavailable")
     private @Nullable Output<String> maxUnavailable;
 
     /**
-     * @return The maximum number of cattle cluster agent replicas that can be down at a given time.
+     * @return The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
      * 
      */
     public Optional<Output<String>> maxUnavailable() {
@@ -31,14 +31,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
     }
 
     /**
-     * The minimum number of cattle cluster agent replicas that must be running at a given time.
+     * The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
      * 
      */
     @Import(name="minAvailable")
     private @Nullable Output<String> minAvailable;
 
     /**
-     * @return The minimum number of cattle cluster agent replicas that must be running at a given time.
+     * @return The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
      * 
      */
     public Optional<Output<String>> minAvailable() {
@@ -71,7 +71,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param maxUnavailable The maximum number of cattle cluster agent replicas that can be down at a given time.
+         * @param maxUnavailable The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param maxUnavailable The maximum number of cattle cluster agent replicas that can be down at a given time.
+         * @param maxUnavailable The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param minAvailable The minimum number of cattle cluster agent replicas that must be running at a given time.
+         * @param minAvailable The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param minAvailable The minimum number of cattle cluster agent replicas that must be running at a given time.
+         * @param minAvailable The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
          * 
          * @return builder
          * 

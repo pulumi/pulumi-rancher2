@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetGetArgs>? _podDisruptionBudgets;
 
         /// <summary>
-        /// The Pod Disruption Budget created for the cattle cluster agent
+        /// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
         /// </summary>
         public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetGetArgs> PodDisruptionBudgets
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassGetArgs>? _priorityClasses;
 
         /// <summary>
-        /// The Priority Class created for the cattle cluster agent
+        /// The Priority Class created for the cattle cluster agent or fleet agent
         /// </summary>
         public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassGetArgs> PriorityClasses
         {

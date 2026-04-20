@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthConfigAdfs{}
 	case "rancher2:index/authConfigAzureAd:AuthConfigAzureAd":
 		r = &AuthConfigAzureAd{}
+	case "rancher2:index/authConfigCognito:AuthConfigCognito":
+		r = &AuthConfigCognito{}
 	case "rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa":
 		r = &AuthConfigFreeIpa{}
 	case "rancher2:index/authConfigGenericOidc:AuthConfigGenericOidc":
@@ -39,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthConfigGithubapp{}
 	case "rancher2:index/authConfigKeycloak:AuthConfigKeycloak":
 		r = &AuthConfigKeycloak{}
+	case "rancher2:index/authConfigKeycloakOidc:AuthConfigKeycloakOidc":
+		r = &AuthConfigKeycloakOidc{}
 	case "rancher2:index/authConfigOkta:AuthConfigOkta":
 		r = &AuthConfigOkta{}
 	case "rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap":
@@ -158,6 +162,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
+		"index/authConfigCognito",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
 		"index/authConfigFreeIpa",
 		&module{version},
 	)
@@ -179,6 +188,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"rancher2",
 		"index/authConfigKeycloak",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"rancher2",
+		"index/authConfigKeycloakOidc",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

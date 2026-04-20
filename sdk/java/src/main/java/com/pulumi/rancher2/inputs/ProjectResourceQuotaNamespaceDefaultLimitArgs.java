@@ -6,6 +6,7 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +29,13 @@ public final class ProjectResourceQuotaNamespaceDefaultLimitArgs extends com.pul
      */
     public Optional<Output<String>> configMaps() {
         return Optional.ofNullable(this.configMaps);
+    }
+
+    @Import(name="extended")
+    private @Nullable Output<Map<String,String>> extended;
+
+    public Optional<Output<Map<String,String>>> extended() {
+        return Optional.ofNullable(this.extended);
     }
 
     /**
@@ -210,6 +218,7 @@ public final class ProjectResourceQuotaNamespaceDefaultLimitArgs extends com.pul
 
     private ProjectResourceQuotaNamespaceDefaultLimitArgs(ProjectResourceQuotaNamespaceDefaultLimitArgs $) {
         this.configMaps = $.configMaps;
+        this.extended = $.extended;
         this.limitsCpu = $.limitsCpu;
         this.limitsMemory = $.limitsMemory;
         this.persistentVolumeClaims = $.persistentVolumeClaims;
@@ -261,6 +270,15 @@ public final class ProjectResourceQuotaNamespaceDefaultLimitArgs extends com.pul
          */
         public Builder configMaps(String configMaps) {
             return configMaps(Output.of(configMaps));
+        }
+
+        public Builder extended(@Nullable Output<Map<String,String>> extended) {
+            $.extended = extended;
+            return this;
+        }
+
+        public Builder extended(Map<String,String> extended) {
+            return extended(Output.of(extended));
         }
 
         /**

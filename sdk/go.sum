@@ -183,8 +183,6 @@ github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 h1:vkHw5I/plNdTr435
 github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231/go.mod h1:murToZ2N9hNJzewjHBgfFdXhZKjY3z5cYC1VXk+lbFE=
 github.com/pulumi/esc v0.17.0 h1:oaVOIyFTENlYDuqc3pW75lQT9jb2cd6ie/4/Twxn66w=
 github.com/pulumi/esc v0.17.0/go.mod h1:XnSxlt5NkmuAj304l/gK4pRErFbtqq6XpfX1tYT9Jbc=
-github.com/pulumi/pulumi-rancher2/sdk/v11 v11.1.0 h1:0ZQEAIc1Ot6v5XuThoFpB4l0JIgsM8AVHrjt9Y1TRlA=
-github.com/pulumi/pulumi-rancher2/sdk/v11 v11.1.0/go.mod h1:kUZC/uu8SmIEOVNLngNdQ8rQVXoERTRwd9lOdNXXDjQ=
 github.com/pulumi/pulumi/sdk/v3 v3.228.0 h1:+kV5pPM52MMFQsYiZ/deDi6egVb8JZsTpQhzv+CMB3A=
 github.com/pulumi/pulumi/sdk/v3 v3.228.0/go.mod h1:PAqB2+8gnxqk+QrFdXL3fSjsLIjtlBIcy5KLZ//4WSk=
 github.com/rivo/uniseg v0.4.7 h1:WUdvkW8uEhrYfLC4ZzdpI2ztxP1I582+49Oc5Mq64VQ=

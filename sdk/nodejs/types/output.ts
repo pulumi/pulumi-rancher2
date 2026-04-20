@@ -366,19 +366,19 @@ export interface ClusterAksConfigV2NodePool {
 
 export interface ClusterClusterAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      */
     appendTolerations?: outputs.ClusterClusterAgentDeploymentCustomizationAppendToleration[];
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      */
     overrideAffinity?: string;
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: outputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement[];
     /**
-     * User defined scheduling customization for the cattle cluster agent
+     * User-defined scheduling customization for the cattle or fleet cluster agent
      */
     schedulingCustomizations?: outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomization[];
 }
@@ -427,33 +427,33 @@ export interface ClusterClusterAgentDeploymentCustomizationOverrideResourceRequi
 
 export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomization {
     /**
-     * The Pod Disruption Budget created for the cattle cluster agent
+     * The Pod Disruption Budget created for the cattle cluster agent or fleet agent
      */
     podDisruptionBudgets?: outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget[];
     /**
-     * The Priority Class created for the cattle cluster agent
+     * The Priority Class created for the cattle cluster agent or fleet agent
      */
     priorityClasses?: outputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass[];
 }
 
 export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
     /**
-     * The maximum number of cattle cluster agent replicas that can be down at a given time.
+     * The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
      */
     maxUnavailable?: string;
     /**
-     * The minimum number of cattle cluster agent replicas that must be running at a given time.
+     * The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
      */
     minAvailable?: string;
 }
 
 export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
     /**
-     * The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+     * The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
      */
     preemptionPolicy?: string;
     /**
-     * The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     * The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
      */
     value: number;
 }
@@ -565,6 +565,10 @@ export interface ClusterEksConfigV2 {
      * Is EKS cluster imported?
      */
     imported?: boolean;
+    /**
+     * The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+     */
+    ipFamily: string;
     /**
      * The AWS kms key to use
      */
@@ -719,17 +723,21 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
 
 export interface ClusterFleetAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      */
     appendTolerations?: outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration[];
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      */
     overrideAffinity?: string;
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement[];
+    /**
+     * User-defined scheduling customization for the cattle or fleet cluster agent
+     */
+    schedulingCustomizations?: outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomization[];
 }
 
 export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
@@ -772,6 +780,39 @@ export interface ClusterFleetAgentDeploymentCustomizationOverrideResourceRequire
      * The minimum memory required for agent
      */
     memoryRequest?: string;
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationSchedulingCustomization {
+    /**
+     * The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+     */
+    podDisruptionBudgets?: outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget[];
+    /**
+     * The Priority Class created for the cattle cluster agent or fleet agent
+     */
+    priorityClasses?: outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass[];
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+    /**
+     * The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+     */
+    maxUnavailable?: string;
+    /**
+     * The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+     */
+    minAvailable?: string;
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+    /**
+     * The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+     */
+    preemptionPolicy?: string;
+    /**
+     * The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+     */
+    value: number;
 }
 
 export interface ClusterGkeConfigV2 {
@@ -3256,19 +3297,19 @@ export interface ClusterV2AgentEnvVar {
 
 export interface ClusterV2ClusterAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      */
     appendTolerations?: outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration[];
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      */
     overrideAffinity?: string;
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement[];
     /**
-     * User defined scheduling customization for the cattle cluster agent
+     * User-defined scheduling customization for the cattle or fleet cluster agent
      */
     schedulingCustomizations?: outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization[];
 }
@@ -3317,33 +3358,33 @@ export interface ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceReq
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization {
     /**
-     * The Pod Disruption Budget created for the cattle cluster agent
+     * The Pod Disruption Budget created for the cattle cluster agent or fleet agent
      */
     podDisruptionBudgets?: outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget[];
     /**
-     * The Priority Class created for the cattle cluster agent
+     * The Priority Class created for the cattle cluster agent or fleet agent
      */
     priorityClasses?: outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass[];
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
     /**
-     * The maximum number of cattle cluster agent replicas that can be down at a given time.
+     * The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
      */
     maxUnavailable?: string;
     /**
-     * The minimum number of cattle cluster agent replicas that must be running at a given time.
+     * The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
      */
     minAvailable?: string;
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
     /**
-     * The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+     * The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
      */
     preemptionPolicy?: string;
     /**
-     * The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     * The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
      */
     value: number;
 }
@@ -3405,17 +3446,21 @@ export interface ClusterV2ClusterRegistrationToken {
 
 export interface ClusterV2FleetAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      */
     appendTolerations?: outputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration[];
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      */
     overrideAffinity?: string;
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: outputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement[];
+    /**
+     * User-defined scheduling customization for the cattle or fleet cluster agent
+     */
+    schedulingCustomizations?: outputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization[];
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
@@ -3458,6 +3503,39 @@ export interface ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequi
      * The minimum memory required for agent
      */
     memoryRequest?: string;
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization {
+    /**
+     * The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+     */
+    podDisruptionBudgets?: outputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget[];
+    /**
+     * The Priority Class created for the cattle cluster agent or fleet agent
+     */
+    priorityClasses?: outputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass[];
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+    /**
+     * The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+     */
+    maxUnavailable?: string;
+    /**
+     * The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+     */
+    minAvailable?: string;
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+    /**
+     * The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+     */
+    preemptionPolicy?: string;
+    /**
+     * The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+     */
+    value: number;
 }
 
 export interface ClusterV2LocalAuthEndpoint {
@@ -4377,6 +4455,10 @@ export interface GetClusterEksConfigV2 {
      * Is EKS cluster imported?
      */
     imported?: boolean;
+    /**
+     * The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+     */
+    ipFamily: string;
     /**
      * The AWS kms key to use
      */
@@ -6577,6 +6659,7 @@ export interface GetProjectResourceQuota {
 
 export interface GetProjectResourceQuotaNamespaceDefaultLimit {
     configMaps?: string;
+    extended?: {[key: string]: string};
     limitsCpu?: string;
     limitsMemory?: string;
     persistentVolumeClaims?: string;
@@ -6593,6 +6676,7 @@ export interface GetProjectResourceQuotaNamespaceDefaultLimit {
 
 export interface GetProjectResourceQuotaProjectLimit {
     configMaps?: string;
+    extended?: {[key: string]: string};
     limitsCpu?: string;
     limitsMemory?: string;
     persistentVolumeClaims?: string;
@@ -7842,6 +7926,7 @@ export interface ProjectResourceQuotaNamespaceDefaultLimit {
      * Limit for config maps in project (string)
      */
     configMaps?: string;
+    extended?: {[key: string]: string};
     /**
      * Limit for limits cpu in project (string)
      */
@@ -7896,6 +7981,7 @@ export interface ProjectResourceQuotaProjectLimit {
      * Limit for config maps in project (string)
      */
     configMaps?: string;
+    extended?: {[key: string]: string};
     /**
      * Limit for limits cpu in project (string)
      */

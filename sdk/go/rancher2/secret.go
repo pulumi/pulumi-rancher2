@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,28 +25,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
-//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "test.io",
+//			invokeBase64encode, err := std.Base64encode(ctx, map[string]interface{}{
+//				"input": "test.io",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeBase64encode1, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "user2",
+//			invokeBase64encode1, err := std.Base64encode(ctx, map[string]interface{}{
+//				"input": "user2",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeBase64encode2, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "pass",
+//			invokeBase64encode2, err := std.Base64encode(ctx, map[string]interface{}{
+//				"input": "pass",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -57,9 +57,9 @@ import (
 //				Description: pulumi.String("Terraform secret foo"),
 //				ProjectId:   pulumi.String("<project_id>"),
 //				Data: pulumi.StringMap{
-//					"address":  pulumi.String(invokeBase64encode.Result),
-//					"username": pulumi.String(invokeBase64encode1.Result),
-//					"password": pulumi.String(invokeBase64encode2.Result),
+//					"address":  invokeBase64encode.Result,
+//					"username": invokeBase64encode1.Result,
+//					"password": invokeBase64encode2.Result,
 //				},
 //			})
 //			if err != nil {
@@ -76,28 +76,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
-//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "test.io",
+//			invokeBase64encode, err := std.Base64encode(ctx, map[string]interface{}{
+//				"input": "test.io",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeBase64encode1, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "user2",
+//			invokeBase64encode1, err := std.Base64encode(ctx, map[string]interface{}{
+//				"input": "user2",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			invokeBase64encode2, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "pass",
+//			invokeBase64encode2, err := std.Base64encode(ctx, map[string]interface{}{
+//				"input": "pass",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -109,9 +109,9 @@ import (
 //				ProjectId:   pulumi.String("<project_id>"),
 //				NamespaceId: pulumi.String("<namespace_id>"),
 //				Data: pulumi.StringMap{
-//					"address":  pulumi.String(invokeBase64encode.Result),
-//					"username": pulumi.String(invokeBase64encode1.Result),
-//					"password": pulumi.String(invokeBase64encode2.Result),
+//					"address":  invokeBase64encode.Result,
+//					"username": invokeBase64encode1.Result,
+//					"password": invokeBase64encode2.Result,
 //				},
 //			})
 //			if err != nil {

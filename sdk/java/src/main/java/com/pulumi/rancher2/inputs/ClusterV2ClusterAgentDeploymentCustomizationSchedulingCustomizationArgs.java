@@ -18,14 +18,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
     public static final ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs Empty = new ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs();
 
     /**
-     * The Pod Disruption Budget created for the cattle cluster agent
+     * The Pod Disruption Budget created for the cattle cluster agent or fleet agent
      * 
      */
     @Import(name="podDisruptionBudgets")
     private @Nullable Output<List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs>> podDisruptionBudgets;
 
     /**
-     * @return The Pod Disruption Budget created for the cattle cluster agent
+     * @return The Pod Disruption Budget created for the cattle cluster agent or fleet agent
      * 
      */
     public Optional<Output<List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs>>> podDisruptionBudgets() {
@@ -33,14 +33,14 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
     }
 
     /**
-     * The Priority Class created for the cattle cluster agent
+     * The Priority Class created for the cattle cluster agent or fleet agent
      * 
      */
     @Import(name="priorityClasses")
     private @Nullable Output<List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs>> priorityClasses;
 
     /**
-     * @return The Priority Class created for the cattle cluster agent
+     * @return The Priority Class created for the cattle cluster agent or fleet agent
      * 
      */
     public Optional<Output<List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs>>> priorityClasses() {
@@ -73,7 +73,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param podDisruptionBudgets The Pod Disruption Budget created for the cattle cluster agent
+         * @param podDisruptionBudgets The Pod Disruption Budget created for the cattle cluster agent or fleet agent
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param podDisruptionBudgets The Pod Disruption Budget created for the cattle cluster agent
+         * @param podDisruptionBudgets The Pod Disruption Budget created for the cattle cluster agent or fleet agent
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param podDisruptionBudgets The Pod Disruption Budget created for the cattle cluster agent
+         * @param podDisruptionBudgets The Pod Disruption Budget created for the cattle cluster agent or fleet agent
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param priorityClasses The Priority Class created for the cattle cluster agent
+         * @param priorityClasses The Priority Class created for the cattle cluster agent or fleet agent
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param priorityClasses The Priority Class created for the cattle cluster agent
+         * @param priorityClasses The Priority Class created for the cattle cluster agent or fleet agent
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomi
         }
 
         /**
-         * @param priorityClasses The Priority Class created for the cattle cluster agent
+         * @param priorityClasses The Priority Class created for the cattle cluster agent or fleet agent
          * 
          * @return builder
          * 

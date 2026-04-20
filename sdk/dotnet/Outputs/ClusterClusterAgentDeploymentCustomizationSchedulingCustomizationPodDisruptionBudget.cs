@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget
     {
         /// <summary>
-        /// The maximum number of cattle cluster agent replicas that can be down at a given time.
+        /// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
         /// </summary>
         public readonly string? MaxUnavailable;
         /// <summary>
-        /// The minimum number of cattle cluster agent replicas that must be running at a given time.
+        /// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
         /// </summary>
         public readonly string? MinAvailable;
 

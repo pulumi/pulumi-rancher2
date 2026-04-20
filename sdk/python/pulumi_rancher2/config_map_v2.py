@@ -294,7 +294,7 @@ class ConfigMapV2(pulumi.CustomResource):
         V2 configMaps can be imported using the Rancher cluster ID, ConfigMap V2 namespace and name.
 
         ```sh
-        $ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
+        $ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;CONFIG_MAP_V2_NAMESPACE&gt;/&lt;CONFIG_MAP_V2_NAME&gt;
         ```
 
 
@@ -322,7 +322,7 @@ class ConfigMapV2(pulumi.CustomResource):
         V2 configMaps can be imported using the Rancher cluster ID, ConfigMap V2 namespace and name.
 
         ```sh
-        $ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;SECRET_V2_NAMESPACE&gt;/&lt;SECRET_V2_NAME&gt;
+        $ pulumi import rancher2:index/configMapV2:ConfigMapV2 foo &lt;CLUSTER_ID&gt;.&lt;CONFIG_MAP_V2_NAMESPACE&gt;/&lt;CONFIG_MAP_V2_NAME&gt;
         ```
 
 

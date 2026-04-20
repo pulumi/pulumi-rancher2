@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum number of cattle cluster agent replicas that can be down at a given time.
+        /// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
         /// </summary>
         [Input("maxUnavailable")]
         public Input<string>? MaxUnavailable { get; set; }
 
         /// <summary>
-        /// The minimum number of cattle cluster agent replicas that must be running at a given time.
+        /// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
         /// </summary>
         [Input("minAvailable")]
         public Input<string>? MinAvailable { get; set; }

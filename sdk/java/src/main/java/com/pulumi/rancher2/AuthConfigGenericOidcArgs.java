@@ -125,6 +125,21 @@ public final class AuthConfigGenericOidcArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * The OIDC Claim to use for the user email.
+     * 
+     */
+    @Import(name="emailClaim")
+    private @Nullable Output<String> emailClaim;
+
+    /**
+     * @return The OIDC Claim to use for the user email.
+     * 
+     */
+    public Optional<Output<String>> emailClaim() {
+        return Optional.ofNullable(this.emailClaim);
+    }
+
+    /**
      * Enable the auth config provider. Default `true` (bool)
      * 
      */
@@ -137,6 +152,21 @@ public final class AuthConfigGenericOidcArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+
+    /**
+     * The provider specific URL used for logging a user out of their session.
+     * 
+     */
+    @Import(name="endSessionEndpoint")
+    private @Nullable Output<String> endSessionEndpoint;
+
+    /**
+     * @return The provider specific URL used for logging a user out of their session.
+     * 
+     */
+    public Optional<Output<String>> endSessionEndpoint() {
+        return Optional.ofNullable(this.endSessionEndpoint);
     }
 
     /**
@@ -212,6 +242,51 @@ public final class AuthConfigGenericOidcArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Allow the user to choose whether or not to logout of their session with the IdP.
+     * 
+     */
+    @Import(name="logoutAllEnabled")
+    private @Nullable Output<Boolean> logoutAllEnabled;
+
+    /**
+     * @return Allow the user to choose whether or not to logout of their session with the IdP.
+     * 
+     */
+    public Optional<Output<Boolean>> logoutAllEnabled() {
+        return Optional.ofNullable(this.logoutAllEnabled);
+    }
+
+    /**
+     * Force the user to logout of their session with the IdP.
+     * 
+     */
+    @Import(name="logoutAllForced")
+    private @Nullable Output<Boolean> logoutAllForced;
+
+    /**
+     * @return Force the user to logout of their session with the IdP.
+     * 
+     */
+    public Optional<Output<Boolean>> logoutAllForced() {
+        return Optional.ofNullable(this.logoutAllForced);
+    }
+
+    /**
+     * The OIDC Claim to use for the user name.
+     * 
+     */
+    @Import(name="nameClaim")
+    private @Nullable Output<String> nameClaim;
+
+    /**
+     * @return The OIDC Claim to use for the user name.
+     * 
+     */
+    public Optional<Output<String>> nameClaim() {
+        return Optional.ofNullable(this.nameClaim);
     }
 
     /**
@@ -299,12 +374,17 @@ public final class AuthConfigGenericOidcArgs extends com.pulumi.resources.Resour
         this.certificate = $.certificate;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.emailClaim = $.emailClaim;
         this.enabled = $.enabled;
+        this.endSessionEndpoint = $.endSessionEndpoint;
         this.groupSearchEnabled = $.groupSearchEnabled;
         this.groupsField = $.groupsField;
         this.issuer = $.issuer;
         this.jwksUrl = $.jwksUrl;
         this.labels = $.labels;
+        this.logoutAllEnabled = $.logoutAllEnabled;
+        this.logoutAllForced = $.logoutAllForced;
+        this.nameClaim = $.nameClaim;
         this.privateKey = $.privateKey;
         this.rancherUrl = $.rancherUrl;
         this.scopes = $.scopes;
@@ -488,6 +568,27 @@ public final class AuthConfigGenericOidcArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param emailClaim The OIDC Claim to use for the user email.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailClaim(@Nullable Output<String> emailClaim) {
+            $.emailClaim = emailClaim;
+            return this;
+        }
+
+        /**
+         * @param emailClaim The OIDC Claim to use for the user email.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailClaim(String emailClaim) {
+            return emailClaim(Output.of(emailClaim));
+        }
+
+        /**
          * @param enabled Enable the auth config provider. Default `true` (bool)
          * 
          * @return builder
@@ -506,6 +607,27 @@ public final class AuthConfigGenericOidcArgs extends com.pulumi.resources.Resour
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param endSessionEndpoint The provider specific URL used for logging a user out of their session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endSessionEndpoint(@Nullable Output<String> endSessionEndpoint) {
+            $.endSessionEndpoint = endSessionEndpoint;
+            return this;
+        }
+
+        /**
+         * @param endSessionEndpoint The provider specific URL used for logging a user out of their session.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endSessionEndpoint(String endSessionEndpoint) {
+            return endSessionEndpoint(Output.of(endSessionEndpoint));
         }
 
         /**
@@ -611,6 +733,69 @@ public final class AuthConfigGenericOidcArgs extends com.pulumi.resources.Resour
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param logoutAllEnabled Allow the user to choose whether or not to logout of their session with the IdP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logoutAllEnabled(@Nullable Output<Boolean> logoutAllEnabled) {
+            $.logoutAllEnabled = logoutAllEnabled;
+            return this;
+        }
+
+        /**
+         * @param logoutAllEnabled Allow the user to choose whether or not to logout of their session with the IdP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logoutAllEnabled(Boolean logoutAllEnabled) {
+            return logoutAllEnabled(Output.of(logoutAllEnabled));
+        }
+
+        /**
+         * @param logoutAllForced Force the user to logout of their session with the IdP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logoutAllForced(@Nullable Output<Boolean> logoutAllForced) {
+            $.logoutAllForced = logoutAllForced;
+            return this;
+        }
+
+        /**
+         * @param logoutAllForced Force the user to logout of their session with the IdP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logoutAllForced(Boolean logoutAllForced) {
+            return logoutAllForced(Output.of(logoutAllForced));
+        }
+
+        /**
+         * @param nameClaim The OIDC Claim to use for the user name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameClaim(@Nullable Output<String> nameClaim) {
+            $.nameClaim = nameClaim;
+            return this;
+        }
+
+        /**
+         * @param nameClaim The OIDC Claim to use for the user name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameClaim(String nameClaim) {
+            return nameClaim(Output.of(nameClaim));
         }
 
         /**

@@ -320,6 +320,7 @@ class GlobalRole(pulumi.CustomResource):
             name="foo",
             new_user_default=True,
             description="Terraform global role acceptance test",
+            inherited_cluster_roles=["projects-view"],
             rules=[{
                 "api_groups": ["*"],
                 "resources": ["secrets"],
@@ -366,6 +367,7 @@ class GlobalRole(pulumi.CustomResource):
             name="foo",
             new_user_default=True,
             description="Terraform global role acceptance test",
+            inherited_cluster_roles=["projects-view"],
             rules=[{
                 "api_groups": ["*"],
                 "resources": ["secrets"],

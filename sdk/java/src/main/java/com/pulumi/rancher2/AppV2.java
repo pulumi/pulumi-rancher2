@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.AppV2;
  * import com.pulumi.rancher2.AppV2Args;
  * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.FileArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,9 +52,7 @@ import javax.annotation.Nullable;
  *             .repoName("rancher-charts")
  *             .chartName("rancher-monitoring")
  *             .chartVersion("9.4.200")
- *             .values(StdFunctions.file(FileArgs.builder()
- *                 .input("values.yaml")
- *                 .build()).result())
+ *             .values(StdFunctions.file(Map.of("input", "values.yaml")).result())
  *             .build());
  * 
  *     }

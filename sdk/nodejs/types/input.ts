@@ -366,19 +366,19 @@ export interface ClusterAksConfigV2NodePool {
 
 export interface ClusterClusterAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      */
     appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationAppendToleration>[]>;
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      */
     overrideAffinity?: pulumi.Input<string>;
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
     /**
-     * User defined scheduling customization for the cattle cluster agent
+     * User-defined scheduling customization for the cattle or fleet cluster agent
      */
     schedulingCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomization>[]>;
 }
@@ -427,33 +427,33 @@ export interface ClusterClusterAgentDeploymentCustomizationOverrideResourceRequi
 
 export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomization {
     /**
-     * The Pod Disruption Budget created for the cattle cluster agent
+     * The Pod Disruption Budget created for the cattle cluster agent or fleet agent
      */
     podDisruptionBudgets?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget>[]>;
     /**
-     * The Priority Class created for the cattle cluster agent
+     * The Priority Class created for the cattle cluster agent or fleet agent
      */
     priorityClasses?: pulumi.Input<pulumi.Input<inputs.ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass>[]>;
 }
 
 export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
     /**
-     * The maximum number of cattle cluster agent replicas that can be down at a given time.
+     * The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
      */
     maxUnavailable?: pulumi.Input<string>;
     /**
-     * The minimum number of cattle cluster agent replicas that must be running at a given time.
+     * The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
      */
     minAvailable?: pulumi.Input<string>;
 }
 
 export interface ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
     /**
-     * The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+     * The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
      */
     preemptionPolicy?: pulumi.Input<string>;
     /**
-     * The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     * The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
      */
     value: pulumi.Input<number>;
 }
@@ -565,6 +565,10 @@ export interface ClusterEksConfigV2 {
      * Is EKS cluster imported?
      */
     imported?: pulumi.Input<boolean>;
+    /**
+     * The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+     */
+    ipFamily?: pulumi.Input<string>;
     /**
      * The AWS kms key to use
      */
@@ -719,17 +723,21 @@ export interface ClusterEksConfigV2NodeGroupLaunchTemplate {
 
 export interface ClusterFleetAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      */
     appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomizationAppendToleration>[]>;
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      */
     overrideAffinity?: pulumi.Input<string>;
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
+    /**
+     * User-defined scheduling customization for the cattle or fleet cluster agent
+     */
+    schedulingCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomization>[]>;
 }
 
 export interface ClusterFleetAgentDeploymentCustomizationAppendToleration {
@@ -772,6 +780,39 @@ export interface ClusterFleetAgentDeploymentCustomizationOverrideResourceRequire
      * The minimum memory required for agent
      */
     memoryRequest?: pulumi.Input<string>;
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationSchedulingCustomization {
+    /**
+     * The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+     */
+    podDisruptionBudgets?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget>[]>;
+    /**
+     * The Priority Class created for the cattle cluster agent or fleet agent
+     */
+    priorityClasses?: pulumi.Input<pulumi.Input<inputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass>[]>;
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+    /**
+     * The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+     */
+    maxUnavailable?: pulumi.Input<string>;
+    /**
+     * The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+     */
+    minAvailable?: pulumi.Input<string>;
+}
+
+export interface ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+    /**
+     * The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+     */
+    preemptionPolicy?: pulumi.Input<string>;
+    /**
+     * The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+     */
+    value: pulumi.Input<number>;
 }
 
 export interface ClusterGkeConfigV2 {
@@ -3256,19 +3297,19 @@ export interface ClusterV2AgentEnvVar {
 
 export interface ClusterV2ClusterAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      */
     appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration>[]>;
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      */
     overrideAffinity?: pulumi.Input<string>;
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
     /**
-     * User defined scheduling customization for the cattle cluster agent
+     * User-defined scheduling customization for the cattle or fleet cluster agent
      */
     schedulingCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization>[]>;
 }
@@ -3317,33 +3358,33 @@ export interface ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceReq
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization {
     /**
-     * The Pod Disruption Budget created for the cattle cluster agent
+     * The Pod Disruption Budget created for the cattle cluster agent or fleet agent
      */
     podDisruptionBudgets?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget>[]>;
     /**
-     * The Priority Class created for the cattle cluster agent
+     * The Priority Class created for the cattle cluster agent or fleet agent
      */
     priorityClasses?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass>[]>;
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
     /**
-     * The maximum number of cattle cluster agent replicas that can be down at a given time.
+     * The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
      */
     maxUnavailable?: pulumi.Input<string>;
     /**
-     * The minimum number of cattle cluster agent replicas that must be running at a given time.
+     * The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
      */
     minAvailable?: pulumi.Input<string>;
 }
 
 export interface ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
     /**
-     * The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+     * The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
      */
     preemptionPolicy?: pulumi.Input<string>;
     /**
-     * The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     * The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
      */
     value: pulumi.Input<number>;
 }
@@ -3405,17 +3446,21 @@ export interface ClusterV2ClusterRegistrationToken {
 
 export interface ClusterV2FleetAgentDeploymentCustomization {
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      */
     appendTolerations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomizationAppendToleration>[]>;
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      */
     overrideAffinity?: pulumi.Input<string>;
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      */
     overrideResourceRequirements?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement>[]>;
+    /**
+     * User-defined scheduling customization for the cattle or fleet cluster agent
+     */
+    schedulingCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization>[]>;
 }
 
 export interface ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
@@ -3458,6 +3503,39 @@ export interface ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequi
      * The minimum memory required for agent
      */
     memoryRequest?: pulumi.Input<string>;
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization {
+    /**
+     * The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+     */
+    podDisruptionBudgets?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget>[]>;
+    /**
+     * The Priority Class created for the cattle cluster agent or fleet agent
+     */
+    priorityClasses?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass>[]>;
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+    /**
+     * The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+     */
+    maxUnavailable?: pulumi.Input<string>;
+    /**
+     * The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+     */
+    minAvailable?: pulumi.Input<string>;
+}
+
+export interface ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+    /**
+     * The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+     */
+    preemptionPolicy?: pulumi.Input<string>;
+    /**
+     * The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+     */
+    value: pulumi.Input<number>;
 }
 
 export interface ClusterV2LocalAuthEndpoint {
@@ -5335,6 +5413,7 @@ export interface ProjectResourceQuotaNamespaceDefaultLimit {
      * Limit for config maps in project (string)
      */
     configMaps?: pulumi.Input<string>;
+    extended?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Limit for limits cpu in project (string)
      */
@@ -5389,6 +5468,7 @@ export interface ProjectResourceQuotaProjectLimit {
      * Limit for config maps in project (string)
      */
     configMaps?: pulumi.Input<string>;
+    extended?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Limit for limits cpu in project (string)
      */

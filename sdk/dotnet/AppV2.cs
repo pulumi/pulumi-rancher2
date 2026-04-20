@@ -35,7 +35,7 @@ namespace Pulumi.Rancher2
     ///         Values = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "values.yaml",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         }).Result,
     ///     });
     /// 
     /// });

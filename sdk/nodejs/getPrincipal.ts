@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
 export function getPrincipal(args: GetPrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetPrincipalResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getPrincipal:getPrincipal", {
+        "exactMatch": args.exactMatch,
         "name": args.name,
         "type": args.type,
     }, opts);
@@ -30,6 +31,10 @@ export function getPrincipal(args: GetPrincipalArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getPrincipal.
  */
 export interface GetPrincipalArgs {
+    /**
+     * If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+     */
+    exactMatch?: boolean;
     /**
      * The full name of the principal (string)
      */
@@ -44,6 +49,7 @@ export interface GetPrincipalArgs {
  * A collection of values returned by getPrincipal.
  */
 export interface GetPrincipalResult {
+    readonly exactMatch?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -68,6 +74,7 @@ export interface GetPrincipalResult {
 export function getPrincipalOutput(args: GetPrincipalOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrincipalResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getPrincipal:getPrincipal", {
+        "exactMatch": args.exactMatch,
         "name": args.name,
         "type": args.type,
     }, opts);
@@ -77,6 +84,10 @@ export function getPrincipalOutput(args: GetPrincipalOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getPrincipal.
  */
 export interface GetPrincipalOutputArgs {
+    /**
+     * If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+     */
+    exactMatch?: pulumi.Input<boolean>;
     /**
      * The full name of the principal (string)
      */

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2828,13 +2828,13 @@ func (o ClusterAksConfigV2NodePoolArrayOutput) Index(i pulumi.IntInput) ClusterA
 }
 
 type ClusterClusterAgentDeploymentCustomization struct {
-	// User defined tolerations to append to agent
+	// User-defined tolerations to append to agent
 	AppendTolerations []ClusterClusterAgentDeploymentCustomizationAppendToleration `pulumi:"appendTolerations"`
-	// User defined affinity to override default agent affinity
+	// User-defined affinity to override default agent affinity
 	OverrideAffinity *string `pulumi:"overrideAffinity"`
-	// User defined resource requirements to set on the agent
+	// User-defined resource requirements to set on the agent
 	OverrideResourceRequirements []ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement `pulumi:"overrideResourceRequirements"`
-	// User defined scheduling customization for the cattle cluster agent
+	// User-defined scheduling customization for the cattle or fleet cluster agent
 	SchedulingCustomizations []ClusterClusterAgentDeploymentCustomizationSchedulingCustomization `pulumi:"schedulingCustomizations"`
 }
 
@@ -2850,13 +2850,13 @@ type ClusterClusterAgentDeploymentCustomizationInput interface {
 }
 
 type ClusterClusterAgentDeploymentCustomizationArgs struct {
-	// User defined tolerations to append to agent
+	// User-defined tolerations to append to agent
 	AppendTolerations ClusterClusterAgentDeploymentCustomizationAppendTolerationArrayInput `pulumi:"appendTolerations"`
-	// User defined affinity to override default agent affinity
+	// User-defined affinity to override default agent affinity
 	OverrideAffinity pulumi.StringPtrInput `pulumi:"overrideAffinity"`
-	// User defined resource requirements to set on the agent
+	// User-defined resource requirements to set on the agent
 	OverrideResourceRequirements ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArrayInput `pulumi:"overrideResourceRequirements"`
-	// User defined scheduling customization for the cattle cluster agent
+	// User-defined scheduling customization for the cattle or fleet cluster agent
 	SchedulingCustomizations ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArrayInput `pulumi:"schedulingCustomizations"`
 }
 
@@ -2911,26 +2911,26 @@ func (o ClusterClusterAgentDeploymentCustomizationOutput) ToClusterClusterAgentD
 	return o
 }
 
-// User defined tolerations to append to agent
+// User-defined tolerations to append to agent
 func (o ClusterClusterAgentDeploymentCustomizationOutput) AppendTolerations() ClusterClusterAgentDeploymentCustomizationAppendTolerationArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomization) []ClusterClusterAgentDeploymentCustomizationAppendToleration {
 		return v.AppendTolerations
 	}).(ClusterClusterAgentDeploymentCustomizationAppendTolerationArrayOutput)
 }
 
-// User defined affinity to override default agent affinity
+// User-defined affinity to override default agent affinity
 func (o ClusterClusterAgentDeploymentCustomizationOutput) OverrideAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomization) *string { return v.OverrideAffinity }).(pulumi.StringPtrOutput)
 }
 
-// User defined resource requirements to set on the agent
+// User-defined resource requirements to set on the agent
 func (o ClusterClusterAgentDeploymentCustomizationOutput) OverrideResourceRequirements() ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomization) []ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirement {
 		return v.OverrideResourceRequirements
 	}).(ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput)
 }
 
-// User defined scheduling customization for the cattle cluster agent
+// User-defined scheduling customization for the cattle or fleet cluster agent
 func (o ClusterClusterAgentDeploymentCustomizationOutput) SchedulingCustomizations() ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomization) []ClusterClusterAgentDeploymentCustomizationSchedulingCustomization {
 		return v.SchedulingCustomizations
@@ -3223,9 +3223,9 @@ func (o ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArr
 }
 
 type ClusterClusterAgentDeploymentCustomizationSchedulingCustomization struct {
-	// The Pod Disruption Budget created for the cattle cluster agent
+	// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
 	PodDisruptionBudgets []ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget `pulumi:"podDisruptionBudgets"`
-	// The Priority Class created for the cattle cluster agent
+	// The Priority Class created for the cattle cluster agent or fleet agent
 	PriorityClasses []ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass `pulumi:"priorityClasses"`
 }
 
@@ -3241,9 +3241,9 @@ type ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationInput inte
 }
 
 type ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs struct {
-	// The Pod Disruption Budget created for the cattle cluster agent
+	// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
 	PodDisruptionBudgets ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput `pulumi:"podDisruptionBudgets"`
-	// The Priority Class created for the cattle cluster agent
+	// The Priority Class created for the cattle cluster agent or fleet agent
 	PriorityClasses ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput `pulumi:"priorityClasses"`
 }
 
@@ -3298,14 +3298,14 @@ func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationOutput)
 	return o
 }
 
-// The Pod Disruption Budget created for the cattle cluster agent
+// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
 func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationOutput) PodDisruptionBudgets() ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomizationSchedulingCustomization) []ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
 		return v.PodDisruptionBudgets
 	}).(ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput)
 }
 
-// The Priority Class created for the cattle cluster agent
+// The Priority Class created for the cattle cluster agent or fleet agent
 func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationOutput) PriorityClasses() ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomizationSchedulingCustomization) []ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
 		return v.PriorityClasses
@@ -3333,9 +3333,9 @@ func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArrayOu
 }
 
 type ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget struct {
-	// The maximum number of cattle cluster agent replicas that can be down at a given time.
+	// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
 	MaxUnavailable *string `pulumi:"maxUnavailable"`
-	// The minimum number of cattle cluster agent replicas that must be running at a given time.
+	// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
 	MinAvailable *string `pulumi:"minAvailable"`
 }
 
@@ -3351,9 +3351,9 @@ type ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisrupt
 }
 
 type ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs struct {
-	// The maximum number of cattle cluster agent replicas that can be down at a given time.
+	// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
 	MaxUnavailable pulumi.StringPtrInput `pulumi:"maxUnavailable"`
-	// The minimum number of cattle cluster agent replicas that must be running at a given time.
+	// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
 	MinAvailable pulumi.StringPtrInput `pulumi:"minAvailable"`
 }
 
@@ -3408,14 +3408,14 @@ func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisr
 	return o
 }
 
-// The maximum number of cattle cluster agent replicas that can be down at a given time.
+// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
 func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) MaxUnavailable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget) *string {
 		return v.MaxUnavailable
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minimum number of cattle cluster agent replicas that must be running at a given time.
+// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
 func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) MinAvailable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget) *string {
 		return v.MinAvailable
@@ -3443,9 +3443,9 @@ func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisr
 }
 
 type ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass struct {
-	// The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+	// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
 	PreemptionPolicy *string `pulumi:"preemptionPolicy"`
-	// The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+	// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
 	Value int `pulumi:"value"`
 }
 
@@ -3461,9 +3461,9 @@ type ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityCl
 }
 
 type ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs struct {
-	// The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+	// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
 	PreemptionPolicy pulumi.StringPtrInput `pulumi:"preemptionPolicy"`
-	// The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+	// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
 	Value pulumi.IntInput `pulumi:"value"`
 }
 
@@ -3518,14 +3518,14 @@ func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorit
 	return o
 }
 
-// The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
 func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) PreemptionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass) *string {
 		return v.PreemptionPolicy
 	}).(pulumi.StringPtrOutput)
 }
 
-// The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
 func (o ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) Value() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass) int {
 		return v.Value
@@ -4388,6 +4388,8 @@ type ClusterEksConfigV2 struct {
 	CloudCredentialId string `pulumi:"cloudCredentialId"`
 	// Is EKS cluster imported?
 	Imported *bool `pulumi:"imported"`
+	// The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+	IpFamily *string `pulumi:"ipFamily"`
 	// The AWS kms key to use
 	KmsKey *string `pulumi:"kmsKey"`
 	// The kubernetes master version
@@ -4434,6 +4436,8 @@ type ClusterEksConfigV2Args struct {
 	CloudCredentialId pulumi.StringInput `pulumi:"cloudCredentialId"`
 	// Is EKS cluster imported?
 	Imported pulumi.BoolPtrInput `pulumi:"imported"`
+	// The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+	IpFamily pulumi.StringPtrInput `pulumi:"ipFamily"`
 	// The AWS kms key to use
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// The kubernetes master version
@@ -4551,6 +4555,11 @@ func (o ClusterEksConfigV2Output) Imported() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfigV2) *bool { return v.Imported }).(pulumi.BoolPtrOutput)
 }
 
+// The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+func (o ClusterEksConfigV2Output) IpFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEksConfigV2) *string { return v.IpFamily }).(pulumi.StringPtrOutput)
+}
+
 // The AWS kms key to use
 func (o ClusterEksConfigV2Output) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEksConfigV2) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
@@ -4663,6 +4672,16 @@ func (o ClusterEksConfigV2PtrOutput) Imported() pulumi.BoolPtrOutput {
 		}
 		return v.Imported
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+func (o ClusterEksConfigV2PtrOutput) IpFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEksConfigV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpFamily
+	}).(pulumi.StringPtrOutput)
 }
 
 // The AWS kms key to use
@@ -5182,12 +5201,14 @@ func (o ClusterEksConfigV2NodeGroupLaunchTemplateArrayOutput) Index(i pulumi.Int
 }
 
 type ClusterFleetAgentDeploymentCustomization struct {
-	// User defined tolerations to append to agent
+	// User-defined tolerations to append to agent
 	AppendTolerations []ClusterFleetAgentDeploymentCustomizationAppendToleration `pulumi:"appendTolerations"`
-	// User defined affinity to override default agent affinity
+	// User-defined affinity to override default agent affinity
 	OverrideAffinity *string `pulumi:"overrideAffinity"`
-	// User defined resource requirements to set on the agent
+	// User-defined resource requirements to set on the agent
 	OverrideResourceRequirements []ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement `pulumi:"overrideResourceRequirements"`
+	// User-defined scheduling customization for the cattle or fleet cluster agent
+	SchedulingCustomizations []ClusterFleetAgentDeploymentCustomizationSchedulingCustomization `pulumi:"schedulingCustomizations"`
 }
 
 // ClusterFleetAgentDeploymentCustomizationInput is an input type that accepts ClusterFleetAgentDeploymentCustomizationArgs and ClusterFleetAgentDeploymentCustomizationOutput values.
@@ -5202,12 +5223,14 @@ type ClusterFleetAgentDeploymentCustomizationInput interface {
 }
 
 type ClusterFleetAgentDeploymentCustomizationArgs struct {
-	// User defined tolerations to append to agent
+	// User-defined tolerations to append to agent
 	AppendTolerations ClusterFleetAgentDeploymentCustomizationAppendTolerationArrayInput `pulumi:"appendTolerations"`
-	// User defined affinity to override default agent affinity
+	// User-defined affinity to override default agent affinity
 	OverrideAffinity pulumi.StringPtrInput `pulumi:"overrideAffinity"`
-	// User defined resource requirements to set on the agent
+	// User-defined resource requirements to set on the agent
 	OverrideResourceRequirements ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArrayInput `pulumi:"overrideResourceRequirements"`
+	// User-defined scheduling customization for the cattle or fleet cluster agent
+	SchedulingCustomizations ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput `pulumi:"schedulingCustomizations"`
 }
 
 func (ClusterFleetAgentDeploymentCustomizationArgs) ElementType() reflect.Type {
@@ -5261,23 +5284,30 @@ func (o ClusterFleetAgentDeploymentCustomizationOutput) ToClusterFleetAgentDeplo
 	return o
 }
 
-// User defined tolerations to append to agent
+// User-defined tolerations to append to agent
 func (o ClusterFleetAgentDeploymentCustomizationOutput) AppendTolerations() ClusterFleetAgentDeploymentCustomizationAppendTolerationArrayOutput {
 	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomization) []ClusterFleetAgentDeploymentCustomizationAppendToleration {
 		return v.AppendTolerations
 	}).(ClusterFleetAgentDeploymentCustomizationAppendTolerationArrayOutput)
 }
 
-// User defined affinity to override default agent affinity
+// User-defined affinity to override default agent affinity
 func (o ClusterFleetAgentDeploymentCustomizationOutput) OverrideAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomization) *string { return v.OverrideAffinity }).(pulumi.StringPtrOutput)
 }
 
-// User defined resource requirements to set on the agent
+// User-defined resource requirements to set on the agent
 func (o ClusterFleetAgentDeploymentCustomizationOutput) OverrideResourceRequirements() ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput {
 	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomization) []ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement {
 		return v.OverrideResourceRequirements
 	}).(ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput)
+}
+
+// User-defined scheduling customization for the cattle or fleet cluster agent
+func (o ClusterFleetAgentDeploymentCustomizationOutput) SchedulingCustomizations() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomization) []ClusterFleetAgentDeploymentCustomizationSchedulingCustomization {
+		return v.SchedulingCustomizations
+	}).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput)
 }
 
 type ClusterFleetAgentDeploymentCustomizationArrayOutput struct{ *pulumi.OutputState }
@@ -5561,6 +5591,336 @@ func (o ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArray
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement {
 		return vs[0].([]ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement)[vs[1].(int)]
 	}).(ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementOutput)
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomization struct {
+	// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+	PodDisruptionBudgets []ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget `pulumi:"podDisruptionBudgets"`
+	// The Priority Class created for the cattle cluster agent or fleet agent
+	PriorityClasses []ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass `pulumi:"priorityClasses"`
+}
+
+// ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationInput is an input type that accepts ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs and ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput values.
+// You can construct a concrete instance of `ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationInput` via:
+//
+//	ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs{...}
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationInput interface {
+	pulumi.Input
+
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutputWithContext(context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs struct {
+	// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+	PodDisruptionBudgets ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput `pulumi:"podDisruptionBudgets"`
+	// The Priority Class created for the cattle cluster agent or fleet agent
+	PriorityClasses ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput `pulumi:"priorityClasses"`
+}
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomization)(nil)).Elem()
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return i.ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutputWithContext(context.Background())
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput)
+}
+
+// ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput is an input type that accepts ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArray and ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput values.
+// You can construct a concrete instance of `ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput` via:
+//
+//	ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArray{ ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs{...} }
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput interface {
+	pulumi.Input
+
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutputWithContext(context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArray []ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationInput
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterFleetAgentDeploymentCustomizationSchedulingCustomization)(nil)).Elem()
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArray) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return i.ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArray) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput)
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput struct{ *pulumi.OutputState }
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomization)(nil)).Elem()
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return o
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return o
+}
+
+// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput) PodDisruptionBudgets() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomizationSchedulingCustomization) []ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+		return v.PodDisruptionBudgets
+	}).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput)
+}
+
+// The Priority Class created for the cattle cluster agent or fleet agent
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput) PriorityClasses() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomizationSchedulingCustomization) []ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+		return v.PriorityClasses
+	}).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput)
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterFleetAgentDeploymentCustomizationSchedulingCustomization)(nil)).Elem()
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return o
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return o
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput) Index(i pulumi.IntInput) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterFleetAgentDeploymentCustomizationSchedulingCustomization {
+		return vs[0].([]ClusterFleetAgentDeploymentCustomizationSchedulingCustomization)[vs[1].(int)]
+	}).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput)
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget struct {
+	// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+	MaxUnavailable *string `pulumi:"maxUnavailable"`
+	// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+	MinAvailable *string `pulumi:"minAvailable"`
+}
+
+// ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput is an input type that accepts ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs and ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput values.
+// You can construct a concrete instance of `ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput` via:
+//
+//	ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{...}
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput interface {
+	pulumi.Input
+
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutputWithContext(context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs struct {
+	// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+	MaxUnavailable pulumi.StringPtrInput `pulumi:"maxUnavailable"`
+	// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+	MinAvailable pulumi.StringPtrInput `pulumi:"minAvailable"`
+}
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)(nil)).Elem()
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return i.ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutputWithContext(context.Background())
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput)
+}
+
+// ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput is an input type that accepts ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray and ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput values.
+// You can construct a concrete instance of `ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput` via:
+//
+//	ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{ ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{...} }
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput interface {
+	pulumi.Input
+
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutputWithContext(context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray []ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)(nil)).Elem()
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return i.ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput)
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput struct{ *pulumi.OutputState }
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)(nil)).Elem()
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return o
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return o
+}
+
+// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) MaxUnavailable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget) *string {
+		return v.MaxUnavailable
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) MinAvailable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget) *string {
+		return v.MinAvailable
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)(nil)).Elem()
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return o
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return o
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput) Index(i pulumi.IntInput) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+		return vs[0].([]ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)[vs[1].(int)]
+	}).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput)
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass struct {
+	// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+	PreemptionPolicy *string `pulumi:"preemptionPolicy"`
+	// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+	Value int `pulumi:"value"`
+}
+
+// ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput is an input type that accepts ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs and ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput values.
+// You can construct a concrete instance of `ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput` via:
+//
+//	ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{...}
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput interface {
+	pulumi.Input
+
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutputWithContext(context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs struct {
+	// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+	PreemptionPolicy pulumi.StringPtrInput `pulumi:"preemptionPolicy"`
+	// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+	Value pulumi.IntInput `pulumi:"value"`
+}
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)(nil)).Elem()
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return i.ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutputWithContext(context.Background())
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput)
+}
+
+// ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput is an input type that accepts ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray and ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput values.
+// You can construct a concrete instance of `ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput` via:
+//
+//	ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{ ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{...} }
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput interface {
+	pulumi.Input
+
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput
+	ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutputWithContext(context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray []ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)(nil)).Elem()
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return i.ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput)
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput struct{ *pulumi.OutputState }
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)(nil)).Elem()
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return o
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return o
+}
+
+// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) PreemptionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass) *string {
+		return v.PreemptionPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass) int {
+		return v.Value
+	}).(pulumi.IntOutput)
+}
+
+type ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)(nil)).Elem()
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput() ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return o
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput) ToClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutputWithContext(ctx context.Context) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return o
+}
+
+func (o ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput) Index(i pulumi.IntInput) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+		return vs[0].([]ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)[vs[1].(int)]
+	}).(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput)
 }
 
 type ClusterGkeConfigV2 struct {
@@ -24372,13 +24732,13 @@ func (o ClusterV2AgentEnvVarArrayOutput) Index(i pulumi.IntInput) ClusterV2Agent
 }
 
 type ClusterV2ClusterAgentDeploymentCustomization struct {
-	// User defined tolerations to append to agent
+	// User-defined tolerations to append to agent
 	AppendTolerations []ClusterV2ClusterAgentDeploymentCustomizationAppendToleration `pulumi:"appendTolerations"`
-	// User defined affinity to override default agent affinity
+	// User-defined affinity to override default agent affinity
 	OverrideAffinity *string `pulumi:"overrideAffinity"`
-	// User defined resource requirements to set on the agent
+	// User-defined resource requirements to set on the agent
 	OverrideResourceRequirements []ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement `pulumi:"overrideResourceRequirements"`
-	// User defined scheduling customization for the cattle cluster agent
+	// User-defined scheduling customization for the cattle or fleet cluster agent
 	SchedulingCustomizations []ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization `pulumi:"schedulingCustomizations"`
 }
 
@@ -24394,13 +24754,13 @@ type ClusterV2ClusterAgentDeploymentCustomizationInput interface {
 }
 
 type ClusterV2ClusterAgentDeploymentCustomizationArgs struct {
-	// User defined tolerations to append to agent
+	// User-defined tolerations to append to agent
 	AppendTolerations ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArrayInput `pulumi:"appendTolerations"`
-	// User defined affinity to override default agent affinity
+	// User-defined affinity to override default agent affinity
 	OverrideAffinity pulumi.StringPtrInput `pulumi:"overrideAffinity"`
-	// User defined resource requirements to set on the agent
+	// User-defined resource requirements to set on the agent
 	OverrideResourceRequirements ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArrayInput `pulumi:"overrideResourceRequirements"`
-	// User defined scheduling customization for the cattle cluster agent
+	// User-defined scheduling customization for the cattle or fleet cluster agent
 	SchedulingCustomizations ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArrayInput `pulumi:"schedulingCustomizations"`
 }
 
@@ -24455,26 +24815,26 @@ func (o ClusterV2ClusterAgentDeploymentCustomizationOutput) ToClusterV2ClusterAg
 	return o
 }
 
-// User defined tolerations to append to agent
+// User-defined tolerations to append to agent
 func (o ClusterV2ClusterAgentDeploymentCustomizationOutput) AppendTolerations() ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArrayOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomization) []ClusterV2ClusterAgentDeploymentCustomizationAppendToleration {
 		return v.AppendTolerations
 	}).(ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArrayOutput)
 }
 
-// User defined affinity to override default agent affinity
+// User-defined affinity to override default agent affinity
 func (o ClusterV2ClusterAgentDeploymentCustomizationOutput) OverrideAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomization) *string { return v.OverrideAffinity }).(pulumi.StringPtrOutput)
 }
 
-// User defined resource requirements to set on the agent
+// User-defined resource requirements to set on the agent
 func (o ClusterV2ClusterAgentDeploymentCustomizationOutput) OverrideResourceRequirements() ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomization) []ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement {
 		return v.OverrideResourceRequirements
 	}).(ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput)
 }
 
-// User defined scheduling customization for the cattle cluster agent
+// User-defined scheduling customization for the cattle or fleet cluster agent
 func (o ClusterV2ClusterAgentDeploymentCustomizationOutput) SchedulingCustomizations() ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomization) []ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization {
 		return v.SchedulingCustomizations
@@ -24767,9 +25127,9 @@ func (o ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementA
 }
 
 type ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization struct {
-	// The Pod Disruption Budget created for the cattle cluster agent
+	// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
 	PodDisruptionBudgets []ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget `pulumi:"podDisruptionBudgets"`
-	// The Priority Class created for the cattle cluster agent
+	// The Priority Class created for the cattle cluster agent or fleet agent
 	PriorityClasses []ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass `pulumi:"priorityClasses"`
 }
 
@@ -24785,9 +25145,9 @@ type ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationInput in
 }
 
 type ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs struct {
-	// The Pod Disruption Budget created for the cattle cluster agent
+	// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
 	PodDisruptionBudgets ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput `pulumi:"podDisruptionBudgets"`
-	// The Priority Class created for the cattle cluster agent
+	// The Priority Class created for the cattle cluster agent or fleet agent
 	PriorityClasses ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput `pulumi:"priorityClasses"`
 }
 
@@ -24842,14 +25202,14 @@ func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationOutpu
 	return o
 }
 
-// The Pod Disruption Budget created for the cattle cluster agent
+// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
 func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationOutput) PodDisruptionBudgets() ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization) []ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
 		return v.PodDisruptionBudgets
 	}).(ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput)
 }
 
-// The Priority Class created for the cattle cluster agent
+// The Priority Class created for the cattle cluster agent or fleet agent
 func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationOutput) PriorityClasses() ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization) []ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
 		return v.PriorityClasses
@@ -24877,9 +25237,9 @@ func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArray
 }
 
 type ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget struct {
-	// The maximum number of cattle cluster agent replicas that can be down at a given time.
+	// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
 	MaxUnavailable *string `pulumi:"maxUnavailable"`
-	// The minimum number of cattle cluster agent replicas that must be running at a given time.
+	// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
 	MinAvailable *string `pulumi:"minAvailable"`
 }
 
@@ -24895,9 +25255,9 @@ type ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisru
 }
 
 type ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs struct {
-	// The maximum number of cattle cluster agent replicas that can be down at a given time.
+	// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
 	MaxUnavailable pulumi.StringPtrInput `pulumi:"maxUnavailable"`
-	// The minimum number of cattle cluster agent replicas that must be running at a given time.
+	// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
 	MinAvailable pulumi.StringPtrInput `pulumi:"minAvailable"`
 }
 
@@ -24952,14 +25312,14 @@ func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDi
 	return o
 }
 
-// The maximum number of cattle cluster agent replicas that can be down at a given time.
+// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
 func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) MaxUnavailable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget) *string {
 		return v.MaxUnavailable
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minimum number of cattle cluster agent replicas that must be running at a given time.
+// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
 func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) MinAvailable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget) *string {
 		return v.MinAvailable
@@ -24987,9 +25347,9 @@ func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDi
 }
 
 type ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass struct {
-	// The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+	// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
 	PreemptionPolicy *string `pulumi:"preemptionPolicy"`
-	// The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+	// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
 	Value int `pulumi:"value"`
 }
 
@@ -25005,9 +25365,9 @@ type ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriority
 }
 
 type ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs struct {
-	// The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+	// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
 	PreemptionPolicy pulumi.StringPtrInput `pulumi:"preemptionPolicy"`
-	// The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+	// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
 	Value pulumi.IntInput `pulumi:"value"`
 }
 
@@ -25062,14 +25422,14 @@ func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPrior
 	return o
 }
 
-// The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
 func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) PreemptionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass) *string {
 		return v.PreemptionPolicy
 	}).(pulumi.StringPtrOutput)
 }
 
-// The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
 func (o ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) Value() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass) int {
 		return v.Value
@@ -25462,12 +25822,14 @@ func (o ClusterV2ClusterRegistrationTokenPtrOutput) WindowsNodeCommand() pulumi.
 }
 
 type ClusterV2FleetAgentDeploymentCustomization struct {
-	// User defined tolerations to append to agent
+	// User-defined tolerations to append to agent
 	AppendTolerations []ClusterV2FleetAgentDeploymentCustomizationAppendToleration `pulumi:"appendTolerations"`
-	// User defined affinity to override default agent affinity
+	// User-defined affinity to override default agent affinity
 	OverrideAffinity *string `pulumi:"overrideAffinity"`
-	// User defined resource requirements to set on the agent
+	// User-defined resource requirements to set on the agent
 	OverrideResourceRequirements []ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement `pulumi:"overrideResourceRequirements"`
+	// User-defined scheduling customization for the cattle or fleet cluster agent
+	SchedulingCustomizations []ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization `pulumi:"schedulingCustomizations"`
 }
 
 // ClusterV2FleetAgentDeploymentCustomizationInput is an input type that accepts ClusterV2FleetAgentDeploymentCustomizationArgs and ClusterV2FleetAgentDeploymentCustomizationOutput values.
@@ -25482,12 +25844,14 @@ type ClusterV2FleetAgentDeploymentCustomizationInput interface {
 }
 
 type ClusterV2FleetAgentDeploymentCustomizationArgs struct {
-	// User defined tolerations to append to agent
+	// User-defined tolerations to append to agent
 	AppendTolerations ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArrayInput `pulumi:"appendTolerations"`
-	// User defined affinity to override default agent affinity
+	// User-defined affinity to override default agent affinity
 	OverrideAffinity pulumi.StringPtrInput `pulumi:"overrideAffinity"`
-	// User defined resource requirements to set on the agent
+	// User-defined resource requirements to set on the agent
 	OverrideResourceRequirements ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArrayInput `pulumi:"overrideResourceRequirements"`
+	// User-defined scheduling customization for the cattle or fleet cluster agent
+	SchedulingCustomizations ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput `pulumi:"schedulingCustomizations"`
 }
 
 func (ClusterV2FleetAgentDeploymentCustomizationArgs) ElementType() reflect.Type {
@@ -25541,23 +25905,30 @@ func (o ClusterV2FleetAgentDeploymentCustomizationOutput) ToClusterV2FleetAgentD
 	return o
 }
 
-// User defined tolerations to append to agent
+// User-defined tolerations to append to agent
 func (o ClusterV2FleetAgentDeploymentCustomizationOutput) AppendTolerations() ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArrayOutput {
 	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomization) []ClusterV2FleetAgentDeploymentCustomizationAppendToleration {
 		return v.AppendTolerations
 	}).(ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArrayOutput)
 }
 
-// User defined affinity to override default agent affinity
+// User-defined affinity to override default agent affinity
 func (o ClusterV2FleetAgentDeploymentCustomizationOutput) OverrideAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomization) *string { return v.OverrideAffinity }).(pulumi.StringPtrOutput)
 }
 
-// User defined resource requirements to set on the agent
+// User-defined resource requirements to set on the agent
 func (o ClusterV2FleetAgentDeploymentCustomizationOutput) OverrideResourceRequirements() ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput {
 	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomization) []ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement {
 		return v.OverrideResourceRequirements
 	}).(ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput)
+}
+
+// User-defined scheduling customization for the cattle or fleet cluster agent
+func (o ClusterV2FleetAgentDeploymentCustomizationOutput) SchedulingCustomizations() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomization) []ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization {
+		return v.SchedulingCustomizations
+	}).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput)
 }
 
 type ClusterV2FleetAgentDeploymentCustomizationArrayOutput struct{ *pulumi.OutputState }
@@ -25843,6 +26214,336 @@ func (o ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement {
 		return vs[0].([]ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirement)[vs[1].(int)]
 	}).(ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementOutput)
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization struct {
+	// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+	PodDisruptionBudgets []ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget `pulumi:"podDisruptionBudgets"`
+	// The Priority Class created for the cattle cluster agent or fleet agent
+	PriorityClasses []ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass `pulumi:"priorityClasses"`
+}
+
+// ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationInput is an input type that accepts ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs and ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput values.
+// You can construct a concrete instance of `ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationInput` via:
+//
+//	ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs{...}
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationInput interface {
+	pulumi.Input
+
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutputWithContext(context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs struct {
+	// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+	PodDisruptionBudgets ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput `pulumi:"podDisruptionBudgets"`
+	// The Priority Class created for the cattle cluster agent or fleet agent
+	PriorityClasses ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput `pulumi:"priorityClasses"`
+}
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization)(nil)).Elem()
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return i.ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutputWithContext(context.Background())
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput)
+}
+
+// ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput is an input type that accepts ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArray and ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput values.
+// You can construct a concrete instance of `ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput` via:
+//
+//	ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArray{ ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs{...} }
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput interface {
+	pulumi.Input
+
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutputWithContext(context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArray []ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationInput
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization)(nil)).Elem()
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArray) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return i.ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArray) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput)
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization)(nil)).Elem()
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return o
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return o
+}
+
+// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput) PodDisruptionBudgets() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization) []ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+		return v.PodDisruptionBudgets
+	}).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput)
+}
+
+// The Priority Class created for the cattle cluster agent or fleet agent
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput) PriorityClasses() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization) []ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+		return v.PriorityClasses
+	}).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput)
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization)(nil)).Elem()
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return o
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput {
+	return o
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput) Index(i pulumi.IntInput) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization {
+		return vs[0].([]ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomization)[vs[1].(int)]
+	}).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput)
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget struct {
+	// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+	MaxUnavailable *string `pulumi:"maxUnavailable"`
+	// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+	MinAvailable *string `pulumi:"minAvailable"`
+}
+
+// ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput is an input type that accepts ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs and ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput values.
+// You can construct a concrete instance of `ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput` via:
+//
+//	ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{...}
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput interface {
+	pulumi.Input
+
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutputWithContext(context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs struct {
+	// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+	MaxUnavailable pulumi.StringPtrInput `pulumi:"maxUnavailable"`
+	// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+	MinAvailable pulumi.StringPtrInput `pulumi:"minAvailable"`
+}
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)(nil)).Elem()
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return i.ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutputWithContext(context.Background())
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput)
+}
+
+// ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput is an input type that accepts ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray and ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput values.
+// You can construct a concrete instance of `ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput` via:
+//
+//	ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{ ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{...} }
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput interface {
+	pulumi.Input
+
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutputWithContext(context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray []ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)(nil)).Elem()
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return i.ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput)
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)(nil)).Elem()
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return o
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return o
+}
+
+// The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) MaxUnavailable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget) *string {
+		return v.MaxUnavailable
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput) MinAvailable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget) *string {
+		return v.MinAvailable
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)(nil)).Elem()
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return o
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput {
+	return o
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput) Index(i pulumi.IntInput) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
+		return vs[0].([]ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget)[vs[1].(int)]
+	}).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput)
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass struct {
+	// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+	PreemptionPolicy *string `pulumi:"preemptionPolicy"`
+	// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+	Value int `pulumi:"value"`
+}
+
+// ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput is an input type that accepts ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs and ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput values.
+// You can construct a concrete instance of `ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput` via:
+//
+//	ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{...}
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput interface {
+	pulumi.Input
+
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutputWithContext(context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs struct {
+	// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+	PreemptionPolicy pulumi.StringPtrInput `pulumi:"preemptionPolicy"`
+	// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+	Value pulumi.IntInput `pulumi:"value"`
+}
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)(nil)).Elem()
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return i.ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutputWithContext(context.Background())
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput)
+}
+
+// ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput is an input type that accepts ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray and ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput values.
+// You can construct a concrete instance of `ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput` via:
+//
+//	ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{ ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{...} }
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput interface {
+	pulumi.Input
+
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput
+	ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutputWithContext(context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray []ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)(nil)).Elem()
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return i.ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput)
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)(nil)).Elem()
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return o
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return o
+}
+
+// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) PreemptionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass) *string {
+		return v.PreemptionPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass) int {
+		return v.Value
+	}).(pulumi.IntOutput)
+}
+
+type ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)(nil)).Elem()
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput() ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return o
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput) ToClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutputWithContext(ctx context.Context) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput {
+	return o
+}
+
+func (o ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput) Index(i pulumi.IntInput) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
+		return vs[0].([]ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClass)[vs[1].(int)]
+	}).(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput)
 }
 
 type ClusterV2LocalAuthEndpoint struct {
@@ -38515,7 +39216,8 @@ func (o ProjectResourceQuotaPtrOutput) ProjectLimit() ProjectResourceQuotaProjec
 
 type ProjectResourceQuotaNamespaceDefaultLimit struct {
 	// Limit for config maps in project (string)
-	ConfigMaps *string `pulumi:"configMaps"`
+	ConfigMaps *string           `pulumi:"configMaps"`
+	Extended   map[string]string `pulumi:"extended"`
 	// Limit for limits cpu in project (string)
 	LimitsCpu *string `pulumi:"limitsCpu"`
 	// Limit for limits memory in project (string)
@@ -38557,6 +39259,7 @@ type ProjectResourceQuotaNamespaceDefaultLimitInput interface {
 type ProjectResourceQuotaNamespaceDefaultLimitArgs struct {
 	// Limit for config maps in project (string)
 	ConfigMaps pulumi.StringPtrInput `pulumi:"configMaps"`
+	Extended   pulumi.StringMapInput `pulumi:"extended"`
 	// Limit for limits cpu in project (string)
 	LimitsCpu pulumi.StringPtrInput `pulumi:"limitsCpu"`
 	// Limit for limits memory in project (string)
@@ -38666,6 +39369,10 @@ func (o ProjectResourceQuotaNamespaceDefaultLimitOutput) ConfigMaps() pulumi.Str
 	return o.ApplyT(func(v ProjectResourceQuotaNamespaceDefaultLimit) *string { return v.ConfigMaps }).(pulumi.StringPtrOutput)
 }
 
+func (o ProjectResourceQuotaNamespaceDefaultLimitOutput) Extended() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProjectResourceQuotaNamespaceDefaultLimit) map[string]string { return v.Extended }).(pulumi.StringMapOutput)
+}
+
 // Limit for limits cpu in project (string)
 func (o ProjectResourceQuotaNamespaceDefaultLimitOutput) LimitsCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectResourceQuotaNamespaceDefaultLimit) *string { return v.LimitsCpu }).(pulumi.StringPtrOutput)
@@ -38759,6 +39466,15 @@ func (o ProjectResourceQuotaNamespaceDefaultLimitPtrOutput) ConfigMaps() pulumi.
 		}
 		return v.ConfigMaps
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectResourceQuotaNamespaceDefaultLimitPtrOutput) Extended() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectResourceQuotaNamespaceDefaultLimit) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Extended
+	}).(pulumi.StringMapOutput)
 }
 
 // Limit for limits cpu in project (string)
@@ -38884,7 +39600,8 @@ func (o ProjectResourceQuotaNamespaceDefaultLimitPtrOutput) ServicesNodePorts() 
 
 type ProjectResourceQuotaProjectLimit struct {
 	// Limit for config maps in project (string)
-	ConfigMaps *string `pulumi:"configMaps"`
+	ConfigMaps *string           `pulumi:"configMaps"`
+	Extended   map[string]string `pulumi:"extended"`
 	// Limit for limits cpu in project (string)
 	LimitsCpu *string `pulumi:"limitsCpu"`
 	// Limit for limits memory in project (string)
@@ -38926,6 +39643,7 @@ type ProjectResourceQuotaProjectLimitInput interface {
 type ProjectResourceQuotaProjectLimitArgs struct {
 	// Limit for config maps in project (string)
 	ConfigMaps pulumi.StringPtrInput `pulumi:"configMaps"`
+	Extended   pulumi.StringMapInput `pulumi:"extended"`
 	// Limit for limits cpu in project (string)
 	LimitsCpu pulumi.StringPtrInput `pulumi:"limitsCpu"`
 	// Limit for limits memory in project (string)
@@ -39035,6 +39753,10 @@ func (o ProjectResourceQuotaProjectLimitOutput) ConfigMaps() pulumi.StringPtrOut
 	return o.ApplyT(func(v ProjectResourceQuotaProjectLimit) *string { return v.ConfigMaps }).(pulumi.StringPtrOutput)
 }
 
+func (o ProjectResourceQuotaProjectLimitOutput) Extended() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ProjectResourceQuotaProjectLimit) map[string]string { return v.Extended }).(pulumi.StringMapOutput)
+}
+
 // Limit for limits cpu in project (string)
 func (o ProjectResourceQuotaProjectLimitOutput) LimitsCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProjectResourceQuotaProjectLimit) *string { return v.LimitsCpu }).(pulumi.StringPtrOutput)
@@ -39128,6 +39850,15 @@ func (o ProjectResourceQuotaProjectLimitPtrOutput) ConfigMaps() pulumi.StringPtr
 		}
 		return v.ConfigMaps
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProjectResourceQuotaProjectLimitPtrOutput) Extended() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ProjectResourceQuotaProjectLimit) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Extended
+	}).(pulumi.StringMapOutput)
 }
 
 // Limit for limits cpu in project (string)
@@ -40579,6 +41310,8 @@ type GetClusterEksConfigV2 struct {
 	CloudCredentialId string `pulumi:"cloudCredentialId"`
 	// Is EKS cluster imported?
 	Imported *bool `pulumi:"imported"`
+	// The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+	IpFamily string `pulumi:"ipFamily"`
 	// The AWS kms key to use
 	KmsKey *string `pulumi:"kmsKey"`
 	// The kubernetes master version
@@ -40625,6 +41358,8 @@ type GetClusterEksConfigV2Args struct {
 	CloudCredentialId pulumi.StringInput `pulumi:"cloudCredentialId"`
 	// Is EKS cluster imported?
 	Imported pulumi.BoolPtrInput `pulumi:"imported"`
+	// The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+	IpFamily pulumi.StringInput `pulumi:"ipFamily"`
 	// The AWS kms key to use
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// The kubernetes master version
@@ -40689,6 +41424,11 @@ func (o GetClusterEksConfigV2Output) CloudCredentialId() pulumi.StringOutput {
 // Is EKS cluster imported?
 func (o GetClusterEksConfigV2Output) Imported() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetClusterEksConfigV2) *bool { return v.Imported }).(pulumi.BoolPtrOutput)
+}
+
+// The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+func (o GetClusterEksConfigV2Output) IpFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEksConfigV2) string { return v.IpFamily }).(pulumi.StringOutput)
 }
 
 // The AWS kms key to use
@@ -59150,19 +59890,20 @@ func (o GetProjectResourceQuotaOutput) ProjectLimit() GetProjectResourceQuotaPro
 }
 
 type GetProjectResourceQuotaNamespaceDefaultLimit struct {
-	ConfigMaps             *string `pulumi:"configMaps"`
-	LimitsCpu              *string `pulumi:"limitsCpu"`
-	LimitsMemory           *string `pulumi:"limitsMemory"`
-	PersistentVolumeClaims *string `pulumi:"persistentVolumeClaims"`
-	Pods                   *string `pulumi:"pods"`
-	ReplicationControllers *string `pulumi:"replicationControllers"`
-	RequestsCpu            *string `pulumi:"requestsCpu"`
-	RequestsMemory         *string `pulumi:"requestsMemory"`
-	RequestsStorage        *string `pulumi:"requestsStorage"`
-	Secrets                *string `pulumi:"secrets"`
-	Services               *string `pulumi:"services"`
-	ServicesLoadBalancers  *string `pulumi:"servicesLoadBalancers"`
-	ServicesNodePorts      *string `pulumi:"servicesNodePorts"`
+	ConfigMaps             *string           `pulumi:"configMaps"`
+	Extended               map[string]string `pulumi:"extended"`
+	LimitsCpu              *string           `pulumi:"limitsCpu"`
+	LimitsMemory           *string           `pulumi:"limitsMemory"`
+	PersistentVolumeClaims *string           `pulumi:"persistentVolumeClaims"`
+	Pods                   *string           `pulumi:"pods"`
+	ReplicationControllers *string           `pulumi:"replicationControllers"`
+	RequestsCpu            *string           `pulumi:"requestsCpu"`
+	RequestsMemory         *string           `pulumi:"requestsMemory"`
+	RequestsStorage        *string           `pulumi:"requestsStorage"`
+	Secrets                *string           `pulumi:"secrets"`
+	Services               *string           `pulumi:"services"`
+	ServicesLoadBalancers  *string           `pulumi:"servicesLoadBalancers"`
+	ServicesNodePorts      *string           `pulumi:"servicesNodePorts"`
 }
 
 // GetProjectResourceQuotaNamespaceDefaultLimitInput is an input type that accepts GetProjectResourceQuotaNamespaceDefaultLimitArgs and GetProjectResourceQuotaNamespaceDefaultLimitOutput values.
@@ -59178,6 +59919,7 @@ type GetProjectResourceQuotaNamespaceDefaultLimitInput interface {
 
 type GetProjectResourceQuotaNamespaceDefaultLimitArgs struct {
 	ConfigMaps             pulumi.StringPtrInput `pulumi:"configMaps"`
+	Extended               pulumi.StringMapInput `pulumi:"extended"`
 	LimitsCpu              pulumi.StringPtrInput `pulumi:"limitsCpu"`
 	LimitsMemory           pulumi.StringPtrInput `pulumi:"limitsMemory"`
 	PersistentVolumeClaims pulumi.StringPtrInput `pulumi:"persistentVolumeClaims"`
@@ -59220,6 +59962,10 @@ func (o GetProjectResourceQuotaNamespaceDefaultLimitOutput) ToGetProjectResource
 
 func (o GetProjectResourceQuotaNamespaceDefaultLimitOutput) ConfigMaps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectResourceQuotaNamespaceDefaultLimit) *string { return v.ConfigMaps }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectResourceQuotaNamespaceDefaultLimitOutput) Extended() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProjectResourceQuotaNamespaceDefaultLimit) map[string]string { return v.Extended }).(pulumi.StringMapOutput)
 }
 
 func (o GetProjectResourceQuotaNamespaceDefaultLimitOutput) LimitsCpu() pulumi.StringPtrOutput {
@@ -59271,19 +60017,20 @@ func (o GetProjectResourceQuotaNamespaceDefaultLimitOutput) ServicesNodePorts() 
 }
 
 type GetProjectResourceQuotaProjectLimit struct {
-	ConfigMaps             *string `pulumi:"configMaps"`
-	LimitsCpu              *string `pulumi:"limitsCpu"`
-	LimitsMemory           *string `pulumi:"limitsMemory"`
-	PersistentVolumeClaims *string `pulumi:"persistentVolumeClaims"`
-	Pods                   *string `pulumi:"pods"`
-	ReplicationControllers *string `pulumi:"replicationControllers"`
-	RequestsCpu            *string `pulumi:"requestsCpu"`
-	RequestsMemory         *string `pulumi:"requestsMemory"`
-	RequestsStorage        *string `pulumi:"requestsStorage"`
-	Secrets                *string `pulumi:"secrets"`
-	Services               *string `pulumi:"services"`
-	ServicesLoadBalancers  *string `pulumi:"servicesLoadBalancers"`
-	ServicesNodePorts      *string `pulumi:"servicesNodePorts"`
+	ConfigMaps             *string           `pulumi:"configMaps"`
+	Extended               map[string]string `pulumi:"extended"`
+	LimitsCpu              *string           `pulumi:"limitsCpu"`
+	LimitsMemory           *string           `pulumi:"limitsMemory"`
+	PersistentVolumeClaims *string           `pulumi:"persistentVolumeClaims"`
+	Pods                   *string           `pulumi:"pods"`
+	ReplicationControllers *string           `pulumi:"replicationControllers"`
+	RequestsCpu            *string           `pulumi:"requestsCpu"`
+	RequestsMemory         *string           `pulumi:"requestsMemory"`
+	RequestsStorage        *string           `pulumi:"requestsStorage"`
+	Secrets                *string           `pulumi:"secrets"`
+	Services               *string           `pulumi:"services"`
+	ServicesLoadBalancers  *string           `pulumi:"servicesLoadBalancers"`
+	ServicesNodePorts      *string           `pulumi:"servicesNodePorts"`
 }
 
 // GetProjectResourceQuotaProjectLimitInput is an input type that accepts GetProjectResourceQuotaProjectLimitArgs and GetProjectResourceQuotaProjectLimitOutput values.
@@ -59299,6 +60046,7 @@ type GetProjectResourceQuotaProjectLimitInput interface {
 
 type GetProjectResourceQuotaProjectLimitArgs struct {
 	ConfigMaps             pulumi.StringPtrInput `pulumi:"configMaps"`
+	Extended               pulumi.StringMapInput `pulumi:"extended"`
 	LimitsCpu              pulumi.StringPtrInput `pulumi:"limitsCpu"`
 	LimitsMemory           pulumi.StringPtrInput `pulumi:"limitsMemory"`
 	PersistentVolumeClaims pulumi.StringPtrInput `pulumi:"persistentVolumeClaims"`
@@ -59341,6 +60089,10 @@ func (o GetProjectResourceQuotaProjectLimitOutput) ToGetProjectResourceQuotaProj
 
 func (o GetProjectResourceQuotaProjectLimitOutput) ConfigMaps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectResourceQuotaProjectLimit) *string { return v.ConfigMaps }).(pulumi.StringPtrOutput)
+}
+
+func (o GetProjectResourceQuotaProjectLimitOutput) Extended() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProjectResourceQuotaProjectLimit) map[string]string { return v.Extended }).(pulumi.StringMapOutput)
 }
 
 func (o GetProjectResourceQuotaProjectLimitOutput) LimitsCpu() pulumi.StringPtrOutput {
@@ -59822,6 +60574,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationAppendTolerationArrayInput)(nil)).Elem(), ClusterFleetAgentDeploymentCustomizationAppendTolerationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementInput)(nil)).Elem(), ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArrayInput)(nil)).Elem(), ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationInput)(nil)).Elem(), ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput)(nil)).Elem(), ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput)(nil)).Elem(), ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput)(nil)).Elem(), ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput)(nil)).Elem(), ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput)(nil)).Elem(), ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGkeConfigV2Input)(nil)).Elem(), ClusterGkeConfigV2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGkeConfigV2PtrInput)(nil)).Elem(), ClusterGkeConfigV2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGkeConfigV2ClusterAddonsInput)(nil)).Elem(), ClusterGkeConfigV2ClusterAddonsArgs{})
@@ -60004,6 +60762,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArrayInput)(nil)).Elem(), ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementInput)(nil)).Elem(), ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArrayInput)(nil)).Elem(), ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationInput)(nil)).Elem(), ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayInput)(nil)).Elem(), ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetInput)(nil)).Elem(), ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayInput)(nil)).Elem(), ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassInput)(nil)).Elem(), ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayInput)(nil)).Elem(), ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2LocalAuthEndpointInput)(nil)).Elem(), ClusterV2LocalAuthEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2LocalAuthEndpointPtrInput)(nil)).Elem(), ClusterV2LocalAuthEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterV2RkeConfigInput)(nil)).Elem(), ClusterV2RkeConfigArgs{})
@@ -60390,6 +61154,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterFleetAgentDeploymentCustomizationAppendTolerationArrayOutput{})
 	pulumi.RegisterOutputType(ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementOutput{})
 	pulumi.RegisterOutputType(ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput{})
+	pulumi.RegisterOutputType(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationOutput{})
+	pulumi.RegisterOutputType(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput{})
+	pulumi.RegisterOutputType(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput{})
+	pulumi.RegisterOutputType(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput{})
+	pulumi.RegisterOutputType(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput{})
+	pulumi.RegisterOutputType(ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigV2Output{})
 	pulumi.RegisterOutputType(ClusterGkeConfigV2PtrOutput{})
 	pulumi.RegisterOutputType(ClusterGkeConfigV2ClusterAddonsOutput{})
@@ -60572,6 +61342,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArrayOutput{})
 	pulumi.RegisterOutputType(ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementOutput{})
 	pulumi.RegisterOutputType(ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArrayOutput{})
+	pulumi.RegisterOutputType(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationOutput{})
+	pulumi.RegisterOutputType(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArrayOutput{})
+	pulumi.RegisterOutputType(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetOutput{})
+	pulumi.RegisterOutputType(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArrayOutput{})
+	pulumi.RegisterOutputType(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassOutput{})
+	pulumi.RegisterOutputType(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArrayOutput{})
 	pulumi.RegisterOutputType(ClusterV2LocalAuthEndpointOutput{})
 	pulumi.RegisterOutputType(ClusterV2LocalAuthEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ClusterV2RkeConfigOutput{})

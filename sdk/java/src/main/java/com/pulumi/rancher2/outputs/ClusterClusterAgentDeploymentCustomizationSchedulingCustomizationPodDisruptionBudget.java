@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget {
     /**
-     * @return The maximum number of cattle cluster agent replicas that can be down at a given time.
+     * @return The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
      * 
      */
     private @Nullable String maxUnavailable;
     /**
-     * @return The minimum number of cattle cluster agent replicas that must be running at a given time.
+     * @return The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
      * 
      */
     private @Nullable String minAvailable;
 
     private ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget() {}
     /**
-     * @return The maximum number of cattle cluster agent replicas that can be down at a given time.
+     * @return The maximum number of cattle cluster agent or fleet agent replicas that can be down at a given time.
      * 
      */
     public Optional<String> maxUnavailable() {
         return Optional.ofNullable(this.maxUnavailable);
     }
     /**
-     * @return The minimum number of cattle cluster agent replicas that must be running at a given time.
+     * @return The minimum number of cattle cluster agent or fleet agent replicas that must be running at a given time.
      * 
      */
     public Optional<String> minAvailable() {
