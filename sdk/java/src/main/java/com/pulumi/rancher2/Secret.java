@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.Secret;
  * import com.pulumi.rancher2.SecretArgs;
  * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,9 +55,15 @@ import javax.annotation.Nullable;
  *             .description("Terraform secret foo")
  *             .projectId("<project_id>")
  *             .data(Map.ofEntries(
- *                 Map.entry("address", StdFunctions.base64encode(Map.of("input", "test.io")).result()),
- *                 Map.entry("username", StdFunctions.base64encode(Map.of("input", "user2")).result()),
- *                 Map.entry("password", StdFunctions.base64encode(Map.of("input", "pass")).result())
+ *                 Map.entry("address", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("test.io")
+ *                     .build()).result()),
+ *                 Map.entry("username", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("user2")
+ *                     .build()).result()),
+ *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("pass")
+ *                     .build()).result())
  *             ))
  *             .build());
  * 
@@ -75,6 +82,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.Secret;
  * import com.pulumi.rancher2.SecretArgs;
  * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -95,9 +103,15 @@ import javax.annotation.Nullable;
  *             .projectId("<project_id>")
  *             .namespaceId("<namespace_id>")
  *             .data(Map.ofEntries(
- *                 Map.entry("address", StdFunctions.base64encode(Map.of("input", "test.io")).result()),
- *                 Map.entry("username", StdFunctions.base64encode(Map.of("input", "user2")).result()),
- *                 Map.entry("password", StdFunctions.base64encode(Map.of("input", "pass")).result())
+ *                 Map.entry("address", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("test.io")
+ *                     .build()).result()),
+ *                 Map.entry("username", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("user2")
+ *                     .build()).result()),
+ *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("pass")
+ *                     .build()).result())
  *             ))
  *             .build());
  * 

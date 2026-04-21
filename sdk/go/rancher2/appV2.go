@@ -22,15 +22,15 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
-//				"input": "values.yaml",
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "values.yaml",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -43,7 +43,7 @@ import (
 //				RepoName:     pulumi.String("rancher-charts"),
 //				ChartName:    pulumi.String("rancher-monitoring"),
 //				ChartVersion: pulumi.String("9.4.200"),
-//				Values:       invokeFile.Result,
+//				Values:       pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err

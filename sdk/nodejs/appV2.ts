@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     chartVersion: "9.4.200",
  *     values: std.file({
  *         input: "values.yaml",
- *     }).result,
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  *

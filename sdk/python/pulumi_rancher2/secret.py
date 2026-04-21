@@ -290,9 +290,9 @@ class Secret(pulumi.CustomResource):
             description="Terraform secret foo",
             project_id="<project_id>",
             data={
-                "address": std.base64encode(input="test.io")["result"],
-                "username": std.base64encode(input="user2")["result"],
-                "password": std.base64encode(input="pass")["result"],
+                "address": std.base64encode(input="test.io").result,
+                "username": std.base64encode(input="user2").result,
+                "password": std.base64encode(input="pass").result,
             })
         ```
 
@@ -308,9 +308,9 @@ class Secret(pulumi.CustomResource):
             project_id="<project_id>",
             namespace_id="<namespace_id>",
             data={
-                "address": std.base64encode(input="test.io")["result"],
-                "username": std.base64encode(input="user2")["result"],
-                "password": std.base64encode(input="pass")["result"],
+                "address": std.base64encode(input="test.io").result,
+                "username": std.base64encode(input="user2").result,
+                "password": std.base64encode(input="pass").result,
             })
         ```
 
@@ -361,9 +361,9 @@ class Secret(pulumi.CustomResource):
             description="Terraform secret foo",
             project_id="<project_id>",
             data={
-                "address": std.base64encode(input="test.io")["result"],
-                "username": std.base64encode(input="user2")["result"],
-                "password": std.base64encode(input="pass")["result"],
+                "address": std.base64encode(input="test.io").result,
+                "username": std.base64encode(input="user2").result,
+                "password": std.base64encode(input="pass").result,
             })
         ```
 
@@ -379,9 +379,9 @@ class Secret(pulumi.CustomResource):
             project_id="<project_id>",
             namespace_id="<namespace_id>",
             data={
-                "address": std.base64encode(input="test.io")["result"],
-                "username": std.base64encode(input="user2")["result"],
-                "password": std.base64encode(input="pass")["result"],
+                "address": std.base64encode(input="test.io").result,
+                "username": std.base64encode(input="user2").result,
+                "password": std.base64encode(input="pass").result,
             })
         ```
 
