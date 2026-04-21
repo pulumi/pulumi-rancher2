@@ -615,7 +615,7 @@ class AppV2(pulumi.CustomResource):
             repo_name="rancher-charts",
             chart_name="rancher-monitoring",
             chart_version="9.4.200",
-            values=std.file(input="values.yaml")["result"])
+            values=std.file(input="values.yaml").result)
         ```
 
         ### Create an App from a Helm Chart using a different registry
@@ -687,7 +687,7 @@ class AppV2(pulumi.CustomResource):
             repo_name="rancher-charts",
             chart_name="rancher-monitoring",
             chart_version="9.4.200",
-            values=std.file(input="values.yaml")["result"])
+            values=std.file(input="values.yaml").result)
         ```
 
         ### Create an App from a Helm Chart using a different registry

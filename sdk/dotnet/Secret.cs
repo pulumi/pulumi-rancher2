@@ -38,15 +38,15 @@ namespace Pulumi.Rancher2
     ///             { "address", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "test.io",
-    ///             }).Result },
+    ///             }).Apply(invoke =&gt; invoke.Result) },
     ///             { "username", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "user2",
-    ///             }).Result },
+    ///             }).Apply(invoke =&gt; invoke.Result) },
     ///             { "password", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "pass",
-    ///             }).Result },
+    ///             }).Apply(invoke =&gt; invoke.Result) },
     ///         },
     ///     });
     /// 
@@ -74,15 +74,15 @@ namespace Pulumi.Rancher2
     ///             { "address", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "test.io",
-    ///             }).Result },
+    ///             }).Apply(invoke =&gt; invoke.Result) },
     ///             { "username", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "user2",
-    ///             }).Result },
+    ///             }).Apply(invoke =&gt; invoke.Result) },
     ///             { "password", Std.Index.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "pass",
-    ///             }).Result },
+    ///             }).Apply(invoke =&gt; invoke.Result) },
     ///         },
     ///     });
     /// 
