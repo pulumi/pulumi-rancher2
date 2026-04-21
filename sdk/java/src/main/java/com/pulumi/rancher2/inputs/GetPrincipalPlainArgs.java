@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class GetPrincipalPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPrincipalPlainArgs Empty = new GetPrincipalPlainArgs();
+
+    /**
+     * If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+     * 
+     */
+    @Import(name="exactMatch")
+    private @Nullable Boolean exactMatch;
+
+    /**
+     * @return If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+     * 
+     */
+    public Optional<Boolean> exactMatch() {
+        return Optional.ofNullable(this.exactMatch);
+    }
 
     /**
      * The full name of the principal (string)
@@ -48,6 +64,7 @@ public final class GetPrincipalPlainArgs extends com.pulumi.resources.InvokeArgs
     private GetPrincipalPlainArgs() {}
 
     private GetPrincipalPlainArgs(GetPrincipalPlainArgs $) {
+        this.exactMatch = $.exactMatch;
         this.name = $.name;
         this.type = $.type;
     }
@@ -68,6 +85,17 @@ public final class GetPrincipalPlainArgs extends com.pulumi.resources.InvokeArgs
 
         public Builder(GetPrincipalPlainArgs defaults) {
             $ = new GetPrincipalPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param exactMatch If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exactMatch(@Nullable Boolean exactMatch) {
+            $.exactMatch = exactMatch;
+            return this;
         }
 
         /**

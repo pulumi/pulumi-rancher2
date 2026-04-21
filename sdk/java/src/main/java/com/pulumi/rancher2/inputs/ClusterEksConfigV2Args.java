@@ -51,6 +51,21 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+     * 
+     */
+    @Import(name="ipFamily")
+    private @Nullable Output<String> ipFamily;
+
+    /**
+     * @return The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+     * 
+     */
+    public Optional<Output<String>> ipFamily() {
+        return Optional.ofNullable(this.ipFamily);
+    }
+
+    /**
      * The AWS kms key to use
      * 
      */
@@ -265,6 +280,7 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
     private ClusterEksConfigV2Args(ClusterEksConfigV2Args $) {
         this.cloudCredentialId = $.cloudCredentialId;
         this.imported = $.imported;
+        this.ipFamily = $.ipFamily;
         this.kmsKey = $.kmsKey;
         this.kubernetesVersion = $.kubernetesVersion;
         this.loggingTypes = $.loggingTypes;
@@ -339,6 +355,27 @@ public final class ClusterEksConfigV2Args extends com.pulumi.resources.ResourceA
          */
         public Builder imported(Boolean imported) {
             return imported(Output.of(imported));
+        }
+
+        /**
+         * @param ipFamily The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFamily(@Nullable Output<String> ipFamily) {
+            $.ipFamily = ipFamily;
+            return this;
+        }
+
+        /**
+         * @param ipFamily The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipFamily(String ipFamily) {
+            return ipFamily(Output.of(ipFamily));
         }
 
         /**

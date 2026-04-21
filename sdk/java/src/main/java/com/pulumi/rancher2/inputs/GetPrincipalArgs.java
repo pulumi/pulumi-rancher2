@@ -6,6 +6,7 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class GetPrincipalArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPrincipalArgs Empty = new GetPrincipalArgs();
+
+    /**
+     * If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+     * 
+     */
+    @Import(name="exactMatch")
+    private @Nullable Output<Boolean> exactMatch;
+
+    /**
+     * @return If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+     * 
+     */
+    public Optional<Output<Boolean>> exactMatch() {
+        return Optional.ofNullable(this.exactMatch);
+    }
 
     /**
      * The full name of the principal (string)
@@ -49,6 +65,7 @@ public final class GetPrincipalArgs extends com.pulumi.resources.InvokeArgs {
     private GetPrincipalArgs() {}
 
     private GetPrincipalArgs(GetPrincipalArgs $) {
+        this.exactMatch = $.exactMatch;
         this.name = $.name;
         this.type = $.type;
     }
@@ -69,6 +86,27 @@ public final class GetPrincipalArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetPrincipalArgs defaults) {
             $ = new GetPrincipalArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param exactMatch If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exactMatch(@Nullable Output<Boolean> exactMatch) {
+            $.exactMatch = exactMatch;
+            return this;
+        }
+
+        /**
+         * @param exactMatch If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exactMatch(Boolean exactMatch) {
+            return exactMatch(Output.of(exactMatch));
         }
 
         /**

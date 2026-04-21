@@ -5,6 +5,7 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,7 @@ public final class ProjectResourceQuotaProjectLimit {
      * 
      */
     private @Nullable String configMaps;
+    private @Nullable Map<String,String> extended;
     /**
      * @return Limit for limits cpu in project (string)
      * 
@@ -82,6 +84,9 @@ public final class ProjectResourceQuotaProjectLimit {
      */
     public Optional<String> configMaps() {
         return Optional.ofNullable(this.configMaps);
+    }
+    public Map<String,String> extended() {
+        return this.extended == null ? Map.of() : this.extended;
     }
     /**
      * @return Limit for limits cpu in project (string)
@@ -176,6 +181,7 @@ public final class ProjectResourceQuotaProjectLimit {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String configMaps;
+        private @Nullable Map<String,String> extended;
         private @Nullable String limitsCpu;
         private @Nullable String limitsMemory;
         private @Nullable String persistentVolumeClaims;
@@ -192,6 +198,7 @@ public final class ProjectResourceQuotaProjectLimit {
         public Builder(ProjectResourceQuotaProjectLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configMaps = defaults.configMaps;
+    	      this.extended = defaults.extended;
     	      this.limitsCpu = defaults.limitsCpu;
     	      this.limitsMemory = defaults.limitsMemory;
     	      this.persistentVolumeClaims = defaults.persistentVolumeClaims;
@@ -210,6 +217,12 @@ public final class ProjectResourceQuotaProjectLimit {
         public Builder configMaps(@Nullable String configMaps) {
 
             this.configMaps = configMaps;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder extended(@Nullable Map<String,String> extended) {
+
+            this.extended = extended;
             return this;
         }
         @CustomType.Setter
@@ -287,6 +300,7 @@ public final class ProjectResourceQuotaProjectLimit {
         public ProjectResourceQuotaProjectLimit build() {
             final var _resultValue = new ProjectResourceQuotaProjectLimit();
             _resultValue.configMaps = configMaps;
+            _resultValue.extended = extended;
             _resultValue.limitsCpu = limitsCpu;
             _resultValue.limitsMemory = limitsMemory;
             _resultValue.persistentVolumeClaims = persistentVolumeClaims;

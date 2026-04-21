@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *             .name("foo")
  *             .newUserDefault(true)
  *             .description("Terraform global role acceptance test")
+ *             .inheritedClusterRoles("projects-view")
  *             .rules(GlobalRoleRuleArgs.builder()
  *                 .apiGroups("*")
  *                 .resources("secrets")

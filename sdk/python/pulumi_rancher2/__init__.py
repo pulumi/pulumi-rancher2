@@ -10,11 +10,13 @@ from .app_v2 import *
 from .auth_config_active_directory import *
 from .auth_config_adfs import *
 from .auth_config_azure_ad import *
+from .auth_config_cognito import *
 from .auth_config_free_ipa import *
 from .auth_config_generic_oidc import *
 from .auth_config_github import *
 from .auth_config_githubapp import *
 from .auth_config_keycloak import *
+from .auth_config_keycloak_oidc import *
 from .auth_config_okta import *
 from .auth_config_open_ldap import *
 from .auth_config_ping import *
@@ -121,6 +123,14 @@ _utilities.register(
  },
  {
   "pkg": "rancher2",
+  "mod": "index/authConfigCognito",
+  "fqn": "pulumi_rancher2",
+  "classes": {
+   "rancher2:index/authConfigCognito:AuthConfigCognito": "AuthConfigCognito"
+  }
+ },
+ {
+  "pkg": "rancher2",
   "mod": "index/authConfigFreeIpa",
   "fqn": "pulumi_rancher2",
   "classes": {
@@ -157,6 +167,14 @@ _utilities.register(
   "fqn": "pulumi_rancher2",
   "classes": {
    "rancher2:index/authConfigKeycloak:AuthConfigKeycloak": "AuthConfigKeycloak"
+  }
+ },
+ {
+  "pkg": "rancher2",
+  "mod": "index/authConfigKeycloakOidc",
+  "fqn": "pulumi_rancher2",
+  "classes": {
+   "rancher2:index/authConfigKeycloakOidc:AuthConfigKeycloakOidc": "AuthConfigKeycloakOidc"
   }
  },
  {

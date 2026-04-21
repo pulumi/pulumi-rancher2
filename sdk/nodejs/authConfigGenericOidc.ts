@@ -94,9 +94,17 @@ export class AuthConfigGenericOidc extends pulumi.CustomResource {
      */
     declare public readonly clientSecret: pulumi.Output<string>;
     /**
+     * The OIDC Claim to use for the user email.
+     */
+    declare public readonly emailClaim: pulumi.Output<string | undefined>;
+    /**
      * Enable the auth config provider. Default `true` (bool)
      */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    /**
+     * The provider specific URL used for logging a user out of their session.
+     */
+    declare public readonly endSessionEndpoint: pulumi.Output<string | undefined>;
     /**
      * Enable group search. Default `false` (bool)
      */
@@ -118,9 +126,21 @@ export class AuthConfigGenericOidc extends pulumi.CustomResource {
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Allow the user to choose whether or not to logout of their session with the IdP.
+     */
+    declare public readonly logoutAllEnabled: pulumi.Output<boolean | undefined>;
+    /**
+     * Force the user to logout of their session with the IdP.
+     */
+    declare public readonly logoutAllForced: pulumi.Output<boolean | undefined>;
+    /**
      * (Computed) The name of the resource (string)
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The OIDC Claim to use for the user name.
+     */
+    declare public readonly nameClaim: pulumi.Output<string | undefined>;
     /**
      * A PEM-encoded private key for the OIDC provider.
      */
@@ -166,13 +186,18 @@ export class AuthConfigGenericOidc extends pulumi.CustomResource {
             resourceInputs["certificate"] = state?.certificate;
             resourceInputs["clientId"] = state?.clientId;
             resourceInputs["clientSecret"] = state?.clientSecret;
+            resourceInputs["emailClaim"] = state?.emailClaim;
             resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["endSessionEndpoint"] = state?.endSessionEndpoint;
             resourceInputs["groupSearchEnabled"] = state?.groupSearchEnabled;
             resourceInputs["groupsField"] = state?.groupsField;
             resourceInputs["issuer"] = state?.issuer;
             resourceInputs["jwksUrl"] = state?.jwksUrl;
             resourceInputs["labels"] = state?.labels;
+            resourceInputs["logoutAllEnabled"] = state?.logoutAllEnabled;
+            resourceInputs["logoutAllForced"] = state?.logoutAllForced;
             resourceInputs["name"] = state?.name;
+            resourceInputs["nameClaim"] = state?.nameClaim;
             resourceInputs["privateKey"] = state?.privateKey;
             resourceInputs["rancherUrl"] = state?.rancherUrl;
             resourceInputs["scopes"] = state?.scopes;
@@ -200,12 +225,17 @@ export class AuthConfigGenericOidc extends pulumi.CustomResource {
             resourceInputs["certificate"] = args?.certificate ? pulumi.secret(args.certificate) : undefined;
             resourceInputs["clientId"] = args?.clientId ? pulumi.secret(args.clientId) : undefined;
             resourceInputs["clientSecret"] = args?.clientSecret ? pulumi.secret(args.clientSecret) : undefined;
+            resourceInputs["emailClaim"] = args?.emailClaim;
             resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["endSessionEndpoint"] = args?.endSessionEndpoint;
             resourceInputs["groupSearchEnabled"] = args?.groupSearchEnabled;
             resourceInputs["groupsField"] = args?.groupsField;
             resourceInputs["issuer"] = args?.issuer;
             resourceInputs["jwksUrl"] = args?.jwksUrl;
             resourceInputs["labels"] = args?.labels;
+            resourceInputs["logoutAllEnabled"] = args?.logoutAllEnabled;
+            resourceInputs["logoutAllForced"] = args?.logoutAllForced;
+            resourceInputs["nameClaim"] = args?.nameClaim;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["rancherUrl"] = args?.rancherUrl;
             resourceInputs["scopes"] = args?.scopes;
@@ -254,9 +284,17 @@ export interface AuthConfigGenericOidcState {
      */
     clientSecret?: pulumi.Input<string>;
     /**
+     * The OIDC Claim to use for the user email.
+     */
+    emailClaim?: pulumi.Input<string>;
+    /**
      * Enable the auth config provider. Default `true` (bool)
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The provider specific URL used for logging a user out of their session.
+     */
+    endSessionEndpoint?: pulumi.Input<string>;
     /**
      * Enable group search. Default `false` (bool)
      */
@@ -278,9 +316,21 @@ export interface AuthConfigGenericOidcState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Allow the user to choose whether or not to logout of their session with the IdP.
+     */
+    logoutAllEnabled?: pulumi.Input<boolean>;
+    /**
+     * Force the user to logout of their session with the IdP.
+     */
+    logoutAllForced?: pulumi.Input<boolean>;
+    /**
      * (Computed) The name of the resource (string)
      */
     name?: pulumi.Input<string>;
+    /**
+     * The OIDC Claim to use for the user name.
+     */
+    nameClaim?: pulumi.Input<string>;
     /**
      * A PEM-encoded private key for the OIDC provider.
      */
@@ -340,9 +390,17 @@ export interface AuthConfigGenericOidcArgs {
      */
     clientSecret: pulumi.Input<string>;
     /**
+     * The OIDC Claim to use for the user email.
+     */
+    emailClaim?: pulumi.Input<string>;
+    /**
      * Enable the auth config provider. Default `true` (bool)
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The provider specific URL used for logging a user out of their session.
+     */
+    endSessionEndpoint?: pulumi.Input<string>;
     /**
      * Enable group search. Default `false` (bool)
      */
@@ -363,6 +421,18 @@ export interface AuthConfigGenericOidcArgs {
      * Labels of the resource (map)
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Allow the user to choose whether or not to logout of their session with the IdP.
+     */
+    logoutAllEnabled?: pulumi.Input<boolean>;
+    /**
+     * Force the user to logout of their session with the IdP.
+     */
+    logoutAllForced?: pulumi.Input<boolean>;
+    /**
+     * The OIDC Claim to use for the user name.
+     */
+    nameClaim?: pulumi.Input<string>;
     /**
      * A PEM-encoded private key for the OIDC provider.
      */

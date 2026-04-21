@@ -25,6 +25,11 @@ export type AuthConfigAzureAd = import("./authConfigAzureAd").AuthConfigAzureAd;
 export const AuthConfigAzureAd: typeof import("./authConfigAzureAd").AuthConfigAzureAd = null as any;
 utilities.lazyLoad(exports, ["AuthConfigAzureAd"], () => require("./authConfigAzureAd"));
 
+export { AuthConfigCognitoArgs, AuthConfigCognitoState } from "./authConfigCognito";
+export type AuthConfigCognito = import("./authConfigCognito").AuthConfigCognito;
+export const AuthConfigCognito: typeof import("./authConfigCognito").AuthConfigCognito = null as any;
+utilities.lazyLoad(exports, ["AuthConfigCognito"], () => require("./authConfigCognito"));
+
 export { AuthConfigFreeIpaArgs, AuthConfigFreeIpaState } from "./authConfigFreeIpa";
 export type AuthConfigFreeIpa = import("./authConfigFreeIpa").AuthConfigFreeIpa;
 export const AuthConfigFreeIpa: typeof import("./authConfigFreeIpa").AuthConfigFreeIpa = null as any;
@@ -49,6 +54,11 @@ export { AuthConfigKeycloakArgs, AuthConfigKeycloakState } from "./authConfigKey
 export type AuthConfigKeycloak = import("./authConfigKeycloak").AuthConfigKeycloak;
 export const AuthConfigKeycloak: typeof import("./authConfigKeycloak").AuthConfigKeycloak = null as any;
 utilities.lazyLoad(exports, ["AuthConfigKeycloak"], () => require("./authConfigKeycloak"));
+
+export { AuthConfigKeycloakOidcArgs, AuthConfigKeycloakOidcState } from "./authConfigKeycloakOidc";
+export type AuthConfigKeycloakOidc = import("./authConfigKeycloakOidc").AuthConfigKeycloakOidc;
+export const AuthConfigKeycloakOidc: typeof import("./authConfigKeycloakOidc").AuthConfigKeycloakOidc = null as any;
+utilities.lazyLoad(exports, ["AuthConfigKeycloakOidc"], () => require("./authConfigKeycloakOidc"));
 
 export { AuthConfigOktaArgs, AuthConfigOktaState } from "./authConfigOkta";
 export type AuthConfigOkta = import("./authConfigOkta").AuthConfigOkta;
@@ -365,6 +375,8 @@ const _module = {
                 return new AuthConfigAdfs(name, <any>undefined, { urn })
             case "rancher2:index/authConfigAzureAd:AuthConfigAzureAd":
                 return new AuthConfigAzureAd(name, <any>undefined, { urn })
+            case "rancher2:index/authConfigCognito:AuthConfigCognito":
+                return new AuthConfigCognito(name, <any>undefined, { urn })
             case "rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa":
                 return new AuthConfigFreeIpa(name, <any>undefined, { urn })
             case "rancher2:index/authConfigGenericOidc:AuthConfigGenericOidc":
@@ -375,6 +387,8 @@ const _module = {
                 return new AuthConfigGithubapp(name, <any>undefined, { urn })
             case "rancher2:index/authConfigKeycloak:AuthConfigKeycloak":
                 return new AuthConfigKeycloak(name, <any>undefined, { urn })
+            case "rancher2:index/authConfigKeycloakOidc:AuthConfigKeycloakOidc":
+                return new AuthConfigKeycloakOidc(name, <any>undefined, { urn })
             case "rancher2:index/authConfigOkta:AuthConfigOkta":
                 return new AuthConfigOkta(name, <any>undefined, { urn })
             case "rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap":
@@ -450,11 +464,13 @@ pulumi.runtime.registerResourceModule("rancher2", "index/appV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigActiveDirectory", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigAdfs", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigAzureAd", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/authConfigCognito", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigFreeIpa", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigGenericOidc", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigGithub", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigGithubapp", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigKeycloak", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/authConfigKeycloakOidc", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigOkta", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigOpenLdap", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/authConfigPing", _module)

@@ -14,11 +14,11 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization
     {
         /// <summary>
-        /// The Pod Disruption Budget created for the cattle cluster agent
+        /// The Pod Disruption Budget created for the cattle cluster agent or fleet agent
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudget> PodDisruptionBudgets;
         /// <summary>
-        /// The Priority Class created for the cattle cluster agent
+        /// The Priority Class created for the cattle cluster agent or fleet agent
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass> PriorityClasses;
 

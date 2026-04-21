@@ -28,11 +28,16 @@ class AuthConfigGenericOidcArgs:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  auth_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 end_session_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  group_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  groups_field: Optional[pulumi.Input[_builtins.str]] = None,
                  jwks_url: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 logout_all_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 logout_all_forced: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[_builtins.str]] = None,
                  token_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -49,11 +54,16 @@ class AuthConfigGenericOidcArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
         :param pulumi.Input[_builtins.str] auth_endpoint: The OIDC Auth Endpoint URL.
         :param pulumi.Input[_builtins.str] certificate: A PEM-encoded CA certificate for the OIDC provider.
+        :param pulumi.Input[_builtins.str] email_claim: The OIDC Claim to use for the user email.
         :param pulumi.Input[_builtins.bool] enabled: Enable the auth config provider. Default `true` (bool)
+        :param pulumi.Input[_builtins.str] end_session_endpoint: The provider specific URL used for logging a user out of their session.
         :param pulumi.Input[_builtins.bool] group_search_enabled: Enable group search. Default `false` (bool)
         :param pulumi.Input[_builtins.str] groups_field: The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
         :param pulumi.Input[_builtins.str] jwks_url: The OIDC JWKS URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels of the resource (map)
+        :param pulumi.Input[_builtins.bool] logout_all_enabled: Allow the user to choose whether or not to logout of their session with the IdP.
+        :param pulumi.Input[_builtins.bool] logout_all_forced: Force the user to logout of their session with the IdP.
+        :param pulumi.Input[_builtins.str] name_claim: The OIDC Claim to use for the user name.
         :param pulumi.Input[_builtins.str] private_key: A PEM-encoded private key for the OIDC provider.
         :param pulumi.Input[_builtins.str] scopes: The OIDC scopes to request. Defaults to `openid profile email` (string)
         :param pulumi.Input[_builtins.str] token_endpoint: The OIDC Token Endpoint URL.
@@ -73,8 +83,12 @@ class AuthConfigGenericOidcArgs:
             pulumi.set(__self__, "auth_endpoint", auth_endpoint)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
+        if email_claim is not None:
+            pulumi.set(__self__, "email_claim", email_claim)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if end_session_endpoint is not None:
+            pulumi.set(__self__, "end_session_endpoint", end_session_endpoint)
         if group_search_enabled is not None:
             pulumi.set(__self__, "group_search_enabled", group_search_enabled)
         if groups_field is not None:
@@ -83,6 +97,12 @@ class AuthConfigGenericOidcArgs:
             pulumi.set(__self__, "jwks_url", jwks_url)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if logout_all_enabled is not None:
+            pulumi.set(__self__, "logout_all_enabled", logout_all_enabled)
+        if logout_all_forced is not None:
+            pulumi.set(__self__, "logout_all_forced", logout_all_forced)
+        if name_claim is not None:
+            pulumi.set(__self__, "name_claim", name_claim)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if scopes is not None:
@@ -201,6 +221,18 @@ class AuthConfigGenericOidcArgs:
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
+    @pulumi.getter(name="emailClaim")
+    def email_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The OIDC Claim to use for the user email.
+        """
+        return pulumi.get(self, "email_claim")
+
+    @email_claim.setter
+    def email_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "email_claim", value)
+
+    @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -211,6 +243,18 @@ class AuthConfigGenericOidcArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endSessionEndpoint")
+    def end_session_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The provider specific URL used for logging a user out of their session.
+        """
+        return pulumi.get(self, "end_session_endpoint")
+
+    @end_session_endpoint.setter
+    def end_session_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "end_session_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="groupSearchEnabled")
@@ -259,6 +303,42 @@ class AuthConfigGenericOidcArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logoutAllEnabled")
+    def logout_all_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allow the user to choose whether or not to logout of their session with the IdP.
+        """
+        return pulumi.get(self, "logout_all_enabled")
+
+    @logout_all_enabled.setter
+    def logout_all_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "logout_all_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logoutAllForced")
+    def logout_all_forced(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Force the user to logout of their session with the IdP.
+        """
+        return pulumi.get(self, "logout_all_forced")
+
+    @logout_all_forced.setter
+    def logout_all_forced(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "logout_all_forced", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameClaim")
+    def name_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The OIDC Claim to use for the user name.
+        """
+        return pulumi.get(self, "name_claim")
+
+    @name_claim.setter
+    def name_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_claim", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
@@ -319,13 +399,18 @@ class _AuthConfigGenericOidcState:
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 end_session_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  group_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  groups_field: Optional[pulumi.Input[_builtins.str]] = None,
                  issuer: Optional[pulumi.Input[_builtins.str]] = None,
                  jwks_url: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 logout_all_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 logout_all_forced: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 name_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  rancher_url: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[_builtins.str]] = None,
@@ -342,13 +427,18 @@ class _AuthConfigGenericOidcState:
         :param pulumi.Input[_builtins.str] certificate: A PEM-encoded CA certificate for the OIDC provider.
         :param pulumi.Input[_builtins.str] client_id: The OIDC Client ID.
         :param pulumi.Input[_builtins.str] client_secret: The OIDC Client Secret.
+        :param pulumi.Input[_builtins.str] email_claim: The OIDC Claim to use for the user email.
         :param pulumi.Input[_builtins.bool] enabled: Enable the auth config provider. Default `true` (bool)
+        :param pulumi.Input[_builtins.str] end_session_endpoint: The provider specific URL used for logging a user out of their session.
         :param pulumi.Input[_builtins.bool] group_search_enabled: Enable group search. Default `false` (bool)
         :param pulumi.Input[_builtins.str] groups_field: The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
         :param pulumi.Input[_builtins.str] issuer: The OIDC issuer URL.
         :param pulumi.Input[_builtins.str] jwks_url: The OIDC JWKS URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels of the resource (map)
+        :param pulumi.Input[_builtins.bool] logout_all_enabled: Allow the user to choose whether or not to logout of their session with the IdP.
+        :param pulumi.Input[_builtins.bool] logout_all_forced: Force the user to logout of their session with the IdP.
         :param pulumi.Input[_builtins.str] name: (Computed) The name of the resource (string)
+        :param pulumi.Input[_builtins.str] name_claim: The OIDC Claim to use for the user name.
         :param pulumi.Input[_builtins.str] private_key: A PEM-encoded private key for the OIDC provider.
         :param pulumi.Input[_builtins.str] rancher_url: The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
         :param pulumi.Input[_builtins.str] scopes: The OIDC scopes to request. Defaults to `openid profile email` (string)
@@ -370,8 +460,12 @@ class _AuthConfigGenericOidcState:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if email_claim is not None:
+            pulumi.set(__self__, "email_claim", email_claim)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if end_session_endpoint is not None:
+            pulumi.set(__self__, "end_session_endpoint", end_session_endpoint)
         if group_search_enabled is not None:
             pulumi.set(__self__, "group_search_enabled", group_search_enabled)
         if groups_field is not None:
@@ -382,8 +476,14 @@ class _AuthConfigGenericOidcState:
             pulumi.set(__self__, "jwks_url", jwks_url)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if logout_all_enabled is not None:
+            pulumi.set(__self__, "logout_all_enabled", logout_all_enabled)
+        if logout_all_forced is not None:
+            pulumi.set(__self__, "logout_all_forced", logout_all_forced)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if name_claim is not None:
+            pulumi.set(__self__, "name_claim", name_claim)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if rancher_url is not None:
@@ -482,6 +582,18 @@ class _AuthConfigGenericOidcState:
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
+    @pulumi.getter(name="emailClaim")
+    def email_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The OIDC Claim to use for the user email.
+        """
+        return pulumi.get(self, "email_claim")
+
+    @email_claim.setter
+    def email_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "email_claim", value)
+
+    @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -492,6 +604,18 @@ class _AuthConfigGenericOidcState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endSessionEndpoint")
+    def end_session_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The provider specific URL used for logging a user out of their session.
+        """
+        return pulumi.get(self, "end_session_endpoint")
+
+    @end_session_endpoint.setter
+    def end_session_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "end_session_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="groupSearchEnabled")
@@ -554,6 +678,30 @@ class _AuthConfigGenericOidcState:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="logoutAllEnabled")
+    def logout_all_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allow the user to choose whether or not to logout of their session with the IdP.
+        """
+        return pulumi.get(self, "logout_all_enabled")
+
+    @logout_all_enabled.setter
+    def logout_all_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "logout_all_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logoutAllForced")
+    def logout_all_forced(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Force the user to logout of their session with the IdP.
+        """
+        return pulumi.get(self, "logout_all_forced")
+
+    @logout_all_forced.setter
+    def logout_all_forced(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "logout_all_forced", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -564,6 +712,18 @@ class _AuthConfigGenericOidcState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nameClaim")
+    def name_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The OIDC Claim to use for the user name.
+        """
+        return pulumi.get(self, "name_claim")
+
+    @name_claim.setter
+    def name_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name_claim", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
@@ -651,12 +811,17 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 end_session_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  group_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  groups_field: Optional[pulumi.Input[_builtins.str]] = None,
                  issuer: Optional[pulumi.Input[_builtins.str]] = None,
                  jwks_url: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 logout_all_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 logout_all_forced: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  rancher_url: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[_builtins.str]] = None,
@@ -705,12 +870,17 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate: A PEM-encoded CA certificate for the OIDC provider.
         :param pulumi.Input[_builtins.str] client_id: The OIDC Client ID.
         :param pulumi.Input[_builtins.str] client_secret: The OIDC Client Secret.
+        :param pulumi.Input[_builtins.str] email_claim: The OIDC Claim to use for the user email.
         :param pulumi.Input[_builtins.bool] enabled: Enable the auth config provider. Default `true` (bool)
+        :param pulumi.Input[_builtins.str] end_session_endpoint: The provider specific URL used for logging a user out of their session.
         :param pulumi.Input[_builtins.bool] group_search_enabled: Enable group search. Default `false` (bool)
         :param pulumi.Input[_builtins.str] groups_field: The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
         :param pulumi.Input[_builtins.str] issuer: The OIDC issuer URL.
         :param pulumi.Input[_builtins.str] jwks_url: The OIDC JWKS URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels of the resource (map)
+        :param pulumi.Input[_builtins.bool] logout_all_enabled: Allow the user to choose whether or not to logout of their session with the IdP.
+        :param pulumi.Input[_builtins.bool] logout_all_forced: Force the user to logout of their session with the IdP.
+        :param pulumi.Input[_builtins.str] name_claim: The OIDC Claim to use for the user name.
         :param pulumi.Input[_builtins.str] private_key: A PEM-encoded private key for the OIDC provider.
         :param pulumi.Input[_builtins.str] rancher_url: The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
         :param pulumi.Input[_builtins.str] scopes: The OIDC scopes to request. Defaults to `openid profile email` (string)
@@ -778,12 +948,17 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
                  certificate: Optional[pulumi.Input[_builtins.str]] = None,
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+                 email_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 end_session_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  group_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  groups_field: Optional[pulumi.Input[_builtins.str]] = None,
                  issuer: Optional[pulumi.Input[_builtins.str]] = None,
                  jwks_url: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 logout_all_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 logout_all_forced: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
                  rancher_url: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[_builtins.str]] = None,
@@ -809,7 +984,9 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
             if client_secret is None and not opts.urn:
                 raise TypeError("Missing required property 'client_secret'")
             __props__.__dict__["client_secret"] = None if client_secret is None else pulumi.Output.secret(client_secret)
+            __props__.__dict__["email_claim"] = email_claim
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["end_session_endpoint"] = end_session_endpoint
             __props__.__dict__["group_search_enabled"] = group_search_enabled
             __props__.__dict__["groups_field"] = groups_field
             if issuer is None and not opts.urn:
@@ -817,6 +994,9 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
             __props__.__dict__["issuer"] = issuer
             __props__.__dict__["jwks_url"] = jwks_url
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["logout_all_enabled"] = logout_all_enabled
+            __props__.__dict__["logout_all_forced"] = logout_all_forced
+            __props__.__dict__["name_claim"] = name_claim
             __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             if rancher_url is None and not opts.urn:
                 raise TypeError("Missing required property 'rancher_url'")
@@ -845,13 +1025,18 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
             certificate: Optional[pulumi.Input[_builtins.str]] = None,
             client_id: Optional[pulumi.Input[_builtins.str]] = None,
             client_secret: Optional[pulumi.Input[_builtins.str]] = None,
+            email_claim: Optional[pulumi.Input[_builtins.str]] = None,
             enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            end_session_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
             group_search_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             groups_field: Optional[pulumi.Input[_builtins.str]] = None,
             issuer: Optional[pulumi.Input[_builtins.str]] = None,
             jwks_url: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            logout_all_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            logout_all_forced: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            name_claim: Optional[pulumi.Input[_builtins.str]] = None,
             private_key: Optional[pulumi.Input[_builtins.str]] = None,
             rancher_url: Optional[pulumi.Input[_builtins.str]] = None,
             scopes: Optional[pulumi.Input[_builtins.str]] = None,
@@ -872,13 +1057,18 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate: A PEM-encoded CA certificate for the OIDC provider.
         :param pulumi.Input[_builtins.str] client_id: The OIDC Client ID.
         :param pulumi.Input[_builtins.str] client_secret: The OIDC Client Secret.
+        :param pulumi.Input[_builtins.str] email_claim: The OIDC Claim to use for the user email.
         :param pulumi.Input[_builtins.bool] enabled: Enable the auth config provider. Default `true` (bool)
+        :param pulumi.Input[_builtins.str] end_session_endpoint: The provider specific URL used for logging a user out of their session.
         :param pulumi.Input[_builtins.bool] group_search_enabled: Enable group search. Default `false` (bool)
         :param pulumi.Input[_builtins.str] groups_field: The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
         :param pulumi.Input[_builtins.str] issuer: The OIDC issuer URL.
         :param pulumi.Input[_builtins.str] jwks_url: The OIDC JWKS URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels of the resource (map)
+        :param pulumi.Input[_builtins.bool] logout_all_enabled: Allow the user to choose whether or not to logout of their session with the IdP.
+        :param pulumi.Input[_builtins.bool] logout_all_forced: Force the user to logout of their session with the IdP.
         :param pulumi.Input[_builtins.str] name: (Computed) The name of the resource (string)
+        :param pulumi.Input[_builtins.str] name_claim: The OIDC Claim to use for the user name.
         :param pulumi.Input[_builtins.str] private_key: A PEM-encoded private key for the OIDC provider.
         :param pulumi.Input[_builtins.str] rancher_url: The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
         :param pulumi.Input[_builtins.str] scopes: The OIDC scopes to request. Defaults to `openid profile email` (string)
@@ -897,13 +1087,18 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         __props__.__dict__["certificate"] = certificate
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_secret"] = client_secret
+        __props__.__dict__["email_claim"] = email_claim
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["end_session_endpoint"] = end_session_endpoint
         __props__.__dict__["group_search_enabled"] = group_search_enabled
         __props__.__dict__["groups_field"] = groups_field
         __props__.__dict__["issuer"] = issuer
         __props__.__dict__["jwks_url"] = jwks_url
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["logout_all_enabled"] = logout_all_enabled
+        __props__.__dict__["logout_all_forced"] = logout_all_forced
         __props__.__dict__["name"] = name
+        __props__.__dict__["name_claim"] = name_claim
         __props__.__dict__["private_key"] = private_key
         __props__.__dict__["rancher_url"] = rancher_url
         __props__.__dict__["scopes"] = scopes
@@ -969,12 +1164,28 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         return pulumi.get(self, "client_secret")
 
     @_builtins.property
+    @pulumi.getter(name="emailClaim")
+    def email_claim(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The OIDC Claim to use for the user email.
+        """
+        return pulumi.get(self, "email_claim")
+
+    @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Enable the auth config provider. Default `true` (bool)
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="endSessionEndpoint")
+    def end_session_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The provider specific URL used for logging a user out of their session.
+        """
+        return pulumi.get(self, "end_session_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="groupSearchEnabled")
@@ -1017,12 +1228,36 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @_builtins.property
+    @pulumi.getter(name="logoutAllEnabled")
+    def logout_all_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Allow the user to choose whether or not to logout of their session with the IdP.
+        """
+        return pulumi.get(self, "logout_all_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="logoutAllForced")
+    def logout_all_forced(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Force the user to logout of their session with the IdP.
+        """
+        return pulumi.get(self, "logout_all_forced")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         (Computed) The name of the resource (string)
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="nameClaim")
+    def name_claim(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The OIDC Claim to use for the user name.
+        """
+        return pulumi.get(self, "name_claim")
 
     @_builtins.property
     @pulumi.getter(name="privateKey")

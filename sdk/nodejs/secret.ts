@@ -26,13 +26,13 @@ import * as utilities from "./utilities";
  *     data: {
  *         address: std.base64encode({
  *             input: "test.io",
- *         }).then(invoke => invoke.result),
+ *         }).result,
  *         username: std.base64encode({
  *             input: "user2",
- *         }).then(invoke => invoke.result),
+ *         }).result,
  *         password: std.base64encode({
  *             input: "pass",
- *         }).then(invoke => invoke.result),
+ *         }).result,
  *     },
  * });
  * ```
@@ -51,13 +51,13 @@ import * as utilities from "./utilities";
  *     data: {
  *         address: std.base64encode({
  *             input: "test.io",
- *         }).then(invoke => invoke.result),
+ *         }).result,
  *         username: std.base64encode({
  *             input: "user2",
- *         }).then(invoke => invoke.result),
+ *         }).result,
  *         password: std.base64encode({
  *             input: "pass",
- *         }).then(invoke => invoke.result),
+ *         }).result,
  *     },
  * });
  * ```

@@ -14,17 +14,21 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterFleetAgentDeploymentCustomization
     {
         /// <summary>
-        /// User defined tolerations to append to agent
+        /// User-defined tolerations to append to agent
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterFleetAgentDeploymentCustomizationAppendToleration> AppendTolerations;
         /// <summary>
-        /// User defined affinity to override default agent affinity
+        /// User-defined affinity to override default agent affinity
         /// </summary>
         public readonly string? OverrideAffinity;
         /// <summary>
-        /// User defined resource requirements to set on the agent
+        /// User-defined resource requirements to set on the agent
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement> OverrideResourceRequirements;
+        /// <summary>
+        /// User-defined scheduling customization for the cattle or fleet cluster agent
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomization> SchedulingCustomizations;
 
         [OutputConstructor]
         private ClusterFleetAgentDeploymentCustomization(
@@ -32,11 +36,14 @@ namespace Pulumi.Rancher2.Outputs
 
             string? overrideAffinity,
 
-            ImmutableArray<Outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements)
+            ImmutableArray<Outputs.ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements,
+
+            ImmutableArray<Outputs.ClusterFleetAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations)
         {
             AppendTolerations = appendTolerations;
             OverrideAffinity = overrideAffinity;
             OverrideResourceRequirements = overrideResourceRequirements;
+            SchedulingCustomizations = schedulingCustomizations;
         }
     }
 }

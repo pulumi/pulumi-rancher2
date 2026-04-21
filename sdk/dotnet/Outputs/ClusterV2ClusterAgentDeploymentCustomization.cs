@@ -14,19 +14,19 @@ namespace Pulumi.Rancher2.Outputs
     public sealed class ClusterV2ClusterAgentDeploymentCustomization
     {
         /// <summary>
-        /// User defined tolerations to append to agent
+        /// User-defined tolerations to append to agent
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationAppendToleration> AppendTolerations;
         /// <summary>
-        /// User defined affinity to override default agent affinity
+        /// User-defined affinity to override default agent affinity
         /// </summary>
         public readonly string? OverrideAffinity;
         /// <summary>
-        /// User defined resource requirements to set on the agent
+        /// User-defined resource requirements to set on the agent
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement> OverrideResourceRequirements;
         /// <summary>
-        /// User defined scheduling customization for the cattle cluster agent
+        /// User-defined scheduling customization for the cattle or fleet cluster agent
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization> SchedulingCustomizations;
 

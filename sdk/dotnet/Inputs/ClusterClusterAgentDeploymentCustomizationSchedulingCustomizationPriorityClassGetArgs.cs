@@ -13,13 +13,13 @@ namespace Pulumi.Rancher2.Inputs
     public sealed class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The preemption behavior for the cattle cluster agent. Must be either 'PreemptLowerPriority' or 'Never'
+        /// The preemption behavior for the cattle cluster agent or fleet agent. Must be either 'PreemptLowerPriority' or 'Never'
         /// </summary>
         [Input("preemptionPolicy")]
         public Input<string>? PreemptionPolicy { get; set; }
 
         /// <summary>
-        /// The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+        /// The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
         /// </summary>
         [Input("value", required: true)]
         public Input<int> Value { get; set; } = null!;

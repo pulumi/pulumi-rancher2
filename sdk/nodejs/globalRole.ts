@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *     name: "foo",
  *     newUserDefault: true,
  *     description: "Terraform global role acceptance test",
+ *     inheritedClusterRoles: ["projects-view"],
  *     rules: [{
  *         apiGroups: ["*"],
  *         resources: ["secrets"],

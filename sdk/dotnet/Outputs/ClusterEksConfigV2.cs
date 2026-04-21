@@ -22,6 +22,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly bool? Imported;
         /// <summary>
+        /// The IP family used to assign Kubernetes pod and service addresses. Valid values are `Ipv4` (default) and `Ipv6`
+        /// </summary>
+        public readonly string? IpFamily;
+        /// <summary>
         /// The AWS kms key to use
         /// </summary>
         public readonly string? KmsKey;
@@ -84,6 +88,8 @@ namespace Pulumi.Rancher2.Outputs
 
             bool? imported,
 
+            string? ipFamily,
+
             string? kmsKey,
 
             string? kubernetesVersion,
@@ -114,6 +120,7 @@ namespace Pulumi.Rancher2.Outputs
         {
             CloudCredentialId = cloudCredentialId;
             Imported = imported;
+            IpFamily = ipFamily;
             KmsKey = kmsKey;
             KubernetesVersion = kubernetesVersion;
             LoggingTypes = loggingTypes;

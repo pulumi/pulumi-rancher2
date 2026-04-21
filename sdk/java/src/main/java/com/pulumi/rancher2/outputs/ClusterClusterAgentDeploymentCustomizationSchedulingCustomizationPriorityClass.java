@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass {
     /**
-     * @return The preemption behavior for the cattle cluster agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
+     * @return The preemption behavior for the cattle cluster agent or fleet agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
      * 
      */
     private @Nullable String preemptionPolicy;
     /**
-     * @return The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     * @return The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
      * 
      */
     private Integer value;
 
     private ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClass() {}
     /**
-     * @return The preemption behavior for the cattle cluster agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
+     * @return The preemption behavior for the cattle cluster agent or fleet agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
      * 
      */
     public Optional<String> preemptionPolicy() {
         return Optional.ofNullable(this.preemptionPolicy);
     }
     /**
-     * @return The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     * @return The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
      * 
      */
     public Integer value() {

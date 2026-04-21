@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,6 +32,9 @@ import (
 //				Name:           pulumi.String("foo"),
 //				NewUserDefault: pulumi.Bool(true),
 //				Description:    pulumi.String("Terraform global role acceptance test"),
+//				InheritedClusterRoles: pulumi.StringArray{
+//					pulumi.String("projects-view"),
+//				},
 //				Rules: rancher2.GlobalRoleRuleArray{
 //					&rancher2.GlobalRoleRuleArgs{
 //						ApiGroups: pulumi.StringArray{

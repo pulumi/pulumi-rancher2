@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-rancher2/sdk/v11
+module github.com/pulumi/pulumi-rancher2/sdk/v12
 
 go 1.25.8
 

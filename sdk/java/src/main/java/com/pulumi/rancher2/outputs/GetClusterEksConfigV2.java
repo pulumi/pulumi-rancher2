@@ -27,6 +27,11 @@ public final class GetClusterEksConfigV2 {
      */
     private @Nullable Boolean imported;
     /**
+     * @return The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+     * 
+     */
+    private String ipFamily;
+    /**
      * @return The AWS kms key to use
      * 
      */
@@ -111,6 +116,13 @@ public final class GetClusterEksConfigV2 {
      */
     public Optional<Boolean> imported() {
         return Optional.ofNullable(this.imported);
+    }
+    /**
+     * @return The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+     * 
+     */
+    public String ipFamily() {
+        return this.ipFamily;
     }
     /**
      * @return The AWS kms key to use
@@ -222,6 +234,7 @@ public final class GetClusterEksConfigV2 {
     public static final class Builder {
         private String cloudCredentialId;
         private @Nullable Boolean imported;
+        private String ipFamily;
         private @Nullable String kmsKey;
         private String kubernetesVersion;
         private @Nullable List<String> loggingTypes;
@@ -241,6 +254,7 @@ public final class GetClusterEksConfigV2 {
     	      Objects.requireNonNull(defaults);
     	      this.cloudCredentialId = defaults.cloudCredentialId;
     	      this.imported = defaults.imported;
+    	      this.ipFamily = defaults.ipFamily;
     	      this.kmsKey = defaults.kmsKey;
     	      this.kubernetesVersion = defaults.kubernetesVersion;
     	      this.loggingTypes = defaults.loggingTypes;
@@ -269,6 +283,14 @@ public final class GetClusterEksConfigV2 {
         public Builder imported(@Nullable Boolean imported) {
 
             this.imported = imported;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipFamily(String ipFamily) {
+            if (ipFamily == null) {
+              throw new MissingRequiredPropertyException("GetClusterEksConfigV2", "ipFamily");
+            }
+            this.ipFamily = ipFamily;
             return this;
         }
         @CustomType.Setter
@@ -388,6 +410,7 @@ public final class GetClusterEksConfigV2 {
             final var _resultValue = new GetClusterEksConfigV2();
             _resultValue.cloudCredentialId = cloudCredentialId;
             _resultValue.imported = imported;
+            _resultValue.ipFamily = ipFamily;
             _resultValue.kmsKey = kmsKey;
             _resultValue.kubernetesVersion = kubernetesVersion;
             _resultValue.loggingTypes = loggingTypes;

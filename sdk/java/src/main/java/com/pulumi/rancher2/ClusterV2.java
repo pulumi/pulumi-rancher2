@@ -487,13 +487,13 @@ import javax.annotation.Nullable;
  * 
  * ### Customize scheduling for the cluster agent
  * 
- * This argument is available in Rancher 2.11.0 and above.
+ * This argument is available in Rancher 2.11.0 and above for the cluster agent. Support for the fleet agent is available in Rancher 2.14.0 and above.
  * 
- * You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent when provisioning or updating downstream clusters.
+ * You can configure a Priority Class and or Pod Disruption Budget to be automatically deployed for the cattle cluster agent and fleet agent when provisioning or updating downstream clusters.
  * 
  * In order to use this field, you must ensure that the `cluster-agent-scheduling-customization` feature is enabled in the Rancher server.
  * 
- * The example below demonstrates how to set the `schedulingCustomization` field to deploy a Priority Class and Pod Disruption Budget. Currently, this field is only supported for the cluster agent.
+ * The example below demonstrates how to set the `schedulingCustomization` field to deploy a Priority Class and Pod Disruption Budget for both the cattle cluster agent and fleet agent.
  * 
  * <pre>
  * {@code
@@ -505,6 +505,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -529,6 +530,17 @@ import javax.annotation.Nullable;
  *                         .value(1000000000)
  *                         .build())
  *                     .podDisruptionBudgets(ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs.builder()
+ *                         .minAvailable("1")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .fleetAgentDeploymentCustomizations(ClusterV2FleetAgentDeploymentCustomizationArgs.builder()
+ *                 .schedulingCustomizations(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs.builder()
+ *                     .priorityClasses(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs.builder()
+ *                         .preemptionPolicy("PreemptLowerPriority")
+ *                         .value(999999999)
+ *                         .build())
+ *                     .podDisruptionBudgets(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs.builder()
  *                         .minAvailable("1")
  *                         .build())
  *                     .build())

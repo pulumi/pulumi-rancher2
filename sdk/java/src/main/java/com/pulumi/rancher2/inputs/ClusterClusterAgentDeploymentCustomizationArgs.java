@@ -20,14 +20,14 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
     public static final ClusterClusterAgentDeploymentCustomizationArgs Empty = new ClusterClusterAgentDeploymentCustomizationArgs();
 
     /**
-     * User defined tolerations to append to agent
+     * User-defined tolerations to append to agent
      * 
      */
     @Import(name="appendTolerations")
     private @Nullable Output<List<ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs>> appendTolerations;
 
     /**
-     * @return User defined tolerations to append to agent
+     * @return User-defined tolerations to append to agent
      * 
      */
     public Optional<Output<List<ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs>>> appendTolerations() {
@@ -35,14 +35,14 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
     }
 
     /**
-     * User defined affinity to override default agent affinity
+     * User-defined affinity to override default agent affinity
      * 
      */
     @Import(name="overrideAffinity")
     private @Nullable Output<String> overrideAffinity;
 
     /**
-     * @return User defined affinity to override default agent affinity
+     * @return User-defined affinity to override default agent affinity
      * 
      */
     public Optional<Output<String>> overrideAffinity() {
@@ -50,14 +50,14 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
     }
 
     /**
-     * User defined resource requirements to set on the agent
+     * User-defined resource requirements to set on the agent
      * 
      */
     @Import(name="overrideResourceRequirements")
     private @Nullable Output<List<ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs>> overrideResourceRequirements;
 
     /**
-     * @return User defined resource requirements to set on the agent
+     * @return User-defined resource requirements to set on the agent
      * 
      */
     public Optional<Output<List<ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs>>> overrideResourceRequirements() {
@@ -65,14 +65,14 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
     }
 
     /**
-     * User defined scheduling customization for the cattle cluster agent
+     * User-defined scheduling customization for the cattle or fleet cluster agent
      * 
      */
     @Import(name="schedulingCustomizations")
     private @Nullable Output<List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs>> schedulingCustomizations;
 
     /**
-     * @return User defined scheduling customization for the cattle cluster agent
+     * @return User-defined scheduling customization for the cattle or fleet cluster agent
      * 
      */
     public Optional<Output<List<ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs>>> schedulingCustomizations() {
@@ -107,7 +107,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param appendTolerations User defined tolerations to append to agent
+         * @param appendTolerations User-defined tolerations to append to agent
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param appendTolerations User defined tolerations to append to agent
+         * @param appendTolerations User-defined tolerations to append to agent
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param appendTolerations User defined tolerations to append to agent
+         * @param appendTolerations User-defined tolerations to append to agent
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideAffinity User defined affinity to override default agent affinity
+         * @param overrideAffinity User-defined affinity to override default agent affinity
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideAffinity User defined affinity to override default agent affinity
+         * @param overrideAffinity User-defined affinity to override default agent affinity
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideResourceRequirements User defined resource requirements to set on the agent
+         * @param overrideResourceRequirements User-defined resource requirements to set on the agent
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideResourceRequirements User defined resource requirements to set on the agent
+         * @param overrideResourceRequirements User-defined resource requirements to set on the agent
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param overrideResourceRequirements User defined resource requirements to set on the agent
+         * @param overrideResourceRequirements User-defined resource requirements to set on the agent
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param schedulingCustomizations User defined scheduling customization for the cattle cluster agent
+         * @param schedulingCustomizations User-defined scheduling customization for the cattle or fleet cluster agent
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param schedulingCustomizations User defined scheduling customization for the cattle cluster agent
+         * @param schedulingCustomizations User-defined scheduling customization for the cattle or fleet cluster agent
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class ClusterClusterAgentDeploymentCustomizationArgs extends com.pu
         }
 
         /**
-         * @param schedulingCustomizations User defined scheduling customization for the cattle cluster agent
+         * @param schedulingCustomizations User-defined scheduling customization for the cattle or fleet cluster agent
          * 
          * @return builder
          * 

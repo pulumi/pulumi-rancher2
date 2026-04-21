@@ -28,6 +28,10 @@ namespace Pulumi.Rancher2
     ///         Name = "foo",
     ///         NewUserDefault = true,
     ///         Description = "Terraform global role acceptance test",
+    ///         InheritedClusterRoles = new[]
+    ///         {
+    ///             "projects-view",
+    ///         },
     ///         Rules = new[]
     ///         {
     ///             new Rancher2.Inputs.GlobalRoleRuleArgs

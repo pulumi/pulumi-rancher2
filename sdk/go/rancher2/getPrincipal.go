@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v11/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -50,6 +50,8 @@ func GetPrincipal(ctx *pulumi.Context, args *GetPrincipalArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getPrincipal.
 type GetPrincipalArgs struct {
+	// If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+	ExactMatch *bool `pulumi:"exactMatch"`
 	// The full name of the principal (string)
 	Name string `pulumi:"name"`
 	// The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
@@ -58,6 +60,7 @@ type GetPrincipalArgs struct {
 
 // A collection of values returned by getPrincipal.
 type GetPrincipalResult struct {
+	ExactMatch *bool `pulumi:"exactMatch"`
 	// The provider-assigned unique ID for this managed resource.
 	Id   string  `pulumi:"id"`
 	Name string  `pulumi:"name"`
@@ -75,6 +78,8 @@ func GetPrincipalOutput(ctx *pulumi.Context, args GetPrincipalOutputArgs, opts .
 
 // A collection of arguments for invoking getPrincipal.
 type GetPrincipalOutputArgs struct {
+	// If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
+	ExactMatch pulumi.BoolPtrInput `pulumi:"exactMatch"`
 	// The full name of the principal (string)
 	Name pulumi.StringInput `pulumi:"name"`
 	// The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
@@ -98,6 +103,10 @@ func (o GetPrincipalResultOutput) ToGetPrincipalResultOutput() GetPrincipalResul
 
 func (o GetPrincipalResultOutput) ToGetPrincipalResultOutputWithContext(ctx context.Context) GetPrincipalResultOutput {
 	return o
+}
+
+func (o GetPrincipalResultOutput) ExactMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPrincipalResult) *bool { return v.ExactMatch }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

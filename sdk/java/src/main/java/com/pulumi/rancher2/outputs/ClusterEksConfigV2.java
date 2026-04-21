@@ -27,6 +27,11 @@ public final class ClusterEksConfigV2 {
      */
     private @Nullable Boolean imported;
     /**
+     * @return The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+     * 
+     */
+    private @Nullable String ipFamily;
+    /**
      * @return The AWS kms key to use
      * 
      */
@@ -111,6 +116,13 @@ public final class ClusterEksConfigV2 {
      */
     public Optional<Boolean> imported() {
         return Optional.ofNullable(this.imported);
+    }
+    /**
+     * @return The IP family used to assign Kubernetes pod and service addresses. Valid values are `ipv4` (default) and `ipv6`
+     * 
+     */
+    public Optional<String> ipFamily() {
+        return Optional.ofNullable(this.ipFamily);
     }
     /**
      * @return The AWS kms key to use
@@ -222,6 +234,7 @@ public final class ClusterEksConfigV2 {
     public static final class Builder {
         private String cloudCredentialId;
         private @Nullable Boolean imported;
+        private @Nullable String ipFamily;
         private @Nullable String kmsKey;
         private @Nullable String kubernetesVersion;
         private @Nullable List<String> loggingTypes;
@@ -241,6 +254,7 @@ public final class ClusterEksConfigV2 {
     	      Objects.requireNonNull(defaults);
     	      this.cloudCredentialId = defaults.cloudCredentialId;
     	      this.imported = defaults.imported;
+    	      this.ipFamily = defaults.ipFamily;
     	      this.kmsKey = defaults.kmsKey;
     	      this.kubernetesVersion = defaults.kubernetesVersion;
     	      this.loggingTypes = defaults.loggingTypes;
@@ -269,6 +283,12 @@ public final class ClusterEksConfigV2 {
         public Builder imported(@Nullable Boolean imported) {
 
             this.imported = imported;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipFamily(@Nullable String ipFamily) {
+
+            this.ipFamily = ipFamily;
             return this;
         }
         @CustomType.Setter
@@ -374,6 +394,7 @@ public final class ClusterEksConfigV2 {
             final var _resultValue = new ClusterEksConfigV2();
             _resultValue.cloudCredentialId = cloudCredentialId;
             _resultValue.imported = imported;
+            _resultValue.ipFamily = ipFamily;
             _resultValue.kmsKey = kmsKey;
             _resultValue.kubernetesVersion = kubernetesVersion;
             _resultValue.loggingTypes = loggingTypes;

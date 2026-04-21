@@ -16,7 +16,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs>? _appendTolerations;
 
         /// <summary>
-        /// User defined tolerations to append to agent
+        /// User-defined tolerations to append to agent
         /// </summary>
         public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs> AppendTolerations
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         }
 
         /// <summary>
-        /// User defined affinity to override default agent affinity
+        /// User-defined affinity to override default agent affinity
         /// </summary>
         [Input("overrideAffinity")]
         public Input<string>? OverrideAffinity { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs>? _overrideResourceRequirements;
 
         /// <summary>
-        /// User defined resource requirements to set on the agent
+        /// User-defined resource requirements to set on the agent
         /// </summary>
         public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs> OverrideResourceRequirements
         {
@@ -46,7 +46,7 @@ namespace Pulumi.Rancher2.Inputs
         private InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs>? _schedulingCustomizations;
 
         /// <summary>
-        /// User defined scheduling customization for the cattle cluster agent
+        /// User-defined scheduling customization for the cattle or fleet cluster agent
         /// </summary>
         public InputList<Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs> SchedulingCustomizations
         {

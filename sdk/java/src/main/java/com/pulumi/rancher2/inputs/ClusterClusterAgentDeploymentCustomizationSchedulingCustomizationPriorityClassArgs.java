@@ -18,14 +18,14 @@ public final class ClusterClusterAgentDeploymentCustomizationSchedulingCustomiza
     public static final ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs Empty = new ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs();
 
     /**
-     * The preemption behavior for the cattle cluster agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
+     * The preemption behavior for the cattle cluster agent or fleet agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
      * 
      */
     @Import(name="preemptionPolicy")
     private @Nullable Output<String> preemptionPolicy;
 
     /**
-     * @return The preemption behavior for the cattle cluster agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
+     * @return The preemption behavior for the cattle cluster agent or fleet agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
      * 
      */
     public Optional<Output<String>> preemptionPolicy() {
@@ -33,14 +33,14 @@ public final class ClusterClusterAgentDeploymentCustomizationSchedulingCustomiza
     }
 
     /**
-     * The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     * The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
      * 
      */
     @Import(name="value", required=true)
     private Output<Integer> value;
 
     /**
-     * @return The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+     * @return The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
      * 
      */
     public Output<Integer> value() {
@@ -73,7 +73,7 @@ public final class ClusterClusterAgentDeploymentCustomizationSchedulingCustomiza
         }
 
         /**
-         * @param preemptionPolicy The preemption behavior for the cattle cluster agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
+         * @param preemptionPolicy The preemption behavior for the cattle cluster agent or fleet agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ClusterClusterAgentDeploymentCustomizationSchedulingCustomiza
         }
 
         /**
-         * @param preemptionPolicy The preemption behavior for the cattle cluster agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
+         * @param preemptionPolicy The preemption behavior for the cattle cluster agent or fleet agent. Must be either &#39;PreemptLowerPriority&#39; or &#39;Never&#39;
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ClusterClusterAgentDeploymentCustomizationSchedulingCustomiza
         }
 
         /**
-         * @param value The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+         * @param value The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ClusterClusterAgentDeploymentCustomizationSchedulingCustomiza
         }
 
         /**
-         * @param value The priority value for the cattle cluster agent. Must be between negative 1 billion and 1 billion.
+         * @param value The priority value for the cattle cluster agent or fleet agent. Must be between negative 1 billion and 1 billion.
          * 
          * @return builder
          * 

@@ -16,50 +16,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2ClusterAgentDeploymentCustomization {
     /**
-     * @return User defined tolerations to append to agent
+     * @return User-defined tolerations to append to agent
      * 
      */
     private @Nullable List<ClusterV2ClusterAgentDeploymentCustomizationAppendToleration> appendTolerations;
     /**
-     * @return User defined affinity to override default agent affinity
+     * @return User-defined affinity to override default agent affinity
      * 
      */
     private @Nullable String overrideAffinity;
     /**
-     * @return User defined resource requirements to set on the agent
+     * @return User-defined resource requirements to set on the agent
      * 
      */
     private @Nullable List<ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements;
     /**
-     * @return User defined scheduling customization for the cattle cluster agent
+     * @return User-defined scheduling customization for the cattle or fleet cluster agent
      * 
      */
     private @Nullable List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations;
 
     private ClusterV2ClusterAgentDeploymentCustomization() {}
     /**
-     * @return User defined tolerations to append to agent
+     * @return User-defined tolerations to append to agent
      * 
      */
     public List<ClusterV2ClusterAgentDeploymentCustomizationAppendToleration> appendTolerations() {
         return this.appendTolerations == null ? List.of() : this.appendTolerations;
     }
     /**
-     * @return User defined affinity to override default agent affinity
+     * @return User-defined affinity to override default agent affinity
      * 
      */
     public Optional<String> overrideAffinity() {
         return Optional.ofNullable(this.overrideAffinity);
     }
     /**
-     * @return User defined resource requirements to set on the agent
+     * @return User-defined resource requirements to set on the agent
      * 
      */
     public List<ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirement> overrideResourceRequirements() {
         return this.overrideResourceRequirements == null ? List.of() : this.overrideResourceRequirements;
     }
     /**
-     * @return User defined scheduling customization for the cattle cluster agent
+     * @return User-defined scheduling customization for the cattle or fleet cluster agent
      * 
      */
     public List<ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomization> schedulingCustomizations() {

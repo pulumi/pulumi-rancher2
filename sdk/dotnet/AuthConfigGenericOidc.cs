@@ -95,10 +95,22 @@ namespace Pulumi.Rancher2
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
+        /// The OIDC Claim to use for the user email.
+        /// </summary>
+        [Output("emailClaim")]
+        public Output<string?> EmailClaim { get; private set; } = null!;
+
+        /// <summary>
         /// Enable the auth config provider. Default `True` (bool)
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The provider specific URL used for logging a user out of their session.
+        /// </summary>
+        [Output("endSessionEndpoint")]
+        public Output<string?> EndSessionEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// Enable group search. Default `False` (bool)
@@ -131,10 +143,28 @@ namespace Pulumi.Rancher2
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Allow the user to choose whether or not to logout of their session with the IdP.
+        /// </summary>
+        [Output("logoutAllEnabled")]
+        public Output<bool?> LogoutAllEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Force the user to logout of their session with the IdP.
+        /// </summary>
+        [Output("logoutAllForced")]
+        public Output<bool?> LogoutAllForced { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) The name of the resource (string)
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The OIDC Claim to use for the user name.
+        /// </summary>
+        [Output("nameClaim")]
+        public Output<string?> NameClaim { get; private set; } = null!;
 
         /// <summary>
         /// A PEM-encoded private key for the OIDC provider.
@@ -310,10 +340,22 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
+        /// The OIDC Claim to use for the user email.
+        /// </summary>
+        [Input("emailClaim")]
+        public Input<string>? EmailClaim { get; set; }
+
+        /// <summary>
         /// Enable the auth config provider. Default `True` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The provider specific URL used for logging a user out of their session.
+        /// </summary>
+        [Input("endSessionEndpoint")]
+        public Input<string>? EndSessionEndpoint { get; set; }
 
         /// <summary>
         /// Enable group search. Default `False` (bool)
@@ -350,6 +392,24 @@ namespace Pulumi.Rancher2
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Allow the user to choose whether or not to logout of their session with the IdP.
+        /// </summary>
+        [Input("logoutAllEnabled")]
+        public Input<bool>? LogoutAllEnabled { get; set; }
+
+        /// <summary>
+        /// Force the user to logout of their session with the IdP.
+        /// </summary>
+        [Input("logoutAllForced")]
+        public Input<bool>? LogoutAllForced { get; set; }
+
+        /// <summary>
+        /// The OIDC Claim to use for the user name.
+        /// </summary>
+        [Input("nameClaim")]
+        public Input<string>? NameClaim { get; set; }
 
         [Input("privateKey")]
         private Input<string>? _privateKey;
@@ -484,10 +544,22 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
+        /// The OIDC Claim to use for the user email.
+        /// </summary>
+        [Input("emailClaim")]
+        public Input<string>? EmailClaim { get; set; }
+
+        /// <summary>
         /// Enable the auth config provider. Default `True` (bool)
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The provider specific URL used for logging a user out of their session.
+        /// </summary>
+        [Input("endSessionEndpoint")]
+        public Input<string>? EndSessionEndpoint { get; set; }
 
         /// <summary>
         /// Enable group search. Default `False` (bool)
@@ -526,10 +598,28 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
+        /// Allow the user to choose whether or not to logout of their session with the IdP.
+        /// </summary>
+        [Input("logoutAllEnabled")]
+        public Input<bool>? LogoutAllEnabled { get; set; }
+
+        /// <summary>
+        /// Force the user to logout of their session with the IdP.
+        /// </summary>
+        [Input("logoutAllForced")]
+        public Input<bool>? LogoutAllForced { get; set; }
+
+        /// <summary>
         /// (Computed) The name of the resource (string)
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The OIDC Claim to use for the user name.
+        /// </summary>
+        [Input("nameClaim")]
+        public Input<string>? NameClaim { get; set; }
 
         [Input("privateKey")]
         private Input<string>? _privateKey;
