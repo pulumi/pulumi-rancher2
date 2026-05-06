@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * // Create a new rancher2 Feature
  * const fleet = new rancher2.Feature("fleet", {
  *     name: "fleet",
- *     value: "<VALUE>",
+ *     value: "<VALUE>" === "true",
  * });
  * ```
  */

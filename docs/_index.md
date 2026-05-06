@@ -91,13 +91,13 @@ using Rancher2 = Pulumi.Rancher2;
 return await Deployment.RunAsync(() =>
 {
     // Create a new rancher2_bootstrap using bootstrap provider config
-    var admin = new Rancher2.Index.Bootstrap("admin", new()
+    var admin = new Rancher2.Bootstrap("admin", new()
     {
         Password = "blahblah",
     });
 
     // Create a new rancher2 resource using admin provider config
-    var foo = new Rancher2.Index.Catalog("foo", new()
+    var foo = new Rancher2.Catalog("foo", new()
     {
         Name = "test",
         Url = "http://foo.com:8080",
@@ -168,8 +168,8 @@ import com.pulumi.rancher2.Bootstrap;
 import com.pulumi.rancher2.BootstrapArgs;
 import com.pulumi.rancher2.Catalog;
 import com.pulumi.rancher2.CatalogArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

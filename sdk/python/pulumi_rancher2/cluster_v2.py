@@ -908,7 +908,7 @@ class ClusterV2(pulumi.CustomResource):
                     "configs": [{
                         "hostname": "registry_domain_name",
                         "auth_config_secret_name": registry_secret_name,
-                        "insecure": "<tls-insecure-bool>",
+                        "insecure": "<tls-insecure-bool>" == "true",
                         "tls_secret_name": "",
                         "ca_bundle": "",
                     }],
@@ -1615,7 +1615,7 @@ class ClusterV2(pulumi.CustomResource):
                     "configs": [{
                         "hostname": "registry_domain_name",
                         "auth_config_secret_name": registry_secret_name,
-                        "insecure": "<tls-insecure-bool>",
+                        "insecure": "<tls-insecure-bool>" == "true",
                         "tls_secret_name": "",
                         "ca_bundle": "",
                     }],

@@ -23,7 +23,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Project
-    ///     var foo = new Rancher2.Index.Project("foo", new()
+    ///     var foo = new Rancher2.Project("foo", new()
     ///     {
     ///         Name = "foo",
     ///         ClusterId = "&lt;CLUSTER_ID&gt;",
@@ -63,7 +63,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Project
-    ///     var foo = new Rancher2.Index.Project("foo", new()
+    ///     var foo = new Rancher2.Project("foo", new()
     ///     {
     ///         Name = "foo",
     ///         ClusterId = "&lt;CLUSTER_ID&gt;",

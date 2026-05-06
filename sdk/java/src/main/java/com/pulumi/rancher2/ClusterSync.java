@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.inputs.ProjectResourceQuotaProjectLimitArgs;
  * import com.pulumi.rancher2.inputs.ProjectResourceQuotaNamespaceDefaultLimitArgs;
  * import com.pulumi.rancher2.inputs.ProjectContainerResourceLimitArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -78,12 +78,12 @@ import javax.annotation.Nullable;
  *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()
  *             .name("foo")
  *             .description("foo test")
- *             .amazonec2Config(List.of(Map.ofEntries(
+ *             .amazonec2Config(Arrays.asList(Map.ofEntries(
  *                 Map.entry("accessKey", "<AWS_ACCESS_KEY>"),
  *                 Map.entry("secretKey", "<AWS_SECRET_KEY>"),
  *                 Map.entry("ami", "<AMI_ID>"),
  *                 Map.entry("region", "<REGION>"),
- *                 Map.entry("securityGroup", List.of("<AWS_SECURITY_GROUP>")),
+ *                 Map.entry("securityGroup", Arrays.asList("<AWS_SECURITY_GROUP>")),
  *                 Map.entry("subnetId", "<SUBNET_ID>"),
  *                 Map.entry("vpcId", "<VPC_ID>"),
  *                 Map.entry("zone", "<ZONE>")

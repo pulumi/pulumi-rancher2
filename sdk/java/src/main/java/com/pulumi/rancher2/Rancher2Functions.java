@@ -139,8 +139,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -172,8 +172,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -219,8 +219,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -252,8 +252,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -299,8 +299,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -332,8 +332,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -379,8 +379,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -412,8 +412,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -459,8 +459,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -492,8 +492,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -535,8 +535,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -575,8 +575,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -615,8 +615,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -655,8 +655,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -695,8 +695,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetCloudCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -735,8 +735,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -775,8 +775,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -815,8 +815,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -855,8 +855,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -895,8 +895,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -935,8 +935,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -975,8 +975,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1015,8 +1015,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1055,8 +1055,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1095,8 +1095,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1156,8 +1156,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1197,8 +1197,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1238,8 +1238,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1279,8 +1279,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1320,8 +1320,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1361,8 +1361,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1402,8 +1402,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1443,8 +1443,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1484,8 +1484,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1525,8 +1525,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetClusterV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1601,8 +1601,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1641,8 +1641,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1681,8 +1681,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1721,8 +1721,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1761,8 +1761,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1801,8 +1801,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1842,8 +1842,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1883,8 +1883,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1924,8 +1924,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1965,8 +1965,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetGlobalRoleBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2006,8 +2006,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNamespaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2047,8 +2047,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNamespaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2088,8 +2088,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNamespaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2129,8 +2129,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNamespaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2170,8 +2170,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNamespaceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2211,8 +2211,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodeDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2251,8 +2251,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodeDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2291,8 +2291,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodeDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2331,8 +2331,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodeDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2371,8 +2371,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodeDriverArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2411,8 +2411,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2452,8 +2452,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2493,8 +2493,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2534,8 +2534,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2575,8 +2575,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2616,8 +2616,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2656,8 +2656,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2696,8 +2696,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2736,8 +2736,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2776,8 +2776,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPodSecurityAdmissionConfigurationTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2816,8 +2816,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2856,8 +2856,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2896,8 +2896,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2936,8 +2936,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2976,8 +2976,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetPrincipalArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3066,8 +3066,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3107,8 +3107,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3148,8 +3148,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3189,8 +3189,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3230,8 +3230,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetProjectRoleTemplateBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3275,8 +3275,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3308,8 +3308,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3355,8 +3355,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3388,8 +3388,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3435,8 +3435,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3468,8 +3468,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3515,8 +3515,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3548,8 +3548,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3595,8 +3595,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3628,8 +3628,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3671,8 +3671,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3711,8 +3711,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3751,8 +3751,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3791,8 +3791,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3831,8 +3831,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetRoleTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3875,8 +3875,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3908,8 +3908,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3955,8 +3955,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3988,8 +3988,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4035,8 +4035,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4068,8 +4068,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4115,8 +4115,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4148,8 +4148,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4195,8 +4195,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4228,8 +4228,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4306,8 +4306,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4346,8 +4346,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4386,8 +4386,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4426,8 +4426,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4466,8 +4466,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetSettingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4541,8 +4541,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4581,8 +4581,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4621,8 +4621,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4661,8 +4661,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4701,8 +4701,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4741,8 +4741,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4781,8 +4781,8 @@ public final class Rancher2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.rancher2.Rancher2Functions;
      * import com.pulumi.rancher2.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

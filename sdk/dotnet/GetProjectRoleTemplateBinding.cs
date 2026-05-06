@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.Index.GetProjectRoleTemplateBinding.Invoke(new()
+        ///     var foo = Rancher2.GetProjectRoleTemplateBinding.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         ProjectId = "foo_id",
@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.Index.GetProjectRoleTemplateBinding.Invoke(new()
+        ///     var foo = Rancher2.GetProjectRoleTemplateBinding.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         ProjectId = "foo_id",
@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.Index.GetProjectRoleTemplateBinding.Invoke(new()
+        ///     var foo = Rancher2.GetProjectRoleTemplateBinding.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         ProjectId = "foo_id",

@@ -191,7 +191,7 @@ class Feature(pulumi.CustomResource):
         # Create a new rancher2 Feature
         fleet = rancher2.Feature("fleet",
             name="fleet",
-            value="<VALUE>")
+            value="<VALUE>" == "true")
         ```
 
 
@@ -226,7 +226,7 @@ class Feature(pulumi.CustomResource):
         # Create a new rancher2 Feature
         fleet = rancher2.Feature("fleet",
             name="fleet",
-            value="<VALUE>")
+            value="<VALUE>" == "true")
         ```
 
 

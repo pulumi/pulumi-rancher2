@@ -359,7 +359,7 @@ import * as utilities from "./utilities";
  *             configs: [{
  *                 hostname: "registry_domain_name",
  *                 authConfigSecretName: registrySecretName,
- *                 insecure: "<tls-insecure-bool>",
+ *                 insecure: "<tls-insecure-bool>" === "true",
  *                 tlsSecretName: "",
  *                 caBundle: "",
  *             }],

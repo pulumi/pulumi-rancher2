@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.Index.GetNamespace.Invoke(new()
+        ///     var foo = Rancher2.GetNamespace.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         ProjectId = foo_custom.DefaultProjectId,
@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.Index.GetNamespace.Invoke(new()
+        ///     var foo = Rancher2.GetNamespace.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         ProjectId = foo_custom.DefaultProjectId,
@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.Index.GetNamespace.Invoke(new()
+        ///     var foo = Rancher2.GetNamespace.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         ProjectId = foo_custom.DefaultProjectId,

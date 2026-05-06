@@ -23,7 +23,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Global Role
-    ///     var foo = new Rancher2.Index.GlobalRole("foo", new()
+    ///     var foo = new Rancher2.GlobalRole("foo", new()
     ///     {
     ///         Name = "foo",
     ///         NewUserDefault = true,
