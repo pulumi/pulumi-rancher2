@@ -359,7 +359,7 @@ import * as utilities from "./utilities";
  *             configs: [{
  *                 hostname: "registry_domain_name",
  *                 authConfigSecretName: registrySecretName,
- *                 insecure: "<tls-insecure-bool>",
+ *                 insecure: "<tls-insecure-bool>" === "true",
  *                 tlsSecretName: "",
  *                 caBundle: "",
  *             }],
@@ -884,75 +884,75 @@ export interface ClusterV2State {
     /**
      * Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
      */
-    agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[]>;
+    agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[] | undefined>;
     /**
      * Annotations for the Cluster.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
-    cloudCredentialSecretName?: pulumi.Input<string>;
+    cloudCredentialSecretName?: pulumi.Input<string | undefined>;
     /**
      * Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
      */
-    clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomization>[]>;
+    clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomization>[] | undefined>;
     /**
      * (Computed, sensitive, list, max length: 1) Cluster Registration Token generated for the cluster.
      */
-    clusterRegistrationToken?: pulumi.Input<inputs.ClusterV2ClusterRegistrationToken>;
+    clusterRegistrationToken?: pulumi.Input<inputs.ClusterV2ClusterRegistrationToken | undefined>;
     /**
      * (Computed, string) Cluster v1 id for cluster v2. (e.g. to be used with `rancher2Sync`).
      */
-    clusterV1Id?: pulumi.Input<string>;
+    clusterV1Id?: pulumi.Input<string | undefined>;
     /**
      * Default cluster role for project members.
      */
-    defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
+    defaultClusterRoleForProjectMembers?: pulumi.Input<string | undefined>;
     /**
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
      */
-    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
+    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string | undefined>;
     /**
      * Enable k8s network policy on the cluster.
      */
-    enableNetworkPolicy?: pulumi.Input<boolean>;
+    enableNetworkPolicy?: pulumi.Input<boolean | undefined>;
     /**
      * Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
      */
-    fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomization>[]>;
+    fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomization>[] | undefined>;
     /**
      * Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
      */
-    fleetNamespace?: pulumi.Input<string>;
+    fleetNamespace?: pulumi.Input<string | undefined>;
     /**
      * (Computed/Sensitive) Kube Config generated for the cluster. Note: When the cluster has `localAuthEndpoint` enabled, the kubeConfig will not be available until the cluster is `connected`.
      */
-    kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string | undefined>;
     /**
      * The RKE2 or K3s version for the cluster.
      */
-    kubernetesVersion?: pulumi.Input<string>;
+    kubernetesVersion?: pulumi.Input<string | undefined>;
     /**
      * Labels for the Cluster.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      */
-    localAuthEndpoint?: pulumi.Input<inputs.ClusterV2LocalAuthEndpoint>;
+    localAuthEndpoint?: pulumi.Input<inputs.ClusterV2LocalAuthEndpoint | undefined>;
     /**
      * The name of the cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Computed, string) Cluster's k8s resource version.
      */
-    resourceVersion?: pulumi.Input<string>;
+    resourceVersion?: pulumi.Input<string | undefined>;
     /**
      * The RKE configuration for the cluster.
      */
-    rkeConfig?: pulumi.Input<inputs.ClusterV2RkeConfig>;
+    rkeConfig?: pulumi.Input<inputs.ClusterV2RkeConfig | undefined>;
 }
 
 /**
@@ -962,39 +962,39 @@ export interface ClusterV2Args {
     /**
      * Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
      */
-    agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[]>;
+    agentEnvVars?: pulumi.Input<pulumi.Input<inputs.ClusterV2AgentEnvVar>[] | undefined>;
     /**
      * Annotations for the Cluster.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cloud credential secret name is the secret to be used when a cloud credential secret name is not specified at the machine pool level.
      */
-    cloudCredentialSecretName?: pulumi.Input<string>;
+    cloudCredentialSecretName?: pulumi.Input<string | undefined>;
     /**
      * Cluster agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `cattle-cluster-agent` deployment. This argument is available in Rancher v2.7.5 and above.
      */
-    clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomization>[]>;
+    clusterAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2ClusterAgentDeploymentCustomization>[] | undefined>;
     /**
      * Default cluster role for project members.
      */
-    defaultClusterRoleForProjectMembers?: pulumi.Input<string>;
+    defaultClusterRoleForProjectMembers?: pulumi.Input<string | undefined>;
     /**
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above.
      */
-    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
+    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string | undefined>;
     /**
      * Enable k8s network policy on the cluster.
      */
-    enableNetworkPolicy?: pulumi.Input<boolean>;
+    enableNetworkPolicy?: pulumi.Input<boolean | undefined>;
     /**
      * Fleet agent deployment customization specifies the additional tolerations, new affinity rules, and new resource requirements on the `fleet-agent` deployment. The argument is available in Rancher v2.7.5 and above.
      */
-    fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomization>[]>;
+    fleetAgentDeploymentCustomizations?: pulumi.Input<pulumi.Input<inputs.ClusterV2FleetAgentDeploymentCustomization>[] | undefined>;
     /**
      * Fleet namespace is the namespace where the cluster is to create in the local cluster. It is recommended to leave it as the default value.
      */
-    fleetNamespace?: pulumi.Input<string>;
+    fleetNamespace?: pulumi.Input<string | undefined>;
     /**
      * The RKE2 or K3s version for the cluster.
      */
@@ -1002,17 +1002,17 @@ export interface ClusterV2Args {
     /**
      * Labels for the Cluster.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      */
-    localAuthEndpoint?: pulumi.Input<inputs.ClusterV2LocalAuthEndpoint>;
+    localAuthEndpoint?: pulumi.Input<inputs.ClusterV2LocalAuthEndpoint | undefined>;
     /**
      * The name of the cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The RKE configuration for the cluster.
      */
-    rkeConfig?: pulumi.Input<inputs.ClusterV2RkeConfig>;
+    rkeConfig?: pulumi.Input<inputs.ClusterV2RkeConfig | undefined>;
 }

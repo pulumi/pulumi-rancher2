@@ -207,67 +207,67 @@ export interface AuthConfigKeycloakState {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
      */
-    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * KeyCloak display name field (string)
      */
-    displayNameField?: pulumi.Input<string>;
+    displayNameField?: pulumi.Input<string | undefined>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * KeyCloak Client ID field (string)
      */
-    entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string | undefined>;
     /**
      * KeyCloak group field (string)
      */
-    groupsField?: pulumi.Input<string>;
+    groupsField?: pulumi.Input<string | undefined>;
     /**
      * KeyCloak IDP metadata content (string)
      */
-    idpMetadataContent?: pulumi.Input<string>;
+    idpMetadataContent?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Computed) The name of the resource (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */
-    rancherApiHost?: pulumi.Input<string>;
+    rancherApiHost?: pulumi.Input<string | undefined>;
     /**
      * KeyCloak SP cert (string)
      */
-    spCert?: pulumi.Input<string>;
+    spCert?: pulumi.Input<string | undefined>;
     /**
      * KeyCloak SP key (string)
      */
-    spKey?: pulumi.Input<string>;
+    spKey?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The type of the resource (string)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * KeyCloak UID field (string)
      */
-    uidField?: pulumi.Input<string>;
+    uidField?: pulumi.Input<string | undefined>;
     /**
      * KeyCloak user name field (string)
      */
-    userNameField?: pulumi.Input<string>;
+    userNameField?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -277,15 +277,15 @@ export interface AuthConfigKeycloakArgs {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
      */
-    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * KeyCloak display name field (string)
      */
@@ -293,11 +293,11 @@ export interface AuthConfigKeycloakArgs {
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * KeyCloak Client ID field (string)
      */
-    entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string | undefined>;
     /**
      * KeyCloak group field (string)
      */
@@ -309,7 +309,7 @@ export interface AuthConfigKeycloakArgs {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */

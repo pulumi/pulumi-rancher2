@@ -35,7 +35,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 imported Cluster
-    ///     var foo_imported = new Rancher2.Index.Cluster("foo-imported", new()
+    ///     var foo_imported = new Rancher2.Cluster("foo-imported", new()
     ///     {
     ///         Name = "foo-imported",
     ///         Description = "Foo rancher2 imported cluster",
@@ -70,7 +70,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 imported Cluster
-    ///     var foo_imported = new Rancher2.Index.Cluster("foo-imported", new()
+    ///     var foo_imported = new Rancher2.Cluster("foo-imported", new()
     ///     {
     ///         Name = "foo-imported",
     ///         Description = "Foo rancher2 imported cluster",
@@ -96,7 +96,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 imported Cluster with custom configuration 
-    ///     var foo_imported = new Rancher2.Index.Cluster("foo-imported", new()
+    ///     var foo_imported = new Rancher2.Cluster("foo-imported", new()
     ///     {
     ///         Name = "foo-imported",
     ///         ImportedConfig = new Rancher2.Inputs.ClusterImportedConfigArgs
@@ -118,7 +118,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.Index.CloudCredential("foo", new()
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "foo test",
@@ -129,7 +129,7 @@ namespace Pulumi.Rancher2
     ///         },
     ///     });
     /// 
-    ///     var fooCluster = new Rancher2.Index.Cluster("foo", new()
+    ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Terraform EKS cluster",
@@ -155,7 +155,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.Index.CloudCredential("foo", new()
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "foo test",
@@ -166,7 +166,7 @@ namespace Pulumi.Rancher2
     ///         },
     ///     });
     /// 
-    ///     var fooCluster = new Rancher2.Index.Cluster("foo", new()
+    ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Terraform EKS cluster",
@@ -218,7 +218,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Rancher2.Index.CloudCredential("foo", new()
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "foo test",
@@ -229,7 +229,7 @@ namespace Pulumi.Rancher2
     ///         },
     ///     });
     /// 
-    ///     var fooCluster = new Rancher2.Index.Cluster("foo", new()
+    ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Terraform EKS cluster",
@@ -278,7 +278,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo_aks = new Rancher2.Index.CloudCredential("foo-aks", new()
+    ///     var foo_aks = new Rancher2.CloudCredential("foo-aks", new()
     ///     {
     ///         Name = "foo-aks",
     ///         AzureCredentialConfig = new Rancher2.Inputs.CloudCredentialAzureCredentialConfigArgs
@@ -289,7 +289,7 @@ namespace Pulumi.Rancher2
     ///         },
     ///     });
     /// 
-    ///     var foo = new Rancher2.Index.Cluster("foo", new()
+    ///     var foo = new Rancher2.Cluster("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Terraform AKS cluster",

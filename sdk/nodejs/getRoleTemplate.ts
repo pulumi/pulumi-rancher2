@@ -136,11 +136,11 @@ export interface GetRoleTemplateOutputArgs {
     /**
      * Role template context. `cluster` and `project` values are supported (string)
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * (Computed) External rules used for authorization. (list)
      */
-    externalRules?: pulumi.Input<pulumi.Input<inputs.GetRoleTemplateExternalRuleArgs>[]>;
+    externalRules?: pulumi.Input<pulumi.Input<inputs.GetRoleTemplateExternalRuleArgs>[] | undefined>;
     /**
      * The name of the Role Template (string)
      */

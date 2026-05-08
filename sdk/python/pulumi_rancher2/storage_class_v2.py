@@ -21,14 +21,14 @@ class StorageClassV2Args:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
                  k8s_provisioner: pulumi.Input[_builtins.str],
-                 allow_volume_expansion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reclaim_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_binding_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_volume_expansion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reclaim_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_binding_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageClassV2 resource.
 
@@ -88,115 +88,115 @@ class StorageClassV2Args:
 
     @_builtins.property
     @pulumi.getter(name="allowVolumeExpansion")
-    def allow_volume_expansion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_volume_expansion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
         """
         return pulumi.get(self, "allow_volume_expansion")
 
     @allow_volume_expansion.setter
-    def allow_volume_expansion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_volume_expansion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_volume_expansion", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for the storageClass v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the storageClass v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="mountOptions")
-    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mount_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The mount options for storageClass v2 (list)
         """
         return pulumi.get(self, "mount_options")
 
     @mount_options.setter
-    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mount_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mount_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the storageClass v2 (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The parameters for storageClass v2 (string)
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="reclaimPolicy")
-    def reclaim_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reclaim_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
         """
         return pulumi.get(self, "reclaim_policy")
 
     @reclaim_policy.setter
-    def reclaim_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reclaim_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reclaim_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeBindingMode")
-    def volume_binding_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_binding_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
         """
         return pulumi.get(self, "volume_binding_mode")
 
     @volume_binding_mode.setter
-    def volume_binding_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_binding_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_binding_mode", value)
 
 
 @pulumi.input_type
 class _StorageClassV2State:
     def __init__(__self__, *,
-                 allow_volume_expansion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_provisioner: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reclaim_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_binding_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_volume_expansion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_provisioner: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reclaim_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_binding_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageClassV2 resources.
 
@@ -237,134 +237,134 @@ class _StorageClassV2State:
 
     @_builtins.property
     @pulumi.getter(name="allowVolumeExpansion")
-    def allow_volume_expansion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_volume_expansion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
         """
         return pulumi.get(self, "allow_volume_expansion")
 
     @allow_volume_expansion.setter
-    def allow_volume_expansion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_volume_expansion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_volume_expansion", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for the storageClass v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster id of the storageClass V2 (string)
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sProvisioner")
-    def k8s_provisioner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_provisioner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The provisioner of the storageClass v2 (string)
         """
         return pulumi.get(self, "k8s_provisioner")
 
     @k8s_provisioner.setter
-    def k8s_provisioner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_provisioner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_provisioner", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the storageClass v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="mountOptions")
-    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mount_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The mount options for storageClass v2 (list)
         """
         return pulumi.get(self, "mount_options")
 
     @mount_options.setter
-    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mount_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mount_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the storageClass v2 (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The parameters for storageClass v2 (string)
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="reclaimPolicy")
-    def reclaim_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reclaim_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reclaim policy for storageClass v2. `Delete`, `Recycle` and `Retain` values are allowed. Default: `Delete` (string)
         """
         return pulumi.get(self, "reclaim_policy")
 
     @reclaim_policy.setter
-    def reclaim_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reclaim_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reclaim_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceVersion")
-    def resource_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The k8s resource version (string)
         """
         return pulumi.get(self, "resource_version")
 
     @resource_version.setter
-    def resource_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_version", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeBindingMode")
-    def volume_binding_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_binding_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The volume binding mode for storageClass v2. `Immediate` and `WaitForFirstConsumer` values are allowed. Default: `Immediate` (string)
         """
         return pulumi.get(self, "volume_binding_mode")
 
     @volume_binding_mode.setter
-    def volume_binding_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_binding_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_binding_mode", value)
 
 
@@ -374,16 +374,16 @@ class StorageClassV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_volume_expansion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_provisioner: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reclaim_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_binding_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_volume_expansion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_provisioner: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reclaim_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_binding_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Rancher Storage Class v2 resource. This can be used to manage k8s storage classes for Rancher v2 clusters and retrieve their information. Storage Class v2 resource is available at Rancher v2.5.x and above.
@@ -443,16 +443,16 @@ class StorageClassV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_volume_expansion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 k8s_provisioner: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reclaim_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_binding_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_volume_expansion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 k8s_provisioner: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reclaim_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_binding_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -487,17 +487,17 @@ class StorageClassV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_volume_expansion: Optional[pulumi.Input[_builtins.bool]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            k8s_provisioner: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reclaim_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_version: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_binding_mode: Optional[pulumi.Input[_builtins.str]] = None) -> 'StorageClassV2':
+            allow_volume_expansion: pulumi.Input[Optional[_builtins.bool]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            k8s_provisioner: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reclaim_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_version: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_binding_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'StorageClassV2':
         """
         Get an existing StorageClassV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

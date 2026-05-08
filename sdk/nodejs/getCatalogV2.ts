@@ -127,10 +127,10 @@ export interface GetCatalogV2OutputArgs {
      * The cluster id of the catalog V2 (string)
      */
     clusterId: pulumi.Input<string>;
-    exponentialBackoffMaxRetries?: pulumi.Input<number>;
-    exponentialBackoffMaxWait?: pulumi.Input<number>;
-    exponentialBackoffMinWait?: pulumi.Input<number>;
-    insecurePlainHttp?: pulumi.Input<boolean>;
+    exponentialBackoffMaxRetries?: pulumi.Input<number | undefined>;
+    exponentialBackoffMaxWait?: pulumi.Input<number | undefined>;
+    exponentialBackoffMinWait?: pulumi.Input<number | undefined>;
+    insecurePlainHttp?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the catalog v2 (string)
      */

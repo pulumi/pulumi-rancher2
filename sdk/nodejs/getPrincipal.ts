@@ -87,7 +87,7 @@ export interface GetPrincipalOutputArgs {
     /**
      * If set to `true`, only the exactly matched result is returned. Defaults to `false`, which means a partially matched result can be returned (for example: `foo2` also matches for `foo` search input) (bool)
      */
-    exactMatch?: pulumi.Input<boolean>;
+    exactMatch?: pulumi.Input<boolean | undefined>;
     /**
      * The full name of the principal (string)
      */
@@ -95,5 +95,5 @@ export interface GetPrincipalOutputArgs {
     /**
      * The type of the identity (string). Defaults to `user`. Only `user` and `group` values are supported (string)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

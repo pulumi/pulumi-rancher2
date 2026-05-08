@@ -19,15 +19,15 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 bootstrap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ca_certs: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 bootstrap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ca_certs: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -69,111 +69,111 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Key used to authenticate with the rancher server
         """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="apiUrl")
-    def api_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to the rancher API
         """
         return pulumi.get(self, "api_url")
 
     @api_url.setter
-    def api_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def bootstrap(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bootstrap(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Bootstrap rancher server
         """
         return pulumi.get(self, "bootstrap")
 
     @bootstrap.setter
-    def bootstrap(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bootstrap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bootstrap", value)
 
     @_builtins.property
     @pulumi.getter(name="caCerts")
-    def ca_certs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
         """
         return pulumi.get(self, "ca_certs")
 
     @ca_certs.setter
-    def ca_certs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certs", value)
 
     @_builtins.property
     @pulumi.getter
-    def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow insecure connections to Rancher. Mandatory if self signed tls and not ca_certs provided
         """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
-    def insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use timeout instead""")
-    def retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rancher connection retries
         """
         return pulumi.get(self, "retries")
 
     @retries.setter
-    def retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retries", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API secret used to authenticate with the rancher server
         """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenKey")
-    def token_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API token used to authenticate with the rancher server
         """
         return pulumi.get(self, "token_key")
 
     @token_key.setter
-    def token_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_key", value)
 
 
@@ -183,15 +183,15 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 bootstrap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ca_certs: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 bootstrap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ca_certs: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the rancher2 package. By default, resources use package-wide configuration
@@ -240,15 +240,15 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 bootstrap: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ca_certs: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 bootstrap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ca_certs: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

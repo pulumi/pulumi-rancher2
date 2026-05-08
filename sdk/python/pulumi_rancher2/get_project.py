@@ -169,8 +169,8 @@ def get_project(cluster_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         resource_quota=pulumi.get(__ret__, 'resource_quota'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_project_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     Use this data source to retrieve information about a Rancher v2 project.

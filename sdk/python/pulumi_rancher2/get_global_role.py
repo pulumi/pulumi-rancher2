@@ -191,8 +191,8 @@ def get_global_role(inherited_cluster_roles: Optional[Sequence[_builtins.str]] =
         new_user_default=pulumi.get(__ret__, 'new_user_default'),
         rules=pulumi.get(__ret__, 'rules'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_global_role_output(inherited_cluster_roles: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_global_role_output(inherited_cluster_roles: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           name: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGlobalRoleResult]:
     """
     Use this data source to retrieve information about a Rancher v2 global role resource.

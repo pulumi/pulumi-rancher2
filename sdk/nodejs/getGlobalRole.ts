@@ -113,7 +113,7 @@ export interface GetGlobalRoleOutputArgs {
     /**
      * (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      */
-    inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the Global Role (string)
      */

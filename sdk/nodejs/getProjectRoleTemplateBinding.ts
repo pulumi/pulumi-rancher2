@@ -121,5 +121,5 @@ export interface GetProjectRoleTemplateBindingOutputArgs {
     /**
      * The role template id from create project role template binding (string)
      */
-    roleTemplateId?: pulumi.Input<string>;
+    roleTemplateId?: pulumi.Input<string | undefined>;
 }

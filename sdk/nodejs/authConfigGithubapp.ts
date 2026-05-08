@@ -129,66 +129,66 @@ export class AuthConfigGithubapp extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthConfigGithubapp resources.
  */
 export interface AuthConfigGithubappState {
-    accessMode?: pulumi.Input<string>;
-    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accessMode?: pulumi.Input<string | undefined>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Annotations of the resource
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The GitHub App ID is provided on the GitHub apps page.
      */
-    appId?: pulumi.Input<string>;
-    clientId?: pulumi.Input<string>;
-    clientSecret?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
-    hostname?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
+    clientId?: pulumi.Input<string | undefined>;
+    clientSecret?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * If the Installation ID is not provided, all installations for the App will be queried.
      */
-    installationId?: pulumi.Input<string>;
+    installationId?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    name?: pulumi.Input<string>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * PEM format private key for signing requests.
      */
-    privateKey?: pulumi.Input<string>;
-    tls?: pulumi.Input<boolean>;
-    type?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
+    tls?: pulumi.Input<boolean | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AuthConfigGithubapp resource.
  */
 export interface AuthConfigGithubappArgs {
-    accessMode?: pulumi.Input<string>;
-    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accessMode?: pulumi.Input<string | undefined>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Annotations of the resource
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The GitHub App ID is provided on the GitHub apps page.
      */
     appId: pulumi.Input<string>;
     clientId: pulumi.Input<string>;
     clientSecret: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
-    hostname?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * If the Installation ID is not provided, all installations for the App will be queried.
      */
-    installationId?: pulumi.Input<string>;
+    installationId?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * PEM format private key for signing requests.
      */
     privateKey: pulumi.Input<string>;
-    tls?: pulumi.Input<boolean>;
+    tls?: pulumi.Input<boolean | undefined>;
 }

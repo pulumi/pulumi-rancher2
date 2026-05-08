@@ -112,13 +112,13 @@ export interface GetUserOutputArgs {
     /**
      * Set is the user if the user is external. Default: `false` (bool)
      */
-    isExternal?: pulumi.Input<boolean>;
+    isExternal?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the user (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The username of the user (string)
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

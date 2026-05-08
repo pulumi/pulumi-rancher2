@@ -177,9 +177,9 @@ def get_user(is_external: Optional[_builtins.bool] = None,
         name=pulumi.get(__ret__, 'name'),
         principal_ids=pulumi.get(__ret__, 'principal_ids'),
         username=pulumi.get(__ret__, 'username'))
-def get_user_output(is_external: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_output(is_external: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Use this data source to retrieve information about a Rancher v2 user

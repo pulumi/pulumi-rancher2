@@ -163,8 +163,8 @@ def get_namespace(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         resource_quota=pulumi.get(__ret__, 'resource_quota'))
-def get_namespace_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                         project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_namespace_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                         project_id: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNamespaceResult]:
     """
     Use this data source to retrieve information about a Rancher v2 namespace.

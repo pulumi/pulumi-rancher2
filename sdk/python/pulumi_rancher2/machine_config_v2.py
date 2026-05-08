@@ -22,18 +22,18 @@ __all__ = ['MachineConfigV2Args', 'MachineConfigV2']
 class MachineConfigV2Args:
     def __init__(__self__, *,
                  generate_name: pulumi.Input[_builtins.str],
-                 amazonec2_config: Optional[pulumi.Input['MachineConfigV2Amazonec2ConfigArgs']] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 azure_config: Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']] = None,
-                 digitalocean_config: Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']] = None,
-                 fleet_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_config: Optional[pulumi.Input['MachineConfigV2GoogleConfigArgs']] = None,
-                 harvester_config: Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linode_config: Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']] = None,
-                 nutanix_config: Optional[pulumi.Input['MachineConfigV2NutanixConfigArgs']] = None,
-                 openstack_config: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']] = None,
-                 vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None):
+                 amazonec2_config: pulumi.Input[Optional['MachineConfigV2Amazonec2ConfigArgs']] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 azure_config: pulumi.Input[Optional['MachineConfigV2AzureConfigArgs']] = None,
+                 digitalocean_config: pulumi.Input[Optional['MachineConfigV2DigitaloceanConfigArgs']] = None,
+                 fleet_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_config: pulumi.Input[Optional['MachineConfigV2GoogleConfigArgs']] = None,
+                 harvester_config: pulumi.Input[Optional['MachineConfigV2HarvesterConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linode_config: pulumi.Input[Optional['MachineConfigV2LinodeConfigArgs']] = None,
+                 nutanix_config: pulumi.Input[Optional['MachineConfigV2NutanixConfigArgs']] = None,
+                 openstack_config: pulumi.Input[Optional['MachineConfigV2OpenstackConfigArgs']] = None,
+                 vsphere_config: pulumi.Input[Optional['MachineConfigV2VsphereConfigArgs']] = None):
         """
         The set of arguments for constructing a MachineConfigV2 resource.
 
@@ -93,91 +93,91 @@ class MachineConfigV2Args:
 
     @_builtins.property
     @pulumi.getter(name="amazonec2Config")
-    def amazonec2_config(self) -> Optional[pulumi.Input['MachineConfigV2Amazonec2ConfigArgs']]:
+    def amazonec2_config(self) -> pulumi.Input[Optional['MachineConfigV2Amazonec2ConfigArgs']]:
         """
         AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "amazonec2_config")
 
     @amazonec2_config.setter
-    def amazonec2_config(self, value: Optional[pulumi.Input['MachineConfigV2Amazonec2ConfigArgs']]):
+    def amazonec2_config(self, value: pulumi.Input[Optional['MachineConfigV2Amazonec2ConfigArgs']]):
         pulumi.set(self, "amazonec2_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for Machine Config V2 object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="azureConfig")
-    def azure_config(self) -> Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']]:
+    def azure_config(self) -> pulumi.Input[Optional['MachineConfigV2AzureConfigArgs']]:
         """
         Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "azure_config")
 
     @azure_config.setter
-    def azure_config(self, value: Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']]):
+    def azure_config(self, value: pulumi.Input[Optional['MachineConfigV2AzureConfigArgs']]):
         pulumi.set(self, "azure_config", value)
 
     @_builtins.property
     @pulumi.getter(name="digitaloceanConfig")
-    def digitalocean_config(self) -> Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']]:
+    def digitalocean_config(self) -> pulumi.Input[Optional['MachineConfigV2DigitaloceanConfigArgs']]:
         """
         Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "digitalocean_config")
 
     @digitalocean_config.setter
-    def digitalocean_config(self, value: Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']]):
+    def digitalocean_config(self, value: pulumi.Input[Optional['MachineConfigV2DigitaloceanConfigArgs']]):
         pulumi.set(self, "digitalocean_config", value)
 
     @_builtins.property
     @pulumi.getter(name="fleetNamespace")
-    def fleet_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fleet_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster V2 fleet namespace
         """
         return pulumi.get(self, "fleet_namespace")
 
     @fleet_namespace.setter
-    def fleet_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fleet_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fleet_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="googleConfig")
-    def google_config(self) -> Optional[pulumi.Input['MachineConfigV2GoogleConfigArgs']]:
+    def google_config(self) -> pulumi.Input[Optional['MachineConfigV2GoogleConfigArgs']]:
         """
         Google config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "google_config")
 
     @google_config.setter
-    def google_config(self, value: Optional[pulumi.Input['MachineConfigV2GoogleConfigArgs']]):
+    def google_config(self, value: pulumi.Input[Optional['MachineConfigV2GoogleConfigArgs']]):
         pulumi.set(self, "google_config", value)
 
     @_builtins.property
     @pulumi.getter(name="harvesterConfig")
-    def harvester_config(self) -> Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']]:
+    def harvester_config(self) -> pulumi.Input[Optional['MachineConfigV2HarvesterConfigArgs']]:
         """
         Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "harvester_config")
 
     @harvester_config.setter
-    def harvester_config(self, value: Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']]):
+    def harvester_config(self, value: pulumi.Input[Optional['MachineConfigV2HarvesterConfigArgs']]):
         pulumi.set(self, "harvester_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for Machine Config V2 object (map)
 
@@ -186,77 +186,77 @@ class MachineConfigV2Args:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeConfig")
-    def linode_config(self) -> Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']]:
+    def linode_config(self) -> pulumi.Input[Optional['MachineConfigV2LinodeConfigArgs']]:
         """
         Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "linode_config")
 
     @linode_config.setter
-    def linode_config(self, value: Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']]):
+    def linode_config(self, value: pulumi.Input[Optional['MachineConfigV2LinodeConfigArgs']]):
         pulumi.set(self, "linode_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nutanixConfig")
-    def nutanix_config(self) -> Optional[pulumi.Input['MachineConfigV2NutanixConfigArgs']]:
+    def nutanix_config(self) -> pulumi.Input[Optional['MachineConfigV2NutanixConfigArgs']]:
         """
         Nutanix config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "nutanix_config")
 
     @nutanix_config.setter
-    def nutanix_config(self, value: Optional[pulumi.Input['MachineConfigV2NutanixConfigArgs']]):
+    def nutanix_config(self, value: pulumi.Input[Optional['MachineConfigV2NutanixConfigArgs']]):
         pulumi.set(self, "nutanix_config", value)
 
     @_builtins.property
     @pulumi.getter(name="openstackConfig")
-    def openstack_config(self) -> Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']]:
+    def openstack_config(self) -> pulumi.Input[Optional['MachineConfigV2OpenstackConfigArgs']]:
         """
         Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "openstack_config")
 
     @openstack_config.setter
-    def openstack_config(self, value: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']]):
+    def openstack_config(self, value: pulumi.Input[Optional['MachineConfigV2OpenstackConfigArgs']]):
         pulumi.set(self, "openstack_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vsphereConfig")
-    def vsphere_config(self) -> Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']]:
+    def vsphere_config(self) -> pulumi.Input[Optional['MachineConfigV2VsphereConfigArgs']]:
         """
         vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `google_config` and `openstack_config` (list maxitems:1)
         """
         return pulumi.get(self, "vsphere_config")
 
     @vsphere_config.setter
-    def vsphere_config(self, value: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']]):
+    def vsphere_config(self, value: pulumi.Input[Optional['MachineConfigV2VsphereConfigArgs']]):
         pulumi.set(self, "vsphere_config", value)
 
 
 @pulumi.input_type
 class _MachineConfigV2State:
     def __init__(__self__, *,
-                 amazonec2_config: Optional[pulumi.Input['MachineConfigV2Amazonec2ConfigArgs']] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 azure_config: Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']] = None,
-                 digitalocean_config: Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']] = None,
-                 fleet_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_config: Optional[pulumi.Input['MachineConfigV2GoogleConfigArgs']] = None,
-                 harvester_config: Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linode_config: Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nutanix_config: Optional[pulumi.Input['MachineConfigV2NutanixConfigArgs']] = None,
-                 openstack_config: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']] = None,
-                 resource_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vsphere_config: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']] = None):
+                 amazonec2_config: pulumi.Input[Optional['MachineConfigV2Amazonec2ConfigArgs']] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 azure_config: pulumi.Input[Optional['MachineConfigV2AzureConfigArgs']] = None,
+                 digitalocean_config: pulumi.Input[Optional['MachineConfigV2DigitaloceanConfigArgs']] = None,
+                 fleet_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_config: pulumi.Input[Optional['MachineConfigV2GoogleConfigArgs']] = None,
+                 harvester_config: pulumi.Input[Optional['MachineConfigV2HarvesterConfigArgs']] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linode_config: pulumi.Input[Optional['MachineConfigV2LinodeConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nutanix_config: pulumi.Input[Optional['MachineConfigV2NutanixConfigArgs']] = None,
+                 openstack_config: pulumi.Input[Optional['MachineConfigV2OpenstackConfigArgs']] = None,
+                 resource_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vsphere_config: pulumi.Input[Optional['MachineConfigV2VsphereConfigArgs']] = None):
         """
         Input properties used for looking up and filtering MachineConfigV2 resources.
 
@@ -314,115 +314,115 @@ class _MachineConfigV2State:
 
     @_builtins.property
     @pulumi.getter(name="amazonec2Config")
-    def amazonec2_config(self) -> Optional[pulumi.Input['MachineConfigV2Amazonec2ConfigArgs']]:
+    def amazonec2_config(self) -> pulumi.Input[Optional['MachineConfigV2Amazonec2ConfigArgs']]:
         """
         AWS config for the Machine Config V2. Conflicts with `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "amazonec2_config")
 
     @amazonec2_config.setter
-    def amazonec2_config(self, value: Optional[pulumi.Input['MachineConfigV2Amazonec2ConfigArgs']]):
+    def amazonec2_config(self, value: pulumi.Input[Optional['MachineConfigV2Amazonec2ConfigArgs']]):
         pulumi.set(self, "amazonec2_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for Machine Config V2 object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="azureConfig")
-    def azure_config(self) -> Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']]:
+    def azure_config(self) -> pulumi.Input[Optional['MachineConfigV2AzureConfigArgs']]:
         """
         Azure config for the Machine Config V2. Conflicts with `amazonec2_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "azure_config")
 
     @azure_config.setter
-    def azure_config(self, value: Optional[pulumi.Input['MachineConfigV2AzureConfigArgs']]):
+    def azure_config(self, value: pulumi.Input[Optional['MachineConfigV2AzureConfigArgs']]):
         pulumi.set(self, "azure_config", value)
 
     @_builtins.property
     @pulumi.getter(name="digitaloceanConfig")
-    def digitalocean_config(self) -> Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']]:
+    def digitalocean_config(self) -> pulumi.Input[Optional['MachineConfigV2DigitaloceanConfigArgs']]:
         """
         Digitalocean config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `harvester_config`, `linode_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "digitalocean_config")
 
     @digitalocean_config.setter
-    def digitalocean_config(self, value: Optional[pulumi.Input['MachineConfigV2DigitaloceanConfigArgs']]):
+    def digitalocean_config(self, value: pulumi.Input[Optional['MachineConfigV2DigitaloceanConfigArgs']]):
         pulumi.set(self, "digitalocean_config", value)
 
     @_builtins.property
     @pulumi.getter(name="fleetNamespace")
-    def fleet_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fleet_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster V2 fleet namespace
         """
         return pulumi.get(self, "fleet_namespace")
 
     @fleet_namespace.setter
-    def fleet_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fleet_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fleet_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="generateName")
-    def generate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generate_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\\"prod-pool1\\" will generate \\"nc-prod-pool1-?????\\" name computed at `name` attribute (string)
         """
         return pulumi.get(self, "generate_name")
 
     @generate_name.setter
-    def generate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generate_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generate_name", value)
 
     @_builtins.property
     @pulumi.getter(name="googleConfig")
-    def google_config(self) -> Optional[pulumi.Input['MachineConfigV2GoogleConfigArgs']]:
+    def google_config(self) -> pulumi.Input[Optional['MachineConfigV2GoogleConfigArgs']]:
         """
         Google config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `openstack_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "google_config")
 
     @google_config.setter
-    def google_config(self, value: Optional[pulumi.Input['MachineConfigV2GoogleConfigArgs']]):
+    def google_config(self, value: pulumi.Input[Optional['MachineConfigV2GoogleConfigArgs']]):
         pulumi.set(self, "google_config", value)
 
     @_builtins.property
     @pulumi.getter(name="harvesterConfig")
-    def harvester_config(self) -> Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']]:
+    def harvester_config(self) -> pulumi.Input[Optional['MachineConfigV2HarvesterConfigArgs']]:
         """
         Harvester config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `linode_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "harvester_config")
 
     @harvester_config.setter
-    def harvester_config(self, value: Optional[pulumi.Input['MachineConfigV2HarvesterConfigArgs']]):
+    def harvester_config(self, value: pulumi.Input[Optional['MachineConfigV2HarvesterConfigArgs']]):
         pulumi.set(self, "harvester_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The machine config kind (string)
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for Machine Config V2 object (map)
 
@@ -431,79 +431,79 @@ class _MachineConfigV2State:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeConfig")
-    def linode_config(self) -> Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']]:
+    def linode_config(self) -> pulumi.Input[Optional['MachineConfigV2LinodeConfigArgs']]:
         """
         Linode config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `nutanix_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "linode_config")
 
     @linode_config.setter
-    def linode_config(self, value: Optional[pulumi.Input['MachineConfigV2LinodeConfigArgs']]):
+    def linode_config(self, value: pulumi.Input[Optional['MachineConfigV2LinodeConfigArgs']]):
         pulumi.set(self, "linode_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The machine config name (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nutanixConfig")
-    def nutanix_config(self) -> Optional[pulumi.Input['MachineConfigV2NutanixConfigArgs']]:
+    def nutanix_config(self) -> pulumi.Input[Optional['MachineConfigV2NutanixConfigArgs']]:
         """
         Nutanix config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `openstack_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "nutanix_config")
 
     @nutanix_config.setter
-    def nutanix_config(self, value: Optional[pulumi.Input['MachineConfigV2NutanixConfigArgs']]):
+    def nutanix_config(self, value: pulumi.Input[Optional['MachineConfigV2NutanixConfigArgs']]):
         pulumi.set(self, "nutanix_config", value)
 
     @_builtins.property
     @pulumi.getter(name="openstackConfig")
-    def openstack_config(self) -> Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']]:
+    def openstack_config(self) -> pulumi.Input[Optional['MachineConfigV2OpenstackConfigArgs']]:
         """
         Openstack config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `google_config` and `vsphere_config` (list maxitems:1)
         """
         return pulumi.get(self, "openstack_config")
 
     @openstack_config.setter
-    def openstack_config(self, value: Optional[pulumi.Input['MachineConfigV2OpenstackConfigArgs']]):
+    def openstack_config(self, value: pulumi.Input[Optional['MachineConfigV2OpenstackConfigArgs']]):
         pulumi.set(self, "openstack_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceVersion")
-    def resource_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The machine config k8s resource version (string)
         """
         return pulumi.get(self, "resource_version")
 
     @resource_version.setter
-    def resource_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_version", value)
 
     @_builtins.property
     @pulumi.getter(name="vsphereConfig")
-    def vsphere_config(self) -> Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']]:
+    def vsphere_config(self) -> pulumi.Input[Optional['MachineConfigV2VsphereConfigArgs']]:
         """
         vSphere config for the Machine Config V2. Conflicts with `amazonec2_config`, `azure_config`, `digitalocean_config`, `harvester_config`, `linode_config`, `nutanix_config`, `google_config` and `openstack_config` (list maxitems:1)
         """
         return pulumi.get(self, "vsphere_config")
 
     @vsphere_config.setter
-    def vsphere_config(self, value: Optional[pulumi.Input['MachineConfigV2VsphereConfigArgs']]):
+    def vsphere_config(self, value: pulumi.Input[Optional['MachineConfigV2VsphereConfigArgs']]):
         pulumi.set(self, "vsphere_config", value)
 
 
@@ -513,19 +513,19 @@ class MachineConfigV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amazonec2_config: Optional[pulumi.Input[Union['MachineConfigV2Amazonec2ConfigArgs', 'MachineConfigV2Amazonec2ConfigArgsDict']]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 azure_config: Optional[pulumi.Input[Union['MachineConfigV2AzureConfigArgs', 'MachineConfigV2AzureConfigArgsDict']]] = None,
-                 digitalocean_config: Optional[pulumi.Input[Union['MachineConfigV2DigitaloceanConfigArgs', 'MachineConfigV2DigitaloceanConfigArgsDict']]] = None,
-                 fleet_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_config: Optional[pulumi.Input[Union['MachineConfigV2GoogleConfigArgs', 'MachineConfigV2GoogleConfigArgsDict']]] = None,
-                 harvester_config: Optional[pulumi.Input[Union['MachineConfigV2HarvesterConfigArgs', 'MachineConfigV2HarvesterConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linode_config: Optional[pulumi.Input[Union['MachineConfigV2LinodeConfigArgs', 'MachineConfigV2LinodeConfigArgsDict']]] = None,
-                 nutanix_config: Optional[pulumi.Input[Union['MachineConfigV2NutanixConfigArgs', 'MachineConfigV2NutanixConfigArgsDict']]] = None,
-                 openstack_config: Optional[pulumi.Input[Union['MachineConfigV2OpenstackConfigArgs', 'MachineConfigV2OpenstackConfigArgsDict']]] = None,
-                 vsphere_config: Optional[pulumi.Input[Union['MachineConfigV2VsphereConfigArgs', 'MachineConfigV2VsphereConfigArgsDict']]] = None,
+                 amazonec2_config: pulumi.Input[Optional[Union['MachineConfigV2Amazonec2ConfigArgs', 'MachineConfigV2Amazonec2ConfigArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 azure_config: pulumi.Input[Optional[Union['MachineConfigV2AzureConfigArgs', 'MachineConfigV2AzureConfigArgsDict']]] = None,
+                 digitalocean_config: pulumi.Input[Optional[Union['MachineConfigV2DigitaloceanConfigArgs', 'MachineConfigV2DigitaloceanConfigArgsDict']]] = None,
+                 fleet_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_config: pulumi.Input[Optional[Union['MachineConfigV2GoogleConfigArgs', 'MachineConfigV2GoogleConfigArgsDict']]] = None,
+                 harvester_config: pulumi.Input[Optional[Union['MachineConfigV2HarvesterConfigArgs', 'MachineConfigV2HarvesterConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linode_config: pulumi.Input[Optional[Union['MachineConfigV2LinodeConfigArgs', 'MachineConfigV2LinodeConfigArgsDict']]] = None,
+                 nutanix_config: pulumi.Input[Optional[Union['MachineConfigV2NutanixConfigArgs', 'MachineConfigV2NutanixConfigArgsDict']]] = None,
+                 openstack_config: pulumi.Input[Optional[Union['MachineConfigV2OpenstackConfigArgs', 'MachineConfigV2OpenstackConfigArgsDict']]] = None,
+                 vsphere_config: pulumi.Input[Optional[Union['MachineConfigV2VsphereConfigArgs', 'MachineConfigV2VsphereConfigArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Machine config v2 resource. This can be used to create Machine Config v2 for Rancher v2 and retrieve their information. This resource is available from Rancher v2.6.0 and above.
@@ -684,19 +684,19 @@ class MachineConfigV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amazonec2_config: Optional[pulumi.Input[Union['MachineConfigV2Amazonec2ConfigArgs', 'MachineConfigV2Amazonec2ConfigArgsDict']]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 azure_config: Optional[pulumi.Input[Union['MachineConfigV2AzureConfigArgs', 'MachineConfigV2AzureConfigArgsDict']]] = None,
-                 digitalocean_config: Optional[pulumi.Input[Union['MachineConfigV2DigitaloceanConfigArgs', 'MachineConfigV2DigitaloceanConfigArgsDict']]] = None,
-                 fleet_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_config: Optional[pulumi.Input[Union['MachineConfigV2GoogleConfigArgs', 'MachineConfigV2GoogleConfigArgsDict']]] = None,
-                 harvester_config: Optional[pulumi.Input[Union['MachineConfigV2HarvesterConfigArgs', 'MachineConfigV2HarvesterConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 linode_config: Optional[pulumi.Input[Union['MachineConfigV2LinodeConfigArgs', 'MachineConfigV2LinodeConfigArgsDict']]] = None,
-                 nutanix_config: Optional[pulumi.Input[Union['MachineConfigV2NutanixConfigArgs', 'MachineConfigV2NutanixConfigArgsDict']]] = None,
-                 openstack_config: Optional[pulumi.Input[Union['MachineConfigV2OpenstackConfigArgs', 'MachineConfigV2OpenstackConfigArgsDict']]] = None,
-                 vsphere_config: Optional[pulumi.Input[Union['MachineConfigV2VsphereConfigArgs', 'MachineConfigV2VsphereConfigArgsDict']]] = None,
+                 amazonec2_config: pulumi.Input[Optional[Union['MachineConfigV2Amazonec2ConfigArgs', 'MachineConfigV2Amazonec2ConfigArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 azure_config: pulumi.Input[Optional[Union['MachineConfigV2AzureConfigArgs', 'MachineConfigV2AzureConfigArgsDict']]] = None,
+                 digitalocean_config: pulumi.Input[Optional[Union['MachineConfigV2DigitaloceanConfigArgs', 'MachineConfigV2DigitaloceanConfigArgsDict']]] = None,
+                 fleet_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_config: pulumi.Input[Optional[Union['MachineConfigV2GoogleConfigArgs', 'MachineConfigV2GoogleConfigArgsDict']]] = None,
+                 harvester_config: pulumi.Input[Optional[Union['MachineConfigV2HarvesterConfigArgs', 'MachineConfigV2HarvesterConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 linode_config: pulumi.Input[Optional[Union['MachineConfigV2LinodeConfigArgs', 'MachineConfigV2LinodeConfigArgsDict']]] = None,
+                 nutanix_config: pulumi.Input[Optional[Union['MachineConfigV2NutanixConfigArgs', 'MachineConfigV2NutanixConfigArgsDict']]] = None,
+                 openstack_config: pulumi.Input[Optional[Union['MachineConfigV2OpenstackConfigArgs', 'MachineConfigV2OpenstackConfigArgsDict']]] = None,
+                 vsphere_config: pulumi.Input[Optional[Union['MachineConfigV2VsphereConfigArgs', 'MachineConfigV2VsphereConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -734,22 +734,22 @@ class MachineConfigV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            amazonec2_config: Optional[pulumi.Input[Union['MachineConfigV2Amazonec2ConfigArgs', 'MachineConfigV2Amazonec2ConfigArgsDict']]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            azure_config: Optional[pulumi.Input[Union['MachineConfigV2AzureConfigArgs', 'MachineConfigV2AzureConfigArgsDict']]] = None,
-            digitalocean_config: Optional[pulumi.Input[Union['MachineConfigV2DigitaloceanConfigArgs', 'MachineConfigV2DigitaloceanConfigArgsDict']]] = None,
-            fleet_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            generate_name: Optional[pulumi.Input[_builtins.str]] = None,
-            google_config: Optional[pulumi.Input[Union['MachineConfigV2GoogleConfigArgs', 'MachineConfigV2GoogleConfigArgsDict']]] = None,
-            harvester_config: Optional[pulumi.Input[Union['MachineConfigV2HarvesterConfigArgs', 'MachineConfigV2HarvesterConfigArgsDict']]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            linode_config: Optional[pulumi.Input[Union['MachineConfigV2LinodeConfigArgs', 'MachineConfigV2LinodeConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nutanix_config: Optional[pulumi.Input[Union['MachineConfigV2NutanixConfigArgs', 'MachineConfigV2NutanixConfigArgsDict']]] = None,
-            openstack_config: Optional[pulumi.Input[Union['MachineConfigV2OpenstackConfigArgs', 'MachineConfigV2OpenstackConfigArgsDict']]] = None,
-            resource_version: Optional[pulumi.Input[_builtins.str]] = None,
-            vsphere_config: Optional[pulumi.Input[Union['MachineConfigV2VsphereConfigArgs', 'MachineConfigV2VsphereConfigArgsDict']]] = None) -> 'MachineConfigV2':
+            amazonec2_config: pulumi.Input[Optional[Union['MachineConfigV2Amazonec2ConfigArgs', 'MachineConfigV2Amazonec2ConfigArgsDict']]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            azure_config: pulumi.Input[Optional[Union['MachineConfigV2AzureConfigArgs', 'MachineConfigV2AzureConfigArgsDict']]] = None,
+            digitalocean_config: pulumi.Input[Optional[Union['MachineConfigV2DigitaloceanConfigArgs', 'MachineConfigV2DigitaloceanConfigArgsDict']]] = None,
+            fleet_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            generate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            google_config: pulumi.Input[Optional[Union['MachineConfigV2GoogleConfigArgs', 'MachineConfigV2GoogleConfigArgsDict']]] = None,
+            harvester_config: pulumi.Input[Optional[Union['MachineConfigV2HarvesterConfigArgs', 'MachineConfigV2HarvesterConfigArgsDict']]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            linode_config: pulumi.Input[Optional[Union['MachineConfigV2LinodeConfigArgs', 'MachineConfigV2LinodeConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nutanix_config: pulumi.Input[Optional[Union['MachineConfigV2NutanixConfigArgs', 'MachineConfigV2NutanixConfigArgsDict']]] = None,
+            openstack_config: pulumi.Input[Optional[Union['MachineConfigV2OpenstackConfigArgs', 'MachineConfigV2OpenstackConfigArgsDict']]] = None,
+            resource_version: pulumi.Input[Optional[_builtins.str]] = None,
+            vsphere_config: pulumi.Input[Optional[Union['MachineConfigV2VsphereConfigArgs', 'MachineConfigV2VsphereConfigArgsDict']]] = None) -> 'MachineConfigV2':
         """
         Get an existing MachineConfigV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

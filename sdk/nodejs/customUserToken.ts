@@ -212,73 +212,73 @@ export interface CustomUserTokenState {
     /**
      * (Computed) Token access key part (string)
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Annotations of the token (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cluster ID for scoped token (string)
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Token description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Token is enabled (bool)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * (Computed) Token is expired (bool)
      */
-    expired?: pulumi.Input<boolean>;
+    expired?: pulumi.Input<boolean | undefined>;
     /**
      * (Computed) Labels of the token (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Computed) Token name (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The user password (string)
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
      */
-    renew?: pulumi.Input<boolean>;
+    renew?: pulumi.Input<boolean | undefined>;
     /**
      * (Computed/Sensitive) Token secret key part (string)
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Generated API temporary token as helper. Should be empty (string)
      */
-    tempToken?: pulumi.Input<string>;
+    tempToken?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Generated API temporary token id as helper. Should be empty (string)
      */
-    tempTokenId?: pulumi.Input<string>;
+    tempTokenId?: pulumi.Input<string | undefined>;
     /**
      * (Computed/Sensitive) Token value (string)
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Token time to live in seconds. Default `0` (int) 
      *
      * From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * (Computed) Token user ID (string)
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The user username (string)
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -288,19 +288,19 @@ export interface CustomUserTokenArgs {
     /**
      * (Computed) Annotations of the token (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cluster ID for scoped token (string)
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Token description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Labels of the token (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The user password (string)
      */
@@ -308,13 +308,13 @@ export interface CustomUserTokenArgs {
     /**
      * Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
      */
-    renew?: pulumi.Input<boolean>;
+    renew?: pulumi.Input<boolean | undefined>;
     /**
      * Token time to live in seconds. Default `0` (int) 
      *
      * From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The user username (string)
      */

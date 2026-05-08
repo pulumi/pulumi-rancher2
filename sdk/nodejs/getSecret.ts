@@ -143,7 +143,7 @@ export interface GetSecretOutputArgs {
     /**
      * The namespace id where to assign the namespaced secret (string)
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The project id where to assign the secret (string)
      */

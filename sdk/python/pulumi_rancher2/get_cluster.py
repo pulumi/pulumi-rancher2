@@ -418,8 +418,8 @@ def get_cluster(default_pod_security_admission_configuration_template_name: Opti
         rke2_config=pulumi.get(__ret__, 'rke2_config'),
         rke_config=pulumi.get(__ret__, 'rke_config'),
         system_project_id=pulumi.get(__ret__, 'system_project_id'))
-def get_cluster_output(default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cluster_output(default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
     Use this data source to retrieve information about a Rancher v2 cluster.

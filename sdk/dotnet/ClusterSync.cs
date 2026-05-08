@@ -27,7 +27,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 rke Cluster 
-    ///     var foo_custom = new Rancher2.Index.Cluster("foo-custom", new()
+    ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
     ///         Name = "foo-custom",
     ///         Description = "Foo rancher2 custom cluster",
@@ -41,7 +41,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Node Template
-    ///     var foo = new Rancher2.Index.NodeTemplate("foo", new()
+    ///     var foo = new Rancher2.NodeTemplate("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "foo test",
@@ -65,7 +65,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Node Pool
-    ///     var fooNodePool = new Rancher2.Index.NodePool("foo", new()
+    ///     var fooNodePool = new Rancher2.NodePool("foo", new()
     ///     {
     ///         ClusterId = foo_custom.Id,
     ///         Name = "foo",
@@ -78,7 +78,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Cluster Sync
-    ///     var foo_customClusterSync = new Rancher2.Index.ClusterSync("foo-custom", new()
+    ///     var foo_customClusterSync = new Rancher2.ClusterSync("foo-custom", new()
     ///     {
     ///         ClusterId = foo_custom.Id,
     ///         NodePoolIds = new[]
@@ -88,7 +88,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Project
-    ///     var fooProject = new Rancher2.Index.Project("foo", new()
+    ///     var fooProject = new Rancher2.Project("foo", new()
     ///     {
     ///         Name = "foo",
     ///         ClusterId = foo_customClusterSync.Id,

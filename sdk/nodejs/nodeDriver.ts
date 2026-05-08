@@ -167,47 +167,47 @@ export interface NodeDriverState {
     /**
      * Specify if the node driver state (bool)
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specify wheter the node driver is an internal node driver or not (bool)
      */
-    builtin?: pulumi.Input<boolean>;
+    builtin?: pulumi.Input<boolean | undefined>;
     /**
      * Verify that the downloaded driver matches the expected checksum (string)
      */
-    checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string | undefined>;
     /**
      * Description of the node driver (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * External ID (string)
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the node driver (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL to load for customized Add Nodes screen for this driver (string)
      */
-    uiUrl?: pulumi.Input<string>;
+    uiUrl?: pulumi.Input<string | undefined>;
     /**
      * The URL to download the machine driver binary for 64-bit Linux (string)
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Domains to whitelist for the ui (list)
      */
-    whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelistDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -221,7 +221,7 @@ export interface NodeDriverArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specify wheter the node driver is an internal node driver or not (bool)
      */
@@ -229,27 +229,27 @@ export interface NodeDriverArgs {
     /**
      * Verify that the downloaded driver matches the expected checksum (string)
      */
-    checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string | undefined>;
     /**
      * Description of the node driver (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * External ID (string)
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the node driver (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL to load for customized Add Nodes screen for this driver (string)
      */
-    uiUrl?: pulumi.Input<string>;
+    uiUrl?: pulumi.Input<string | undefined>;
     /**
      * The URL to download the machine driver binary for 64-bit Linux (string)
      */
@@ -257,5 +257,5 @@ export interface NodeDriverArgs {
     /**
      * Domains to whitelist for the ui (list)
      */
-    whitelistDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelistDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

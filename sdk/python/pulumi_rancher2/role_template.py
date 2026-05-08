@@ -21,19 +21,19 @@ __all__ = ['RoleTemplateArgs', 'RoleTemplate']
 @pulumi.input_type
 class RoleTemplateArgs:
     def __init__(__self__, *,
-                 administrative: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 context: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]] = None):
+                 administrative: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 context: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_rules: pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_template_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]] = None):
         """
         The set of arguments for constructing a RoleTemplate resource.
 
@@ -80,178 +80,178 @@ class RoleTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def administrative(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def administrative(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative role template. Default `false` (bool)
         """
         return pulumi.get(self, "administrative")
 
     @administrative.setter
-    def administrative(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def administrative(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "administrative", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for role template object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def context(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def context(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
         """
         return pulumi.get(self, "context")
 
     @context.setter
-    def context(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def context(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "context", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRole")
-    def default_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Default role template for new created cluster or project. Default `false` (bool)
         """
         return pulumi.get(self, "default_role")
 
     @default_role.setter
-    def default_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_role", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role template description (string)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         External role template. Default `false` (bool)
         """
         return pulumi.get(self, "external")
 
     @external.setter
-    def external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external", value)
 
     @_builtins.property
     @pulumi.getter(name="externalRules")
-    def external_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]:
+    def external_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]:
         """
         External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
         """
         return pulumi.get(self, "external_rules")
 
     @external_rules.setter
-    def external_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]):
+    def external_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]):
         pulumi.set(self, "external_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Hidden role template. Default `false` (bool)
         """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for role template object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Locked role template. Default `false` (bool)
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role template name (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="roleTemplateIds")
-    def role_template_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def role_template_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Inherit role template IDs (list)
         """
         return pulumi.get(self, "role_template_ids")
 
     @role_template_ids.setter
-    def role_template_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def role_template_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "role_template_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]]:
         """
         Role template policy rules (list)
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
 class _RoleTemplateState:
     def __init__(__self__, *,
-                 administrative: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 builtin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 context: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]] = None):
+                 administrative: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 builtin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 context: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_rules: pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_template_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering RoleTemplate resources.
 
@@ -301,170 +301,170 @@ class _RoleTemplateState:
 
     @_builtins.property
     @pulumi.getter
-    def administrative(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def administrative(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative role template. Default `false` (bool)
         """
         return pulumi.get(self, "administrative")
 
     @administrative.setter
-    def administrative(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def administrative(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "administrative", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for role template object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def builtin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def builtin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Computed) Builtin role template (string)
         """
         return pulumi.get(self, "builtin")
 
     @builtin.setter
-    def builtin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def builtin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "builtin", value)
 
     @_builtins.property
     @pulumi.getter
-    def context(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def context(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
         """
         return pulumi.get(self, "context")
 
     @context.setter
-    def context(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def context(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "context", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRole")
-    def default_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Default role template for new created cluster or project. Default `false` (bool)
         """
         return pulumi.get(self, "default_role")
 
     @default_role.setter
-    def default_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_role", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role template description (string)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def external(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         External role template. Default `false` (bool)
         """
         return pulumi.get(self, "external")
 
     @external.setter
-    def external(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external", value)
 
     @_builtins.property
     @pulumi.getter(name="externalRules")
-    def external_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]:
+    def external_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]:
         """
         External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
         """
         return pulumi.get(self, "external_rules")
 
     @external_rules.setter
-    def external_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]):
+    def external_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateExternalRuleArgs']]]]):
         pulumi.set(self, "external_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def hidden(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hidden(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Hidden role template. Default `false` (bool)
         """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
-    def hidden(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hidden(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hidden", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for role template object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Locked role template. Default `false` (bool)
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role template name (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="roleTemplateIds")
-    def role_template_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def role_template_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Inherit role template IDs (list)
         """
         return pulumi.get(self, "role_template_ids")
 
     @role_template_ids.setter
-    def role_template_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def role_template_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "role_template_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]]:
         """
         Role template policy rules (list)
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RoleTemplateRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
@@ -474,19 +474,19 @@ class RoleTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administrative: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 context: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]]] = None,
+                 administrative: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 context: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_template_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Role Template resource. This can be used to create Role Template for Rancher v2 and retrieve their information.
@@ -625,19 +625,19 @@ class RoleTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administrative: Optional[pulumi.Input[_builtins.bool]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 context: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external: Optional[pulumi.Input[_builtins.bool]] = None,
-                 external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]]] = None,
-                 hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]]] = None,
+                 administrative: pulumi.Input[Optional[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 context: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external: pulumi.Input[Optional[_builtins.bool]] = None,
+                 external_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]]] = None,
+                 hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_template_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -671,20 +671,20 @@ class RoleTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            administrative: Optional[pulumi.Input[_builtins.bool]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            builtin: Optional[pulumi.Input[_builtins.bool]] = None,
-            context: Optional[pulumi.Input[_builtins.str]] = None,
-            default_role: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            external: Optional[pulumi.Input[_builtins.bool]] = None,
-            external_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]]] = None,
-            hidden: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            role_template_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]]] = None) -> 'RoleTemplate':
+            administrative: pulumi.Input[Optional[_builtins.bool]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            builtin: pulumi.Input[Optional[_builtins.bool]] = None,
+            context: pulumi.Input[Optional[_builtins.str]] = None,
+            default_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            external: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict']]]]] = None,
+            hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_template_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict']]]]] = None) -> 'RoleTemplate':
         """
         Get an existing RoleTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

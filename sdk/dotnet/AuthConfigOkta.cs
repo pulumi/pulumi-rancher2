@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Auth Config OKTA
-    ///     var okta = new Rancher2.Index.AuthConfigOkta("okta", new()
+    ///     var okta = new Rancher2.AuthConfigOkta("okta", new()
     ///     {
     ///         DisplayNameField = "&lt;DISPLAY_NAME_FIELD&gt;",
     ///         GroupsField = "&lt;GROUPS_FIELD&gt;",

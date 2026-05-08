@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.NodeTemplateArgs;
  * import com.pulumi.rancher2.NodePool;
  * import com.pulumi.rancher2.NodePoolArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -82,10 +82,10 @@ import javax.annotation.Nullable;
  *             .name("foo")
  *             .description("foo test")
  *             .cloudCredentialId(foo.id())
- *             .amazonec2Config(List.of(Map.ofEntries(
+ *             .amazonec2Config(Arrays.asList(Map.ofEntries(
  *                 Map.entry("ami", "<AMI_ID>"),
  *                 Map.entry("region", "<REGION>"),
- *                 Map.entry("securityGroup", List.of("<AWS_SECURITY_GROUP>")),
+ *                 Map.entry("securityGroup", Arrays.asList("<AWS_SECURITY_GROUP>")),
  *                 Map.entry("subnetId", "<SUBNET_ID>"),
  *                 Map.entry("vpcId", "<VPC_ID>"),
  *                 Map.entry("zone", "<ZONE>")

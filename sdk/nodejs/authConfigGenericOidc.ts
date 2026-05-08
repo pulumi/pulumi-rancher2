@@ -258,103 +258,103 @@ export interface AuthConfigGenericOidcState {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * Allowed principal IDs for auth. Required if `accessMode` is `required` or `restricted`. Ex: `genericoidc_user://<USER_ID>` `genericoidc_group://<GROUP_ID>` (list)
      */
-    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The OIDC Auth Endpoint URL.
      */
-    authEndpoint?: pulumi.Input<string>;
+    authEndpoint?: pulumi.Input<string | undefined>;
     /**
      * A PEM-encoded CA certificate for the OIDC provider.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The OIDC Client ID.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The OIDC Client Secret.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * The OIDC Claim to use for the user email.
      */
-    emailClaim?: pulumi.Input<string>;
+    emailClaim?: pulumi.Input<string | undefined>;
     /**
      * Enable the auth config provider. Default `true` (bool)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The provider specific URL used for logging a user out of their session.
      */
-    endSessionEndpoint?: pulumi.Input<string>;
+    endSessionEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Enable group search. Default `false` (bool)
      */
-    groupSearchEnabled?: pulumi.Input<boolean>;
+    groupSearchEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
      */
-    groupsField?: pulumi.Input<string>;
+    groupsField?: pulumi.Input<string | undefined>;
     /**
      * The OIDC issuer URL.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The OIDC JWKS URL.
      */
-    jwksUrl?: pulumi.Input<string>;
+    jwksUrl?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Allow the user to choose whether or not to logout of their session with the IdP.
      */
-    logoutAllEnabled?: pulumi.Input<boolean>;
+    logoutAllEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Force the user to logout of their session with the IdP.
      */
-    logoutAllForced?: pulumi.Input<boolean>;
+    logoutAllForced?: pulumi.Input<boolean | undefined>;
     /**
      * (Computed) The name of the resource (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The OIDC Claim to use for the user name.
      */
-    nameClaim?: pulumi.Input<string>;
+    nameClaim?: pulumi.Input<string | undefined>;
     /**
      * A PEM-encoded private key for the OIDC provider.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
      */
-    rancherUrl?: pulumi.Input<string>;
+    rancherUrl?: pulumi.Input<string | undefined>;
     /**
      * The OIDC scopes to request. Defaults to `openid profile email` (string)
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * The OIDC Token Endpoint URL.
      */
-    tokenEndpoint?: pulumi.Input<string>;
+    tokenEndpoint?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The type of the resource (string)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The OIDC User Info Endpoint URL.
      */
-    userinfoEndpoint?: pulumi.Input<string>;
+    userinfoEndpoint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -364,23 +364,23 @@ export interface AuthConfigGenericOidcArgs {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * Allowed principal IDs for auth. Required if `accessMode` is `required` or `restricted`. Ex: `genericoidc_user://<USER_ID>` `genericoidc_group://<GROUP_ID>` (list)
      */
-    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The OIDC Auth Endpoint URL.
      */
-    authEndpoint?: pulumi.Input<string>;
+    authEndpoint?: pulumi.Input<string | undefined>;
     /**
      * A PEM-encoded CA certificate for the OIDC provider.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The OIDC Client ID.
      */
@@ -392,23 +392,23 @@ export interface AuthConfigGenericOidcArgs {
     /**
      * The OIDC Claim to use for the user email.
      */
-    emailClaim?: pulumi.Input<string>;
+    emailClaim?: pulumi.Input<string | undefined>;
     /**
      * Enable the auth config provider. Default `true` (bool)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The provider specific URL used for logging a user out of their session.
      */
-    endSessionEndpoint?: pulumi.Input<string>;
+    endSessionEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Enable group search. Default `false` (bool)
      */
-    groupSearchEnabled?: pulumi.Input<boolean>;
+    groupSearchEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OIDC claim to use for the user's group memberships. Default `groups` (string)
      */
-    groupsField?: pulumi.Input<string>;
+    groupsField?: pulumi.Input<string | undefined>;
     /**
      * The OIDC issuer URL.
      */
@@ -416,27 +416,27 @@ export interface AuthConfigGenericOidcArgs {
     /**
      * The OIDC JWKS URL.
      */
-    jwksUrl?: pulumi.Input<string>;
+    jwksUrl?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Allow the user to choose whether or not to logout of their session with the IdP.
      */
-    logoutAllEnabled?: pulumi.Input<boolean>;
+    logoutAllEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Force the user to logout of their session with the IdP.
      */
-    logoutAllForced?: pulumi.Input<boolean>;
+    logoutAllForced?: pulumi.Input<boolean | undefined>;
     /**
      * The OIDC Claim to use for the user name.
      */
-    nameClaim?: pulumi.Input<string>;
+    nameClaim?: pulumi.Input<string | undefined>;
     /**
      * A PEM-encoded private key for the OIDC provider.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
      */
@@ -444,13 +444,13 @@ export interface AuthConfigGenericOidcArgs {
     /**
      * The OIDC scopes to request. Defaults to `openid profile email` (string)
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * The OIDC Token Endpoint URL.
      */
-    tokenEndpoint?: pulumi.Input<string>;
+    tokenEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The OIDC User Info Endpoint URL.
      */
-    userinfoEndpoint?: pulumi.Input<string>;
+    userinfoEndpoint?: pulumi.Input<string | undefined>;
 }

@@ -109,9 +109,9 @@ def get_principal(exact_match: Optional[_builtins.bool] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'))
-def get_principal_output(exact_match: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         name: Optional[pulumi.Input[_builtins.str]] = None,
-                         type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_principal_output(exact_match: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         name: pulumi.Input[Optional[_builtins.str]] = None,
+                         type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrincipalResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Principal resource.

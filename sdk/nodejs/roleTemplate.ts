@@ -198,59 +198,59 @@ export interface RoleTemplateState {
     /**
      * Administrative role template. Default `false` (bool)
      */
-    administrative?: pulumi.Input<boolean>;
+    administrative?: pulumi.Input<boolean | undefined>;
     /**
      * Annotations for role template object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Computed) Builtin role template (string)
      */
-    builtin?: pulumi.Input<boolean>;
+    builtin?: pulumi.Input<boolean | undefined>;
     /**
      * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * Default role template for new created cluster or project. Default `false` (bool)
      */
-    defaultRole?: pulumi.Input<boolean>;
+    defaultRole?: pulumi.Input<boolean | undefined>;
     /**
      * Role template description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * External role template. Default `false` (bool)
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
      */
-    externalRules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateExternalRule>[]>;
+    externalRules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateExternalRule>[] | undefined>;
     /**
      * Hidden role template. Default `false` (bool)
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
     /**
      * Labels for role template object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Locked role template. Default `false` (bool)
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Role template name (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Inherit role template IDs (list)
      */
-    roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    roleTemplateIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Role template policy rules (list)
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateRule>[] | undefined>;
 }
 
 /**
@@ -260,53 +260,53 @@ export interface RoleTemplateArgs {
     /**
      * Administrative role template. Default `false` (bool)
      */
-    administrative?: pulumi.Input<boolean>;
+    administrative?: pulumi.Input<boolean | undefined>;
     /**
      * Annotations for role template object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Role template context. `cluster` and `project` values are supported. Default: `cluster` (string)
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * Default role template for new created cluster or project. Default `false` (bool)
      */
-    defaultRole?: pulumi.Input<boolean>;
+    defaultRole?: pulumi.Input<boolean | undefined>;
     /**
      * Role template description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * External role template. Default `false` (bool)
      */
-    external?: pulumi.Input<boolean>;
+    external?: pulumi.Input<boolean | undefined>;
     /**
      * External rules used for authorization. This field is required when `external=true` and no underlying ClusterRole exists. (list)
      */
-    externalRules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateExternalRule>[]>;
+    externalRules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateExternalRule>[] | undefined>;
     /**
      * Hidden role template. Default `false` (bool)
      */
-    hidden?: pulumi.Input<boolean>;
+    hidden?: pulumi.Input<boolean | undefined>;
     /**
      * Labels for role template object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Locked role template. Default `false` (bool)
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Role template name (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Inherit role template IDs (list)
      */
-    roleTemplateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    roleTemplateIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Role template policy rules (list)
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RoleTemplateRule>[] | undefined>;
 }

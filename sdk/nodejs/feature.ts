@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * // Create a new rancher2 Feature
  * const fleet = new rancher2.Feature("fleet", {
  *     name: "fleet",
- *     value: "<VALUE>",
+ *     value: "<VALUE>" === "true",
  * });
  * ```
  */
@@ -107,19 +107,19 @@ export interface FeatureState {
     /**
      * Annotations for feature object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Labels for feature object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the feature (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The value of the feature. Default: `false` (bool)
      */
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -129,17 +129,17 @@ export interface FeatureArgs {
     /**
      * Annotations for feature object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Labels for feature object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the feature (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The value of the feature. Default: `false` (bool)
      */
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }

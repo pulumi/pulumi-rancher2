@@ -133,29 +133,29 @@ export interface GlobalRoleBindingState {
     /**
      * Annotations for global role binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The role id from create global role binding (string)
      */
-    globalRoleId?: pulumi.Input<string>;
+    globalRoleId?: pulumi.Input<string | undefined>;
     /**
      * The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
      */
-    groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Labels for global role binding (map)
      *
      * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the global role binding (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The user ID to assign global role binding (string)
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,7 +165,7 @@ export interface GlobalRoleBindingArgs {
     /**
      * Annotations for global role binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The role id from create global role binding (string)
      */
@@ -173,19 +173,19 @@ export interface GlobalRoleBindingArgs {
     /**
      * The group principal ID to assign global role binding (only works with external auth providers that support groups). Rancher v2.4.0 or higher is required (string)
      */
-    groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Labels for global role binding (map)
      *
      * **Note:** user `userId` OR group `groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the global role binding (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The user ID to assign global role binding (string)
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

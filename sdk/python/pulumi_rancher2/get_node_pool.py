@@ -228,9 +228,9 @@ def get_node_pool(cluster_id: Optional[_builtins.str] = None,
         node_template_id=pulumi.get(__ret__, 'node_template_id'),
         quantity=pulumi.get(__ret__, 'quantity'),
         worker=pulumi.get(__ret__, 'worker'))
-def get_node_pool_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         name: Optional[pulumi.Input[_builtins.str]] = None,
-                         node_template_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_node_pool_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         name: pulumi.Input[Optional[_builtins.str]] = None,
+                         node_template_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodePoolResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Node Pool resource.

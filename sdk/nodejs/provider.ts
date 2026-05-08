@@ -94,41 +94,41 @@ export interface ProviderArgs {
     /**
      * API Key used to authenticate with the rancher server
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * The URL to the rancher API
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Bootstrap rancher server
      */
-    bootstrap?: pulumi.Input<boolean>;
+    bootstrap?: pulumi.Input<boolean | undefined>;
     /**
      * CA certificates used to sign rancher server tls certificates. Mandatory if self signed tls and insecure option false
      */
-    caCerts?: pulumi.Input<string>;
+    caCerts?: pulumi.Input<string | undefined>;
     /**
      * Allow insecure connections to Rancher. Mandatory if self signed tls and not caCerts provided
      */
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * Rancher connection retries
      *
      * @deprecated Use timeout instead
      */
-    retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number | undefined>;
     /**
      * API secret used to authenticate with the rancher server
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * Rancher connection timeout (retry every 5s). Golang duration format, ex: "60s"
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
     /**
      * API token used to authenticate with the rancher server
      */
-    tokenKey?: pulumi.Input<string>;
+    tokenKey?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

@@ -135,5 +135,5 @@ export interface GetNodePoolOutputArgs {
     /**
      * The Node Template ID to use for node creation (string)
      */
-    nodeTemplateId?: pulumi.Input<string>;
+    nodeTemplateId?: pulumi.Input<string | undefined>;
 }

@@ -60,8 +60,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -104,8 +104,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.MachineConfigV2;
  * import com.pulumi.rancher2.MachineConfigV2Args;
  * import com.pulumi.rancher2.inputs.MachineConfigV2Amazonec2ConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -158,8 +158,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -251,8 +251,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -326,8 +326,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.Rancher2Functions;
  * import com.pulumi.rancher2.inputs.GetClusterV2Args;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -366,8 +366,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2AgentEnvVarArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -420,8 +420,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -507,8 +507,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -575,8 +575,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigRegistriesArgs;
  * import com.pulumi.rancher2.SecretV2;
  * import com.pulumi.rancher2.SecretV2Args;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -640,8 +640,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -714,8 +714,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -802,8 +802,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -857,8 +857,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigEtcdArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigEtcdS3ConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -879,7 +879,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(List.of(Map.ofEntries(
+ *             .machinePools(Arrays.asList(Map.ofEntries(
  *             )))
  *             .name("foo")
  *             .kubernetesVersion("rke2/k3s-version")
@@ -919,8 +919,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -933,7 +933,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(List.of(Map.ofEntries(
+ *             .machinePools(Arrays.asList(Map.ofEntries(
  *             )))
  *             .name("foo")
  *             .kubernetesVersion("k3s-version")
@@ -966,8 +966,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -980,7 +980,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(List.of(Map.ofEntries(
+ *             .machinePools(Arrays.asList(Map.ofEntries(
  *             )))
  *             .name("foo")
  *             .kubernetesVersion("rke2-version")
@@ -1012,8 +1012,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1026,7 +1026,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(List.of(Map.ofEntries(
+ *             .machinePools(Arrays.asList(Map.ofEntries(
  *             )))
  *             .name("foo")
  *             .kubernetesVersion("rke2/k3s-version")
@@ -1054,8 +1054,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -1068,7 +1068,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(List.of(Map.ofEntries(
+ *             .machinePools(Arrays.asList(Map.ofEntries(
  *             )))
  *             .name("foo")
  *             .kubernetesVersion("rke2/k3s-version")
@@ -1103,8 +1103,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

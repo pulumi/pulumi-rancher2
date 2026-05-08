@@ -20,23 +20,23 @@ __all__ = ['CatalogV2Args', 'CatalogV2']
 class CatalogV2Args:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ca_bundle: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exponential_backoff_max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 exponential_backoff_max_wait: Optional[pulumi.Input[_builtins.int]] = None,
-                 exponential_backoff_min_wait: Optional[pulumi.Input[_builtins.int]] = None,
-                 git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 insecure_plain_http: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ca_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exponential_backoff_max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 exponential_backoff_max_wait: pulumi.Input[Optional[_builtins.int]] = None,
+                 exponential_backoff_min_wait: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CatalogV2 resource.
 
@@ -109,231 +109,231 @@ class CatalogV2Args:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for the catalog v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="caBundle")
-    def ca_bundle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_bundle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         """
         return pulumi.get(self, "ca_bundle")
 
     @ca_bundle.setter
-    def ca_bundle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_bundle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_bundle", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="exponentialBackoffMaxRetries")
-    def exponential_backoff_max_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def exponential_backoff_max_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of retries before returning error
         """
         return pulumi.get(self, "exponential_backoff_max_retries")
 
     @exponential_backoff_max_retries.setter
-    def exponential_backoff_max_retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def exponential_backoff_max_retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "exponential_backoff_max_retries", value)
 
     @_builtins.property
     @pulumi.getter(name="exponentialBackoffMaxWait")
-    def exponential_backoff_max_wait(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def exponential_backoff_max_wait(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum amount of seconds to wait before retrying
         """
         return pulumi.get(self, "exponential_backoff_max_wait")
 
     @exponential_backoff_max_wait.setter
-    def exponential_backoff_max_wait(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def exponential_backoff_max_wait(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "exponential_backoff_max_wait", value)
 
     @_builtins.property
     @pulumi.getter(name="exponentialBackoffMinWait")
-    def exponential_backoff_min_wait(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def exponential_backoff_min_wait(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum amount of seconds to wait before retrying
         """
         return pulumi.get(self, "exponential_backoff_min_wait")
 
     @exponential_backoff_min_wait.setter
-    def exponential_backoff_min_wait(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def exponential_backoff_min_wait(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "exponential_backoff_min_wait", value)
 
     @_builtins.property
     @pulumi.getter(name="gitBranch")
-    def git_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git Repository branch containing Helm chart definitions. Default `master` (string)
         """
         return pulumi.get(self, "git_branch")
 
     @git_branch.setter
-    def git_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRepo")
-    def git_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url of the catalog v2 repo. Conflicts with `url` (string)
         """
         return pulumi.get(self, "git_repo")
 
     @git_repo.setter
-    def git_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_repo", value)
 
     @_builtins.property
     @pulumi.getter
-    def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use insecure HTTPS to download the repo's index. Default: `false` (bool)
         """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
-    def insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure", value)
 
     @_builtins.property
     @pulumi.getter(name="insecurePlainHttp")
-    def insecure_plain_http(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure_plain_http(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         """
         return pulumi.get(self, "insecure_plain_http")
 
     @insecure_plain_http.setter
-    def insecure_plain_http(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure_plain_http(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure_plain_http", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the catalog v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the catalog v2 (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretName")
-    def secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         K8s secret name to be used to connect to the repo (string)
         """
         return pulumi.get(self, "secret_name")
 
     @secret_name.setter
-    def secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretNamespace")
-    def secret_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         K8s secret namespace (string)
         """
         return pulumi.get(self, "secret_namespace")
 
     @secret_namespace.setter
-    def secret_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         K8s service account used to deploy charts instead of the end users credentials (string)
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountNamespace")
-    def service_account_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to access the catalog if needed (string)
         """
         return pulumi.get(self, "service_account_namespace")
 
     @service_account_namespace.setter
-    def service_account_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to an index generated by Helm. Conflicts with `git_repo` (string)
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
 @pulumi.input_type
 class _CatalogV2State:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ca_bundle: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exponential_backoff_max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 exponential_backoff_max_wait: Optional[pulumi.Input[_builtins.int]] = None,
-                 exponential_backoff_min_wait: Optional[pulumi.Input[_builtins.int]] = None,
-                 git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 insecure_plain_http: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ca_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exponential_backoff_max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 exponential_backoff_max_wait: pulumi.Input[Optional[_builtins.int]] = None,
+                 exponential_backoff_min_wait: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CatalogV2 resources.
 
@@ -398,230 +398,230 @@ class _CatalogV2State:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for the catalog v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="caBundle")
-    def ca_bundle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_bundle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate in base64-encoded DER format which will be used to validate the repo's certificate (string)
         """
         return pulumi.get(self, "ca_bundle")
 
     @ca_bundle.setter
-    def ca_bundle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_bundle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_bundle", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster id of the catalog V2 (string)
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If disabled the repo clone will not be updated or allowed to be installed from. Default: `true` (bool)
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="exponentialBackoffMaxRetries")
-    def exponential_backoff_max_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def exponential_backoff_max_retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of retries before returning error
         """
         return pulumi.get(self, "exponential_backoff_max_retries")
 
     @exponential_backoff_max_retries.setter
-    def exponential_backoff_max_retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def exponential_backoff_max_retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "exponential_backoff_max_retries", value)
 
     @_builtins.property
     @pulumi.getter(name="exponentialBackoffMaxWait")
-    def exponential_backoff_max_wait(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def exponential_backoff_max_wait(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum amount of seconds to wait before retrying
         """
         return pulumi.get(self, "exponential_backoff_max_wait")
 
     @exponential_backoff_max_wait.setter
-    def exponential_backoff_max_wait(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def exponential_backoff_max_wait(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "exponential_backoff_max_wait", value)
 
     @_builtins.property
     @pulumi.getter(name="exponentialBackoffMinWait")
-    def exponential_backoff_min_wait(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def exponential_backoff_min_wait(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum amount of seconds to wait before retrying
         """
         return pulumi.get(self, "exponential_backoff_min_wait")
 
     @exponential_backoff_min_wait.setter
-    def exponential_backoff_min_wait(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def exponential_backoff_min_wait(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "exponential_backoff_min_wait", value)
 
     @_builtins.property
     @pulumi.getter(name="gitBranch")
-    def git_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git Repository branch containing Helm chart definitions. Default `master` (string)
         """
         return pulumi.get(self, "git_branch")
 
     @git_branch.setter
-    def git_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRepo")
-    def git_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url of the catalog v2 repo. Conflicts with `url` (string)
         """
         return pulumi.get(self, "git_repo")
 
     @git_repo.setter
-    def git_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_repo", value)
 
     @_builtins.property
     @pulumi.getter
-    def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use insecure HTTPS to download the repo's index. Default: `false` (bool)
         """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
-    def insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure", value)
 
     @_builtins.property
     @pulumi.getter(name="insecurePlainHttp")
-    def insecure_plain_http(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure_plain_http(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         """
         return pulumi.get(self, "insecure_plain_http")
 
     @insecure_plain_http.setter
-    def insecure_plain_http(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure_plain_http(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure_plain_http", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the catalog v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the catalog v2 (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceVersion")
-    def resource_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The k8s resource version (string)
         """
         return pulumi.get(self, "resource_version")
 
     @resource_version.setter
-    def resource_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_version", value)
 
     @_builtins.property
     @pulumi.getter(name="secretName")
-    def secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         K8s secret name to be used to connect to the repo (string)
         """
         return pulumi.get(self, "secret_name")
 
     @secret_name.setter
-    def secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretNamespace")
-    def secret_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         K8s secret namespace (string)
         """
         return pulumi.get(self, "secret_namespace")
 
     @secret_namespace.setter
-    def secret_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         K8s service account used to deploy charts instead of the end users credentials (string)
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountNamespace")
-    def service_account_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to access the catalog if needed (string)
         """
         return pulumi.get(self, "service_account_namespace")
 
     @service_account_namespace.setter
-    def service_account_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to an index generated by Helm. Conflicts with `git_repo` (string)
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -631,24 +631,24 @@ class CatalogV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ca_bundle: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exponential_backoff_max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 exponential_backoff_max_wait: Optional[pulumi.Input[_builtins.int]] = None,
-                 exponential_backoff_min_wait: Optional[pulumi.Input[_builtins.int]] = None,
-                 git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 insecure_plain_http: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ca_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exponential_backoff_max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 exponential_backoff_max_wait: pulumi.Input[Optional[_builtins.int]] = None,
+                 exponential_backoff_min_wait: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Rancher Catalog v2 resource. This can be used to create cluster helm catalogs for Rancher v2 environments and retrieve their information. Catalog v2 resource is available at Rancher v2.5.x and above.
@@ -716,24 +716,24 @@ class CatalogV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ca_bundle: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exponential_backoff_max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-                 exponential_backoff_max_wait: Optional[pulumi.Input[_builtins.int]] = None,
-                 exponential_backoff_min_wait: Optional[pulumi.Input[_builtins.int]] = None,
-                 git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 insecure_plain_http: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ca_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exponential_backoff_max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+                 exponential_backoff_max_wait: pulumi.Input[Optional[_builtins.int]] = None,
+                 exponential_backoff_min_wait: pulumi.Input[Optional[_builtins.int]] = None,
+                 git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -774,25 +774,25 @@ class CatalogV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ca_bundle: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            exponential_backoff_max_retries: Optional[pulumi.Input[_builtins.int]] = None,
-            exponential_backoff_max_wait: Optional[pulumi.Input[_builtins.int]] = None,
-            exponential_backoff_min_wait: Optional[pulumi.Input[_builtins.int]] = None,
-            git_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            git_repo: Optional[pulumi.Input[_builtins.str]] = None,
-            insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-            insecure_plain_http: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_version: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'CatalogV2':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ca_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exponential_backoff_max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+            exponential_backoff_max_wait: pulumi.Input[Optional[_builtins.int]] = None,
+            exponential_backoff_min_wait: pulumi.Input[Optional[_builtins.int]] = None,
+            git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+            insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_version: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'CatalogV2':
         """
         Get an existing CatalogV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

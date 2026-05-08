@@ -97,5 +97,5 @@ export interface GetSecretV2OutputArgs {
     /**
      * The namespaces of the secret v2. Default: `default` (string)
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
 }

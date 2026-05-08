@@ -91,19 +91,19 @@ export interface ClusterProxyConfigV2State {
     /**
      * Annotations of the resource
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cluster ID where the ClusterProxyConfig should be created
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether downstream proxy requests for service account tokens is enabled
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Labels of the resource
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -113,7 +113,7 @@ export interface ClusterProxyConfigV2Args {
     /**
      * Annotations of the resource
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cluster ID where the ClusterProxyConfig should be created
      */
@@ -125,5 +125,5 @@ export interface ClusterProxyConfigV2Args {
     /**
      * Labels of the resource
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

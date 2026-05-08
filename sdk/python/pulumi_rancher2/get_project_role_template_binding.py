@@ -188,9 +188,9 @@ def get_project_role_template_binding(name: Optional[_builtins.str] = None,
         role_template_id=pulumi.get(__ret__, 'role_template_id'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_principal_id=pulumi.get(__ret__, 'user_principal_id'))
-def get_project_role_template_binding_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                             project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                             role_template_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_project_role_template_binding_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                             project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                             role_template_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectRoleTemplateBindingResult]:
     """
     Use this data source to retrieve information about a Rancher v2 project role template binding.

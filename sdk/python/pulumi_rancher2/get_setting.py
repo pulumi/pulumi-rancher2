@@ -96,7 +96,7 @@ def get_setting(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         value=pulumi.get(__ret__, 'value'))
-def get_setting_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_setting_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSettingResult]:
     """
     Use this data source to retrieve information about a Rancher v2 setting.

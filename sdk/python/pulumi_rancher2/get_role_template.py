@@ -257,9 +257,9 @@ def get_role_template(context: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         role_template_ids=pulumi.get(__ret__, 'role_template_ids'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_role_template_output(context: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             external_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']]]]] = None,
-                             name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_role_template_output(context: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             external_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']]]]] = None,
+                             name: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleTemplateResult]:
     """
     Use this data source to retrieve information about a Rancher v2 role template resource.

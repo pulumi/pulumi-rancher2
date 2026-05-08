@@ -24,7 +24,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.Index.GetClusterV2.Invoke(new()
+        ///     var foo = Rancher2.GetClusterV2.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         FleetNamespace = "fleet-ns",
@@ -49,7 +49,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.Index.GetClusterV2.Invoke(new()
+        ///     var foo = Rancher2.GetClusterV2.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         FleetNamespace = "fleet-ns",
@@ -74,7 +74,7 @@ namespace Pulumi.Rancher2
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Rancher2.Index.GetClusterV2.Invoke(new()
+        ///     var foo = Rancher2.GetClusterV2.Invoke(new()
         ///     {
         ///         Name = "foo",
         ///         FleetNamespace = "fleet-ns",

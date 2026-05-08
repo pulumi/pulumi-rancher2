@@ -23,7 +23,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Node Driver
-    ///     var foo = new Rancher2.Index.NodeDriver("foo", new()
+    ///     var foo = new Rancher2.NodeDriver("foo", new()
     ///     {
     ///         Active = true,
     ///         Builtin = false,

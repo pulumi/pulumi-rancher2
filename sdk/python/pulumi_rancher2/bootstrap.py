@@ -19,11 +19,11 @@ __all__ = ['BootstrapArgs', 'Bootstrap']
 @pulumi.input_type
 class BootstrapArgs:
     def __init__(__self__, *,
-                 initial_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 token_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ui_default_landing: Optional[pulumi.Input[_builtins.str]] = None):
+                 initial_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ui_default_landing: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Bootstrap resource.
 
@@ -46,80 +46,80 @@ class BootstrapArgs:
 
     @_builtins.property
     @pulumi.getter(name="initialPassword")
-    def initial_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial password for Admin user. Default: `admin` (string)
         """
         return pulumi.get(self, "initial_password")
 
     @initial_password.setter
-    def initial_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for Admin user or random generated if empty (string)
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenTtl")
-    def token_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def token_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TTL in seconds for generated admin token. Default: `0`  (int)
         """
         return pulumi.get(self, "token_ttl")
 
     @token_ttl.setter
-    def token_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def token_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "token_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenUpdate")
-    def token_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def token_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Regenerate admin token. Default: `false` (bool)
         """
         return pulumi.get(self, "token_update")
 
     @token_update.setter
-    def token_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def token_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "token_update", value)
 
     @_builtins.property
     @pulumi.getter(name="uiDefaultLanding")
-    def ui_default_landing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui_default_landing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
         """
         return pulumi.get(self, "ui_default_landing")
 
     @ui_default_landing.setter
-    def ui_default_landing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui_default_landing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui_default_landing", value)
 
 
 @pulumi.input_type
 class _BootstrapState:
     def __init__(__self__, *,
-                 current_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 temp_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 temp_token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 token_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ui_default_landing: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 current_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 temp_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 temp_token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ui_default_landing: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Bootstrap resources.
 
@@ -163,146 +163,146 @@ class _BootstrapState:
 
     @_builtins.property
     @pulumi.getter(name="currentPassword")
-    def current_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed/Sensitive) Current password for Admin user (string)
         """
         return pulumi.get(self, "current_password")
 
     @current_password.setter
-    def current_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_password", value)
 
     @_builtins.property
     @pulumi.getter(name="initialPassword")
-    def initial_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial password for Admin user. Default: `admin` (string)
         """
         return pulumi.get(self, "initial_password")
 
     @initial_password.setter
-    def initial_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for Admin user or random generated if empty (string)
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="tempToken")
-    def temp_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def temp_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Generated API temporary token as helper. Should be empty (string)
         """
         return pulumi.get(self, "temp_token")
 
     @temp_token.setter
-    def temp_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def temp_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "temp_token", value)
 
     @_builtins.property
     @pulumi.getter(name="tempTokenId")
-    def temp_token_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def temp_token_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Generated API temporary token id as helper. Should be empty (string)
         """
         return pulumi.get(self, "temp_token_id")
 
     @temp_token_id.setter
-    def temp_token_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def temp_token_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "temp_token_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Generated API token for Admin User (string)
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Generated API token id for Admin User (string)
         """
         return pulumi.get(self, "token_id")
 
     @token_id.setter
-    def token_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenTtl")
-    def token_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def token_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TTL in seconds for generated admin token. Default: `0`  (int)
         """
         return pulumi.get(self, "token_ttl")
 
     @token_ttl.setter
-    def token_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def token_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "token_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenUpdate")
-    def token_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def token_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Regenerate admin token. Default: `false` (bool)
         """
         return pulumi.get(self, "token_update")
 
     @token_update.setter
-    def token_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def token_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "token_update", value)
 
     @_builtins.property
     @pulumi.getter(name="uiDefaultLanding")
-    def ui_default_landing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ui_default_landing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
         """
         return pulumi.get(self, "ui_default_landing")
 
     @ui_default_landing.setter
-    def ui_default_landing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ui_default_landing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ui_default_landing", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) URL set as server-url (string)
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Admin username (string)
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
@@ -312,11 +312,11 @@ class Bootstrap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 initial_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 token_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ui_default_landing: Optional[pulumi.Input[_builtins.str]] = None,
+                 initial_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ui_default_landing: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 bootstrap resource. This can be used to bootstrap Rancher v2 environments and output information. It just works if `bootstrap` provider config is added to the .tf file. More info at rancher2 provider
@@ -437,11 +437,11 @@ class Bootstrap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 initial_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 token_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ui_default_landing: Optional[pulumi.Input[_builtins.str]] = None,
+                 initial_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ui_default_landing: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -475,18 +475,18 @@ class Bootstrap(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            current_password: Optional[pulumi.Input[_builtins.str]] = None,
-            initial_password: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            temp_token: Optional[pulumi.Input[_builtins.str]] = None,
-            temp_token_id: Optional[pulumi.Input[_builtins.str]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None,
-            token_id: Optional[pulumi.Input[_builtins.str]] = None,
-            token_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            token_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            ui_default_landing: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None) -> 'Bootstrap':
+            current_password: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_password: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            temp_token: pulumi.Input[Optional[_builtins.str]] = None,
+            temp_token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            token_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            ui_default_landing: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> 'Bootstrap':
         """
         Get an existing Bootstrap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

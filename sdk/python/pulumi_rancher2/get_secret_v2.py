@@ -178,9 +178,9 @@ def get_secret_v2(cluster_id: Optional[_builtins.str] = None,
         namespace=pulumi.get(__ret__, 'namespace'),
         resource_version=pulumi.get(__ret__, 'resource_version'),
         type=pulumi.get(__ret__, 'type'))
-def get_secret_v2_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         name: Optional[pulumi.Input[_builtins.str]] = None,
-                         namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_secret_v2_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         name: pulumi.Input[Optional[_builtins.str]] = None,
+                         namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretV2Result]:
     """
     Use this data source to retrieve information about a Rancher2 secret v2. Secret v2 resource is available at Rancher v2.5.x and above.

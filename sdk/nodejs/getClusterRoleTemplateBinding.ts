@@ -121,5 +121,5 @@ export interface GetClusterRoleTemplateBindingOutputArgs {
     /**
      * The role template id from create cluster role template binding (string)
      */
-    roleTemplateId?: pulumi.Input<string>;
+    roleTemplateId?: pulumi.Input<string | undefined>;
 }
