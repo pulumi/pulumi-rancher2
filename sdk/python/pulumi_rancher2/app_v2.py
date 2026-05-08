@@ -23,18 +23,18 @@ class AppV2Args:
                  cluster_id: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
                  repo_name: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 chart_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cleanup_on_fail: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_open_api_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_default_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait: Optional[pulumi.Input[_builtins.bool]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 chart_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cleanup_on_fail: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_open_api_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AppV2 resource.
 
@@ -134,170 +134,170 @@ class AppV2Args:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for the app v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="chartVersion")
-    def chart_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chart_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app v2 chart version (string)
         """
         return pulumi.get(self, "chart_version")
 
     @chart_version.setter
-    def chart_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chart_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chart_version", value)
 
     @_builtins.property
     @pulumi.getter(name="cleanupOnFail")
-    def cleanup_on_fail(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cleanup_on_fail(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
         """
         return pulumi.get(self, "cleanup_on_fail")
 
     @cleanup_on_fail.setter
-    def cleanup_on_fail(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cleanup_on_fail(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cleanup_on_fail", value)
 
     @_builtins.property
     @pulumi.getter(name="disableHooks")
-    def disable_hooks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_hooks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable app v2 chart hooks. Default: `false` (bool)
         """
         return pulumi.get(self, "disable_hooks")
 
     @disable_hooks.setter
-    def disable_hooks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_hooks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_hooks", value)
 
     @_builtins.property
     @pulumi.getter(name="disableOpenApiValidation")
-    def disable_open_api_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_open_api_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable app V2 Open API Validation. Default: `false` (bool)
         """
         return pulumi.get(self, "disable_open_api_validation")
 
     @disable_open_api_validation.setter
-    def disable_open_api_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_open_api_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_open_api_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpgrade")
-    def force_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Force app V2 chart upgrade. Default: `false` (bool)
         """
         return pulumi.get(self, "force_upgrade")
 
     @force_upgrade.setter
-    def force_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_upgrade", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the app v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the app v2 (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deploy the app v2 within project ID (string)
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDefaultRegistry")
-    def system_default_registry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_default_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System default registry providing images for app deployment (string)
         """
         return pulumi.get(self, "system_default_registry")
 
     @system_default_registry.setter
-    def system_default_registry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_default_registry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_default_registry", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def values(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app v2 values yaml. Yaml format is required (string)
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def values(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "values", value)
 
     @_builtins.property
     @pulumi.getter
-    def wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait until app is deployed. Default: `true` (bool)
         """
         return pulumi.get(self, "wait")
 
     @wait.setter
-    def wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait", value)
 
 
 @pulumi.input_type
 class _AppV2State:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 chart_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 chart_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cleanup_on_fail: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_values: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_open_api_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_default_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait: Optional[pulumi.Input[_builtins.bool]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 chart_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 chart_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cleanup_on_fail: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_values: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_open_api_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AppV2 resources.
 
@@ -359,218 +359,218 @@ class _AppV2State:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for the app v2 (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="chartName")
-    def chart_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chart_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app v2 chart name (string)
         """
         return pulumi.get(self, "chart_name")
 
     @chart_name.setter
-    def chart_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chart_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chart_name", value)
 
     @_builtins.property
     @pulumi.getter(name="chartVersion")
-    def chart_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chart_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app v2 chart version (string)
         """
         return pulumi.get(self, "chart_version")
 
     @chart_version.setter
-    def chart_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chart_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chart_version", value)
 
     @_builtins.property
     @pulumi.getter(name="cleanupOnFail")
-    def cleanup_on_fail(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cleanup_on_fail(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
         """
         return pulumi.get(self, "cleanup_on_fail")
 
     @cleanup_on_fail.setter
-    def cleanup_on_fail(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cleanup_on_fail(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cleanup_on_fail", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster id of the app (string)
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The cluster name of the app (string)
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentValues")
-    def deployment_values(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_values(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
         """
         return pulumi.get(self, "deployment_values")
 
     @deployment_values.setter
-    def deployment_values(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_values(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_values", value)
 
     @_builtins.property
     @pulumi.getter(name="disableHooks")
-    def disable_hooks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_hooks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable app v2 chart hooks. Default: `false` (bool)
         """
         return pulumi.get(self, "disable_hooks")
 
     @disable_hooks.setter
-    def disable_hooks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_hooks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_hooks", value)
 
     @_builtins.property
     @pulumi.getter(name="disableOpenApiValidation")
-    def disable_open_api_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_open_api_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable app V2 Open API Validation. Default: `false` (bool)
         """
         return pulumi.get(self, "disable_open_api_validation")
 
     @disable_open_api_validation.setter
-    def disable_open_api_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_open_api_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_open_api_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpgrade")
-    def force_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Force app V2 chart upgrade. Default: `false` (bool)
         """
         return pulumi.get(self, "force_upgrade")
 
     @force_upgrade.setter
-    def force_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_upgrade", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the app v2 (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the app v2 (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace of the app v2 (string)
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deploy the app v2 within project ID (string)
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repo name (string)
         """
         return pulumi.get(self, "repo_name")
 
     @repo_name.setter
-    def repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDefaultRegistry")
-    def system_default_registry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_default_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System default registry providing images for app deployment (string)
         """
         return pulumi.get(self, "system_default_registry")
 
     @system_default_registry.setter
-    def system_default_registry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_default_registry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_default_registry", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def values(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The app v2 values yaml. Yaml format is required (string)
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def values(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "values", value)
 
     @_builtins.property
     @pulumi.getter
-    def wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait until app is deployed. Default: `true` (bool)
         """
         return pulumi.get(self, "wait")
 
     @wait.setter
-    def wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait", value)
 
 
@@ -580,22 +580,22 @@ class AppV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 chart_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 chart_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cleanup_on_fail: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_open_api_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_default_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait: Optional[pulumi.Input[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 chart_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 chart_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cleanup_on_fail: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_open_api_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Rancher App v2 resource. This can be used to manage helm charts for Rancher v2 environments and retrieve their information. App v2 resource is available at Rancher v2.5.x and above.
@@ -731,22 +731,22 @@ class AppV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 chart_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 chart_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cleanup_on_fail: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_open_api_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_default_registry: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait: Optional[pulumi.Input[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 chart_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 chart_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cleanup_on_fail: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_open_api_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -792,24 +792,24 @@ class AppV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            chart_name: Optional[pulumi.Input[_builtins.str]] = None,
-            chart_version: Optional[pulumi.Input[_builtins.str]] = None,
-            cleanup_on_fail: Optional[pulumi.Input[_builtins.bool]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_values: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_hooks: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_open_api_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-            system_default_registry: Optional[pulumi.Input[_builtins.str]] = None,
-            values: Optional[pulumi.Input[_builtins.str]] = None,
-            wait: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AppV2':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            chart_name: pulumi.Input[Optional[_builtins.str]] = None,
+            chart_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cleanup_on_fail: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_values: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_open_api_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
+            values: pulumi.Input[Optional[_builtins.str]] = None,
+            wait: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AppV2':
         """
         Get an existing AppV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

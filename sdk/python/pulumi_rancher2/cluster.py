@@ -21,34 +21,34 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
-                 aks_config_v2: Optional[pulumi.Input['ClusterAksConfigV2Args']] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]] = None,
-                 cluster_auth_endpoint: Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']] = None,
-                 cluster_template_answers: Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']] = None,
-                 cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_template_questions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]] = None,
-                 cluster_template_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_agent_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_auth_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_root_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_config_v2: Optional[pulumi.Input['ClusterEksConfigV2Args']] = None,
-                 enable_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]] = None,
-                 fleet_workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_config_v2: Optional[pulumi.Input['ClusterGkeConfigV2Args']] = None,
-                 imported_config: Optional[pulumi.Input['ClusterImportedConfigArgs']] = None,
-                 k3s_config: Optional[pulumi.Input['ClusterK3sConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oke_config: Optional[pulumi.Input['ClusterOkeConfigArgs']] = None,
-                 rke2_config: Optional[pulumi.Input['ClusterRke2ConfigArgs']] = None,
-                 rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
-                 windows_prefered_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
+                 agent_env_vars: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
+                 aks_config_v2: pulumi.Input[Optional['ClusterAksConfigV2Args']] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]] = None,
+                 cluster_auth_endpoint: pulumi.Input[Optional['ClusterClusterAuthEndpointArgs']] = None,
+                 cluster_template_answers: pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']] = None,
+                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]] = None,
+                 cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_agent_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_auth_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_root_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_config_v2: pulumi.Input[Optional['ClusterEksConfigV2Args']] = None,
+                 enable_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fleet_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]] = None,
+                 fleet_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_config_v2: pulumi.Input[Optional['ClusterGkeConfigV2Args']] = None,
+                 imported_config: pulumi.Input[Optional['ClusterImportedConfigArgs']] = None,
+                 k3s_config: pulumi.Input[Optional['ClusterK3sConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oke_config: pulumi.Input[Optional['ClusterOkeConfigArgs']] = None,
+                 rke2_config: pulumi.Input[Optional['ClusterRke2ConfigArgs']] = None,
+                 rke_config: pulumi.Input[Optional['ClusterRkeConfigArgs']] = None,
+                 windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -140,379 +140,379 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="agentEnvVars")
-    def agent_env_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]:
+    def agent_env_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]:
         """
         Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         """
         return pulumi.get(self, "agent_env_vars")
 
     @agent_env_vars.setter
-    def agent_env_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]):
+    def agent_env_vars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]):
         pulumi.set(self, "agent_env_vars", value)
 
     @_builtins.property
     @pulumi.getter(name="aksConfigV2")
-    def aks_config_v2(self) -> Optional[pulumi.Input['ClusterAksConfigV2Args']]:
+    def aks_config_v2(self) -> pulumi.Input[Optional['ClusterAksConfigV2Args']]:
         """
         The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "aks_config_v2")
 
     @aks_config_v2.setter
-    def aks_config_v2(self, value: Optional[pulumi.Input['ClusterAksConfigV2Args']]):
+    def aks_config_v2(self, value: pulumi.Input[Optional['ClusterAksConfigV2Args']]):
         pulumi.set(self, "aks_config_v2", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for the Cluster (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAgentDeploymentCustomizations")
-    def cluster_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]:
+    def cluster_agent_deployment_customizations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]:
         """
         Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "cluster_agent_deployment_customizations")
 
     @cluster_agent_deployment_customizations.setter
-    def cluster_agent_deployment_customizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]):
+    def cluster_agent_deployment_customizations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]):
         pulumi.set(self, "cluster_agent_deployment_customizations", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAuthEndpoint")
-    def cluster_auth_endpoint(self) -> Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']]:
+    def cluster_auth_endpoint(self) -> pulumi.Input[Optional['ClusterClusterAuthEndpointArgs']]:
         """
         Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         """
         return pulumi.get(self, "cluster_auth_endpoint")
 
     @cluster_auth_endpoint.setter
-    def cluster_auth_endpoint(self, value: Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']]):
+    def cluster_auth_endpoint(self, value: pulumi.Input[Optional['ClusterClusterAuthEndpointArgs']]):
         pulumi.set(self, "cluster_auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateAnswers")
-    def cluster_template_answers(self) -> Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']]:
+    def cluster_template_answers(self) -> pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']]:
         """
         Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
         """
         return pulumi.get(self, "cluster_template_answers")
 
     @cluster_template_answers.setter
-    def cluster_template_answers(self, value: Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']]):
+    def cluster_template_answers(self, value: pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']]):
         pulumi.set(self, "cluster_template_answers", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster template ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_id")
 
     @cluster_template_id.setter
-    def cluster_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateQuestions")
-    def cluster_template_questions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]:
+    def cluster_template_questions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]:
         """
         Cluster template questions. For Rancher v2.3.x and above (list)
         """
         return pulumi.get(self, "cluster_template_questions")
 
     @cluster_template_questions.setter
-    def cluster_template_questions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]):
+    def cluster_template_questions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]):
         pulumi.set(self, "cluster_template_questions", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateRevisionId")
-    def cluster_template_revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_template_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster template revision ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_revision_id")
 
     @cluster_template_revision_id.setter
-    def cluster_template_revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_template_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_template_revision_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
-    def default_pod_security_admission_configuration_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_pod_security_admission_configuration_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
         """
         return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
     @default_pod_security_admission_configuration_template_name.setter
-    def default_pod_security_admission_configuration_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_pod_security_admission_configuration_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_pod_security_admission_configuration_template_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description for Cluster (string)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredAgentImage")
-    def desired_agent_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_agent_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired agent image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_agent_image")
 
     @desired_agent_image.setter
-    def desired_agent_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_agent_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_agent_image", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredAuthImage")
-    def desired_auth_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_auth_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_auth_image")
 
     @desired_auth_image.setter
-    def desired_auth_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_auth_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_auth_image", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerRootDir")
-    def docker_root_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def docker_root_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "docker_root_dir")
 
     @docker_root_dir.setter
-    def docker_root_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def docker_root_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "docker_root_dir", value)
 
     @_builtins.property
     @pulumi.getter
-    def driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         """
         return pulumi.get(self, "driver")
 
     @driver.setter
-    def driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "driver", value)
 
     @_builtins.property
     @pulumi.getter(name="eksConfigV2")
-    def eks_config_v2(self) -> Optional[pulumi.Input['ClusterEksConfigV2Args']]:
+    def eks_config_v2(self) -> pulumi.Input[Optional['ClusterEksConfigV2Args']]:
         """
         The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         """
         return pulumi.get(self, "eks_config_v2")
 
     @eks_config_v2.setter
-    def eks_config_v2(self, value: Optional[pulumi.Input['ClusterEksConfigV2Args']]):
+    def eks_config_v2(self, value: pulumi.Input[Optional['ClusterEksConfigV2Args']]):
         pulumi.set(self, "eks_config_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNetworkPolicy")
-    def enable_network_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_network_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable project network isolation (bool)
         """
         return pulumi.get(self, "enable_network_policy")
 
     @enable_network_policy.setter
-    def enable_network_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_network_policy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_network_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="fleetAgentDeploymentCustomizations")
-    def fleet_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]:
+    def fleet_agent_deployment_customizations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]:
         """
         Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "fleet_agent_deployment_customizations")
 
     @fleet_agent_deployment_customizations.setter
-    def fleet_agent_deployment_customizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]):
+    def fleet_agent_deployment_customizations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]):
         pulumi.set(self, "fleet_agent_deployment_customizations", value)
 
     @_builtins.property
     @pulumi.getter(name="fleetWorkspaceName")
-    def fleet_workspace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fleet_workspace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fleet workspace name (string)
         """
         return pulumi.get(self, "fleet_workspace_name")
 
     @fleet_workspace_name.setter
-    def fleet_workspace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fleet_workspace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fleet_workspace_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeConfigV2")
-    def gke_config_v2(self) -> Optional[pulumi.Input['ClusterGkeConfigV2Args']]:
+    def gke_config_v2(self) -> pulumi.Input[Optional['ClusterGkeConfigV2Args']]:
         """
         The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
     @gke_config_v2.setter
-    def gke_config_v2(self, value: Optional[pulumi.Input['ClusterGkeConfigV2Args']]):
+    def gke_config_v2(self, value: pulumi.Input[Optional['ClusterGkeConfigV2Args']]):
         pulumi.set(self, "gke_config_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="importedConfig")
-    def imported_config(self) -> Optional[pulumi.Input['ClusterImportedConfigArgs']]:
+    def imported_config(self) -> pulumi.Input[Optional['ClusterImportedConfigArgs']]:
         """
         The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
         """
         return pulumi.get(self, "imported_config")
 
     @imported_config.setter
-    def imported_config(self, value: Optional[pulumi.Input['ClusterImportedConfigArgs']]):
+    def imported_config(self, value: pulumi.Input[Optional['ClusterImportedConfigArgs']]):
         pulumi.set(self, "imported_config", value)
 
     @_builtins.property
     @pulumi.getter(name="k3sConfig")
-    def k3s_config(self) -> Optional[pulumi.Input['ClusterK3sConfigArgs']]:
+    def k3s_config(self) -> pulumi.Input[Optional['ClusterK3sConfigArgs']]:
         """
         The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "k3s_config")
 
     @k3s_config.setter
-    def k3s_config(self, value: Optional[pulumi.Input['ClusterK3sConfigArgs']]):
+    def k3s_config(self, value: pulumi.Input[Optional['ClusterK3sConfigArgs']]):
         pulumi.set(self, "k3s_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the Cluster (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Cluster (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="okeConfig")
-    def oke_config(self) -> Optional[pulumi.Input['ClusterOkeConfigArgs']]:
+    def oke_config(self) -> pulumi.Input[Optional['ClusterOkeConfigArgs']]:
         """
         The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "oke_config")
 
     @oke_config.setter
-    def oke_config(self, value: Optional[pulumi.Input['ClusterOkeConfigArgs']]):
+    def oke_config(self, value: pulumi.Input[Optional['ClusterOkeConfigArgs']]):
         pulumi.set(self, "oke_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rke2Config")
-    def rke2_config(self) -> Optional[pulumi.Input['ClusterRke2ConfigArgs']]:
+    def rke2_config(self) -> pulumi.Input[Optional['ClusterRke2ConfigArgs']]:
         """
         The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke2_config")
 
     @rke2_config.setter
-    def rke2_config(self, value: Optional[pulumi.Input['ClusterRke2ConfigArgs']]):
+    def rke2_config(self, value: pulumi.Input[Optional['ClusterRke2ConfigArgs']]):
         pulumi.set(self, "rke2_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rkeConfig")
-    def rke_config(self) -> Optional[pulumi.Input['ClusterRkeConfigArgs']]:
+    def rke_config(self) -> pulumi.Input[Optional['ClusterRkeConfigArgs']]:
         """
         The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke_config")
 
     @rke_config.setter
-    def rke_config(self, value: Optional[pulumi.Input['ClusterRkeConfigArgs']]):
+    def rke_config(self, value: pulumi.Input[Optional['ClusterRkeConfigArgs']]):
         pulumi.set(self, "rke_config", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsPreferedCluster")
-    def windows_prefered_cluster(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def windows_prefered_cluster(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Windows preferred cluster. Default: `false` (bool)
         """
         return pulumi.get(self, "windows_prefered_cluster")
 
     @windows_prefered_cluster.setter
-    def windows_prefered_cluster(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def windows_prefered_cluster(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "windows_prefered_cluster", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
-                 aks_config_v2: Optional[pulumi.Input['ClusterAksConfigV2Args']] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]] = None,
-                 cluster_auth_endpoint: Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']] = None,
-                 cluster_registration_token: Optional[pulumi.Input['ClusterClusterRegistrationTokenArgs']] = None,
-                 cluster_template_answers: Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']] = None,
-                 cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_template_questions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]] = None,
-                 cluster_template_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_agent_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_auth_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_root_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_config_v2: Optional[pulumi.Input['ClusterEksConfigV2Args']] = None,
-                 enable_cluster_istio: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]] = None,
-                 fleet_workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_config_v2: Optional[pulumi.Input['ClusterGkeConfigV2Args']] = None,
-                 imported_config: Optional[pulumi.Input['ClusterImportedConfigArgs']] = None,
-                 istio_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 k3s_config: Optional[pulumi.Input['ClusterK3sConfigArgs']] = None,
-                 kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oke_config: Optional[pulumi.Input['ClusterOkeConfigArgs']] = None,
-                 rke2_config: Optional[pulumi.Input['ClusterRke2ConfigArgs']] = None,
-                 rke_config: Optional[pulumi.Input['ClusterRkeConfigArgs']] = None,
-                 system_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 windows_prefered_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
+                 agent_env_vars: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]] = None,
+                 aks_config_v2: pulumi.Input[Optional['ClusterAksConfigV2Args']] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]] = None,
+                 cluster_auth_endpoint: pulumi.Input[Optional['ClusterClusterAuthEndpointArgs']] = None,
+                 cluster_registration_token: pulumi.Input[Optional['ClusterClusterRegistrationTokenArgs']] = None,
+                 cluster_template_answers: pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']] = None,
+                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]] = None,
+                 cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_agent_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_auth_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_root_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_config_v2: pulumi.Input[Optional['ClusterEksConfigV2Args']] = None,
+                 enable_cluster_istio: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fleet_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]] = None,
+                 fleet_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_config_v2: pulumi.Input[Optional['ClusterGkeConfigV2Args']] = None,
+                 imported_config: pulumi.Input[Optional['ClusterImportedConfigArgs']] = None,
+                 istio_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 k3s_config: pulumi.Input[Optional['ClusterK3sConfigArgs']] = None,
+                 kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oke_config: pulumi.Input[Optional['ClusterOkeConfigArgs']] = None,
+                 rke2_config: pulumi.Input[Optional['ClusterRke2ConfigArgs']] = None,
+                 rke_config: pulumi.Input[Optional['ClusterRkeConfigArgs']] = None,
+                 system_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -628,423 +628,423 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="agentEnvVars")
-    def agent_env_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]:
+    def agent_env_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]:
         """
         Optional Agent Env Vars for Rancher agent. For Rancher v2.5.6 and above (list)
         """
         return pulumi.get(self, "agent_env_vars")
 
     @agent_env_vars.setter
-    def agent_env_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]):
+    def agent_env_vars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAgentEnvVarArgs']]]]):
         pulumi.set(self, "agent_env_vars", value)
 
     @_builtins.property
     @pulumi.getter(name="aksConfigV2")
-    def aks_config_v2(self) -> Optional[pulumi.Input['ClusterAksConfigV2Args']]:
+    def aks_config_v2(self) -> pulumi.Input[Optional['ClusterAksConfigV2Args']]:
         """
         The Azure AKS v2 configuration for creating/import `aks` Clusters. Conflicts with `eks_config_v2`, `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "aks_config_v2")
 
     @aks_config_v2.setter
-    def aks_config_v2(self, value: Optional[pulumi.Input['ClusterAksConfigV2Args']]):
+    def aks_config_v2(self, value: pulumi.Input[Optional['ClusterAksConfigV2Args']]):
         pulumi.set(self, "aks_config_v2", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for the Cluster (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed/Sensitive) K8s cluster ca cert (string)
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAgentDeploymentCustomizations")
-    def cluster_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]:
+    def cluster_agent_deployment_customizations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]:
         """
         Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "cluster_agent_deployment_customizations")
 
     @cluster_agent_deployment_customizations.setter
-    def cluster_agent_deployment_customizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]):
+    def cluster_agent_deployment_customizations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]]):
         pulumi.set(self, "cluster_agent_deployment_customizations", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAuthEndpoint")
-    def cluster_auth_endpoint(self) -> Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']]:
+    def cluster_auth_endpoint(self) -> pulumi.Input[Optional['ClusterClusterAuthEndpointArgs']]:
         """
         Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         """
         return pulumi.get(self, "cluster_auth_endpoint")
 
     @cluster_auth_endpoint.setter
-    def cluster_auth_endpoint(self, value: Optional[pulumi.Input['ClusterClusterAuthEndpointArgs']]):
+    def cluster_auth_endpoint(self, value: pulumi.Input[Optional['ClusterClusterAuthEndpointArgs']]):
         pulumi.set(self, "cluster_auth_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterRegistrationToken")
-    def cluster_registration_token(self) -> Optional[pulumi.Input['ClusterClusterRegistrationTokenArgs']]:
+    def cluster_registration_token(self) -> pulumi.Input[Optional['ClusterClusterRegistrationTokenArgs']]:
         """
         (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
         """
         return pulumi.get(self, "cluster_registration_token")
 
     @cluster_registration_token.setter
-    def cluster_registration_token(self, value: Optional[pulumi.Input['ClusterClusterRegistrationTokenArgs']]):
+    def cluster_registration_token(self, value: pulumi.Input[Optional['ClusterClusterRegistrationTokenArgs']]):
         pulumi.set(self, "cluster_registration_token", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateAnswers")
-    def cluster_template_answers(self) -> Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']]:
+    def cluster_template_answers(self) -> pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']]:
         """
         Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
         """
         return pulumi.get(self, "cluster_template_answers")
 
     @cluster_template_answers.setter
-    def cluster_template_answers(self, value: Optional[pulumi.Input['ClusterClusterTemplateAnswersArgs']]):
+    def cluster_template_answers(self, value: pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']]):
         pulumi.set(self, "cluster_template_answers", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster template ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_id")
 
     @cluster_template_id.setter
-    def cluster_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateQuestions")
-    def cluster_template_questions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]:
+    def cluster_template_questions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]:
         """
         Cluster template questions. For Rancher v2.3.x and above (list)
         """
         return pulumi.get(self, "cluster_template_questions")
 
     @cluster_template_questions.setter
-    def cluster_template_questions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]):
+    def cluster_template_questions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]):
         pulumi.set(self, "cluster_template_questions", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTemplateRevisionId")
-    def cluster_template_revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_template_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster template revision ID. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "cluster_template_revision_id")
 
     @cluster_template_revision_id.setter
-    def cluster_template_revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_template_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_template_revision_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
-    def default_pod_security_admission_configuration_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_pod_security_admission_configuration_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
         """
         return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
 
     @default_pod_security_admission_configuration_template_name.setter
-    def default_pod_security_admission_configuration_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_pod_security_admission_configuration_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_pod_security_admission_configuration_template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectId")
-    def default_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Default project ID for the cluster (string)
         """
         return pulumi.get(self, "default_project_id")
 
     @default_project_id.setter
-    def default_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description for Cluster (string)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredAgentImage")
-    def desired_agent_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_agent_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired agent image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_agent_image")
 
     @desired_agent_image.setter
-    def desired_agent_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_agent_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_agent_image", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredAuthImage")
-    def desired_auth_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_auth_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "desired_auth_image")
 
     @desired_auth_image.setter
-    def desired_auth_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_auth_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_auth_image", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerRootDir")
-    def docker_root_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def docker_root_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired auth image. For Rancher v2.3.x and above (string)
         """
         return pulumi.get(self, "docker_root_dir")
 
     @docker_root_dir.setter
-    def docker_root_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def docker_root_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "docker_root_dir", value)
 
     @_builtins.property
     @pulumi.getter
-    def driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The driver used for the Cluster. `imported`, `azurekubernetesservice`, `amazonelasticcontainerservice`, `googlekubernetesengine` and `rancherKubernetesEngine` are supported (string)
         """
         return pulumi.get(self, "driver")
 
     @driver.setter
-    def driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "driver", value)
 
     @_builtins.property
     @pulumi.getter(name="eksConfigV2")
-    def eks_config_v2(self) -> Optional[pulumi.Input['ClusterEksConfigV2Args']]:
+    def eks_config_v2(self) -> pulumi.Input[Optional['ClusterEksConfigV2Args']]:
         """
         The Amazon EKS V2 configuration to create or import `eks` Clusters. Conflicts with `gke_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.x and above (list maxitems:1)
         """
         return pulumi.get(self, "eks_config_v2")
 
     @eks_config_v2.setter
-    def eks_config_v2(self, value: Optional[pulumi.Input['ClusterEksConfigV2Args']]):
+    def eks_config_v2(self, value: pulumi.Input[Optional['ClusterEksConfigV2Args']]):
         pulumi.set(self, "eks_config_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="enableClusterIstio")
     @_utilities.deprecated("""Deploy istio using rancher2_app resource instead""")
-    def enable_cluster_istio(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_cluster_istio(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deploy istio on `system` project and `istio-system` namespace, using rancher2_app resource instead. See above example.
         """
         return pulumi.get(self, "enable_cluster_istio")
 
     @enable_cluster_istio.setter
-    def enable_cluster_istio(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_cluster_istio(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_cluster_istio", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNetworkPolicy")
-    def enable_network_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_network_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable project network isolation (bool)
         """
         return pulumi.get(self, "enable_network_policy")
 
     @enable_network_policy.setter
-    def enable_network_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_network_policy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_network_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="fleetAgentDeploymentCustomizations")
-    def fleet_agent_deployment_customizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]:
+    def fleet_agent_deployment_customizations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]:
         """
         Optional customization for fleet agent. For Rancher v2.7.5 and above (list)
         """
         return pulumi.get(self, "fleet_agent_deployment_customizations")
 
     @fleet_agent_deployment_customizations.setter
-    def fleet_agent_deployment_customizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]):
+    def fleet_agent_deployment_customizations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationArgs']]]]):
         pulumi.set(self, "fleet_agent_deployment_customizations", value)
 
     @_builtins.property
     @pulumi.getter(name="fleetWorkspaceName")
-    def fleet_workspace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fleet_workspace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fleet workspace name (string)
         """
         return pulumi.get(self, "fleet_workspace_name")
 
     @fleet_workspace_name.setter
-    def fleet_workspace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fleet_workspace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fleet_workspace_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeConfigV2")
-    def gke_config_v2(self) -> Optional[pulumi.Input['ClusterGkeConfigV2Args']]:
+    def gke_config_v2(self) -> pulumi.Input[Optional['ClusterGkeConfigV2Args']]:
         """
         The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `k3s_config`, `oke_config` and `rke_config`. For Rancher v2.5.8 and above (list maxitems:1)
         """
         return pulumi.get(self, "gke_config_v2")
 
     @gke_config_v2.setter
-    def gke_config_v2(self, value: Optional[pulumi.Input['ClusterGkeConfigV2Args']]):
+    def gke_config_v2(self, value: pulumi.Input[Optional['ClusterGkeConfigV2Args']]):
         pulumi.set(self, "gke_config_v2", value)
 
     @_builtins.property
     @pulumi.getter(name="importedConfig")
-    def imported_config(self) -> Optional[pulumi.Input['ClusterImportedConfigArgs']]:
+    def imported_config(self) -> pulumi.Input[Optional['ClusterImportedConfigArgs']]:
         """
         The imported configuration for generic imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `rke_config`, `rke2_config` and `k3s_config` (list maxitems:1)
         """
         return pulumi.get(self, "imported_config")
 
     @imported_config.setter
-    def imported_config(self, value: Optional[pulumi.Input['ClusterImportedConfigArgs']]):
+    def imported_config(self, value: pulumi.Input[Optional['ClusterImportedConfigArgs']]):
         pulumi.set(self, "imported_config", value)
 
     @_builtins.property
     @pulumi.getter(name="istioEnabled")
-    def istio_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def istio_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Computed) Is istio enabled at cluster? For Rancher v2.3.x and above (bool)
         """
         return pulumi.get(self, "istio_enabled")
 
     @istio_enabled.setter
-    def istio_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def istio_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "istio_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="k3sConfig")
-    def k3s_config(self) -> Optional[pulumi.Input['ClusterK3sConfigArgs']]:
+    def k3s_config(self) -> pulumi.Input[Optional['ClusterK3sConfigArgs']]:
         """
         The K3S configuration for `k3s` imported Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "k3s_config")
 
     @k3s_config.setter
-    def k3s_config(self, value: Optional[pulumi.Input['ClusterK3sConfigArgs']]):
+    def k3s_config(self, value: pulumi.Input[Optional['ClusterK3sConfigArgs']]):
         pulumi.set(self, "k3s_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeConfig")
-    def kube_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kube_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed/Sensitive) Kube Config generated for the cluster. Note: For Rancher 2.6.0 and above, when the cluster has `cluster_auth_endpoint` enabled, the kube_config will not be available until the cluster is `connected` (string)
         """
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
-    def kube_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kube_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kube_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the Cluster (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Cluster (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="okeConfig")
-    def oke_config(self) -> Optional[pulumi.Input['ClusterOkeConfigArgs']]:
+    def oke_config(self) -> pulumi.Input[Optional['ClusterOkeConfigArgs']]:
         """
         The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "oke_config")
 
     @oke_config.setter
-    def oke_config(self, value: Optional[pulumi.Input['ClusterOkeConfigArgs']]):
+    def oke_config(self, value: pulumi.Input[Optional['ClusterOkeConfigArgs']]):
         pulumi.set(self, "oke_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rke2Config")
-    def rke2_config(self) -> Optional[pulumi.Input['ClusterRke2ConfigArgs']]:
+    def rke2_config(self) -> pulumi.Input[Optional['ClusterRke2ConfigArgs']]:
         """
         The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke2_config")
 
     @rke2_config.setter
-    def rke2_config(self, value: Optional[pulumi.Input['ClusterRke2ConfigArgs']]):
+    def rke2_config(self, value: pulumi.Input[Optional['ClusterRke2ConfigArgs']]):
         pulumi.set(self, "rke2_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rkeConfig")
-    def rke_config(self) -> Optional[pulumi.Input['ClusterRkeConfigArgs']]:
+    def rke_config(self) -> pulumi.Input[Optional['ClusterRkeConfigArgs']]:
         """
         The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke_config")
 
     @rke_config.setter
-    def rke_config(self, value: Optional[pulumi.Input['ClusterRkeConfigArgs']]):
+    def rke_config(self, value: pulumi.Input[Optional['ClusterRkeConfigArgs']]):
         pulumi.set(self, "rke_config", value)
 
     @_builtins.property
     @pulumi.getter(name="systemProjectId")
-    def system_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) System project ID for the cluster (string)
         """
         return pulumi.get(self, "system_project_id")
 
     @system_project_id.setter
-    def system_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="windowsPreferedCluster")
-    def windows_prefered_cluster(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def windows_prefered_cluster(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Windows preferred cluster. Default: `false` (bool)
         """
         return pulumi.get(self, "windows_prefered_cluster")
 
     @windows_prefered_cluster.setter
-    def windows_prefered_cluster(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def windows_prefered_cluster(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "windows_prefered_cluster", value)
 
 
@@ -1054,34 +1054,34 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAgentEnvVarArgs', 'ClusterAgentEnvVarArgsDict']]]]] = None,
-                 aks_config_v2: Optional[pulumi.Input[Union['ClusterAksConfigV2Args', 'ClusterAksConfigV2ArgsDict']]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
-                 cluster_auth_endpoint: Optional[pulumi.Input[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']]] = None,
-                 cluster_template_answers: Optional[pulumi.Input[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']]] = None,
-                 cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_template_questions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]]] = None,
-                 cluster_template_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_agent_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_auth_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_root_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_config_v2: Optional[pulumi.Input[Union['ClusterEksConfigV2Args', 'ClusterEksConfigV2ArgsDict']]] = None,
-                 enable_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterFleetAgentDeploymentCustomizationArgs', 'ClusterFleetAgentDeploymentCustomizationArgsDict']]]]] = None,
-                 fleet_workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_config_v2: Optional[pulumi.Input[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']]] = None,
-                 imported_config: Optional[pulumi.Input[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']]] = None,
-                 k3s_config: Optional[pulumi.Input[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oke_config: Optional[pulumi.Input[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']]] = None,
-                 rke2_config: Optional[pulumi.Input[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']]] = None,
-                 rke_config: Optional[pulumi.Input[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']]] = None,
-                 windows_prefered_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
+                 agent_env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAgentEnvVarArgs', 'ClusterAgentEnvVarArgsDict']]]]] = None,
+                 aks_config_v2: pulumi.Input[Optional[Union['ClusterAksConfigV2Args', 'ClusterAksConfigV2ArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
+                 cluster_auth_endpoint: pulumi.Input[Optional[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']]] = None,
+                 cluster_template_answers: pulumi.Input[Optional[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']]] = None,
+                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]]] = None,
+                 cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_agent_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_auth_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_root_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_config_v2: pulumi.Input[Optional[Union['ClusterEksConfigV2Args', 'ClusterEksConfigV2ArgsDict']]] = None,
+                 enable_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fleet_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterFleetAgentDeploymentCustomizationArgs', 'ClusterFleetAgentDeploymentCustomizationArgsDict']]]]] = None,
+                 fleet_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_config_v2: pulumi.Input[Optional[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']]] = None,
+                 imported_config: pulumi.Input[Optional[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']]] = None,
+                 k3s_config: pulumi.Input[Optional[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oke_config: pulumi.Input[Optional[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']]] = None,
+                 rke2_config: pulumi.Input[Optional[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']]] = None,
+                 rke_config: pulumi.Input[Optional[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']]] = None,
+                 windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Cluster resource. This can be used to create imported Clusters for Rancher v2 environments and retrieve their information.
@@ -1627,34 +1627,34 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAgentEnvVarArgs', 'ClusterAgentEnvVarArgsDict']]]]] = None,
-                 aks_config_v2: Optional[pulumi.Input[Union['ClusterAksConfigV2Args', 'ClusterAksConfigV2ArgsDict']]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
-                 cluster_auth_endpoint: Optional[pulumi.Input[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']]] = None,
-                 cluster_template_answers: Optional[pulumi.Input[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']]] = None,
-                 cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_template_questions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]]] = None,
-                 cluster_template_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_agent_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_auth_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_root_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 eks_config_v2: Optional[pulumi.Input[Union['ClusterEksConfigV2Args', 'ClusterEksConfigV2ArgsDict']]] = None,
-                 enable_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterFleetAgentDeploymentCustomizationArgs', 'ClusterFleetAgentDeploymentCustomizationArgsDict']]]]] = None,
-                 fleet_workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_config_v2: Optional[pulumi.Input[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']]] = None,
-                 imported_config: Optional[pulumi.Input[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']]] = None,
-                 k3s_config: Optional[pulumi.Input[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oke_config: Optional[pulumi.Input[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']]] = None,
-                 rke2_config: Optional[pulumi.Input[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']]] = None,
-                 rke_config: Optional[pulumi.Input[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']]] = None,
-                 windows_prefered_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
+                 agent_env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAgentEnvVarArgs', 'ClusterAgentEnvVarArgsDict']]]]] = None,
+                 aks_config_v2: pulumi.Input[Optional[Union['ClusterAksConfigV2Args', 'ClusterAksConfigV2ArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
+                 cluster_auth_endpoint: pulumi.Input[Optional[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']]] = None,
+                 cluster_template_answers: pulumi.Input[Optional[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']]] = None,
+                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]]] = None,
+                 cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_agent_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_auth_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_root_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 eks_config_v2: pulumi.Input[Optional[Union['ClusterEksConfigV2Args', 'ClusterEksConfigV2ArgsDict']]] = None,
+                 enable_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fleet_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterFleetAgentDeploymentCustomizationArgs', 'ClusterFleetAgentDeploymentCustomizationArgsDict']]]]] = None,
+                 fleet_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_config_v2: pulumi.Input[Optional[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']]] = None,
+                 imported_config: pulumi.Input[Optional[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']]] = None,
+                 k3s_config: pulumi.Input[Optional[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oke_config: pulumi.Input[Optional[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']]] = None,
+                 rke2_config: pulumi.Input[Optional[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']]] = None,
+                 rke_config: pulumi.Input[Optional[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']]] = None,
+                 windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1711,41 +1711,41 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_env_vars: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAgentEnvVarArgs', 'ClusterAgentEnvVarArgsDict']]]]] = None,
-            aks_config_v2: Optional[pulumi.Input[Union['ClusterAksConfigV2Args', 'ClusterAksConfigV2ArgsDict']]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
-            cluster_auth_endpoint: Optional[pulumi.Input[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']]] = None,
-            cluster_registration_token: Optional[pulumi.Input[Union['ClusterClusterRegistrationTokenArgs', 'ClusterClusterRegistrationTokenArgsDict']]] = None,
-            cluster_template_answers: Optional[pulumi.Input[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']]] = None,
-            cluster_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_template_questions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]]] = None,
-            cluster_template_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-            default_pod_security_admission_configuration_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            default_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_agent_image: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_auth_image: Optional[pulumi.Input[_builtins.str]] = None,
-            docker_root_dir: Optional[pulumi.Input[_builtins.str]] = None,
-            driver: Optional[pulumi.Input[_builtins.str]] = None,
-            eks_config_v2: Optional[pulumi.Input[Union['ClusterEksConfigV2Args', 'ClusterEksConfigV2ArgsDict']]] = None,
-            enable_cluster_istio: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-            fleet_agent_deployment_customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterFleetAgentDeploymentCustomizationArgs', 'ClusterFleetAgentDeploymentCustomizationArgsDict']]]]] = None,
-            fleet_workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            gke_config_v2: Optional[pulumi.Input[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']]] = None,
-            imported_config: Optional[pulumi.Input[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']]] = None,
-            istio_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            k3s_config: Optional[pulumi.Input[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']]] = None,
-            kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oke_config: Optional[pulumi.Input[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']]] = None,
-            rke2_config: Optional[pulumi.Input[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']]] = None,
-            rke_config: Optional[pulumi.Input[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']]] = None,
-            system_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            windows_prefered_cluster: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Cluster':
+            agent_env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAgentEnvVarArgs', 'ClusterAgentEnvVarArgsDict']]]]] = None,
+            aks_config_v2: pulumi.Input[Optional[Union['ClusterAksConfigV2Args', 'ClusterAksConfigV2ArgsDict']]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
+            cluster_auth_endpoint: pulumi.Input[Optional[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']]] = None,
+            cluster_registration_token: pulumi.Input[Optional[Union['ClusterClusterRegistrationTokenArgs', 'ClusterClusterRegistrationTokenArgsDict']]] = None,
+            cluster_template_answers: pulumi.Input[Optional[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']]] = None,
+            cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]]] = None,
+            cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_agent_image: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_auth_image: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_root_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            driver: pulumi.Input[Optional[_builtins.str]] = None,
+            eks_config_v2: pulumi.Input[Optional[Union['ClusterEksConfigV2Args', 'ClusterEksConfigV2ArgsDict']]] = None,
+            enable_cluster_istio: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+            fleet_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterFleetAgentDeploymentCustomizationArgs', 'ClusterFleetAgentDeploymentCustomizationArgsDict']]]]] = None,
+            fleet_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gke_config_v2: pulumi.Input[Optional[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict']]] = None,
+            imported_config: pulumi.Input[Optional[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict']]] = None,
+            istio_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            k3s_config: pulumi.Input[Optional[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict']]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oke_config: pulumi.Input[Optional[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']]] = None,
+            rke2_config: pulumi.Input[Optional[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']]] = None,
+            rke_config: pulumi.Input[Optional[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']]] = None,
+            system_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -214,63 +214,63 @@ export interface CloudCredentialState {
     /**
      * AWS config for the Cloud Credential (list maxitems:1)
      */
-    amazonec2CredentialConfig?: pulumi.Input<inputs.CloudCredentialAmazonec2CredentialConfig>;
+    amazonec2CredentialConfig?: pulumi.Input<inputs.CloudCredentialAmazonec2CredentialConfig | undefined>;
     /**
      * Annotations for Cloud Credential object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Azure config for the Cloud Credential (list maxitems:1)
      */
-    azureCredentialConfig?: pulumi.Input<inputs.CloudCredentialAzureCredentialConfig>;
+    azureCredentialConfig?: pulumi.Input<inputs.CloudCredentialAzureCredentialConfig | undefined>;
     /**
      * Description for the Cloud Credential (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * DigitalOcean config for the Cloud Credential (list maxitems:1)
      */
-    digitaloceanCredentialConfig?: pulumi.Input<inputs.CloudCredentialDigitaloceanCredentialConfig>;
+    digitaloceanCredentialConfig?: pulumi.Input<inputs.CloudCredentialDigitaloceanCredentialConfig | undefined>;
     /**
      * (Computed) The driver of the Cloud Credential (string)
      */
-    driver?: pulumi.Input<string>;
+    driver?: pulumi.Input<string | undefined>;
     /**
      * Google config for the Cloud Credential (list maxitems:1)
      */
-    googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
+    googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig | undefined>;
     /**
      * Harvester config for the Cloud Credential (list maxitems:1)
      */
-    harvesterCredentialConfig?: pulumi.Input<inputs.CloudCredentialHarvesterCredentialConfig>;
+    harvesterCredentialConfig?: pulumi.Input<inputs.CloudCredentialHarvesterCredentialConfig | undefined>;
     /**
      * Labels for Cloud Credential object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Linode config for the Cloud Credential (list maxitems:1)
      */
-    linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig>;
+    linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig | undefined>;
     /**
      * The name of the Cloud Credential (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Nutanix config for the Cloud Credential (list maxitems:1)
      */
-    nutanixCredentialConfig?: pulumi.Input<inputs.CloudCredentialNutanixCredentialConfig>;
+    nutanixCredentialConfig?: pulumi.Input<inputs.CloudCredentialNutanixCredentialConfig | undefined>;
     /**
      * OpenStack config for the Cloud Credential (list maxitems:1)
      */
-    openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
+    openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig | undefined>;
     /**
      * S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      */
-    s3CredentialConfig?: pulumi.Input<inputs.CloudCredentialS3CredentialConfig>;
+    s3CredentialConfig?: pulumi.Input<inputs.CloudCredentialS3CredentialConfig | undefined>;
     /**
      * vSphere config for the Cloud Credential (list maxitems:1)
      */
-    vsphereCredentialConfig?: pulumi.Input<inputs.CloudCredentialVsphereCredentialConfig>;
+    vsphereCredentialConfig?: pulumi.Input<inputs.CloudCredentialVsphereCredentialConfig | undefined>;
 }
 
 /**
@@ -280,57 +280,57 @@ export interface CloudCredentialArgs {
     /**
      * AWS config for the Cloud Credential (list maxitems:1)
      */
-    amazonec2CredentialConfig?: pulumi.Input<inputs.CloudCredentialAmazonec2CredentialConfig>;
+    amazonec2CredentialConfig?: pulumi.Input<inputs.CloudCredentialAmazonec2CredentialConfig | undefined>;
     /**
      * Annotations for Cloud Credential object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Azure config for the Cloud Credential (list maxitems:1)
      */
-    azureCredentialConfig?: pulumi.Input<inputs.CloudCredentialAzureCredentialConfig>;
+    azureCredentialConfig?: pulumi.Input<inputs.CloudCredentialAzureCredentialConfig | undefined>;
     /**
      * Description for the Cloud Credential (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * DigitalOcean config for the Cloud Credential (list maxitems:1)
      */
-    digitaloceanCredentialConfig?: pulumi.Input<inputs.CloudCredentialDigitaloceanCredentialConfig>;
+    digitaloceanCredentialConfig?: pulumi.Input<inputs.CloudCredentialDigitaloceanCredentialConfig | undefined>;
     /**
      * Google config for the Cloud Credential (list maxitems:1)
      */
-    googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig>;
+    googleCredentialConfig?: pulumi.Input<inputs.CloudCredentialGoogleCredentialConfig | undefined>;
     /**
      * Harvester config for the Cloud Credential (list maxitems:1)
      */
-    harvesterCredentialConfig?: pulumi.Input<inputs.CloudCredentialHarvesterCredentialConfig>;
+    harvesterCredentialConfig?: pulumi.Input<inputs.CloudCredentialHarvesterCredentialConfig | undefined>;
     /**
      * Labels for Cloud Credential object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Linode config for the Cloud Credential (list maxitems:1)
      */
-    linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig>;
+    linodeCredentialConfig?: pulumi.Input<inputs.CloudCredentialLinodeCredentialConfig | undefined>;
     /**
      * The name of the Cloud Credential (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Nutanix config for the Cloud Credential (list maxitems:1)
      */
-    nutanixCredentialConfig?: pulumi.Input<inputs.CloudCredentialNutanixCredentialConfig>;
+    nutanixCredentialConfig?: pulumi.Input<inputs.CloudCredentialNutanixCredentialConfig | undefined>;
     /**
      * OpenStack config for the Cloud Credential (list maxitems:1)
      */
-    openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig>;
+    openstackCredentialConfig?: pulumi.Input<inputs.CloudCredentialOpenstackCredentialConfig | undefined>;
     /**
      * S3 config for the Cloud Credential. For Rancher 2.6.0 and above (list maxitems:1)
      */
-    s3CredentialConfig?: pulumi.Input<inputs.CloudCredentialS3CredentialConfig>;
+    s3CredentialConfig?: pulumi.Input<inputs.CloudCredentialS3CredentialConfig | undefined>;
     /**
      * vSphere config for the Cloud Credential (list maxitems:1)
      */
-    vsphereCredentialConfig?: pulumi.Input<inputs.CloudCredentialVsphereCredentialConfig>;
+    vsphereCredentialConfig?: pulumi.Input<inputs.CloudCredentialVsphereCredentialConfig | undefined>;
 }

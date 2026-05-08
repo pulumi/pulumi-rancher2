@@ -213,8 +213,8 @@ def get_node_driver(name: Optional[_builtins.str] = None,
         ui_url=pulumi.get(__ret__, 'ui_url'),
         url=pulumi.get(__ret__, 'url'),
         whitelist_domains=pulumi.get(__ret__, 'whitelist_domains'))
-def get_node_driver_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_node_driver_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           url: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeDriverResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Node Driver resource.

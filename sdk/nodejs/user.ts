@@ -149,32 +149,32 @@ export interface UserState {
     /**
      * Annotations for global role binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    enabled?: pulumi.Input<boolean>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Labels for global role binding (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The user must change password at first login (bool)
      */
-    mustChangePassword?: pulumi.Input<boolean>;
+    mustChangePassword?: pulumi.Input<boolean | undefined>;
     /**
      * The user full name (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The user password (string)
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The user principal IDs (list)
      */
-    principalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    principalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The user username (string)
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,20 +184,20 @@ export interface UserArgs {
     /**
      * Annotations for global role binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    enabled?: pulumi.Input<boolean>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Labels for global role binding (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The user must change password at first login (bool)
      */
-    mustChangePassword?: pulumi.Input<boolean>;
+    mustChangePassword?: pulumi.Input<boolean | undefined>;
     /**
      * The user full name (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The user password (string)
      */

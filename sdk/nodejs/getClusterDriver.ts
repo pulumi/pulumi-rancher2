@@ -116,5 +116,5 @@ export interface GetClusterDriverOutputArgs {
     /**
      * The URL to download the machine driver binary for 64-bit Linux (string)
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }

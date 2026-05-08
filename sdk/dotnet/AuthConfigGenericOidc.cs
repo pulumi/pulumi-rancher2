@@ -26,7 +26,7 @@ namespace Pulumi.Rancher2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var genericOidc = new Rancher2.Index.AuthConfigGenericOidc("generic_oidc", new()
+    ///     var genericOidc = new Rancher2.AuthConfigGenericOidc("generic_oidc", new()
     ///     {
     ///         Name = "genericoidc",
     ///         ClientId = "&lt;GITLAB_APPLICATION_ID&gt;",

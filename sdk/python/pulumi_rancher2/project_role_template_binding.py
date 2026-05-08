@@ -21,13 +21,13 @@ class ProjectRoleTemplateBindingArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
                  role_template_id: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_principal_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectRoleTemplateBinding resource.
 
@@ -86,43 +86,43 @@ class ProjectRoleTemplateBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group ID to assign project role template binding (string)
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupPrincipalId")
-    def group_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group_principal ID to assign project role template binding (string)
         """
         return pulumi.get(self, "group_principal_id")
 
     @group_principal_id.setter
-    def group_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_principal_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels of the resource (map)
 
@@ -131,58 +131,58 @@ class ProjectRoleTemplateBindingArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project role template binding (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user ID to assign project role template binding (string)
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userPrincipalId")
-    def user_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user_principal ID to assign project role template binding (string)
         """
         return pulumi.get(self, "user_principal_id")
 
     @user_principal_id.setter
-    def user_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_principal_id", value)
 
 
 @pulumi.input_type
 class _ProjectRoleTemplateBindingState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_principal_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_principal_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectRoleTemplateBinding resources.
 
@@ -219,43 +219,43 @@ class _ProjectRoleTemplateBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group ID to assign project role template binding (string)
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupPrincipalId")
-    def group_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group_principal ID to assign project role template binding (string)
         """
         return pulumi.get(self, "group_principal_id")
 
     @group_principal_id.setter
-    def group_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_principal_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels of the resource (map)
 
@@ -264,67 +264,67 @@ class _ProjectRoleTemplateBindingState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project role template binding (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleTemplateId")
-    def role_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role template id from create project role template binding (string)
         """
         return pulumi.get(self, "role_template_id")
 
     @role_template_id.setter
-    def role_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user ID to assign project role template binding (string)
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userPrincipalId")
-    def user_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user_principal ID to assign project role template binding (string)
         """
         return pulumi.get(self, "user_principal_id")
 
     @user_principal_id.setter
-    def user_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_principal_id", value)
 
 
@@ -334,15 +334,15 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Project Role Template Binding resource. This can be used to create Project Role Template Bindings for Rancher v2 environments and retrieve their information.
@@ -431,15 +431,15 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,15 +472,15 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            group_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_principal_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectRoleTemplateBinding':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectRoleTemplateBinding':
         """
         Get an existing ProjectRoleTemplateBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

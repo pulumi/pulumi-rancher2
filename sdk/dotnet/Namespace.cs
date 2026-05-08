@@ -23,7 +23,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Namespace
-    ///     var foo = new Rancher2.Index.Namespace("foo", new()
+    ///     var foo = new Rancher2.Namespace("foo", new()
     ///     {
     ///         Name = "foo",
     ///         ProjectId = "&lt;PROJECT_ID&gt;",
@@ -58,7 +58,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Cluster 
-    ///     var foo_custom = new Rancher2.Index.Cluster("foo-custom", new()
+    ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
     ///         Name = "foo-custom",
     ///         Description = "Foo rancher2 custom cluster",
@@ -72,7 +72,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Namespace assigned to default cluster project
-    ///     var foo = new Rancher2.Index.Namespace("foo", new()
+    ///     var foo = new Rancher2.Namespace("foo", new()
     ///     {
     ///         Name = "foo",
     ///         ProjectId = foo_custom.DefaultProjectId,

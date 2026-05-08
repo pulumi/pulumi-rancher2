@@ -27,12 +27,12 @@ class AuthConfigKeycloakArgs:
                  sp_key: pulumi.Input[_builtins.str],
                  uid_field: pulumi.Input[_builtins.str],
                  user_name_field: pulumi.Input[_builtins.str],
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AuthConfigKeycloak resource.
 
@@ -170,96 +170,96 @@ class AuthConfigKeycloakArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         """
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedPrincipalIds")
-    def allowed_principal_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_principal_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
         """
         return pulumi.get(self, "allowed_principal_ids")
 
     @allowed_principal_ids.setter
-    def allowed_principal_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_principal_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_principal_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable auth config provider. Default `true` (bool)
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KeyCloak Client ID field (string)
         """
         return pulumi.get(self, "entity_id")
 
     @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
 
 @pulumi.input_type
 class _AuthConfigKeycloakState:
     def __init__(__self__, *,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 display_name_field: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups_field: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_metadata_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rancher_api_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid_field: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name_field: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_metadata_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rancher_api_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name_field: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigKeycloak resources.
 
@@ -315,194 +315,194 @@ class _AuthConfigKeycloakState:
 
     @_builtins.property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         """
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedPrincipalIds")
-    def allowed_principal_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_principal_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `keycloak_user://<USER_ID>`  `keycloak_group://<GROUP_ID>` (list)
         """
         return pulumi.get(self, "allowed_principal_ids")
 
     @allowed_principal_ids.setter
-    def allowed_principal_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_principal_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_principal_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="displayNameField")
-    def display_name_field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name_field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KeyCloak display name field (string)
         """
         return pulumi.get(self, "display_name_field")
 
     @display_name_field.setter
-    def display_name_field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name_field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name_field", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable auth config provider. Default `true` (bool)
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KeyCloak Client ID field (string)
         """
         return pulumi.get(self, "entity_id")
 
     @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupsField")
-    def groups_field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def groups_field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KeyCloak group field (string)
         """
         return pulumi.get(self, "groups_field")
 
     @groups_field.setter
-    def groups_field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def groups_field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "groups_field", value)
 
     @_builtins.property
     @pulumi.getter(name="idpMetadataContent")
-    def idp_metadata_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def idp_metadata_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KeyCloak IDP metadata content (string)
         """
         return pulumi.get(self, "idp_metadata_content")
 
     @idp_metadata_content.setter
-    def idp_metadata_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def idp_metadata_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "idp_metadata_content", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The name of the resource (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="rancherApiHost")
-    def rancher_api_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rancher_api_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
         """
         return pulumi.get(self, "rancher_api_host")
 
     @rancher_api_host.setter
-    def rancher_api_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rancher_api_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rancher_api_host", value)
 
     @_builtins.property
     @pulumi.getter(name="spCert")
-    def sp_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sp_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KeyCloak SP cert (string)
         """
         return pulumi.get(self, "sp_cert")
 
     @sp_cert.setter
-    def sp_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sp_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sp_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="spKey")
-    def sp_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sp_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KeyCloak SP key (string)
         """
         return pulumi.get(self, "sp_key")
 
     @sp_key.setter
-    def sp_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sp_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sp_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The type of the resource (string)
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="uidField")
-    def uid_field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid_field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KeyCloak UID field (string)
         """
         return pulumi.get(self, "uid_field")
 
     @uid_field.setter
-    def uid_field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid_field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid_field", value)
 
     @_builtins.property
     @pulumi.getter(name="userNameField")
-    def user_name_field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name_field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KeyCloak user name field (string)
         """
         return pulumi.get(self, "user_name_field")
 
     @user_name_field.setter
-    def user_name_field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name_field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name_field", value)
 
 
@@ -512,20 +512,20 @@ class AuthConfigKeycloak(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 display_name_field: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups_field: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_metadata_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 rancher_api_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid_field: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name_field: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_metadata_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 rancher_api_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name_field: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Auth Config KeyCloak resource. This can be used to configure and enable Auth Config KeyCloak for Rancher v2 RKE clusters and retrieve their information.
@@ -613,20 +613,20 @@ class AuthConfigKeycloak(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 display_name_field: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups_field: Optional[pulumi.Input[_builtins.str]] = None,
-                 idp_metadata_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 rancher_api_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid_field: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name_field: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 idp_metadata_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 rancher_api_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid_field: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name_field: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -680,22 +680,22 @@ class AuthConfigKeycloak(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            display_name_field: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-            groups_field: Optional[pulumi.Input[_builtins.str]] = None,
-            idp_metadata_content: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            rancher_api_host: Optional[pulumi.Input[_builtins.str]] = None,
-            sp_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            sp_key: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            uid_field: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name_field: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuthConfigKeycloak':
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            display_name_field: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            groups_field: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_metadata_content: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rancher_api_host: pulumi.Input[Optional[_builtins.str]] = None,
+            sp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            sp_key: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uid_field: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name_field: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthConfigKeycloak':
         """
         Get an existing AuthConfigKeycloak resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

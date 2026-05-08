@@ -23,7 +23,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 RKE Cluster 
-    ///     var foo_custom = new Rancher2.Index.Cluster("foo-custom", new()
+    ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
     ///         Name = "foo-custom",
     ///         Description = "Foo rancher2 custom cluster",
@@ -38,7 +38,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Cloud Credential
-    ///     var foo = new Rancher2.Index.CloudCredential("foo", new()
+    ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "Terraform cloudCredential acceptance test",
@@ -50,7 +50,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Node Template
-    ///     var fooNodeTemplate = new Rancher2.Index.NodeTemplate("foo", new()
+    ///     var fooNodeTemplate = new Rancher2.NodeTemplate("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Description = "foo test",
@@ -73,7 +73,7 @@ namespace Pulumi.Rancher2
     ///     });
     /// 
     ///     // Create a new rancher2 Node Pool
-    ///     var fooNodePool = new Rancher2.Index.NodePool("foo", new()
+    ///     var fooNodePool = new Rancher2.NodePool("foo", new()
     ///     {
     ///         ClusterId = foo_custom.Id,
     ///         Name = "foo",

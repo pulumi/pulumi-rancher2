@@ -149,41 +149,41 @@ export interface ProjectRoleTemplateBindingState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The group ID to assign project role template binding (string)
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The groupPrincipal ID to assign project role template binding (string)
      */
-    groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource (map)
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the project role template binding (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The role template id from create project role template binding (string)
      */
-    roleTemplateId?: pulumi.Input<string>;
+    roleTemplateId?: pulumi.Input<string | undefined>;
     /**
      * The user ID to assign project role template binding (string)
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The userPrincipal ID to assign project role template binding (string)
      */
-    userPrincipalId?: pulumi.Input<string>;
+    userPrincipalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,25 +193,25 @@ export interface ProjectRoleTemplateBindingArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The group ID to assign project role template binding (string)
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The groupPrincipal ID to assign project role template binding (string)
      */
-    groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource (map)
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the project role template binding (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project id where bind project role template, in format `cluster_id:project_id`, e.g. `c-abc12:p-def34` (string)
      */
@@ -223,9 +223,9 @@ export interface ProjectRoleTemplateBindingArgs {
     /**
      * The user ID to assign project role template binding (string)
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The userPrincipal ID to assign project role template binding (string)
      */
-    userPrincipalId?: pulumi.Input<string>;
+    userPrincipalId?: pulumi.Input<string | undefined>;
 }

@@ -93,5 +93,5 @@ export interface GetConfigMapV2OutputArgs {
     /**
      * The namespaces of the configMap v2. Default: `default` (string)
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
 }

@@ -36,7 +36,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2_bootstrap
-    ///     var admin = new Rancher2.Index.Bootstrap("admin", new()
+    ///     var admin = new Rancher2.Bootstrap("admin", new()
     ///     {
     ///         Password = "blahblah",
     ///     });
@@ -53,7 +53,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2_bootstrap for Rancher v2.6.0 and above
-    ///     var admin = new Rancher2.Index.Bootstrap("admin", new()
+    ///     var admin = new Rancher2.Bootstrap("admin", new()
     ///     {
     ///         InitialPassword = "&lt;INSTALL_PASSWORD&gt;",
     ///         Password = "blahblah",
@@ -71,7 +71,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2_bootstrap using bootstrap provider config
-    ///     var admin = new Rancher2.Index.Bootstrap("admin", new()
+    ///     var admin = new Rancher2.Bootstrap("admin", new()
     ///     {
     ///         Password = "blahblah",
     ///     });

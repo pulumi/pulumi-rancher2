@@ -36,7 +36,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Auth Config AzureAD
-    ///     var azuread = new Rancher2.Index.AuthConfigAzureAd("azuread", new()
+    ///     var azuread = new Rancher2.AuthConfigAzureAd("azuread", new()
     ///     {
     ///         ApplicationId = "&lt;AZUREAD_APP_ID&gt;",
     ///         ApplicationSecret = "&lt;AZUREAD_APP_SECRET&gt;",

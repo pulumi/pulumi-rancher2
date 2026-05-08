@@ -201,63 +201,63 @@ export interface AuthConfigOktaState {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
      */
-    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * OKTA display name field (string)
      */
-    displayNameField?: pulumi.Input<string>;
+    displayNameField?: pulumi.Input<string | undefined>;
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * OKTA group field (string)
      */
-    groupsField?: pulumi.Input<string>;
+    groupsField?: pulumi.Input<string | undefined>;
     /**
      * OKTA IDP metadata content (string)
      */
-    idpMetadataContent?: pulumi.Input<string>;
+    idpMetadataContent?: pulumi.Input<string | undefined>;
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Computed) The name of the resource (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */
-    rancherApiHost?: pulumi.Input<string>;
+    rancherApiHost?: pulumi.Input<string | undefined>;
     /**
      * OKTA SP cert (string)
      */
-    spCert?: pulumi.Input<string>;
+    spCert?: pulumi.Input<string | undefined>;
     /**
      * OKTA SP key (string)
      */
-    spKey?: pulumi.Input<string>;
+    spKey?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The type of the resource (string)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * OKTA UID field (string)
      */
-    uidField?: pulumi.Input<string>;
+    uidField?: pulumi.Input<string | undefined>;
     /**
      * OKTA user name field (string)
      */
-    userNameField?: pulumi.Input<string>;
+    userNameField?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -267,15 +267,15 @@ export interface AuthConfigOktaArgs {
     /**
      * Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * Allowed principal ids for auth. Required if `accessMode` is `required` or `restricted`. Ex: `okta_user://<USER_ID>`  `okta_group://<GROUP_ID>` (list)
      */
-    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPrincipalIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * OKTA display name field (string)
      */
@@ -283,7 +283,7 @@ export interface AuthConfigOktaArgs {
     /**
      * Enable auth config provider. Default `true` (bool)
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * OKTA group field (string)
      */
@@ -295,7 +295,7 @@ export interface AuthConfigOktaArgs {
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Rancher URL. URL scheme needs to be specified, `https://<RANCHER_API_HOST>` (string)
      */

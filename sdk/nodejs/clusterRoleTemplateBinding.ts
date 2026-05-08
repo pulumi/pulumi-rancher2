@@ -149,41 +149,41 @@ export interface ClusterRoleTemplateBindingState {
     /**
      * Annotations for cluster role template binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster id where bind cluster role template binding (string)
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The group ID to assign cluster role template binding (string)
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The groupPrincipal ID to assign cluster role template binding (string)
      */
-    groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Labels for cluster role template binding (map)
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the cluster role template binding (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The role template id from create cluster role template binding (string)
      */
-    roleTemplateId?: pulumi.Input<string>;
+    roleTemplateId?: pulumi.Input<string | undefined>;
     /**
      * The user ID to assign cluster role template binding (string)
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The userPrincipal ID to assign cluster role template binding (string)
      */
-    userPrincipalId?: pulumi.Input<string>;
+    userPrincipalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,7 +193,7 @@ export interface ClusterRoleTemplateBindingArgs {
     /**
      * Annotations for cluster role template binding (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster id where bind cluster role template binding (string)
      */
@@ -201,21 +201,21 @@ export interface ClusterRoleTemplateBindingArgs {
     /**
      * The group ID to assign cluster role template binding (string)
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The groupPrincipal ID to assign cluster role template binding (string)
      */
-    groupPrincipalId?: pulumi.Input<string>;
+    groupPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Labels for cluster role template binding (map)
      *
      * **Note:** user `userId | userPrincipalId` OR group `groupId | groupPrincipalId` must be defined
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the cluster role template binding (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The role template id from create cluster role template binding (string)
      */
@@ -223,9 +223,9 @@ export interface ClusterRoleTemplateBindingArgs {
     /**
      * The user ID to assign cluster role template binding (string)
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * The userPrincipal ID to assign cluster role template binding (string)
      */
-    userPrincipalId?: pulumi.Input<string>;
+    userPrincipalId?: pulumi.Input<string | undefined>;
 }

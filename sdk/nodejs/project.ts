@@ -185,35 +185,35 @@ export interface ProjectState {
     /**
      * Annotations for Node Pool object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster id where create project (string)
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Default containers resource limits on project (List maxitem:1)
      */
-    containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit>;
+    containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit | undefined>;
     /**
      * A project description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Labels for Node Pool object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the project (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
      */
-    resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota>;
+    resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota | undefined>;
     /**
      * Wait for cluster becomes active. Default `false` (bool)
      */
-    waitForCluster?: pulumi.Input<boolean>;
+    waitForCluster?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -223,7 +223,7 @@ export interface ProjectArgs {
     /**
      * Annotations for Node Pool object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster id where create project (string)
      */
@@ -231,25 +231,25 @@ export interface ProjectArgs {
     /**
      * Default containers resource limits on project (List maxitem:1)
      */
-    containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit>;
+    containerResourceLimit?: pulumi.Input<inputs.ProjectContainerResourceLimit | undefined>;
     /**
      * A project description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Labels for Node Pool object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the project (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
      */
-    resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota>;
+    resourceQuota?: pulumi.Input<inputs.ProjectResourceQuota | undefined>;
     /**
      * Wait for cluster becomes active. Default `false` (bool)
      */
-    waitForCluster?: pulumi.Input<boolean>;
+    waitForCluster?: pulumi.Input<boolean | undefined>;
 }

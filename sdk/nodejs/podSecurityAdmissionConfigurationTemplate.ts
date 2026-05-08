@@ -145,27 +145,27 @@ export interface PodSecurityAdmissionConfigurationTemplateState {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
      */
-    defaults?: pulumi.Input<inputs.PodSecurityAdmissionConfigurationTemplateDefaults>;
+    defaults?: pulumi.Input<inputs.PodSecurityAdmissionConfigurationTemplateDefaults | undefined>;
     /**
      * The description of the pod security admission configuration template (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
      */
-    exemptions?: pulumi.Input<inputs.PodSecurityAdmissionConfigurationTemplateExemptions>;
+    exemptions?: pulumi.Input<inputs.PodSecurityAdmissionConfigurationTemplateExemptions | undefined>;
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the pod security admission configuration template (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,7 +175,7 @@ export interface PodSecurityAdmissionConfigurationTemplateArgs {
     /**
      * Annotations of the resource (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
      */
@@ -183,17 +183,17 @@ export interface PodSecurityAdmissionConfigurationTemplateArgs {
     /**
      * The description of the pod security admission configuration template (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
      */
-    exemptions?: pulumi.Input<inputs.PodSecurityAdmissionConfigurationTemplateExemptions>;
+    exemptions?: pulumi.Input<inputs.PodSecurityAdmissionConfigurationTemplateExemptions | undefined>;
     /**
      * Labels of the resource (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the pod security admission configuration template (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

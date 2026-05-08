@@ -143,7 +143,7 @@ export interface GetCertificateOutputArgs {
     /**
      * The namespace id where to assign the namespaced certificate (string)
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The project id where to assign the certificate (string)
      */

@@ -22,13 +22,13 @@ __all__ = ['NamespaceArgs', 'Namespace']
 class NamespaceArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 container_resource_limit: Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
-                 wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 container_resource_limit: pulumi.Input[Optional['NamespaceContainerResourceLimitArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_quota: pulumi.Input[Optional['NamespaceResourceQuotaArgs']] = None,
+                 wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Namespace resource.
 
@@ -71,100 +71,100 @@ class NamespaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="containerResourceLimit")
-    def container_resource_limit(self) -> Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']]:
+    def container_resource_limit(self) -> pulumi.Input[Optional['NamespaceContainerResourceLimitArgs']]:
         """
         Default containers resource limits on namespace (List maxitem:1)
         """
         return pulumi.get(self, "container_resource_limit")
 
     @container_resource_limit.setter
-    def container_resource_limit(self, value: Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']]):
+    def container_resource_limit(self, value: pulumi.Input[Optional['NamespaceContainerResourceLimitArgs']]):
         pulumi.set(self, "container_resource_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A namespace description (string)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for Node Pool object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the namespace (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceQuota")
-    def resource_quota(self) -> Optional[pulumi.Input['NamespaceResourceQuotaArgs']]:
+    def resource_quota(self) -> pulumi.Input[Optional['NamespaceResourceQuotaArgs']]:
         """
         Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         """
         return pulumi.get(self, "resource_quota")
 
     @resource_quota.setter
-    def resource_quota(self, value: Optional[pulumi.Input['NamespaceResourceQuotaArgs']]):
+    def resource_quota(self, value: pulumi.Input[Optional['NamespaceResourceQuotaArgs']]):
         pulumi.set(self, "resource_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForCluster")
-    def wait_for_cluster(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_cluster(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait for cluster becomes active. Default `false` (bool)
         """
         return pulumi.get(self, "wait_for_cluster")
 
     @wait_for_cluster.setter
-    def wait_for_cluster(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_cluster(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_cluster", value)
 
 
 @pulumi.input_type
 class _NamespaceState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 container_resource_limit: Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_quota: Optional[pulumi.Input['NamespaceResourceQuotaArgs']] = None,
-                 wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 container_resource_limit: pulumi.Input[Optional['NamespaceContainerResourceLimitArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_quota: pulumi.Input[Optional['NamespaceResourceQuotaArgs']] = None,
+                 wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
 
@@ -196,98 +196,98 @@ class _NamespaceState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="containerResourceLimit")
-    def container_resource_limit(self) -> Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']]:
+    def container_resource_limit(self) -> pulumi.Input[Optional['NamespaceContainerResourceLimitArgs']]:
         """
         Default containers resource limits on namespace (List maxitem:1)
         """
         return pulumi.get(self, "container_resource_limit")
 
     @container_resource_limit.setter
-    def container_resource_limit(self, value: Optional[pulumi.Input['NamespaceContainerResourceLimitArgs']]):
+    def container_resource_limit(self, value: pulumi.Input[Optional['NamespaceContainerResourceLimitArgs']]):
         pulumi.set(self, "container_resource_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A namespace description (string)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for Node Pool object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the namespace (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project id where assign namespace. It's on the form `project_id=<cluster_id>:<id>`. Updating `<id>` part on same `<cluster_id>` namespace will be moved between projects (string)
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceQuota")
-    def resource_quota(self) -> Optional[pulumi.Input['NamespaceResourceQuotaArgs']]:
+    def resource_quota(self) -> pulumi.Input[Optional['NamespaceResourceQuotaArgs']]:
         """
         Resource quota for namespace. Rancher v2.1.x or higher (list maxitems:1)
         """
         return pulumi.get(self, "resource_quota")
 
     @resource_quota.setter
-    def resource_quota(self, value: Optional[pulumi.Input['NamespaceResourceQuotaArgs']]):
+    def resource_quota(self, value: pulumi.Input[Optional['NamespaceResourceQuotaArgs']]):
         pulumi.set(self, "resource_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForCluster")
-    def wait_for_cluster(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_cluster(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait for cluster becomes active. Default `false` (bool)
         """
         return pulumi.get(self, "wait_for_cluster")
 
     @wait_for_cluster.setter
-    def wait_for_cluster(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_cluster(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_cluster", value)
 
 
@@ -297,14 +297,14 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 container_resource_limit: Optional[pulumi.Input[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_quota: Optional[pulumi.Input[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']]] = None,
-                 wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 container_resource_limit: pulumi.Input[Optional[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_quota: pulumi.Input[Optional[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']]] = None,
+                 wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Namespace resource. This can be used to create namespaces for Rancher v2 environments and retrieve their information.
@@ -492,14 +492,14 @@ class Namespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 container_resource_limit: Optional[pulumi.Input[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_quota: Optional[pulumi.Input[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']]] = None,
-                 wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 container_resource_limit: pulumi.Input[Optional[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_quota: pulumi.Input[Optional[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']]] = None,
+                 wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -529,14 +529,14 @@ class Namespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            container_resource_limit: Optional[pulumi.Input[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_quota: Optional[pulumi.Input[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']]] = None,
-            wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Namespace':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            container_resource_limit: pulumi.Input[Optional[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_quota: pulumi.Input[Optional[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict']]] = None,
+            wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

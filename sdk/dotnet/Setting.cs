@@ -27,7 +27,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new rancher2 Setting
-    ///     var foo = new Rancher2.Index.Setting("foo", new()
+    ///     var foo = new Rancher2.Setting("foo", new()
     ///     {
     ///         Name = "foo",
     ///         Value = "&lt;VALUE&gt;",

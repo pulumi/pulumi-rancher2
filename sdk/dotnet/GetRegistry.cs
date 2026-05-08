@@ -29,7 +29,7 @@ namespace Pulumi.Rancher2
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Retrieve a rancher2 Project Registry
-        ///     var foo = Rancher2.Index.GetRegistry.Invoke(new()
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
         ///         ProjectId = "&lt;project_id&gt;",
@@ -47,7 +47,7 @@ namespace Pulumi.Rancher2
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Retrieve a rancher2 Namespaced Registry
-        ///     var foo = Rancher2.Index.GetRegistry.Invoke(new()
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
         ///         ProjectId = "&lt;project_id&gt;",
@@ -78,7 +78,7 @@ namespace Pulumi.Rancher2
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Retrieve a rancher2 Project Registry
-        ///     var foo = Rancher2.Index.GetRegistry.Invoke(new()
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
         ///         ProjectId = "&lt;project_id&gt;",
@@ -96,7 +96,7 @@ namespace Pulumi.Rancher2
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Retrieve a rancher2 Namespaced Registry
-        ///     var foo = Rancher2.Index.GetRegistry.Invoke(new()
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
         ///         ProjectId = "&lt;project_id&gt;",
@@ -127,7 +127,7 @@ namespace Pulumi.Rancher2
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Retrieve a rancher2 Project Registry
-        ///     var foo = Rancher2.Index.GetRegistry.Invoke(new()
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
         ///         ProjectId = "&lt;project_id&gt;",
@@ -145,7 +145,7 @@ namespace Pulumi.Rancher2
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Retrieve a rancher2 Namespaced Registry
-        ///     var foo = Rancher2.Index.GetRegistry.Invoke(new()
+        ///     var foo = Rancher2.GetRegistry.Invoke(new()
         ///     {
         ///         Name = "&lt;name&gt;",
         ///         ProjectId = "&lt;project_id&gt;",

@@ -201,38 +201,38 @@ export interface ClusterSyncState {
     /**
      * The cluster ID that is syncing (string)
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Default project ID for the cluster sync (string)
      */
-    defaultProjectId?: pulumi.Input<string>;
+    defaultProjectId?: pulumi.Input<string | undefined>;
     /**
      * (Computed/Sensitive) Kube Config generated for the cluster sync (string)
      */
-    kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string | undefined>;
     /**
      * The node pool IDs used by the cluster id (list)
      */
-    nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    nodePoolIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Computed) The cluster nodes (list).
      */
-    nodes?: pulumi.Input<pulumi.Input<inputs.ClusterSyncNode>[]>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.ClusterSyncNode>[] | undefined>;
     /**
      * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      *
      * **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
      */
-    stateConfirm?: pulumi.Input<number>;
-    synced?: pulumi.Input<boolean>;
+    stateConfirm?: pulumi.Input<number | undefined>;
+    synced?: pulumi.Input<boolean | undefined>;
     /**
      * (Computed) System project ID for the cluster sync (string)
      */
-    systemProjectId?: pulumi.Input<string>;
+    systemProjectId?: pulumi.Input<string | undefined>;
     /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
-    waitCatalogs?: pulumi.Input<boolean>;
+    waitCatalogs?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -246,16 +246,16 @@ export interface ClusterSyncArgs {
     /**
      * The node pool IDs used by the cluster id (list)
      */
-    nodePoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    nodePoolIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      *
      * **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
      */
-    stateConfirm?: pulumi.Input<number>;
-    synced?: pulumi.Input<boolean>;
+    stateConfirm?: pulumi.Input<number | undefined>;
+    synced?: pulumi.Input<boolean | undefined>;
     /**
      * Wait until all catalogs are downloaded and active. Default: `false` (bool)
      */
-    waitCatalogs?: pulumi.Input<boolean>;
+    waitCatalogs?: pulumi.Input<boolean | undefined>;
 }

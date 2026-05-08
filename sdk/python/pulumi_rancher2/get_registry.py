@@ -178,9 +178,9 @@ def get_registry(name: Optional[_builtins.str] = None,
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         registries=pulumi.get(__ret__, 'registries'))
-def get_registry_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                        namespace_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_registry_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                        namespace_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryResult]:
     """
     Use this data source to retrieve information about a Rancher v2 docker registry.

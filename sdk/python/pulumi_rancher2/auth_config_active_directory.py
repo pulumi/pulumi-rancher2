@@ -25,33 +25,33 @@ class AuthConfigActiveDirectoryArgs:
                  test_password: pulumi.Input[_builtins.str],
                  test_username: pulumi.Input[_builtins.str],
                  user_search_base: pulumi.Input[_builtins.str],
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_login_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_dn_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_member_mapping_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_member_user_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_base: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 nested_group_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_disabled_bit_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_enabled_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_login_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_login_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_dn_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_member_mapping_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_member_user_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 nested_group_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_disabled_bit_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_enabled_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_login_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthConfigActiveDirectory resource.
 
@@ -224,367 +224,367 @@ class AuthConfigActiveDirectoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         """
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedPrincipalIds")
-    def allowed_principal_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_principal_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         """
         return pulumi.get(self, "allowed_principal_ids")
 
     @allowed_principal_ids.setter
-    def allowed_principal_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_principal_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_principal_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate for TLS if selfsigned (string)
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionTimeout")
-    def connection_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ActiveDirectory connection timeout. Default `5000` (int)
         """
         return pulumi.get(self, "connection_timeout")
 
     @connection_timeout.setter
-    def connection_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultLoginDomain")
-    def default_login_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_login_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ActiveDirectory defult login domain (string)
         """
         return pulumi.get(self, "default_login_domain")
 
     @default_login_domain.setter
-    def default_login_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_login_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_login_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable auth config provider. Default `true` (bool)
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="groupDnAttribute")
-    def group_dn_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_dn_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group DN attribute. Default `distinguishedName` (string)
         """
         return pulumi.get(self, "group_dn_attribute")
 
     @group_dn_attribute.setter
-    def group_dn_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_dn_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_dn_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMemberMappingAttribute")
-    def group_member_mapping_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_member_mapping_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group member mapping attribute. Default `member` (string)
         """
         return pulumi.get(self, "group_member_mapping_attribute")
 
     @group_member_mapping_attribute.setter
-    def group_member_mapping_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_member_mapping_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_member_mapping_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMemberUserAttribute")
-    def group_member_user_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_member_user_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group member user attribute. Default `distinguishedName` (string)
         """
         return pulumi.get(self, "group_member_user_attribute")
 
     @group_member_user_attribute.setter
-    def group_member_user_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_member_user_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_member_user_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupNameAttribute")
-    def group_name_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group name attribute. Default `name` (string)
         """
         return pulumi.get(self, "group_name_attribute")
 
     @group_name_attribute.setter
-    def group_name_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupObjectClass")
-    def group_object_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_object_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group object class. Default `group` (string)
         """
         return pulumi.get(self, "group_object_class")
 
     @group_object_class.setter
-    def group_object_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_object_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_object_class", value)
 
     @_builtins.property
     @pulumi.getter(name="groupSearchAttribute")
-    def group_search_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_search_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group search attribute. Default `sAMAccountName` (string)
         """
         return pulumi.get(self, "group_search_attribute")
 
     @group_search_attribute.setter
-    def group_search_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_search_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_search_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupSearchBase")
-    def group_search_base(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_search_base(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group search base (string)
         """
         return pulumi.get(self, "group_search_base")
 
     @group_search_base.setter
-    def group_search_base(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_search_base(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_search_base", value)
 
     @_builtins.property
     @pulumi.getter(name="groupSearchFilter")
-    def group_search_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_search_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group search filter (string)
         """
         return pulumi.get(self, "group_search_filter")
 
     @group_search_filter.setter
-    def group_search_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_search_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_search_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nestedGroupMembershipEnabled")
-    def nested_group_membership_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nested_group_membership_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Nested group membership enable. Default `false` (bool)
         """
         return pulumi.get(self, "nested_group_membership_enabled")
 
     @nested_group_membership_enabled.setter
-    def nested_group_membership_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nested_group_membership_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nested_group_membership_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ActiveDirectory port. Default `389` (int)
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="startTls")
-    def start_tls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def start_tls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable start TLS connection (bool)
         """
         return pulumi.get(self, "start_tls")
 
     @start_tls.setter
-    def start_tls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def start_tls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "start_tls", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable TLS connection (bool)
         """
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls", value)
 
     @_builtins.property
     @pulumi.getter(name="userDisabledBitMask")
-    def user_disabled_bit_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_disabled_bit_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User disabled bit mask. Default `2` (int)
         """
         return pulumi.get(self, "user_disabled_bit_mask")
 
     @user_disabled_bit_mask.setter
-    def user_disabled_bit_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_disabled_bit_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_disabled_bit_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="userEnabledAttribute")
-    def user_enabled_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_enabled_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User enable attribute (string)
         """
         return pulumi.get(self, "user_enabled_attribute")
 
     @user_enabled_attribute.setter
-    def user_enabled_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_enabled_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_enabled_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="userLoginAttribute")
-    def user_login_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_login_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User login attribute. Default `sAMAccountName` (string)
         """
         return pulumi.get(self, "user_login_attribute")
 
     @user_login_attribute.setter
-    def user_login_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_login_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_login_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="userNameAttribute")
-    def user_name_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User name attribute. Default `name` (string)
         """
         return pulumi.get(self, "user_name_attribute")
 
     @user_name_attribute.setter
-    def user_name_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="userObjectClass")
-    def user_object_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_object_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User object class. Default `person` (string)
         """
         return pulumi.get(self, "user_object_class")
 
     @user_object_class.setter
-    def user_object_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_object_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_object_class", value)
 
     @_builtins.property
     @pulumi.getter(name="userSearchAttribute")
-    def user_search_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_search_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User search attribute. Default `sAMAccountName|sn|givenName` (string)
         """
         return pulumi.get(self, "user_search_attribute")
 
     @user_search_attribute.setter
-    def user_search_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_search_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_search_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="userSearchFilter")
-    def user_search_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_search_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User search filter (string)
         """
         return pulumi.get(self, "user_search_filter")
 
     @user_search_filter.setter
-    def user_search_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_search_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_search_filter", value)
 
 
 @pulumi.input_type
 class _AuthConfigActiveDirectoryState:
     def __init__(__self__, *,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_login_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_dn_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_member_mapping_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_member_user_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_base: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nested_group_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 test_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 test_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_disabled_bit_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_enabled_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_login_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_base: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_login_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_dn_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_member_mapping_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_member_user_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nested_group_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 test_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 test_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_disabled_bit_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_enabled_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_login_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfigActiveDirectory resources.
 
@@ -697,422 +697,422 @@ class _AuthConfigActiveDirectoryState:
 
     @_builtins.property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
         """
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedPrincipalIds")
-    def allowed_principal_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_principal_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed principal ids for auth. Required if `access_mode` is `required` or `restricted`. Ex: `activedirectory_user://<DN>`  `activedirectory_group://<DN>`. The local admin (`local://<admin id>`) and the `test_username` must be added too. (list)
         """
         return pulumi.get(self, "allowed_principal_ids")
 
     @allowed_principal_ids.setter
-    def allowed_principal_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_principal_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_principal_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations of the resource (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate for TLS if selfsigned (string)
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionTimeout")
-    def connection_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ActiveDirectory connection timeout. Default `5000` (int)
         """
         return pulumi.get(self, "connection_timeout")
 
     @connection_timeout.setter
-    def connection_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultLoginDomain")
-    def default_login_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_login_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ActiveDirectory defult login domain (string)
         """
         return pulumi.get(self, "default_login_domain")
 
     @default_login_domain.setter
-    def default_login_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_login_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_login_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable auth config provider. Default `true` (bool)
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="groupDnAttribute")
-    def group_dn_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_dn_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group DN attribute. Default `distinguishedName` (string)
         """
         return pulumi.get(self, "group_dn_attribute")
 
     @group_dn_attribute.setter
-    def group_dn_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_dn_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_dn_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMemberMappingAttribute")
-    def group_member_mapping_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_member_mapping_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group member mapping attribute. Default `member` (string)
         """
         return pulumi.get(self, "group_member_mapping_attribute")
 
     @group_member_mapping_attribute.setter
-    def group_member_mapping_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_member_mapping_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_member_mapping_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMemberUserAttribute")
-    def group_member_user_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_member_user_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group member user attribute. Default `distinguishedName` (string)
         """
         return pulumi.get(self, "group_member_user_attribute")
 
     @group_member_user_attribute.setter
-    def group_member_user_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_member_user_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_member_user_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupNameAttribute")
-    def group_name_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group name attribute. Default `name` (string)
         """
         return pulumi.get(self, "group_name_attribute")
 
     @group_name_attribute.setter
-    def group_name_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupObjectClass")
-    def group_object_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_object_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group object class. Default `group` (string)
         """
         return pulumi.get(self, "group_object_class")
 
     @group_object_class.setter
-    def group_object_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_object_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_object_class", value)
 
     @_builtins.property
     @pulumi.getter(name="groupSearchAttribute")
-    def group_search_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_search_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group search attribute. Default `sAMAccountName` (string)
         """
         return pulumi.get(self, "group_search_attribute")
 
     @group_search_attribute.setter
-    def group_search_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_search_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_search_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="groupSearchBase")
-    def group_search_base(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_search_base(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group search base (string)
         """
         return pulumi.get(self, "group_search_base")
 
     @group_search_base.setter
-    def group_search_base(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_search_base(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_search_base", value)
 
     @_builtins.property
     @pulumi.getter(name="groupSearchFilter")
-    def group_search_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_search_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group search filter (string)
         """
         return pulumi.get(self, "group_search_filter")
 
     @group_search_filter.setter
-    def group_search_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_search_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_search_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels of the resource (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The name of the resource (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nestedGroupMembershipEnabled")
-    def nested_group_membership_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nested_group_membership_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Nested group membership enable. Default `false` (bool)
         """
         return pulumi.get(self, "nested_group_membership_enabled")
 
     @nested_group_membership_enabled.setter
-    def nested_group_membership_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nested_group_membership_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nested_group_membership_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ActiveDirectory port. Default `389` (int)
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ActiveDirectory servers list (list)
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "servers", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountPassword")
-    def service_account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account password for access ActiveDirectory service (string)
         """
         return pulumi.get(self, "service_account_password")
 
     @service_account_password.setter
-    def service_account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountUsername")
-    def service_account_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account DN for access ActiveDirectory service (string)
         """
         return pulumi.get(self, "service_account_username")
 
     @service_account_username.setter
-    def service_account_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_username", value)
 
     @_builtins.property
     @pulumi.getter(name="startTls")
-    def start_tls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def start_tls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable start TLS connection (bool)
         """
         return pulumi.get(self, "start_tls")
 
     @start_tls.setter
-    def start_tls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def start_tls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "start_tls", value)
 
     @_builtins.property
     @pulumi.getter(name="testPassword")
-    def test_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def test_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for test access to ActiveDirectory service (string)
         """
         return pulumi.get(self, "test_password")
 
     @test_password.setter
-    def test_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def test_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "test_password", value)
 
     @_builtins.property
     @pulumi.getter(name="testUsername")
-    def test_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def test_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for test access to ActiveDirectory service (string)
         """
         return pulumi.get(self, "test_username")
 
     @test_username.setter
-    def test_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def test_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "test_username", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable TLS connection (bool)
         """
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The type of the resource (string)
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="userDisabledBitMask")
-    def user_disabled_bit_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_disabled_bit_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User disabled bit mask. Default `2` (int)
         """
         return pulumi.get(self, "user_disabled_bit_mask")
 
     @user_disabled_bit_mask.setter
-    def user_disabled_bit_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_disabled_bit_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_disabled_bit_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="userEnabledAttribute")
-    def user_enabled_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_enabled_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User enable attribute (string)
         """
         return pulumi.get(self, "user_enabled_attribute")
 
     @user_enabled_attribute.setter
-    def user_enabled_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_enabled_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_enabled_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="userLoginAttribute")
-    def user_login_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_login_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User login attribute. Default `sAMAccountName` (string)
         """
         return pulumi.get(self, "user_login_attribute")
 
     @user_login_attribute.setter
-    def user_login_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_login_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_login_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="userNameAttribute")
-    def user_name_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User name attribute. Default `name` (string)
         """
         return pulumi.get(self, "user_name_attribute")
 
     @user_name_attribute.setter
-    def user_name_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="userObjectClass")
-    def user_object_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_object_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User object class. Default `person` (string)
         """
         return pulumi.get(self, "user_object_class")
 
     @user_object_class.setter
-    def user_object_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_object_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_object_class", value)
 
     @_builtins.property
     @pulumi.getter(name="userSearchAttribute")
-    def user_search_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_search_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User search attribute. Default `sAMAccountName|sn|givenName` (string)
         """
         return pulumi.get(self, "user_search_attribute")
 
     @user_search_attribute.setter
-    def user_search_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_search_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_search_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="userSearchBase")
-    def user_search_base(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_search_base(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User search base DN (string)
         """
         return pulumi.get(self, "user_search_base")
 
     @user_search_base.setter
-    def user_search_base(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_search_base(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_search_base", value)
 
     @_builtins.property
     @pulumi.getter(name="userSearchFilter")
-    def user_search_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_search_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User search filter (string)
         """
         return pulumi.get(self, "user_search_filter")
 
     @user_search_filter.setter
-    def user_search_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_search_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_search_filter", value)
 
 
@@ -1122,39 +1122,39 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_login_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_dn_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_member_mapping_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_member_user_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_base: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 nested_group_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 test_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 test_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_disabled_bit_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_enabled_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_login_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_base: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_filter: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_login_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_dn_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_member_mapping_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_member_user_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 nested_group_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 test_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 test_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_disabled_bit_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_enabled_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_login_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Auth Config ActiveDirectory resource. This can be used to configure and enable Auth Config ActiveDirectory for Rancher v2 RKE clusters and retrieve their information.
@@ -1225,39 +1225,39 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_login_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_dn_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_member_mapping_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_member_user_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_base: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_search_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 nested_group_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 test_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 test_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_disabled_bit_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_enabled_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_login_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_base: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_search_filter: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_login_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_dn_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_member_mapping_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_member_user_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_search_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 nested_group_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 test_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 test_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_disabled_bit_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_enabled_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_login_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_search_filter: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1326,41 +1326,41 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            allowed_principal_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            default_login_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_dn_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            group_member_mapping_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            group_member_user_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            group_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            group_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-            group_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            group_search_base: Optional[pulumi.Input[_builtins.str]] = None,
-            group_search_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nested_group_membership_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            service_account_password: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_username: Optional[pulumi.Input[_builtins.str]] = None,
-            start_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-            test_password: Optional[pulumi.Input[_builtins.str]] = None,
-            test_username: Optional[pulumi.Input[_builtins.str]] = None,
-            tls: Optional[pulumi.Input[_builtins.bool]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            user_disabled_bit_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            user_enabled_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            user_login_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            user_object_class: Optional[pulumi.Input[_builtins.str]] = None,
-            user_search_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            user_search_base: Optional[pulumi.Input[_builtins.str]] = None,
-            user_search_filter: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuthConfigActiveDirectory':
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            default_login_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_dn_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_member_mapping_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_member_user_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+            group_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+            group_search_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nested_group_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_username: pulumi.Input[Optional[_builtins.str]] = None,
+            start_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+            test_password: pulumi.Input[Optional[_builtins.str]] = None,
+            test_username: pulumi.Input[Optional[_builtins.str]] = None,
+            tls: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_disabled_bit_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            user_enabled_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            user_login_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            user_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+            user_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            user_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+            user_search_filter: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthConfigActiveDirectory':
         """
         Get an existing AuthConfigActiveDirectory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

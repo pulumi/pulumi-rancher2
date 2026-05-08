@@ -22,10 +22,10 @@ __all__ = ['ClusterSyncArgs', 'ClusterSync']
 class ClusterSyncArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 state_confirm: Optional[pulumi.Input[_builtins.int]] = None,
-                 synced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_catalogs: Optional[pulumi.Input[_builtins.bool]] = None):
+                 node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
+                 synced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_catalogs: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ClusterSync resource.
 
@@ -60,19 +60,19 @@ class ClusterSyncArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodePoolIds")
-    def node_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_pool_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The node pool IDs used by the cluster id (list)
         """
         return pulumi.get(self, "node_pool_ids")
 
     @node_pool_ids.setter
-    def node_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_pool_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_pool_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="stateConfirm")
-    def state_confirm(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def state_confirm(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
 
@@ -81,43 +81,43 @@ class ClusterSyncArgs:
         return pulumi.get(self, "state_confirm")
 
     @state_confirm.setter
-    def state_confirm(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def state_confirm(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "state_confirm", value)
 
     @_builtins.property
     @pulumi.getter
-    def synced(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def synced(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "synced")
 
     @synced.setter
-    def synced(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def synced(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "synced", value)
 
     @_builtins.property
     @pulumi.getter(name="waitCatalogs")
-    def wait_catalogs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_catalogs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait until all catalogs are downloaded and active. Default: `false` (bool)
         """
         return pulumi.get(self, "wait_catalogs")
 
     @wait_catalogs.setter
-    def wait_catalogs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_catalogs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_catalogs", value)
 
 
 @pulumi.input_type
 class _ClusterSyncState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterSyncNodeArgs']]]] = None,
-                 state_confirm: Optional[pulumi.Input[_builtins.int]] = None,
-                 synced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_catalogs: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterSyncNodeArgs']]]] = None,
+                 state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
+                 synced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_catalogs: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ClusterSync resources.
 
@@ -153,67 +153,67 @@ class _ClusterSyncState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster ID that is syncing (string)
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultProjectId")
-    def default_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) Default project ID for the cluster sync (string)
         """
         return pulumi.get(self, "default_project_id")
 
     @default_project_id.setter
-    def default_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeConfig")
-    def kube_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kube_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed/Sensitive) Kube Config generated for the cluster sync (string)
         """
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
-    def kube_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kube_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kube_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolIds")
-    def node_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_pool_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The node pool IDs used by the cluster id (list)
         """
         return pulumi.get(self, "node_pool_ids")
 
     @node_pool_ids.setter
-    def node_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_pool_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_pool_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterSyncNodeArgs']]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterSyncNodeArgs']]]]:
         """
         (Computed) The cluster nodes (list).
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterSyncNodeArgs']]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterSyncNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="stateConfirm")
-    def state_confirm(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def state_confirm(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
 
@@ -222,40 +222,40 @@ class _ClusterSyncState:
         return pulumi.get(self, "state_confirm")
 
     @state_confirm.setter
-    def state_confirm(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def state_confirm(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "state_confirm", value)
 
     @_builtins.property
     @pulumi.getter
-    def synced(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def synced(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "synced")
 
     @synced.setter
-    def synced(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def synced(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "synced", value)
 
     @_builtins.property
     @pulumi.getter(name="systemProjectId")
-    def system_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) System project ID for the cluster sync (string)
         """
         return pulumi.get(self, "system_project_id")
 
     @system_project_id.setter
-    def system_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitCatalogs")
-    def wait_catalogs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_catalogs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait until all catalogs are downloaded and active. Default: `false` (bool)
         """
         return pulumi.get(self, "wait_catalogs")
 
     @wait_catalogs.setter
-    def wait_catalogs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_catalogs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_catalogs", value)
 
 
@@ -265,11 +265,11 @@ class ClusterSync(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 state_confirm: Optional[pulumi.Input[_builtins.int]] = None,
-                 synced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_catalogs: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
+                 synced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_catalogs: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Cluster Sync dummy resource. This can be used to create a Cluster Sync to wait for a Rancher v2 Cluster resource `active` state.
@@ -453,11 +453,11 @@ class ClusterSync(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 state_confirm: Optional[pulumi.Input[_builtins.int]] = None,
-                 synced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_catalogs: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
+                 synced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_catalogs: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -490,15 +490,15 @@ class ClusterSync(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            default_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-            node_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict']]]]] = None,
-            state_confirm: Optional[pulumi.Input[_builtins.int]] = None,
-            synced: Optional[pulumi.Input[_builtins.bool]] = None,
-            system_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            wait_catalogs: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ClusterSync':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict']]]]] = None,
+            state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
+            synced: pulumi.Input[Optional[_builtins.bool]] = None,
+            system_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_catalogs: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ClusterSync':
         """
         Get an existing ClusterSync resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

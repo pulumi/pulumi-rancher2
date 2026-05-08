@@ -22,13 +22,13 @@ __all__ = ['ProjectArgs', 'Project']
 class ProjectArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 container_resource_limit: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
-                 wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 container_resource_limit: pulumi.Input[Optional['ProjectContainerResourceLimitArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_quota: pulumi.Input[Optional['ProjectResourceQuotaArgs']] = None,
+                 wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
 
@@ -71,100 +71,100 @@ class ProjectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="containerResourceLimit")
-    def container_resource_limit(self) -> Optional[pulumi.Input['ProjectContainerResourceLimitArgs']]:
+    def container_resource_limit(self) -> pulumi.Input[Optional['ProjectContainerResourceLimitArgs']]:
         """
         Default containers resource limits on project (List maxitem:1)
         """
         return pulumi.get(self, "container_resource_limit")
 
     @container_resource_limit.setter
-    def container_resource_limit(self, value: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']]):
+    def container_resource_limit(self, value: pulumi.Input[Optional['ProjectContainerResourceLimitArgs']]):
         pulumi.set(self, "container_resource_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A project description (string)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for Node Pool object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceQuota")
-    def resource_quota(self) -> Optional[pulumi.Input['ProjectResourceQuotaArgs']]:
+    def resource_quota(self) -> pulumi.Input[Optional['ProjectResourceQuotaArgs']]:
         """
         Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         """
         return pulumi.get(self, "resource_quota")
 
     @resource_quota.setter
-    def resource_quota(self, value: Optional[pulumi.Input['ProjectResourceQuotaArgs']]):
+    def resource_quota(self, value: pulumi.Input[Optional['ProjectResourceQuotaArgs']]):
         pulumi.set(self, "resource_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForCluster")
-    def wait_for_cluster(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_cluster(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait for cluster becomes active. Default `false` (bool)
         """
         return pulumi.get(self, "wait_for_cluster")
 
     @wait_for_cluster.setter
-    def wait_for_cluster(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_cluster(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_cluster", value)
 
 
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_resource_limit: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_quota: Optional[pulumi.Input['ProjectResourceQuotaArgs']] = None,
-                 wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_resource_limit: pulumi.Input[Optional['ProjectContainerResourceLimitArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_quota: pulumi.Input[Optional['ProjectResourceQuotaArgs']] = None,
+                 wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
 
@@ -196,98 +196,98 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations for Node Pool object (map)
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster id where create project (string)
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="containerResourceLimit")
-    def container_resource_limit(self) -> Optional[pulumi.Input['ProjectContainerResourceLimitArgs']]:
+    def container_resource_limit(self) -> pulumi.Input[Optional['ProjectContainerResourceLimitArgs']]:
         """
         Default containers resource limits on project (List maxitem:1)
         """
         return pulumi.get(self, "container_resource_limit")
 
     @container_resource_limit.setter
-    def container_resource_limit(self, value: Optional[pulumi.Input['ProjectContainerResourceLimitArgs']]):
+    def container_resource_limit(self, value: pulumi.Input[Optional['ProjectContainerResourceLimitArgs']]):
         pulumi.set(self, "container_resource_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A project description (string)
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for Node Pool object (map)
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project (string)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceQuota")
-    def resource_quota(self) -> Optional[pulumi.Input['ProjectResourceQuotaArgs']]:
+    def resource_quota(self) -> pulumi.Input[Optional['ProjectResourceQuotaArgs']]:
         """
         Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         """
         return pulumi.get(self, "resource_quota")
 
     @resource_quota.setter
-    def resource_quota(self, value: Optional[pulumi.Input['ProjectResourceQuotaArgs']]):
+    def resource_quota(self, value: pulumi.Input[Optional['ProjectResourceQuotaArgs']]):
         pulumi.set(self, "resource_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForCluster")
-    def wait_for_cluster(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_cluster(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait for cluster becomes active. Default `false` (bool)
         """
         return pulumi.get(self, "wait_for_cluster")
 
     @wait_for_cluster.setter
-    def wait_for_cluster(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_cluster(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_cluster", value)
 
 
@@ -297,14 +297,14 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_quota: Optional[pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
-                 wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_resource_limit: pulumi.Input[Optional[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_quota: pulumi.Input[Optional[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
+                 wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Rancher v2 Project resource. This can be used to create projects for Rancher v2 environments and retrieve their information.
@@ -478,14 +478,14 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_quota: Optional[pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
-                 wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_resource_limit: pulumi.Input[Optional[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_quota: pulumi.Input[Optional[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
+                 wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -515,14 +515,14 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            container_resource_limit: Optional[pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_quota: Optional[pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
-            wait_for_cluster: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Project':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            container_resource_limit: pulumi.Input[Optional[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_quota: pulumi.Input[Optional[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
+            wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

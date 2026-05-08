@@ -180,51 +180,51 @@ export interface BootstrapState {
     /**
      * (Computed/Sensitive) Current password for Admin user (string)
      */
-    currentPassword?: pulumi.Input<string>;
+    currentPassword?: pulumi.Input<string | undefined>;
     /**
      * Initial password for Admin user. Default: `admin` (string)
      */
-    initialPassword?: pulumi.Input<string>;
+    initialPassword?: pulumi.Input<string | undefined>;
     /**
      * Password for Admin user or random generated if empty (string)
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Generated API temporary token as helper. Should be empty (string)
      */
-    tempToken?: pulumi.Input<string>;
+    tempToken?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Generated API temporary token id as helper. Should be empty (string)
      */
-    tempTokenId?: pulumi.Input<string>;
+    tempTokenId?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Generated API token for Admin User (string)
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Generated API token id for Admin User (string)
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
     /**
      * TTL in seconds for generated admin token. Default: `0`  (int)
      */
-    tokenTtl?: pulumi.Input<number>;
+    tokenTtl?: pulumi.Input<number | undefined>;
     /**
      * Regenerate admin token. Default: `false` (bool)
      */
-    tokenUpdate?: pulumi.Input<boolean>;
+    tokenUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
      */
-    uiDefaultLanding?: pulumi.Input<string>;
+    uiDefaultLanding?: pulumi.Input<string | undefined>;
     /**
      * (Computed) URL set as server-url (string)
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * (Computed) Admin username (string)
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,21 +234,21 @@ export interface BootstrapArgs {
     /**
      * Initial password for Admin user. Default: `admin` (string)
      */
-    initialPassword?: pulumi.Input<string>;
+    initialPassword?: pulumi.Input<string | undefined>;
     /**
      * Password for Admin user or random generated if empty (string)
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * TTL in seconds for generated admin token. Default: `0`  (int)
      */
-    tokenTtl?: pulumi.Input<number>;
+    tokenTtl?: pulumi.Input<number | undefined>;
     /**
      * Regenerate admin token. Default: `false` (bool)
      */
-    tokenUpdate?: pulumi.Input<boolean>;
+    tokenUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Default UI landing for k8s clusters. Available options: `ember` (cluster manager ui)  and `vue` (cluster explorer ui). Default: `ember` (string)
      */
-    uiDefaultLanding?: pulumi.Input<string>;
+    uiDefaultLanding?: pulumi.Input<string | undefined>;
 }

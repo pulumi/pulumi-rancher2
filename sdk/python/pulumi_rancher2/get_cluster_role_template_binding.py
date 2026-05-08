@@ -188,9 +188,9 @@ def get_cluster_role_template_binding(cluster_id: Optional[_builtins.str] = None
         role_template_id=pulumi.get(__ret__, 'role_template_id'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_principal_id=pulumi.get(__ret__, 'user_principal_id'))
-def get_cluster_role_template_binding_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                             name: Optional[pulumi.Input[_builtins.str]] = None,
-                                             role_template_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_cluster_role_template_binding_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                             name: pulumi.Input[Optional[_builtins.str]] = None,
+                                             role_template_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterRoleTemplateBindingResult]:
     """
     Use this data source to retrieve information about a Rancher v2 cluster role template binding.

@@ -155,9 +155,9 @@ def get_pod_security_admission_configuration_template(annotations: Optional[Mapp
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'))
-def get_pod_security_admission_configuration_template_output(annotations: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                                                             labels: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                                                             name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pod_security_admission_configuration_template_output(annotations: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                                                             labels: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                                                             name: pulumi.Input[Optional[_builtins.str]] = None,
                                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPodSecurityAdmissionConfigurationTemplateResult]:
     """
     Use this data source to retrieve information about a rancher v2 pod security admission configration template.

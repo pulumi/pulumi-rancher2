@@ -126,35 +126,35 @@ export interface ConfigMapV2State {
     /**
      * Annotations for the configMap v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster id of the configMap V2 (string)
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The data of the configMap v2 (map)
      */
-    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
-    immutable?: pulumi.Input<boolean>;
+    immutable?: pulumi.Input<boolean | undefined>;
     /**
      * Labels for the configMap v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the configMap v2 (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespaces of the configMap v2. Default: `default` (string)
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The k8s resource version (string)
      */
-    resourceVersion?: pulumi.Input<string>;
+    resourceVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,7 +164,7 @@ export interface ConfigMapV2Args {
     /**
      * Annotations for the configMap v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster id of the configMap V2 (string)
      */
@@ -176,17 +176,17 @@ export interface ConfigMapV2Args {
     /**
      * If set to true, any configMap update will remove and recreate the configMap. This is a beta field enabled by k8s `ImmutableEphemeralVolumes` feature gate. Default: `false` (bool)
      */
-    immutable?: pulumi.Input<boolean>;
+    immutable?: pulumi.Input<boolean | undefined>;
     /**
      * Labels for the configMap v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the configMap v2 (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespaces of the configMap v2. Default: `default` (string)
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
 }

@@ -231,75 +231,75 @@ export interface AppV2State {
     /**
      * Annotations for the app v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The app v2 chart name (string)
      */
-    chartName?: pulumi.Input<string>;
+    chartName?: pulumi.Input<string | undefined>;
     /**
      * The app v2 chart version (string)
      */
-    chartVersion?: pulumi.Input<string>;
+    chartVersion?: pulumi.Input<string | undefined>;
     /**
      * Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
      */
-    cleanupOnFail?: pulumi.Input<boolean>;
+    cleanupOnFail?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster id of the app (string)
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The cluster name of the app (string)
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Values YAML file including computed values. This field prevents incorrect discrepancies from showing in the terraform plan output when files change but values stay the same, due to additional computed values included by the provider itself.
      */
-    deploymentValues?: pulumi.Input<string>;
+    deploymentValues?: pulumi.Input<string | undefined>;
     /**
      * Disable app v2 chart hooks. Default: `false` (bool)
      */
-    disableHooks?: pulumi.Input<boolean>;
+    disableHooks?: pulumi.Input<boolean | undefined>;
     /**
      * Disable app V2 Open API Validation. Default: `false` (bool)
      */
-    disableOpenApiValidation?: pulumi.Input<boolean>;
+    disableOpenApiValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Force app V2 chart upgrade. Default: `false` (bool)
      */
-    forceUpgrade?: pulumi.Input<boolean>;
+    forceUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * Labels for the app v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the app v2 (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace of the app v2 (string)
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Deploy the app v2 within project ID (string)
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repo name (string)
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * System default registry providing images for app deployment (string)
      */
-    systemDefaultRegistry?: pulumi.Input<string>;
+    systemDefaultRegistry?: pulumi.Input<string | undefined>;
     /**
      * The app v2 values yaml. Yaml format is required (string)
      */
-    values?: pulumi.Input<string>;
+    values?: pulumi.Input<string | undefined>;
     /**
      * Wait until app is deployed. Default: `true` (bool)
      */
-    wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -309,7 +309,7 @@ export interface AppV2Args {
     /**
      * Annotations for the app v2 (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The app v2 chart name (string)
      */
@@ -317,11 +317,11 @@ export interface AppV2Args {
     /**
      * The app v2 chart version (string)
      */
-    chartVersion?: pulumi.Input<string>;
+    chartVersion?: pulumi.Input<string | undefined>;
     /**
      * Cleanup app v2 on failed chart upgrade. Default: `false` (bool)
      */
-    cleanupOnFail?: pulumi.Input<boolean>;
+    cleanupOnFail?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster id of the app (string)
      */
@@ -329,23 +329,23 @@ export interface AppV2Args {
     /**
      * Disable app v2 chart hooks. Default: `false` (bool)
      */
-    disableHooks?: pulumi.Input<boolean>;
+    disableHooks?: pulumi.Input<boolean | undefined>;
     /**
      * Disable app V2 Open API Validation. Default: `false` (bool)
      */
-    disableOpenApiValidation?: pulumi.Input<boolean>;
+    disableOpenApiValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Force app V2 chart upgrade. Default: `false` (bool)
      */
-    forceUpgrade?: pulumi.Input<boolean>;
+    forceUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * Labels for the app v2 (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the app v2 (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace of the app v2 (string)
      */
@@ -353,7 +353,7 @@ export interface AppV2Args {
     /**
      * Deploy the app v2 within project ID (string)
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repo name (string)
      */
@@ -361,13 +361,13 @@ export interface AppV2Args {
     /**
      * System default registry providing images for app deployment (string)
      */
-    systemDefaultRegistry?: pulumi.Input<string>;
+    systemDefaultRegistry?: pulumi.Input<string | undefined>;
     /**
      * The app v2 values yaml. Yaml format is required (string)
      */
-    values?: pulumi.Input<string>;
+    values?: pulumi.Input<string | undefined>;
     /**
      * Wait until app is deployed. Default: `true` (bool)
      */
-    wait?: pulumi.Input<boolean>;
+    wait?: pulumi.Input<boolean | undefined>;
 }

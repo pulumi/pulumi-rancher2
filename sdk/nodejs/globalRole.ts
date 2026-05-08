@@ -148,39 +148,39 @@ export interface GlobalRoleState {
     /**
      * Annotations for global role object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Computed) Builtin global role (bool)
      */
-    builtin?: pulumi.Input<boolean>;
+    builtin?: pulumi.Input<boolean | undefined>;
     /**
      * Global role description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      */
-    inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Labels for global role object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Global role name (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether or not this role should be added to new users. Default `false` (bool)
      */
-    newUserDefault?: pulumi.Input<boolean>;
+    newUserDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Global role policy rules (list)
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleRule>[] | undefined>;
     /**
      * Global role uuid
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,29 +190,29 @@ export interface GlobalRoleArgs {
     /**
      * Annotations for global role object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Global role description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      */
-    inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Labels for global role object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Global role name (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether or not this role should be added to new users. Default `false` (bool)
      */
-    newUserDefault?: pulumi.Input<boolean>;
+    newUserDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Global role policy rules (list)
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleRule>[] | undefined>;
 }

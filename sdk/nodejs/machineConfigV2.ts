@@ -226,69 +226,69 @@ export interface MachineConfigV2State {
     /**
      * AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    amazonec2Config?: pulumi.Input<inputs.MachineConfigV2Amazonec2Config>;
+    amazonec2Config?: pulumi.Input<inputs.MachineConfigV2Amazonec2Config | undefined>;
     /**
      * Annotations for Machine Config V2 object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    azureConfig?: pulumi.Input<inputs.MachineConfigV2AzureConfig>;
+    azureConfig?: pulumi.Input<inputs.MachineConfigV2AzureConfig | undefined>;
     /**
      * Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    digitaloceanConfig?: pulumi.Input<inputs.MachineConfigV2DigitaloceanConfig>;
+    digitaloceanConfig?: pulumi.Input<inputs.MachineConfigV2DigitaloceanConfig | undefined>;
     /**
      * Cluster V2 fleet namespace
      */
-    fleetNamespace?: pulumi.Input<string>;
+    fleetNamespace?: pulumi.Input<string | undefined>;
     /**
      * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
      */
-    generateName?: pulumi.Input<string>;
+    generateName?: pulumi.Input<string | undefined>;
     /**
      * Google config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    googleConfig?: pulumi.Input<inputs.MachineConfigV2GoogleConfig>;
+    googleConfig?: pulumi.Input<inputs.MachineConfigV2GoogleConfig | undefined>;
     /**
      * Harvester config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    harvesterConfig?: pulumi.Input<inputs.MachineConfigV2HarvesterConfig>;
+    harvesterConfig?: pulumi.Input<inputs.MachineConfigV2HarvesterConfig | undefined>;
     /**
      * (Computed) The machine config kind (string)
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Labels for Machine Config V2 object (map)
      *
      * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    linodeConfig?: pulumi.Input<inputs.MachineConfigV2LinodeConfig>;
+    linodeConfig?: pulumi.Input<inputs.MachineConfigV2LinodeConfig | undefined>;
     /**
      * (Computed) The machine config name (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Nutanix config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    nutanixConfig?: pulumi.Input<inputs.MachineConfigV2NutanixConfig>;
+    nutanixConfig?: pulumi.Input<inputs.MachineConfigV2NutanixConfig | undefined>;
     /**
      * Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    openstackConfig?: pulumi.Input<inputs.MachineConfigV2OpenstackConfig>;
+    openstackConfig?: pulumi.Input<inputs.MachineConfigV2OpenstackConfig | undefined>;
     /**
      * (Computed) The machine config k8s resource version (string)
      */
-    resourceVersion?: pulumi.Input<string>;
+    resourceVersion?: pulumi.Input<string | undefined>;
     /**
      * vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `googleConfig` and `openstackConfig` (list maxitems:1)
      */
-    vsphereConfig?: pulumi.Input<inputs.MachineConfigV2VsphereConfig>;
+    vsphereConfig?: pulumi.Input<inputs.MachineConfigV2VsphereConfig | undefined>;
 }
 
 /**
@@ -298,23 +298,23 @@ export interface MachineConfigV2Args {
     /**
      * AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    amazonec2Config?: pulumi.Input<inputs.MachineConfigV2Amazonec2Config>;
+    amazonec2Config?: pulumi.Input<inputs.MachineConfigV2Amazonec2Config | undefined>;
     /**
      * Annotations for Machine Config V2 object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Azure config for the Machine Config V2. Conflicts with `amazonec2Config`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    azureConfig?: pulumi.Input<inputs.MachineConfigV2AzureConfig>;
+    azureConfig?: pulumi.Input<inputs.MachineConfigV2AzureConfig | undefined>;
     /**
      * Digitalocean config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    digitaloceanConfig?: pulumi.Input<inputs.MachineConfigV2DigitaloceanConfig>;
+    digitaloceanConfig?: pulumi.Input<inputs.MachineConfigV2DigitaloceanConfig | undefined>;
     /**
      * Cluster V2 fleet namespace
      */
-    fleetNamespace?: pulumi.Input<string>;
+    fleetNamespace?: pulumi.Input<string | undefined>;
     /**
      * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\"prod-pool1\" will generate \"nc-prod-pool1-?????\" name computed at `name` attribute (string)
      */
@@ -322,31 +322,31 @@ export interface MachineConfigV2Args {
     /**
      * Google config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig` and `vsphereConfig` (list maxitems:1)
      */
-    googleConfig?: pulumi.Input<inputs.MachineConfigV2GoogleConfig>;
+    googleConfig?: pulumi.Input<inputs.MachineConfigV2GoogleConfig | undefined>;
     /**
      * Harvester config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    harvesterConfig?: pulumi.Input<inputs.MachineConfigV2HarvesterConfig>;
+    harvesterConfig?: pulumi.Input<inputs.MachineConfigV2HarvesterConfig | undefined>;
     /**
      * Labels for Machine Config V2 object (map)
      *
      * **Note:** `labels` and `nodeTaints` will be applied to nodes deployed using the Machine Config V2
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Linode config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    linodeConfig?: pulumi.Input<inputs.MachineConfigV2LinodeConfig>;
+    linodeConfig?: pulumi.Input<inputs.MachineConfigV2LinodeConfig | undefined>;
     /**
      * Nutanix config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    nutanixConfig?: pulumi.Input<inputs.MachineConfigV2NutanixConfig>;
+    nutanixConfig?: pulumi.Input<inputs.MachineConfigV2NutanixConfig | undefined>;
     /**
      * Openstack config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
      */
-    openstackConfig?: pulumi.Input<inputs.MachineConfigV2OpenstackConfig>;
+    openstackConfig?: pulumi.Input<inputs.MachineConfigV2OpenstackConfig | undefined>;
     /**
      * vSphere config for the Machine Config V2. Conflicts with `amazonec2Config`, `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `googleConfig` and `openstackConfig` (list maxitems:1)
      */
-    vsphereConfig?: pulumi.Input<inputs.MachineConfigV2VsphereConfig>;
+    vsphereConfig?: pulumi.Input<inputs.MachineConfigV2VsphereConfig | undefined>;
 }

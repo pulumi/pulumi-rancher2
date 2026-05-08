@@ -109,7 +109,7 @@ def get_cloud_credential(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'))
-def get_cloud_credential_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cloud_credential_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudCredentialResult]:
     """
     Use this data source to retrieve information about a Rancher v2 Cloud Credential.

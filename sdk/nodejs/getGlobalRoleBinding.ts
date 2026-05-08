@@ -98,7 +98,7 @@ export interface GetGlobalRoleBindingOutputArgs {
     /**
      * The global role id (string)
      */
-    globalRoleId?: pulumi.Input<string>;
+    globalRoleId?: pulumi.Input<string | undefined>;
     /**
      * The name of the global role binding (string)
      */

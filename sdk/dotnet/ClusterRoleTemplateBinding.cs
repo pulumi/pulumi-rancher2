@@ -23,7 +23,7 @@ namespace Pulumi.Rancher2
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Rancher2 Cluster Role Template Binding
-    ///     var foo = new Rancher2.Index.ClusterRoleTemplateBinding("foo", new()
+    ///     var foo = new Rancher2.ClusterRoleTemplateBinding("foo", new()
     ///     {
     ///         Name = "foo",
     ///         ClusterId = "&lt;cluster_id&gt;",

@@ -130,7 +130,7 @@ export interface GetClusterV2OutputArgs {
     /**
      * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
      */
-    fleetNamespace?: pulumi.Input<string>;
+    fleetNamespace?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cluster v2 (string)
      */

@@ -165,9 +165,9 @@ def get_config_map_v2(cluster_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         namespace=pulumi.get(__ret__, 'namespace'),
         resource_version=pulumi.get(__ret__, 'resource_version'))
-def get_config_map_v2_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             name: Optional[pulumi.Input[_builtins.str]] = None,
-                             namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_config_map_v2_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             name: pulumi.Input[Optional[_builtins.str]] = None,
+                             namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConfigMapV2Result]:
     """
     Use this data source to retrieve information about a Rancher2 configMap v2. ConfigMap v2 resource is available at Rancher v2.5.x and above.

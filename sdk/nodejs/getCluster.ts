@@ -173,7 +173,7 @@ export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getCluster.
  */
 export interface GetClusterOutputArgs {
-    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string>;
+    defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cluster (string)
      */

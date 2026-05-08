@@ -127,35 +127,35 @@ export interface CertificateState {
     /**
      * Annotations for certificate object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Base64 encoded public certs (string)
      */
-    certs?: pulumi.Input<string>;
+    certs?: pulumi.Input<string | undefined>;
     /**
      * A certificate description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded private key (string)
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Labels for certificate object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the certificate (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace id where the namespaced certificate should be created (string)
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The project id where the certificate should be created  (string)
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,7 +165,7 @@ export interface CertificateArgs {
     /**
      * Annotations for certificate object (map)
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Base64 encoded public certs (string)
      */
@@ -173,7 +173,7 @@ export interface CertificateArgs {
     /**
      * A certificate description (string)
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded private key (string)
      */
@@ -181,15 +181,15 @@ export interface CertificateArgs {
     /**
      * Labels for certificate object (map)
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the certificate (string)
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The namespace id where the namespaced certificate should be created (string)
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The project id where the certificate should be created  (string)
      */

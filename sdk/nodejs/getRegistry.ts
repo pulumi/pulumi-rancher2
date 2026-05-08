@@ -145,7 +145,7 @@ export interface GetRegistryOutputArgs {
     /**
      * The namespace id where to assign the namespaced registry (string)
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The project id where to assign the registry (string)
      */
