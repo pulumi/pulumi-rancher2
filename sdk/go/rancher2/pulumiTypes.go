@@ -36015,6 +36015,10 @@ type MachineConfigV2OpenstackConfig struct {
 	Region string `pulumi:"region"`
 	// OpenStack comma separated security groups for the machine (string)
 	SecGroups *string `pulumi:"secGroups"`
+	// OpenStack server group id to use for the instance (string)
+	ServerGroupId *string `pulumi:"serverGroupId"`
+	// OpenStack server group name to use for the instance (string)
+	ServerGroupName *string `pulumi:"serverGroupName"`
 	// If using a non-B2D image you can specify the ssh port. Default `22` (string)
 	SshPort *string `pulumi:"sshPort"`
 	// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
@@ -36116,6 +36120,10 @@ type MachineConfigV2OpenstackConfigArgs struct {
 	Region pulumi.StringInput `pulumi:"region"`
 	// OpenStack comma separated security groups for the machine (string)
 	SecGroups pulumi.StringPtrInput `pulumi:"secGroups"`
+	// OpenStack server group id to use for the instance (string)
+	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
+	// OpenStack server group name to use for the instance (string)
+	ServerGroupName pulumi.StringPtrInput `pulumi:"serverGroupName"`
 	// If using a non-B2D image you can specify the ssh port. Default `22` (string)
 	SshPort pulumi.StringPtrInput `pulumi:"sshPort"`
 	// If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
@@ -36361,6 +36369,16 @@ func (o MachineConfigV2OpenstackConfigOutput) Region() pulumi.StringOutput {
 // OpenStack comma separated security groups for the machine (string)
 func (o MachineConfigV2OpenstackConfigOutput) SecGroups() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MachineConfigV2OpenstackConfig) *string { return v.SecGroups }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack server group id to use for the instance (string)
+func (o MachineConfigV2OpenstackConfigOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2OpenstackConfig) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack server group name to use for the instance (string)
+func (o MachineConfigV2OpenstackConfigOutput) ServerGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineConfigV2OpenstackConfig) *string { return v.ServerGroupName }).(pulumi.StringPtrOutput)
 }
 
 // If using a non-B2D image you can specify the ssh port. Default `22` (string)
@@ -36732,6 +36750,26 @@ func (o MachineConfigV2OpenstackConfigPtrOutput) SecGroups() pulumi.StringPtrOut
 			return nil
 		}
 		return v.SecGroups
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack server group id to use for the instance (string)
+func (o MachineConfigV2OpenstackConfigPtrOutput) ServerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2OpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack server group name to use for the instance (string)
+func (o MachineConfigV2OpenstackConfigPtrOutput) ServerGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineConfigV2OpenstackConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerGroupName
 	}).(pulumi.StringPtrOutput)
 }
 

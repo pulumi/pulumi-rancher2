@@ -88,12 +88,14 @@ namespace Pulumi.Rancher2
         public Output<string> TokenName { get; private set; } = null!;
 
         /// <summary>
-        /// Token time to live in seconds. Default `0` (int) 
+        /// Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
         /// 
-        /// From Rancher v2.4.6 `Ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        /// From Rancher v2.4.6 `Ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        /// 
+        /// From Rancher v2.8.0 the Rancher API and kubeconfig tokens `Ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         /// </summary>
         [Output("ttl")]
-        public Output<int?> Ttl { get; private set; } = null!;
+        public Output<int> Ttl { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) Token user ID (string)
@@ -195,9 +197,11 @@ namespace Pulumi.Rancher2
         public Input<bool>? Renew { get; set; }
 
         /// <summary>
-        /// Token time to live in seconds. Default `0` (int) 
+        /// Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
         /// 
-        /// From Rancher v2.4.6 `Ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        /// From Rancher v2.4.6 `Ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        /// 
+        /// From Rancher v2.8.0 the Rancher API and kubeconfig tokens `Ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
@@ -309,9 +313,11 @@ namespace Pulumi.Rancher2
         }
 
         /// <summary>
-        /// Token time to live in seconds. Default `0` (int) 
+        /// Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
         /// 
-        /// From Rancher v2.4.6 `Ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        /// From Rancher v2.4.6 `Ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        /// 
+        /// From Rancher v2.8.0 the Rancher API and kubeconfig tokens `Ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }

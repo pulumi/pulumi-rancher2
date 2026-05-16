@@ -7551,6 +7551,14 @@ export interface MachineConfigV2OpenstackConfig {
      */
     secGroups?: string;
     /**
+     * OpenStack server group id to use for the instance (string)
+     */
+    serverGroupId?: string;
+    /**
+     * OpenStack server group name to use for the instance (string)
+     */
+    serverGroupName?: string;
+    /**
      * If using a non-B2D image you can specify the ssh port. Default `22` (string)
      */
     sshPort?: string;

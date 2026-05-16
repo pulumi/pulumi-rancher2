@@ -5038,6 +5038,14 @@ export interface MachineConfigV2OpenstackConfig {
      */
     secGroups?: pulumi.Input<string | undefined>;
     /**
+     * OpenStack server group id to use for the instance (string)
+     */
+    serverGroupId?: pulumi.Input<string | undefined>;
+    /**
+     * OpenStack server group name to use for the instance (string)
+     */
+    serverGroupName?: pulumi.Input<string | undefined>;
+    /**
      * If using a non-B2D image you can specify the ssh port. Default `22` (string)
      */
     sshPort?: pulumi.Input<string | undefined>;

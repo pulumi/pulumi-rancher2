@@ -33,9 +33,11 @@ class TokenArgs:
         :param pulumi.Input[_builtins.str] description: Token description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[_builtins.bool] renew: Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
-        :param pulumi.Input[_builtins.int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[_builtins.int] ttl: Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
                
-               From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+               From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+               
+               From Rancher v2.8.0 the Rancher API and kubeconfig tokens `ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -114,9 +116,11 @@ class TokenArgs:
     @pulumi.getter
     def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Token time to live in seconds. Default `0` (int) 
+        Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
 
-        From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+
+        From Rancher v2.8.0 the Rancher API and kubeconfig tokens `ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         """
         return pulumi.get(self, "ttl")
 
@@ -155,9 +159,11 @@ class _TokenState:
         :param pulumi.Input[_builtins.bool] renew: Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
         :param pulumi.Input[_builtins.str] secret_key: (Computed/Sensitive) Token secret key part (string)
         :param pulumi.Input[_builtins.str] token: (Computed/Sensitive) Token value (string)
-        :param pulumi.Input[_builtins.int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[_builtins.int] ttl: Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
                
-               From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+               From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+               
+               From Rancher v2.8.0 the Rancher API and kubeconfig tokens `ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         :param pulumi.Input[_builtins.str] user_id: (Computed) Token user ID (string)
         """
         if access_key is not None:
@@ -323,9 +329,11 @@ class _TokenState:
     @pulumi.getter
     def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Token time to live in seconds. Default `0` (int) 
+        Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
 
-        From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+
+        From Rancher v2.8.0 the Rancher API and kubeconfig tokens `ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         """
         return pulumi.get(self, "ttl")
 
@@ -376,9 +384,11 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Token description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: (Computed) Labels of the token (map)
         :param pulumi.Input[_builtins.bool] renew: Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
-        :param pulumi.Input[_builtins.int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[_builtins.int] ttl: Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
                
-               From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+               From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+               
+               From Rancher v2.8.0 the Rancher API and kubeconfig tokens `ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         """
         ...
     @overload
@@ -482,9 +492,11 @@ class Token(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] renew: Renew token if expired or disabled. If `true`, a terraform diff would be generated to renew the token if it's disabled or expired. If `false`, the token will not be renewed. Default `true` (bool)
         :param pulumi.Input[_builtins.str] secret_key: (Computed/Sensitive) Token secret key part (string)
         :param pulumi.Input[_builtins.str] token: (Computed/Sensitive) Token value (string)
-        :param pulumi.Input[_builtins.int] ttl: Token time to live in seconds. Default `0` (int) 
+        :param pulumi.Input[_builtins.int] ttl: Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
                
-               From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+               From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+               
+               From Rancher v2.8.0 the Rancher API and kubeconfig tokens `ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         :param pulumi.Input[_builtins.str] user_id: (Computed) Token user ID (string)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -596,11 +608,13 @@ class Token(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def ttl(self) -> pulumi.Output[_builtins.int]:
         """
-        Token time to live in seconds. Default `0` (int) 
+        Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
 
-        From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+        From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+
+        From Rancher v2.8.0 the Rancher API and kubeconfig tokens `ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
         """
         return pulumi.get(self, "ttl")
 

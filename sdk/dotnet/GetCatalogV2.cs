@@ -138,6 +138,10 @@ namespace Pulumi.Rancher2
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
         /// <summary>
+        /// (Computed) Interval in seconds at which the Helm repository should be refreshed (int)
+        /// </summary>
+        public readonly int RefreshInterval;
+        /// <summary>
         /// (Computed) The k8s resource version (string)
         /// </summary>
         public readonly string ResourceVersion;
@@ -192,6 +196,8 @@ namespace Pulumi.Rancher2
 
             string name,
 
+            int refreshInterval,
+
             string resourceVersion,
 
             string secretName,
@@ -218,6 +224,7 @@ namespace Pulumi.Rancher2
             InsecurePlainHttp = insecurePlainHttp;
             Labels = labels;
             Name = name;
+            RefreshInterval = refreshInterval;
             ResourceVersion = resourceVersion;
             SecretName = secretName;
             SecretNamespace = secretNamespace;

@@ -32,6 +32,7 @@ class CatalogV2Args:
                  insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  secret_name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -53,6 +54,7 @@ class CatalogV2Args:
         :param pulumi.Input[_builtins.bool] insecure_plain_http: Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[_builtins.str] name: The name of the catalog v2 (string)
+        :param pulumi.Input[_builtins.int] refresh_interval: Interval in seconds at which the Helm repository should be refreshed (int)
         :param pulumi.Input[_builtins.str] secret_name: K8s secret name to be used to connect to the repo (string)
         :param pulumi.Input[_builtins.str] secret_namespace: K8s secret namespace (string)
         :param pulumi.Input[_builtins.str] service_account: K8s service account used to deploy charts instead of the end users credentials (string)
@@ -84,6 +86,8 @@ class CatalogV2Args:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if refresh_interval is not None:
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if secret_name is not None:
             pulumi.set(__self__, "secret_name", secret_name)
         if secret_namespace is not None:
@@ -252,6 +256,18 @@ class CatalogV2Args:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Interval in seconds at which the Helm repository should be refreshed (int)
+        """
+        return pulumi.get(self, "refresh_interval")
+
+    @refresh_interval.setter
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "refresh_interval", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretName")
     def secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -328,6 +344,7 @@ class _CatalogV2State:
                  insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  resource_version: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -350,6 +367,7 @@ class _CatalogV2State:
         :param pulumi.Input[_builtins.bool] insecure_plain_http: Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[_builtins.str] name: The name of the catalog v2 (string)
+        :param pulumi.Input[_builtins.int] refresh_interval: Interval in seconds at which the Helm repository should be refreshed (int)
         :param pulumi.Input[_builtins.str] resource_version: (Computed) The k8s resource version (string)
         :param pulumi.Input[_builtins.str] secret_name: K8s secret name to be used to connect to the repo (string)
         :param pulumi.Input[_builtins.str] secret_namespace: K8s secret namespace (string)
@@ -383,6 +401,8 @@ class _CatalogV2State:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if refresh_interval is not None:
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if resource_version is not None:
             pulumi.set(__self__, "resource_version", resource_version)
         if secret_name is not None:
@@ -553,6 +573,18 @@ class _CatalogV2State:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Interval in seconds at which the Helm repository should be refreshed (int)
+        """
+        return pulumi.get(self, "refresh_interval")
+
+    @refresh_interval.setter
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "refresh_interval", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -644,6 +676,7 @@ class CatalogV2(pulumi.CustomResource):
                  insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  secret_name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -677,6 +710,7 @@ class CatalogV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] insecure_plain_http: Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[_builtins.str] name: The name of the catalog v2 (string)
+        :param pulumi.Input[_builtins.int] refresh_interval: Interval in seconds at which the Helm repository should be refreshed (int)
         :param pulumi.Input[_builtins.str] secret_name: K8s secret name to be used to connect to the repo (string)
         :param pulumi.Input[_builtins.str] secret_namespace: K8s secret namespace (string)
         :param pulumi.Input[_builtins.str] service_account: K8s service account used to deploy charts instead of the end users credentials (string)
@@ -729,6 +763,7 @@ class CatalogV2(pulumi.CustomResource):
                  insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
                  secret_name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -758,6 +793,7 @@ class CatalogV2(pulumi.CustomResource):
             __props__.__dict__["insecure_plain_http"] = insecure_plain_http
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
+            __props__.__dict__["refresh_interval"] = refresh_interval
             __props__.__dict__["secret_name"] = secret_name
             __props__.__dict__["secret_namespace"] = secret_namespace
             __props__.__dict__["service_account"] = service_account
@@ -787,6 +823,7 @@ class CatalogV2(pulumi.CustomResource):
             insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
             resource_version: pulumi.Input[Optional[_builtins.str]] = None,
             secret_name: pulumi.Input[Optional[_builtins.str]] = None,
             secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
@@ -813,6 +850,7 @@ class CatalogV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] insecure_plain_http: Only valid for OCI URL's. Allows insecure connections to registries without enforcing TLS checks
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for the catalog v2 (map)
         :param pulumi.Input[_builtins.str] name: The name of the catalog v2 (string)
+        :param pulumi.Input[_builtins.int] refresh_interval: Interval in seconds at which the Helm repository should be refreshed (int)
         :param pulumi.Input[_builtins.str] resource_version: (Computed) The k8s resource version (string)
         :param pulumi.Input[_builtins.str] secret_name: K8s secret name to be used to connect to the repo (string)
         :param pulumi.Input[_builtins.str] secret_namespace: K8s secret namespace (string)
@@ -837,6 +875,7 @@ class CatalogV2(pulumi.CustomResource):
         __props__.__dict__["insecure_plain_http"] = insecure_plain_http
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["refresh_interval"] = refresh_interval
         __props__.__dict__["resource_version"] = resource_version
         __props__.__dict__["secret_name"] = secret_name
         __props__.__dict__["secret_namespace"] = secret_namespace
@@ -948,6 +987,14 @@ class CatalogV2(pulumi.CustomResource):
         The name of the catalog v2 (string)
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> pulumi.Output[_builtins.int]:
+        """
+        Interval in seconds at which the Helm repository should be refreshed (int)
+        """
+        return pulumi.get(self, "refresh_interval")
 
     @_builtins.property
     @pulumi.getter(name="resourceVersion")

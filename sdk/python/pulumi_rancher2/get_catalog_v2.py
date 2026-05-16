@@ -26,7 +26,7 @@ class GetCatalogV2Result:
     """
     A collection of values returned by getCatalogV2.
     """
-    def __init__(__self__, annotations=None, ca_bundle=None, cluster_id=None, enabled=None, exponential_backoff_max_retries=None, exponential_backoff_max_wait=None, exponential_backoff_min_wait=None, git_branch=None, git_repo=None, id=None, insecure=None, insecure_plain_http=None, labels=None, name=None, resource_version=None, secret_name=None, secret_namespace=None, service_account=None, service_account_namespace=None, url=None):
+    def __init__(__self__, annotations=None, ca_bundle=None, cluster_id=None, enabled=None, exponential_backoff_max_retries=None, exponential_backoff_max_wait=None, exponential_backoff_min_wait=None, git_branch=None, git_repo=None, id=None, insecure=None, insecure_plain_http=None, labels=None, name=None, refresh_interval=None, resource_version=None, secret_name=None, secret_namespace=None, service_account=None, service_account_namespace=None, url=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -69,6 +69,9 @@ class GetCatalogV2Result:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if refresh_interval and not isinstance(refresh_interval, int):
+            raise TypeError("Expected argument 'refresh_interval' to be a int")
+        pulumi.set(__self__, "refresh_interval", refresh_interval)
         if resource_version and not isinstance(resource_version, str):
             raise TypeError("Expected argument 'resource_version' to be a str")
         pulumi.set(__self__, "resource_version", resource_version)
@@ -183,6 +186,14 @@ class GetCatalogV2Result:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> _builtins.int:
+        """
+        (Computed) Interval in seconds at which the Helm repository should be refreshed (int)
+        """
+        return pulumi.get(self, "refresh_interval")
+
+    @_builtins.property
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> _builtins.str:
         """
@@ -251,6 +262,7 @@ class AwaitableGetCatalogV2Result(GetCatalogV2Result):
             insecure_plain_http=self.insecure_plain_http,
             labels=self.labels,
             name=self.name,
+            refresh_interval=self.refresh_interval,
             resource_version=self.resource_version,
             secret_name=self.secret_name,
             secret_namespace=self.secret_namespace,
@@ -298,6 +310,7 @@ def get_catalog_v2(cluster_id: Optional[_builtins.str] = None,
         insecure_plain_http=pulumi.get(__ret__, 'insecure_plain_http'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        refresh_interval=pulumi.get(__ret__, 'refresh_interval'),
         resource_version=pulumi.get(__ret__, 'resource_version'),
         secret_name=pulumi.get(__ret__, 'secret_name'),
         secret_namespace=pulumi.get(__ret__, 'secret_namespace'),
@@ -342,6 +355,7 @@ def get_catalog_v2_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = No
         insecure_plain_http=pulumi.get(__response__, 'insecure_plain_http'),
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
+        refresh_interval=pulumi.get(__response__, 'refresh_interval'),
         resource_version=pulumi.get(__response__, 'resource_version'),
         secret_name=pulumi.get(__response__, 'secret_name'),
         secret_namespace=pulumi.get(__response__, 'secret_namespace'),

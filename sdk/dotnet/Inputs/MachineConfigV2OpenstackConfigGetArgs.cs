@@ -205,6 +205,18 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? SecGroups { get; set; }
 
         /// <summary>
+        /// OpenStack server group id to use for the instance (string)
+        /// </summary>
+        [Input("serverGroupId")]
+        public Input<string>? ServerGroupId { get; set; }
+
+        /// <summary>
+        /// OpenStack server group name to use for the instance (string)
+        /// </summary>
+        [Input("serverGroupName")]
+        public Input<string>? ServerGroupName { get; set; }
+
+        /// <summary>
         /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
         /// </summary>
         [Input("sshPort")]

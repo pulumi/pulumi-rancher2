@@ -122,6 +122,14 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? SecGroups;
         /// <summary>
+        /// OpenStack server group id to use for the instance (string)
+        /// </summary>
+        public readonly string? ServerGroupId;
+        /// <summary>
+        /// OpenStack server group name to use for the instance (string)
+        /// </summary>
+        public readonly string? ServerGroupName;
+        /// <summary>
         /// If using a non-B2D image you can specify the ssh port. Default `22` (string)
         /// </summary>
         public readonly string? SshPort;
@@ -241,6 +249,10 @@ namespace Pulumi.Rancher2.Outputs
 
             string? secGroups,
 
+            string? serverGroupId,
+
+            string? serverGroupName,
+
             string? sshPort,
 
             string? sshUser,
@@ -298,6 +310,8 @@ namespace Pulumi.Rancher2.Outputs
             PrivateKeyFile = privateKeyFile;
             Region = region;
             SecGroups = secGroups;
+            ServerGroupId = serverGroupId;
+            ServerGroupName = serverGroupName;
             SshPort = sshPort;
             SshUser = sshUser;
             TenantDomainId = tenantDomainId;

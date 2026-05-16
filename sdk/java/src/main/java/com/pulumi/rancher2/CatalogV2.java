@@ -214,6 +214,20 @@ public class CatalogV2 extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Interval in seconds at which the Helm repository should be refreshed (int)
+     * 
+     */
+    @Export(name="refreshInterval", refs={Integer.class}, tree="[0]")
+    private Output<Integer> refreshInterval;
+
+    /**
+     * @return Interval in seconds at which the Helm repository should be refreshed (int)
+     * 
+     */
+    public Output<Integer> refreshInterval() {
+        return this.refreshInterval;
+    }
+    /**
      * (Computed) The k8s resource version (string)
      * 
      */
