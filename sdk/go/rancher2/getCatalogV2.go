@@ -58,6 +58,8 @@ type LookupCatalogV2Result struct {
 	// (Computed) Labels for the catalog v2 (map)
 	Labels map[string]string `pulumi:"labels"`
 	Name   string            `pulumi:"name"`
+	// (Computed) Interval in seconds at which the Helm repository should be refreshed (int)
+	RefreshInterval int `pulumi:"refreshInterval"`
 	// (Computed) The k8s resource version (string)
 	ResourceVersion string `pulumi:"resourceVersion"`
 	// (Computed) K8s secret name to be used to connect to the repo (string)
@@ -174,6 +176,11 @@ func (o LookupCatalogV2ResultOutput) Labels() pulumi.StringMapOutput {
 
 func (o LookupCatalogV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogV2Result) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Computed) Interval in seconds at which the Helm repository should be refreshed (int)
+func (o LookupCatalogV2ResultOutput) RefreshInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCatalogV2Result) int { return v.RefreshInterval }).(pulumi.IntOutput)
 }
 
 // (Computed) The k8s resource version (string)

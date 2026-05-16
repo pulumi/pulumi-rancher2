@@ -50,6 +50,8 @@ type CatalogV2 struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the catalog v2 (string)
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Interval in seconds at which the Helm repository should be refreshed (int)
+	RefreshInterval pulumi.IntOutput `pulumi:"refreshInterval"`
 	// (Computed) The k8s resource version (string)
 	ResourceVersion pulumi.StringOutput `pulumi:"resourceVersion"`
 	// K8s secret name to be used to connect to the repo (string)
@@ -123,6 +125,8 @@ type catalogV2State struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the catalog v2 (string)
 	Name *string `pulumi:"name"`
+	// Interval in seconds at which the Helm repository should be refreshed (int)
+	RefreshInterval *int `pulumi:"refreshInterval"`
 	// (Computed) The k8s resource version (string)
 	ResourceVersion *string `pulumi:"resourceVersion"`
 	// K8s secret name to be used to connect to the repo (string)
@@ -164,6 +168,8 @@ type CatalogV2State struct {
 	Labels pulumi.StringMapInput
 	// The name of the catalog v2 (string)
 	Name pulumi.StringPtrInput
+	// Interval in seconds at which the Helm repository should be refreshed (int)
+	RefreshInterval pulumi.IntPtrInput
 	// (Computed) The k8s resource version (string)
 	ResourceVersion pulumi.StringPtrInput
 	// K8s secret name to be used to connect to the repo (string)
@@ -209,6 +215,8 @@ type catalogV2Args struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the catalog v2 (string)
 	Name *string `pulumi:"name"`
+	// Interval in seconds at which the Helm repository should be refreshed (int)
+	RefreshInterval *int `pulumi:"refreshInterval"`
 	// K8s secret name to be used to connect to the repo (string)
 	SecretName *string `pulumi:"secretName"`
 	// K8s secret namespace (string)
@@ -249,6 +257,8 @@ type CatalogV2Args struct {
 	Labels pulumi.StringMapInput
 	// The name of the catalog v2 (string)
 	Name pulumi.StringPtrInput
+	// Interval in seconds at which the Helm repository should be refreshed (int)
+	RefreshInterval pulumi.IntPtrInput
 	// K8s secret name to be used to connect to the repo (string)
 	SecretName pulumi.StringPtrInput
 	// K8s secret namespace (string)
@@ -411,6 +421,11 @@ func (o CatalogV2Output) Labels() pulumi.StringMapOutput {
 // The name of the catalog v2 (string)
 func (o CatalogV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CatalogV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Interval in seconds at which the Helm repository should be refreshed (int)
+func (o CatalogV2Output) RefreshInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v *CatalogV2) pulumi.IntOutput { return v.RefreshInterval }).(pulumi.IntOutput)
 }
 
 // (Computed) The k8s resource version (string)

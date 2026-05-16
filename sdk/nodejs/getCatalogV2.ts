@@ -80,6 +80,10 @@ export interface GetCatalogV2Result {
     readonly labels: {[key: string]: string};
     readonly name: string;
     /**
+     * (Computed) Interval in seconds at which the Helm repository should be refreshed (int)
+     */
+    readonly refreshInterval: number;
+    /**
      * (Computed) The k8s resource version (string)
      */
     readonly resourceVersion: string;

@@ -423,6 +423,36 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * OpenStack server group id to use for the instance (string)
+     * 
+     */
+    @Import(name="serverGroupId")
+    private @Nullable Output<String> serverGroupId;
+
+    /**
+     * @return OpenStack server group id to use for the instance (string)
+     * 
+     */
+    public Optional<Output<String>> serverGroupId() {
+        return Optional.ofNullable(this.serverGroupId);
+    }
+
+    /**
+     * OpenStack server group name to use for the instance (string)
+     * 
+     */
+    @Import(name="serverGroupName")
+    private @Nullable Output<String> serverGroupName;
+
+    /**
+     * @return OpenStack server group name to use for the instance (string)
+     * 
+     */
+    public Optional<Output<String>> serverGroupName() {
+        return Optional.ofNullable(this.serverGroupName);
+    }
+
+    /**
      * If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
@@ -683,6 +713,8 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
         this.privateKeyFile = $.privateKeyFile;
         this.region = $.region;
         this.secGroups = $.secGroups;
+        this.serverGroupId = $.serverGroupId;
+        this.serverGroupName = $.serverGroupName;
         this.sshPort = $.sshPort;
         this.sshUser = $.sshUser;
         this.tenantDomainId = $.tenantDomainId;
@@ -1283,6 +1315,48 @@ public final class MachineConfigV2OpenstackConfigArgs extends com.pulumi.resourc
          */
         public Builder secGroups(String secGroups) {
             return secGroups(Output.of(secGroups));
+        }
+
+        /**
+         * @param serverGroupId OpenStack server group id to use for the instance (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverGroupId(@Nullable Output<String> serverGroupId) {
+            $.serverGroupId = serverGroupId;
+            return this;
+        }
+
+        /**
+         * @param serverGroupId OpenStack server group id to use for the instance (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverGroupId(String serverGroupId) {
+            return serverGroupId(Output.of(serverGroupId));
+        }
+
+        /**
+         * @param serverGroupName OpenStack server group name to use for the instance (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverGroupName(@Nullable Output<String> serverGroupName) {
+            $.serverGroupName = serverGroupName;
+            return this;
+        }
+
+        /**
+         * @param serverGroupName OpenStack server group name to use for the instance (string)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverGroupName(String serverGroupName) {
+            return serverGroupName(Output.of(serverGroupName));
         }
 
         /**

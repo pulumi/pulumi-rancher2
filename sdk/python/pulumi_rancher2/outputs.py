@@ -17880,6 +17880,10 @@ class MachineConfigV2OpenstackConfig(dict):
             suggest = "private_key_file"
         elif key == "secGroups":
             suggest = "sec_groups"
+        elif key == "serverGroupId":
+            suggest = "server_group_id"
+        elif key == "serverGroupName":
+            suggest = "server_group_name"
         elif key == "sshPort":
             suggest = "ssh_port"
         elif key == "sshUser":
@@ -17948,6 +17952,8 @@ class MachineConfigV2OpenstackConfig(dict):
                  password: Optional[_builtins.str] = None,
                  private_key_file: Optional[_builtins.str] = None,
                  sec_groups: Optional[_builtins.str] = None,
+                 server_group_id: Optional[_builtins.str] = None,
+                 server_group_name: Optional[_builtins.str] = None,
                  ssh_port: Optional[_builtins.str] = None,
                  ssh_user: Optional[_builtins.str] = None,
                  tenant_domain_id: Optional[_builtins.str] = None,
@@ -17991,6 +17997,8 @@ class MachineConfigV2OpenstackConfig(dict):
         :param _builtins.str password: Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
         :param _builtins.str private_key_file: Private key content to use for SSH (string)
         :param _builtins.str sec_groups: OpenStack comma separated security groups for the machine (string)
+        :param _builtins.str server_group_id: OpenStack server group id to use for the instance (string)
+        :param _builtins.str server_group_name: OpenStack server group name to use for the instance (string)
         :param _builtins.str ssh_port: If using a non-B2D image you can specify the ssh port. Default `22` (string)
         :param _builtins.str ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
         :param _builtins.str tenant_domain_id: OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
@@ -18061,6 +18069,10 @@ class MachineConfigV2OpenstackConfig(dict):
             pulumi.set(__self__, "private_key_file", private_key_file)
         if sec_groups is not None:
             pulumi.set(__self__, "sec_groups", sec_groups)
+        if server_group_id is not None:
+            pulumi.set(__self__, "server_group_id", server_group_id)
+        if server_group_name is not None:
+            pulumi.set(__self__, "server_group_name", server_group_name)
         if ssh_port is not None:
             pulumi.set(__self__, "ssh_port", ssh_port)
         if ssh_user is not None:
@@ -18307,6 +18319,22 @@ class MachineConfigV2OpenstackConfig(dict):
         OpenStack comma separated security groups for the machine (string)
         """
         return pulumi.get(self, "sec_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="serverGroupId")
+    def server_group_id(self) -> Optional[_builtins.str]:
+        """
+        OpenStack server group id to use for the instance (string)
+        """
+        return pulumi.get(self, "server_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serverGroupName")
+    def server_group_name(self) -> Optional[_builtins.str]:
+        """
+        OpenStack server group name to use for the instance (string)
+        """
+        return pulumi.get(self, "server_group_name")
 
     @_builtins.property
     @pulumi.getter(name="sshPort")

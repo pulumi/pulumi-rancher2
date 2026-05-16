@@ -149,6 +149,16 @@ public final class MachineConfigV2OpenstackConfig {
      */
     private @Nullable String secGroups;
     /**
+     * @return OpenStack server group id to use for the instance (string)
+     * 
+     */
+    private @Nullable String serverGroupId;
+    /**
+     * @return OpenStack server group name to use for the instance (string)
+     * 
+     */
+    private @Nullable String serverGroupName;
+    /**
      * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
@@ -418,6 +428,20 @@ public final class MachineConfigV2OpenstackConfig {
         return Optional.ofNullable(this.secGroups);
     }
     /**
+     * @return OpenStack server group id to use for the instance (string)
+     * 
+     */
+    public Optional<String> serverGroupId() {
+        return Optional.ofNullable(this.serverGroupId);
+    }
+    /**
+     * @return OpenStack server group name to use for the instance (string)
+     * 
+     */
+    public Optional<String> serverGroupName() {
+        return Optional.ofNullable(this.serverGroupName);
+    }
+    /**
      * @return If using a non-B2D image you can specify the ssh port. Default `22` (string)
      * 
      */
@@ -562,6 +586,8 @@ public final class MachineConfigV2OpenstackConfig {
         private @Nullable String privateKeyFile;
         private String region;
         private @Nullable String secGroups;
+        private @Nullable String serverGroupId;
+        private @Nullable String serverGroupName;
         private @Nullable String sshPort;
         private @Nullable String sshUser;
         private @Nullable String tenantDomainId;
@@ -607,6 +633,8 @@ public final class MachineConfigV2OpenstackConfig {
     	      this.privateKeyFile = defaults.privateKeyFile;
     	      this.region = defaults.region;
     	      this.secGroups = defaults.secGroups;
+    	      this.serverGroupId = defaults.serverGroupId;
+    	      this.serverGroupName = defaults.serverGroupName;
     	      this.sshPort = defaults.sshPort;
     	      this.sshUser = defaults.sshUser;
     	      this.tenantDomainId = defaults.tenantDomainId;
@@ -793,6 +821,18 @@ public final class MachineConfigV2OpenstackConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder serverGroupId(@Nullable String serverGroupId) {
+
+            this.serverGroupId = serverGroupId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serverGroupName(@Nullable String serverGroupName) {
+
+            this.serverGroupName = serverGroupName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sshPort(@Nullable String sshPort) {
 
             this.sshPort = sshPort;
@@ -911,6 +951,8 @@ public final class MachineConfigV2OpenstackConfig {
             _resultValue.privateKeyFile = privateKeyFile;
             _resultValue.region = region;
             _resultValue.secGroups = secGroups;
+            _resultValue.serverGroupId = serverGroupId;
+            _resultValue.serverGroupName = serverGroupName;
             _resultValue.sshPort = sshPort;
             _resultValue.sshUser = sshUser;
             _resultValue.tenantDomainId = tenantDomainId;

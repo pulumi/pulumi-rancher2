@@ -96,6 +96,10 @@ export class CatalogV2 extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Interval in seconds at which the Helm repository should be refreshed (int)
+     */
+    declare public readonly refreshInterval: pulumi.Output<number>;
+    /**
      * (Computed) The k8s resource version (string)
      */
     declare public /*out*/ readonly resourceVersion: pulumi.Output<string>;
@@ -146,6 +150,7 @@ export class CatalogV2 extends pulumi.CustomResource {
             resourceInputs["insecurePlainHttp"] = state?.insecurePlainHttp;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
+            resourceInputs["refreshInterval"] = state?.refreshInterval;
             resourceInputs["resourceVersion"] = state?.resourceVersion;
             resourceInputs["secretName"] = state?.secretName;
             resourceInputs["secretNamespace"] = state?.secretNamespace;
@@ -170,6 +175,7 @@ export class CatalogV2 extends pulumi.CustomResource {
             resourceInputs["insecurePlainHttp"] = args?.insecurePlainHttp;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
+            resourceInputs["refreshInterval"] = args?.refreshInterval;
             resourceInputs["secretName"] = args?.secretName;
             resourceInputs["secretNamespace"] = args?.secretNamespace;
             resourceInputs["serviceAccount"] = args?.serviceAccount;
@@ -238,6 +244,10 @@ export interface CatalogV2State {
      * The name of the catalog v2 (string)
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Interval in seconds at which the Helm repository should be refreshed (int)
+     */
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * (Computed) The k8s resource version (string)
      */
@@ -320,6 +330,10 @@ export interface CatalogV2Args {
      * The name of the catalog v2 (string)
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Interval in seconds at which the Helm repository should be refreshed (int)
+     */
+    refreshInterval?: pulumi.Input<number | undefined>;
     /**
      * K8s secret name to be used to connect to the repo (string)
      */

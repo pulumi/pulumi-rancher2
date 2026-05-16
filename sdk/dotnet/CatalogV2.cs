@@ -102,6 +102,12 @@ namespace Pulumi.Rancher2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Interval in seconds at which the Helm repository should be refreshed (int)
+        /// </summary>
+        [Output("refreshInterval")]
+        public Output<int> RefreshInterval { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) The k8s resource version (string)
         /// </summary>
         [Output("resourceVersion")]
@@ -274,6 +280,12 @@ namespace Pulumi.Rancher2
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Interval in seconds at which the Helm repository should be refreshed (int)
+        /// </summary>
+        [Input("refreshInterval")]
+        public Input<int>? RefreshInterval { get; set; }
+
+        /// <summary>
         /// K8s secret name to be used to connect to the repo (string)
         /// </summary>
         [Input("secretName")]
@@ -400,6 +412,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Interval in seconds at which the Helm repository should be refreshed (int)
+        /// </summary>
+        [Input("refreshInterval")]
+        public Input<int>? RefreshInterval { get; set; }
 
         /// <summary>
         /// (Computed) The k8s resource version (string)

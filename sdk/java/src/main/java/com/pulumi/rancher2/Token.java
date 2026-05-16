@@ -185,22 +185,26 @@ public class Token extends com.pulumi.resources.CustomResource {
         return this.token;
     }
     /**
-     * Token time to live in seconds. Default `0` (int)
+     * Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
      * 
-     * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+     * From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+     * 
+     * From Rancher v2.8.0 the Rancher API and kubeconfig tokens `ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
      * 
      */
     @Export(name="ttl", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> ttl;
+    private Output<Integer> ttl;
 
     /**
-     * @return Token time to live in seconds. Default `0` (int)
+     * @return Defaults to the `auth-token-max-ttl-minutes` Rancher setting.
      * 
-     * From Rancher v2.4.6 `ttl` is readed in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+     * From Rancher v2.4.6 `ttl` is read in minutes at Rancher API. To avoid breaking change on the provider, we still read in seconds but rounding up division if required.
+     * 
+     * From Rancher v2.8.0 the Rancher API and kubeconfig tokens `ttl` is managed by Rancher setting `auth-token-max-ttl-minutes`. Tokens created before v2.8.0 are not affected.
      * 
      */
-    public Output<Optional<Integer>> ttl() {
-        return Codegen.optional(this.ttl);
+    public Output<Integer> ttl() {
+        return this.ttl;
     }
     /**
      * (Computed) Token user ID (string)

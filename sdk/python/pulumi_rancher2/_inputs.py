@@ -23624,6 +23624,14 @@ class MachineConfigV2OpenstackConfigArgsDict(TypedDict):
     """
     OpenStack comma separated security groups for the machine (string)
     """
+    server_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    OpenStack server group id to use for the instance (string)
+    """
+    server_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    OpenStack server group name to use for the instance (string)
+    """
     ssh_port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If using a non-B2D image you can specify the ssh port. Default `22` (string)
@@ -23718,6 +23726,8 @@ class MachineConfigV2OpenstackConfigArgs:
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key_file: pulumi.Input[Optional[_builtins.str]] = None,
                  sec_groups: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ssh_port: pulumi.Input[Optional[_builtins.str]] = None,
                  ssh_user: pulumi.Input[Optional[_builtins.str]] = None,
                  tenant_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -23761,6 +23771,8 @@ class MachineConfigV2OpenstackConfigArgs:
         :param pulumi.Input[_builtins.str] password: Nutanix management password or API key for service account mode. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
         :param pulumi.Input[_builtins.str] private_key_file: Private key content to use for SSH (string)
         :param pulumi.Input[_builtins.str] sec_groups: OpenStack comma separated security groups for the machine (string)
+        :param pulumi.Input[_builtins.str] server_group_id: OpenStack server group id to use for the instance (string)
+        :param pulumi.Input[_builtins.str] server_group_name: OpenStack server group name to use for the instance (string)
         :param pulumi.Input[_builtins.str] ssh_port: If using a non-B2D image you can specify the ssh port. Default `22` (string)
         :param pulumi.Input[_builtins.str] ssh_user: If using a non-B2D image you can specify the ssh user. Default `docker`. (string)
         :param pulumi.Input[_builtins.str] tenant_domain_id: OpenStack tenant domain id. Conflicts with `tenant_domain_name` (string)
@@ -23831,6 +23843,10 @@ class MachineConfigV2OpenstackConfigArgs:
             pulumi.set(__self__, "private_key_file", private_key_file)
         if sec_groups is not None:
             pulumi.set(__self__, "sec_groups", sec_groups)
+        if server_group_id is not None:
+            pulumi.set(__self__, "server_group_id", server_group_id)
+        if server_group_name is not None:
+            pulumi.set(__self__, "server_group_name", server_group_name)
         if ssh_port is not None:
             pulumi.set(__self__, "ssh_port", ssh_port)
         if ssh_user is not None:
@@ -24185,6 +24201,30 @@ class MachineConfigV2OpenstackConfigArgs:
     @sec_groups.setter
     def sec_groups(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sec_groups", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverGroupId")
+    def server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        OpenStack server group id to use for the instance (string)
+        """
+        return pulumi.get(self, "server_group_id")
+
+    @server_group_id.setter
+    def server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "server_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverGroupName")
+    def server_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        OpenStack server group name to use for the instance (string)
+        """
+        return pulumi.get(self, "server_group_name")
+
+    @server_group_name.setter
+    def server_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "server_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sshPort")

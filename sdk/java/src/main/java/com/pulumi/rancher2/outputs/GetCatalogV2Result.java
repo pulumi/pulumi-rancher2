@@ -62,6 +62,11 @@ public final class GetCatalogV2Result {
     private Map<String,String> labels;
     private String name;
     /**
+     * @return (Computed) Interval in seconds at which the Helm repository should be refreshed (int)
+     * 
+     */
+    private Integer refreshInterval;
+    /**
      * @return (Computed) The k8s resource version (string)
      * 
      */
@@ -168,6 +173,13 @@ public final class GetCatalogV2Result {
         return this.name;
     }
     /**
+     * @return (Computed) Interval in seconds at which the Helm repository should be refreshed (int)
+     * 
+     */
+    public Integer refreshInterval() {
+        return this.refreshInterval;
+    }
+    /**
      * @return (Computed) The k8s resource version (string)
      * 
      */
@@ -233,6 +245,7 @@ public final class GetCatalogV2Result {
         private @Nullable Boolean insecurePlainHttp;
         private Map<String,String> labels;
         private String name;
+        private Integer refreshInterval;
         private String resourceVersion;
         private String secretName;
         private String secretNamespace;
@@ -256,6 +269,7 @@ public final class GetCatalogV2Result {
     	      this.insecurePlainHttp = defaults.insecurePlainHttp;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
+    	      this.refreshInterval = defaults.refreshInterval;
     	      this.resourceVersion = defaults.resourceVersion;
     	      this.secretName = defaults.secretName;
     	      this.secretNamespace = defaults.secretNamespace;
@@ -375,6 +389,14 @@ public final class GetCatalogV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder refreshInterval(Integer refreshInterval) {
+            if (refreshInterval == null) {
+              throw new MissingRequiredPropertyException("GetCatalogV2Result", "refreshInterval");
+            }
+            this.refreshInterval = refreshInterval;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
             if (resourceVersion == null) {
               throw new MissingRequiredPropertyException("GetCatalogV2Result", "resourceVersion");
@@ -438,6 +460,7 @@ public final class GetCatalogV2Result {
             _resultValue.insecurePlainHttp = insecurePlainHttp;
             _resultValue.labels = labels;
             _resultValue.name = name;
+            _resultValue.refreshInterval = refreshInterval;
             _resultValue.resourceVersion = resourceVersion;
             _resultValue.secretName = secretName;
             _resultValue.secretNamespace = secretNamespace;

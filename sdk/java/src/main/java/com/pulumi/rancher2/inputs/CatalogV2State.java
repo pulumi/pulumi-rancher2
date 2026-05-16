@@ -214,6 +214,21 @@ public final class CatalogV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Interval in seconds at which the Helm repository should be refreshed (int)
+     * 
+     */
+    @Import(name="refreshInterval")
+    private @Nullable Output<Integer> refreshInterval;
+
+    /**
+     * @return Interval in seconds at which the Helm repository should be refreshed (int)
+     * 
+     */
+    public Optional<Output<Integer>> refreshInterval() {
+        return Optional.ofNullable(this.refreshInterval);
+    }
+
+    /**
      * (Computed) The k8s resource version (string)
      * 
      */
@@ -319,6 +334,7 @@ public final class CatalogV2State extends com.pulumi.resources.ResourceArgs {
         this.insecurePlainHttp = $.insecurePlainHttp;
         this.labels = $.labels;
         this.name = $.name;
+        this.refreshInterval = $.refreshInterval;
         this.resourceVersion = $.resourceVersion;
         this.secretName = $.secretName;
         this.secretNamespace = $.secretNamespace;
@@ -616,6 +632,27 @@ public final class CatalogV2State extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param refreshInterval Interval in seconds at which the Helm repository should be refreshed (int)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder refreshInterval(@Nullable Output<Integer> refreshInterval) {
+            $.refreshInterval = refreshInterval;
+            return this;
+        }
+
+        /**
+         * @param refreshInterval Interval in seconds at which the Helm repository should be refreshed (int)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder refreshInterval(Integer refreshInterval) {
+            return refreshInterval(Output.of(refreshInterval));
         }
 
         /**
