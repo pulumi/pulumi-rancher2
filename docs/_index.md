@@ -51,7 +51,7 @@ config:
 
 ```
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
@@ -193,6 +193,28 @@ public class App {
             .build());
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    rancher2 = {
+      source = "pulumi/rancher2"
+    }
+  }
+}
+
+# Create a new rancher2_bootstrap using bootstrap provider config
+resource "rancher2_bootstrap" "admin" {
+  password = "blahblah"
+}
+# Create a new rancher2 resource using admin provider config
+resource "rancher2_catalog" "foo" {
+  name = "test"
+  url  = "http://foo.com:8080"
 }
 ```
 
