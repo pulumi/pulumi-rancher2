@@ -1212,7 +1212,7 @@ class ClusterAksConfigV2ArgsDict(TypedDict):
     """
     The AKS network service cidr
     """
-    node_pools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAksConfigV2NodePoolArgs']]]]]
+    node_pools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAksConfigV2NodePoolArgsDict']]]]]
     """
     The AKS node pools to use. Required if `import=false`
     """
@@ -2074,7 +2074,7 @@ class ClusterAksConfigV2NodePoolArgs:
 
 
 class ClusterClusterAgentDeploymentCustomizationArgsDict(TypedDict):
-    append_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationAppendTolerationArgs']]]]]
+    append_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationAppendTolerationArgsDict']]]]]
     """
     User-defined tolerations to append to agent
     """
@@ -2082,11 +2082,11 @@ class ClusterClusterAgentDeploymentCustomizationArgsDict(TypedDict):
     """
     User-defined affinity to override default agent affinity
     """
-    override_resource_requirements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]]
+    override_resource_requirements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict']]]]]
     """
     User-defined resource requirements to set on the agent
     """
-    scheduling_customizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]]]]
+    scheduling_customizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict']]]]]
     """
     User-defined scheduling customization for the cattle or fleet cluster agent
     """
@@ -2360,11 +2360,11 @@ class ClusterClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs:
 
 
 class ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict(TypedDict):
-    pod_disruption_budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]]]
+    pod_disruption_budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict']]]]]
     """
     The Pod Disruption Budget created for the cattle cluster agent or fleet agent
     """
-    priority_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]]]
+    priority_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict']]]]]
     """
     The Priority Class created for the cattle cluster agent or fleet agent
     """
@@ -3014,7 +3014,7 @@ class ClusterEksConfigV2ArgsDict(TypedDict):
     """
     The name of the Cluster (string)
     """
-    node_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupArgs']]]]]
+    node_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupArgsDict']]]]]
     """
     The AWS node groups to use
     """
@@ -3366,7 +3366,7 @@ class ClusterEksConfigV2NodeGroupArgsDict(TypedDict):
     """
     Labels for the Cluster (map)
     """
-    launch_templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgs']]]]]
+    launch_templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterEksConfigV2NodeGroupLaunchTemplateArgsDict']]]]]
     """
     The EKS node groups launch template
     """
@@ -3788,7 +3788,7 @@ class ClusterEksConfigV2NodeGroupLaunchTemplateArgs:
 
 
 class ClusterFleetAgentDeploymentCustomizationArgsDict(TypedDict):
-    append_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationAppendTolerationArgs']]]]]
+    append_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationAppendTolerationArgsDict']]]]]
     """
     User-defined tolerations to append to agent
     """
@@ -3796,11 +3796,11 @@ class ClusterFleetAgentDeploymentCustomizationArgsDict(TypedDict):
     """
     User-defined affinity to override default agent affinity
     """
-    override_resource_requirements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]]
+    override_resource_requirements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict']]]]]
     """
     User-defined resource requirements to set on the agent
     """
-    scheduling_customizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgs']]]]]
+    scheduling_customizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgsDict']]]]]
     """
     User-defined scheduling customization for the cattle or fleet cluster agent
     """
@@ -4074,11 +4074,11 @@ class ClusterFleetAgentDeploymentCustomizationOverrideResourceRequirementArgs:
 
 
 class ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationArgsDict(TypedDict):
-    pod_disruption_budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]]]
+    pod_disruption_budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict']]]]]
     """
     The Pod Disruption Budget created for the cattle cluster agent or fleet agent
     """
-    priority_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]]]
+    priority_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterFleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict']]]]]
     """
     The Priority Class created for the cattle cluster agent or fleet agent
     """
@@ -4232,7 +4232,7 @@ class ClusterGkeConfigV2ArgsDict(TypedDict):
     """
     The GKE project id
     """
-    cluster_addons: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2ClusterAddonsArgs']]]
+    cluster_addons: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2ClusterAddonsArgsDict']]]
     """
     The GKE cluster addons
     """
@@ -4252,7 +4252,7 @@ class ClusterGkeConfigV2ArgsDict(TypedDict):
     """
     Is GKE cluster imported?
     """
-    ip_allocation_policy: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2IpAllocationPolicyArgs']]]
+    ip_allocation_policy: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2IpAllocationPolicyArgsDict']]]
     """
     The GKE ip allocation policy
     """
@@ -4276,7 +4276,7 @@ class ClusterGkeConfigV2ArgsDict(TypedDict):
     """
     The GKE cluster maintenance window
     """
-    master_authorized_networks_config: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgs']]]
+    master_authorized_networks_config: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2MasterAuthorizedNetworksConfigArgsDict']]]
     """
     The GKE cluster master authorized networks config
     """
@@ -4292,11 +4292,11 @@ class ClusterGkeConfigV2ArgsDict(TypedDict):
     """
     Is GKE cluster network policy enabled?
     """
-    node_pools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterGkeConfigV2NodePoolArgs']]]]]
+    node_pools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterGkeConfigV2NodePoolArgsDict']]]]]
     """
     The GKE cluster node pools
     """
-    private_cluster_config: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2PrivateClusterConfigArgs']]]
+    private_cluster_config: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2PrivateClusterConfigArgsDict']]]
     """
     The GKE private cluster config
     """
@@ -5032,15 +5032,15 @@ class ClusterGkeConfigV2NodePoolArgsDict(TypedDict):
     """
     The GKE node pool config version
     """
-    autoscaling: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2NodePoolAutoscalingArgs']]]
+    autoscaling: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2NodePoolAutoscalingArgsDict']]]
     """
     The GKE node pool config autoscaling
     """
-    config: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2NodePoolConfigArgs']]]
+    config: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2NodePoolConfigArgsDict']]]
     """
     The GKE node pool node config
     """
-    management: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2NodePoolManagementArgs']]]
+    management: NotRequired[pulumi.Input[Optional['ClusterGkeConfigV2NodePoolManagementArgsDict']]]
     """
     The GKE node pool config management
     """
@@ -5275,7 +5275,7 @@ class ClusterGkeConfigV2NodePoolConfigArgsDict(TypedDict):
     """
     The GKE node config tags
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterGkeConfigV2NodePoolConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterGkeConfigV2NodePoolConfigTaintArgsDict']]]]]
     """
     The GKE node config taints
     """
@@ -5676,7 +5676,7 @@ class ClusterImportedConfigArgs:
 
 
 class ClusterK3sConfigArgsDict(TypedDict):
-    upgrade_strategy: NotRequired[pulumi.Input[Optional['ClusterK3sConfigUpgradeStrategyArgs']]]
+    upgrade_strategy: NotRequired[pulumi.Input[Optional['ClusterK3sConfigUpgradeStrategyArgsDict']]]
     """
     The K3S upgrade strategy
     """
@@ -6637,7 +6637,7 @@ class ClusterOkeConfigArgs:
 
 
 class ClusterRke2ConfigArgsDict(TypedDict):
-    upgrade_strategy: NotRequired[pulumi.Input[Optional['ClusterRke2ConfigUpgradeStrategyArgs']]]
+    upgrade_strategy: NotRequired[pulumi.Input[Optional['ClusterRke2ConfigUpgradeStrategyArgsDict']]]
     """
     The RKE2 upgrade strategy
     """
@@ -6787,23 +6787,23 @@ class ClusterRkeConfigArgsDict(TypedDict):
     """
     Optional addons yaml manisfest to deploy on rke cluster.
     """
-    authentication: NotRequired[pulumi.Input[Optional['ClusterRkeConfigAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['ClusterRkeConfigAuthenticationArgsDict']]]
     """
     Kubernetes cluster authentication
     """
-    authorization: NotRequired[pulumi.Input[Optional['ClusterRkeConfigAuthorizationArgs']]]
+    authorization: NotRequired[pulumi.Input[Optional['ClusterRkeConfigAuthorizationArgsDict']]]
     """
     Kubernetes cluster authorization
     """
-    bastion_host: NotRequired[pulumi.Input[Optional['ClusterRkeConfigBastionHostArgs']]]
+    bastion_host: NotRequired[pulumi.Input[Optional['ClusterRkeConfigBastionHostArgsDict']]]
     """
     RKE bastion host
     """
-    cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderArgs']]]
+    cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderArgsDict']]]
     """
     RKE options for Calico network provider (string)
     """
-    dns: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsArgs']]]
+    dns: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsArgsDict']]]
     """
     RKE dns add-on. For Rancher v2.2.x (list maxitems:1)
     """
@@ -6815,7 +6815,7 @@ class ClusterRkeConfigArgsDict(TypedDict):
     """
     Optional ignore docker version on nodes
     """
-    ingress: NotRequired[pulumi.Input[Optional['ClusterRkeConfigIngressArgs']]]
+    ingress: NotRequired[pulumi.Input[Optional['ClusterRkeConfigIngressArgsDict']]]
     """
     Kubernetes ingress configuration
     """
@@ -6823,15 +6823,15 @@ class ClusterRkeConfigArgsDict(TypedDict):
     """
     Optional kubernetes version to deploy
     """
-    monitoring: NotRequired[pulumi.Input[Optional['ClusterRkeConfigMonitoringArgs']]]
+    monitoring: NotRequired[pulumi.Input[Optional['ClusterRkeConfigMonitoringArgsDict']]]
     """
     Kubernetes cluster monitoring
     """
-    network: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkArgs']]]
+    network: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkArgsDict']]]
     """
     Kubernetes cluster networking
     """
-    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigNodeArgs']]]]]
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigNodeArgsDict']]]]]
     """
     Optional RKE cluster nodes
     """
@@ -6839,11 +6839,11 @@ class ClusterRkeConfigArgsDict(TypedDict):
     """
     Optional prefix to customize kubernetes path
     """
-    private_registries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigPrivateRegistryArgs']]]]]
+    private_registries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigPrivateRegistryArgsDict']]]]]
     """
     Optional private registries for docker images
     """
-    services: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesArgs']]]
+    services: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesArgsDict']]]
     """
     Kubernetes cluster services
     """
@@ -6859,7 +6859,7 @@ class ClusterRkeConfigArgsDict(TypedDict):
     """
     Optional cluster level SSH private key path
     """
-    upgrade_strategy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigUpgradeStrategyArgs']]]
+    upgrade_strategy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigUpgradeStrategyArgsDict']]]
     """
     RKE upgrade strategy
     """
@@ -7469,11 +7469,11 @@ class ClusterRkeConfigBastionHostArgs:
 
 
 class ClusterRkeConfigCloudProviderArgsDict(TypedDict):
-    aws_cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderAwsCloudProviderArgs']]]
+    aws_cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderAwsCloudProviderArgsDict']]]
     """
     RKE AWS Cloud Provider config for Cloud Provider [rke-aws-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/aws/) (list maxitems:1)
     """
-    azure_cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderAzureCloudProviderArgs']]]
+    azure_cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderAzureCloudProviderArgsDict']]]
     """
     RKE Azure Cloud Provider config for Cloud Provider [rke-azure-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/azure/) (list maxitems:1)
     """
@@ -7485,11 +7485,11 @@ class ClusterRkeConfigCloudProviderArgsDict(TypedDict):
     """
     The name of the Cluster (string)
     """
-    openstack_cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderArgs']]]
+    openstack_cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderArgsDict']]]
     """
     RKE Openstack Cloud Provider config for Cloud Provider [rke-openstack-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/openstack/) (list maxitems:1)
     """
-    vsphere_cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderVsphereCloudProviderArgs']]]
+    vsphere_cloud_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderVsphereCloudProviderArgsDict']]]
     """
     RKE Vsphere Cloud Provider config for Cloud Provider [rke-vsphere-cloud-provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/) Extra argument `name` is required on `virtual_center` configuration. (list maxitems:1)
     """
@@ -7598,11 +7598,11 @@ class ClusterRkeConfigCloudProviderArgs:
 
 
 class ClusterRkeConfigCloudProviderAwsCloudProviderArgsDict(TypedDict):
-    global_: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgs']]]
+    global_: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderAwsCloudProviderGlobalArgsDict']]]
     """
     (list maxitems:1)
     """
-    service_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgs']]]]]
+    service_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigCloudProviderAwsCloudProviderServiceOverrideArgsDict']]]]]
     """
     (list)
     """
@@ -8573,19 +8573,19 @@ class ClusterRkeConfigCloudProviderOpenstackCloudProviderArgsDict(TypedDict):
     """
     (list maxitems:1)
     """
-    block_storage: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgs']]]
+    block_storage: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderBlockStorageArgsDict']]]
     """
     (list maxitems:1)
     """
-    load_balancer: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgs']]]
+    load_balancer: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderLoadBalancerArgsDict']]]
     """
     (list maxitems:1)
     """
-    metadata: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgs']]]
+    metadata: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderMetadataArgsDict']]]
     """
     (list maxitems:1)
     """
-    route: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgs']]]
+    route: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderOpenstackCloudProviderRouteArgsDict']]]
     """
     (list maxitems:1)
     """
@@ -9267,15 +9267,15 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderArgsDict(TypedDict):
     """
     (list maxitems:1)
     """
-    disk: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgs']]]
+    disk: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderVsphereCloudProviderDiskArgsDict']]]
     """
     (list maxitems:1)
     """
-    global_: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgs']]]
+    global_: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderVsphereCloudProviderGlobalArgsDict']]]
     """
     (list maxitems:1)
     """
-    network: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgs']]]
+    network: NotRequired[pulumi.Input[Optional['ClusterRkeConfigCloudProviderVsphereCloudProviderNetworkArgsDict']]]
     """
     The GKE cluster network. Required for create new cluster (string)
     """
@@ -9797,7 +9797,7 @@ class ClusterRkeConfigCloudProviderVsphereCloudProviderWorkspaceArgs:
 
 
 class ClusterRkeConfigDnsArgsDict(TypedDict):
-    linear_autoscaler_params: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsLinearAutoscalerParamsArgs']]]
+    linear_autoscaler_params: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsLinearAutoscalerParamsArgsDict']]]
     """
     Linear Autoscaler Params
     """
@@ -9805,7 +9805,7 @@ class ClusterRkeConfigDnsArgsDict(TypedDict):
     """
     RKE monitoring node selector (map)
     """
-    nodelocal: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsNodelocalArgs']]]
+    nodelocal: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsNodelocalArgsDict']]]
     """
     Nodelocal dns
     """
@@ -9821,11 +9821,11 @@ class ClusterRkeConfigDnsArgsDict(TypedDict):
     """
     DNS add-on reverse cidr  (list)
     """
-    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigDnsTolerationArgs']]]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigDnsTolerationArgsDict']]]]]
     """
     DNS service tolerations
     """
-    update_strategy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsUpdateStrategyArgs']]]
+    update_strategy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsUpdateStrategyArgsDict']]]
     """
     Update deployment strategy
     """
@@ -10252,7 +10252,7 @@ class ClusterRkeConfigDnsTolerationArgs:
 
 
 class ClusterRkeConfigDnsUpdateStrategyArgsDict(TypedDict):
-    rolling_update: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgs']]]
+    rolling_update: NotRequired[pulumi.Input[Optional['ClusterRkeConfigDnsUpdateStrategyRollingUpdateArgsDict']]]
     """
     Rolling update for update strategy
     """
@@ -10386,11 +10386,11 @@ class ClusterRkeConfigIngressArgsDict(TypedDict):
     """
     RKE monitoring provider (string)
     """
-    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigIngressTolerationArgs']]]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigIngressTolerationArgsDict']]]]]
     """
     Ingress add-on tolerations
     """
-    update_strategy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigIngressUpdateStrategyArgs']]]
+    update_strategy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigIngressUpdateStrategyArgsDict']]]
     """
     Update daemon set strategy
     """
@@ -10687,7 +10687,7 @@ class ClusterRkeConfigIngressTolerationArgs:
 
 
 class ClusterRkeConfigIngressUpdateStrategyArgsDict(TypedDict):
-    rolling_update: NotRequired[pulumi.Input[Optional['ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgs']]]
+    rolling_update: NotRequired[pulumi.Input[Optional['ClusterRkeConfigIngressUpdateStrategyRollingUpdateArgsDict']]]
     """
     Rolling update for update strategy
     """
@@ -10781,11 +10781,11 @@ class ClusterRkeConfigMonitoringArgsDict(TypedDict):
     """
     RKE monitoring replicas (int)
     """
-    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigMonitoringTolerationArgs']]]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigMonitoringTolerationArgsDict']]]]]
     """
     Monitoring add-on tolerations
     """
-    update_strategy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigMonitoringUpdateStrategyArgs']]]
+    update_strategy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigMonitoringUpdateStrategyArgsDict']]]
     """
     Update deployment strategy
     """
@@ -11002,7 +11002,7 @@ class ClusterRkeConfigMonitoringTolerationArgs:
 
 
 class ClusterRkeConfigMonitoringUpdateStrategyArgsDict(TypedDict):
-    rolling_update: NotRequired[pulumi.Input[Optional['ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs']]]
+    rolling_update: NotRequired[pulumi.Input[Optional['ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgsDict']]]
     """
     Rolling update for update strategy
     """
@@ -11100,19 +11100,19 @@ class ClusterRkeConfigMonitoringUpdateStrategyRollingUpdateArgs:
 
 
 class ClusterRkeConfigNetworkArgsDict(TypedDict):
-    aci_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkAciNetworkProviderArgs']]]
+    aci_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkAciNetworkProviderArgsDict']]]
     """
     ACI provider config for RKE network (list maxitems:63)
     """
-    calico_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkCalicoNetworkProviderArgs']]]
+    calico_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkCalicoNetworkProviderArgsDict']]]
     """
     Calico provider config for RKE network (list maxitems:1)
     """
-    canal_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkCanalNetworkProviderArgs']]]
+    canal_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkCanalNetworkProviderArgsDict']]]
     """
     Canal provider config for RKE network (list maxitems:1)
     """
-    flannel_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkFlannelNetworkProviderArgs']]]
+    flannel_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkFlannelNetworkProviderArgsDict']]]
     """
     Flannel provider config for RKE network (list maxitems:1)
     """
@@ -11128,11 +11128,11 @@ class ClusterRkeConfigNetworkArgsDict(TypedDict):
     """
     Plugin for RKE network. `canal` (default), `flannel`, `calico`, `none` and `weave` are supported. (string)
     """
-    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigNetworkTolerationArgs']]]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigNetworkTolerationArgsDict']]]]]
     """
     Network add-on tolerations
     """
-    weave_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkWeaveNetworkProviderArgs']]]
+    weave_network_provider: NotRequired[pulumi.Input[Optional['ClusterRkeConfigNetworkWeaveNetworkProviderArgsDict']]]
     """
     Weave provider config for RKE network (list maxitems:1)
     """
@@ -13224,7 +13224,7 @@ class ClusterRkeConfigPrivateRegistryArgsDict(TypedDict):
     """
     Registry URL (string)
     """
-    ecr_credential_plugin: NotRequired[pulumi.Input[Optional['ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs']]]
+    ecr_credential_plugin: NotRequired[pulumi.Input[Optional['ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgsDict']]]
     """
     ECR credential plugin config
     """
@@ -13397,27 +13397,27 @@ class ClusterRkeConfigPrivateRegistryEcrCredentialPluginArgs:
 
 
 class ClusterRkeConfigServicesArgsDict(TypedDict):
-    etcd: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesEtcdArgs']]]
+    etcd: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesEtcdArgsDict']]]
     """
     Etcd options for RKE services (list maxitems:1)
     """
-    kube_api: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiArgs']]]
+    kube_api: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiArgsDict']]]
     """
     Kube API options for RKE services (list maxitems:1)
     """
-    kube_controller: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeControllerArgs']]]
+    kube_controller: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeControllerArgsDict']]]
     """
     Kube Controller options for RKE services (list maxitems:1)
     """
-    kubelet: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeletArgs']]]
+    kubelet: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeletArgsDict']]]
     """
     Kubelet options for RKE services (list maxitems:1)
     """
-    kubeproxy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeproxyArgs']]]
+    kubeproxy: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeproxyArgsDict']]]
     """
     Kubeproxy options for RKE services (list maxitems:1)
     """
-    scheduler: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesSchedulerArgs']]]
+    scheduler: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesSchedulerArgsDict']]]
     """
     Scheduler options for RKE services (list maxitems:1)
     """
@@ -13526,7 +13526,7 @@ class ClusterRkeConfigServicesArgs:
 
 
 class ClusterRkeConfigServicesEtcdArgsDict(TypedDict):
-    backup_config: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesEtcdBackupConfigArgs']]]
+    backup_config: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesEtcdBackupConfigArgsDict']]]
     """
     Backup options for etcd service. For Rancher v2.2.x (list maxitems:1)
     """
@@ -13847,7 +13847,7 @@ class ClusterRkeConfigServicesEtcdBackupConfigArgsDict(TypedDict):
     """
     Retention for etcd backup. Default `6` (int)
     """
-    s3_backup_config: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs']]]
+    s3_backup_config: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgsDict']]]
     """
     S3 config options for etcd backup (list maxitems:1)
     """
@@ -14111,7 +14111,7 @@ class ClusterRkeConfigServicesEtcdBackupConfigS3BackupConfigArgs:
 
 
 class ClusterRkeConfigServicesKubeApiArgsDict(TypedDict):
-    admission_configuration: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgs']]]
+    admission_configuration: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgsDict']]]
     """
     Cluster admission configuration
     """
@@ -14119,11 +14119,11 @@ class ClusterRkeConfigServicesKubeApiArgsDict(TypedDict):
     """
     Enable [AlwaysPullImages](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#alwayspullimages) Admission controller plugin. [Rancher docs](https://rancher.com/docs/rke/latest/en/config-options/services/#kubernetes-api-server-options) Default: `false` (bool)
     """
-    audit_log: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiAuditLogArgs']]]
+    audit_log: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiAuditLogArgsDict']]]
     """
     K8s audit log configuration. (list maxitems: 1)
     """
-    event_rate_limit: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiEventRateLimitArgs']]]
+    event_rate_limit: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiEventRateLimitArgsDict']]]
     """
     K8s event rate limit configuration. (list maxitems: 1)
     """
@@ -14143,7 +14143,7 @@ class ClusterRkeConfigServicesKubeApiArgsDict(TypedDict):
     """
     Docker image for scheduler service (string)
     """
-    secrets_encryption_config: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgs']]]
+    secrets_encryption_config: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiSecretsEncryptionConfigArgsDict']]]
     """
     [Encrypt k8s secret data configration](https://rancher.com/docs/rke/latest/en/config-options/secrets-encryption/). (list maxitem: 1)
     """
@@ -14348,7 +14348,7 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationArgsDict(TypedDict):
     """
     Admission configuration Kind
     """
-    plugins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs']]]]]
+    plugins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgsDict']]]]]
     """
     Admission configuration plugins
     """
@@ -14478,7 +14478,7 @@ class ClusterRkeConfigServicesKubeApiAdmissionConfigurationPluginArgs:
 
 
 class ClusterRkeConfigServicesKubeApiAuditLogArgsDict(TypedDict):
-    configuration: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgs']]]
+    configuration: NotRequired[pulumi.Input[Optional['ClusterRkeConfigServicesKubeApiAuditLogConfigurationArgsDict']]]
     """
     Event rate limit configuration yaml encoded definition. `apiVersion` and `kind: Configuration"` fields are required in the yaml. [More info](https://rancher.com/docs/rke/latest/en/config-options/rate-limiting/) (string) Ex:
 
@@ -15407,7 +15407,7 @@ class ClusterRkeConfigUpgradeStrategyArgsDict(TypedDict):
     """
     RKE drain nodes. Default: `false` (bool)
     """
-    drain_input: NotRequired[pulumi.Input[Optional['ClusterRkeConfigUpgradeStrategyDrainInputArgs']]]
+    drain_input: NotRequired[pulumi.Input[Optional['ClusterRkeConfigUpgradeStrategyDrainInputArgsDict']]]
     """
     RKE drain node input (list Maxitems: 1)
     """
@@ -15977,7 +15977,7 @@ class ClusterV2AgentEnvVarArgs:
 
 
 class ClusterV2ClusterAgentDeploymentCustomizationArgsDict(TypedDict):
-    append_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs']]]]]
+    append_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgsDict']]]]]
     """
     User-defined tolerations to append to agent
     """
@@ -15985,11 +15985,11 @@ class ClusterV2ClusterAgentDeploymentCustomizationArgsDict(TypedDict):
     """
     User-defined affinity to override default agent affinity
     """
-    override_resource_requirements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]]
+    override_resource_requirements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgsDict']]]]]
     """
     User-defined resource requirements to set on the agent
     """
-    scheduling_customizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs']]]]]
+    scheduling_customizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict']]]]]
     """
     User-defined scheduling customization for the cattle or fleet cluster agent
     """
@@ -16263,11 +16263,11 @@ class ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArg
 
 
 class ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgsDict(TypedDict):
-    pod_disruption_budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]]]
+    pod_disruption_budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict']]]]]
     """
     The Pod Disruption Budget created for the cattle cluster agent or fleet agent
     """
-    priority_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]]]
+    priority_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict']]]]]
     """
     The Priority Class created for the cattle cluster agent or fleet agent
     """
@@ -16678,7 +16678,7 @@ class ClusterV2ClusterRegistrationTokenArgs:
 
 
 class ClusterV2FleetAgentDeploymentCustomizationArgsDict(TypedDict):
-    append_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgs']]]]]
+    append_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationAppendTolerationArgsDict']]]]]
     """
     User-defined tolerations to append to agent
     """
@@ -16686,11 +16686,11 @@ class ClusterV2FleetAgentDeploymentCustomizationArgsDict(TypedDict):
     """
     User-defined affinity to override default agent affinity
     """
-    override_resource_requirements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs']]]]]
+    override_resource_requirements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgsDict']]]]]
     """
     User-defined resource requirements to set on the agent
     """
-    scheduling_customizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs']]]]]
+    scheduling_customizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgsDict']]]]]
     """
     User-defined scheduling customization for the cattle or fleet cluster agent
     """
@@ -16964,11 +16964,11 @@ class ClusterV2FleetAgentDeploymentCustomizationOverrideResourceRequirementArgs:
 
 
 class ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgsDict(TypedDict):
-    pod_disruption_budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs']]]]]
+    pod_disruption_budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgsDict']]]]]
     """
     The Pod Disruption Budget created for the cattle cluster agent or fleet agent
     """
-    priority_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs']]]]]
+    priority_classes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgsDict']]]]]
     """
     The Priority Class created for the cattle cluster agent or fleet agent
     """
@@ -17187,23 +17187,23 @@ class ClusterV2RkeConfigArgsDict(TypedDict):
     """
     Cluster V2 chart values. It should be in YAML format
     """
-    data_directories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigDataDirectoryArgs']]]]]
+    data_directories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigDataDirectoryArgsDict']]]]]
     """
     Cluster V2 data directories
     """
-    etcd: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigEtcdArgs']]]
+    etcd: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigEtcdArgsDict']]]
     """
     Cluster V2 etcd
     """
-    etcd_snapshot_create: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigEtcdSnapshotCreateArgs']]]
+    etcd_snapshot_create: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigEtcdSnapshotCreateArgsDict']]]
     """
     Cluster V2 etcd snapshot create
     """
-    etcd_snapshot_restore: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigEtcdSnapshotRestoreArgs']]]
+    etcd_snapshot_restore: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigEtcdSnapshotRestoreArgsDict']]]
     """
     Cluster V2 etcd snapshot restore
     """
-    local_auth_endpoint: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigLocalAuthEndpointArgs']]]
+    local_auth_endpoint: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigLocalAuthEndpointArgsDict']]]
     """
     Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
     """
@@ -17211,35 +17211,35 @@ class ClusterV2RkeConfigArgsDict(TypedDict):
     """
     Cluster V2 machine global config
     """
-    machine_pool_defaults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolDefaultArgs']]]]]
+    machine_pool_defaults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolDefaultArgsDict']]]]]
     """
     Default values for machine pool configurations if unset
     """
-    machine_pools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolArgs']]]]]
+    machine_pools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolArgsDict']]]]]
     """
     Cluster V2 machine pools
     """
-    machine_selector_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigArgs']]]]]
+    machine_selector_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigArgsDict']]]]]
     """
     Cluster V2 machine selector config
     """
-    machine_selector_files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileArgs']]]]]
+    machine_selector_files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileArgsDict']]]]]
     """
     Cluster V2 machine selector files
     """
-    networking: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigNetworkingArgs']]]
+    networking: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigNetworkingArgsDict']]]
     """
     Cluster V2 networking
     """
-    registries: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigRegistriesArgs']]]
+    registries: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigRegistriesArgsDict']]]
     """
     Cluster V2 registries
     """
-    rotate_certificates: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigRotateCertificatesArgs']]]
+    rotate_certificates: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigRotateCertificatesArgsDict']]]
     """
     Cluster V2 certificate rotation
     """
-    upgrade_strategy: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigUpgradeStrategyArgs']]]
+    upgrade_strategy: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigUpgradeStrategyArgsDict']]]
     """
     Cluster V2 upgrade strategy
     """
@@ -17585,7 +17585,7 @@ class ClusterV2RkeConfigEtcdArgsDict(TypedDict):
     """
     Disable ETCD snapshots
     """
-    s3_config: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigEtcdS3ConfigArgs']]]
+    s3_config: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigEtcdS3ConfigArgsDict']]]
     """
     ETCD snapshot S3 config
     """
@@ -18045,11 +18045,11 @@ class ClusterV2RkeConfigMachinePoolArgsDict(TypedDict):
     """
     Machine pool quantity
     """
-    rolling_update: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachinePoolRollingUpdateArgs']]]
+    rolling_update: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachinePoolRollingUpdateArgsDict']]]
     """
     Machine pool rolling update
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachinePoolTaintArgsDict']]]]]
     """
     Machine pool taints
     """
@@ -18624,7 +18624,7 @@ class ClusterV2RkeConfigMachineSelectorConfigArgsDict(TypedDict):
     """
     Machine selector config
     """
-    machine_label_selector: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs']]]
+    machine_label_selector: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgsDict']]]
     """
     Machine label selector
     """
@@ -18669,7 +18669,7 @@ class ClusterV2RkeConfigMachineSelectorConfigArgs:
 
 
 class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgsDict(TypedDict):
-    match_expressions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs']]]]]
+    match_expressions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgsDict']]]]]
     """
     Label selector match expressions
     """
@@ -18787,11 +18787,11 @@ class ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpression
 
 
 class ClusterV2RkeConfigMachineSelectorFileArgsDict(TypedDict):
-    file_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceArgs']]]]]
+    file_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceArgsDict']]]]]
     """
     File sources
     """
-    machine_label_selector: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs']]]
+    machine_label_selector: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgsDict']]]
     """
     Machine label selector
     """
@@ -18836,11 +18836,11 @@ class ClusterV2RkeConfigMachineSelectorFileArgs:
 
 
 class ClusterV2RkeConfigMachineSelectorFileFileSourceArgsDict(TypedDict):
-    configmap: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgs']]]
+    configmap: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgsDict']]]
     """
     The configmap which is the source of files
     """
-    secret: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs']]]
+    secret: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgsDict']]]
     """
     The secret which is the source of files
     """
@@ -18893,7 +18893,7 @@ class ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapArgsDict(TypedDict
     """
     The default permissions to be applied when they are not set at the item level
     """
-    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgs']]]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceConfigmapItemArgsDict']]]]]
     """
     Items(files) to retrieve from the K8s object
     """
@@ -19068,7 +19068,7 @@ class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgsDict(TypedDict):
     """
     The default permissions to be applied when they are not set at the item level
     """
-    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs']]]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgsDict']]]]]
     """
     Items(files) to retrieve from the K8s object
     """
@@ -19235,7 +19235,7 @@ class ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs:
 
 
 class ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgsDict(TypedDict):
-    match_expressions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs']]]]]
+    match_expressions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgsDict']]]]]
     """
     Label selector match expressions
     """
@@ -19382,11 +19382,11 @@ class ClusterV2RkeConfigNetworkingArgs:
 
 
 class ClusterV2RkeConfigRegistriesArgsDict(TypedDict):
-    configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigRegistriesConfigArgs']]]]]
+    configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigRegistriesConfigArgsDict']]]]]
     """
     Registry config
     """
-    mirrors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigRegistriesMirrorArgs']]]]]
+    mirrors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterV2RkeConfigRegistriesMirrorArgsDict']]]]]
     """
     Registry mirrors
     """
@@ -19659,7 +19659,7 @@ class ClusterV2RkeConfigUpgradeStrategyArgsDict(TypedDict):
     """
     How many controlplane nodes should be upgrade at time, 0 is infinite. Percentages are also accepted
     """
-    control_plane_drain_options: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgs']]]
+    control_plane_drain_options: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigUpgradeStrategyControlPlaneDrainOptionsArgsDict']]]
     """
     Controlplane nodes drain options
     """
@@ -19667,7 +19667,7 @@ class ClusterV2RkeConfigUpgradeStrategyArgsDict(TypedDict):
     """
     How many worker nodes should be upgrade at time
     """
-    worker_drain_options: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgs']]]
+    worker_drain_options: NotRequired[pulumi.Input[Optional['ClusterV2RkeConfigUpgradeStrategyWorkerDrainOptionsArgsDict']]]
     """
     Worker nodes drain options
     """
