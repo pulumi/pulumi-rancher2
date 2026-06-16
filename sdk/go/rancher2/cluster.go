@@ -49,12 +49,12 @@ import (
 //			}
 //			ctx.Export("kubectl-command", pulumi.StringArray{
 //				foo_imported.ClusterRegistrationToken.ApplyT(func(clusterRegistrationToken rancher2.ClusterClusterRegistrationToken) (*string, error) {
-//					return &clusterRegistrationToken.Command, nil
+//					return clusterRegistrationToken.Command, nil
 //				}).(pulumi.StringPtrOutput),
 //			})
 //			ctx.Export("insecure-kubectl-command", pulumi.StringArray{
 //				foo_imported.ClusterRegistrationToken.ApplyT(func(clusterRegistrationToken rancher2.ClusterClusterRegistrationToken) (*string, error) {
-//					return &clusterRegistrationToken.InsecureCommand, nil
+//					return clusterRegistrationToken.InsecureCommand, nil
 //				}).(pulumi.StringPtrOutput),
 //			})
 //			return nil
