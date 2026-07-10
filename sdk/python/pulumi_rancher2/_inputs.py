@@ -23676,8 +23676,8 @@ class MachineConfigV2OpenstackConfigArgsDict(TypedDict):
     """
     OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
     > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-    > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-    > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+    **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+    **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
     """
     volume_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -23785,8 +23785,8 @@ class MachineConfigV2OpenstackConfigArgs:
         :param pulumi.Input[_builtins.str] username: Nutanix management username. Use `X-ntnx-api-key` when using Prism Central service accounts. Mandatory if `rancher2_cloud_credential.nutanix_credential_config` is not used (string)
         :param pulumi.Input[_builtins.str] volume_device_path: OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
                > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-               > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-               > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+               **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+               **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         :param pulumi.Input[_builtins.str] volume_id: OpenStack volume id of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param pulumi.Input[_builtins.str] volume_name: OpenStack volume name of existing volume. Applicable only when `boot_from_volume` is `true` (string)
         :param pulumi.Input[_builtins.str] volume_size: OpenStack volume size (GiB). Required when `boot_from_volume` is `true` (string)
@@ -24352,8 +24352,8 @@ class MachineConfigV2OpenstackConfigArgs:
         """
         OpenStack volume device path (attaching). Applicable only when `boot_from_volume` is `true`. Omit for auto `/dev/vdb`. (string)
         > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-        > **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
-        > **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
+        **Note:**: `Required++` denotes that either the _name or _id is required unless `application_credential_id` is defined.
+        **Note for OpenStack users:**: `keypair_name` is required to be in the schema even if there are no references in rancher itself
         """
         return pulumi.get(self, "volume_device_path")
 

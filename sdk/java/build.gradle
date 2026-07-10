@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-rancher2"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing rancher2 resources."
+                description = $/A Pulumi package for creating and managing rancher2 resources./$
 
                 url = "https://github.com/pulumi/pulumi-rancher2"
 

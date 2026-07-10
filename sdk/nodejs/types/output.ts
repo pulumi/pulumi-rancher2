@@ -7601,8 +7601,8 @@ export interface MachineConfigV2OpenstackConfig {
     /**
      * OpenStack volume device path (attaching). Applicable only when `bootFromVolume` is `true`. Omit for auto `/dev/vdb`. (string)
      * > **Note:**: `Required+` denotes that either the _name or _id is required but you cannot use both.
-     * > **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
-     * > **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
+     * **Note:**: `Required++` denotes that either the _name or _id is required unless `applicationCredentialId` is defined.
+     * **Note for OpenStack users:**: `keypairName` is required to be in the schema even if there are no references in rancher itself
      */
     volumeDevicePath?: string;
     /**
