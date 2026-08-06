@@ -48,14 +48,10 @@ import (
 //				return err
 //			}
 //			ctx.Export("kubectl-command", pulumi.StringArray{
-//				foo_imported.ClusterRegistrationToken.ApplyT(func(clusterRegistrationToken rancher2.ClusterClusterRegistrationToken) (*string, error) {
-//					return clusterRegistrationToken.Command, nil
-//				}).(pulumi.StringPtrOutput),
+//				foo_imported.ClusterRegistrationToken.Command(),
 //			})
 //			ctx.Export("insecure-kubectl-command", pulumi.StringArray{
-//				foo_imported.ClusterRegistrationToken.ApplyT(func(clusterRegistrationToken rancher2.ClusterClusterRegistrationToken) (*string, error) {
-//					return clusterRegistrationToken.InsecureCommand, nil
-//				}).(pulumi.StringPtrOutput),
+//				foo_imported.ClusterRegistrationToken.InsecureCommand(),
 //			})
 //			return nil
 //		})
@@ -159,7 +155,7 @@ import (
 //				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform EKS cluster"),
 //				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
-//					CloudCredentialId: foo.ID(),
+//					CloudCredentialId: foo.ID().ToIDOutput().ToStringOutput(),
 //					Name:              pulumi.String("<cluster-name>"),
 //					Region:            pulumi.String("<eks-region>"),
 //					Imported:          pulumi.Bool(true),
@@ -203,7 +199,7 @@ import (
 //				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform EKS cluster"),
 //				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
-//					CloudCredentialId: foo.ID(),
+//					CloudCredentialId: foo.ID().ToIDOutput().ToStringOutput(),
 //					Region:            pulumi.String("<EKS_REGION>"),
 //					KubernetesVersion: pulumi.String("1.24"),
 //					LoggingTypes: pulumi.StringArray{
@@ -269,7 +265,7 @@ import (
 //				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform EKS cluster"),
 //				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
-//					CloudCredentialId: foo.ID(),
+//					CloudCredentialId: foo.ID().ToIDOutput().ToStringOutput(),
 //					Region:            pulumi.String("<EKS_REGION>"),
 //					KubernetesVersion: pulumi.String("1.24"),
 //					LoggingTypes: pulumi.StringArray{
@@ -331,7 +327,7 @@ import (
 //				Name:        pulumi.String("foo"),
 //				Description: pulumi.String("Terraform AKS cluster"),
 //				AksConfigV2: &rancher2.ClusterAksConfigV2Args{
-//					CloudCredentialId:           foo_aks.ID(),
+//					CloudCredentialId:           foo_aks.ID().ToIDOutput().ToStringOutput(),
 //					ResourceGroup:               pulumi.String("<resource-group>"),
 //					ResourceLocation:            pulumi.String("<resource-location>"),
 //					DnsPrefix:                   pulumi.String("<dns-prefix>"),

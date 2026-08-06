@@ -34,8 +34,8 @@ import * as utilities from "./utilities";
  *         description: "Foo rancher2 imported cluster",
  *     });
  *     return {
- *         "kubectl-command": [foo_imported.clusterRegistrationToken.apply(clusterRegistrationToken => clusterRegistrationToken.command)],
- *         "insecure-kubectl-command": [foo_imported.clusterRegistrationToken.apply(clusterRegistrationToken => clusterRegistrationToken.insecureCommand)],
+ *         "kubectl-command": [foo_imported.clusterRegistrationToken.command],
+ *         "insecure-kubectl-command": [foo_imported.clusterRegistrationToken.insecureCommand],
  *     };
  * }
  * ```

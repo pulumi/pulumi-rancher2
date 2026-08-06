@@ -77,7 +77,7 @@ import (
 //			}
 //			// Create a new rancher2 Node Pool
 //			_, err = rancher2.NewNodePool(ctx, "foo", &rancher2.NodePoolArgs{
-//				ClusterId:      foo_custom.ID(),
+//				ClusterId:      foo_custom.ID().ToIDOutput().ToStringOutput(),
 //				Name:           pulumi.String("foo"),
 //				HostnamePrefix: pulumi.String("foo-cluster-0"),
 //				NodeTemplateId: fooNodeTemplate.Id,

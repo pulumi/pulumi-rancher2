@@ -69,7 +69,7 @@ import (
 //			}
 //			// Create a new rancher2 Node Pool
 //			fooNodePool, err := rancher2.NewNodePool(ctx, "foo", &rancher2.NodePoolArgs{
-//				ClusterId:      foo_custom.ID(),
+//				ClusterId:      foo_custom.ID().ToIDOutput().ToStringOutput(),
 //				Name:           pulumi.String("foo"),
 //				HostnamePrefix: pulumi.String("foo-cluster-0"),
 //				NodeTemplateId: foo.Id,
@@ -83,9 +83,9 @@ import (
 //			}
 //			// Create a new rancher2 Cluster Sync
 //			foo_customClusterSync, err := rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
-//				ClusterId: foo_custom.ID(),
+//				ClusterId: foo_custom.ID().ToIDOutput().ToStringOutput(),
 //				NodePoolIds: pulumi.StringArray{
-//					fooNodePool.ID(),
+//					fooNodePool.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -94,7 +94,7 @@ import (
 //			// Create a new rancher2 Project
 //			_, err = rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
 //				Name:        pulumi.String("foo"),
-//				ClusterId:   foo_customClusterSync.ID(),
+//				ClusterId:   foo_customClusterSync.ID().ToIDOutput().ToStringOutput(),
 //				Description: pulumi.String("Terraform namespace acceptance test"),
 //				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
 //					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
