@@ -68,12 +68,8 @@ type GetPrincipalResult struct {
 }
 
 func GetPrincipalOutput(ctx *pulumi.Context, args GetPrincipalOutputArgs, opts ...pulumi.InvokeOption) GetPrincipalResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPrincipalResultOutput, error) {
-			args := v.(GetPrincipalArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rancher2:index/getPrincipal:getPrincipal", args, GetPrincipalResultOutput{}, options).(GetPrincipalResultOutput), nil
-		}).(GetPrincipalResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getPrincipal:getPrincipal", args, GetPrincipalResultOutput{}, options).(GetPrincipalResultOutput)
 }
 
 // A collection of arguments for invoking getPrincipal.

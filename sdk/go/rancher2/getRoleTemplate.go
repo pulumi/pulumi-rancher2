@@ -91,12 +91,8 @@ type LookupRoleTemplateResult struct {
 }
 
 func LookupRoleTemplateOutput(ctx *pulumi.Context, args LookupRoleTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupRoleTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRoleTemplateResultOutput, error) {
-			args := v.(LookupRoleTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rancher2:index/getRoleTemplate:getRoleTemplate", args, LookupRoleTemplateResultOutput{}, options).(LookupRoleTemplateResultOutput), nil
-		}).(LookupRoleTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getRoleTemplate:getRoleTemplate", args, LookupRoleTemplateResultOutput{}, options).(LookupRoleTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getRoleTemplate.

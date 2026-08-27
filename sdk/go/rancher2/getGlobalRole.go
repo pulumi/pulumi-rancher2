@@ -80,12 +80,8 @@ type LookupGlobalRoleResult struct {
 }
 
 func LookupGlobalRoleOutput(ctx *pulumi.Context, args LookupGlobalRoleOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGlobalRoleResultOutput, error) {
-			args := v.(LookupGlobalRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rancher2:index/getGlobalRole:getGlobalRole", args, LookupGlobalRoleResultOutput{}, options).(LookupGlobalRoleResultOutput), nil
-		}).(LookupGlobalRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getGlobalRole:getGlobalRole", args, LookupGlobalRoleResultOutput{}, options).(LookupGlobalRoleResultOutput)
 }
 
 // A collection of arguments for invoking getGlobalRole.

@@ -30,10 +30,8 @@ type LookupClusterProxyConfigV2Result struct {
 }
 
 func LookupClusterProxyConfigV2Output(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupClusterProxyConfigV2ResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupClusterProxyConfigV2ResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("rancher2:index/getClusterProxyConfigV2:getClusterProxyConfigV2", nil, LookupClusterProxyConfigV2ResultOutput{}, options).(LookupClusterProxyConfigV2ResultOutput), nil
-	}).(LookupClusterProxyConfigV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getClusterProxyConfigV2:getClusterProxyConfigV2", nil, LookupClusterProxyConfigV2ResultOutput{}, options).(LookupClusterProxyConfigV2ResultOutput)
 }
 
 // A collection of values returned by getClusterProxyConfigV2.
