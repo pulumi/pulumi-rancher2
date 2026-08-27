@@ -81,12 +81,8 @@ type LookupProjectRoleTemplateBindingResult struct {
 }
 
 func LookupProjectRoleTemplateBindingOutput(ctx *pulumi.Context, args LookupProjectRoleTemplateBindingOutputArgs, opts ...pulumi.InvokeOption) LookupProjectRoleTemplateBindingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProjectRoleTemplateBindingResultOutput, error) {
-			args := v.(LookupProjectRoleTemplateBindingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args, LookupProjectRoleTemplateBindingResultOutput{}, options).(LookupProjectRoleTemplateBindingResultOutput), nil
-		}).(LookupProjectRoleTemplateBindingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getProjectRoleTemplateBinding:getProjectRoleTemplateBinding", args, LookupProjectRoleTemplateBindingResultOutput{}, options).(LookupProjectRoleTemplateBindingResultOutput)
 }
 
 // A collection of arguments for invoking getProjectRoleTemplateBinding.

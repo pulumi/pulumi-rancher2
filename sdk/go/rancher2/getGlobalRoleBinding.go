@@ -74,12 +74,8 @@ type LookupGlobalRoleBindingResult struct {
 }
 
 func LookupGlobalRoleBindingOutput(ctx *pulumi.Context, args LookupGlobalRoleBindingOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalRoleBindingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGlobalRoleBindingResultOutput, error) {
-			args := v.(LookupGlobalRoleBindingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args, LookupGlobalRoleBindingResultOutput{}, options).(LookupGlobalRoleBindingResultOutput), nil
-		}).(LookupGlobalRoleBindingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getGlobalRoleBinding:getGlobalRoleBinding", args, LookupGlobalRoleBindingResultOutput{}, options).(LookupGlobalRoleBindingResultOutput)
 }
 
 // A collection of arguments for invoking getGlobalRoleBinding.

@@ -52,12 +52,8 @@ type LookupConfigMapV2Result struct {
 }
 
 func LookupConfigMapV2Output(ctx *pulumi.Context, args LookupConfigMapV2OutputArgs, opts ...pulumi.InvokeOption) LookupConfigMapV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConfigMapV2ResultOutput, error) {
-			args := v.(LookupConfigMapV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rancher2:index/getConfigMapV2:getConfigMapV2", args, LookupConfigMapV2ResultOutput{}, options).(LookupConfigMapV2ResultOutput), nil
-		}).(LookupConfigMapV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getConfigMapV2:getConfigMapV2", args, LookupConfigMapV2ResultOutput{}, options).(LookupConfigMapV2ResultOutput)
 }
 
 // A collection of arguments for invoking getConfigMapV2.

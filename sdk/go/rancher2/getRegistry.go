@@ -109,12 +109,8 @@ type LookupRegistryResult struct {
 }
 
 func LookupRegistryOutput(ctx *pulumi.Context, args LookupRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRegistryResultOutput, error) {
-			args := v.(LookupRegistryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rancher2:index/getRegistry:getRegistry", args, LookupRegistryResultOutput{}, options).(LookupRegistryResultOutput), nil
-		}).(LookupRegistryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getRegistry:getRegistry", args, LookupRegistryResultOutput{}, options).(LookupRegistryResultOutput)
 }
 
 // A collection of arguments for invoking getRegistry.

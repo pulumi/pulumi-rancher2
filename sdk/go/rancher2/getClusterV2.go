@@ -90,12 +90,8 @@ type LookupClusterV2Result struct {
 }
 
 func LookupClusterV2Output(ctx *pulumi.Context, args LookupClusterV2OutputArgs, opts ...pulumi.InvokeOption) LookupClusterV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClusterV2ResultOutput, error) {
-			args := v.(LookupClusterV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rancher2:index/getClusterV2:getClusterV2", args, LookupClusterV2ResultOutput{}, options).(LookupClusterV2ResultOutput), nil
-		}).(LookupClusterV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getClusterV2:getClusterV2", args, LookupClusterV2ResultOutput{}, options).(LookupClusterV2ResultOutput)
 }
 
 // A collection of arguments for invoking getClusterV2.

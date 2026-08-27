@@ -81,12 +81,8 @@ type LookupClusterDriverResult struct {
 }
 
 func LookupClusterDriverOutput(ctx *pulumi.Context, args LookupClusterDriverOutputArgs, opts ...pulumi.InvokeOption) LookupClusterDriverResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClusterDriverResultOutput, error) {
-			args := v.(LookupClusterDriverArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("rancher2:index/getClusterDriver:getClusterDriver", args, LookupClusterDriverResultOutput{}, options).(LookupClusterDriverResultOutput), nil
-		}).(LookupClusterDriverResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("rancher2:index/getClusterDriver:getClusterDriver", args, LookupClusterDriverResultOutput{}, options).(LookupClusterDriverResultOutput)
 }
 
 // A collection of arguments for invoking getClusterDriver.
