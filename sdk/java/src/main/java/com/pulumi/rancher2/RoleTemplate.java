@@ -51,15 +51,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 cluster Role Template
  *         var foo = new RoleTemplate("foo", RoleTemplateArgs.builder()
- *             .name("foo")
- *             .context("cluster")
- *             .defaultRole(true)
- *             .description("Terraform role template acceptance test")
  *             .rules(RoleTemplateRuleArgs.builder()
  *                 .apiGroups("*")
  *                 .resources("secrets")
  *                 .verbs("create")
  *                 .build())
+ *             .name("foo")
+ *             .context("cluster")
+ *             .defaultRole(true)
+ *             .description("Terraform role template acceptance test")
  *             .build());
  * 
  *     }
@@ -92,15 +92,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 project Role Template
  *         var foo = new RoleTemplate("foo", RoleTemplateArgs.builder()
- *             .name("foo")
- *             .context("project")
- *             .defaultRole(true)
- *             .description("Terraform role template acceptance test")
  *             .rules(RoleTemplateRuleArgs.builder()
  *                 .apiGroups("*")
  *                 .resources("secrets")
  *                 .verbs("create")
  *                 .build())
+ *             .name("foo")
+ *             .context("project")
+ *             .defaultRole(true)
+ *             .description("Terraform role template acceptance test")
  *             .build());
  * 
  *     }

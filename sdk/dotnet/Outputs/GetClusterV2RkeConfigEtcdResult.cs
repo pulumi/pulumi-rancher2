@@ -22,7 +22,7 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly Outputs.GetClusterV2RkeConfigEtcdS3ConfigResult? S3Config;
         /// <summary>
-        /// ETCD snapshot retention
+        /// Number of snapshots to retain
         /// </summary>
         public readonly int? SnapshotRetention;
         /// <summary>

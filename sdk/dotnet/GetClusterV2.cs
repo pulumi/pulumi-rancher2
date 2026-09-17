@@ -96,6 +96,9 @@ namespace Pulumi.Rancher2
         [Input("fleetNamespace")]
         public string? FleetNamespace { get; set; }
 
+        [Input("generateKubeConfig")]
+        public bool? GenerateKubeConfig { get; set; }
+
         /// <summary>
         /// The name of the Cluster v2 (string)
         /// </summary>
@@ -115,6 +118,9 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("fleetNamespace")]
         public Input<string>? FleetNamespace { get; set; }
+
+        [Input("generateKubeConfig")]
+        public Input<bool>? GenerateKubeConfig { get; set; }
 
         /// <summary>
         /// The name of the Cluster v2 (string)
@@ -162,6 +168,7 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly bool EnableNetworkPolicy;
         public readonly string? FleetNamespace;
+        public readonly bool? GenerateKubeConfig;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -205,6 +212,8 @@ namespace Pulumi.Rancher2
 
             string? fleetNamespace,
 
+            bool? generateKubeConfig,
+
             string id,
 
             string kubeConfig,
@@ -228,6 +237,7 @@ namespace Pulumi.Rancher2
             DefaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             EnableNetworkPolicy = enableNetworkPolicy;
             FleetNamespace = fleetNamespace;
+            GenerateKubeConfig = generateKubeConfig;
             Id = id;
             KubeConfig = kubeConfig;
             KubernetesVersion = kubernetesVersion;

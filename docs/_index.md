@@ -11,7 +11,7 @@ The Rancher2 provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/rancher2`](https://www.npmjs.com/package/@pulumi/rancher2)
 * Python: [`pulumi-rancher2`](https://pypi.org/project/pulumi-rancher2/)
-* Go: [`github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2`](https://github.com/pulumi/pulumi-rancher2)
+* Go: [`github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2`](https://github.com/pulumi/pulumi-rancher2)
 * .NET: [`Pulumi.Rancher2`](https://www.nuget.org/packages/Pulumi.Rancher2)
 * Java: [`com.pulumi/rancher2`](https://central.sonatype.com/artifact/com.pulumi/rancher2)
 
@@ -60,7 +60,8 @@ import * as rancher2 from "@pulumi/rancher2";
 // Create a new rancher2_bootstrap using bootstrap provider config
 const admin = new rancher2.Bootstrap("admin", {password: "blahblah"});
 // Create a new rancher2 resource using admin provider config
-const foo = new rancher2.index.Catalog("foo", {
+const foo = new rancher2.CatalogV2("foo", {
+    clusterId: "<CLUSTER_ID>",
     name: "test",
     url: "http://foo.com:8080",
 });
@@ -75,9 +76,10 @@ import pulumi_rancher2 as rancher2
 # Create a new rancher2_bootstrap using bootstrap provider config
 admin = rancher2.Bootstrap("admin", password="blahblah")
 # Create a new rancher2 resource using admin provider config
-foo = rancher2.Catalog("foo",
-    name=test,
-    url=http://foo.com:8080)
+foo = rancher2.CatalogV2("foo",
+    cluster_id="<CLUSTER_ID>",
+    name="test",
+    url="http://foo.com:8080")
 ```
 
 {{% /choosable %}}
@@ -97,8 +99,9 @@ return await Deployment.RunAsync(() =>
     });
 
     // Create a new rancher2 resource using admin provider config
-    var foo = new Rancher2.Catalog("foo", new()
+    var foo = new Rancher2.CatalogV2("foo", new()
     {
+        ClusterId = "<CLUSTER_ID>",
         Name = "test",
         Url = "http://foo.com:8080",
     });
@@ -113,7 +116,7 @@ return await Deployment.RunAsync(() =>
 package main
 
 import (
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -127,9 +130,10 @@ func main() {
 			return err
 		}
 		// Create a new rancher2 resource using admin provider config
-		_, err = rancher2.NewCatalog(ctx, "foo", &rancher2.CatalogArgs{
-			Name: "test",
-			Url:  "http://foo.com:8080",
+		_, err = rancher2.NewCatalogV2(ctx, "foo", &rancher2.CatalogV2Args{
+			ClusterId: pulumi.String("<CLUSTER_ID>"),
+			Name:      pulumi.String("test"),
+			Url:       pulumi.String("http://foo.com:8080"),
 		})
 		if err != nil {
 			return err
@@ -150,8 +154,9 @@ resources:
       password: blahblah
   # Create a new rancher2 resource using admin provider config
   foo:
-    type: rancher2:Catalog
+    type: rancher2:CatalogV2
     properties:
+      clusterId: <CLUSTER_ID>
       name: test
       url: http://foo.com:8080
 ```
@@ -166,8 +171,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.rancher2.Bootstrap;
 import com.pulumi.rancher2.BootstrapArgs;
-import com.pulumi.rancher2.Catalog;
-import com.pulumi.rancher2.CatalogArgs;
+import com.pulumi.rancher2.CatalogV2;
+import com.pulumi.rancher2.CatalogV2Args;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -187,7 +192,8 @@ public class App {
             .build());
 
         // Create a new rancher2 resource using admin provider config
-        var foo = new Catalog("foo", CatalogArgs.builder()
+        var foo = new CatalogV2("foo", CatalogV2Args.builder()
+            .clusterId("<CLUSTER_ID>")
             .name("test")
             .url("http://foo.com:8080")
             .build());
@@ -212,9 +218,10 @@ resource "rancher2_bootstrap" "admin" {
   password = "blahblah"
 }
 # Create a new rancher2 resource using admin provider config
-resource "rancher2_catalog" "foo" {
-  name = "test"
-  url  = "http://foo.com:8080"
+resource "rancher2_catalogv2" "foo" {
+  cluster_id = "<CLUSTER_ID>"
+  name       = "test"
+  url        = "http://foo.com:8080"
 }
 ```
 

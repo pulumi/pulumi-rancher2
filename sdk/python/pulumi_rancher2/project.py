@@ -317,8 +317,6 @@ class Project(pulumi.CustomResource):
 
         # Create a new rancher2 Project
         foo = rancher2.Project("foo",
-            name="foo",
-            cluster_id="<CLUSTER_ID>",
             resource_quota={
                 "project_limit": {
                     "limits_cpu": "2000m",
@@ -336,7 +334,9 @@ class Project(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            cluster_id="<CLUSTER_ID>")
         ```
 
         ```python
@@ -345,8 +345,6 @@ class Project(pulumi.CustomResource):
 
         # Create a new rancher2 Project
         foo = rancher2.Project("foo",
-            name="foo",
-            cluster_id="<CLUSTER_ID>",
             resource_quota={
                 "project_limit": {
                     "limits_cpu": "2000m",
@@ -364,7 +362,9 @@ class Project(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            cluster_id="<CLUSTER_ID>")
         ```
 
         ## Import
@@ -404,8 +404,6 @@ class Project(pulumi.CustomResource):
 
         # Create a new rancher2 Project
         foo = rancher2.Project("foo",
-            name="foo",
-            cluster_id="<CLUSTER_ID>",
             resource_quota={
                 "project_limit": {
                     "limits_cpu": "2000m",
@@ -423,7 +421,9 @@ class Project(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            cluster_id="<CLUSTER_ID>")
         ```
 
         ```python
@@ -432,8 +432,6 @@ class Project(pulumi.CustomResource):
 
         # Create a new rancher2 Project
         foo = rancher2.Project("foo",
-            name="foo",
-            cluster_id="<CLUSTER_ID>",
             resource_quota={
                 "project_limit": {
                     "limits_cpu": "2000m",
@@ -451,7 +449,9 @@ class Project(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            cluster_id="<CLUSTER_ID>")
         ```
 
         ## Import

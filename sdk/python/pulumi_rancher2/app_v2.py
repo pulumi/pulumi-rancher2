@@ -32,6 +32,7 @@ class AppV2Args:
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_schema_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  values: pulumi.Input[Optional[_builtins.str]] = None,
                  wait: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -51,6 +52,7 @@ class AppV2Args:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for the app v2 (map)
         :param pulumi.Input[_builtins.str] name: The name of the app v2 (string)
         :param pulumi.Input[_builtins.str] project_id: Deploy the app v2 within project ID (string)
+        :param pulumi.Input[_builtins.bool] skip_schema_validation: Skip app V2 chart schema validation. Default: `false` (bool)
         :param pulumi.Input[_builtins.str] system_default_registry: System default registry providing images for app deployment (string)
         :param pulumi.Input[_builtins.str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[_builtins.bool] wait: Wait until app is deployed. Default: `true` (bool)
@@ -77,6 +79,8 @@ class AppV2Args:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if skip_schema_validation is not None:
+            pulumi.set(__self__, "skip_schema_validation", skip_schema_validation)
         if system_default_registry is not None:
             pulumi.set(__self__, "system_default_registry", system_default_registry)
         if values is not None:
@@ -241,6 +245,18 @@ class AppV2Args:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipSchemaValidation")
+    def skip_schema_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip app V2 chart schema validation. Default: `false` (bool)
+        """
+        return pulumi.get(self, "skip_schema_validation")
+
+    @skip_schema_validation.setter
+    def skip_schema_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_schema_validation", value)
+
+    @_builtins.property
     @pulumi.getter(name="systemDefaultRegistry")
     def system_default_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -295,6 +311,7 @@ class _AppV2State:
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_schema_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  values: pulumi.Input[Optional[_builtins.str]] = None,
                  wait: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -316,6 +333,7 @@ class _AppV2State:
         :param pulumi.Input[_builtins.str] namespace: The namespace of the app v2 (string)
         :param pulumi.Input[_builtins.str] project_id: Deploy the app v2 within project ID (string)
         :param pulumi.Input[_builtins.str] repo_name: Repo name (string)
+        :param pulumi.Input[_builtins.bool] skip_schema_validation: Skip app V2 chart schema validation. Default: `false` (bool)
         :param pulumi.Input[_builtins.str] system_default_registry: System default registry providing images for app deployment (string)
         :param pulumi.Input[_builtins.str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[_builtins.bool] wait: Wait until app is deployed. Default: `true` (bool)
@@ -350,6 +368,8 @@ class _AppV2State:
             pulumi.set(__self__, "project_id", project_id)
         if repo_name is not None:
             pulumi.set(__self__, "repo_name", repo_name)
+        if skip_schema_validation is not None:
+            pulumi.set(__self__, "skip_schema_validation", skip_schema_validation)
         if system_default_registry is not None:
             pulumi.set(__self__, "system_default_registry", system_default_registry)
         if values is not None:
@@ -538,6 +558,18 @@ class _AppV2State:
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipSchemaValidation")
+    def skip_schema_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip app V2 chart schema validation. Default: `false` (bool)
+        """
+        return pulumi.get(self, "skip_schema_validation")
+
+    @skip_schema_validation.setter
+    def skip_schema_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_schema_validation", value)
+
+    @_builtins.property
     @pulumi.getter(name="systemDefaultRegistry")
     def system_default_registry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -593,6 +625,7 @@ class AppV2(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_schema_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  values: pulumi.Input[Optional[_builtins.str]] = None,
                  wait: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -637,10 +670,10 @@ class AppV2(pulumi.CustomResource):
 
         ## Import
 
-        V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
+        V2 apps can be imported using the Rancher cluster ID, App V2 namespace and App V2 name.
 
         ```sh
-        $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+        $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAMESPACE&gt;/&lt;APP_V2_NAME&gt;
         ```
 
 
@@ -659,6 +692,7 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] namespace: The namespace of the app v2 (string)
         :param pulumi.Input[_builtins.str] project_id: Deploy the app v2 within project ID (string)
         :param pulumi.Input[_builtins.str] repo_name: Repo name (string)
+        :param pulumi.Input[_builtins.bool] skip_schema_validation: Skip app V2 chart schema validation. Default: `false` (bool)
         :param pulumi.Input[_builtins.str] system_default_registry: System default registry providing images for app deployment (string)
         :param pulumi.Input[_builtins.str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[_builtins.bool] wait: Wait until app is deployed. Default: `true` (bool)
@@ -709,10 +743,10 @@ class AppV2(pulumi.CustomResource):
 
         ## Import
 
-        V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
+        V2 apps can be imported using the Rancher cluster ID, App V2 namespace and App V2 name.
 
         ```sh
-        $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+        $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAMESPACE&gt;/&lt;APP_V2_NAME&gt;
         ```
 
 
@@ -744,6 +778,7 @@ class AppV2(pulumi.CustomResource):
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_schema_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  values: pulumi.Input[Optional[_builtins.str]] = None,
                  wait: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -777,6 +812,7 @@ class AppV2(pulumi.CustomResource):
             if repo_name is None and not opts.urn:
                 raise TypeError("Missing required property 'repo_name'")
             __props__.__dict__["repo_name"] = repo_name
+            __props__.__dict__["skip_schema_validation"] = skip_schema_validation
             __props__.__dict__["system_default_registry"] = system_default_registry
             __props__.__dict__["values"] = values
             __props__.__dict__["wait"] = wait
@@ -807,6 +843,7 @@ class AppV2(pulumi.CustomResource):
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_schema_validation: pulumi.Input[Optional[_builtins.bool]] = None,
             system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
             values: pulumi.Input[Optional[_builtins.str]] = None,
             wait: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AppV2':
@@ -832,6 +869,7 @@ class AppV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] namespace: The namespace of the app v2 (string)
         :param pulumi.Input[_builtins.str] project_id: Deploy the app v2 within project ID (string)
         :param pulumi.Input[_builtins.str] repo_name: Repo name (string)
+        :param pulumi.Input[_builtins.bool] skip_schema_validation: Skip app V2 chart schema validation. Default: `false` (bool)
         :param pulumi.Input[_builtins.str] system_default_registry: System default registry providing images for app deployment (string)
         :param pulumi.Input[_builtins.str] values: The app v2 values yaml. Yaml format is required (string)
         :param pulumi.Input[_builtins.bool] wait: Wait until app is deployed. Default: `true` (bool)
@@ -855,6 +893,7 @@ class AppV2(pulumi.CustomResource):
         __props__.__dict__["namespace"] = namespace
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["repo_name"] = repo_name
+        __props__.__dict__["skip_schema_validation"] = skip_schema_validation
         __props__.__dict__["system_default_registry"] = system_default_registry
         __props__.__dict__["values"] = values
         __props__.__dict__["wait"] = wait
@@ -979,6 +1018,14 @@ class AppV2(pulumi.CustomResource):
         Repo name (string)
         """
         return pulumi.get(self, "repo_name")
+
+    @_builtins.property
+    @pulumi.getter(name="skipSchemaValidation")
+    def skip_schema_validation(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Skip app V2 chart schema validation. Default: `false` (bool)
+        """
+        return pulumi.get(self, "skip_schema_validation")
 
     @_builtins.property
     @pulumi.getter(name="systemDefaultRegistry")

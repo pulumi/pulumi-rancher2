@@ -30,10 +30,18 @@ namespace Pulumi.Rancher2
     ///         UserId = "user-XXXXX",
     ///     });
     /// 
-    ///     // Create a new rancher2 Global Role Binding using group_principal_id
+    ///     // Create a new rancher2 Global Role Binding using user_principal_id
     ///     var foo2 = new Rancher2.GlobalRoleBinding("foo2", new()
     ///     {
     ///         Name = "foo2",
+    ///         GlobalRoleId = "admin",
+    ///         UserPrincipalId = "local://user-XXXXX",
+    ///     });
+    /// 
+    ///     // Create a new rancher2 Global Role Binding using group_principal_id
+    ///     var foo3 = new Rancher2.GlobalRoleBinding("foo3", new()
+    ///     {
+    ///         Name = "foo3",
     ///         GlobalRoleId = "admin",
     ///         GroupPrincipalId = "local://g-XXXXX",
     ///     });
@@ -73,7 +81,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for global role binding (map)
         /// 
-        /// **Note:** user `UserId` OR group `GroupPrincipalId` must be defined
+        /// **Note:** user `UserId` or `UserPrincipalId` OR group `GroupPrincipalId` must be defined
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -89,6 +97,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
+
+        /// <summary>
+        /// The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `UserId` accordingly before creating the binding
+        /// </summary>
+        [Output("userPrincipalId")]
+        public Output<string> UserPrincipalId { get; private set; } = null!;
 
 
         /// <summary>
@@ -166,7 +180,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for global role binding (map)
         /// 
-        /// **Note:** user `UserId` OR group `GroupPrincipalId` must be defined
+        /// **Note:** user `UserId` or `UserPrincipalId` OR group `GroupPrincipalId` must be defined
         /// </summary>
         public InputMap<string> Labels
         {
@@ -185,6 +199,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
+
+        /// <summary>
+        /// The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `UserId` accordingly before creating the binding
+        /// </summary>
+        [Input("userPrincipalId")]
+        public Input<string>? UserPrincipalId { get; set; }
 
         public GlobalRoleBindingArgs()
         {
@@ -224,7 +244,7 @@ namespace Pulumi.Rancher2
         /// <summary>
         /// Labels for global role binding (map)
         /// 
-        /// **Note:** user `UserId` OR group `GroupPrincipalId` must be defined
+        /// **Note:** user `UserId` or `UserPrincipalId` OR group `GroupPrincipalId` must be defined
         /// </summary>
         public InputMap<string> Labels
         {
@@ -243,6 +263,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
+
+        /// <summary>
+        /// The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `UserId` accordingly before creating the binding
+        /// </summary>
+        [Input("userPrincipalId")]
+        public Input<string>? UserPrincipalId { get; set; }
 
         public GlobalRoleBindingState()
         {

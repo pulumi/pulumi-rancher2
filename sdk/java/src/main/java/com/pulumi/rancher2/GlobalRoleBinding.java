@@ -48,9 +48,16 @@ import javax.annotation.Nullable;
  *             .userId("user-XXXXX")
  *             .build());
  * 
- *         // Create a new rancher2 Global Role Binding using group_principal_id
+ *         // Create a new rancher2 Global Role Binding using user_principal_id
  *         var foo2 = new GlobalRoleBinding("foo2", GlobalRoleBindingArgs.builder()
  *             .name("foo2")
+ *             .globalRoleId("admin")
+ *             .userPrincipalId("local://user-XXXXX")
+ *             .build());
+ * 
+ *         // Create a new rancher2 Global Role Binding using group_principal_id
+ *         var foo3 = new GlobalRoleBinding("foo3", GlobalRoleBindingArgs.builder()
+ *             .name("foo3")
  *             .globalRoleId("admin")
  *             .groupPrincipalId("local://g-XXXXX")
  *             .build());
@@ -116,7 +123,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
     /**
      * Labels for global role binding (map)
      * 
-     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
+     * **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
      * 
      */
     @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -125,7 +132,7 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
     /**
      * @return Labels for global role binding (map)
      * 
-     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
+     * **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
      * 
      */
     public Output<Map<String,String>> labels() {
@@ -158,6 +165,20 @@ public class GlobalRoleBinding extends com.pulumi.resources.CustomResource {
      */
     public Output<String> userId() {
         return this.userId;
+    }
+    /**
+     * The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+     * 
+     */
+    @Export(name="userPrincipalId", refs={String.class}, tree="[0]")
+    private Output<String> userPrincipalId;
+
+    /**
+     * @return The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+     * 
+     */
+    public Output<String> userPrincipalId() {
+        return this.userPrincipalId;
     }
 
     /**

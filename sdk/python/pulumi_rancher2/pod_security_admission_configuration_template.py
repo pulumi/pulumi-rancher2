@@ -254,8 +254,6 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
 
         # Create a Pod Security Admission Configuration Template resource
         foo = rancher2.PodSecurityAdmissionConfigurationTemplate("foo",
-            name="custom-psact",
-            description="This is my custom Pod Security Admission Configuration Template",
             defaults={
                 "audit": "restricted",
                 "audit_version": "latest",
@@ -271,7 +269,9 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
                     "ingress-nginx",
                     "kube-system",
                 ],
-            })
+            },
+            name="custom-psact",
+            description="This is my custom Pod Security Admission Configuration Template")
         ```
 
         ## Import
@@ -312,8 +312,6 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
 
         # Create a Pod Security Admission Configuration Template resource
         foo = rancher2.PodSecurityAdmissionConfigurationTemplate("foo",
-            name="custom-psact",
-            description="This is my custom Pod Security Admission Configuration Template",
             defaults={
                 "audit": "restricted",
                 "audit_version": "latest",
@@ -329,7 +327,9 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
                     "ingress-nginx",
                     "kube-system",
                 ],
-            })
+            },
+            name="custom-psact",
+            description="This is my custom Pod Security Admission Configuration Template")
         ```
 
         ## Import

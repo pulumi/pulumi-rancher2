@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, agent_env_vars=None, aks_config_v2=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_registration_token=None, cluster_template_answers=None, cluster_template_id=None, cluster_template_questions=None, cluster_template_revision_id=None, default_pod_security_admission_configuration_template_name=None, default_project_id=None, description=None, driver=None, eks_config_v2=None, enable_network_policy=None, fleet_workspace_name=None, gke_config_v2=None, id=None, imported_configs=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, rke_config=None, system_project_id=None):
+    def __init__(__self__, agent_env_vars=None, aks_config_v2=None, annotations=None, ca_cert=None, cluster_auth_endpoint=None, cluster_registration_token=None, default_pod_security_admission_configuration_template_name=None, default_project_id=None, description=None, driver=None, eks_config_v2=None, enable_network_policy=None, fleet_workspace_name=None, generate_kube_config=None, gke_config_v2=None, id=None, imported_configs=None, k3s_config=None, kube_config=None, labels=None, name=None, oke_config=None, rke2_config=None, system_project_id=None):
         if agent_env_vars and not isinstance(agent_env_vars, list):
             raise TypeError("Expected argument 'agent_env_vars' to be a list")
         pulumi.set(__self__, "agent_env_vars", agent_env_vars)
@@ -46,18 +46,6 @@ class GetClusterResult:
         if cluster_registration_token and not isinstance(cluster_registration_token, dict):
             raise TypeError("Expected argument 'cluster_registration_token' to be a dict")
         pulumi.set(__self__, "cluster_registration_token", cluster_registration_token)
-        if cluster_template_answers and not isinstance(cluster_template_answers, dict):
-            raise TypeError("Expected argument 'cluster_template_answers' to be a dict")
-        pulumi.set(__self__, "cluster_template_answers", cluster_template_answers)
-        if cluster_template_id and not isinstance(cluster_template_id, str):
-            raise TypeError("Expected argument 'cluster_template_id' to be a str")
-        pulumi.set(__self__, "cluster_template_id", cluster_template_id)
-        if cluster_template_questions and not isinstance(cluster_template_questions, list):
-            raise TypeError("Expected argument 'cluster_template_questions' to be a list")
-        pulumi.set(__self__, "cluster_template_questions", cluster_template_questions)
-        if cluster_template_revision_id and not isinstance(cluster_template_revision_id, str):
-            raise TypeError("Expected argument 'cluster_template_revision_id' to be a str")
-        pulumi.set(__self__, "cluster_template_revision_id", cluster_template_revision_id)
         if default_pod_security_admission_configuration_template_name and not isinstance(default_pod_security_admission_configuration_template_name, str):
             raise TypeError("Expected argument 'default_pod_security_admission_configuration_template_name' to be a str")
         pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
@@ -79,6 +67,9 @@ class GetClusterResult:
         if fleet_workspace_name and not isinstance(fleet_workspace_name, str):
             raise TypeError("Expected argument 'fleet_workspace_name' to be a str")
         pulumi.set(__self__, "fleet_workspace_name", fleet_workspace_name)
+        if generate_kube_config and not isinstance(generate_kube_config, bool):
+            raise TypeError("Expected argument 'generate_kube_config' to be a bool")
+        pulumi.set(__self__, "generate_kube_config", generate_kube_config)
         if gke_config_v2 and not isinstance(gke_config_v2, dict):
             raise TypeError("Expected argument 'gke_config_v2' to be a dict")
         pulumi.set(__self__, "gke_config_v2", gke_config_v2)
@@ -106,9 +97,6 @@ class GetClusterResult:
         if rke2_config and not isinstance(rke2_config, dict):
             raise TypeError("Expected argument 'rke2_config' to be a dict")
         pulumi.set(__self__, "rke2_config", rke2_config)
-        if rke_config and not isinstance(rke_config, dict):
-            raise TypeError("Expected argument 'rke_config' to be a dict")
-        pulumi.set(__self__, "rke_config", rke_config)
         if system_project_id and not isinstance(system_project_id, str):
             raise TypeError("Expected argument 'system_project_id' to be a str")
         pulumi.set(__self__, "system_project_id", system_project_id)
@@ -162,38 +150,6 @@ class GetClusterResult:
         return pulumi.get(self, "cluster_registration_token")
 
     @_builtins.property
-    @pulumi.getter(name="clusterTemplateAnswers")
-    def cluster_template_answers(self) -> 'outputs.GetClusterClusterTemplateAnswersResult':
-        """
-        (Computed) Cluster template answers (list maxitems:1)
-        """
-        return pulumi.get(self, "cluster_template_answers")
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> _builtins.str:
-        """
-        (Computed) Cluster template ID (string)
-        """
-        return pulumi.get(self, "cluster_template_id")
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateQuestions")
-    def cluster_template_questions(self) -> Sequence['outputs.GetClusterClusterTemplateQuestionResult']:
-        """
-        (Computed) Cluster template questions (list)
-        """
-        return pulumi.get(self, "cluster_template_questions")
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateRevisionId")
-    def cluster_template_revision_id(self) -> _builtins.str:
-        """
-        (Computed) Cluster template revision ID (string)
-        """
-        return pulumi.get(self, "cluster_template_revision_id")
-
-    @_builtins.property
     @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
     def default_pod_security_admission_configuration_template_name(self) -> _builtins.str:
         return pulumi.get(self, "default_pod_security_admission_configuration_template_name")
@@ -245,6 +201,11 @@ class GetClusterResult:
         (Computed) Fleet workspace name (string)
         """
         return pulumi.get(self, "fleet_workspace_name")
+
+    @_builtins.property
+    @pulumi.getter(name="generateKubeConfig")
+    def generate_kube_config(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "generate_kube_config")
 
     @_builtins.property
     @pulumi.getter(name="gkeConfigV2")
@@ -313,14 +274,6 @@ class GetClusterResult:
         return pulumi.get(self, "rke2_config")
 
     @_builtins.property
-    @pulumi.getter(name="rkeConfig")
-    def rke_config(self) -> 'outputs.GetClusterRkeConfigResult':
-        """
-        (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2` and `k3s_config` (list maxitems:1)
-        """
-        return pulumi.get(self, "rke_config")
-
-    @_builtins.property
     @pulumi.getter(name="systemProjectId")
     def system_project_id(self) -> _builtins.str:
         """
@@ -341,10 +294,6 @@ class AwaitableGetClusterResult(GetClusterResult):
             ca_cert=self.ca_cert,
             cluster_auth_endpoint=self.cluster_auth_endpoint,
             cluster_registration_token=self.cluster_registration_token,
-            cluster_template_answers=self.cluster_template_answers,
-            cluster_template_id=self.cluster_template_id,
-            cluster_template_questions=self.cluster_template_questions,
-            cluster_template_revision_id=self.cluster_template_revision_id,
             default_pod_security_admission_configuration_template_name=self.default_pod_security_admission_configuration_template_name,
             default_project_id=self.default_project_id,
             description=self.description,
@@ -352,6 +301,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             eks_config_v2=self.eks_config_v2,
             enable_network_policy=self.enable_network_policy,
             fleet_workspace_name=self.fleet_workspace_name,
+            generate_kube_config=self.generate_kube_config,
             gke_config_v2=self.gke_config_v2,
             id=self.id,
             imported_configs=self.imported_configs,
@@ -361,11 +311,11 @@ class AwaitableGetClusterResult(GetClusterResult):
             name=self.name,
             oke_config=self.oke_config,
             rke2_config=self.rke2_config,
-            rke_config=self.rke_config,
             system_project_id=self.system_project_id)
 
 
 def get_cluster(default_pod_security_admission_configuration_template_name: Optional[_builtins.str] = None,
+                generate_kube_config: Optional[_builtins.bool] = None,
                 name: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
@@ -385,6 +335,7 @@ def get_cluster(default_pod_security_admission_configuration_template_name: Opti
     """
     __args__ = dict()
     __args__['defaultPodSecurityAdmissionConfigurationTemplateName'] = default_pod_security_admission_configuration_template_name
+    __args__['generateKubeConfig'] = generate_kube_config
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('rancher2:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
@@ -396,10 +347,6 @@ def get_cluster(default_pod_security_admission_configuration_template_name: Opti
         ca_cert=pulumi.get(__ret__, 'ca_cert'),
         cluster_auth_endpoint=pulumi.get(__ret__, 'cluster_auth_endpoint'),
         cluster_registration_token=pulumi.get(__ret__, 'cluster_registration_token'),
-        cluster_template_answers=pulumi.get(__ret__, 'cluster_template_answers'),
-        cluster_template_id=pulumi.get(__ret__, 'cluster_template_id'),
-        cluster_template_questions=pulumi.get(__ret__, 'cluster_template_questions'),
-        cluster_template_revision_id=pulumi.get(__ret__, 'cluster_template_revision_id'),
         default_pod_security_admission_configuration_template_name=pulumi.get(__ret__, 'default_pod_security_admission_configuration_template_name'),
         default_project_id=pulumi.get(__ret__, 'default_project_id'),
         description=pulumi.get(__ret__, 'description'),
@@ -407,6 +354,7 @@ def get_cluster(default_pod_security_admission_configuration_template_name: Opti
         eks_config_v2=pulumi.get(__ret__, 'eks_config_v2'),
         enable_network_policy=pulumi.get(__ret__, 'enable_network_policy'),
         fleet_workspace_name=pulumi.get(__ret__, 'fleet_workspace_name'),
+        generate_kube_config=pulumi.get(__ret__, 'generate_kube_config'),
         gke_config_v2=pulumi.get(__ret__, 'gke_config_v2'),
         id=pulumi.get(__ret__, 'id'),
         imported_configs=pulumi.get(__ret__, 'imported_configs'),
@@ -416,9 +364,9 @@ def get_cluster(default_pod_security_admission_configuration_template_name: Opti
         name=pulumi.get(__ret__, 'name'),
         oke_config=pulumi.get(__ret__, 'oke_config'),
         rke2_config=pulumi.get(__ret__, 'rke2_config'),
-        rke_config=pulumi.get(__ret__, 'rke_config'),
         system_project_id=pulumi.get(__ret__, 'system_project_id'))
 def get_cluster_output(default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       generate_kube_config: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                        name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
@@ -438,6 +386,7 @@ def get_cluster_output(default_pod_security_admission_configuration_template_nam
     """
     __args__ = dict()
     __args__['defaultPodSecurityAdmissionConfigurationTemplateName'] = default_pod_security_admission_configuration_template_name
+    __args__['generateKubeConfig'] = generate_kube_config
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
@@ -448,10 +397,6 @@ def get_cluster_output(default_pod_security_admission_configuration_template_nam
         ca_cert=pulumi.get(__response__, 'ca_cert'),
         cluster_auth_endpoint=pulumi.get(__response__, 'cluster_auth_endpoint'),
         cluster_registration_token=pulumi.get(__response__, 'cluster_registration_token'),
-        cluster_template_answers=pulumi.get(__response__, 'cluster_template_answers'),
-        cluster_template_id=pulumi.get(__response__, 'cluster_template_id'),
-        cluster_template_questions=pulumi.get(__response__, 'cluster_template_questions'),
-        cluster_template_revision_id=pulumi.get(__response__, 'cluster_template_revision_id'),
         default_pod_security_admission_configuration_template_name=pulumi.get(__response__, 'default_pod_security_admission_configuration_template_name'),
         default_project_id=pulumi.get(__response__, 'default_project_id'),
         description=pulumi.get(__response__, 'description'),
@@ -459,6 +404,7 @@ def get_cluster_output(default_pod_security_admission_configuration_template_nam
         eks_config_v2=pulumi.get(__response__, 'eks_config_v2'),
         enable_network_policy=pulumi.get(__response__, 'enable_network_policy'),
         fleet_workspace_name=pulumi.get(__response__, 'fleet_workspace_name'),
+        generate_kube_config=pulumi.get(__response__, 'generate_kube_config'),
         gke_config_v2=pulumi.get(__response__, 'gke_config_v2'),
         id=pulumi.get(__response__, 'id'),
         imported_configs=pulumi.get(__response__, 'imported_configs'),
@@ -468,5 +414,4 @@ def get_cluster_output(default_pod_security_admission_configuration_template_nam
         name=pulumi.get(__response__, 'name'),
         oke_config=pulumi.get(__response__, 'oke_config'),
         rke2_config=pulumi.get(__response__, 'rke2_config'),
-        rke_config=pulumi.get(__response__, 'rke_config'),
         system_project_id=pulumi.get(__response__, 'system_project_id')))

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -33,8 +33,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a Pod Security Admission Configuration Template resource
 //			_, err := rancher2.NewPodSecurityAdmissionConfigurationTemplate(ctx, "foo", &rancher2.PodSecurityAdmissionConfigurationTemplateArgs{
-//				Name:        pulumi.String("custom-psact"),
-//				Description: pulumi.String("This is my custom Pod Security Admission Configuration Template"),
 //				Defaults: &rancher2.PodSecurityAdmissionConfigurationTemplateDefaultsArgs{
 //					Audit:          pulumi.String("restricted"),
 //					AuditVersion:   pulumi.String("latest"),
@@ -55,6 +53,8 @@ import (
 //						pulumi.String("kube-system"),
 //					},
 //				},
+//				Name:        pulumi.String("custom-psact"),
+//				Description: pulumi.String("This is my custom Pod Security Admission Configuration Template"),
 //			})
 //			if err != nil {
 //				return err

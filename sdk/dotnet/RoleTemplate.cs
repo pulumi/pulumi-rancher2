@@ -27,10 +27,6 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 cluster Role Template
     ///     var foo = new Rancher2.RoleTemplate("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Context = "cluster",
-    ///         DefaultRole = true,
-    ///         Description = "Terraform role template acceptance test",
     ///         Rules = new[]
     ///         {
     ///             new Rancher2.Inputs.RoleTemplateRuleArgs
@@ -49,6 +45,10 @@ namespace Pulumi.Rancher2
     ///                 },
     ///             },
     ///         },
+    ///         Name = "foo",
+    ///         Context = "cluster",
+    ///         DefaultRole = true,
+    ///         Description = "Terraform role template acceptance test",
     ///     });
     /// 
     /// });
@@ -65,10 +65,6 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 project Role Template
     ///     var foo = new Rancher2.RoleTemplate("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Context = "project",
-    ///         DefaultRole = true,
-    ///         Description = "Terraform role template acceptance test",
     ///         Rules = new[]
     ///         {
     ///             new Rancher2.Inputs.RoleTemplateRuleArgs
@@ -87,6 +83,10 @@ namespace Pulumi.Rancher2
     ///                 },
     ///             },
     ///         },
+    ///         Name = "foo",
+    ///         Context = "project",
+    ///         DefaultRole = true,
+    ///         Description = "Terraform role template acceptance test",
     ///     });
     /// 
     /// });

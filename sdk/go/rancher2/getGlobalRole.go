@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -68,6 +68,8 @@ type LookupGlobalRoleResult struct {
 	Id string `pulumi:"id"`
 	// (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
+	// (Computed) Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+	InheritedNamespacedRules []GetGlobalRoleInheritedNamespacedRule `pulumi:"inheritedNamespacedRules"`
 	// (Computed) Labels for global role object (map)
 	Labels map[string]string `pulumi:"labels"`
 	Name   string            `pulumi:"name"`
@@ -134,6 +136,13 @@ func (o LookupGlobalRoleResultOutput) Id() pulumi.StringOutput {
 // (Optional) Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 func (o LookupGlobalRoleResultOutput) InheritedClusterRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGlobalRoleResult) []string { return v.InheritedClusterRoles }).(pulumi.StringArrayOutput)
+}
+
+// (Computed) Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+func (o LookupGlobalRoleResultOutput) InheritedNamespacedRules() GetGlobalRoleInheritedNamespacedRuleArrayOutput {
+	return o.ApplyT(func(v LookupGlobalRoleResult) []GetGlobalRoleInheritedNamespacedRule {
+		return v.InheritedNamespacedRules
+	}).(GetGlobalRoleInheritedNamespacedRuleArrayOutput)
 }
 
 // (Computed) Labels for global role object (map)

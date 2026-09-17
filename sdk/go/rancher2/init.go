@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,8 +85,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Namespace{}
 	case "rancher2:index/nodeDriver:NodeDriver":
 		r = &NodeDriver{}
-	case "rancher2:index/nodePool:NodePool":
-		r = &NodePool{}
+	case "rancher2:index/oidcClient:OidcClient":
+		r = &OidcClient{}
 	case "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate":
 		r = &PodSecurityAdmissionConfigurationTemplate{}
 	case "rancher2:index/project:Project":
@@ -302,7 +302,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"rancher2",
-		"index/nodePool",
+		"index/oidcClient",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -5,6 +5,7 @@ package com.pulumi.rancher2.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,6 +21,13 @@ public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<String> defaultPodSecurityAdmissionConfigurationTemplateName() {
         return Optional.ofNullable(this.defaultPodSecurityAdmissionConfigurationTemplateName);
+    }
+
+    @Import(name="generateKubeConfig")
+    private @Nullable Boolean generateKubeConfig;
+
+    public Optional<Boolean> generateKubeConfig() {
+        return Optional.ofNullable(this.generateKubeConfig);
     }
 
     /**
@@ -41,6 +49,7 @@ public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetClusterPlainArgs(GetClusterPlainArgs $) {
         this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
+        this.generateKubeConfig = $.generateKubeConfig;
         this.name = $.name;
     }
 
@@ -64,6 +73,11 @@ public final class GetClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder defaultPodSecurityAdmissionConfigurationTemplateName(@Nullable String defaultPodSecurityAdmissionConfigurationTemplateName) {
             $.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
+            return this;
+        }
+
+        public Builder generateKubeConfig(@Nullable Boolean generateKubeConfig) {
+            $.generateKubeConfig = generateKubeConfig;
             return this;
         }
 

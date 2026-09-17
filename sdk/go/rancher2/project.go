@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -30,8 +30,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Project
 //			_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
-//				Name:      pulumi.String("foo"),
-//				ClusterId: pulumi.String("<CLUSTER_ID>"),
 //				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
 //					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
 //						LimitsCpu:       pulumi.String("2000m"),
@@ -50,6 +48,8 @@ import (
 //					RequestsCpu:    pulumi.String("1m"),
 //					RequestsMemory: pulumi.String("1Mi"),
 //				},
+//				Name:      pulumi.String("foo"),
+//				ClusterId: pulumi.String("<CLUSTER_ID>"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +65,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -74,8 +74,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Project
 //			_, err := rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
-//				Name:      pulumi.String("foo"),
-//				ClusterId: pulumi.String("<CLUSTER_ID>"),
 //				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
 //					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
 //						LimitsCpu:       pulumi.String("2000m"),
@@ -94,6 +92,8 @@ import (
 //					RequestsCpu:    pulumi.String("1m"),
 //					RequestsMemory: pulumi.String("1Mi"),
 //				},
+//				Name:      pulumi.String("foo"),
+//				ClusterId: pulumi.String("<CLUSTER_ID>"),
 //			})
 //			if err != nil {
 //				return err

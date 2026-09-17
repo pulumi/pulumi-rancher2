@@ -68,10 +68,10 @@ namespace Pulumi.Rancher2
     /// 
     /// ## Import
     /// 
-    /// V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `&lt;namespace&gt;/&lt;application_name&gt;`.
+    /// V2 apps can be imported using the Rancher cluster ID, App V2 namespace and App V2 name.
     /// 
     /// ```sh
-    /// $ pulumi import rancher2:index/appV2:AppV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;APP_V2_NAME&amp;gt;
+    /// $ pulumi import rancher2:index/appV2:AppV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;APP_V2_NAMESPACE&amp;gt;/&amp;lt;APP_V2_NAME&amp;gt;
     /// ```
     /// </summary>
     [Rancher2ResourceType("rancher2:index/appV2:AppV2")]
@@ -166,6 +166,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("repoName")]
         public Output<string> RepoName { get; private set; } = null!;
+
+        /// <summary>
+        /// Skip app V2 chart schema validation. Default: `False` (bool)
+        /// </summary>
+        [Output("skipSchemaValidation")]
+        public Output<bool?> SkipSchemaValidation { get; private set; } = null!;
 
         /// <summary>
         /// System default registry providing images for app deployment (string)
@@ -322,6 +328,12 @@ namespace Pulumi.Rancher2
         public Input<string> RepoName { get; set; } = null!;
 
         /// <summary>
+        /// Skip app V2 chart schema validation. Default: `False` (bool)
+        /// </summary>
+        [Input("skipSchemaValidation")]
+        public Input<bool>? SkipSchemaValidation { get; set; }
+
+        /// <summary>
         /// System default registry providing images for app deployment (string)
         /// </summary>
         [Input("systemDefaultRegistry")]
@@ -448,6 +460,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
+
+        /// <summary>
+        /// Skip app V2 chart schema validation. Default: `False` (bool)
+        /// </summary>
+        [Input("skipSchemaValidation")]
+        public Input<bool>? SkipSchemaValidation { get; set; }
 
         /// <summary>
         /// System default registry providing images for app deployment (string)

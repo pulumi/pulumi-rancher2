@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -31,10 +31,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 cluster Role Template
 //			_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
-//				Name:        pulumi.String("foo"),
-//				Context:     pulumi.String("cluster"),
-//				DefaultRole: pulumi.Bool(true),
-//				Description: pulumi.String("Terraform role template acceptance test"),
 //				Rules: rancher2.RoleTemplateRuleArray{
 //					&rancher2.RoleTemplateRuleArgs{
 //						ApiGroups: pulumi.StringArray{
@@ -48,6 +44,10 @@ import (
 //						},
 //					},
 //				},
+//				Name:        pulumi.String("foo"),
+//				Context:     pulumi.String("cluster"),
+//				DefaultRole: pulumi.Bool(true),
+//				Description: pulumi.String("Terraform role template acceptance test"),
 //			})
 //			if err != nil {
 //				return err
@@ -63,7 +63,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -72,10 +72,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 project Role Template
 //			_, err := rancher2.NewRoleTemplate(ctx, "foo", &rancher2.RoleTemplateArgs{
-//				Name:        pulumi.String("foo"),
-//				Context:     pulumi.String("project"),
-//				DefaultRole: pulumi.Bool(true),
-//				Description: pulumi.String("Terraform role template acceptance test"),
 //				Rules: rancher2.RoleTemplateRuleArray{
 //					&rancher2.RoleTemplateRuleArgs{
 //						ApiGroups: pulumi.StringArray{
@@ -89,6 +85,10 @@ import (
 //						},
 //					},
 //				},
+//				Name:        pulumi.String("foo"),
+//				Context:     pulumi.String("project"),
+//				DefaultRole: pulumi.Bool(true),
+//				Description: pulumi.String("Terraform role template acceptance test"),
 //			})
 //			if err != nil {
 //				return err

@@ -19,9 +19,15 @@ import * as utilities from "./utilities";
  *     globalRoleId: "admin",
  *     userId: "user-XXXXX",
  * });
- * // Create a new rancher2 Global Role Binding using group_principal_id
+ * // Create a new rancher2 Global Role Binding using user_principal_id
  * const foo2 = new rancher2.GlobalRoleBinding("foo2", {
  *     name: "foo2",
+ *     globalRoleId: "admin",
+ *     userPrincipalId: "local://user-XXXXX",
+ * });
+ * // Create a new rancher2 Global Role Binding using group_principal_id
+ * const foo3 = new rancher2.GlobalRoleBinding("foo3", {
+ *     name: "foo3",
  *     globalRoleId: "admin",
  *     groupPrincipalId: "local://g-XXXXX",
  * });
@@ -78,7 +84,7 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
     /**
      * Labels for global role binding (map)
      *
-     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
+     * **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -89,6 +95,10 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
      * The user ID to assign global role binding (string)
      */
     declare public readonly userId: pulumi.Output<string>;
+    /**
+     * The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+     */
+    declare public readonly userPrincipalId: pulumi.Output<string>;
 
     /**
      * Create a GlobalRoleBinding resource with the given unique name, arguments, and options.
@@ -109,6 +119,7 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["userId"] = state?.userId;
+            resourceInputs["userPrincipalId"] = state?.userPrincipalId;
         } else {
             const args = argsOrState as GlobalRoleBindingArgs | undefined;
             if (args?.globalRoleId === undefined && !opts.urn) {
@@ -120,6 +131,7 @@ export class GlobalRoleBinding extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["userId"] = args?.userId;
+            resourceInputs["userPrincipalId"] = args?.userPrincipalId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GlobalRoleBinding.__pulumiType, name, resourceInputs, opts);
@@ -145,7 +157,7 @@ export interface GlobalRoleBindingState {
     /**
      * Labels for global role binding (map)
      *
-     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
+     * **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -156,6 +168,10 @@ export interface GlobalRoleBindingState {
      * The user ID to assign global role binding (string)
      */
     userId?: pulumi.Input<string | undefined>;
+    /**
+     * The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+     */
+    userPrincipalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,7 +193,7 @@ export interface GlobalRoleBindingArgs {
     /**
      * Labels for global role binding (map)
      *
-     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
+     * **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -188,4 +204,8 @@ export interface GlobalRoleBindingArgs {
      * The user ID to assign global role binding (string)
      */
     userId?: pulumi.Input<string | undefined>;
+    /**
+     * The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+     */
+    userPrincipalId?: pulumi.Input<string | undefined>;
 }

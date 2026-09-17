@@ -64,7 +64,7 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
     /**
      * Labels for global role binding (map)
      * 
-     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
+     * **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
      * 
      */
     @Import(name="labels")
@@ -73,7 +73,7 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
     /**
      * @return Labels for global role binding (map)
      * 
-     * **Note:** user `userId` OR group `groupPrincipalId` must be defined
+     * **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -110,6 +110,21 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.userId);
     }
 
+    /**
+     * The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+     * 
+     */
+    @Import(name="userPrincipalId")
+    private @Nullable Output<String> userPrincipalId;
+
+    /**
+     * @return The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+     * 
+     */
+    public Optional<Output<String>> userPrincipalId() {
+        return Optional.ofNullable(this.userPrincipalId);
+    }
+
     private GlobalRoleBindingState() {}
 
     private GlobalRoleBindingState(GlobalRoleBindingState $) {
@@ -119,6 +134,7 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
         this.labels = $.labels;
         this.name = $.name;
         this.userId = $.userId;
+        this.userPrincipalId = $.userPrincipalId;
     }
 
     public static Builder builder() {
@@ -205,7 +221,7 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
         /**
          * @param labels Labels for global role binding (map)
          * 
-         * **Note:** user `userId` OR group `groupPrincipalId` must be defined
+         * **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
          * 
          * @return builder
          * 
@@ -218,7 +234,7 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
         /**
          * @param labels Labels for global role binding (map)
          * 
-         * **Note:** user `userId` OR group `groupPrincipalId` must be defined
+         * **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
          * 
          * @return builder
          * 
@@ -267,6 +283,27 @@ public final class GlobalRoleBindingState extends com.pulumi.resources.ResourceA
          */
         public Builder userId(String userId) {
             return userId(Output.of(userId));
+        }
+
+        /**
+         * @param userPrincipalId The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userPrincipalId(@Nullable Output<String> userPrincipalId) {
+            $.userPrincipalId = userPrincipalId;
+            return this;
+        }
+
+        /**
+         * @param userPrincipalId The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userPrincipalId(String userPrincipalId) {
+            return userPrincipalId(Output.of(userPrincipalId));
         }
 
         public GlobalRoleBindingState build() {

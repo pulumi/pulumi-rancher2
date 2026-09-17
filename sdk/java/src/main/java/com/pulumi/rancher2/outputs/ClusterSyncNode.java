@@ -59,16 +59,6 @@ public final class ClusterSyncNode {
      */
     private @Nullable String name;
     /**
-     * @return The Node Pool ID of the node (string).
-     * 
-     */
-    private @Nullable String nodePoolId;
-    /**
-     * @return The Node Template ID of the node (string).
-     * 
-     */
-    private @Nullable String nodeTemplateId;
-    /**
      * @return The Provider ID of the node (string).
      * 
      */
@@ -83,11 +73,6 @@ public final class ClusterSyncNode {
      * 
      */
     private @Nullable List<String> roles;
-    /**
-     * @return The user to connect to the node (string).
-     * 
-     */
-    private @Nullable String sshUser;
     /**
      * @return General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
      * 
@@ -159,20 +144,6 @@ public final class ClusterSyncNode {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The Node Pool ID of the node (string).
-     * 
-     */
-    public Optional<String> nodePoolId() {
-        return Optional.ofNullable(this.nodePoolId);
-    }
-    /**
-     * @return The Node Template ID of the node (string).
-     * 
-     */
-    public Optional<String> nodeTemplateId() {
-        return Optional.ofNullable(this.nodeTemplateId);
-    }
-    /**
      * @return The Provider ID of the node (string).
      * 
      */
@@ -192,13 +163,6 @@ public final class ClusterSyncNode {
      */
     public List<String> roles() {
         return this.roles == null ? List.of() : this.roles;
-    }
-    /**
-     * @return The user to connect to the node (string).
-     * 
-     */
-    public Optional<String> sshUser() {
-        return Optional.ofNullable(this.sshUser);
     }
     /**
      * @return General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
@@ -226,12 +190,9 @@ public final class ClusterSyncNode {
         private @Nullable String ipAddress;
         private @Nullable Map<String,String> labels;
         private @Nullable String name;
-        private @Nullable String nodePoolId;
-        private @Nullable String nodeTemplateId;
         private @Nullable String providerId;
         private @Nullable String requestedHostname;
         private @Nullable List<String> roles;
-        private @Nullable String sshUser;
         private @Nullable Map<String,String> systemInfo;
         public Builder() {}
         public Builder(ClusterSyncNode defaults) {
@@ -245,12 +206,9 @@ public final class ClusterSyncNode {
     	      this.ipAddress = defaults.ipAddress;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
-    	      this.nodePoolId = defaults.nodePoolId;
-    	      this.nodeTemplateId = defaults.nodeTemplateId;
     	      this.providerId = defaults.providerId;
     	      this.requestedHostname = defaults.requestedHostname;
     	      this.roles = defaults.roles;
-    	      this.sshUser = defaults.sshUser;
     	      this.systemInfo = defaults.systemInfo;
         }
 
@@ -309,18 +267,6 @@ public final class ClusterSyncNode {
             return this;
         }
         @CustomType.Setter
-        public Builder nodePoolId(@Nullable String nodePoolId) {
-
-            this.nodePoolId = nodePoolId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder nodeTemplateId(@Nullable String nodeTemplateId) {
-
-            this.nodeTemplateId = nodeTemplateId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder providerId(@Nullable String providerId) {
 
             this.providerId = providerId;
@@ -342,12 +288,6 @@ public final class ClusterSyncNode {
             return roles(List.of(roles));
         }
         @CustomType.Setter
-        public Builder sshUser(@Nullable String sshUser) {
-
-            this.sshUser = sshUser;
-            return this;
-        }
-        @CustomType.Setter
         public Builder systemInfo(@Nullable Map<String,String> systemInfo) {
 
             this.systemInfo = systemInfo;
@@ -364,12 +304,9 @@ public final class ClusterSyncNode {
             _resultValue.ipAddress = ipAddress;
             _resultValue.labels = labels;
             _resultValue.name = name;
-            _resultValue.nodePoolId = nodePoolId;
-            _resultValue.nodeTemplateId = nodeTemplateId;
             _resultValue.providerId = providerId;
             _resultValue.requestedHostname = requestedHostname;
             _resultValue.roles = roles;
-            _resultValue.sshUser = sshUser;
             _resultValue.systemInfo = systemInfo;
             return _resultValue;
         }

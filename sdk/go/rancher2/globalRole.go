@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,11 +29,24 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Global Role
 //			_, err := rancher2.NewGlobalRole(ctx, "foo", &rancher2.GlobalRoleArgs{
-//				Name:           pulumi.String("foo"),
-//				NewUserDefault: pulumi.Bool(true),
-//				Description:    pulumi.String("Terraform global role acceptance test"),
-//				InheritedClusterRoles: pulumi.StringArray{
-//					pulumi.String("projects-view"),
+//				InheritedNamespacedRules: rancher2.GlobalRoleInheritedNamespacedRuleArray{
+//					&rancher2.GlobalRoleInheritedNamespacedRuleArgs{
+//						Rules: rancher2.GlobalRoleInheritedNamespacedRuleRuleArray{
+//							&rancher2.GlobalRoleInheritedNamespacedRuleRuleArgs{
+//								ApiGroups: pulumi.StringArray{
+//									pulumi.String(""),
+//								},
+//								Resources: pulumi.StringArray{
+//									pulumi.String("configmaps"),
+//								},
+//								Verbs: pulumi.StringArray{
+//									pulumi.String("get"),
+//									pulumi.String("list"),
+//								},
+//							},
+//						},
+//						Namespace: pulumi.String("cattle-monitoring-system"),
+//					},
 //				},
 //				Rules: rancher2.GlobalRoleRuleArray{
 //					&rancher2.GlobalRoleRuleArgs{
@@ -47,6 +60,12 @@ import (
 //							pulumi.String("create"),
 //						},
 //					},
+//				},
+//				Name:           pulumi.String("foo"),
+//				NewUserDefault: pulumi.Bool(true),
+//				Description:    pulumi.String("Terraform global role acceptance test"),
+//				InheritedClusterRoles: pulumi.StringArray{
+//					pulumi.String("projects-view"),
 //				},
 //			})
 //			if err != nil {
@@ -76,6 +95,8 @@ type GlobalRole struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles pulumi.StringArrayOutput `pulumi:"inheritedClusterRoles"`
+	// Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+	InheritedNamespacedRules GlobalRoleInheritedNamespacedRuleArrayOutput `pulumi:"inheritedNamespacedRules"`
 	// Labels for global role object (map)
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Global role name (string)
@@ -126,6 +147,8 @@ type globalRoleState struct {
 	Description *string `pulumi:"description"`
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
+	// Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+	InheritedNamespacedRules []GlobalRoleInheritedNamespacedRule `pulumi:"inheritedNamespacedRules"`
 	// Labels for global role object (map)
 	Labels map[string]string `pulumi:"labels"`
 	// Global role name (string)
@@ -147,6 +170,8 @@ type GlobalRoleState struct {
 	Description pulumi.StringPtrInput
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles pulumi.StringArrayInput
+	// Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+	InheritedNamespacedRules GlobalRoleInheritedNamespacedRuleArrayInput
 	// Labels for global role object (map)
 	Labels pulumi.StringMapInput
 	// Global role name (string)
@@ -170,6 +195,8 @@ type globalRoleArgs struct {
 	Description *string `pulumi:"description"`
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles []string `pulumi:"inheritedClusterRoles"`
+	// Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+	InheritedNamespacedRules []GlobalRoleInheritedNamespacedRule `pulumi:"inheritedNamespacedRules"`
 	// Labels for global role object (map)
 	Labels map[string]string `pulumi:"labels"`
 	// Global role name (string)
@@ -188,6 +215,8 @@ type GlobalRoleArgs struct {
 	Description pulumi.StringPtrInput
 	// Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 	InheritedClusterRoles pulumi.StringArrayInput
+	// Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+	InheritedNamespacedRules GlobalRoleInheritedNamespacedRuleArrayInput
 	// Labels for global role object (map)
 	Labels pulumi.StringMapInput
 	// Global role name (string)
@@ -303,6 +332,11 @@ func (o GlobalRoleOutput) Description() pulumi.StringOutput {
 // Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
 func (o GlobalRoleOutput) InheritedClusterRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GlobalRole) pulumi.StringArrayOutput { return v.InheritedClusterRoles }).(pulumi.StringArrayOutput)
+}
+
+// Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+func (o GlobalRoleOutput) InheritedNamespacedRules() GlobalRoleInheritedNamespacedRuleArrayOutput {
+	return o.ApplyT(func(v *GlobalRole) GlobalRoleInheritedNamespacedRuleArrayOutput { return v.InheritedNamespacedRules }).(GlobalRoleInheritedNamespacedRuleArrayOutput)
 }
 
 // Labels for global role object (map)

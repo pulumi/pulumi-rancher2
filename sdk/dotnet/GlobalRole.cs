@@ -25,12 +25,31 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Global Role
     ///     var foo = new Rancher2.GlobalRole("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         NewUserDefault = true,
-    ///         Description = "Terraform global role acceptance test",
-    ///         InheritedClusterRoles = new[]
+    ///         InheritedNamespacedRules = new[]
     ///         {
-    ///             "projects-view",
+    ///             new Rancher2.Inputs.GlobalRoleInheritedNamespacedRuleArgs
+    ///             {
+    ///                 Rules = new[]
+    ///                 {
+    ///                     new Rancher2.Inputs.GlobalRoleInheritedNamespacedRuleRuleArgs
+    ///                     {
+    ///                         ApiGroups = new[]
+    ///                         {
+    ///                             "",
+    ///                         },
+    ///                         Resources = new[]
+    ///                         {
+    ///                             "configmaps",
+    ///                         },
+    ///                         Verbs = new[]
+    ///                         {
+    ///                             "get",
+    ///                             "list",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Namespace = "cattle-monitoring-system",
+    ///             },
     ///         },
     ///         Rules = new[]
     ///         {
@@ -49,6 +68,13 @@ namespace Pulumi.Rancher2
     ///                     "create",
     ///                 },
     ///             },
+    ///         },
+    ///         Name = "foo",
+    ///         NewUserDefault = true,
+    ///         Description = "Terraform global role acceptance test",
+    ///         InheritedClusterRoles = new[]
+    ///         {
+    ///             "projects-view",
     ///         },
     ///     });
     /// 
@@ -89,6 +115,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("inheritedClusterRoles")]
         public Output<ImmutableArray<string>> InheritedClusterRoles { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+        /// </summary>
+        [Output("inheritedNamespacedRules")]
+        public Output<ImmutableArray<Outputs.GlobalRoleInheritedNamespacedRule>> InheritedNamespacedRules { get; private set; } = null!;
 
         /// <summary>
         /// Labels for global role object (map)
@@ -196,6 +228,18 @@ namespace Pulumi.Rancher2
             set => _inheritedClusterRoles = value;
         }
 
+        [Input("inheritedNamespacedRules")]
+        private InputList<Inputs.GlobalRoleInheritedNamespacedRuleArgs>? _inheritedNamespacedRules;
+
+        /// <summary>
+        /// Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+        /// </summary>
+        public InputList<Inputs.GlobalRoleInheritedNamespacedRuleArgs> InheritedNamespacedRules
+        {
+            get => _inheritedNamespacedRules ?? (_inheritedNamespacedRules = new InputList<Inputs.GlobalRoleInheritedNamespacedRuleArgs>());
+            set => _inheritedNamespacedRules = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -274,6 +318,18 @@ namespace Pulumi.Rancher2
         {
             get => _inheritedClusterRoles ?? (_inheritedClusterRoles = new InputList<string>());
             set => _inheritedClusterRoles = value;
+        }
+
+        [Input("inheritedNamespacedRules")]
+        private InputList<Inputs.GlobalRoleInheritedNamespacedRuleGetArgs>? _inheritedNamespacedRules;
+
+        /// <summary>
+        /// Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+        /// </summary>
+        public InputList<Inputs.GlobalRoleInheritedNamespacedRuleGetArgs> InheritedNamespacedRules
+        {
+            get => _inheritedNamespacedRules ?? (_inheritedNamespacedRules = new InputList<Inputs.GlobalRoleInheritedNamespacedRuleGetArgs>());
+            set => _inheritedNamespacedRules = value;
         }
 
         [Input("labels")]

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -52,7 +52,8 @@ func LookupClusterV2(ctx *pulumi.Context, args *LookupClusterV2Args, opts ...pul
 // A collection of arguments for invoking getClusterV2.
 type LookupClusterV2Args struct {
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
-	FleetNamespace *string `pulumi:"fleetNamespace"`
+	FleetNamespace     *string `pulumi:"fleetNamespace"`
+	GenerateKubeConfig *bool   `pulumi:"generateKubeConfig"`
 	// The name of the Cluster v2 (string)
 	Name string `pulumi:"name"`
 }
@@ -75,6 +76,7 @@ type LookupClusterV2Result struct {
 	// (Computed) Enable k8s network policy at Cluster V2 (bool)
 	EnableNetworkPolicy bool    `pulumi:"enableNetworkPolicy"`
 	FleetNamespace      *string `pulumi:"fleetNamespace"`
+	GenerateKubeConfig  *bool   `pulumi:"generateKubeConfig"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (Computed/Sensitive) Kube Config generated for the cluster v2 (string)
@@ -97,7 +99,8 @@ func LookupClusterV2Output(ctx *pulumi.Context, args LookupClusterV2OutputArgs, 
 // A collection of arguments for invoking getClusterV2.
 type LookupClusterV2OutputArgs struct {
 	// The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
-	FleetNamespace pulumi.StringPtrInput `pulumi:"fleetNamespace"`
+	FleetNamespace     pulumi.StringPtrInput `pulumi:"fleetNamespace"`
+	GenerateKubeConfig pulumi.BoolPtrInput   `pulumi:"generateKubeConfig"`
 	// The name of the Cluster v2 (string)
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -162,6 +165,10 @@ func (o LookupClusterV2ResultOutput) EnableNetworkPolicy() pulumi.BoolOutput {
 
 func (o LookupClusterV2ResultOutput) FleetNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClusterV2Result) *string { return v.FleetNamespace }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupClusterV2ResultOutput) GenerateKubeConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupClusterV2Result) *bool { return v.GenerateKubeConfig }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

@@ -119,16 +119,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create AmazonEC2 cloud credential
  *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()
- *             .name("foo")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey("<ACCESS_KEY>")
  *                 .secretKey("<SECRET_KEY>")
  *                 .build())
+ *             .name("foo")
  *             .build());
  * 
  *         // Create AmazonEC2 machine config v2
  *         var fooMachineConfigV2 = new MachineConfigV2("fooMachineConfigV2", MachineConfigV2Args.builder()
- *             .generateName("test-foo")
  *             .amazonec2Config(MachineConfigV2Amazonec2ConfigArgs.builder()
  *                 .ami("ami-id")
  *                 .region("region")
@@ -137,6 +136,7 @@ import javax.annotation.Nullable;
  *                 .vpcId("vpc-id")
  *                 .zone("zone")
  *                 .build())
+ *             .generateName("test-foo")
  *             .build());
  * 
  *     }
@@ -175,12 +175,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a cluster with multiple machine pools
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .name("foo")
- *             .kubernetesVersion("rke2/k3s-version")
- *             .enableNetworkPolicy(false)
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machinePools(                
  *                     ClusterV2RkeConfigMachinePoolArgs.builder()
+ *                         .machineConfig(ClusterV2RkeConfigMachinePoolMachineConfigArgs.builder()
+ *                             .kind(fooRancher2MachineConfigV2.kind())
+ *                             .name(fooRancher2MachineConfigV2.name())
+ *                             .build())
  *                         .name("pool1")
  *                         .cloudCredentialSecretName(fooRancher2CloudCredential.id())
  *                         .controlPlaneRole(true)
@@ -188,12 +189,12 @@ import javax.annotation.Nullable;
  *                         .workerRole(false)
  *                         .quantity(1)
  *                         .drainBeforeDelete(true)
+ *                         .build(),
+ *                     ClusterV2RkeConfigMachinePoolArgs.builder()
  *                         .machineConfig(ClusterV2RkeConfigMachinePoolMachineConfigArgs.builder()
  *                             .kind(fooRancher2MachineConfigV2.kind())
  *                             .name(fooRancher2MachineConfigV2.name())
  *                             .build())
- *                         .build(),
- *                     ClusterV2RkeConfigMachinePoolArgs.builder()
  *                         .name("pool2")
  *                         .cloudCredentialSecretName(fooRancher2CloudCredential.id())
  *                         .controlPlaneRole(false)
@@ -201,33 +202,32 @@ import javax.annotation.Nullable;
  *                         .workerRole(true)
  *                         .quantity(2)
  *                         .drainBeforeDelete(true)
- *                         .machineConfig(ClusterV2RkeConfigMachinePoolMachineConfigArgs.builder()
- *                             .kind(fooRancher2MachineConfigV2.kind())
- *                             .name(fooRancher2MachineConfigV2.name())
- *                             .build())
  *                         .build())
  *                 .build())
+ *             .name("foo")
+ *             .kubernetesVersion("rke2/k3s-version")
+ *             .enableNetworkPolicy(false)
  *             .build());
  * 
  *         // Create a cluster with a single machine pool
  *         var foo_k3s = new ClusterV2("foo-k3s", ClusterV2Args.builder()
- *             .name("foo-k3s")
- *             .kubernetesVersion("rke2/k3s-version")
- *             .enableNetworkPolicy(false)
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
+ *                     .machineConfig(ClusterV2RkeConfigMachinePoolMachineConfigArgs.builder()
+ *                         .kind(fooRancher2MachineConfigV2.kind())
+ *                         .name(fooRancher2MachineConfigV2.name())
+ *                         .build())
  *                     .name("pool")
  *                     .cloudCredentialSecretName(fooRancher2CloudCredential.id())
  *                     .controlPlaneRole(true)
  *                     .etcdRole(true)
  *                     .workerRole(true)
  *                     .quantity(1)
- *                     .machineConfig(ClusterV2RkeConfigMachinePoolMachineConfigArgs.builder()
- *                         .kind(fooRancher2MachineConfigV2.kind())
- *                         .name(fooRancher2MachineConfigV2.name())
- *                         .build())
  *                     .build())
  *                 .build())
+ *             .name("foo-k3s")
+ *             .kubernetesVersion("rke2/k3s-version")
+ *             .enableNetworkPolicy(false)
  *             .build());
  * 
  *     }
@@ -270,43 +270,43 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create Nutanix cloud credential
  *         var fooNutanix = new CloudCredential("fooNutanix", CloudCredentialArgs.builder()
- *             .name("foo-nutanix")
  *             .nutanixCredentialConfig(CloudCredentialNutanixCredentialConfigArgs.builder()
  *                 .endpoint("<PRISM_ENDPOINT>")
  *                 .username("X-ntnx-api-key")
  *                 .password("<NUTANIX_API_KEY_OR_PASSWORD>")
  *                 .port("9440")
  *                 .build())
+ *             .name("foo-nutanix")
  *             .build());
  * 
  *         // Create Nutanix machine config v2
  *         var fooNutanixMachineConfigV2 = new MachineConfigV2("fooNutanixMachineConfigV2", MachineConfigV2Args.builder()
- *             .generateName("foo-nutanix")
  *             .nutanixConfig(MachineConfigV2NutanixConfigArgs.builder()
  *                 .cluster("<NUTANIX_CLUSTER_NAME>")
  *                 .vmNetworks("<NETWORK_NAME_OR_UUID>")
  *                 .vmImage("<IMAGE_NAME>")
  *                 .build())
+ *             .generateName("foo-nutanix")
  *             .build());
  * 
  *         // Create a cluster using Nutanix machine config and cloud credential
  *         var fooNutanixClusterV2 = new ClusterV2("fooNutanixClusterV2", ClusterV2Args.builder()
- *             .name("foo-nutanix")
- *             .kubernetesVersion("<rke2/k3s-version>")
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
+ *                     .machineConfig(ClusterV2RkeConfigMachinePoolMachineConfigArgs.builder()
+ *                         .kind(fooNutanixMachineConfigV2.kind())
+ *                         .name(fooNutanixMachineConfigV2.name())
+ *                         .build())
  *                     .name("pool1")
  *                     .cloudCredentialSecretName(fooNutanix.id())
  *                     .controlPlaneRole(true)
  *                     .etcdRole(true)
  *                     .workerRole(true)
  *                     .quantity(1)
- *                     .machineConfig(ClusterV2RkeConfigMachinePoolMachineConfigArgs.builder()
- *                         .kind(fooNutanixMachineConfigV2.kind())
- *                         .name(fooNutanixMachineConfigV2.name())
- *                         .build())
  *                     .build())
  *                 .build())
+ *             .name("foo-nutanix")
+ *             .kubernetesVersion("<rke2/k3s-version>")
  *             .build());
  * 
  *     }
@@ -368,8 +368,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
- * import com.pulumi.rancher2.inputs.ClusterV2AgentEnvVarArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2AgentEnvVarArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -384,8 +384,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .name("cluster-with-agent-env-vars")
- *             .kubernetesVersion("rke2/k3s-version")
+ *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
+ *                 .build())
  *             .agentEnvVars(            
  *                 ClusterV2AgentEnvVarArgs.builder()
  *                     .name("foo1")
@@ -395,8 +395,8 @@ import javax.annotation.Nullable;
  *                     .name("foo2")
  *                     .value("boo2")
  *                     .build())
- *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
- *                 .build())
+ *             .name("cluster-with-agent-env-vars")
+ *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
  *     }
@@ -421,12 +421,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
- * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -441,10 +441,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .fleetAgentDeploymentCustomizations(ClusterV2FleetAgentDeploymentCustomizationArgs.builder()
+ *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
+ *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
+ *                     .build())
  *                 .build())
- *             .name("foo")
- *             .kubernetesVersion("rke2/k3s-version")
  *             .clusterAgentDeploymentCustomizations(ClusterV2ClusterAgentDeploymentCustomizationArgs.builder()
  *                 .appendTolerations(                
  *                     ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArgs.builder()
@@ -457,6 +457,12 @@ import javax.annotation.Nullable;
  *                         .effect("NoSchedule")
  *                         .value("true")
  *                         .build())
+ *                 .overrideResourceRequirements(ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs.builder()
+ *                     .cpuLimit("800m")
+ *                     .cpuRequest("500m")
+ *                     .memoryLimit("800Mi")
+ *                     .memoryRequest("500Mi")
+ *                     .build())
  *                 .overrideAffinity("""
  * {
  *   \"nodeAffinity\": {
@@ -474,17 +480,11 @@ import javax.annotation.Nullable;
  *   }
  * }
  *                 """)
- *                 .overrideResourceRequirements(ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs.builder()
- *                     .cpuLimit("800m")
- *                     .cpuRequest("500m")
- *                     .memoryLimit("800Mi")
- *                     .memoryRequest("500Mi")
- *                     .build())
  *                 .build())
- *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
- *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
- *                     .build())
+ *             .fleetAgentDeploymentCustomizations(ClusterV2FleetAgentDeploymentCustomizationArgs.builder()
  *                 .build())
+ *             .name("foo")
+ *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
  *     }
@@ -511,16 +511,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
- * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -535,34 +535,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .name("foo")
- *             .kubernetesVersion("rke2/k3s-version")
+ *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
+ *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
+ *                     .build())
+ *                 .build())
  *             .clusterAgentDeploymentCustomizations(ClusterV2ClusterAgentDeploymentCustomizationArgs.builder()
  *                 .schedulingCustomizations(ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs.builder()
+ *                     .podDisruptionBudgets(ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs.builder()
+ *                         .minAvailable("1")
+ *                         .build())
  *                     .priorityClasses(ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs.builder()
  *                         .preemptionPolicy("PreemptLowerPriority")
  *                         .value(1000000000)
- *                         .build())
- *                     .podDisruptionBudgets(ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs.builder()
- *                         .minAvailable("1")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .fleetAgentDeploymentCustomizations(ClusterV2FleetAgentDeploymentCustomizationArgs.builder()
  *                 .schedulingCustomizations(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs.builder()
+ *                     .podDisruptionBudgets(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs.builder()
+ *                         .minAvailable("1")
+ *                         .build())
  *                     .priorityClasses(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs.builder()
  *                         .preemptionPolicy("PreemptLowerPriority")
  *                         .value(999999999)
  *                         .build())
- *                     .podDisruptionBudgets(ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs.builder()
- *                         .minAvailable("1")
- *                         .build())
  *                     .build())
  *                 .build())
- *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
- *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
- *                     .build())
- *                 .build())
+ *             .name("foo")
+ *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
  *     }
@@ -586,10 +586,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.rancher2.ClusterV2;
  * import com.pulumi.rancher2.ClusterV2Args;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolArgs;
- * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachineSelectorConfigArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigRegistriesArgs;
  * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigRegistriesConfigArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachinePoolArgs;
+ * import com.pulumi.rancher2.inputs.ClusterV2RkeConfigMachineSelectorConfigArgs;
  * import com.pulumi.rancher2.SecretV2;
  * import com.pulumi.rancher2.SecretV2Args;
  * import java.util.ArrayList;
@@ -606,14 +606,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fooClusterV2 = new ClusterV2("fooClusterV2", ClusterV2Args.builder()
- *             .name("cluster-with-custom-registry")
- *             .kubernetesVersion("rke2/k3s-version")
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
- *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
- *                     .build())
- *                 .machineSelectorConfigs(ClusterV2RkeConfigMachineSelectorConfigArgs.builder()
- *                     .config("system-default-registry: registry_domain_name")
- *                     .build())
  *                 .registries(ClusterV2RkeConfigRegistriesArgs.builder()
  *                     .configs(ClusterV2RkeConfigRegistriesConfigArgs.builder()
  *                         .hostname("registry_domain_name")
@@ -623,7 +616,14 @@ import javax.annotation.Nullable;
  *                         .caBundle("")
  *                         .build())
  *                     .build())
+ *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
+ *                     .build())
+ *                 .machineSelectorConfigs(ClusterV2RkeConfigMachineSelectorConfigArgs.builder()
+ *                     .config("system-default-registry: registry_domain_name")
+ *                     .build())
  *                 .build())
+ *             .name("cluster-with-custom-registry")
+ *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
  *         // create registry auth secret
@@ -678,18 +678,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .name("foo")
- *             .kubernetesVersion("rke2/k3s-version")
- *             .enableNetworkPolicy(false)
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
  *                     .build())
  *                 .machineSelectorFiles(ClusterV2RkeConfigMachineSelectorFileArgs.builder()
  *                     .machineLabelSelector(ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs.builder()
- *                         .matchLabels(Map.ofEntries(
- *                             Map.entry("rke.cattle.io/control-plane-role", "true"),
- *                             Map.entry("rke.cattle.io/etcd-role", "true")
- *                         ))
  *                         .matchExpressions(                        
  *                             ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs.builder()
  *                                 .key("name")
@@ -705,20 +698,27 @@ import javax.annotation.Nullable;
  *                                     "a",
  *                                     "b")
  *                                 .build())
+ *                         .matchLabels(Map.ofEntries(
+ *                             Map.entry("rke.cattle.io/control-plane-role", "true"),
+ *                             Map.entry("rke.cattle.io/etcd-role", "true")
+ *                         ))
  *                         .build())
  *                     .fileSources(ClusterV2RkeConfigMachineSelectorFileFileSourceArgs.builder()
  *                         .secret(ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs.builder()
- *                             .name("config-file-v1")
- *                             .defaultPermissions("644")
  *                             .items(ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs.builder()
  *                                 .key("audit-policy")
  *                                 .path("/etc/rancher/rke2/custom/policy-v1.yaml")
  *                                 .permissions("666")
  *                                 .build())
+ *                             .name("config-file-v1")
+ *                             .defaultPermissions("644")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
+ *             .name("foo")
+ *             .kubernetesVersion("rke2/k3s-version")
+ *             .enableNetworkPolicy(false)
  *             .build());
  * 
  *     }
@@ -756,19 +756,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .name("foo")
- *             .kubernetesVersion("rke2-version")
- *             .enableNetworkPolicy(false)
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
  *                     .build())
  *                 .machineSelectorConfigs(                
  *                     ClusterV2RkeConfigMachineSelectorConfigArgs.builder()
  *                         .machineLabelSelector(ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs.builder()
- *                             .matchLabels(Map.ofEntries(
- *                                 Map.entry("rke.cattle.io/control-plane-role", "true"),
- *                                 Map.entry("rke.cattle.io/etcd-role", "true")
- *                             ))
  *                             .matchExpressions(                            
  *                                 ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs.builder()
  *                                     .key("name")
@@ -784,6 +777,10 @@ import javax.annotation.Nullable;
  *                                         "a",
  *                                         "b")
  *                                     .build())
+ *                             .matchLabels(Map.ofEntries(
+ *                                 Map.entry("rke.cattle.io/control-plane-role", "true"),
+ *                                 Map.entry("rke.cattle.io/etcd-role", "true")
+ *                             ))
  *                             .build())
  *                         .config("""
  *         kubelet-arg:
@@ -811,6 +808,9 @@ import javax.annotation.Nullable;
  *   - xxx=xxx
  *                 """)
  *                 .build())
+ *             .name("foo")
+ *             .kubernetesVersion("rke2-version")
+ *             .enableNetworkPolicy(false)
  *             .build());
  * 
  *     }
@@ -845,8 +845,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .name("foo")
- *             .kubernetesVersion("rke2/k3s-version")
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
  *                     .build())
@@ -862,6 +860,8 @@ import javax.annotation.Nullable;
  *   name: testing-namespace-2
  *                 """)
  *                 .build())
+ *             .name("foo")
+ *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
  *     }
@@ -900,29 +900,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var credentials = new CloudCredential("credentials", CloudCredentialArgs.builder()
- *             .name("rancher-creds")
  *             .s3CredentialConfig(CloudCredentialS3CredentialConfigArgs.builder()
  *                 .accessKey("<ACCESS_KEY>")
  *                 .secretKey("<SECRET_KEY>")
  *                 .build())
+ *             .name("rancher-creds")
  *             .build());
  * 
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(Arrays.asList(Map.ofEntries(
- *             )))
- *             .name("foo")
- *             .kubernetesVersion("rke2/k3s-version")
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .etcd(ClusterV2RkeConfigEtcdArgs.builder()
- *                     .snapshotScheduleCron("0 *}&#47;{@code 12 * * *")
- *                     .snapshotRetention(10)
  *                     .s3Config(ClusterV2RkeConfigEtcdS3ConfigArgs.builder()
  *                         .bucket("backups")
  *                         .endpoint("https://minio.host:9000")
  *                         .cloudCredentialName(credentials.id())
  *                         .build())
+ *                     .snapshotScheduleCron("0 *}&#47;{@code 12 * * *")
+ *                     .snapshotRetention(10)
  *                     .build())
  *                 .build())
+ *             .machinePools(Arrays.asList(Map.ofEntries(
+ *             )))
+ *             .name("foo")
+ *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
  *     }}{@code
@@ -962,10 +962,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(Arrays.asList(Map.ofEntries(
- *             )))
- *             .name("foo")
- *             .kubernetesVersion("k3s-version")
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machineGlobalConfig("""
  * disable:
@@ -976,6 +972,10 @@ import javax.annotation.Nullable;
  *   - metrics-server
  *                 """)
  *                 .build())
+ *             .machinePools(Arrays.asList(Map.ofEntries(
+ *             )))
+ *             .name("foo")
+ *             .kubernetesVersion("k3s-version")
  *             .build());
  * 
  *     }
@@ -1009,10 +1009,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(Arrays.asList(Map.ofEntries(
- *             )))
- *             .name("foo")
- *             .kubernetesVersion("rke2-version")
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machineGlobalConfig("""
  * disable:
@@ -1022,6 +1018,10 @@ import javax.annotation.Nullable;
  *   - metrics-server
  *                 """)
  *                 .build())
+ *             .machinePools(Arrays.asList(Map.ofEntries(
+ *             )))
+ *             .name("foo")
+ *             .kubernetesVersion("rke2-version")
  *             .build());
  * 
  *     }
@@ -1055,15 +1055,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(Arrays.asList(Map.ofEntries(
- *             )))
- *             .name("foo")
- *             .kubernetesVersion("rke2/k3s-version")
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machineGlobalConfig("""
  * tls-san: [\"example-website.com\", \"100.100.100.100\", \"2002:db8:3333:4444:5555:6666:7777:8888\"]
  *                 """)
  *                 .build())
+ *             .machinePools(Arrays.asList(Map.ofEntries(
+ *             )))
+ *             .name("foo")
+ *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
  *     }
@@ -1097,16 +1097,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .machinePools(Arrays.asList(Map.ofEntries(
- *             )))
- *             .name("foo")
- *             .kubernetesVersion("rke2/k3s-version")
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machineGlobalConfig("""
  * cluster-cidr: \"0.42.0.0/16\"
  * service-cidr: \"0.42.0.0/16\"
  *                 """)
  *                 .build())
+ *             .machinePools(Arrays.asList(Map.ofEntries(
+ *             )))
+ *             .name("foo")
+ *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
  *     }
@@ -1147,9 +1147,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
- *             .name("foo")
- *             .kubernetesVersion("rke2-version")
- *             .enableNetworkPolicy(false)
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
  *                     .build())
@@ -1201,6 +1198,9 @@ import javax.annotation.Nullable;
  *     version: v1.17.6
  *                 """)
  *                 .build())
+ *             .name("foo")
+ *             .kubernetesVersion("rke2-version")
+ *             .enableNetworkPolicy(false)
  *             .build());
  * 
  *     }

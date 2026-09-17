@@ -24,6 +24,7 @@ class GlobalRoleArgs:
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  inherited_cluster_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 inherited_namespaced_rules: pulumi.Input[Optional[Sequence[pulumi.Input['GlobalRoleInheritedNamespacedRuleArgs']]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  new_user_default: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -34,6 +35,7 @@ class GlobalRoleArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role object (map)
         :param pulumi.Input[_builtins.str] description: Global role description (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+        :param pulumi.Input[Sequence[pulumi.Input['GlobalRoleInheritedNamespacedRuleArgs']]] inherited_namespaced_rules: Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for global role object (map)
         :param pulumi.Input[_builtins.str] name: Global role name (string)
         :param pulumi.Input[_builtins.bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
@@ -45,6 +47,8 @@ class GlobalRoleArgs:
             pulumi.set(__self__, "description", description)
         if inherited_cluster_roles is not None:
             pulumi.set(__self__, "inherited_cluster_roles", inherited_cluster_roles)
+        if inherited_namespaced_rules is not None:
+            pulumi.set(__self__, "inherited_namespaced_rules", inherited_namespaced_rules)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -89,6 +93,18 @@ class GlobalRoleArgs:
     @inherited_cluster_roles.setter
     def inherited_cluster_roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "inherited_cluster_roles", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inheritedNamespacedRules")
+    def inherited_namespaced_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GlobalRoleInheritedNamespacedRuleArgs']]]]:
+        """
+        Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+        """
+        return pulumi.get(self, "inherited_namespaced_rules")
+
+    @inherited_namespaced_rules.setter
+    def inherited_namespaced_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GlobalRoleInheritedNamespacedRuleArgs']]]]):
+        pulumi.set(self, "inherited_namespaced_rules", value)
 
     @_builtins.property
     @pulumi.getter
@@ -146,6 +162,7 @@ class _GlobalRoleState:
                  builtin: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  inherited_cluster_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 inherited_namespaced_rules: pulumi.Input[Optional[Sequence[pulumi.Input['GlobalRoleInheritedNamespacedRuleArgs']]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  new_user_default: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -158,6 +175,7 @@ class _GlobalRoleState:
         :param pulumi.Input[_builtins.bool] builtin: (Computed) Builtin global role (bool)
         :param pulumi.Input[_builtins.str] description: Global role description (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+        :param pulumi.Input[Sequence[pulumi.Input['GlobalRoleInheritedNamespacedRuleArgs']]] inherited_namespaced_rules: Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for global role object (map)
         :param pulumi.Input[_builtins.str] name: Global role name (string)
         :param pulumi.Input[_builtins.bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
@@ -172,6 +190,8 @@ class _GlobalRoleState:
             pulumi.set(__self__, "description", description)
         if inherited_cluster_roles is not None:
             pulumi.set(__self__, "inherited_cluster_roles", inherited_cluster_roles)
+        if inherited_namespaced_rules is not None:
+            pulumi.set(__self__, "inherited_namespaced_rules", inherited_namespaced_rules)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -230,6 +250,18 @@ class _GlobalRoleState:
     @inherited_cluster_roles.setter
     def inherited_cluster_roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "inherited_cluster_roles", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inheritedNamespacedRules")
+    def inherited_namespaced_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GlobalRoleInheritedNamespacedRuleArgs']]]]:
+        """
+        Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+        """
+        return pulumi.get(self, "inherited_namespaced_rules")
+
+    @inherited_namespaced_rules.setter
+    def inherited_namespaced_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GlobalRoleInheritedNamespacedRuleArgs']]]]):
+        pulumi.set(self, "inherited_namespaced_rules", value)
 
     @_builtins.property
     @pulumi.getter
@@ -301,6 +333,7 @@ class GlobalRole(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  inherited_cluster_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 inherited_namespaced_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalRoleInheritedNamespacedRuleArgs', 'GlobalRoleInheritedNamespacedRuleArgsDict']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  new_user_default: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -317,15 +350,26 @@ class GlobalRole(pulumi.CustomResource):
 
         # Create a new rancher2 Global Role
         foo = rancher2.GlobalRole("foo",
-            name="foo",
-            new_user_default=True,
-            description="Terraform global role acceptance test",
-            inherited_cluster_roles=["projects-view"],
+            inherited_namespaced_rules=[{
+                "rules": [{
+                    "api_groups": [""],
+                    "resources": ["configmaps"],
+                    "verbs": [
+                        "get",
+                        "list",
+                    ],
+                }],
+                "namespace": "cattle-monitoring-system",
+            }],
             rules=[{
                 "api_groups": ["*"],
                 "resources": ["secrets"],
                 "verbs": ["create"],
-            }])
+            }],
+            name="foo",
+            new_user_default=True,
+            description="Terraform global role acceptance test",
+            inherited_cluster_roles=["projects-view"])
         ```
 
         ## Import
@@ -342,6 +386,7 @@ class GlobalRole(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for global role object (map)
         :param pulumi.Input[_builtins.str] description: Global role description (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleInheritedNamespacedRuleArgs', 'GlobalRoleInheritedNamespacedRuleArgsDict']]]] inherited_namespaced_rules: Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for global role object (map)
         :param pulumi.Input[_builtins.str] name: Global role name (string)
         :param pulumi.Input[_builtins.bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
@@ -364,15 +409,26 @@ class GlobalRole(pulumi.CustomResource):
 
         # Create a new rancher2 Global Role
         foo = rancher2.GlobalRole("foo",
-            name="foo",
-            new_user_default=True,
-            description="Terraform global role acceptance test",
-            inherited_cluster_roles=["projects-view"],
+            inherited_namespaced_rules=[{
+                "rules": [{
+                    "api_groups": [""],
+                    "resources": ["configmaps"],
+                    "verbs": [
+                        "get",
+                        "list",
+                    ],
+                }],
+                "namespace": "cattle-monitoring-system",
+            }],
             rules=[{
                 "api_groups": ["*"],
                 "resources": ["secrets"],
                 "verbs": ["create"],
-            }])
+            }],
+            name="foo",
+            new_user_default=True,
+            description="Terraform global role acceptance test",
+            inherited_cluster_roles=["projects-view"])
         ```
 
         ## Import
@@ -402,6 +458,7 @@ class GlobalRole(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  inherited_cluster_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 inherited_namespaced_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalRoleInheritedNamespacedRuleArgs', 'GlobalRoleInheritedNamespacedRuleArgsDict']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  new_user_default: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -418,6 +475,7 @@ class GlobalRole(pulumi.CustomResource):
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["description"] = description
             __props__.__dict__["inherited_cluster_roles"] = inherited_cluster_roles
+            __props__.__dict__["inherited_namespaced_rules"] = inherited_namespaced_rules
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["new_user_default"] = new_user_default
@@ -438,6 +496,7 @@ class GlobalRole(pulumi.CustomResource):
             builtin: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             inherited_cluster_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            inherited_namespaced_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalRoleInheritedNamespacedRuleArgs', 'GlobalRoleInheritedNamespacedRuleArgsDict']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             new_user_default: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -454,6 +513,7 @@ class GlobalRole(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] builtin: (Computed) Builtin global role (bool)
         :param pulumi.Input[_builtins.str] description: Global role description (string)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inherited_cluster_roles: Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GlobalRoleInheritedNamespacedRuleArgs', 'GlobalRoleInheritedNamespacedRuleArgsDict']]]] inherited_namespaced_rules: Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for global role object (map)
         :param pulumi.Input[_builtins.str] name: Global role name (string)
         :param pulumi.Input[_builtins.bool] new_user_default: Whether or not this role should be added to new users. Default `false` (bool)
@@ -468,6 +528,7 @@ class GlobalRole(pulumi.CustomResource):
         __props__.__dict__["builtin"] = builtin
         __props__.__dict__["description"] = description
         __props__.__dict__["inherited_cluster_roles"] = inherited_cluster_roles
+        __props__.__dict__["inherited_namespaced_rules"] = inherited_namespaced_rules
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["new_user_default"] = new_user_default
@@ -506,6 +567,14 @@ class GlobalRole(pulumi.CustomResource):
         Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
         """
         return pulumi.get(self, "inherited_cluster_roles")
+
+    @_builtins.property
+    @pulumi.getter(name="inheritedNamespacedRules")
+    def inherited_namespaced_rules(self) -> pulumi.Output[Sequence['outputs.GlobalRoleInheritedNamespacedRule']]:
+        """
+        Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+        """
+        return pulumi.get(self, "inherited_namespaced_rules")
 
     @_builtins.property
     @pulumi.getter

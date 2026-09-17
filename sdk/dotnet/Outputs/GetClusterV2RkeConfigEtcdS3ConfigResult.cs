@@ -38,6 +38,10 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Region;
         /// <summary>
+        /// Number of snapshots in S3 to retain
+        /// </summary>
+        public readonly int? Retention;
+        /// <summary>
         /// Disable ETCD skip ssl verify
         /// </summary>
         public readonly bool? SkipSslVerify;
@@ -56,6 +60,8 @@ namespace Pulumi.Rancher2.Outputs
 
             string? region,
 
+            int? retention,
+
             bool? skipSslVerify)
         {
             Bucket = bucket;
@@ -64,6 +70,7 @@ namespace Pulumi.Rancher2.Outputs
             EndpointCa = endpointCa;
             Folder = folder;
             Region = region;
+            Retention = retention;
             SkipSslVerify = skipSslVerify;
         }
     }

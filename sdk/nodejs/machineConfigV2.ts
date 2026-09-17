@@ -25,16 +25,15 @@ import * as utilities from "./utilities";
  * });
  * // Create a new Cloud Credential for an imported Harvester cluster
  * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvester", {
- *     name: "foo-harvester",
  *     harvesterCredentialConfig: {
  *         clusterId: foo_harvester.then(foo_harvester => foo_harvester.clusterV1Id),
  *         clusterType: "imported",
  *         kubeconfigContent: foo_harvester.then(foo_harvester => foo_harvester.kubeConfig),
  *     },
+ *     name: "foo-harvester",
  * });
  * // Create a new rancher2 machine config v2 using harvester node_driver
  * const foo_harvester_v2 = new rancher2.MachineConfigV2("foo-harvester-v2", {
- *     generateName: "foo-harvester-v2",
  *     harvesterConfig: {
  *         vmNamespace: "default",
  *         cpuCount: "2",
@@ -65,6 +64,7 @@ import * as utilities from "./utilities";
  *         - qemu-guest-agent.service
  * `,
  *     },
+ *     generateName: "foo-harvester-v2",
  * });
  * ```
  */

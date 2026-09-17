@@ -67,6 +67,10 @@ export interface GetGlobalRoleResult {
      */
     readonly inheritedClusterRoles?: string[];
     /**
+     * (Computed) Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     */
+    readonly inheritedNamespacedRules: outputs.GetGlobalRoleInheritedNamespacedRule[];
+    /**
      * (Computed) Labels for global role object (map)
      */
     readonly labels: {[key: string]: string};

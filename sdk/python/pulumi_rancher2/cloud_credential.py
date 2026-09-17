@@ -534,12 +534,12 @@ class CloudCredential(pulumi.CustomResource):
 
         # Create a new rancher2 Cloud Credential
         foo = rancher2.CloudCredential("foo",
-            name="foo",
-            description="foo test",
             amazonec2_credential_config={
                 "access_key": "<AWS_ACCESS_KEY>",
                 "secret_key": "<AWS_SECRET_KEY>",
-            })
+            },
+            name="foo",
+            description="foo test")
         ```
 
         ```python
@@ -550,12 +550,12 @@ class CloudCredential(pulumi.CustomResource):
         foo_harvester = rancher2.get_cluster_v2(name="foo-harvester")
         # Create a new Cloud Credential for an imported Harvester cluster
         foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
-            name="foo-harvester",
             harvester_credential_config={
                 "cluster_id": foo_harvester.cluster_v1_id,
                 "cluster_type": "imported",
                 "kubeconfig_content": foo_harvester.kube_config,
-            })
+            },
+            name="foo-harvester")
         ```
 
         ## Import
@@ -615,12 +615,12 @@ class CloudCredential(pulumi.CustomResource):
 
         # Create a new rancher2 Cloud Credential
         foo = rancher2.CloudCredential("foo",
-            name="foo",
-            description="foo test",
             amazonec2_credential_config={
                 "access_key": "<AWS_ACCESS_KEY>",
                 "secret_key": "<AWS_SECRET_KEY>",
-            })
+            },
+            name="foo",
+            description="foo test")
         ```
 
         ```python
@@ -631,12 +631,12 @@ class CloudCredential(pulumi.CustomResource):
         foo_harvester = rancher2.get_cluster_v2(name="foo-harvester")
         # Create a new Cloud Credential for an imported Harvester cluster
         foo_harvester_cloud_credential = rancher2.CloudCredential("foo-harvester",
-            name="foo-harvester",
             harvester_credential_config={
                 "cluster_id": foo_harvester.cluster_v1_id,
                 "cluster_type": "imported",
                 "kubeconfig_content": foo_harvester.kube_config,
-            })
+            },
+            name="foo-harvester")
         ```
 
         ## Import

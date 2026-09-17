@@ -25,7 +25,7 @@ public final class ClusterV2RkeConfigEtcd {
      */
     private @Nullable ClusterV2RkeConfigEtcdS3Config s3Config;
     /**
-     * @return ETCD snapshot retention
+     * @return Number of snapshots to retain
      * 
      */
     private @Nullable Integer snapshotRetention;
@@ -51,7 +51,7 @@ public final class ClusterV2RkeConfigEtcd {
         return Optional.ofNullable(this.s3Config);
     }
     /**
-     * @return ETCD snapshot retention
+     * @return Number of snapshots to retain
      * 
      */
     public Optional<Integer> snapshotRetention() {

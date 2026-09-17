@@ -6,6 +6,7 @@ package com.pulumi.rancher2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,6 +44,11 @@ public final class ClusterV2RkeConfigEtcdS3Config {
      * 
      */
     private @Nullable String region;
+    /**
+     * @return Number of snapshots in S3 to retain
+     * 
+     */
+    private @Nullable Integer retention;
     /**
      * @return Disable ETCD skip ssl verify
      * 
@@ -93,6 +99,13 @@ public final class ClusterV2RkeConfigEtcdS3Config {
         return Optional.ofNullable(this.region);
     }
     /**
+     * @return Number of snapshots in S3 to retain
+     * 
+     */
+    public Optional<Integer> retention() {
+        return Optional.ofNullable(this.retention);
+    }
+    /**
      * @return Disable ETCD skip ssl verify
      * 
      */
@@ -115,6 +128,7 @@ public final class ClusterV2RkeConfigEtcdS3Config {
         private @Nullable String endpointCa;
         private @Nullable String folder;
         private @Nullable String region;
+        private @Nullable Integer retention;
         private @Nullable Boolean skipSslVerify;
         public Builder() {}
         public Builder(ClusterV2RkeConfigEtcdS3Config defaults) {
@@ -125,6 +139,7 @@ public final class ClusterV2RkeConfigEtcdS3Config {
     	      this.endpointCa = defaults.endpointCa;
     	      this.folder = defaults.folder;
     	      this.region = defaults.region;
+    	      this.retention = defaults.retention;
     	      this.skipSslVerify = defaults.skipSslVerify;
         }
 
@@ -169,6 +184,12 @@ public final class ClusterV2RkeConfigEtcdS3Config {
             return this;
         }
         @CustomType.Setter
+        public Builder retention(@Nullable Integer retention) {
+
+            this.retention = retention;
+            return this;
+        }
+        @CustomType.Setter
         public Builder skipSslVerify(@Nullable Boolean skipSslVerify) {
 
             this.skipSslVerify = skipSslVerify;
@@ -182,6 +203,7 @@ public final class ClusterV2RkeConfigEtcdS3Config {
             _resultValue.endpointCa = endpointCa;
             _resultValue.folder = folder;
             _resultValue.region = region;
+            _resultValue.retention = retention;
             _resultValue.skipSslVerify = skipSslVerify;
             return _resultValue;
         }

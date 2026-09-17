@@ -266,6 +266,21 @@ public final class AuthConfigCognitoArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * PKCE verification method. Set to &#34;S256&#34; to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+     * 
+     */
+    @Import(name="pkceMethod")
+    private @Nullable Output<String> pkceMethod;
+
+    /**
+     * @return PKCE verification method. Set to &#34;S256&#34; to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+     * 
+     */
+    public Optional<Output<String>> pkceMethod() {
+        return Optional.ofNullable(this.pkceMethod);
+    }
+
+    /**
      * A PEM-encoded private key for the OIDC provider.
      * 
      */
@@ -361,6 +376,7 @@ public final class AuthConfigCognitoArgs extends com.pulumi.resources.ResourceAr
         this.logoutAllEnabled = $.logoutAllEnabled;
         this.logoutAllForced = $.logoutAllForced;
         this.nameClaim = $.nameClaim;
+        this.pkceMethod = $.pkceMethod;
         this.privateKey = $.privateKey;
         this.rancherUrl = $.rancherUrl;
         this.scopes = $.scopes;
@@ -730,6 +746,27 @@ public final class AuthConfigCognitoArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder nameClaim(String nameClaim) {
             return nameClaim(Output.of(nameClaim));
+        }
+
+        /**
+         * @param pkceMethod PKCE verification method. Set to &#34;S256&#34; to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pkceMethod(@Nullable Output<String> pkceMethod) {
+            $.pkceMethod = pkceMethod;
+            return this;
+        }
+
+        /**
+         * @param pkceMethod PKCE verification method. Set to &#34;S256&#34; to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pkceMethod(String pkceMethod) {
+            return pkceMethod(Output.of(pkceMethod));
         }
 
         /**

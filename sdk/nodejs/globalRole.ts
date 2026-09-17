@@ -17,15 +17,26 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Global Role
  * const foo = new rancher2.GlobalRole("foo", {
- *     name: "foo",
- *     newUserDefault: true,
- *     description: "Terraform global role acceptance test",
- *     inheritedClusterRoles: ["projects-view"],
+ *     inheritedNamespacedRules: [{
+ *         rules: [{
+ *             apiGroups: [""],
+ *             resources: ["configmaps"],
+ *             verbs: [
+ *                 "get",
+ *                 "list",
+ *             ],
+ *         }],
+ *         namespace: "cattle-monitoring-system",
+ *     }],
  *     rules: [{
  *         apiGroups: ["*"],
  *         resources: ["secrets"],
  *         verbs: ["create"],
  *     }],
+ *     name: "foo",
+ *     newUserDefault: true,
+ *     description: "Terraform global role acceptance test",
+ *     inheritedClusterRoles: ["projects-view"],
  * });
  * ```
  *
@@ -82,6 +93,10 @@ export class GlobalRole extends pulumi.CustomResource {
      */
     declare public readonly inheritedClusterRoles: pulumi.Output<string[] | undefined>;
     /**
+     * Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     */
+    declare public readonly inheritedNamespacedRules: pulumi.Output<outputs.GlobalRoleInheritedNamespacedRule[]>;
+    /**
      * Labels for global role object (map)
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
@@ -119,6 +134,7 @@ export class GlobalRole extends pulumi.CustomResource {
             resourceInputs["builtin"] = state?.builtin;
             resourceInputs["description"] = state?.description;
             resourceInputs["inheritedClusterRoles"] = state?.inheritedClusterRoles;
+            resourceInputs["inheritedNamespacedRules"] = state?.inheritedNamespacedRules;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["newUserDefault"] = state?.newUserDefault;
@@ -129,6 +145,7 @@ export class GlobalRole extends pulumi.CustomResource {
             resourceInputs["annotations"] = args?.annotations;
             resourceInputs["description"] = args?.description;
             resourceInputs["inheritedClusterRoles"] = args?.inheritedClusterRoles;
+            resourceInputs["inheritedNamespacedRules"] = args?.inheritedNamespacedRules;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["newUserDefault"] = args?.newUserDefault;
@@ -161,6 +178,10 @@ export interface GlobalRoleState {
      * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      */
     inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     */
+    inheritedNamespacedRules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleInheritedNamespacedRule>[] | undefined>;
     /**
      * Labels for global role object (map)
      */
@@ -199,6 +220,10 @@ export interface GlobalRoleArgs {
      * Names of role templates whose permissions are granted by this global role in every cluster besides the local cluster (list)
      */
     inheritedClusterRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     */
+    inheritedNamespacedRules?: pulumi.Input<pulumi.Input<inputs.GlobalRoleInheritedNamespacedRule>[] | undefined>;
     /**
      * Labels for global role object (map)
      */

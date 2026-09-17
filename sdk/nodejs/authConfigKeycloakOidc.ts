@@ -97,6 +97,10 @@ export class AuthConfigKeycloakOidc extends pulumi.CustomResource {
      */
     declare public readonly nameClaim: pulumi.Output<string | undefined>;
     /**
+     * PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+     */
+    declare public readonly pkceMethod: pulumi.Output<string>;
+    /**
      * A PEM-encoded private key for the OIDC provider.
      */
     declare public readonly privateKey: pulumi.Output<string | undefined>;
@@ -150,6 +154,7 @@ export class AuthConfigKeycloakOidc extends pulumi.CustomResource {
             resourceInputs["logoutAllForced"] = state?.logoutAllForced;
             resourceInputs["name"] = state?.name;
             resourceInputs["nameClaim"] = state?.nameClaim;
+            resourceInputs["pkceMethod"] = state?.pkceMethod;
             resourceInputs["privateKey"] = state?.privateKey;
             resourceInputs["rancherUrl"] = state?.rancherUrl;
             resourceInputs["scopes"] = state?.scopes;
@@ -188,6 +193,7 @@ export class AuthConfigKeycloakOidc extends pulumi.CustomResource {
             resourceInputs["logoutAllEnabled"] = args?.logoutAllEnabled;
             resourceInputs["logoutAllForced"] = args?.logoutAllForced;
             resourceInputs["nameClaim"] = args?.nameClaim;
+            resourceInputs["pkceMethod"] = args?.pkceMethod;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
             resourceInputs["rancherUrl"] = args?.rancherUrl;
             resourceInputs["scopes"] = args?.scopes;
@@ -271,6 +277,10 @@ export interface AuthConfigKeycloakOidcState {
      * The OIDC Claim to use for the user name.
      */
     nameClaim?: pulumi.Input<string | undefined>;
+    /**
+     * PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+     */
+    pkceMethod?: pulumi.Input<string | undefined>;
     /**
      * A PEM-encoded private key for the OIDC provider.
      */
@@ -361,6 +371,10 @@ export interface AuthConfigKeycloakOidcArgs {
      * The OIDC Claim to use for the user name.
      */
     nameClaim?: pulumi.Input<string | undefined>;
+    /**
+     * PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+     */
+    pkceMethod?: pulumi.Input<string | undefined>;
     /**
      * A PEM-encoded private key for the OIDC provider.
      */

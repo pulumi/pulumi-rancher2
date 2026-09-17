@@ -105,10 +105,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `&lt;namespace&gt;/&lt;application_name&gt;`.
+ * V2 apps can be imported using the Rancher cluster ID, App V2 namespace and App V2 name.
  * 
  * ```sh
- * $ pulumi import rancher2:index/appV2:AppV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;APP_V2_NAME&amp;gt;
+ * $ pulumi import rancher2:index/appV2:AppV2 foo &amp;lt;CLUSTER_ID&amp;gt;.&amp;lt;APP_V2_NAMESPACE&amp;gt;/&amp;lt;APP_V2_NAME&amp;gt;
  * ```
  * 
  */
@@ -323,6 +323,20 @@ public class AppV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> repoName() {
         return this.repoName;
+    }
+    /**
+     * Skip app V2 chart schema validation. Default: `false` (bool)
+     * 
+     */
+    @Export(name="skipSchemaValidation", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipSchemaValidation;
+
+    /**
+     * @return Skip app V2 chart schema validation. Default: `false` (bool)
+     * 
+     */
+    public Output<Optional<Boolean>> skipSchemaValidation() {
+        return Codegen.optional(this.skipSchemaValidation);
     }
     /**
      * System default registry providing images for app deployment (string)

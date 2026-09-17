@@ -317,9 +317,6 @@ class Namespace(pulumi.CustomResource):
 
         # Create a new rancher2 Namespace
         foo = rancher2.Namespace("foo",
-            name="foo",
-            project_id="<PROJECT_ID>",
-            description="foo namespace",
             resource_quota={
                 "limit": {
                     "limits_cpu": "100m",
@@ -332,7 +329,10 @@ class Namespace(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            project_id="<PROJECT_ID>",
+            description="foo namespace")
         ```
 
         ```python
@@ -341,18 +341,15 @@ class Namespace(pulumi.CustomResource):
 
         # Create a new rancher2 Cluster 
         foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
+            rke_config=[{
+                "network": [{
                     "plugin": "canal",
-                },
-            })
+                }],
+            }],
+            name="foo-custom",
+            description="Foo rancher2 custom cluster")
         # Create a new rancher2 Namespace assigned to default cluster project
         foo = rancher2.Namespace("foo",
-            name="foo",
-            project_id=foo_custom.default_project_id,
-            description="foo namespace",
             resource_quota={
                 "limit": {
                     "limits_cpu": "100m",
@@ -365,7 +362,10 @@ class Namespace(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            project_id=foo_custom.default_project_id,
+            description="foo namespace")
         ```
 
         ## Import
@@ -411,9 +411,6 @@ class Namespace(pulumi.CustomResource):
 
         # Create a new rancher2 Namespace
         foo = rancher2.Namespace("foo",
-            name="foo",
-            project_id="<PROJECT_ID>",
-            description="foo namespace",
             resource_quota={
                 "limit": {
                     "limits_cpu": "100m",
@@ -426,7 +423,10 @@ class Namespace(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            project_id="<PROJECT_ID>",
+            description="foo namespace")
         ```
 
         ```python
@@ -435,18 +435,15 @@ class Namespace(pulumi.CustomResource):
 
         # Create a new rancher2 Cluster 
         foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
+            rke_config=[{
+                "network": [{
                     "plugin": "canal",
-                },
-            })
+                }],
+            }],
+            name="foo-custom",
+            description="Foo rancher2 custom cluster")
         # Create a new rancher2 Namespace assigned to default cluster project
         foo = rancher2.Namespace("foo",
-            name="foo",
-            project_id=foo_custom.default_project_id,
-            description="foo namespace",
             resource_quota={
                 "limit": {
                     "limits_cpu": "100m",
@@ -459,7 +456,10 @@ class Namespace(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            project_id=foo_custom.default_project_id,
+            description="foo namespace")
         ```
 
         ## Import

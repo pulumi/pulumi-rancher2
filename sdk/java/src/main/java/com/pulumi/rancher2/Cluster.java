@@ -15,8 +15,6 @@ import com.pulumi.rancher2.outputs.ClusterAksConfigV2;
 import com.pulumi.rancher2.outputs.ClusterClusterAgentDeploymentCustomization;
 import com.pulumi.rancher2.outputs.ClusterClusterAuthEndpoint;
 import com.pulumi.rancher2.outputs.ClusterClusterRegistrationToken;
-import com.pulumi.rancher2.outputs.ClusterClusterTemplateAnswers;
-import com.pulumi.rancher2.outputs.ClusterClusterTemplateQuestion;
 import com.pulumi.rancher2.outputs.ClusterEksConfigV2;
 import com.pulumi.rancher2.outputs.ClusterFleetAgentDeploymentCustomization;
 import com.pulumi.rancher2.outputs.ClusterGkeConfigV2;
@@ -24,7 +22,6 @@ import com.pulumi.rancher2.outputs.ClusterImportedConfig;
 import com.pulumi.rancher2.outputs.ClusterK3sConfig;
 import com.pulumi.rancher2.outputs.ClusterOkeConfig;
 import com.pulumi.rancher2.outputs.ClusterRke2Config;
-import com.pulumi.rancher2.outputs.ClusterRkeConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -153,10 +150,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 imported Cluster with custom configuration 
  *         var foo_imported = new Cluster("foo-imported", ClusterArgs.builder()
- *             .name("foo-imported")
  *             .importedConfig(ClusterImportedConfigArgs.builder()
  *                 .privateRegistryUrl("test.io")
  *                 .build())
+ *             .name("foo-imported")
  *             .build());
  * 
  *     }
@@ -193,23 +190,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()
- *             .name("foo")
- *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey("<aws-access-key>")
  *                 .secretKey("<aws-secret-key>")
  *                 .build())
+ *             .name("foo")
+ *             .description("foo test")
  *             .build());
  * 
  *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()
- *             .name("foo")
- *             .description("Terraform EKS cluster")
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
  *                 .cloudCredentialId(foo.id())
  *                 .name("<cluster-name>")
  *                 .region("<eks-region>")
  *                 .imported(true)
  *                 .build())
+ *             .name("foo")
+ *             .description("Terraform EKS cluster")
  *             .build());
  * 
  *     }
@@ -247,24 +244,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()
- *             .name("foo")
- *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey("<aws-access-key>")
  *                 .secretKey("<aws-secret-key>")
  *                 .build())
+ *             .name("foo")
+ *             .description("foo test")
  *             .build());
  * 
  *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()
- *             .name("foo")
- *             .description("Terraform EKS cluster")
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
- *                 .cloudCredentialId(foo.id())
- *                 .region("<EKS_REGION>")
- *                 .kubernetesVersion("1.24")
- *                 .loggingTypes(                
- *                     "audit",
- *                     "api")
  *                 .nodeGroups(                
  *                     ClusterEksConfigV2NodeGroupArgs.builder()
  *                         .name("node_group1")
@@ -279,9 +268,17 @@ import javax.annotation.Nullable;
  *                         .maxSize(3)
  *                         .nodeRole("arn:aws:iam::role/test-NodeInstanceRole")
  *                         .build())
+ *                 .cloudCredentialId(foo.id())
+ *                 .region("<EKS_REGION>")
+ *                 .kubernetesVersion("1.24")
+ *                 .loggingTypes(                
+ *                     "audit",
+ *                     "api")
  *                 .privateAccess(true)
  *                 .publicAccess(false)
  *                 .build())
+ *             .name("foo")
+ *             .description("Terraform EKS cluster")
  *             .build());
  * 
  *     }
@@ -322,36 +319,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()
- *             .name("foo")
- *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey("<aws-access-key>")
  *                 .secretKey("<aws-secret-key>")
  *                 .build())
+ *             .name("foo")
+ *             .description("foo test")
  *             .build());
  * 
  *         var fooCluster = new Cluster("fooCluster", ClusterArgs.builder()
- *             .name("foo")
- *             .description("Terraform EKS cluster")
  *             .eksConfigV2(ClusterEksConfigV2Args.builder()
+ *                 .nodeGroups(ClusterEksConfigV2NodeGroupArgs.builder()
+ *                     .launchTemplates(ClusterEksConfigV2NodeGroupLaunchTemplateArgs.builder()
+ *                         .id("<ec2-launch-template-id>")
+ *                         .version(1)
+ *                         .build())
+ *                     .desiredSize(3)
+ *                     .maxSize(5)
+ *                     .name("node_group1")
+ *                     .build())
  *                 .cloudCredentialId(foo.id())
  *                 .region("<EKS_REGION>")
  *                 .kubernetesVersion("1.24")
  *                 .loggingTypes(                
  *                     "audit",
  *                     "api")
- *                 .nodeGroups(ClusterEksConfigV2NodeGroupArgs.builder()
- *                     .desiredSize(3)
- *                     .maxSize(5)
- *                     .name("node_group1")
- *                     .launchTemplates(ClusterEksConfigV2NodeGroupLaunchTemplateArgs.builder()
- *                         .id("<ec2-launch-template-id>")
- *                         .version(1)
- *                         .build())
- *                     .build())
  *                 .privateAccess(true)
  *                 .publicAccess(true)
  *                 .build())
+ *             .name("foo")
+ *             .description("Terraform EKS cluster")
  *             .build());
  * 
  *     }
@@ -389,29 +386,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo_aks = new CloudCredential("foo-aks", CloudCredentialArgs.builder()
- *             .name("foo-aks")
  *             .azureCredentialConfig(CloudCredentialAzureCredentialConfigArgs.builder()
  *                 .clientId("<client-id>")
  *                 .clientSecret("<client-secret>")
  *                 .subscriptionId("<subscription-id>")
  *                 .build())
+ *             .name("foo-aks")
  *             .build());
  * 
  *         var foo = new Cluster("foo", ClusterArgs.builder()
- *             .name("foo")
- *             .description("Terraform AKS cluster")
  *             .aksConfigV2(ClusterAksConfigV2Args.builder()
- *                 .cloudCredentialId(foo_aks.id())
- *                 .resourceGroup("<resource-group>")
- *                 .resourceLocation("<resource-location>")
- *                 .dnsPrefix("<dns-prefix>")
- *                 .kubernetesVersion("1.24.6")
- *                 .networkPlugin("<network-plugin>")
- *                 .virtualNetwork("<virtual-network>")
- *                 .virtualNetworkResourceGroup("<virtual-network-resource-group>")
- *                 .subnet("<subnet>")
- *                 .nodeResourceGroup("<node-resource-group>")
- *                 .outboundType("loadBalancer")
  *                 .nodePools(                
  *                     ClusterAksConfigV2NodePoolArgs.builder()
  *                         .availabilityZones(                        
@@ -443,7 +427,20 @@ import javax.annotation.Nullable;
  *                         ))
  *                         .taints("none:PreferNoSchedule")
  *                         .build())
+ *                 .cloudCredentialId(foo_aks.id())
+ *                 .resourceGroup("<resource-group>")
+ *                 .resourceLocation("<resource-location>")
+ *                 .dnsPrefix("<dns-prefix>")
+ *                 .kubernetesVersion("1.24.6")
+ *                 .networkPlugin("<network-plugin>")
+ *                 .virtualNetwork("<virtual-network>")
+ *                 .virtualNetworkResourceGroup("<virtual-network-resource-group>")
+ *                 .subnet("<subnet>")
+ *                 .nodeResourceGroup("<node-resource-group>")
+ *                 .outboundType("loadBalancer")
  *                 .build())
+ *             .name("foo")
+ *             .description("Terraform AKS cluster")
  *             .build());
  * 
  *     }
@@ -559,62 +556,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterClusterRegistrationToken> clusterRegistrationToken() {
         return this.clusterRegistrationToken;
-    }
-    /**
-     * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-     * 
-     */
-    @Export(name="clusterTemplateAnswers", refs={ClusterClusterTemplateAnswers.class}, tree="[0]")
-    private Output<ClusterClusterTemplateAnswers> clusterTemplateAnswers;
-
-    /**
-     * @return Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-     * 
-     */
-    public Output<ClusterClusterTemplateAnswers> clusterTemplateAnswers() {
-        return this.clusterTemplateAnswers;
-    }
-    /**
-     * Cluster template ID. For Rancher v2.3.x and above (string)
-     * 
-     */
-    @Export(name="clusterTemplateId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> clusterTemplateId;
-
-    /**
-     * @return Cluster template ID. For Rancher v2.3.x and above (string)
-     * 
-     */
-    public Output<Optional<String>> clusterTemplateId() {
-        return Codegen.optional(this.clusterTemplateId);
-    }
-    /**
-     * Cluster template questions. For Rancher v2.3.x and above (list)
-     * 
-     */
-    @Export(name="clusterTemplateQuestions", refs={List.class,ClusterClusterTemplateQuestion.class}, tree="[0,1]")
-    private Output<List<ClusterClusterTemplateQuestion>> clusterTemplateQuestions;
-
-    /**
-     * @return Cluster template questions. For Rancher v2.3.x and above (list)
-     * 
-     */
-    public Output<List<ClusterClusterTemplateQuestion>> clusterTemplateQuestions() {
-        return this.clusterTemplateQuestions;
-    }
-    /**
-     * Cluster template revision ID. For Rancher v2.3.x and above (string)
-     * 
-     */
-    @Export(name="clusterTemplateRevisionId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> clusterTemplateRevisionId;
-
-    /**
-     * @return Cluster template revision ID. For Rancher v2.3.x and above (string)
-     * 
-     */
-    public Output<Optional<String>> clusterTemplateRevisionId() {
-        return Codegen.optional(this.clusterTemplateRevisionId);
     }
     /**
      * The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
@@ -913,20 +854,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterRke2Config> rke2Config() {
         return this.rke2Config;
-    }
-    /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
-     * 
-     */
-    @Export(name="rkeConfig", refs={ClusterRkeConfig.class}, tree="[0]")
-    private Output<ClusterRkeConfig> rkeConfig;
-
-    /**
-     * @return The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
-     * 
-     */
-    public Output<ClusterRkeConfig> rkeConfig() {
-        return this.rkeConfig;
     }
     /**
      * (Computed) System project ID for the cluster (string)

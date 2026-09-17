@@ -49,14 +49,14 @@ public final class ClusterV2RkeConfigEtcdArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * ETCD snapshot retention
+     * Number of snapshots to retain
      * 
      */
     @Import(name="snapshotRetention")
     private @Nullable Output<Integer> snapshotRetention;
 
     /**
-     * @return ETCD snapshot retention
+     * @return Number of snapshots to retain
      * 
      */
     public Optional<Output<Integer>> snapshotRetention() {
@@ -148,7 +148,7 @@ public final class ClusterV2RkeConfigEtcdArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param snapshotRetention ETCD snapshot retention
+         * @param snapshotRetention Number of snapshots to retain
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ClusterV2RkeConfigEtcdArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param snapshotRetention ETCD snapshot retention
+         * @param snapshotRetention Number of snapshots to retain
          * 
          * @return builder
          * 

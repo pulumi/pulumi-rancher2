@@ -153,36 +153,6 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The Node Pool ID of the node (string).
-     * 
-     */
-    @Import(name="nodePoolId")
-    private @Nullable Output<String> nodePoolId;
-
-    /**
-     * @return The Node Pool ID of the node (string).
-     * 
-     */
-    public Optional<Output<String>> nodePoolId() {
-        return Optional.ofNullable(this.nodePoolId);
-    }
-
-    /**
-     * The Node Template ID of the node (string).
-     * 
-     */
-    @Import(name="nodeTemplateId")
-    private @Nullable Output<String> nodeTemplateId;
-
-    /**
-     * @return The Node Template ID of the node (string).
-     * 
-     */
-    public Optional<Output<String>> nodeTemplateId() {
-        return Optional.ofNullable(this.nodeTemplateId);
-    }
-
-    /**
      * The Provider ID of the node (string).
      * 
      */
@@ -228,21 +198,6 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The user to connect to the node (string).
-     * 
-     */
-    @Import(name="sshUser")
-    private @Nullable Output<String> sshUser;
-
-    /**
-     * @return The user to connect to the node (string).
-     * 
-     */
-    public Optional<Output<String>> sshUser() {
-        return Optional.ofNullable(this.sshUser);
-    }
-
-    /**
      * General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
      * 
      */
@@ -269,12 +224,9 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
         this.ipAddress = $.ipAddress;
         this.labels = $.labels;
         this.name = $.name;
-        this.nodePoolId = $.nodePoolId;
-        this.nodeTemplateId = $.nodeTemplateId;
         this.providerId = $.providerId;
         this.requestedHostname = $.requestedHostname;
         this.roles = $.roles;
-        this.sshUser = $.sshUser;
         this.systemInfo = $.systemInfo;
     }
 
@@ -486,48 +438,6 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param nodePoolId The Node Pool ID of the node (string).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodePoolId(@Nullable Output<String> nodePoolId) {
-            $.nodePoolId = nodePoolId;
-            return this;
-        }
-
-        /**
-         * @param nodePoolId The Node Pool ID of the node (string).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodePoolId(String nodePoolId) {
-            return nodePoolId(Output.of(nodePoolId));
-        }
-
-        /**
-         * @param nodeTemplateId The Node Template ID of the node (string).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodeTemplateId(@Nullable Output<String> nodeTemplateId) {
-            $.nodeTemplateId = nodeTemplateId;
-            return this;
-        }
-
-        /**
-         * @param nodeTemplateId The Node Template ID of the node (string).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodeTemplateId(String nodeTemplateId) {
-            return nodeTemplateId(Output.of(nodeTemplateId));
-        }
-
-        /**
          * @param providerId The Provider ID of the node (string).
          * 
          * @return builder
@@ -598,27 +508,6 @@ public final class ClusterSyncNodeArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder roles(String... roles) {
             return roles(List.of(roles));
-        }
-
-        /**
-         * @param sshUser The user to connect to the node (string).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshUser(@Nullable Output<String> sshUser) {
-            $.sshUser = sshUser;
-            return this;
-        }
-
-        /**
-         * @param sshUser The user to connect to the node (string).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sshUser(String sshUser) {
-            return sshUser(Output.of(sshUser));
         }
 
         /**

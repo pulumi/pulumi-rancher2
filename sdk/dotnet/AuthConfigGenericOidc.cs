@@ -167,6 +167,12 @@ namespace Pulumi.Rancher2
         public Output<string?> NameClaim { get; private set; } = null!;
 
         /// <summary>
+        /// PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+        /// </summary>
+        [Output("pkceMethod")]
+        public Output<string> PkceMethod { get; private set; } = null!;
+
+        /// <summary>
         /// A PEM-encoded private key for the OIDC provider.
         /// </summary>
         [Output("privateKey")]
@@ -411,6 +417,12 @@ namespace Pulumi.Rancher2
         [Input("nameClaim")]
         public Input<string>? NameClaim { get; set; }
 
+        /// <summary>
+        /// PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+        /// </summary>
+        [Input("pkceMethod")]
+        public Input<string>? PkceMethod { get; set; }
+
         [Input("privateKey")]
         private Input<string>? _privateKey;
 
@@ -620,6 +632,12 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("nameClaim")]
         public Input<string>? NameClaim { get; set; }
+
+        /// <summary>
+        /// PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+        /// </summary>
+        [Input("pkceMethod")]
+        public Input<string>? PkceMethod { get; set; }
 
         [Input("privateKey")]
         private Input<string>? _privateKey;

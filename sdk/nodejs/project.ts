@@ -17,8 +17,6 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Project
  * const foo = new rancher2.Project("foo", {
- *     name: "foo",
- *     clusterId: "<CLUSTER_ID>",
  *     resourceQuota: {
  *         projectLimit: {
  *             limitsCpu: "2000m",
@@ -37,6 +35,8 @@ import * as utilities from "./utilities";
  *         requestsCpu: "1m",
  *         requestsMemory: "1Mi",
  *     },
+ *     name: "foo",
+ *     clusterId: "<CLUSTER_ID>",
  * });
  * ```
  *
@@ -46,8 +46,6 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Project
  * const foo = new rancher2.Project("foo", {
- *     name: "foo",
- *     clusterId: "<CLUSTER_ID>",
  *     resourceQuota: {
  *         projectLimit: {
  *             limitsCpu: "2000m",
@@ -66,6 +64,8 @@ import * as utilities from "./utilities";
  *         requestsCpu: "1m",
  *         requestsMemory: "1Mi",
  *     },
+ *     name: "foo",
+ *     clusterId: "<CLUSTER_ID>",
  * });
  * ```
  *

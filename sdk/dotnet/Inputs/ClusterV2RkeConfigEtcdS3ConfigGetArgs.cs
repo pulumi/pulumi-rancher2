@@ -49,6 +49,12 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// Number of snapshots in S3 to retain
+        /// </summary>
+        [Input("retention")]
+        public Input<int>? Retention { get; set; }
+
+        /// <summary>
         /// Disable ETCD skip ssl verify
         /// </summary>
         [Input("skipSslVerify")]

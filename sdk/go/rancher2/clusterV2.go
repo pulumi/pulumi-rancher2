@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,7 +44,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -77,7 +77,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -86,18 +86,17 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create AmazonEC2 cloud credential
 //			_, err := rancher2.NewCloudCredential(ctx, "foo", &rancher2.CloudCredentialArgs{
-//				Name: pulumi.String("foo"),
 //				Amazonec2CredentialConfig: &rancher2.CloudCredentialAmazonec2CredentialConfigArgs{
 //					AccessKey: pulumi.String("<ACCESS_KEY>"),
 //					SecretKey: pulumi.String("<SECRET_KEY>"),
 //				},
+//				Name: pulumi.String("foo"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create AmazonEC2 machine config v2
 //			_, err = rancher2.NewMachineConfigV2(ctx, "foo", &rancher2.MachineConfigV2Args{
-//				GenerateName: pulumi.String("test-foo"),
 //				Amazonec2Config: &rancher2.MachineConfigV2Amazonec2ConfigArgs{
 //					Ami:    pulumi.String("ami-id"),
 //					Region: pulumi.String("region"),
@@ -108,6 +107,7 @@ import (
 //					VpcId:    pulumi.String("vpc-id"),
 //					Zone:     pulumi.String("zone"),
 //				},
+//				GenerateName: pulumi.String("test-foo"),
 //			})
 //			if err != nil {
 //				return err
@@ -127,7 +127,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -136,12 +136,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a cluster with multiple machine pools
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				Name:                pulumi.String("foo"),
-//				KubernetesVersion:   pulumi.String("rke2/k3s-version"),
-//				EnableNetworkPolicy: pulumi.Bool(false),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
 //						&rancher2.ClusterV2RkeConfigMachinePoolArgs{
+//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
+//								Kind: pulumi.Any(fooRancher2MachineConfigV2.Kind),
+//								Name: pulumi.Any(fooRancher2MachineConfigV2.Name),
+//							},
 //							Name:                      pulumi.String("pool1"),
 //							CloudCredentialSecretName: pulumi.Any(fooRancher2CloudCredential.Id),
 //							ControlPlaneRole:          pulumi.Bool(true),
@@ -149,12 +150,12 @@ import (
 //							WorkerRole:                pulumi.Bool(false),
 //							Quantity:                  pulumi.Int(1),
 //							DrainBeforeDelete:         pulumi.Bool(true),
+//						},
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{
 //							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
 //								Kind: pulumi.Any(fooRancher2MachineConfigV2.Kind),
 //								Name: pulumi.Any(fooRancher2MachineConfigV2.Name),
 //							},
-//						},
-//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{
 //							Name:                      pulumi.String("pool2"),
 //							CloudCredentialSecretName: pulumi.Any(fooRancher2CloudCredential.Id),
 //							ControlPlaneRole:          pulumi.Bool(false),
@@ -162,38 +163,37 @@ import (
 //							WorkerRole:                pulumi.Bool(true),
 //							Quantity:                  pulumi.Int(2),
 //							DrainBeforeDelete:         pulumi.Bool(true),
-//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
-//								Kind: pulumi.Any(fooRancher2MachineConfigV2.Kind),
-//								Name: pulumi.Any(fooRancher2MachineConfigV2.Name),
-//							},
 //						},
 //					},
 //				},
+//				Name:                pulumi.String("foo"),
+//				KubernetesVersion:   pulumi.String("rke2/k3s-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a cluster with a single machine pool
 //			_, err = rancher2.NewClusterV2(ctx, "foo-k3s", &rancher2.ClusterV2Args{
-//				Name:                pulumi.String("foo-k3s"),
-//				KubernetesVersion:   pulumi.String("rke2/k3s-version"),
-//				EnableNetworkPolicy: pulumi.Bool(false),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
 //						&rancher2.ClusterV2RkeConfigMachinePoolArgs{
+//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
+//								Kind: pulumi.Any(fooRancher2MachineConfigV2.Kind),
+//								Name: pulumi.Any(fooRancher2MachineConfigV2.Name),
+//							},
 //							Name:                      pulumi.String("pool"),
 //							CloudCredentialSecretName: pulumi.Any(fooRancher2CloudCredential.Id),
 //							ControlPlaneRole:          pulumi.Bool(true),
 //							EtcdRole:                  pulumi.Bool(true),
 //							WorkerRole:                pulumi.Bool(true),
 //							Quantity:                  pulumi.Int(1),
-//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
-//								Kind: pulumi.Any(fooRancher2MachineConfigV2.Kind),
-//								Name: pulumi.Any(fooRancher2MachineConfigV2.Name),
-//							},
 //						},
 //					},
 //				},
+//				Name:                pulumi.String("foo-k3s"),
+//				KubernetesVersion:   pulumi.String("rke2/k3s-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -211,7 +211,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -220,20 +220,19 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create Nutanix cloud credential
 //			fooNutanix, err := rancher2.NewCloudCredential(ctx, "foo_nutanix", &rancher2.CloudCredentialArgs{
-//				Name: pulumi.String("foo-nutanix"),
 //				NutanixCredentialConfig: &rancher2.CloudCredentialNutanixCredentialConfigArgs{
 //					Endpoint: pulumi.String("<PRISM_ENDPOINT>"),
 //					Username: pulumi.String("X-ntnx-api-key"),
 //					Password: pulumi.String("<NUTANIX_API_KEY_OR_PASSWORD>"),
 //					Port:     pulumi.String("9440"),
 //				},
+//				Name: pulumi.String("foo-nutanix"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create Nutanix machine config v2
 //			fooNutanixMachineConfigV2, err := rancher2.NewMachineConfigV2(ctx, "foo_nutanix", &rancher2.MachineConfigV2Args{
-//				GenerateName: pulumi.String("foo-nutanix"),
 //				NutanixConfig: &rancher2.MachineConfigV2NutanixConfigArgs{
 //					Cluster: pulumi.String("<NUTANIX_CLUSTER_NAME>"),
 //					VmNetworks: pulumi.StringArray{
@@ -241,30 +240,31 @@ import (
 //					},
 //					VmImage: pulumi.String("<IMAGE_NAME>"),
 //				},
+//				GenerateName: pulumi.String("foo-nutanix"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a cluster using Nutanix machine config and cloud credential
 //			_, err = rancher2.NewClusterV2(ctx, "foo_nutanix", &rancher2.ClusterV2Args{
-//				Name:              pulumi.String("foo-nutanix"),
-//				KubernetesVersion: pulumi.String("<rke2/k3s-version>"),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
 //						&rancher2.ClusterV2RkeConfigMachinePoolArgs{
+//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
+//								Kind: fooNutanixMachineConfigV2.Kind,
+//								Name: fooNutanixMachineConfigV2.Name,
+//							},
 //							Name:                      pulumi.String("pool1"),
 //							CloudCredentialSecretName: fooNutanix.ID().ToIDOutput().ToStringOutput(),
 //							ControlPlaneRole:          pulumi.Bool(true),
 //							EtcdRole:                  pulumi.Bool(true),
 //							WorkerRole:                pulumi.Bool(true),
 //							Quantity:                  pulumi.Int(1),
-//							MachineConfig: &rancher2.ClusterV2RkeConfigMachinePoolMachineConfigArgs{
-//								Kind: fooNutanixMachineConfigV2.Kind,
-//								Name: fooNutanixMachineConfigV2.Name,
-//							},
 //						},
 //					},
 //				},
+//				Name:              pulumi.String("foo-nutanix"),
+//				KubernetesVersion: pulumi.String("<rke2/k3s-version>"),
 //			})
 //			if err != nil {
 //				return err
@@ -287,7 +287,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -318,7 +318,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -326,8 +326,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				Name:              pulumi.String("cluster-with-agent-env-vars"),
-//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{},
 //				AgentEnvVars: rancher2.ClusterV2AgentEnvVarArray{
 //					&rancher2.ClusterV2AgentEnvVarArgs{
 //						Name:  pulumi.String("foo1"),
@@ -338,7 +337,8 @@ import (
 //						Value: pulumi.String("boo2"),
 //					},
 //				},
-//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{},
+//				Name:              pulumi.String("cluster-with-agent-env-vars"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //			})
 //			if err != nil {
 //				return err
@@ -362,7 +362,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -370,11 +370,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				FleetAgentDeploymentCustomizations: rancher2.ClusterV2FleetAgentDeploymentCustomizationArray{
-//					&rancher2.ClusterV2FleetAgentDeploymentCustomizationArgs{},
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
 //				},
-//				Name:              pulumi.String("foo"),
-//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //				ClusterAgentDeploymentCustomizations: rancher2.ClusterV2ClusterAgentDeploymentCustomizationArray{
 //					&rancher2.ClusterV2ClusterAgentDeploymentCustomizationArgs{
 //						AppendTolerations: rancher2.ClusterV2ClusterAgentDeploymentCustomizationAppendTolerationArray{
@@ -387,6 +387,14 @@ import (
 //								Key:    pulumi.String("tolerate/etcd"),
 //								Effect: pulumi.String("NoSchedule"),
 //								Value:  pulumi.String("true"),
+//							},
+//						},
+//						OverrideResourceRequirements: rancher2.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArray{
+//							&rancher2.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs{
+//								CpuLimit:      pulumi.String("800m"),
+//								CpuRequest:    pulumi.String("500m"),
+//								MemoryLimit:   pulumi.String("800Mi"),
+//								MemoryRequest: pulumi.String("500Mi"),
 //							},
 //						},
 //						OverrideAffinity: pulumi.String(`{
@@ -407,21 +415,13 @@ import (
 //
 // `),
 //
-//						OverrideResourceRequirements: rancher2.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArray{
-//							&rancher2.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs{
-//								CpuLimit:      pulumi.String("800m"),
-//								CpuRequest:    pulumi.String("500m"),
-//								MemoryLimit:   pulumi.String("800Mi"),
-//								MemoryRequest: pulumi.String("500Mi"),
-//							},
-//						},
 //					},
 //				},
-//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
-//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
-//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
-//					},
+//				FleetAgentDeploymentCustomizations: rancher2.ClusterV2FleetAgentDeploymentCustomizationArray{
+//					&rancher2.ClusterV2FleetAgentDeploymentCustomizationArgs{},
 //				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //			})
 //			if err != nil {
 //				return err
@@ -447,7 +447,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -455,21 +455,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				Name:              pulumi.String("foo"),
-//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
+//				},
 //				ClusterAgentDeploymentCustomizations: rancher2.ClusterV2ClusterAgentDeploymentCustomizationArray{
 //					&rancher2.ClusterV2ClusterAgentDeploymentCustomizationArgs{
 //						SchedulingCustomizations: rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArray{
 //							&rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs{
+//								PodDisruptionBudgets: rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{
+//									&rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{
+//										MinAvailable: pulumi.String("1"),
+//									},
+//								},
 //								PriorityClasses: rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{
 //									&rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{
 //										PreemptionPolicy: pulumi.String("PreemptLowerPriority"),
 //										Value:            pulumi.Int(1000000000),
-//									},
-//								},
-//								PodDisruptionBudgets: rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{
-//									&rancher2.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{
-//										MinAvailable: pulumi.String("1"),
 //									},
 //								},
 //							},
@@ -480,26 +483,23 @@ import (
 //					&rancher2.ClusterV2FleetAgentDeploymentCustomizationArgs{
 //						SchedulingCustomizations: rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArray{
 //							&rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs{
+//								PodDisruptionBudgets: rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{
+//									&rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{
+//										MinAvailable: pulumi.String("1"),
+//									},
+//								},
 //								PriorityClasses: rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArray{
 //									&rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs{
 //										PreemptionPolicy: pulumi.String("PreemptLowerPriority"),
 //										Value:            pulumi.Int(999999999),
 //									},
 //								},
-//								PodDisruptionBudgets: rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArray{
-//									&rancher2.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs{
-//										MinAvailable: pulumi.String("1"),
-//									},
-//								},
 //							},
 //						},
 //					},
 //				},
-//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
-//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
-//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
-//					},
-//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //			})
 //			if err != nil {
 //				return err
@@ -521,7 +521,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -529,17 +529,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo_cluster_v2", &rancher2.ClusterV2Args{
-//				Name:              pulumi.String("cluster-with-custom-registry"),
-//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
-//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
-//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
-//					},
-//					MachineSelectorConfigs: rancher2.ClusterV2RkeConfigMachineSelectorConfigArray{
-//						&rancher2.ClusterV2RkeConfigMachineSelectorConfigArgs{
-//							Config: pulumi.String("system-default-registry: registry_domain_name"),
-//						},
-//					},
 //					Registries: &rancher2.ClusterV2RkeConfigRegistriesArgs{
 //						Configs: rancher2.ClusterV2RkeConfigRegistriesConfigArray{
 //							&rancher2.ClusterV2RkeConfigRegistriesConfigArgs{
@@ -551,7 +541,17 @@ import (
 //							},
 //						},
 //					},
+//					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
+//						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
+//					},
+//					MachineSelectorConfigs: rancher2.ClusterV2RkeConfigMachineSelectorConfigArray{
+//						&rancher2.ClusterV2RkeConfigMachineSelectorConfigArgs{
+//							Config: pulumi.String("system-default-registry: registry_domain_name"),
+//						},
+//					},
 //				},
+//				Name:              pulumi.String("cluster-with-custom-registry"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //			})
 //			if err != nil {
 //				return err
@@ -585,7 +585,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -593,9 +593,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				Name:                pulumi.String("foo"),
-//				KubernetesVersion:   pulumi.String("rke2/k3s-version"),
-//				EnableNetworkPolicy: pulumi.Bool(false),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
 //						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
@@ -603,10 +600,6 @@ import (
 //					MachineSelectorFiles: rancher2.ClusterV2RkeConfigMachineSelectorFileArray{
 //						&rancher2.ClusterV2RkeConfigMachineSelectorFileArgs{
 //							MachineLabelSelector: &rancher2.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs{
-//								MatchLabels: pulumi.StringMap{
-//									"rke.cattle.io/control-plane-role": pulumi.String("true"),
-//									"rke.cattle.io/etcd-role":          pulumi.String("true"),
-//								},
 //								MatchExpressions: rancher2.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArray{
 //									&rancher2.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs{
 //										Key: pulumi.String("name"),
@@ -625,12 +618,14 @@ import (
 //										},
 //									},
 //								},
+//								MatchLabels: pulumi.StringMap{
+//									"rke.cattle.io/control-plane-role": pulumi.String("true"),
+//									"rke.cattle.io/etcd-role":          pulumi.String("true"),
+//								},
 //							},
 //							FileSources: rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceArray{
 //								&rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceArgs{
 //									Secret: &rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs{
-//										Name:               pulumi.String("config-file-v1"),
-//										DefaultPermissions: pulumi.String("644"),
 //										Items: rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArray{
 //											&rancher2.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs{
 //												Key:         pulumi.String("audit-policy"),
@@ -638,12 +633,17 @@ import (
 //												Permissions: pulumi.String("666"),
 //											},
 //										},
+//										Name:               pulumi.String("config-file-v1"),
+//										DefaultPermissions: pulumi.String("644"),
 //									},
 //								},
 //							},
 //						},
 //					},
 //				},
+//				Name:                pulumi.String("foo"),
+//				KubernetesVersion:   pulumi.String("rke2/k3s-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -661,7 +661,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -669,9 +669,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				Name:                pulumi.String("foo"),
-//				KubernetesVersion:   pulumi.String("rke2-version"),
-//				EnableNetworkPolicy: pulumi.Bool(false),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
 //						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
@@ -679,10 +676,6 @@ import (
 //					MachineSelectorConfigs: rancher2.ClusterV2RkeConfigMachineSelectorConfigArray{
 //						&rancher2.ClusterV2RkeConfigMachineSelectorConfigArgs{
 //							MachineLabelSelector: &rancher2.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs{
-//								MatchLabels: pulumi.StringMap{
-//									"rke.cattle.io/control-plane-role": pulumi.String("true"),
-//									"rke.cattle.io/etcd-role":          pulumi.String("true"),
-//								},
 //								MatchExpressions: rancher2.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArray{
 //									&rancher2.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs{
 //										Key: pulumi.String("name"),
@@ -700,6 +693,10 @@ import (
 //											pulumi.String("b"),
 //										},
 //									},
+//								},
+//								MatchLabels: pulumi.StringMap{
+//									"rke.cattle.io/control-plane-role": pulumi.String("true"),
+//									"rke.cattle.io/etcd-role":          pulumi.String("true"),
 //								},
 //							},
 //							Config: pulumi.String("        kubelet-arg:\n          - cloud-provider-name=external\n"),
@@ -729,6 +726,9 @@ import (
 // `),
 //
 //				},
+//				Name:                pulumi.String("foo"),
+//				KubernetesVersion:   pulumi.String("rke2-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -746,7 +746,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -754,8 +754,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				Name:              pulumi.String("foo"),
-//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
 //						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
@@ -777,6 +775,8 @@ import (
 // `),
 //
 //				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //			})
 //			if err != nil {
 //				return err
@@ -794,7 +794,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -802,32 +802,32 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			credentials, err := rancher2.NewCloudCredential(ctx, "credentials", &rancher2.CloudCredentialArgs{
-//				Name: pulumi.String("rancher-creds"),
 //				S3CredentialConfig: &rancher2.CloudCredentialS3CredentialConfigArgs{
 //					AccessKey: pulumi.String("<ACCESS_KEY>"),
 //					SecretKey: pulumi.String("<SECRET_KEY>"),
 //				},
+//				Name: pulumi.String("rancher-creds"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				MachinePools: []map[string]interface{}{
-//					map[string]interface{}{},
-//				},
-//				Name:              pulumi.String("foo"),
-//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					Etcd: &rancher2.ClusterV2RkeConfigEtcdArgs{
-//						SnapshotScheduleCron: pulumi.String("0 */12 * * *"),
-//						SnapshotRetention:    pulumi.Int(10),
 //						S3Config: &rancher2.ClusterV2RkeConfigEtcdS3ConfigArgs{
 //							Bucket:              pulumi.String("backups"),
 //							Endpoint:            pulumi.String("https://minio.host:9000"),
 //							CloudCredentialName: credentials.ID().ToIDOutput().ToStringOutput(),
 //						},
+//						SnapshotScheduleCron: pulumi.String("0 */12 * * *"),
+//						SnapshotRetention:    pulumi.Int(10),
 //					},
 //				},
+//				MachinePools: []map[string]interface{}{
+//					map[string]interface{}{},
+//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2/k3s-version"),
 //			})
 //			if err != nil {
 //				return err
@@ -851,7 +851,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -859,11 +859,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				MachinePools: []map[string]interface{}{
-//					map[string]interface{}{},
-//				},
-//				Name:              pulumi.String("foo"),
-//				KubernetesVersion: pulumi.String("k3s-version"),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					MachineGlobalConfig: pulumi.String(`disable:
 //	  - coredns
@@ -875,6 +870,11 @@ import (
 // `),
 //
 //				},
+//				MachinePools: []map[string]interface{}{
+//					map[string]interface{}{},
+//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("k3s-version"),
 //			})
 //			if err != nil {
 //				return err
@@ -892,7 +892,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -900,11 +900,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				MachinePools: []map[string]interface{}{
-//					map[string]interface{}{},
-//				},
-//				Name:              pulumi.String("foo"),
-//				KubernetesVersion: pulumi.String("rke2-version"),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					MachineGlobalConfig: pulumi.String(`disable:
 //	  - rke2-coredns
@@ -915,6 +910,11 @@ import (
 // `),
 //
 //				},
+//				MachinePools: []map[string]interface{}{
+//					map[string]interface{}{},
+//				},
+//				Name:              pulumi.String("foo"),
+//				KubernetesVersion: pulumi.String("rke2-version"),
 //			})
 //			if err != nil {
 //				return err
@@ -932,7 +932,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -940,14 +940,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachineGlobalConfig: pulumi.String("tls-san: [\\\"example-website.com\\\", \\\"100.100.100.100\\\", \\\"2002:db8:3333:4444:5555:6666:7777:8888\\\"]\n"),
+//				},
 //				MachinePools: []map[string]interface{}{
 //					map[string]interface{}{},
 //				},
 //				Name:              pulumi.String("foo"),
 //				KubernetesVersion: pulumi.String("rke2/k3s-version"),
-//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
-//					MachineGlobalConfig: pulumi.String("tls-san: [\\\"example-website.com\\\", \\\"100.100.100.100\\\", \\\"2002:db8:3333:4444:5555:6666:7777:8888\\\"]\n"),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -965,7 +965,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -973,14 +973,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
+//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
+//					MachineGlobalConfig: pulumi.String("cluster-cidr: \\\"0.42.0.0/16\\\"\nservice-cidr: \\\"0.42.0.0/16\\\"\n"),
+//				},
 //				MachinePools: []map[string]interface{}{
 //					map[string]interface{}{},
 //				},
 //				Name:              pulumi.String("foo"),
 //				KubernetesVersion: pulumi.String("rke2/k3s-version"),
-//				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
-//					MachineGlobalConfig: pulumi.String("cluster-cidr: \\\"0.42.0.0/16\\\"\nservice-cidr: \\\"0.42.0.0/16\\\"\n"),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -1004,7 +1004,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -1012,9 +1012,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rancher2.NewClusterV2(ctx, "foo", &rancher2.ClusterV2Args{
-//				Name:                pulumi.String("foo"),
-//				KubernetesVersion:   pulumi.String("rke2-version"),
-//				EnableNetworkPolicy: pulumi.Bool(false),
 //				RkeConfig: &rancher2.ClusterV2RkeConfigArgs{
 //					MachinePools: rancher2.ClusterV2RkeConfigMachinePoolArray{
 //						&rancher2.ClusterV2RkeConfigMachinePoolArgs{},
@@ -1068,6 +1065,9 @@ import (
 // `),
 //
 //				},
+//				Name:                pulumi.String("foo"),
+//				KubernetesVersion:   pulumi.String("rke2-version"),
+//				EnableNetworkPolicy: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

@@ -5,6 +5,7 @@ package com.pulumi.rancher2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.rancher2.inputs.GlobalRoleInheritedNamespacedRuleArgs;
 import com.pulumi.rancher2.inputs.GlobalRoleRuleArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -62,6 +63,21 @@ public final class GlobalRoleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> inheritedClusterRoles() {
         return Optional.ofNullable(this.inheritedClusterRoles);
+    }
+
+    /**
+     * Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     * 
+     */
+    @Import(name="inheritedNamespacedRules")
+    private @Nullable Output<List<GlobalRoleInheritedNamespacedRuleArgs>> inheritedNamespacedRules;
+
+    /**
+     * @return Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     * 
+     */
+    public Optional<Output<List<GlobalRoleInheritedNamespacedRuleArgs>>> inheritedNamespacedRules() {
+        return Optional.ofNullable(this.inheritedNamespacedRules);
     }
 
     /**
@@ -130,6 +146,7 @@ public final class GlobalRoleArgs extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.description = $.description;
         this.inheritedClusterRoles = $.inheritedClusterRoles;
+        this.inheritedNamespacedRules = $.inheritedNamespacedRules;
         this.labels = $.labels;
         this.name = $.name;
         this.newUserDefault = $.newUserDefault;
@@ -225,6 +242,37 @@ public final class GlobalRoleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder inheritedClusterRoles(String... inheritedClusterRoles) {
             return inheritedClusterRoles(List.of(inheritedClusterRoles));
+        }
+
+        /**
+         * @param inheritedNamespacedRules Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritedNamespacedRules(@Nullable Output<List<GlobalRoleInheritedNamespacedRuleArgs>> inheritedNamespacedRules) {
+            $.inheritedNamespacedRules = inheritedNamespacedRules;
+            return this;
+        }
+
+        /**
+         * @param inheritedNamespacedRules Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritedNamespacedRules(List<GlobalRoleInheritedNamespacedRuleArgs> inheritedNamespacedRules) {
+            return inheritedNamespacedRules(Output.of(inheritedNamespacedRules));
+        }
+
+        /**
+         * @param inheritedNamespacedRules Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritedNamespacedRules(GlobalRoleInheritedNamespacedRuleArgs... inheritedNamespacedRules) {
+            return inheritedNamespacedRules(List.of(inheritedNamespacedRules));
         }
 
         /**

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -51,6 +51,7 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 // A collection of arguments for invoking getCluster.
 type LookupClusterArgs struct {
 	DefaultPodSecurityAdmissionConfigurationTemplateName *string `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
+	GenerateKubeConfig                                   *bool   `pulumi:"generateKubeConfig"`
 	// The name of the Cluster (string)
 	Name string `pulumi:"name"`
 }
@@ -68,16 +69,8 @@ type LookupClusterResult struct {
 	// (Computed) Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
 	ClusterAuthEndpoint GetClusterClusterAuthEndpoint `pulumi:"clusterAuthEndpoint"`
 	// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-	ClusterRegistrationToken GetClusterClusterRegistrationToken `pulumi:"clusterRegistrationToken"`
-	// (Computed) Cluster template answers (list maxitems:1)
-	ClusterTemplateAnswers GetClusterClusterTemplateAnswers `pulumi:"clusterTemplateAnswers"`
-	// (Computed) Cluster template ID (string)
-	ClusterTemplateId string `pulumi:"clusterTemplateId"`
-	// (Computed) Cluster template questions (list)
-	ClusterTemplateQuestions []GetClusterClusterTemplateQuestion `pulumi:"clusterTemplateQuestions"`
-	// (Computed) Cluster template revision ID (string)
-	ClusterTemplateRevisionId                            string `pulumi:"clusterTemplateRevisionId"`
-	DefaultPodSecurityAdmissionConfigurationTemplateName string `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
+	ClusterRegistrationToken                             GetClusterClusterRegistrationToken `pulumi:"clusterRegistrationToken"`
+	DefaultPodSecurityAdmissionConfigurationTemplateName string                             `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
 	// (Computed) Default project ID for the cluster (string)
 	DefaultProjectId string `pulumi:"defaultProjectId"`
 	// (Computed) The description for Cluster (string)
@@ -90,6 +83,7 @@ type LookupClusterResult struct {
 	EnableNetworkPolicy bool `pulumi:"enableNetworkPolicy"`
 	// (Computed) Fleet workspace name (string)
 	FleetWorkspaceName string `pulumi:"fleetWorkspaceName"`
+	GenerateKubeConfig *bool  `pulumi:"generateKubeConfig"`
 	// (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
 	GkeConfigV2 GetClusterGkeConfigV2 `pulumi:"gkeConfigV2"`
 	// The provider-assigned unique ID for this managed resource.
@@ -106,8 +100,6 @@ type LookupClusterResult struct {
 	OkeConfig GetClusterOkeConfig `pulumi:"okeConfig"`
 	// (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 	Rke2Config GetClusterRke2Config `pulumi:"rke2Config"`
-	// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
-	RkeConfig GetClusterRkeConfig `pulumi:"rkeConfig"`
 	// (Computed) System project ID for the cluster (string)
 	SystemProjectId string `pulumi:"systemProjectId"`
 }
@@ -120,6 +112,7 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 // A collection of arguments for invoking getCluster.
 type LookupClusterOutputArgs struct {
 	DefaultPodSecurityAdmissionConfigurationTemplateName pulumi.StringPtrInput `pulumi:"defaultPodSecurityAdmissionConfigurationTemplateName"`
+	GenerateKubeConfig                                   pulumi.BoolPtrInput   `pulumi:"generateKubeConfig"`
 	// The name of the Cluster (string)
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -173,26 +166,6 @@ func (o LookupClusterResultOutput) ClusterRegistrationToken() GetClusterClusterR
 	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterRegistrationToken { return v.ClusterRegistrationToken }).(GetClusterClusterRegistrationTokenOutput)
 }
 
-// (Computed) Cluster template answers (list maxitems:1)
-func (o LookupClusterResultOutput) ClusterTemplateAnswers() GetClusterClusterTemplateAnswersOutput {
-	return o.ApplyT(func(v LookupClusterResult) GetClusterClusterTemplateAnswers { return v.ClusterTemplateAnswers }).(GetClusterClusterTemplateAnswersOutput)
-}
-
-// (Computed) Cluster template ID (string)
-func (o LookupClusterResultOutput) ClusterTemplateId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterTemplateId }).(pulumi.StringOutput)
-}
-
-// (Computed) Cluster template questions (list)
-func (o LookupClusterResultOutput) ClusterTemplateQuestions() GetClusterClusterTemplateQuestionArrayOutput {
-	return o.ApplyT(func(v LookupClusterResult) []GetClusterClusterTemplateQuestion { return v.ClusterTemplateQuestions }).(GetClusterClusterTemplateQuestionArrayOutput)
-}
-
-// (Computed) Cluster template revision ID (string)
-func (o LookupClusterResultOutput) ClusterTemplateRevisionId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterTemplateRevisionId }).(pulumi.StringOutput)
-}
-
 func (o LookupClusterResultOutput) DefaultPodSecurityAdmissionConfigurationTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.DefaultPodSecurityAdmissionConfigurationTemplateName }).(pulumi.StringOutput)
 }
@@ -225,6 +198,10 @@ func (o LookupClusterResultOutput) EnableNetworkPolicy() pulumi.BoolOutput {
 // (Computed) Fleet workspace name (string)
 func (o LookupClusterResultOutput) FleetWorkspaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.FleetWorkspaceName }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) GenerateKubeConfig() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *bool { return v.GenerateKubeConfig }).(pulumi.BoolPtrOutput)
 }
 
 // (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
@@ -268,11 +245,6 @@ func (o LookupClusterResultOutput) OkeConfig() GetClusterOkeConfigOutput {
 // (Computed) The RKE2 configuration for `rke2` Clusters. Conflicts with `aksConfigV2`, `gkeConfig`, `k3sConfig` and `rkeConfig` (list maxitems:1)
 func (o LookupClusterResultOutput) Rke2Config() GetClusterRke2ConfigOutput {
 	return o.ApplyT(func(v LookupClusterResult) GetClusterRke2Config { return v.Rke2Config }).(GetClusterRke2ConfigOutput)
-}
-
-// (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
-func (o LookupClusterResultOutput) RkeConfig() GetClusterRkeConfigOutput {
-	return o.ApplyT(func(v LookupClusterResult) GetClusterRkeConfig { return v.RkeConfig }).(GetClusterRkeConfigOutput)
 }
 
 // (Computed) System project ID for the cluster (string)

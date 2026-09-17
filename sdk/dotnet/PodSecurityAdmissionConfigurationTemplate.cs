@@ -28,8 +28,6 @@ namespace Pulumi.Rancher2
     ///     // Create a Pod Security Admission Configuration Template resource
     ///     var foo = new Rancher2.PodSecurityAdmissionConfigurationTemplate("foo", new()
     ///     {
-    ///         Name = "custom-psact",
-    ///         Description = "This is my custom Pod Security Admission Configuration Template",
     ///         Defaults = new Rancher2.Inputs.PodSecurityAdmissionConfigurationTemplateDefaultsArgs
     ///         {
     ///             Audit = "restricted",
@@ -55,6 +53,8 @@ namespace Pulumi.Rancher2
     ///                 "kube-system",
     ///             },
     ///         },
+    ///         Name = "custom-psact",
+    ///         Description = "This is my custom Pod Security Admission Configuration Template",
     ///     });
     /// 
     /// });

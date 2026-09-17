@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,6 +109,21 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Number of snapshots in S3 to retain
+     * 
+     */
+    @Import(name="retention")
+    private @Nullable Output<Integer> retention;
+
+    /**
+     * @return Number of snapshots in S3 to retain
+     * 
+     */
+    public Optional<Output<Integer>> retention() {
+        return Optional.ofNullable(this.retention);
+    }
+
+    /**
      * Disable ETCD skip ssl verify
      * 
      */
@@ -131,6 +147,7 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
         this.endpointCa = $.endpointCa;
         this.folder = $.folder;
         this.region = $.region;
+        this.retention = $.retention;
         this.skipSslVerify = $.skipSslVerify;
     }
 
@@ -276,6 +293,27 @@ public final class ClusterV2RkeConfigEtcdS3ConfigArgs extends com.pulumi.resourc
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param retention Number of snapshots in S3 to retain
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retention(@Nullable Output<Integer> retention) {
+            $.retention = retention;
+            return this;
+        }
+
+        /**
+         * @param retention Number of snapshots in S3 to retain
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retention(Integer retention) {
+            return retention(Output.of(retention));
         }
 
         /**

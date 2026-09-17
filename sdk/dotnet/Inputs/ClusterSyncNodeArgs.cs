@@ -85,18 +85,6 @@ namespace Pulumi.Rancher2.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Node Pool ID of the node (string).
-        /// </summary>
-        [Input("nodePoolId")]
-        public Input<string>? NodePoolId { get; set; }
-
-        /// <summary>
-        /// The Node Template ID of the node (string).
-        /// </summary>
-        [Input("nodeTemplateId")]
-        public Input<string>? NodeTemplateId { get; set; }
-
-        /// <summary>
         /// The Provider ID of the node (string).
         /// </summary>
         [Input("providerId")]
@@ -118,22 +106,6 @@ namespace Pulumi.Rancher2.Inputs
         {
             get => _roles ?? (_roles = new InputList<string>());
             set => _roles = value;
-        }
-
-        [Input("sshUser")]
-        private Input<string>? _sshUser;
-
-        /// <summary>
-        /// The user to connect to the node (string).
-        /// </summary>
-        public Input<string>? SshUser
-        {
-            get => _sshUser;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _sshUser = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
         }
 
         [Input("systemInfo")]

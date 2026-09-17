@@ -19,12 +19,12 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 Cloud Credential
  * const foo = new rancher2.CloudCredential("foo", {
- *     name: "foo",
- *     description: "foo test",
  *     amazonec2CredentialConfig: {
  *         accessKey: "<AWS_ACCESS_KEY>",
  *         secretKey: "<AWS_SECRET_KEY>",
  *     },
+ *     name: "foo",
+ *     description: "foo test",
  * });
  * ```
  *
@@ -38,12 +38,12 @@ import * as utilities from "./utilities";
  * });
  * // Create a new Cloud Credential for an imported Harvester cluster
  * const foo_harvesterCloudCredential = new rancher2.CloudCredential("foo-harvester", {
- *     name: "foo-harvester",
  *     harvesterCredentialConfig: {
  *         clusterId: foo_harvester.then(foo_harvester => foo_harvester.clusterV1Id),
  *         clusterType: "imported",
  *         kubeconfigContent: foo_harvester.then(foo_harvester => foo_harvester.kubeConfig),
  *     },
+ *     name: "foo-harvester",
  * });
  * ```
  *

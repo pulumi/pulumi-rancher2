@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -34,9 +34,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Project Registry
 //			_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
-//				Name:        pulumi.String("foo"),
-//				Description: pulumi.String("Terraform registry foo"),
-//				ProjectId:   pulumi.String("<project_id>"),
 //				Registries: rancher2.RegistryRegistryArray{
 //					&rancher2.RegistryRegistryArgs{
 //						Address:  pulumi.String("test.io"),
@@ -44,6 +41,9 @@ import (
 //						Password: pulumi.String("pass"),
 //					},
 //				},
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("Terraform registry foo"),
+//				ProjectId:   pulumi.String("<project_id>"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -68,10 +68,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Namespaced Registry
 //			_, err := rancher2.NewRegistry(ctx, "foo", &rancher2.RegistryArgs{
-//				Name:        pulumi.String("foo"),
-//				Description: pulumi.String("Terraform registry foo"),
-//				ProjectId:   pulumi.String("<project_id>"),
-//				NamespaceId: pulumi.String("<namespace_id>"),
 //				Registries: rancher2.RegistryRegistryArray{
 //					&rancher2.RegistryRegistryArgs{
 //						Address:  pulumi.String("test.io"),
@@ -79,6 +75,10 @@ import (
 //						Password: pulumi.String("pass"),
 //					},
 //				},
+//				Name:        pulumi.String("foo"),
+//				Description: pulumi.String("Terraform registry foo"),
+//				ProjectId:   pulumi.String("<project_id>"),
+//				NamespaceId: pulumi.String("<namespace_id>"),
 //			})
 //			if err != nil {
 //				return err

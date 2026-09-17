@@ -46,7 +46,6 @@ from .get_global_role import *
 from .get_global_role_binding import *
 from .get_namespace import *
 from .get_node_driver import *
-from .get_node_pool import *
 from .get_pod_security_admission_configuration_template import *
 from .get_principal import *
 from .get_project import *
@@ -63,7 +62,7 @@ from .global_role_binding import *
 from .machine_config_v2 import *
 from .namespace import *
 from .node_driver import *
-from .node_pool import *
+from .oidc_client import *
 from .pod_security_admission_configuration_template import *
 from .project import *
 from .project_role_template_binding import *
@@ -347,10 +346,10 @@ _utilities.register(
  },
  {
   "pkg": "rancher2",
-  "mod": "index/nodePool",
+  "mod": "index/oidcClient",
   "fqn": "pulumi_rancher2",
   "classes": {
-   "rancher2:index/nodePool:NodePool": "NodePool"
+   "rancher2:index/oidcClient:OidcClient": "OidcClient"
   }
  },
  {

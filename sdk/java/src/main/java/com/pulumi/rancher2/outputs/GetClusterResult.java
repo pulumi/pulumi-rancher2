@@ -8,20 +8,19 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.rancher2.outputs.GetClusterAksConfigV2;
 import com.pulumi.rancher2.outputs.GetClusterClusterAuthEndpoint;
 import com.pulumi.rancher2.outputs.GetClusterClusterRegistrationToken;
-import com.pulumi.rancher2.outputs.GetClusterClusterTemplateAnswers;
-import com.pulumi.rancher2.outputs.GetClusterClusterTemplateQuestion;
 import com.pulumi.rancher2.outputs.GetClusterEksConfigV2;
 import com.pulumi.rancher2.outputs.GetClusterGkeConfigV2;
 import com.pulumi.rancher2.outputs.GetClusterImportedConfig;
 import com.pulumi.rancher2.outputs.GetClusterK3sConfig;
 import com.pulumi.rancher2.outputs.GetClusterOkeConfig;
 import com.pulumi.rancher2.outputs.GetClusterRke2Config;
-import com.pulumi.rancher2.outputs.GetClusterRkeConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterResult {
@@ -55,26 +54,6 @@ public final class GetClusterResult {
      * 
      */
     private GetClusterClusterRegistrationToken clusterRegistrationToken;
-    /**
-     * @return (Computed) Cluster template answers (list maxitems:1)
-     * 
-     */
-    private GetClusterClusterTemplateAnswers clusterTemplateAnswers;
-    /**
-     * @return (Computed) Cluster template ID (string)
-     * 
-     */
-    private String clusterTemplateId;
-    /**
-     * @return (Computed) Cluster template questions (list)
-     * 
-     */
-    private List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions;
-    /**
-     * @return (Computed) Cluster template revision ID (string)
-     * 
-     */
-    private String clusterTemplateRevisionId;
     private String defaultPodSecurityAdmissionConfigurationTemplateName;
     /**
      * @return (Computed) Default project ID for the cluster (string)
@@ -106,6 +85,7 @@ public final class GetClusterResult {
      * 
      */
     private String fleetWorkspaceName;
+    private @Nullable Boolean generateKubeConfig;
     /**
      * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      * 
@@ -143,11 +123,6 @@ public final class GetClusterResult {
      * 
      */
     private GetClusterRke2Config rke2Config;
-    /**
-     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
-     * 
-     */
-    private GetClusterRkeConfig rkeConfig;
     /**
      * @return (Computed) System project ID for the cluster (string)
      * 
@@ -197,34 +172,6 @@ public final class GetClusterResult {
     public GetClusterClusterRegistrationToken clusterRegistrationToken() {
         return this.clusterRegistrationToken;
     }
-    /**
-     * @return (Computed) Cluster template answers (list maxitems:1)
-     * 
-     */
-    public GetClusterClusterTemplateAnswers clusterTemplateAnswers() {
-        return this.clusterTemplateAnswers;
-    }
-    /**
-     * @return (Computed) Cluster template ID (string)
-     * 
-     */
-    public String clusterTemplateId() {
-        return this.clusterTemplateId;
-    }
-    /**
-     * @return (Computed) Cluster template questions (list)
-     * 
-     */
-    public List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions() {
-        return this.clusterTemplateQuestions;
-    }
-    /**
-     * @return (Computed) Cluster template revision ID (string)
-     * 
-     */
-    public String clusterTemplateRevisionId() {
-        return this.clusterTemplateRevisionId;
-    }
     public String defaultPodSecurityAdmissionConfigurationTemplateName() {
         return this.defaultPodSecurityAdmissionConfigurationTemplateName;
     }
@@ -269,6 +216,9 @@ public final class GetClusterResult {
      */
     public String fleetWorkspaceName() {
         return this.fleetWorkspaceName;
+    }
+    public Optional<Boolean> generateKubeConfig() {
+        return Optional.ofNullable(this.generateKubeConfig);
     }
     /**
      * @return (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
@@ -326,13 +276,6 @@ public final class GetClusterResult {
         return this.rke2Config;
     }
     /**
-     * @return (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
-     * 
-     */
-    public GetClusterRkeConfig rkeConfig() {
-        return this.rkeConfig;
-    }
-    /**
      * @return (Computed) System project ID for the cluster (string)
      * 
      */
@@ -355,10 +298,6 @@ public final class GetClusterResult {
         private String caCert;
         private GetClusterClusterAuthEndpoint clusterAuthEndpoint;
         private GetClusterClusterRegistrationToken clusterRegistrationToken;
-        private GetClusterClusterTemplateAnswers clusterTemplateAnswers;
-        private String clusterTemplateId;
-        private List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions;
-        private String clusterTemplateRevisionId;
         private String defaultPodSecurityAdmissionConfigurationTemplateName;
         private String defaultProjectId;
         private String description;
@@ -366,6 +305,7 @@ public final class GetClusterResult {
         private GetClusterEksConfigV2 eksConfigV2;
         private Boolean enableNetworkPolicy;
         private String fleetWorkspaceName;
+        private @Nullable Boolean generateKubeConfig;
         private GetClusterGkeConfigV2 gkeConfigV2;
         private String id;
         private List<GetClusterImportedConfig> importedConfigs;
@@ -375,7 +315,6 @@ public final class GetClusterResult {
         private String name;
         private GetClusterOkeConfig okeConfig;
         private GetClusterRke2Config rke2Config;
-        private GetClusterRkeConfig rkeConfig;
         private String systemProjectId;
         public Builder() {}
         public Builder(GetClusterResult defaults) {
@@ -386,10 +325,6 @@ public final class GetClusterResult {
     	      this.caCert = defaults.caCert;
     	      this.clusterAuthEndpoint = defaults.clusterAuthEndpoint;
     	      this.clusterRegistrationToken = defaults.clusterRegistrationToken;
-    	      this.clusterTemplateAnswers = defaults.clusterTemplateAnswers;
-    	      this.clusterTemplateId = defaults.clusterTemplateId;
-    	      this.clusterTemplateQuestions = defaults.clusterTemplateQuestions;
-    	      this.clusterTemplateRevisionId = defaults.clusterTemplateRevisionId;
     	      this.defaultPodSecurityAdmissionConfigurationTemplateName = defaults.defaultPodSecurityAdmissionConfigurationTemplateName;
     	      this.defaultProjectId = defaults.defaultProjectId;
     	      this.description = defaults.description;
@@ -397,6 +332,7 @@ public final class GetClusterResult {
     	      this.eksConfigV2 = defaults.eksConfigV2;
     	      this.enableNetworkPolicy = defaults.enableNetworkPolicy;
     	      this.fleetWorkspaceName = defaults.fleetWorkspaceName;
+    	      this.generateKubeConfig = defaults.generateKubeConfig;
     	      this.gkeConfigV2 = defaults.gkeConfigV2;
     	      this.id = defaults.id;
     	      this.importedConfigs = defaults.importedConfigs;
@@ -406,7 +342,6 @@ public final class GetClusterResult {
     	      this.name = defaults.name;
     	      this.okeConfig = defaults.okeConfig;
     	      this.rke2Config = defaults.rke2Config;
-    	      this.rkeConfig = defaults.rkeConfig;
     	      this.systemProjectId = defaults.systemProjectId;
         }
 
@@ -459,41 +394,6 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "clusterRegistrationToken");
             }
             this.clusterRegistrationToken = clusterRegistrationToken;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder clusterTemplateAnswers(GetClusterClusterTemplateAnswers clusterTemplateAnswers) {
-            if (clusterTemplateAnswers == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "clusterTemplateAnswers");
-            }
-            this.clusterTemplateAnswers = clusterTemplateAnswers;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder clusterTemplateId(String clusterTemplateId) {
-            if (clusterTemplateId == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "clusterTemplateId");
-            }
-            this.clusterTemplateId = clusterTemplateId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder clusterTemplateQuestions(List<GetClusterClusterTemplateQuestion> clusterTemplateQuestions) {
-            if (clusterTemplateQuestions == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "clusterTemplateQuestions");
-            }
-            this.clusterTemplateQuestions = clusterTemplateQuestions;
-            return this;
-        }
-        public Builder clusterTemplateQuestions(GetClusterClusterTemplateQuestion... clusterTemplateQuestions) {
-            return clusterTemplateQuestions(List.of(clusterTemplateQuestions));
-        }
-        @CustomType.Setter
-        public Builder clusterTemplateRevisionId(String clusterTemplateRevisionId) {
-            if (clusterTemplateRevisionId == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "clusterTemplateRevisionId");
-            }
-            this.clusterTemplateRevisionId = clusterTemplateRevisionId;
             return this;
         }
         @CustomType.Setter
@@ -550,6 +450,12 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "fleetWorkspaceName");
             }
             this.fleetWorkspaceName = fleetWorkspaceName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder generateKubeConfig(@Nullable Boolean generateKubeConfig) {
+
+            this.generateKubeConfig = generateKubeConfig;
             return this;
         }
         @CustomType.Setter
@@ -628,14 +534,6 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder rkeConfig(GetClusterRkeConfig rkeConfig) {
-            if (rkeConfig == null) {
-              throw new MissingRequiredPropertyException("GetClusterResult", "rkeConfig");
-            }
-            this.rkeConfig = rkeConfig;
-            return this;
-        }
-        @CustomType.Setter
         public Builder systemProjectId(String systemProjectId) {
             if (systemProjectId == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "systemProjectId");
@@ -651,10 +549,6 @@ public final class GetClusterResult {
             _resultValue.caCert = caCert;
             _resultValue.clusterAuthEndpoint = clusterAuthEndpoint;
             _resultValue.clusterRegistrationToken = clusterRegistrationToken;
-            _resultValue.clusterTemplateAnswers = clusterTemplateAnswers;
-            _resultValue.clusterTemplateId = clusterTemplateId;
-            _resultValue.clusterTemplateQuestions = clusterTemplateQuestions;
-            _resultValue.clusterTemplateRevisionId = clusterTemplateRevisionId;
             _resultValue.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             _resultValue.defaultProjectId = defaultProjectId;
             _resultValue.description = description;
@@ -662,6 +556,7 @@ public final class GetClusterResult {
             _resultValue.eksConfigV2 = eksConfigV2;
             _resultValue.enableNetworkPolicy = enableNetworkPolicy;
             _resultValue.fleetWorkspaceName = fleetWorkspaceName;
+            _resultValue.generateKubeConfig = generateKubeConfig;
             _resultValue.gkeConfigV2 = gkeConfigV2;
             _resultValue.id = id;
             _resultValue.importedConfigs = importedConfigs;
@@ -671,7 +566,6 @@ public final class GetClusterResult {
             _resultValue.name = name;
             _resultValue.okeConfig = okeConfig;
             _resultValue.rke2Config = rke2Config;
-            _resultValue.rkeConfig = rkeConfig;
             _resultValue.systemProjectId = systemProjectId;
             return _resultValue;
         }

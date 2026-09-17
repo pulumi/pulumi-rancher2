@@ -27,13 +27,13 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Cloud Credential
     ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Description = "foo test",
     ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
     ///             AccessKey = "&lt;AWS_ACCESS_KEY&gt;",
     ///             SecretKey = "&lt;AWS_SECRET_KEY&gt;",
     ///         },
+    ///         Name = "foo",
+    ///         Description = "foo test",
     ///     });
     /// 
     /// });
@@ -56,13 +56,13 @@ namespace Pulumi.Rancher2
     ///     // Create a new Cloud Credential for an imported Harvester cluster
     ///     var foo_harvesterCloudCredential = new Rancher2.CloudCredential("foo-harvester", new()
     ///     {
-    ///         Name = "foo-harvester",
     ///         HarvesterCredentialConfig = new Rancher2.Inputs.CloudCredentialHarvesterCredentialConfigArgs
     ///         {
     ///             ClusterId = foo_harvester.Apply(foo_harvester =&gt; foo_harvester.Apply(getClusterV2Result =&gt; getClusterV2Result.ClusterV1Id)),
     ///             ClusterType = "imported",
     ///             KubeconfigContent = foo_harvester.Apply(foo_harvester =&gt; foo_harvester.Apply(getClusterV2Result =&gt; getClusterV2Result.KubeConfig)),
     ///         },
+    ///         Name = "foo-harvester",
     ///     });
     /// 
     /// });

@@ -65,21 +65,6 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node pool IDs used by the cluster id (list)
-     * 
-     */
-    @Import(name="nodePoolIds")
-    private @Nullable Output<List<String>> nodePoolIds;
-
-    /**
-     * @return The node pool IDs used by the cluster id (list)
-     * 
-     */
-    public Optional<Output<List<String>>> nodePoolIds() {
-        return Optional.ofNullable(this.nodePoolIds);
-    }
-
-    /**
      * (Computed) The cluster nodes (list).
      * 
      */
@@ -156,7 +141,6 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
         this.clusterId = $.clusterId;
         this.defaultProjectId = $.defaultProjectId;
         this.kubeConfig = $.kubeConfig;
-        this.nodePoolIds = $.nodePoolIds;
         this.nodes = $.nodes;
         this.stateConfirm = $.stateConfirm;
         this.synced = $.synced;
@@ -243,37 +227,6 @@ public final class ClusterSyncState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kubeConfig(String kubeConfig) {
             return kubeConfig(Output.of(kubeConfig));
-        }
-
-        /**
-         * @param nodePoolIds The node pool IDs used by the cluster id (list)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodePoolIds(@Nullable Output<List<String>> nodePoolIds) {
-            $.nodePoolIds = nodePoolIds;
-            return this;
-        }
-
-        /**
-         * @param nodePoolIds The node pool IDs used by the cluster id (list)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodePoolIds(List<String> nodePoolIds) {
-            return nodePoolIds(Output.of(nodePoolIds));
-        }
-
-        /**
-         * @param nodePoolIds The node pool IDs used by the cluster id (list)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodePoolIds(String... nodePoolIds) {
-            return nodePoolIds(List.of(nodePoolIds));
         }
 
         /**

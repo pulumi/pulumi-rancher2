@@ -29,22 +29,26 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 rke Cluster 
     ///     var foo_custom = new Rancher2.Cluster("foo-custom", new()
     ///     {
-    ///         Name = "foo-custom",
-    ///         Description = "Foo rancher2 custom cluster",
-    ///         RkeConfig = new Rancher2.Inputs.ClusterRkeConfigArgs
+    ///         RkeConfig = new[]
     ///         {
-    ///             Network = new Rancher2.Inputs.ClusterRkeConfigNetworkArgs
+    ///             
     ///             {
-    ///                 Plugin = "canal",
+    ///                 { "network", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "plugin", "canal" },
+    ///                     },
+    ///                 } },
     ///             },
     ///         },
+    ///         Name = "foo-custom",
+    ///         Description = "Foo rancher2 custom cluster",
     ///     });
     /// 
     ///     // Create a new rancher2 Node Template
     ///     var foo = new Rancher2.NodeTemplate("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Description = "foo test",
     ///         Amazonec2Config = new[]
     ///         {
     ///             
@@ -62,6 +66,8 @@ namespace Pulumi.Rancher2
     ///                 { "zone", "&lt;ZONE&gt;" },
     ///             },
     ///         },
+    ///         Name = "foo",
+    ///         Description = "foo test",
     ///     });
     /// 
     ///     // Create a new rancher2 Node Pool
@@ -90,9 +96,6 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Project
     ///     var fooProject = new Rancher2.Project("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         ClusterId = foo_customClusterSync.Id,
-    ///         Description = "Terraform namespace acceptance test",
     ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
     ///         {
     ///             ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
@@ -115,6 +118,9 @@ namespace Pulumi.Rancher2
     ///             RequestsCpu = "1m",
     ///             RequestsMemory = "1Mi",
     ///         },
+    ///         Name = "foo",
+    ///         ClusterId = foo_customClusterSync.Id,
+    ///         Description = "Terraform namespace acceptance test",
     ///     });
     /// 
     /// });
@@ -140,12 +146,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// The node pool IDs used by the cluster id (list)
-        /// </summary>
-        [Output("nodePoolIds")]
-        public Output<ImmutableArray<string>> NodePoolIds { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) The cluster nodes (list).
@@ -232,18 +232,6 @@ namespace Pulumi.Rancher2
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        [Input("nodePoolIds")]
-        private InputList<string>? _nodePoolIds;
-
-        /// <summary>
-        /// The node pool IDs used by the cluster id (list)
-        /// </summary>
-        public InputList<string> NodePoolIds
-        {
-            get => _nodePoolIds ?? (_nodePoolIds = new InputList<string>());
-            set => _nodePoolIds = value;
-        }
-
         /// <summary>
         /// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
         /// 
@@ -295,18 +283,6 @@ namespace Pulumi.Rancher2
                 var emptySecret = Output.CreateSecret(0);
                 _kubeConfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
-        }
-
-        [Input("nodePoolIds")]
-        private InputList<string>? _nodePoolIds;
-
-        /// <summary>
-        /// The node pool IDs used by the cluster id (list)
-        /// </summary>
-        public InputList<string> NodePoolIds
-        {
-            get => _nodePoolIds ?? (_nodePoolIds = new InputList<string>());
-            set => _nodePoolIds = value;
         }
 
         [Input("nodes")]

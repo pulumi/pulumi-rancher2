@@ -27,7 +27,7 @@ class GetClusterV2Result:
     """
     A collection of values returned by getClusterV2.
     """
-    def __init__(__self__, agent_env_vars=None, annotations=None, cloud_credential_secret_name=None, cluster_registration_token=None, cluster_v1_id=None, default_cluster_role_for_project_members=None, default_pod_security_admission_configuration_template_name=None, enable_network_policy=None, fleet_namespace=None, id=None, kube_config=None, kubernetes_version=None, labels=None, name=None, resource_version=None, rke_config=None):
+    def __init__(__self__, agent_env_vars=None, annotations=None, cloud_credential_secret_name=None, cluster_registration_token=None, cluster_v1_id=None, default_cluster_role_for_project_members=None, default_pod_security_admission_configuration_template_name=None, enable_network_policy=None, fleet_namespace=None, generate_kube_config=None, id=None, kube_config=None, kubernetes_version=None, labels=None, name=None, resource_version=None, rke_config=None):
         if agent_env_vars and not isinstance(agent_env_vars, list):
             raise TypeError("Expected argument 'agent_env_vars' to be a list")
         pulumi.set(__self__, "agent_env_vars", agent_env_vars)
@@ -55,6 +55,9 @@ class GetClusterV2Result:
         if fleet_namespace and not isinstance(fleet_namespace, str):
             raise TypeError("Expected argument 'fleet_namespace' to be a str")
         pulumi.set(__self__, "fleet_namespace", fleet_namespace)
+        if generate_kube_config and not isinstance(generate_kube_config, bool):
+            raise TypeError("Expected argument 'generate_kube_config' to be a bool")
+        pulumi.set(__self__, "generate_kube_config", generate_kube_config)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -144,6 +147,11 @@ class GetClusterV2Result:
         return pulumi.get(self, "fleet_namespace")
 
     @_builtins.property
+    @pulumi.getter(name="generateKubeConfig")
+    def generate_kube_config(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "generate_kube_config")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -209,6 +217,7 @@ class AwaitableGetClusterV2Result(GetClusterV2Result):
             default_pod_security_admission_configuration_template_name=self.default_pod_security_admission_configuration_template_name,
             enable_network_policy=self.enable_network_policy,
             fleet_namespace=self.fleet_namespace,
+            generate_kube_config=self.generate_kube_config,
             id=self.id,
             kube_config=self.kube_config,
             kubernetes_version=self.kubernetes_version,
@@ -219,6 +228,7 @@ class AwaitableGetClusterV2Result(GetClusterV2Result):
 
 
 def get_cluster_v2(fleet_namespace: Optional[_builtins.str] = None,
+                   generate_kube_config: Optional[_builtins.bool] = None,
                    name: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterV2Result:
     """
@@ -240,6 +250,7 @@ def get_cluster_v2(fleet_namespace: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['fleetNamespace'] = fleet_namespace
+    __args__['generateKubeConfig'] = generate_kube_config
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('rancher2:index/getClusterV2:getClusterV2', __args__, opts=opts, typ=GetClusterV2Result).value
@@ -254,6 +265,7 @@ def get_cluster_v2(fleet_namespace: Optional[_builtins.str] = None,
         default_pod_security_admission_configuration_template_name=pulumi.get(__ret__, 'default_pod_security_admission_configuration_template_name'),
         enable_network_policy=pulumi.get(__ret__, 'enable_network_policy'),
         fleet_namespace=pulumi.get(__ret__, 'fleet_namespace'),
+        generate_kube_config=pulumi.get(__ret__, 'generate_kube_config'),
         id=pulumi.get(__ret__, 'id'),
         kube_config=pulumi.get(__ret__, 'kube_config'),
         kubernetes_version=pulumi.get(__ret__, 'kubernetes_version'),
@@ -262,6 +274,7 @@ def get_cluster_v2(fleet_namespace: Optional[_builtins.str] = None,
         resource_version=pulumi.get(__ret__, 'resource_version'),
         rke_config=pulumi.get(__ret__, 'rke_config'))
 def get_cluster_v2_output(fleet_namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          generate_kube_config: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                           name: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterV2Result]:
     """
@@ -283,6 +296,7 @@ def get_cluster_v2_output(fleet_namespace: pulumi.Input[Optional[Optional[_built
     """
     __args__ = dict()
     __args__['fleetNamespace'] = fleet_namespace
+    __args__['generateKubeConfig'] = generate_kube_config
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('rancher2:index/getClusterV2:getClusterV2', __args__, opts=opts, typ=GetClusterV2Result)
@@ -296,6 +310,7 @@ def get_cluster_v2_output(fleet_namespace: pulumi.Input[Optional[Optional[_built
         default_pod_security_admission_configuration_template_name=pulumi.get(__response__, 'default_pod_security_admission_configuration_template_name'),
         enable_network_policy=pulumi.get(__response__, 'enable_network_policy'),
         fleet_namespace=pulumi.get(__response__, 'fleet_namespace'),
+        generate_kube_config=pulumi.get(__response__, 'generate_kube_config'),
         id=pulumi.get(__response__, 'id'),
         kube_config=pulumi.get(__response__, 'kube_config'),
         kubernetes_version=pulumi.get(__response__, 'kubernetes_version'),

@@ -38,6 +38,11 @@ public final class GetGlobalRoleBindingResult {
      * 
      */
     private String userId;
+    /**
+     * @return (Computed) The user principal ID to assign global role binding (string)
+     * 
+     */
+    private String userPrincipalId;
 
     private GetGlobalRoleBindingResult() {}
     /**
@@ -81,6 +86,13 @@ public final class GetGlobalRoleBindingResult {
     public String userId() {
         return this.userId;
     }
+    /**
+     * @return (Computed) The user principal ID to assign global role binding (string)
+     * 
+     */
+    public String userPrincipalId() {
+        return this.userPrincipalId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -98,6 +110,7 @@ public final class GetGlobalRoleBindingResult {
         private Map<String,String> labels;
         private String name;
         private String userId;
+        private String userPrincipalId;
         public Builder() {}
         public Builder(GetGlobalRoleBindingResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -108,6 +121,7 @@ public final class GetGlobalRoleBindingResult {
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.userId = defaults.userId;
+    	      this.userPrincipalId = defaults.userPrincipalId;
         }
 
         @CustomType.Setter
@@ -166,6 +180,14 @@ public final class GetGlobalRoleBindingResult {
             this.userId = userId;
             return this;
         }
+        @CustomType.Setter
+        public Builder userPrincipalId(String userPrincipalId) {
+            if (userPrincipalId == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleBindingResult", "userPrincipalId");
+            }
+            this.userPrincipalId = userPrincipalId;
+            return this;
+        }
         public GetGlobalRoleBindingResult build() {
             final var _resultValue = new GetGlobalRoleBindingResult();
             _resultValue.annotations = annotations;
@@ -175,6 +197,7 @@ public final class GetGlobalRoleBindingResult {
             _resultValue.labels = labels;
             _resultValue.name = name;
             _resultValue.userId = userId;
+            _resultValue.userPrincipalId = userPrincipalId;
             return _resultValue;
         }
     }
