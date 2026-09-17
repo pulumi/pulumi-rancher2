@@ -36,8 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.Cluster;
  * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
  * import com.pulumi.rancher2.NodeTemplate;
  * import com.pulumi.rancher2.NodeTemplateArgs;
  * import com.pulumi.rancher2.NodePool;
@@ -65,19 +63,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 rke Cluster 
  *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()
+ *             .rkeConfig(Arrays.asList(Map.of("network", Arrays.asList(Map.of("plugin", "canal")))))
  *             .name("foo-custom")
  *             .description("Foo rancher2 custom cluster")
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin("canal")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Node Template
  *         var foo = new NodeTemplate("foo", NodeTemplateArgs.builder()
- *             .name("foo")
- *             .description("foo test")
  *             .amazonec2Config(Arrays.asList(Map.ofEntries(
  *                 Map.entry("accessKey", "<AWS_ACCESS_KEY>"),
  *                 Map.entry("secretKey", "<AWS_SECRET_KEY>"),
@@ -88,6 +80,8 @@ import javax.annotation.Nullable;
  *                 Map.entry("vpcId", "<VPC_ID>"),
  *                 Map.entry("zone", "<ZONE>")
  *             )))
+ *             .name("foo")
+ *             .description("foo test")
  *             .build());
  * 
  *         // Create a new rancher2 Node Pool
@@ -105,14 +99,11 @@ import javax.annotation.Nullable;
  *         // Create a new rancher2 Cluster Sync
  *         var foo_customClusterSync = new ClusterSync("foo-customClusterSync", ClusterSyncArgs.builder()
  *             .clusterId(foo_custom.id())
- *             .nodePoolIds(fooNodePool.id())
+ *             .nodePoolIds(Arrays.asList(fooNodePool.id()))
  *             .build());
  * 
  *         // Create a new rancher2 Project
  *         var fooProject = new Project("fooProject", ProjectArgs.builder()
- *             .name("foo")
- *             .clusterId(foo_customClusterSync.id())
- *             .description("Terraform namespace acceptance test")
  *             .resourceQuota(ProjectResourceQuotaArgs.builder()
  *                 .projectLimit(ProjectResourceQuotaProjectLimitArgs.builder()
  *                     .limitsCpu("2000m")
@@ -131,6 +122,9 @@ import javax.annotation.Nullable;
  *                 .requestsCpu("1m")
  *                 .requestsMemory("1Mi")
  *                 .build())
+ *             .name("foo")
+ *             .clusterId(foo_customClusterSync.id())
+ *             .description("Terraform namespace acceptance test")
  *             .build());
  * 
  *     }
@@ -182,20 +176,6 @@ public class ClusterSync extends com.pulumi.resources.CustomResource {
      */
     public Output<String> kubeConfig() {
         return this.kubeConfig;
-    }
-    /**
-     * The node pool IDs used by the cluster id (list)
-     * 
-     */
-    @Export(name="nodePoolIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> nodePoolIds;
-
-    /**
-     * @return The node pool IDs used by the cluster id (list)
-     * 
-     */
-    public Output<Optional<List<String>>> nodePoolIds() {
-        return Codegen.optional(this.nodePoolIds);
     }
     /**
      * (Computed) The cluster nodes (list).

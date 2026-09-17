@@ -38,6 +38,7 @@ class AuthConfigGenericOidcArgs:
                  logout_all_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  logout_all_forced: pulumi.Input[Optional[_builtins.bool]] = None,
                  name_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 pkce_method: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[_builtins.str]] = None,
                  token_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -64,6 +65,7 @@ class AuthConfigGenericOidcArgs:
         :param pulumi.Input[_builtins.bool] logout_all_enabled: Allow the user to choose whether or not to logout of their session with the IdP.
         :param pulumi.Input[_builtins.bool] logout_all_forced: Force the user to logout of their session with the IdP.
         :param pulumi.Input[_builtins.str] name_claim: The OIDC Claim to use for the user name.
+        :param pulumi.Input[_builtins.str] pkce_method: PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
         :param pulumi.Input[_builtins.str] private_key: A PEM-encoded private key for the OIDC provider.
         :param pulumi.Input[_builtins.str] scopes: The OIDC scopes to request. Defaults to `openid profile email` (string)
         :param pulumi.Input[_builtins.str] token_endpoint: The OIDC Token Endpoint URL.
@@ -103,6 +105,8 @@ class AuthConfigGenericOidcArgs:
             pulumi.set(__self__, "logout_all_forced", logout_all_forced)
         if name_claim is not None:
             pulumi.set(__self__, "name_claim", name_claim)
+        if pkce_method is not None:
+            pulumi.set(__self__, "pkce_method", pkce_method)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if scopes is not None:
@@ -341,6 +345,18 @@ class AuthConfigGenericOidcArgs:
         pulumi.set(self, "name_claim", value)
 
     @_builtins.property
+    @pulumi.getter(name="pkceMethod")
+    def pkce_method(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+        """
+        return pulumi.get(self, "pkce_method")
+
+    @pkce_method.setter
+    def pkce_method(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pkce_method", value)
+
+    @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -411,6 +427,7 @@ class _AuthConfigGenericOidcState:
                  logout_all_forced: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 pkce_method: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  rancher_url: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[_builtins.str]] = None,
@@ -439,6 +456,7 @@ class _AuthConfigGenericOidcState:
         :param pulumi.Input[_builtins.bool] logout_all_forced: Force the user to logout of their session with the IdP.
         :param pulumi.Input[_builtins.str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[_builtins.str] name_claim: The OIDC Claim to use for the user name.
+        :param pulumi.Input[_builtins.str] pkce_method: PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
         :param pulumi.Input[_builtins.str] private_key: A PEM-encoded private key for the OIDC provider.
         :param pulumi.Input[_builtins.str] rancher_url: The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
         :param pulumi.Input[_builtins.str] scopes: The OIDC scopes to request. Defaults to `openid profile email` (string)
@@ -484,6 +502,8 @@ class _AuthConfigGenericOidcState:
             pulumi.set(__self__, "name", name)
         if name_claim is not None:
             pulumi.set(__self__, "name_claim", name_claim)
+        if pkce_method is not None:
+            pulumi.set(__self__, "pkce_method", pkce_method)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if rancher_url is not None:
@@ -726,6 +746,18 @@ class _AuthConfigGenericOidcState:
         pulumi.set(self, "name_claim", value)
 
     @_builtins.property
+    @pulumi.getter(name="pkceMethod")
+    def pkce_method(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+        """
+        return pulumi.get(self, "pkce_method")
+
+    @pkce_method.setter
+    def pkce_method(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pkce_method", value)
+
+    @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -822,6 +854,7 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
                  logout_all_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  logout_all_forced: pulumi.Input[Optional[_builtins.bool]] = None,
                  name_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 pkce_method: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  rancher_url: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[_builtins.str]] = None,
@@ -881,6 +914,7 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] logout_all_enabled: Allow the user to choose whether or not to logout of their session with the IdP.
         :param pulumi.Input[_builtins.bool] logout_all_forced: Force the user to logout of their session with the IdP.
         :param pulumi.Input[_builtins.str] name_claim: The OIDC Claim to use for the user name.
+        :param pulumi.Input[_builtins.str] pkce_method: PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
         :param pulumi.Input[_builtins.str] private_key: A PEM-encoded private key for the OIDC provider.
         :param pulumi.Input[_builtins.str] rancher_url: The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
         :param pulumi.Input[_builtins.str] scopes: The OIDC scopes to request. Defaults to `openid profile email` (string)
@@ -959,6 +993,7 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
                  logout_all_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  logout_all_forced: pulumi.Input[Optional[_builtins.bool]] = None,
                  name_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 pkce_method: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  rancher_url: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[_builtins.str]] = None,
@@ -997,6 +1032,7 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
             __props__.__dict__["logout_all_enabled"] = logout_all_enabled
             __props__.__dict__["logout_all_forced"] = logout_all_forced
             __props__.__dict__["name_claim"] = name_claim
+            __props__.__dict__["pkce_method"] = pkce_method
             __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
             if rancher_url is None and not opts.urn:
                 raise TypeError("Missing required property 'rancher_url'")
@@ -1037,6 +1073,7 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
             logout_all_forced: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             name_claim: pulumi.Input[Optional[_builtins.str]] = None,
+            pkce_method: pulumi.Input[Optional[_builtins.str]] = None,
             private_key: pulumi.Input[Optional[_builtins.str]] = None,
             rancher_url: pulumi.Input[Optional[_builtins.str]] = None,
             scopes: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1069,6 +1106,7 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] logout_all_forced: Force the user to logout of their session with the IdP.
         :param pulumi.Input[_builtins.str] name: (Computed) The name of the resource (string)
         :param pulumi.Input[_builtins.str] name_claim: The OIDC Claim to use for the user name.
+        :param pulumi.Input[_builtins.str] pkce_method: PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
         :param pulumi.Input[_builtins.str] private_key: A PEM-encoded private key for the OIDC provider.
         :param pulumi.Input[_builtins.str] rancher_url: The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
         :param pulumi.Input[_builtins.str] scopes: The OIDC scopes to request. Defaults to `openid profile email` (string)
@@ -1099,6 +1137,7 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         __props__.__dict__["logout_all_forced"] = logout_all_forced
         __props__.__dict__["name"] = name
         __props__.__dict__["name_claim"] = name_claim
+        __props__.__dict__["pkce_method"] = pkce_method
         __props__.__dict__["private_key"] = private_key
         __props__.__dict__["rancher_url"] = rancher_url
         __props__.__dict__["scopes"] = scopes
@@ -1258,6 +1297,14 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         The OIDC Claim to use for the user name.
         """
         return pulumi.get(self, "name_claim")
+
+    @_builtins.property
+    @pulumi.getter(name="pkceMethod")
+    def pkce_method(self) -> pulumi.Output[_builtins.str]:
+        """
+        PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+        """
+        return pulumi.get(self, "pkce_method")
 
     @_builtins.property
     @pulumi.getter(name="privateKey")

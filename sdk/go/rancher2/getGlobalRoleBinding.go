@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -71,6 +71,8 @@ type LookupGlobalRoleBindingResult struct {
 	Name   string            `pulumi:"name"`
 	// (Computed) The user ID to assign global role binding (string)
 	UserId string `pulumi:"userId"`
+	// (Computed) The user principal ID to assign global role binding (string)
+	UserPrincipalId string `pulumi:"userPrincipalId"`
 }
 
 func LookupGlobalRoleBindingOutput(ctx *pulumi.Context, args LookupGlobalRoleBindingOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalRoleBindingResultOutput {
@@ -136,6 +138,11 @@ func (o LookupGlobalRoleBindingResultOutput) Name() pulumi.StringOutput {
 // (Computed) The user ID to assign global role binding (string)
 func (o LookupGlobalRoleBindingResultOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalRoleBindingResult) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// (Computed) The user principal ID to assign global role binding (string)
+func (o LookupGlobalRoleBindingResultOutput) UserPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalRoleBindingResult) string { return v.UserPrincipalId }).(pulumi.StringOutput)
 }
 
 func init() {

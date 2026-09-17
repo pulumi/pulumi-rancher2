@@ -25,7 +25,7 @@ namespace Pulumi.Rancher2.Inputs
         public Input<Inputs.ClusterV2RkeConfigEtcdS3ConfigGetArgs>? S3Config { get; set; }
 
         /// <summary>
-        /// ETCD snapshot retention
+        /// Number of snapshots to retain
         /// </summary>
         [Input("snapshotRetention")]
         public Input<int>? SnapshotRetention { get; set; }

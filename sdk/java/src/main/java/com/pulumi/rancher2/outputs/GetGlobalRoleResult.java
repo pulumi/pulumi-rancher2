@@ -5,6 +5,7 @@ package com.pulumi.rancher2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.rancher2.outputs.GetGlobalRoleInheritedNamespacedRule;
 import com.pulumi.rancher2.outputs.GetGlobalRoleRule;
 import java.lang.Boolean;
 import java.lang.String;
@@ -40,6 +41,11 @@ public final class GetGlobalRoleResult {
      * 
      */
     private @Nullable List<String> inheritedClusterRoles;
+    /**
+     * @return (Computed) Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     * 
+     */
+    private List<GetGlobalRoleInheritedNamespacedRule> inheritedNamespacedRules;
     /**
      * @return (Computed) Labels for global role object (map)
      * 
@@ -99,6 +105,13 @@ public final class GetGlobalRoleResult {
         return this.inheritedClusterRoles == null ? List.of() : this.inheritedClusterRoles;
     }
     /**
+     * @return (Computed) Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     * 
+     */
+    public List<GetGlobalRoleInheritedNamespacedRule> inheritedNamespacedRules() {
+        return this.inheritedNamespacedRules;
+    }
+    /**
      * @return (Computed) Labels for global role object (map)
      * 
      */
@@ -144,6 +157,7 @@ public final class GetGlobalRoleResult {
         private String description;
         private String id;
         private @Nullable List<String> inheritedClusterRoles;
+        private List<GetGlobalRoleInheritedNamespacedRule> inheritedNamespacedRules;
         private Map<String,String> labels;
         private String name;
         private Boolean newUserDefault;
@@ -157,6 +171,7 @@ public final class GetGlobalRoleResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.inheritedClusterRoles = defaults.inheritedClusterRoles;
+    	      this.inheritedNamespacedRules = defaults.inheritedNamespacedRules;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
     	      this.newUserDefault = defaults.newUserDefault;
@@ -204,6 +219,17 @@ public final class GetGlobalRoleResult {
         }
         public Builder inheritedClusterRoles(String... inheritedClusterRoles) {
             return inheritedClusterRoles(List.of(inheritedClusterRoles));
+        }
+        @CustomType.Setter
+        public Builder inheritedNamespacedRules(List<GetGlobalRoleInheritedNamespacedRule> inheritedNamespacedRules) {
+            if (inheritedNamespacedRules == null) {
+              throw new MissingRequiredPropertyException("GetGlobalRoleResult", "inheritedNamespacedRules");
+            }
+            this.inheritedNamespacedRules = inheritedNamespacedRules;
+            return this;
+        }
+        public Builder inheritedNamespacedRules(GetGlobalRoleInheritedNamespacedRule... inheritedNamespacedRules) {
+            return inheritedNamespacedRules(List.of(inheritedNamespacedRules));
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
@@ -255,6 +281,7 @@ public final class GetGlobalRoleResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.inheritedClusterRoles = inheritedClusterRoles;
+            _resultValue.inheritedNamespacedRules = inheritedNamespacedRules;
             _resultValue.labels = labels;
             _resultValue.name = name;
             _resultValue.newUserDefault = newUserDefault;

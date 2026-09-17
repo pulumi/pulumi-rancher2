@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cloud Credential
  *         var foo = new CloudCredential("foo", CloudCredentialArgs.builder()
- *             .name("foo")
- *             .description("foo test")
  *             .amazonec2CredentialConfig(CloudCredentialAmazonec2CredentialConfigArgs.builder()
  *                 .accessKey("<AWS_ACCESS_KEY>")
  *                 .secretKey("<AWS_SECRET_KEY>")
  *                 .build())
+ *             .name("foo")
+ *             .description("foo test")
  *             .build());
  * 
  *     }
@@ -102,12 +102,12 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new Cloud Credential for an imported Harvester cluster
  *         var foo_harvesterCloudCredential = new CloudCredential("foo-harvesterCloudCredential", CloudCredentialArgs.builder()
- *             .name("foo-harvester")
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
  *                 .clusterId(foo_harvester.clusterV1Id())
  *                 .clusterType("imported")
  *                 .kubeconfigContent(foo_harvester.kubeConfig())
  *                 .build())
+ *             .name("foo-harvester")
  *             .build());
  * 
  *     }

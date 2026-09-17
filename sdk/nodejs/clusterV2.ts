@@ -58,15 +58,14 @@ import * as utilities from "./utilities";
  *
  * // Create AmazonEC2 cloud credential
  * const foo = new rancher2.CloudCredential("foo", {
- *     name: "foo",
  *     amazonec2CredentialConfig: {
  *         accessKey: "<ACCESS_KEY>",
  *         secretKey: "<SECRET_KEY>",
  *     },
+ *     name: "foo",
  * });
  * // Create AmazonEC2 machine config v2
  * const fooMachineConfigV2 = new rancher2.MachineConfigV2("foo", {
- *     generateName: "test-foo",
  *     amazonec2Config: {
  *         ami: "ami-id",
  *         region: "region",
@@ -75,6 +74,7 @@ import * as utilities from "./utilities";
  *         vpcId: "vpc-id",
  *         zone: "zone",
  *     },
+ *     generateName: "test-foo",
  * });
  * ```
  *
@@ -88,12 +88,13 @@ import * as utilities from "./utilities";
  *
  * // Create a cluster with multiple machine pools
  * const foo = new rancher2.ClusterV2("foo", {
- *     name: "foo",
- *     kubernetesVersion: "rke2/k3s-version",
- *     enableNetworkPolicy: false,
  *     rkeConfig: {
  *         machinePools: [
  *             {
+ *                 machineConfig: {
+ *                     kind: fooRancher2MachineConfigV2.kind,
+ *                     name: fooRancher2MachineConfigV2.name,
+ *                 },
  *                 name: "pool1",
  *                 cloudCredentialSecretName: fooRancher2CloudCredential.id,
  *                 controlPlaneRole: true,
@@ -101,12 +102,12 @@ import * as utilities from "./utilities";
  *                 workerRole: false,
  *                 quantity: 1,
  *                 drainBeforeDelete: true,
+ *             },
+ *             {
  *                 machineConfig: {
  *                     kind: fooRancher2MachineConfigV2.kind,
  *                     name: fooRancher2MachineConfigV2.name,
  *                 },
- *             },
- *             {
  *                 name: "pool2",
  *                 cloudCredentialSecretName: fooRancher2CloudCredential.id,
  *                 controlPlaneRole: false,
@@ -114,33 +115,32 @@ import * as utilities from "./utilities";
  *                 workerRole: true,
  *                 quantity: 2,
  *                 drainBeforeDelete: true,
- *                 machineConfig: {
- *                     kind: fooRancher2MachineConfigV2.kind,
- *                     name: fooRancher2MachineConfigV2.name,
- *                 },
  *             },
  *         ],
  *     },
+ *     name: "foo",
+ *     kubernetesVersion: "rke2/k3s-version",
+ *     enableNetworkPolicy: false,
  * });
  * // Create a cluster with a single machine pool
  * const foo_k3s = new rancher2.ClusterV2("foo-k3s", {
- *     name: "foo-k3s",
- *     kubernetesVersion: "rke2/k3s-version",
- *     enableNetworkPolicy: false,
  *     rkeConfig: {
  *         machinePools: [{
+ *             machineConfig: {
+ *                 kind: fooRancher2MachineConfigV2.kind,
+ *                 name: fooRancher2MachineConfigV2.name,
+ *             },
  *             name: "pool",
  *             cloudCredentialSecretName: fooRancher2CloudCredential.id,
  *             controlPlaneRole: true,
  *             etcdRole: true,
  *             workerRole: true,
  *             quantity: 1,
- *             machineConfig: {
- *                 kind: fooRancher2MachineConfigV2.kind,
- *                 name: fooRancher2MachineConfigV2.name,
- *             },
  *         }],
  *     },
+ *     name: "foo-k3s",
+ *     kubernetesVersion: "rke2/k3s-version",
+ *     enableNetworkPolicy: false,
  * });
  * ```
  *
@@ -152,41 +152,41 @@ import * as utilities from "./utilities";
  *
  * // Create Nutanix cloud credential
  * const fooNutanix = new rancher2.CloudCredential("foo_nutanix", {
- *     name: "foo-nutanix",
  *     nutanixCredentialConfig: {
  *         endpoint: "<PRISM_ENDPOINT>",
  *         username: "X-ntnx-api-key",
  *         password: "<NUTANIX_API_KEY_OR_PASSWORD>",
  *         port: "9440",
  *     },
+ *     name: "foo-nutanix",
  * });
  * // Create Nutanix machine config v2
  * const fooNutanixMachineConfigV2 = new rancher2.MachineConfigV2("foo_nutanix", {
- *     generateName: "foo-nutanix",
  *     nutanixConfig: {
  *         cluster: "<NUTANIX_CLUSTER_NAME>",
  *         vmNetworks: ["<NETWORK_NAME_OR_UUID>"],
  *         vmImage: "<IMAGE_NAME>",
  *     },
+ *     generateName: "foo-nutanix",
  * });
  * // Create a cluster using Nutanix machine config and cloud credential
  * const fooNutanixClusterV2 = new rancher2.ClusterV2("foo_nutanix", {
- *     name: "foo-nutanix",
- *     kubernetesVersion: "<rke2/k3s-version>",
  *     rkeConfig: {
  *         machinePools: [{
+ *             machineConfig: {
+ *                 kind: fooNutanixMachineConfigV2.kind,
+ *                 name: fooNutanixMachineConfigV2.name,
+ *             },
  *             name: "pool1",
  *             cloudCredentialSecretName: fooNutanix.id,
  *             controlPlaneRole: true,
  *             etcdRole: true,
  *             workerRole: true,
  *             quantity: 1,
- *             machineConfig: {
- *                 kind: fooNutanixMachineConfigV2.kind,
- *                 name: fooNutanixMachineConfigV2.name,
- *             },
  *         }],
  *     },
+ *     name: "foo-nutanix",
+ *     kubernetesVersion: "<rke2/k3s-version>",
  * });
  * ```
  *
@@ -218,8 +218,7 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     name: "cluster-with-agent-env-vars",
- *     kubernetesVersion: "rke2/k3s-version",
+ *     rkeConfig: {},
  *     agentEnvVars: [
  *         {
  *             name: "foo1",
@@ -230,7 +229,8 @@ import * as utilities from "./utilities";
  *             value: "boo2",
  *         },
  *     ],
- *     rkeConfig: {},
+ *     name: "cluster-with-agent-env-vars",
+ *     kubernetesVersion: "rke2/k3s-version",
  * });
  * ```
  *
@@ -247,9 +247,9 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     fleetAgentDeploymentCustomizations: [{}],
- *     name: "foo",
- *     kubernetesVersion: "rke2/k3s-version",
+ *     rkeConfig: {
+ *         machinePools: [{}],
+ *     },
  *     clusterAgentDeploymentCustomizations: [{
  *         appendTolerations: [
  *             {
@@ -263,6 +263,12 @@ import * as utilities from "./utilities";
  *                 value: "true",
  *             },
  *         ],
+ *         overrideResourceRequirements: [{
+ *             cpuLimit: "800m",
+ *             cpuRequest: "500m",
+ *             memoryLimit: "800Mi",
+ *             memoryRequest: "500Mi",
+ *         }],
  *         overrideAffinity: `{
  *   \\"nodeAffinity\\": {
  *     \\"requiredDuringSchedulingIgnoredDuringExecution\\": {
@@ -279,16 +285,10 @@ import * as utilities from "./utilities";
  *   }
  * }
  * `,
- *         overrideResourceRequirements: [{
- *             cpuLimit: "800m",
- *             cpuRequest: "500m",
- *             memoryLimit: "800Mi",
- *             memoryRequest: "500Mi",
- *         }],
  *     }],
- *     rkeConfig: {
- *         machinePools: [{}],
- *     },
+ *     fleetAgentDeploymentCustomizations: [{}],
+ *     name: "foo",
+ *     kubernetesVersion: "rke2/k3s-version",
  * });
  * ```
  *
@@ -307,33 +307,33 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     name: "foo",
- *     kubernetesVersion: "rke2/k3s-version",
+ *     rkeConfig: {
+ *         machinePools: [{}],
+ *     },
  *     clusterAgentDeploymentCustomizations: [{
  *         schedulingCustomizations: [{
+ *             podDisruptionBudgets: [{
+ *                 minAvailable: "1",
+ *             }],
  *             priorityClasses: [{
  *                 preemptionPolicy: "PreemptLowerPriority",
  *                 value: 1000000000,
- *             }],
- *             podDisruptionBudgets: [{
- *                 minAvailable: "1",
  *             }],
  *         }],
  *     }],
  *     fleetAgentDeploymentCustomizations: [{
  *         schedulingCustomizations: [{
+ *             podDisruptionBudgets: [{
+ *                 minAvailable: "1",
+ *             }],
  *             priorityClasses: [{
  *                 preemptionPolicy: "PreemptLowerPriority",
  *                 value: 999999999,
  *             }],
- *             podDisruptionBudgets: [{
- *                 minAvailable: "1",
- *             }],
  *         }],
  *     }],
- *     rkeConfig: {
- *         machinePools: [{}],
- *     },
+ *     name: "foo",
+ *     kubernetesVersion: "rke2/k3s-version",
  * });
  * ```
  *
@@ -348,13 +348,7 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const fooClusterV2 = new rancher2.ClusterV2("foo_cluster_v2", {
- *     name: "cluster-with-custom-registry",
- *     kubernetesVersion: "rke2/k3s-version",
  *     rkeConfig: {
- *         machinePools: [{}],
- *         machineSelectorConfigs: [{
- *             config: "system-default-registry: registry_domain_name",
- *         }],
  *         registries: {
  *             configs: [{
  *                 hostname: "registry_domain_name",
@@ -364,7 +358,13 @@ import * as utilities from "./utilities";
  *                 caBundle: "",
  *             }],
  *         },
+ *         machinePools: [{}],
+ *         machineSelectorConfigs: [{
+ *             config: "system-default-registry: registry_domain_name",
+ *         }],
  *     },
+ *     name: "cluster-with-custom-registry",
+ *     kubernetesVersion: "rke2/k3s-version",
  * });
  * // create registry auth secret
  * const myRegistry = new rancher2.SecretV2("my_registry", {
@@ -388,17 +388,10 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     name: "foo",
- *     kubernetesVersion: "rke2/k3s-version",
- *     enableNetworkPolicy: false,
  *     rkeConfig: {
  *         machinePools: [{}],
  *         machineSelectorFiles: [{
  *             machineLabelSelector: {
- *                 matchLabels: {
- *                     "rke.cattle.io/control-plane-role": "true",
- *                     "rke.cattle.io/etcd-role": "true",
- *                 },
  *                 matchExpressions: [
  *                     {
  *                         key: "name",
@@ -417,20 +410,27 @@ import * as utilities from "./utilities";
  *                         ],
  *                     },
  *                 ],
+ *                 matchLabels: {
+ *                     "rke.cattle.io/control-plane-role": "true",
+ *                     "rke.cattle.io/etcd-role": "true",
+ *                 },
  *             },
  *             fileSources: [{
  *                 secret: {
- *                     name: "config-file-v1",
- *                     defaultPermissions: "644",
  *                     items: [{
  *                         key: "audit-policy",
  *                         path: "/etc/rancher/rke2/custom/policy-v1.yaml",
  *                         permissions: "666",
  *                     }],
+ *                     name: "config-file-v1",
+ *                     defaultPermissions: "644",
  *                 },
  *             }],
  *         }],
  *     },
+ *     name: "foo",
+ *     kubernetesVersion: "rke2/k3s-version",
+ *     enableNetworkPolicy: false,
  * });
  * ```
  *
@@ -441,18 +441,11 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     name: "foo",
- *     kubernetesVersion: "rke2-version",
- *     enableNetworkPolicy: false,
  *     rkeConfig: {
  *         machinePools: [{}],
  *         machineSelectorConfigs: [
  *             {
  *                 machineLabelSelector: {
- *                     matchLabels: {
- *                         "rke.cattle.io/control-plane-role": "true",
- *                         "rke.cattle.io/etcd-role": "true",
- *                     },
  *                     matchExpressions: [
  *                         {
  *                             key: "name",
@@ -471,6 +464,10 @@ import * as utilities from "./utilities";
  *                             ],
  *                         },
  *                     ],
+ *                     matchLabels: {
+ *                         "rke.cattle.io/control-plane-role": "true",
+ *                         "rke.cattle.io/etcd-role": "true",
+ *                     },
  *                 },
  *                 config: `        kubelet-arg:
  *           - cloud-provider-name=external
@@ -496,6 +493,9 @@ import * as utilities from "./utilities";
  *   - xxx=xxx
  * `,
  *     },
+ *     name: "foo",
+ *     kubernetesVersion: "rke2-version",
+ *     enableNetworkPolicy: false,
  * });
  * ```
  *
@@ -506,8 +506,6 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     name: "foo",
- *     kubernetesVersion: "rke2/k3s-version",
  *     rkeConfig: {
  *         machinePools: [{}],
  *         additionalManifest: `apiVersion: v1
@@ -521,6 +519,8 @@ import * as utilities from "./utilities";
  *   name: testing-namespace-2
  * `,
  *     },
+ *     name: "foo",
+ *     kubernetesVersion: "rke2/k3s-version",
  * });
  * ```
  *
@@ -531,27 +531,27 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const credentials = new rancher2.CloudCredential("credentials", {
- *     name: "rancher-creds",
  *     s3CredentialConfig: {
  *         accessKey: "<ACCESS_KEY>",
  *         secretKey: "<SECRET_KEY>",
  *     },
+ *     name: "rancher-creds",
  * });
  * const foo = new rancher2.ClusterV2("foo", {
- *     machinePools: [{}],
- *     name: "foo",
- *     kubernetesVersion: "rke2/k3s-version",
  *     rkeConfig: {
  *         etcd: {
- *             snapshotScheduleCron: "0 *&#47;12 * * *",
- *             snapshotRetention: 10,
  *             s3Config: {
  *                 bucket: "backups",
  *                 endpoint: "https://minio.host:9000",
  *                 cloudCredentialName: credentials.id,
  *             },
+ *             snapshotScheduleCron: "0 *&#47;12 * * *",
+ *             snapshotRetention: 10,
  *         },
  *     },
+ *     machinePools: [{}],
+ *     name: "foo",
+ *     kubernetesVersion: "rke2/k3s-version",
  * });
  * ```
  *
@@ -568,9 +568,6 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     machinePools: [{}],
- *     name: "foo",
- *     kubernetesVersion: "k3s-version",
  *     rkeConfig: {
  *         machineGlobalConfig: `disable:
  *   - coredns
@@ -580,6 +577,9 @@ import * as utilities from "./utilities";
  *   - metrics-server
  * `,
  *     },
+ *     machinePools: [{}],
+ *     name: "foo",
+ *     kubernetesVersion: "k3s-version",
  * });
  * ```
  *
@@ -590,9 +590,6 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     machinePools: [{}],
- *     name: "foo",
- *     kubernetesVersion: "rke2-version",
  *     rkeConfig: {
  *         machineGlobalConfig: `disable:
  *   - rke2-coredns
@@ -601,6 +598,9 @@ import * as utilities from "./utilities";
  *   - metrics-server
  * `,
  *     },
+ *     machinePools: [{}],
+ *     name: "foo",
+ *     kubernetesVersion: "rke2-version",
  * });
  * ```
  *
@@ -611,12 +611,12 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     machinePools: [{}],
- *     name: "foo",
- *     kubernetesVersion: "rke2/k3s-version",
  *     rkeConfig: {
  *         machineGlobalConfig: "tls-san: [\\\"example-website.com\\\", \\\"100.100.100.100\\\", \\\"2002:db8:3333:4444:5555:6666:7777:8888\\\"]\n",
  *     },
+ *     machinePools: [{}],
+ *     name: "foo",
+ *     kubernetesVersion: "rke2/k3s-version",
  * });
  * ```
  *
@@ -627,14 +627,14 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     machinePools: [{}],
- *     name: "foo",
- *     kubernetesVersion: "rke2/k3s-version",
  *     rkeConfig: {
  *         machineGlobalConfig: `cluster-cidr: \\"0.42.0.0/16\\"
  * service-cidr: \\"0.42.0.0/16\\"
  * `,
  *     },
+ *     machinePools: [{}],
+ *     name: "foo",
+ *     kubernetesVersion: "rke2/k3s-version",
  * });
  * ```
  *
@@ -651,9 +651,6 @@ import * as utilities from "./utilities";
  * import * as rancher2 from "@pulumi/rancher2";
  *
  * const foo = new rancher2.ClusterV2("foo", {
- *     name: "foo",
- *     kubernetesVersion: "rke2-version",
- *     enableNetworkPolicy: false,
  *     rkeConfig: {
  *         machinePools: [{}],
  *         chartValues: `rke2-calico:
@@ -703,6 +700,9 @@ import * as utilities from "./utilities";
  *     version: v1.17.6
  * `,
  *     },
+ *     name: "foo",
+ *     kubernetesVersion: "rke2-version",
+ *     enableNetworkPolicy: false,
  * });
  * ```
  *

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,19 +41,18 @@ import (
 //			}
 //			// Create a new Cloud Credential for an imported Harvester cluster
 //			_, err = rancher2.NewCloudCredential(ctx, "foo-harvester", &rancher2.CloudCredentialArgs{
-//				Name: pulumi.String("foo-harvester"),
 //				HarvesterCredentialConfig: &rancher2.CloudCredentialHarvesterCredentialConfigArgs{
 //					ClusterId:         pulumi.String(foo_harvester.ClusterV1Id),
 //					ClusterType:       pulumi.String("imported"),
 //					KubeconfigContent: pulumi.String(foo_harvester.KubeConfig),
 //				},
+//				Name: pulumi.String("foo-harvester"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new rancher2 machine config v2 using harvester node_driver
 //			_, err = rancher2.NewMachineConfigV2(ctx, "foo-harvester-v2", &rancher2.MachineConfigV2Args{
-//				GenerateName: pulumi.String("foo-harvester-v2"),
 //				HarvesterConfig: &rancher2.MachineConfigV2HarvesterConfigArgs{
 //					VmNamespace: pulumi.String("default"),
 //					CpuCount:    pulumi.String("2"),
@@ -90,6 +89,7 @@ import (
 // `),
 //
 //				},
+//				GenerateName: pulumi.String("foo-harvester-v2"),
 //			})
 //			if err != nil {
 //				return err

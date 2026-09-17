@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -30,9 +30,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Namespace
 //			_, err := rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
-//				Name:        pulumi.String("foo"),
-//				ProjectId:   pulumi.String("<PROJECT_ID>"),
-//				Description: pulumi.String("foo namespace"),
 //				ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
 //					Limit: &rancher2.NamespaceResourceQuotaLimitArgs{
 //						LimitsCpu:       pulumi.String("100m"),
@@ -46,6 +43,9 @@ import (
 //					RequestsCpu:    pulumi.String("1m"),
 //					RequestsMemory: pulumi.String("1Mi"),
 //				},
+//				Name:        pulumi.String("foo"),
+//				ProjectId:   pulumi.String("<PROJECT_ID>"),
+//				Description: pulumi.String("foo namespace"),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +61,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -70,22 +70,23 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 Cluster
 //			foo_custom, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
-//				Name:        pulumi.String("foo-custom"),
-//				Description: pulumi.String("Foo rancher2 custom cluster"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
+//				RkeConfig: []map[string][]map[string]string{
+//					{
+//						"network": []map[string]string{
+//							{
+//								"plugin": "canal",
+//							},
+//						},
 //					},
 //				},
+//				Name:        pulumi.String("foo-custom"),
+//				Description: pulumi.String("Foo rancher2 custom cluster"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new rancher2 Namespace assigned to default cluster project
 //			_, err = rancher2.NewNamespace(ctx, "foo", &rancher2.NamespaceArgs{
-//				Name:        pulumi.String("foo"),
-//				ProjectId:   foo_custom.DefaultProjectId,
-//				Description: pulumi.String("foo namespace"),
 //				ResourceQuota: &rancher2.NamespaceResourceQuotaArgs{
 //					Limit: &rancher2.NamespaceResourceQuotaLimitArgs{
 //						LimitsCpu:       pulumi.String("100m"),
@@ -99,6 +100,9 @@ import (
 //					RequestsCpu:    pulumi.String("1m"),
 //					RequestsMemory: pulumi.String("1Mi"),
 //				},
+//				Name:        pulumi.String("foo"),
+//				ProjectId:   foo_custom.DefaultProjectId,
+//				Description: pulumi.String("foo namespace"),
 //			})
 //			if err != nil {
 //				return err

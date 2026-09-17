@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -34,21 +34,23 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new rancher2 rke Cluster
 //			foo_custom, err := rancher2.NewCluster(ctx, "foo-custom", &rancher2.ClusterArgs{
-//				Name:        pulumi.String("foo-custom"),
-//				Description: pulumi.String("Foo rancher2 custom cluster"),
-//				RkeConfig: &rancher2.ClusterRkeConfigArgs{
-//					Network: &rancher2.ClusterRkeConfigNetworkArgs{
-//						Plugin: pulumi.String("canal"),
+//				RkeConfig: []map[string][]map[string]string{
+//					{
+//						"network": []map[string]string{
+//							{
+//								"plugin": "canal",
+//							},
+//						},
 //					},
 //				},
+//				Name:        pulumi.String("foo-custom"),
+//				Description: pulumi.String("Foo rancher2 custom cluster"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new rancher2 Node Template
 //			foo, err := rancher2.NewNodeTemplate(ctx, "foo", &rancher2.NodeTemplateArgs{
-//				Name:        "foo",
-//				Description: "foo test",
 //				Amazonec2Config: []map[string]interface{}{
 //					map[string]interface{}{
 //						"accessKey": "<AWS_ACCESS_KEY>",
@@ -63,20 +65,22 @@ import (
 //						"zone":     "<ZONE>",
 //					},
 //				},
+//				Name:        "foo",
+//				Description: "foo test",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new rancher2 Node Pool
 //			fooNodePool, err := rancher2.NewNodePool(ctx, "foo", &rancher2.NodePoolArgs{
-//				ClusterId:      foo_custom.ID().ToIDOutput().ToStringOutput(),
-//				Name:           pulumi.String("foo"),
-//				HostnamePrefix: pulumi.String("foo-cluster-0"),
+//				ClusterId:      foo_custom.ID(),
+//				Name:           "foo",
+//				HostnamePrefix: "foo-cluster-0",
 //				NodeTemplateId: foo.Id,
-//				Quantity:       pulumi.Int(3),
-//				ControlPlane:   pulumi.Bool(true),
-//				Etcd:           pulumi.Bool(true),
-//				Worker:         pulumi.Bool(true),
+//				Quantity:       3,
+//				ControlPlane:   true,
+//				Etcd:           true,
+//				Worker:         true,
 //			})
 //			if err != nil {
 //				return err
@@ -84,8 +88,8 @@ import (
 //			// Create a new rancher2 Cluster Sync
 //			foo_customClusterSync, err := rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
 //				ClusterId: foo_custom.ID().ToIDOutput().ToStringOutput(),
-//				NodePoolIds: pulumi.StringArray{
-//					fooNodePool.ID().ToIDOutput().ToStringOutput(),
+//				NodePoolIds: []interface{}{
+//					fooNodePool.Id,
 //				},
 //			})
 //			if err != nil {
@@ -93,9 +97,6 @@ import (
 //			}
 //			// Create a new rancher2 Project
 //			_, err = rancher2.NewProject(ctx, "foo", &rancher2.ProjectArgs{
-//				Name:        pulumi.String("foo"),
-//				ClusterId:   foo_customClusterSync.ID().ToIDOutput().ToStringOutput(),
-//				Description: pulumi.String("Terraform namespace acceptance test"),
 //				ResourceQuota: &rancher2.ProjectResourceQuotaArgs{
 //					ProjectLimit: &rancher2.ProjectResourceQuotaProjectLimitArgs{
 //						LimitsCpu:       pulumi.String("2000m"),
@@ -114,6 +115,9 @@ import (
 //					RequestsCpu:    pulumi.String("1m"),
 //					RequestsMemory: pulumi.String("1Mi"),
 //				},
+//				Name:        pulumi.String("foo"),
+//				ClusterId:   foo_customClusterSync.ID().ToIDOutput().ToStringOutput(),
+//				Description: pulumi.String("Terraform namespace acceptance test"),
 //			})
 //			if err != nil {
 //				return err
@@ -132,8 +136,6 @@ type ClusterSync struct {
 	DefaultProjectId pulumi.StringOutput `pulumi:"defaultProjectId"`
 	// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
 	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
-	// The node pool IDs used by the cluster id (list)
-	NodePoolIds pulumi.StringArrayOutput `pulumi:"nodePoolIds"`
 	// (Computed) The cluster nodes (list).
 	Nodes ClusterSyncNodeArrayOutput `pulumi:"nodes"`
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
@@ -190,8 +192,6 @@ type clusterSyncState struct {
 	DefaultProjectId *string `pulumi:"defaultProjectId"`
 	// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
 	KubeConfig *string `pulumi:"kubeConfig"`
-	// The node pool IDs used by the cluster id (list)
-	NodePoolIds []string `pulumi:"nodePoolIds"`
 	// (Computed) The cluster nodes (list).
 	Nodes []ClusterSyncNode `pulumi:"nodes"`
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
@@ -212,8 +212,6 @@ type ClusterSyncState struct {
 	DefaultProjectId pulumi.StringPtrInput
 	// (Computed/Sensitive) Kube Config generated for the cluster sync (string)
 	KubeConfig pulumi.StringPtrInput
-	// The node pool IDs used by the cluster id (list)
-	NodePoolIds pulumi.StringArrayInput
 	// (Computed) The cluster nodes (list).
 	Nodes ClusterSyncNodeArrayInput
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
@@ -234,8 +232,6 @@ func (ClusterSyncState) ElementType() reflect.Type {
 type clusterSyncArgs struct {
 	// The cluster ID that is syncing (string)
 	ClusterId string `pulumi:"clusterId"`
-	// The node pool IDs used by the cluster id (list)
-	NodePoolIds []string `pulumi:"nodePoolIds"`
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
 	//
 	// **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
@@ -249,8 +245,6 @@ type clusterSyncArgs struct {
 type ClusterSyncArgs struct {
 	// The cluster ID that is syncing (string)
 	ClusterId pulumi.StringInput
-	// The node pool IDs used by the cluster id (list)
-	NodePoolIds pulumi.StringArrayInput
 	// Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
 	//
 	// **Note:** `stateConfirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `stateConfirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `stateConfirm = 3` assure at least 10 seconds, etc
@@ -360,11 +354,6 @@ func (o ClusterSyncOutput) DefaultProjectId() pulumi.StringOutput {
 // (Computed/Sensitive) Kube Config generated for the cluster sync (string)
 func (o ClusterSyncOutput) KubeConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterSync) pulumi.StringOutput { return v.KubeConfig }).(pulumi.StringOutput)
-}
-
-// The node pool IDs used by the cluster id (list)
-func (o ClusterSyncOutput) NodePoolIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ClusterSync) pulumi.StringArrayOutput { return v.NodePoolIds }).(pulumi.StringArrayOutput)
 }
 
 // (Computed) The cluster nodes (list).

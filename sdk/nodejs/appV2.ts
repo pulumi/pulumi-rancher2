@@ -48,10 +48,10 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
+ * V2 apps can be imported using the Rancher cluster ID, App V2 namespace and App V2 name.
  *
  * ```sh
- * $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+ * $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAMESPACE&gt;/&lt;APP_V2_NAME&gt;
  * ```
  */
 export class AppV2 extends pulumi.CustomResource {
@@ -143,6 +143,10 @@ export class AppV2 extends pulumi.CustomResource {
      */
     declare public readonly repoName: pulumi.Output<string>;
     /**
+     * Skip app V2 chart schema validation. Default: `false` (bool)
+     */
+    declare public readonly skipSchemaValidation: pulumi.Output<boolean | undefined>;
+    /**
      * System default registry providing images for app deployment (string)
      */
     declare public readonly systemDefaultRegistry: pulumi.Output<string>;
@@ -183,6 +187,7 @@ export class AppV2 extends pulumi.CustomResource {
             resourceInputs["namespace"] = state?.namespace;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["repoName"] = state?.repoName;
+            resourceInputs["skipSchemaValidation"] = state?.skipSchemaValidation;
             resourceInputs["systemDefaultRegistry"] = state?.systemDefaultRegistry;
             resourceInputs["values"] = state?.values;
             resourceInputs["wait"] = state?.wait;
@@ -213,6 +218,7 @@ export class AppV2 extends pulumi.CustomResource {
             resourceInputs["namespace"] = args?.namespace;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["repoName"] = args?.repoName;
+            resourceInputs["skipSchemaValidation"] = args?.skipSchemaValidation;
             resourceInputs["systemDefaultRegistry"] = args?.systemDefaultRegistry;
             resourceInputs["values"] = args?.values;
             resourceInputs["wait"] = args?.wait;
@@ -289,6 +295,10 @@ export interface AppV2State {
      */
     repoName?: pulumi.Input<string | undefined>;
     /**
+     * Skip app V2 chart schema validation. Default: `false` (bool)
+     */
+    skipSchemaValidation?: pulumi.Input<boolean | undefined>;
+    /**
      * System default registry providing images for app deployment (string)
      */
     systemDefaultRegistry?: pulumi.Input<string | undefined>;
@@ -358,6 +368,10 @@ export interface AppV2Args {
      * Repo name (string)
      */
     repoName: pulumi.Input<string>;
+    /**
+     * Skip app V2 chart schema validation. Default: `false` (bool)
+     */
+    skipSchemaValidation?: pulumi.Input<boolean | undefined>;
     /**
      * System default registry providing images for app deployment (string)
      */

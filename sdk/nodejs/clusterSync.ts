@@ -21,18 +21,16 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 rke Cluster 
  * const foo_custom = new rancher2.Cluster("foo-custom", {
+ *     rkeConfig: [{
+ *         network: [{
+ *             plugin: "canal",
+ *         }],
+ *     }],
  *     name: "foo-custom",
  *     description: "Foo rancher2 custom cluster",
- *     rkeConfig: {
- *         network: {
- *             plugin: "canal",
- *         },
- *     },
  * });
  * // Create a new rancher2 Node Template
  * const foo = new rancher2.index.NodeTemplate("foo", {
- *     name: "foo",
- *     description: "foo test",
  *     amazonec2Config: [{
  *         accessKey: "<AWS_ACCESS_KEY>",
  *         secretKey: "<AWS_SECRET_KEY>",
@@ -43,9 +41,11 @@ import * as utilities from "./utilities";
  *         vpcId: "<VPC_ID>",
  *         zone: "<ZONE>",
  *     }],
+ *     name: "foo",
+ *     description: "foo test",
  * });
  * // Create a new rancher2 Node Pool
- * const fooNodePool = new rancher2.NodePool("foo", {
+ * const fooNodePool = new rancher2.index.NodePool("foo", {
  *     clusterId: foo_custom.id,
  *     name: "foo",
  *     hostnamePrefix: "foo-cluster-0",
@@ -62,9 +62,6 @@ import * as utilities from "./utilities";
  * });
  * // Create a new rancher2 Project
  * const fooProject = new rancher2.Project("foo", {
- *     name: "foo",
- *     clusterId: foo_customClusterSync.id,
- *     description: "Terraform namespace acceptance test",
  *     resourceQuota: {
  *         projectLimit: {
  *             limitsCpu: "2000m",
@@ -83,6 +80,9 @@ import * as utilities from "./utilities";
  *         requestsCpu: "1m",
  *         requestsMemory: "1Mi",
  *     },
+ *     name: "foo",
+ *     clusterId: foo_customClusterSync.id,
+ *     description: "Terraform namespace acceptance test",
  * });
  * ```
  */
@@ -127,10 +127,6 @@ export class ClusterSync extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly kubeConfig: pulumi.Output<string>;
     /**
-     * The node pool IDs used by the cluster id (list)
-     */
-    declare public readonly nodePoolIds: pulumi.Output<string[] | undefined>;
-    /**
      * (Computed) The cluster nodes (list).
      */
     declare public /*out*/ readonly nodes: pulumi.Output<outputs.ClusterSyncNode[]>;
@@ -166,7 +162,6 @@ export class ClusterSync extends pulumi.CustomResource {
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["defaultProjectId"] = state?.defaultProjectId;
             resourceInputs["kubeConfig"] = state?.kubeConfig;
-            resourceInputs["nodePoolIds"] = state?.nodePoolIds;
             resourceInputs["nodes"] = state?.nodes;
             resourceInputs["stateConfirm"] = state?.stateConfirm;
             resourceInputs["synced"] = state?.synced;
@@ -178,7 +173,6 @@ export class ClusterSync extends pulumi.CustomResource {
                 throw new Error("Missing required property 'clusterId'");
             }
             resourceInputs["clusterId"] = args?.clusterId;
-            resourceInputs["nodePoolIds"] = args?.nodePoolIds;
             resourceInputs["stateConfirm"] = args?.stateConfirm;
             resourceInputs["synced"] = args?.synced;
             resourceInputs["waitCatalogs"] = args?.waitCatalogs;
@@ -211,10 +205,6 @@ export interface ClusterSyncState {
      */
     kubeConfig?: pulumi.Input<string | undefined>;
     /**
-     * The node pool IDs used by the cluster id (list)
-     */
-    nodePoolIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
      * (Computed) The cluster nodes (list).
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.ClusterSyncNode>[] | undefined>;
@@ -243,10 +233,6 @@ export interface ClusterSyncArgs {
      * The cluster ID that is syncing (string)
      */
     clusterId: pulumi.Input<string>;
-    /**
-     * The node pool IDs used by the cluster id (list)
-     */
-    nodePoolIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
      *

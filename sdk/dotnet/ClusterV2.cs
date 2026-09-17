@@ -73,18 +73,17 @@ namespace Pulumi.Rancher2
     ///     // Create AmazonEC2 cloud credential
     ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
-    ///         Name = "foo",
     ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
     ///             AccessKey = "&lt;ACCESS_KEY&gt;",
     ///             SecretKey = "&lt;SECRET_KEY&gt;",
     ///         },
+    ///         Name = "foo",
     ///     });
     /// 
     ///     // Create AmazonEC2 machine config v2
     ///     var fooMachineConfigV2 = new Rancher2.MachineConfigV2("foo", new()
     ///     {
-    ///         GenerateName = "test-foo",
     ///         Amazonec2Config = new Rancher2.Inputs.MachineConfigV2Amazonec2ConfigArgs
     ///         {
     ///             Ami = "ami-id",
@@ -97,6 +96,7 @@ namespace Pulumi.Rancher2
     ///             VpcId = "vpc-id",
     ///             Zone = "zone",
     ///         },
+    ///         GenerateName = "test-foo",
     ///     });
     /// 
     /// });
@@ -117,15 +117,17 @@ namespace Pulumi.Rancher2
     ///     // Create a cluster with multiple machine pools
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2/k3s-version",
-    ///         EnableNetworkPolicy = false,
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachinePools = new[]
     ///             {
     ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolArgs
     ///                 {
+    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
+    ///                     {
+    ///                         Kind = fooRancher2MachineConfigV2.Kind,
+    ///                         Name = fooRancher2MachineConfigV2.Name,
+    ///                     },
     ///                     Name = "pool1",
     ///                     CloudCredentialSecretName = fooRancher2CloudCredential.Id,
     ///                     ControlPlaneRole = true,
@@ -133,14 +135,14 @@ namespace Pulumi.Rancher2
     ///                     WorkerRole = false,
     ///                     Quantity = 1,
     ///                     DrainBeforeDelete = true,
+    ///                 },
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolArgs
+    ///                 {
     ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
     ///                     {
     ///                         Kind = fooRancher2MachineConfigV2.Kind,
     ///                         Name = fooRancher2MachineConfigV2.Name,
     ///                     },
-    ///                 },
-    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolArgs
-    ///                 {
     ///                     Name = "pool2",
     ///                     CloudCredentialSecretName = fooRancher2CloudCredential.Id,
     ///                     ControlPlaneRole = false,
@@ -148,42 +150,40 @@ namespace Pulumi.Rancher2
     ///                     WorkerRole = true,
     ///                     Quantity = 2,
     ///                     DrainBeforeDelete = true,
-    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
-    ///                     {
-    ///                         Kind = fooRancher2MachineConfigV2.Kind,
-    ///                         Name = fooRancher2MachineConfigV2.Name,
-    ///                     },
     ///                 },
     ///             },
     ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         EnableNetworkPolicy = false,
     ///     });
     /// 
     ///     // Create a cluster with a single machine pool
     ///     var foo_k3s = new Rancher2.ClusterV2("foo-k3s", new()
     ///     {
-    ///         Name = "foo-k3s",
-    ///         KubernetesVersion = "rke2/k3s-version",
-    ///         EnableNetworkPolicy = false,
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachinePools = new[]
     ///             {
     ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolArgs
     ///                 {
+    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
+    ///                     {
+    ///                         Kind = fooRancher2MachineConfigV2.Kind,
+    ///                         Name = fooRancher2MachineConfigV2.Name,
+    ///                     },
     ///                     Name = "pool",
     ///                     CloudCredentialSecretName = fooRancher2CloudCredential.Id,
     ///                     ControlPlaneRole = true,
     ///                     EtcdRole = true,
     ///                     WorkerRole = true,
     ///                     Quantity = 1,
-    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
-    ///                     {
-    ///                         Kind = fooRancher2MachineConfigV2.Kind,
-    ///                         Name = fooRancher2MachineConfigV2.Name,
-    ///                     },
     ///                 },
     ///             },
     ///         },
+    ///         Name = "foo-k3s",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         EnableNetworkPolicy = false,
     ///     });
     /// 
     /// });
@@ -202,7 +202,6 @@ namespace Pulumi.Rancher2
     ///     // Create Nutanix cloud credential
     ///     var fooNutanix = new Rancher2.CloudCredential("foo_nutanix", new()
     ///     {
-    ///         Name = "foo-nutanix",
     ///         NutanixCredentialConfig = new Rancher2.Inputs.CloudCredentialNutanixCredentialConfigArgs
     ///         {
     ///             Endpoint = "&lt;PRISM_ENDPOINT&gt;",
@@ -210,12 +209,12 @@ namespace Pulumi.Rancher2
     ///             Password = "&lt;NUTANIX_API_KEY_OR_PASSWORD&gt;",
     ///             Port = "9440",
     ///         },
+    ///         Name = "foo-nutanix",
     ///     });
     /// 
     ///     // Create Nutanix machine config v2
     ///     var fooNutanixMachineConfigV2 = new Rancher2.MachineConfigV2("foo_nutanix", new()
     ///     {
-    ///         GenerateName = "foo-nutanix",
     ///         NutanixConfig = new Rancher2.Inputs.MachineConfigV2NutanixConfigArgs
     ///         {
     ///             Cluster = "&lt;NUTANIX_CLUSTER_NAME&gt;",
@@ -225,33 +224,34 @@ namespace Pulumi.Rancher2
     ///             },
     ///             VmImage = "&lt;IMAGE_NAME&gt;",
     ///         },
+    ///         GenerateName = "foo-nutanix",
     ///     });
     /// 
     ///     // Create a cluster using Nutanix machine config and cloud credential
     ///     var fooNutanixClusterV2 = new Rancher2.ClusterV2("foo_nutanix", new()
     ///     {
-    ///         Name = "foo-nutanix",
-    ///         KubernetesVersion = "&lt;rke2/k3s-version&gt;",
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachinePools = new[]
     ///             {
     ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolArgs
     ///                 {
+    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
+    ///                     {
+    ///                         Kind = fooNutanixMachineConfigV2.Kind,
+    ///                         Name = fooNutanixMachineConfigV2.Name,
+    ///                     },
     ///                     Name = "pool1",
     ///                     CloudCredentialSecretName = fooNutanix.Id,
     ///                     ControlPlaneRole = true,
     ///                     EtcdRole = true,
     ///                     WorkerRole = true,
     ///                     Quantity = 1,
-    ///                     MachineConfig = new Rancher2.Inputs.ClusterV2RkeConfigMachinePoolMachineConfigArgs
-    ///                     {
-    ///                         Kind = fooNutanixMachineConfigV2.Kind,
-    ///                         Name = fooNutanixMachineConfigV2.Name,
-    ///                     },
     ///                 },
     ///             },
     ///         },
+    ///         Name = "foo-nutanix",
+    ///         KubernetesVersion = "&lt;rke2/k3s-version&gt;",
     ///     });
     /// 
     /// });
@@ -297,8 +297,7 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         Name = "cluster-with-agent-env-vars",
-    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         RkeConfig = null,
     ///         AgentEnvVars = new[]
     ///         {
     ///             new Rancher2.Inputs.ClusterV2AgentEnvVarArgs
@@ -312,7 +311,8 @@ namespace Pulumi.Rancher2
     ///                 Value = "boo2",
     ///             },
     ///         },
-    ///         RkeConfig = null,
+    ///         Name = "cluster-with-agent-env-vars",
+    ///         KubernetesVersion = "rke2/k3s-version",
     ///     });
     /// 
     /// });
@@ -336,12 +336,13 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         FleetAgentDeploymentCustomizations = new[]
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
-    ///             null,
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
     ///         },
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2/k3s-version",
     ///         ClusterAgentDeploymentCustomizations = new[]
     ///         {
     ///             new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs
@@ -361,6 +362,16 @@ namespace Pulumi.Rancher2
     ///                         Value = "true",
     ///                     },
     ///                 },
+    ///                 OverrideResourceRequirements = new[]
+    ///                 {
+    ///                     new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs
+    ///                     {
+    ///                         CpuLimit = "800m",
+    ///                         CpuRequest = "500m",
+    ///                         MemoryLimit = "800Mi",
+    ///                         MemoryRequest = "500Mi",
+    ///                     },
+    ///                 },
     ///                 OverrideAffinity = @"{
     ///   \""nodeAffinity\"": {
     ///     \""requiredDuringSchedulingIgnoredDuringExecution\"": {
@@ -377,25 +388,14 @@ namespace Pulumi.Rancher2
     ///   }
     /// }
     /// ",
-    ///                 OverrideResourceRequirements = new[]
-    ///                 {
-    ///                     new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationOverrideResourceRequirementArgs
-    ///                     {
-    ///                         CpuLimit = "800m",
-    ///                         CpuRequest = "500m",
-    ///                         MemoryLimit = "800Mi",
-    ///                         MemoryRequest = "500Mi",
-    ///                     },
-    ///                 },
     ///             },
     ///         },
-    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         FleetAgentDeploymentCustomizations = new[]
     ///         {
-    ///             MachinePools = new[]
-    ///             {
-    ///                 null,
-    ///             },
+    ///             null,
     ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
     ///     });
     /// 
     /// });
@@ -421,8 +421,13 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
+    ///         },
     ///         ClusterAgentDeploymentCustomizations = new[]
     ///         {
     ///             new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationArgs
@@ -431,19 +436,19 @@ namespace Pulumi.Rancher2
     ///                 {
     ///                     new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationArgs
     ///                     {
+    ///                         PodDisruptionBudgets = new[]
+    ///                         {
+    ///                             new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs
+    ///                             {
+    ///                                 MinAvailable = "1",
+    ///                             },
+    ///                         },
     ///                         PriorityClasses = new[]
     ///                         {
     ///                             new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs
     ///                             {
     ///                                 PreemptionPolicy = "PreemptLowerPriority",
     ///                                 Value = 1000000000,
-    ///                             },
-    ///                         },
-    ///                         PodDisruptionBudgets = new[]
-    ///                         {
-    ///                             new Rancher2.Inputs.ClusterV2ClusterAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs
-    ///                             {
-    ///                                 MinAvailable = "1",
     ///                             },
     ///                         },
     ///                     },
@@ -458,6 +463,13 @@ namespace Pulumi.Rancher2
     ///                 {
     ///                     new Rancher2.Inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationArgs
     ///                     {
+    ///                         PodDisruptionBudgets = new[]
+    ///                         {
+    ///                             new Rancher2.Inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs
+    ///                             {
+    ///                                 MinAvailable = "1",
+    ///                             },
+    ///                         },
     ///                         PriorityClasses = new[]
     ///                         {
     ///                             new Rancher2.Inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPriorityClassArgs
@@ -466,24 +478,12 @@ namespace Pulumi.Rancher2
     ///                                 Value = 999999999,
     ///                             },
     ///                         },
-    ///                         PodDisruptionBudgets = new[]
-    ///                         {
-    ///                             new Rancher2.Inputs.ClusterV2FleetAgentDeploymentCustomizationSchedulingCustomizationPodDisruptionBudgetArgs
-    ///                             {
-    ///                                 MinAvailable = "1",
-    ///                             },
-    ///                         },
     ///                     },
     ///                 },
     ///             },
     ///         },
-    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
-    ///         {
-    ///             MachinePools = new[]
-    ///             {
-    ///                 null,
-    ///             },
-    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
     ///     });
     /// 
     /// });
@@ -505,21 +505,8 @@ namespace Pulumi.Rancher2
     /// {
     ///     var fooClusterV2 = new Rancher2.ClusterV2("foo_cluster_v2", new()
     ///     {
-    ///         Name = "cluster-with-custom-registry",
-    ///         KubernetesVersion = "rke2/k3s-version",
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
-    ///             MachinePools = new[]
-    ///             {
-    ///                 null,
-    ///             },
-    ///             MachineSelectorConfigs = new[]
-    ///             {
-    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigArgs
-    ///                 {
-    ///                     Config = "system-default-registry: registry_domain_name",
-    ///                 },
-    ///             },
     ///             Registries = new Rancher2.Inputs.ClusterV2RkeConfigRegistriesArgs
     ///             {
     ///                 Configs = new[]
@@ -534,7 +521,20 @@ namespace Pulumi.Rancher2
     ///                     },
     ///                 },
     ///             },
+    ///             MachinePools = new[]
+    ///             {
+    ///                 null,
+    ///             },
+    ///             MachineSelectorConfigs = new[]
+    ///             {
+    ///                 new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigArgs
+    ///                 {
+    ///                     Config = "system-default-registry: registry_domain_name",
+    ///                 },
+    ///             },
     ///         },
+    ///         Name = "cluster-with-custom-registry",
+    ///         KubernetesVersion = "rke2/k3s-version",
     ///     });
     /// 
     ///     // create registry auth secret
@@ -568,9 +568,6 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2/k3s-version",
-    ///         EnableNetworkPolicy = false,
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachinePools = new[]
@@ -583,11 +580,6 @@ namespace Pulumi.Rancher2
     ///                 {
     ///                     MachineLabelSelector = new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorArgs
     ///                     {
-    ///                         MatchLabels = 
-    ///                         {
-    ///                             { "rke.cattle.io/control-plane-role", "true" },
-    ///                             { "rke.cattle.io/etcd-role", "true" },
-    ///                         },
     ///                         MatchExpressions = new[]
     ///                         {
     ///                             new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileMachineLabelSelectorMatchExpressionArgs
@@ -611,6 +603,11 @@ namespace Pulumi.Rancher2
     ///                                 },
     ///                             },
     ///                         },
+    ///                         MatchLabels = 
+    ///                         {
+    ///                             { "rke.cattle.io/control-plane-role", "true" },
+    ///                             { "rke.cattle.io/etcd-role", "true" },
+    ///                         },
     ///                     },
     ///                     FileSources = new[]
     ///                     {
@@ -618,8 +615,6 @@ namespace Pulumi.Rancher2
     ///                         {
     ///                             Secret = new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretArgs
     ///                             {
-    ///                                 Name = "config-file-v1",
-    ///                                 DefaultPermissions = "644",
     ///                                 Items = new[]
     ///                                 {
     ///                                     new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorFileFileSourceSecretItemArgs
@@ -629,12 +624,17 @@ namespace Pulumi.Rancher2
     ///                                         Permissions = "666",
     ///                                     },
     ///                                 },
+    ///                                 Name = "config-file-v1",
+    ///                                 DefaultPermissions = "644",
     ///                             },
     ///                         },
     ///                     },
     ///                 },
     ///             },
     ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
+    ///         EnableNetworkPolicy = false,
     ///     });
     /// 
     /// });
@@ -652,9 +652,6 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2-version",
-    ///         EnableNetworkPolicy = false,
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachinePools = new[]
@@ -667,11 +664,6 @@ namespace Pulumi.Rancher2
     ///                 {
     ///                     MachineLabelSelector = new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorArgs
     ///                     {
-    ///                         MatchLabels = 
-    ///                         {
-    ///                             { "rke.cattle.io/control-plane-role", "true" },
-    ///                             { "rke.cattle.io/etcd-role", "true" },
-    ///                         },
     ///                         MatchExpressions = new[]
     ///                         {
     ///                             new Rancher2.Inputs.ClusterV2RkeConfigMachineSelectorConfigMachineLabelSelectorMatchExpressionArgs
@@ -694,6 +686,11 @@ namespace Pulumi.Rancher2
     ///                                     "b",
     ///                                 },
     ///                             },
+    ///                         },
+    ///                         MatchLabels = 
+    ///                         {
+    ///                             { "rke.cattle.io/control-plane-role", "true" },
+    ///                             { "rke.cattle.io/etcd-role", "true" },
     ///                         },
     ///                     },
     ///                     Config = @"        kubelet-arg:
@@ -721,6 +718,9 @@ namespace Pulumi.Rancher2
     ///   - xxx=xxx
     /// ",
     ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2-version",
+    ///         EnableNetworkPolicy = false,
     ///     });
     /// 
     /// });
@@ -738,8 +738,6 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2/k3s-version",
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachinePools = new[]
@@ -757,6 +755,8 @@ namespace Pulumi.Rancher2
     ///   name: testing-namespace-2
     /// ",
     ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
     ///     });
     /// 
     /// });
@@ -774,36 +774,36 @@ namespace Pulumi.Rancher2
     /// {
     ///     var credentials = new Rancher2.CloudCredential("credentials", new()
     ///     {
-    ///         Name = "rancher-creds",
     ///         S3CredentialConfig = new Rancher2.Inputs.CloudCredentialS3CredentialConfigArgs
     ///         {
     ///             AccessKey = "&lt;ACCESS_KEY&gt;",
     ///             SecretKey = "&lt;SECRET_KEY&gt;",
     ///         },
+    ///         Name = "rancher-creds",
     ///     });
     /// 
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         MachinePools = new[]
-    ///         {
-    ///             null,
-    ///         },
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2/k3s-version",
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             Etcd = new Rancher2.Inputs.ClusterV2RkeConfigEtcdArgs
     ///             {
-    ///                 SnapshotScheduleCron = "0 */12 * * *",
-    ///                 SnapshotRetention = 10,
     ///                 S3Config = new Rancher2.Inputs.ClusterV2RkeConfigEtcdS3ConfigArgs
     ///                 {
     ///                     Bucket = "backups",
     ///                     Endpoint = "https://minio.host:9000",
     ///                     CloudCredentialName = credentials.Id,
     ///                 },
+    ///                 SnapshotScheduleCron = "0 */12 * * *",
+    ///                 SnapshotRetention = 10,
     ///             },
     ///         },
+    ///         MachinePools = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
     ///     });
     /// 
     /// });
@@ -827,12 +827,6 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         MachinePools = new[]
-    ///         {
-    ///             null,
-    ///         },
-    ///         Name = "foo",
-    ///         KubernetesVersion = "k3s-version",
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachineGlobalConfig = @"disable:
@@ -843,6 +837,12 @@ namespace Pulumi.Rancher2
     ///   - metrics-server
     /// ",
     ///         },
+    ///         MachinePools = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "k3s-version",
     ///     });
     /// 
     /// });
@@ -860,12 +860,6 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         MachinePools = new[]
-    ///         {
-    ///             null,
-    ///         },
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2-version",
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachineGlobalConfig = @"disable:
@@ -875,6 +869,12 @@ namespace Pulumi.Rancher2
     ///   - metrics-server
     /// ",
     ///         },
+    ///         MachinePools = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2-version",
     ///     });
     /// 
     /// });
@@ -892,17 +892,17 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
+    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
+    ///         {
+    ///             MachineGlobalConfig = @"tls-san: [\""example-website.com\"", \""100.100.100.100\"", \""2002:db8:3333:4444:5555:6666:7777:8888\""]
+    /// ",
+    ///         },
     ///         MachinePools = new[]
     ///         {
     ///             null,
     ///         },
     ///         Name = "foo",
     ///         KubernetesVersion = "rke2/k3s-version",
-    ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
-    ///         {
-    ///             MachineGlobalConfig = @"tls-san: [\""example-website.com\"", \""100.100.100.100\"", \""2002:db8:3333:4444:5555:6666:7777:8888\""]
-    /// ",
-    ///         },
     ///     });
     /// 
     /// });
@@ -920,18 +920,18 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         MachinePools = new[]
-    ///         {
-    ///             null,
-    ///         },
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2/k3s-version",
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachineGlobalConfig = @"cluster-cidr: \""0.42.0.0/16\""
     /// service-cidr: \""0.42.0.0/16\""
     /// ",
     ///         },
+    ///         MachinePools = new[]
+    ///         {
+    ///             null,
+    ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2/k3s-version",
     ///     });
     /// 
     /// });
@@ -955,9 +955,6 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         KubernetesVersion = "rke2-version",
-    ///         EnableNetworkPolicy = false,
     ///         RkeConfig = new Rancher2.Inputs.ClusterV2RkeConfigArgs
     ///         {
     ///             MachinePools = new[]
@@ -1011,6 +1008,9 @@ namespace Pulumi.Rancher2
     ///     version: v1.17.6
     /// ",
     ///         },
+    ///         Name = "foo",
+    ///         KubernetesVersion = "rke2-version",
+    ///         EnableNetworkPolicy = false,
     ///     });
     /// 
     /// });

@@ -26,10 +26,6 @@ class ClusterArgs:
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]] = None,
                  cluster_auth_endpoint: pulumi.Input[Optional['ClusterClusterAuthEndpointArgs']] = None,
-                 cluster_template_answers: pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']] = None,
-                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]] = None,
-                 cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_agent_image: pulumi.Input[Optional[_builtins.str]] = None,
@@ -47,7 +43,6 @@ class ClusterArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  oke_config: pulumi.Input[Optional['ClusterOkeConfigArgs']] = None,
                  rke2_config: pulumi.Input[Optional['ClusterRke2ConfigArgs']] = None,
-                 rke_config: pulumi.Input[Optional['ClusterRkeConfigArgs']] = None,
                  windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Cluster resource.
@@ -57,10 +52,6 @@ class ClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the Cluster (map)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input['ClusterClusterAuthEndpointArgs'] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-        :param pulumi.Input['ClusterClusterTemplateAnswersArgs'] cluster_template_answers: Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        :param pulumi.Input[_builtins.str] cluster_template_id: Cluster template ID. For Rancher v2.3.x and above (string)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]] cluster_template_questions: Cluster template questions. For Rancher v2.3.x and above (list)
-        :param pulumi.Input[_builtins.str] cluster_template_revision_id: Cluster template revision ID. For Rancher v2.3.x and above (string)
         :param pulumi.Input[_builtins.str] default_pod_security_admission_configuration_template_name: The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
         :param pulumi.Input[_builtins.str] description: The description for Cluster (string)
         :param pulumi.Input[_builtins.str] desired_agent_image: Desired agent image. For Rancher v2.3.x and above (string)
@@ -78,7 +69,6 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] name: The name of the Cluster (string)
         :param pulumi.Input['ClusterOkeConfigArgs'] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterRke2ConfigArgs'] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterRkeConfigArgs'] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[_builtins.bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
         if agent_env_vars is not None:
@@ -91,14 +81,6 @@ class ClusterArgs:
             pulumi.set(__self__, "cluster_agent_deployment_customizations", cluster_agent_deployment_customizations)
         if cluster_auth_endpoint is not None:
             pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
-        if cluster_template_answers is not None:
-            pulumi.set(__self__, "cluster_template_answers", cluster_template_answers)
-        if cluster_template_id is not None:
-            pulumi.set(__self__, "cluster_template_id", cluster_template_id)
-        if cluster_template_questions is not None:
-            pulumi.set(__self__, "cluster_template_questions", cluster_template_questions)
-        if cluster_template_revision_id is not None:
-            pulumi.set(__self__, "cluster_template_revision_id", cluster_template_revision_id)
         if default_pod_security_admission_configuration_template_name is not None:
             pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         if description is not None:
@@ -133,8 +115,6 @@ class ClusterArgs:
             pulumi.set(__self__, "oke_config", oke_config)
         if rke2_config is not None:
             pulumi.set(__self__, "rke2_config", rke2_config)
-        if rke_config is not None:
-            pulumi.set(__self__, "rke_config", rke_config)
         if windows_prefered_cluster is not None:
             pulumi.set(__self__, "windows_prefered_cluster", windows_prefered_cluster)
 
@@ -197,54 +177,6 @@ class ClusterArgs:
     @cluster_auth_endpoint.setter
     def cluster_auth_endpoint(self, value: pulumi.Input[Optional['ClusterClusterAuthEndpointArgs']]):
         pulumi.set(self, "cluster_auth_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateAnswers")
-    def cluster_template_answers(self) -> pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']]:
-        """
-        Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        """
-        return pulumi.get(self, "cluster_template_answers")
-
-    @cluster_template_answers.setter
-    def cluster_template_answers(self, value: pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']]):
-        pulumi.set(self, "cluster_template_answers", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Cluster template ID. For Rancher v2.3.x and above (string)
-        """
-        return pulumi.get(self, "cluster_template_id")
-
-    @cluster_template_id.setter
-    def cluster_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "cluster_template_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateQuestions")
-    def cluster_template_questions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]:
-        """
-        Cluster template questions. For Rancher v2.3.x and above (list)
-        """
-        return pulumi.get(self, "cluster_template_questions")
-
-    @cluster_template_questions.setter
-    def cluster_template_questions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]):
-        pulumi.set(self, "cluster_template_questions", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateRevisionId")
-    def cluster_template_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Cluster template revision ID. For Rancher v2.3.x and above (string)
-        """
-        return pulumi.get(self, "cluster_template_revision_id")
-
-    @cluster_template_revision_id.setter
-    def cluster_template_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "cluster_template_revision_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
@@ -451,18 +383,6 @@ class ClusterArgs:
         pulumi.set(self, "rke2_config", value)
 
     @_builtins.property
-    @pulumi.getter(name="rkeConfig")
-    def rke_config(self) -> pulumi.Input[Optional['ClusterRkeConfigArgs']]:
-        """
-        The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
-        """
-        return pulumi.get(self, "rke_config")
-
-    @rke_config.setter
-    def rke_config(self, value: pulumi.Input[Optional['ClusterRkeConfigArgs']]):
-        pulumi.set(self, "rke_config", value)
-
-    @_builtins.property
     @pulumi.getter(name="windowsPreferedCluster")
     def windows_prefered_cluster(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -485,10 +405,6 @@ class _ClusterState:
                  cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]]] = None,
                  cluster_auth_endpoint: pulumi.Input[Optional['ClusterClusterAuthEndpointArgs']] = None,
                  cluster_registration_token: pulumi.Input[Optional['ClusterClusterRegistrationTokenArgs']] = None,
-                 cluster_template_answers: pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']] = None,
-                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]] = None,
-                 cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -510,7 +426,6 @@ class _ClusterState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  oke_config: pulumi.Input[Optional['ClusterOkeConfigArgs']] = None,
                  rke2_config: pulumi.Input[Optional['ClusterRke2ConfigArgs']] = None,
-                 rke_config: pulumi.Input[Optional['ClusterRkeConfigArgs']] = None,
                  system_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -523,10 +438,6 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAgentDeploymentCustomizationArgs']]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input['ClusterClusterAuthEndpointArgs'] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input['ClusterClusterRegistrationTokenArgs'] cluster_registration_token: (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-        :param pulumi.Input['ClusterClusterTemplateAnswersArgs'] cluster_template_answers: Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        :param pulumi.Input[_builtins.str] cluster_template_id: Cluster template ID. For Rancher v2.3.x and above (string)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]] cluster_template_questions: Cluster template questions. For Rancher v2.3.x and above (list)
-        :param pulumi.Input[_builtins.str] cluster_template_revision_id: Cluster template revision ID. For Rancher v2.3.x and above (string)
         :param pulumi.Input[_builtins.str] default_pod_security_admission_configuration_template_name: The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
         :param pulumi.Input[_builtins.str] default_project_id: (Computed) Default project ID for the cluster (string)
         :param pulumi.Input[_builtins.str] description: The description for Cluster (string)
@@ -548,7 +459,6 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] name: The name of the Cluster (string)
         :param pulumi.Input['ClusterOkeConfigArgs'] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input['ClusterRke2ConfigArgs'] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input['ClusterRkeConfigArgs'] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[_builtins.str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[_builtins.bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
@@ -566,14 +476,6 @@ class _ClusterState:
             pulumi.set(__self__, "cluster_auth_endpoint", cluster_auth_endpoint)
         if cluster_registration_token is not None:
             pulumi.set(__self__, "cluster_registration_token", cluster_registration_token)
-        if cluster_template_answers is not None:
-            pulumi.set(__self__, "cluster_template_answers", cluster_template_answers)
-        if cluster_template_id is not None:
-            pulumi.set(__self__, "cluster_template_id", cluster_template_id)
-        if cluster_template_questions is not None:
-            pulumi.set(__self__, "cluster_template_questions", cluster_template_questions)
-        if cluster_template_revision_id is not None:
-            pulumi.set(__self__, "cluster_template_revision_id", cluster_template_revision_id)
         if default_pod_security_admission_configuration_template_name is not None:
             pulumi.set(__self__, "default_pod_security_admission_configuration_template_name", default_pod_security_admission_configuration_template_name)
         if default_project_id is not None:
@@ -619,8 +521,6 @@ class _ClusterState:
             pulumi.set(__self__, "oke_config", oke_config)
         if rke2_config is not None:
             pulumi.set(__self__, "rke2_config", rke2_config)
-        if rke_config is not None:
-            pulumi.set(__self__, "rke_config", rke_config)
         if system_project_id is not None:
             pulumi.set(__self__, "system_project_id", system_project_id)
         if windows_prefered_cluster is not None:
@@ -709,54 +609,6 @@ class _ClusterState:
     @cluster_registration_token.setter
     def cluster_registration_token(self, value: pulumi.Input[Optional['ClusterClusterRegistrationTokenArgs']]):
         pulumi.set(self, "cluster_registration_token", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateAnswers")
-    def cluster_template_answers(self) -> pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']]:
-        """
-        Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        """
-        return pulumi.get(self, "cluster_template_answers")
-
-    @cluster_template_answers.setter
-    def cluster_template_answers(self, value: pulumi.Input[Optional['ClusterClusterTemplateAnswersArgs']]):
-        pulumi.set(self, "cluster_template_answers", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Cluster template ID. For Rancher v2.3.x and above (string)
-        """
-        return pulumi.get(self, "cluster_template_id")
-
-    @cluster_template_id.setter
-    def cluster_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "cluster_template_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateQuestions")
-    def cluster_template_questions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]:
-        """
-        Cluster template questions. For Rancher v2.3.x and above (list)
-        """
-        return pulumi.get(self, "cluster_template_questions")
-
-    @cluster_template_questions.setter
-    def cluster_template_questions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterTemplateQuestionArgs']]]]):
-        pulumi.set(self, "cluster_template_questions", value)
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateRevisionId")
-    def cluster_template_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Cluster template revision ID. For Rancher v2.3.x and above (string)
-        """
-        return pulumi.get(self, "cluster_template_revision_id")
-
-    @cluster_template_revision_id.setter
-    def cluster_template_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "cluster_template_revision_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
@@ -1012,18 +864,6 @@ class _ClusterState:
         pulumi.set(self, "rke2_config", value)
 
     @_builtins.property
-    @pulumi.getter(name="rkeConfig")
-    def rke_config(self) -> pulumi.Input[Optional['ClusterRkeConfigArgs']]:
-        """
-        The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
-        """
-        return pulumi.get(self, "rke_config")
-
-    @rke_config.setter
-    def rke_config(self, value: pulumi.Input[Optional['ClusterRkeConfigArgs']]):
-        pulumi.set(self, "rke_config", value)
-
-    @_builtins.property
     @pulumi.getter(name="systemProjectId")
     def system_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1059,10 +899,6 @@ class Cluster(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
                  cluster_auth_endpoint: pulumi.Input[Optional[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']]] = None,
-                 cluster_template_answers: pulumi.Input[Optional[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']]] = None,
-                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]]] = None,
-                 cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_agent_image: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1080,7 +916,6 @@ class Cluster(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  oke_config: pulumi.Input[Optional[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']]] = None,
                  rke2_config: pulumi.Input[Optional[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']]] = None,
-                 rke_config: pulumi.Input[Optional[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']]] = None,
                  windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -1141,10 +976,10 @@ class Cluster(pulumi.CustomResource):
 
         # Create a new rancher2 imported Cluster with custom configuration 
         foo_imported = rancher2.Cluster("foo-imported",
-            name="foo-imported",
             imported_config={
                 "private_registry_url": "test.io",
-            })
+            },
+            name="foo-imported")
         ```
 
         ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
@@ -1154,21 +989,21 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.CloudCredential("foo",
-            name="foo",
-            description="foo test",
             amazonec2_credential_config={
                 "access_key": "<aws-access-key>",
                 "secret_key": "<aws-secret-key>",
-            })
-        foo_cluster = rancher2.Cluster("foo",
+            },
             name="foo",
-            description="Terraform EKS cluster",
+            description="foo test")
+        foo_cluster = rancher2.Cluster("foo",
             eks_config_v2={
                 "cloud_credential_id": foo.id,
                 "name": "<cluster-name>",
                 "region": "<eks-region>",
                 "imported": True,
-            })
+            },
+            name="foo",
+            description="Terraform EKS cluster")
         ```
 
         ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
@@ -1178,23 +1013,14 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.CloudCredential("foo",
-            name="foo",
-            description="foo test",
             amazonec2_credential_config={
                 "access_key": "<aws-access-key>",
                 "secret_key": "<aws-secret-key>",
-            })
-        foo_cluster = rancher2.Cluster("foo",
+            },
             name="foo",
-            description="Terraform EKS cluster",
+            description="foo test")
+        foo_cluster = rancher2.Cluster("foo",
             eks_config_v2={
-                "cloud_credential_id": foo.id,
-                "region": "<EKS_REGION>",
-                "kubernetes_version": "1.24",
-                "logging_types": [
-                    "audit",
-                    "api",
-                ],
                 "node_groups": [
                     {
                         "name": "node_group1",
@@ -1210,9 +1036,18 @@ class Cluster(pulumi.CustomResource):
                         "node_role": "arn:aws:iam::role/test-NodeInstanceRole",
                     },
                 ],
+                "cloud_credential_id": foo.id,
+                "region": "<EKS_REGION>",
+                "kubernetes_version": "1.24",
+                "logging_types": [
+                    "audit",
+                    "api",
+                ],
                 "private_access": True,
                 "public_access": False,
-            })
+            },
+            name="foo",
+            description="Terraform EKS cluster")
         ```
 
         ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
@@ -1224,16 +1059,23 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.CloudCredential("foo",
-            name="foo",
-            description="foo test",
             amazonec2_credential_config={
                 "access_key": "<aws-access-key>",
                 "secret_key": "<aws-secret-key>",
-            })
-        foo_cluster = rancher2.Cluster("foo",
+            },
             name="foo",
-            description="Terraform EKS cluster",
+            description="foo test")
+        foo_cluster = rancher2.Cluster("foo",
             eks_config_v2={
+                "node_groups": [{
+                    "launch_templates": [{
+                        "id": "<ec2-launch-template-id>",
+                        "version": 1,
+                    }],
+                    "desired_size": 3,
+                    "max_size": 5,
+                    "name": "node_group1",
+                }],
                 "cloud_credential_id": foo.id,
                 "region": "<EKS_REGION>",
                 "kubernetes_version": "1.24",
@@ -1241,18 +1083,11 @@ class Cluster(pulumi.CustomResource):
                     "audit",
                     "api",
                 ],
-                "node_groups": [{
-                    "desired_size": 3,
-                    "max_size": 5,
-                    "name": "node_group1",
-                    "launch_templates": [{
-                        "id": "<ec2-launch-template-id>",
-                        "version": 1,
-                    }],
-                }],
                 "private_access": True,
                 "public_access": True,
-            })
+            },
+            name="foo",
+            description="Terraform EKS cluster")
         ```
 
         ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
@@ -1262,27 +1097,14 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo_aks = rancher2.CloudCredential("foo-aks",
-            name="foo-aks",
             azure_credential_config={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
                 "subscription_id": "<subscription-id>",
-            })
+            },
+            name="foo-aks")
         foo = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform AKS cluster",
             aks_config_v2={
-                "cloud_credential_id": foo_aks.id,
-                "resource_group": "<resource-group>",
-                "resource_location": "<resource-location>",
-                "dns_prefix": "<dns-prefix>",
-                "kubernetes_version": "1.24.6",
-                "network_plugin": "<network-plugin>",
-                "virtual_network": "<virtual-network>",
-                "virtual_network_resource_group": "<virtual-network-resource-group>",
-                "subnet": "<subnet>",
-                "node_resource_group": "<node-resource-group>",
-                "outbound_type": "loadBalancer",
                 "node_pools": [
                     {
                         "availability_zones": [
@@ -1317,7 +1139,20 @@ class Cluster(pulumi.CustomResource):
                         "taints": ["none:PreferNoSchedule"],
                     },
                 ],
-            })
+                "cloud_credential_id": foo_aks.id,
+                "resource_group": "<resource-group>",
+                "resource_location": "<resource-location>",
+                "dns_prefix": "<dns-prefix>",
+                "kubernetes_version": "1.24.6",
+                "network_plugin": "<network-plugin>",
+                "virtual_network": "<virtual-network>",
+                "virtual_network_resource_group": "<virtual-network-resource-group>",
+                "subnet": "<subnet>",
+                "node_resource_group": "<node-resource-group>",
+                "outbound_type": "loadBalancer",
+            },
+            name="foo",
+            description="Terraform AKS cluster")
         ```
 
         ## Import
@@ -1336,10 +1171,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for the Cluster (map)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
-        :param pulumi.Input[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']] cluster_template_answers: Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        :param pulumi.Input[_builtins.str] cluster_template_id: Cluster template ID. For Rancher v2.3.x and above (string)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]] cluster_template_questions: Cluster template questions. For Rancher v2.3.x and above (list)
-        :param pulumi.Input[_builtins.str] cluster_template_revision_id: Cluster template revision ID. For Rancher v2.3.x and above (string)
         :param pulumi.Input[_builtins.str] default_pod_security_admission_configuration_template_name: The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
         :param pulumi.Input[_builtins.str] description: The description for Cluster (string)
         :param pulumi.Input[_builtins.str] desired_agent_image: Desired agent image. For Rancher v2.3.x and above (string)
@@ -1357,7 +1188,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the Cluster (string)
         :param pulumi.Input[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[_builtins.bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
         ...
@@ -1424,10 +1254,10 @@ class Cluster(pulumi.CustomResource):
 
         # Create a new rancher2 imported Cluster with custom configuration 
         foo_imported = rancher2.Cluster("foo-imported",
-            name="foo-imported",
             imported_config={
                 "private_registry_url": "test.io",
-            })
+            },
+            name="foo-imported")
         ```
 
         ### Importing EKS cluster to Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
@@ -1437,21 +1267,21 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.CloudCredential("foo",
-            name="foo",
-            description="foo test",
             amazonec2_credential_config={
                 "access_key": "<aws-access-key>",
                 "secret_key": "<aws-secret-key>",
-            })
-        foo_cluster = rancher2.Cluster("foo",
+            },
             name="foo",
-            description="Terraform EKS cluster",
+            description="foo test")
+        foo_cluster = rancher2.Cluster("foo",
             eks_config_v2={
                 "cloud_credential_id": foo.id,
                 "name": "<cluster-name>",
                 "region": "<eks-region>",
                 "imported": True,
-            })
+            },
+            name="foo",
+            description="Terraform EKS cluster")
         ```
 
         ### Creating EKS cluster from Rancher v2, using `eks_config_v2`. For Rancher v2.5.x and above.
@@ -1461,23 +1291,14 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.CloudCredential("foo",
-            name="foo",
-            description="foo test",
             amazonec2_credential_config={
                 "access_key": "<aws-access-key>",
                 "secret_key": "<aws-secret-key>",
-            })
-        foo_cluster = rancher2.Cluster("foo",
+            },
             name="foo",
-            description="Terraform EKS cluster",
+            description="foo test")
+        foo_cluster = rancher2.Cluster("foo",
             eks_config_v2={
-                "cloud_credential_id": foo.id,
-                "region": "<EKS_REGION>",
-                "kubernetes_version": "1.24",
-                "logging_types": [
-                    "audit",
-                    "api",
-                ],
                 "node_groups": [
                     {
                         "name": "node_group1",
@@ -1493,9 +1314,18 @@ class Cluster(pulumi.CustomResource):
                         "node_role": "arn:aws:iam::role/test-NodeInstanceRole",
                     },
                 ],
+                "cloud_credential_id": foo.id,
+                "region": "<EKS_REGION>",
+                "kubernetes_version": "1.24",
+                "logging_types": [
+                    "audit",
+                    "api",
+                ],
                 "private_access": True,
                 "public_access": False,
-            })
+            },
+            name="foo",
+            description="Terraform EKS cluster")
         ```
 
         ### Creating EKS cluster from Rancher v2, using `eks_config_v2` and launch template. For Rancher v2.5.6 and above.
@@ -1507,16 +1337,23 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo = rancher2.CloudCredential("foo",
-            name="foo",
-            description="foo test",
             amazonec2_credential_config={
                 "access_key": "<aws-access-key>",
                 "secret_key": "<aws-secret-key>",
-            })
-        foo_cluster = rancher2.Cluster("foo",
+            },
             name="foo",
-            description="Terraform EKS cluster",
+            description="foo test")
+        foo_cluster = rancher2.Cluster("foo",
             eks_config_v2={
+                "node_groups": [{
+                    "launch_templates": [{
+                        "id": "<ec2-launch-template-id>",
+                        "version": 1,
+                    }],
+                    "desired_size": 3,
+                    "max_size": 5,
+                    "name": "node_group1",
+                }],
                 "cloud_credential_id": foo.id,
                 "region": "<EKS_REGION>",
                 "kubernetes_version": "1.24",
@@ -1524,18 +1361,11 @@ class Cluster(pulumi.CustomResource):
                     "audit",
                     "api",
                 ],
-                "node_groups": [{
-                    "desired_size": 3,
-                    "max_size": 5,
-                    "name": "node_group1",
-                    "launch_templates": [{
-                        "id": "<ec2-launch-template-id>",
-                        "version": 1,
-                    }],
-                }],
                 "private_access": True,
                 "public_access": True,
-            })
+            },
+            name="foo",
+            description="Terraform EKS cluster")
         ```
 
         ### Creating AKS cluster from Rancher v2, using `aks_config_v2`. For Rancher v2.6.0 and above.
@@ -1545,27 +1375,14 @@ class Cluster(pulumi.CustomResource):
         import pulumi_rancher2 as rancher2
 
         foo_aks = rancher2.CloudCredential("foo-aks",
-            name="foo-aks",
             azure_credential_config={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
                 "subscription_id": "<subscription-id>",
-            })
+            },
+            name="foo-aks")
         foo = rancher2.Cluster("foo",
-            name="foo",
-            description="Terraform AKS cluster",
             aks_config_v2={
-                "cloud_credential_id": foo_aks.id,
-                "resource_group": "<resource-group>",
-                "resource_location": "<resource-location>",
-                "dns_prefix": "<dns-prefix>",
-                "kubernetes_version": "1.24.6",
-                "network_plugin": "<network-plugin>",
-                "virtual_network": "<virtual-network>",
-                "virtual_network_resource_group": "<virtual-network-resource-group>",
-                "subnet": "<subnet>",
-                "node_resource_group": "<node-resource-group>",
-                "outbound_type": "loadBalancer",
                 "node_pools": [
                     {
                         "availability_zones": [
@@ -1600,7 +1417,20 @@ class Cluster(pulumi.CustomResource):
                         "taints": ["none:PreferNoSchedule"],
                     },
                 ],
-            })
+                "cloud_credential_id": foo_aks.id,
+                "resource_group": "<resource-group>",
+                "resource_location": "<resource-location>",
+                "dns_prefix": "<dns-prefix>",
+                "kubernetes_version": "1.24.6",
+                "network_plugin": "<network-plugin>",
+                "virtual_network": "<virtual-network>",
+                "virtual_network_resource_group": "<virtual-network-resource-group>",
+                "subnet": "<subnet>",
+                "node_resource_group": "<node-resource-group>",
+                "outbound_type": "loadBalancer",
+            },
+            name="foo",
+            description="Terraform AKS cluster")
         ```
 
         ## Import
@@ -1632,10 +1462,6 @@ class Cluster(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
                  cluster_auth_endpoint: pulumi.Input[Optional[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']]] = None,
-                 cluster_template_answers: pulumi.Input[Optional[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']]] = None,
-                 cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]]] = None,
-                 cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_agent_image: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1653,7 +1479,6 @@ class Cluster(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  oke_config: pulumi.Input[Optional[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']]] = None,
                  rke2_config: pulumi.Input[Optional[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']]] = None,
-                 rke_config: pulumi.Input[Optional[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']]] = None,
                  windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1669,10 +1494,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["cluster_agent_deployment_customizations"] = cluster_agent_deployment_customizations
             __props__.__dict__["cluster_auth_endpoint"] = cluster_auth_endpoint
-            __props__.__dict__["cluster_template_answers"] = cluster_template_answers
-            __props__.__dict__["cluster_template_id"] = cluster_template_id
-            __props__.__dict__["cluster_template_questions"] = cluster_template_questions
-            __props__.__dict__["cluster_template_revision_id"] = cluster_template_revision_id
             __props__.__dict__["default_pod_security_admission_configuration_template_name"] = default_pod_security_admission_configuration_template_name
             __props__.__dict__["description"] = description
             __props__.__dict__["desired_agent_image"] = desired_agent_image
@@ -1690,7 +1511,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["oke_config"] = oke_config
             __props__.__dict__["rke2_config"] = rke2_config
-            __props__.__dict__["rke_config"] = rke_config
             __props__.__dict__["windows_prefered_cluster"] = windows_prefered_cluster
             __props__.__dict__["ca_cert"] = None
             __props__.__dict__["cluster_registration_token"] = None
@@ -1718,10 +1538,6 @@ class Cluster(pulumi.CustomResource):
             cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]]] = None,
             cluster_auth_endpoint: pulumi.Input[Optional[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']]] = None,
             cluster_registration_token: pulumi.Input[Optional[Union['ClusterClusterRegistrationTokenArgs', 'ClusterClusterRegistrationTokenArgsDict']]] = None,
-            cluster_template_answers: pulumi.Input[Optional[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']]] = None,
-            cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
-            cluster_template_questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]]] = None,
-            cluster_template_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
             default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
             default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1743,7 +1559,6 @@ class Cluster(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             oke_config: pulumi.Input[Optional[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']]] = None,
             rke2_config: pulumi.Input[Optional[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']]] = None,
-            rke_config: pulumi.Input[Optional[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']]] = None,
             system_project_id: pulumi.Input[Optional[_builtins.str]] = None,
             windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Cluster':
         """
@@ -1760,10 +1575,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict']]]] cluster_agent_deployment_customizations: Optional customization for cluster agent. For Rancher v2.7.5 and above (list)
         :param pulumi.Input[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict']] cluster_auth_endpoint: Enabling the [local cluster authorized endpoint](https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/#local-cluster-auth-endpoint) allows direct communication with the cluster, bypassing the Rancher API proxy. (list maxitems:1)
         :param pulumi.Input[Union['ClusterClusterRegistrationTokenArgs', 'ClusterClusterRegistrationTokenArgsDict']] cluster_registration_token: (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
-        :param pulumi.Input[Union['ClusterClusterTemplateAnswersArgs', 'ClusterClusterTemplateAnswersArgsDict']] cluster_template_answers: Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        :param pulumi.Input[_builtins.str] cluster_template_id: Cluster template ID. For Rancher v2.3.x and above (string)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterTemplateQuestionArgs', 'ClusterClusterTemplateQuestionArgsDict']]]] cluster_template_questions: Cluster template questions. For Rancher v2.3.x and above (list)
-        :param pulumi.Input[_builtins.str] cluster_template_revision_id: Cluster template revision ID. For Rancher v2.3.x and above (string)
         :param pulumi.Input[_builtins.str] default_pod_security_admission_configuration_template_name: The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
         :param pulumi.Input[_builtins.str] default_project_id: (Computed) Default project ID for the cluster (string)
         :param pulumi.Input[_builtins.str] description: The description for Cluster (string)
@@ -1785,7 +1596,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the Cluster (string)
         :param pulumi.Input[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict']] oke_config: The Oracle OKE configuration for `oke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `k3s_config` and `rke_config` (list maxitems:1)
         :param pulumi.Input[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict']] rke2_config: The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
-        :param pulumi.Input[Union['ClusterRkeConfigArgs', 'ClusterRkeConfigArgsDict']] rke_config: The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
         :param pulumi.Input[_builtins.str] system_project_id: (Computed) System project ID for the cluster (string)
         :param pulumi.Input[_builtins.bool] windows_prefered_cluster: Windows preferred cluster. Default: `false` (bool)
         """
@@ -1800,10 +1610,6 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cluster_agent_deployment_customizations"] = cluster_agent_deployment_customizations
         __props__.__dict__["cluster_auth_endpoint"] = cluster_auth_endpoint
         __props__.__dict__["cluster_registration_token"] = cluster_registration_token
-        __props__.__dict__["cluster_template_answers"] = cluster_template_answers
-        __props__.__dict__["cluster_template_id"] = cluster_template_id
-        __props__.__dict__["cluster_template_questions"] = cluster_template_questions
-        __props__.__dict__["cluster_template_revision_id"] = cluster_template_revision_id
         __props__.__dict__["default_pod_security_admission_configuration_template_name"] = default_pod_security_admission_configuration_template_name
         __props__.__dict__["default_project_id"] = default_project_id
         __props__.__dict__["description"] = description
@@ -1825,7 +1631,6 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["oke_config"] = oke_config
         __props__.__dict__["rke2_config"] = rke2_config
-        __props__.__dict__["rke_config"] = rke_config
         __props__.__dict__["system_project_id"] = system_project_id
         __props__.__dict__["windows_prefered_cluster"] = windows_prefered_cluster
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -1885,38 +1690,6 @@ class Cluster(pulumi.CustomResource):
         (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
         """
         return pulumi.get(self, "cluster_registration_token")
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateAnswers")
-    def cluster_template_answers(self) -> pulumi.Output['outputs.ClusterClusterTemplateAnswers']:
-        """
-        Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        """
-        return pulumi.get(self, "cluster_template_answers")
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateId")
-    def cluster_template_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Cluster template ID. For Rancher v2.3.x and above (string)
-        """
-        return pulumi.get(self, "cluster_template_id")
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateQuestions")
-    def cluster_template_questions(self) -> pulumi.Output[Sequence['outputs.ClusterClusterTemplateQuestion']]:
-        """
-        Cluster template questions. For Rancher v2.3.x and above (list)
-        """
-        return pulumi.get(self, "cluster_template_questions")
-
-    @_builtins.property
-    @pulumi.getter(name="clusterTemplateRevisionId")
-    def cluster_template_revision_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Cluster template revision ID. For Rancher v2.3.x and above (string)
-        """
-        return pulumi.get(self, "cluster_template_revision_id")
 
     @_builtins.property
     @pulumi.getter(name="defaultPodSecurityAdmissionConfigurationTemplateName")
@@ -2086,14 +1859,6 @@ class Cluster(pulumi.CustomResource):
         The RKE2 configuration for `rke2` Clusters. Conflicts with `aks_config_v2`, `k3s_config`, `oke_config` and `rke_config` (list maxitems:1)
         """
         return pulumi.get(self, "rke2_config")
-
-    @_builtins.property
-    @pulumi.getter(name="rkeConfig")
-    def rke_config(self) -> pulumi.Output['outputs.ClusterRkeConfig']:
-        """
-        The RKE configuration for `rke` Clusters. Conflicts with `aks_config_v2`, `eks_config_v2`, `gke_config_v2`, `oke_config` and `k3s_config` (list maxitems:1)
-        """
-        return pulumi.get(self, "rke_config")
 
     @_builtins.property
     @pulumi.getter(name="systemProjectId")

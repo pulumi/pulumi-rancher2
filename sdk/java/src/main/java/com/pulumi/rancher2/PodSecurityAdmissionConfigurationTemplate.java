@@ -51,8 +51,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a Pod Security Admission Configuration Template resource
  *         var foo = new PodSecurityAdmissionConfigurationTemplate("foo", PodSecurityAdmissionConfigurationTemplateArgs.builder()
- *             .name("custom-psact")
- *             .description("This is my custom Pod Security Admission Configuration Template")
  *             .defaults(PodSecurityAdmissionConfigurationTemplateDefaultsArgs.builder()
  *                 .audit("restricted")
  *                 .auditVersion("latest")
@@ -68,6 +66,8 @@ import javax.annotation.Nullable;
  *                     "ingress-nginx",
  *                     "kube-system")
  *                 .build())
+ *             .name("custom-psact")
+ *             .description("This is my custom Pod Security Admission Configuration Template")
  *             .build());
  * 
  *     }

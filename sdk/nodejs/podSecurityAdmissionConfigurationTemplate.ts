@@ -20,8 +20,6 @@ import * as utilities from "./utilities";
  *
  * // Create a Pod Security Admission Configuration Template resource
  * const foo = new rancher2.PodSecurityAdmissionConfigurationTemplate("foo", {
- *     name: "custom-psact",
- *     description: "This is my custom Pod Security Admission Configuration Template",
  *     defaults: {
  *         audit: "restricted",
  *         auditVersion: "latest",
@@ -38,6 +36,8 @@ import * as utilities from "./utilities";
  *             "kube-system",
  *         ],
  *     },
+ *     name: "custom-psact",
+ *     description: "This is my custom Pod Security Admission Configuration Template",
  * });
  * ```
  *

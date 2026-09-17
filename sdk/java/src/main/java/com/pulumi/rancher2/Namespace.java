@@ -50,9 +50,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Namespace
  *         var foo = new Namespace("foo", NamespaceArgs.builder()
- *             .name("foo")
- *             .projectId("<PROJECT_ID>")
- *             .description("foo namespace")
  *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
  *                 .limit(NamespaceResourceQuotaLimitArgs.builder()
  *                     .limitsCpu("100m")
@@ -66,6 +63,9 @@ import javax.annotation.Nullable;
  *                 .requestsCpu("1m")
  *                 .requestsMemory("1Mi")
  *                 .build())
+ *             .name("foo")
+ *             .projectId("<PROJECT_ID>")
+ *             .description("foo namespace")
  *             .build());
  * 
  *     }
@@ -82,8 +82,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.Cluster;
  * import com.pulumi.rancher2.ClusterArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
- * import com.pulumi.rancher2.inputs.ClusterRkeConfigNetworkArgs;
  * import com.pulumi.rancher2.Namespace;
  * import com.pulumi.rancher2.NamespaceArgs;
  * import com.pulumi.rancher2.inputs.NamespaceResourceQuotaArgs;
@@ -104,20 +102,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Cluster 
  *         var foo_custom = new Cluster("foo-custom", ClusterArgs.builder()
+ *             .rkeConfig(Arrays.asList(Map.of("network", Arrays.asList(Map.of("plugin", "canal")))))
  *             .name("foo-custom")
  *             .description("Foo rancher2 custom cluster")
- *             .rkeConfig(ClusterRkeConfigArgs.builder()
- *                 .network(ClusterRkeConfigNetworkArgs.builder()
- *                     .plugin("canal")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // Create a new rancher2 Namespace assigned to default cluster project
  *         var foo = new Namespace("foo", NamespaceArgs.builder()
- *             .name("foo")
- *             .projectId(foo_custom.defaultProjectId())
- *             .description("foo namespace")
  *             .resourceQuota(NamespaceResourceQuotaArgs.builder()
  *                 .limit(NamespaceResourceQuotaLimitArgs.builder()
  *                     .limitsCpu("100m")
@@ -131,6 +122,9 @@ import javax.annotation.Nullable;
  *                 .requestsCpu("1m")
  *                 .requestsMemory("1Mi")
  *                 .build())
+ *             .name("foo")
+ *             .projectId(foo_custom.defaultProjectId())
+ *             .description("foo namespace")
  *             .build());
  * 
  *     }

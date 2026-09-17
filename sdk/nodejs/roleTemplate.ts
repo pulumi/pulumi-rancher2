@@ -19,15 +19,15 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 cluster Role Template
  * const foo = new rancher2.RoleTemplate("foo", {
- *     name: "foo",
- *     context: "cluster",
- *     defaultRole: true,
- *     description: "Terraform role template acceptance test",
  *     rules: [{
  *         apiGroups: ["*"],
  *         resources: ["secrets"],
  *         verbs: ["create"],
  *     }],
+ *     name: "foo",
+ *     context: "cluster",
+ *     defaultRole: true,
+ *     description: "Terraform role template acceptance test",
  * });
  * ```
  *
@@ -37,15 +37,15 @@ import * as utilities from "./utilities";
  *
  * // Create a new rancher2 project Role Template
  * const foo = new rancher2.RoleTemplate("foo", {
- *     name: "foo",
- *     context: "project",
- *     defaultRole: true,
- *     description: "Terraform role template acceptance test",
  *     rules: [{
  *         apiGroups: ["*"],
  *         resources: ["secrets"],
  *         verbs: ["create"],
  *     }],
+ *     name: "foo",
+ *     context: "project",
+ *     defaultRole: true,
+ *     description: "Terraform role template acceptance test",
  * });
  * ```
  *

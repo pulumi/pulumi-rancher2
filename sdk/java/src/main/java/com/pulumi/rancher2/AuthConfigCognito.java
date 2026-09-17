@@ -254,6 +254,20 @@ public class AuthConfigCognito extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nameClaim);
     }
     /**
+     * PKCE verification method. Set to &#34;S256&#34; to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+     * 
+     */
+    @Export(name="pkceMethod", refs={String.class}, tree="[0]")
+    private Output<String> pkceMethod;
+
+    /**
+     * @return PKCE verification method. Set to &#34;S256&#34; to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+     * 
+     */
+    public Output<String> pkceMethod() {
+        return this.pkceMethod;
+    }
+    /**
      * A PEM-encoded private key for the OIDC provider.
      * 
      */

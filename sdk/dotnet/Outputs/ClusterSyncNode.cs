@@ -50,14 +50,6 @@ namespace Pulumi.Rancher2.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The Node Pool ID of the node (string).
-        /// </summary>
-        public readonly string? NodePoolId;
-        /// <summary>
-        /// The Node Template ID of the node (string).
-        /// </summary>
-        public readonly string? NodeTemplateId;
-        /// <summary>
         /// The Provider ID of the node (string).
         /// </summary>
         public readonly string? ProviderId;
@@ -69,10 +61,6 @@ namespace Pulumi.Rancher2.Outputs
         /// Roles of the node. `Controlplane`, `Etcd` and `Worker`. (list)
         /// </summary>
         public readonly ImmutableArray<string> Roles;
-        /// <summary>
-        /// The user to connect to the node (string).
-        /// </summary>
-        public readonly string? SshUser;
         /// <summary>
         /// General information about the node, such as kernel version, kubelet and kube-proxy version, Docker version (if used), and OS name.
         /// </summary>
@@ -98,17 +86,11 @@ namespace Pulumi.Rancher2.Outputs
 
             string? name,
 
-            string? nodePoolId,
-
-            string? nodeTemplateId,
-
             string? providerId,
 
             string? requestedHostname,
 
             ImmutableArray<string> roles,
-
-            string? sshUser,
 
             ImmutableDictionary<string, string>? systemInfo)
         {
@@ -121,12 +103,9 @@ namespace Pulumi.Rancher2.Outputs
             IpAddress = ipAddress;
             Labels = labels;
             Name = name;
-            NodePoolId = nodePoolId;
-            NodeTemplateId = nodeTemplateId;
             ProviderId = providerId;
             RequestedHostname = requestedHostname;
             Roles = roles;
-            SshUser = sshUser;
             SystemInfo = systemInfo;
         }
     }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -63,7 +63,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -89,10 +89,10 @@ import (
 //
 // ## Import
 //
-// V2 apps can be imported using the Rancher cluster ID and App V2 name, which is composed of `<namespace>/<application_name>`.
+// V2 apps can be imported using the Rancher cluster ID, App V2 namespace and App V2 name.
 //
 // ```sh
-// $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAME&gt;
+// $ pulumi import rancher2:index/appV2:AppV2 foo &lt;CLUSTER_ID&gt;.&lt;APP_V2_NAMESPACE&gt;/&lt;APP_V2_NAME&gt;
 // ```
 type AppV2 struct {
 	pulumi.CustomResourceState
@@ -127,6 +127,8 @@ type AppV2 struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Repo name (string)
 	RepoName pulumi.StringOutput `pulumi:"repoName"`
+	// Skip app V2 chart schema validation. Default: `false` (bool)
+	SkipSchemaValidation pulumi.BoolPtrOutput `pulumi:"skipSchemaValidation"`
 	// System default registry providing images for app deployment (string)
 	SystemDefaultRegistry pulumi.StringOutput `pulumi:"systemDefaultRegistry"`
 	// The app v2 values yaml. Yaml format is required (string)
@@ -207,6 +209,8 @@ type appV2State struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Repo name (string)
 	RepoName *string `pulumi:"repoName"`
+	// Skip app V2 chart schema validation. Default: `false` (bool)
+	SkipSchemaValidation *bool `pulumi:"skipSchemaValidation"`
 	// System default registry providing images for app deployment (string)
 	SystemDefaultRegistry *string `pulumi:"systemDefaultRegistry"`
 	// The app v2 values yaml. Yaml format is required (string)
@@ -246,6 +250,8 @@ type AppV2State struct {
 	ProjectId pulumi.StringPtrInput
 	// Repo name (string)
 	RepoName pulumi.StringPtrInput
+	// Skip app V2 chart schema validation. Default: `false` (bool)
+	SkipSchemaValidation pulumi.BoolPtrInput
 	// System default registry providing images for app deployment (string)
 	SystemDefaultRegistry pulumi.StringPtrInput
 	// The app v2 values yaml. Yaml format is required (string)
@@ -285,6 +291,8 @@ type appV2Args struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Repo name (string)
 	RepoName string `pulumi:"repoName"`
+	// Skip app V2 chart schema validation. Default: `false` (bool)
+	SkipSchemaValidation *bool `pulumi:"skipSchemaValidation"`
 	// System default registry providing images for app deployment (string)
 	SystemDefaultRegistry *string `pulumi:"systemDefaultRegistry"`
 	// The app v2 values yaml. Yaml format is required (string)
@@ -321,6 +329,8 @@ type AppV2Args struct {
 	ProjectId pulumi.StringPtrInput
 	// Repo name (string)
 	RepoName pulumi.StringInput
+	// Skip app V2 chart schema validation. Default: `false` (bool)
+	SkipSchemaValidation pulumi.BoolPtrInput
 	// System default registry providing images for app deployment (string)
 	SystemDefaultRegistry pulumi.StringPtrInput
 	// The app v2 values yaml. Yaml format is required (string)
@@ -489,6 +499,11 @@ func (o AppV2Output) ProjectId() pulumi.StringPtrOutput {
 // Repo name (string)
 func (o AppV2Output) RepoName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppV2) pulumi.StringOutput { return v.RepoName }).(pulumi.StringOutput)
+}
+
+// Skip app V2 chart schema validation. Default: `false` (bool)
+func (o AppV2Output) SkipSchemaValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppV2) pulumi.BoolPtrOutput { return v.SkipSchemaValidation }).(pulumi.BoolPtrOutput)
 }
 
 // System default registry providing images for app deployment (string)

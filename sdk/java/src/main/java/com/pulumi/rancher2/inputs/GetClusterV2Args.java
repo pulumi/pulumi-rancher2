@@ -6,6 +6,7 @@ package com.pulumi.rancher2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,13 @@ public final class GetClusterV2Args extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.fleetNamespace);
     }
 
+    @Import(name="generateKubeConfig")
+    private @Nullable Output<Boolean> generateKubeConfig;
+
+    public Optional<Output<Boolean>> generateKubeConfig() {
+        return Optional.ofNullable(this.generateKubeConfig);
+    }
+
     /**
      * The name of the Cluster v2 (string)
      * 
@@ -50,6 +58,7 @@ public final class GetClusterV2Args extends com.pulumi.resources.InvokeArgs {
 
     private GetClusterV2Args(GetClusterV2Args $) {
         this.fleetNamespace = $.fleetNamespace;
+        this.generateKubeConfig = $.generateKubeConfig;
         this.name = $.name;
     }
 
@@ -90,6 +99,15 @@ public final class GetClusterV2Args extends com.pulumi.resources.InvokeArgs {
          */
         public Builder fleetNamespace(String fleetNamespace) {
             return fleetNamespace(Output.of(fleetNamespace));
+        }
+
+        public Builder generateKubeConfig(@Nullable Output<Boolean> generateKubeConfig) {
+            $.generateKubeConfig = generateKubeConfig;
+            return this;
+        }
+
+        public Builder generateKubeConfig(Boolean generateKubeConfig) {
+            return generateKubeConfig(Output.of(generateKubeConfig));
         }
 
         /**

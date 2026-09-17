@@ -27,7 +27,7 @@ class GetGlobalRoleResult:
     """
     A collection of values returned by getGlobalRole.
     """
-    def __init__(__self__, annotations=None, builtin=None, description=None, id=None, inherited_cluster_roles=None, labels=None, name=None, new_user_default=None, rules=None, uuid=None):
+    def __init__(__self__, annotations=None, builtin=None, description=None, id=None, inherited_cluster_roles=None, inherited_namespaced_rules=None, labels=None, name=None, new_user_default=None, rules=None, uuid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -43,6 +43,9 @@ class GetGlobalRoleResult:
         if inherited_cluster_roles and not isinstance(inherited_cluster_roles, list):
             raise TypeError("Expected argument 'inherited_cluster_roles' to be a list")
         pulumi.set(__self__, "inherited_cluster_roles", inherited_cluster_roles)
+        if inherited_namespaced_rules and not isinstance(inherited_namespaced_rules, list):
+            raise TypeError("Expected argument 'inherited_namespaced_rules' to be a list")
+        pulumi.set(__self__, "inherited_namespaced_rules", inherited_namespaced_rules)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -100,6 +103,14 @@ class GetGlobalRoleResult:
         return pulumi.get(self, "inherited_cluster_roles")
 
     @_builtins.property
+    @pulumi.getter(name="inheritedNamespacedRules")
+    def inherited_namespaced_rules(self) -> Sequence['outputs.GetGlobalRoleInheritedNamespacedRuleResult']:
+        """
+        (Computed) Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+        """
+        return pulumi.get(self, "inherited_namespaced_rules")
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Mapping[str, _builtins.str]:
         """
@@ -148,6 +159,7 @@ class AwaitableGetGlobalRoleResult(GetGlobalRoleResult):
             description=self.description,
             id=self.id,
             inherited_cluster_roles=self.inherited_cluster_roles,
+            inherited_namespaced_rules=self.inherited_namespaced_rules,
             labels=self.labels,
             name=self.name,
             new_user_default=self.new_user_default,
@@ -186,6 +198,7 @@ def get_global_role(inherited_cluster_roles: Optional[Sequence[_builtins.str]] =
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         inherited_cluster_roles=pulumi.get(__ret__, 'inherited_cluster_roles'),
+        inherited_namespaced_rules=pulumi.get(__ret__, 'inherited_namespaced_rules'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         new_user_default=pulumi.get(__ret__, 'new_user_default'),
@@ -221,6 +234,7 @@ def get_global_role_output(inherited_cluster_roles: pulumi.Input[Optional[Option
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         inherited_cluster_roles=pulumi.get(__response__, 'inherited_cluster_roles'),
+        inherited_namespaced_rules=pulumi.get(__response__, 'inherited_namespaced_rules'),
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
         new_user_default=pulumi.get(__response__, 'new_user_default'),

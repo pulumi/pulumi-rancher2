@@ -287,14 +287,14 @@ class Registry(pulumi.CustomResource):
 
         # Create a new rancher2 Project Registry
         foo = rancher2.Registry("foo",
-            name="foo",
-            description="Terraform registry foo",
-            project_id="<project_id>",
             registries=[{
                 "address": "test.io",
                 "username": "user",
                 "password": "pass",
-            }])
+            }],
+            name="foo",
+            description="Terraform registry foo",
+            project_id="<project_id>")
         ```
 
         ```python
@@ -303,15 +303,15 @@ class Registry(pulumi.CustomResource):
 
         # Create a new rancher2 Namespaced Registry
         foo = rancher2.Registry("foo",
-            name="foo",
-            description="Terraform registry foo",
-            project_id="<project_id>",
-            namespace_id="<namespace_id>",
             registries=[{
                 "address": "test.io",
                 "username": "user2",
                 "password": "pass",
-            }])
+            }],
+            name="foo",
+            description="Terraform registry foo",
+            project_id="<project_id>",
+            namespace_id="<namespace_id>")
         ```
 
         ## Import
@@ -356,14 +356,14 @@ class Registry(pulumi.CustomResource):
 
         # Create a new rancher2 Project Registry
         foo = rancher2.Registry("foo",
-            name="foo",
-            description="Terraform registry foo",
-            project_id="<project_id>",
             registries=[{
                 "address": "test.io",
                 "username": "user",
                 "password": "pass",
-            }])
+            }],
+            name="foo",
+            description="Terraform registry foo",
+            project_id="<project_id>")
         ```
 
         ```python
@@ -372,15 +372,15 @@ class Registry(pulumi.CustomResource):
 
         # Create a new rancher2 Namespaced Registry
         foo = rancher2.Registry("foo",
-            name="foo",
-            description="Terraform registry foo",
-            project_id="<project_id>",
-            namespace_id="<namespace_id>",
             registries=[{
                 "address": "test.io",
                 "username": "user2",
                 "password": "pass",
-            }])
+            }],
+            name="foo",
+            description="Terraform registry foo",
+            project_id="<project_id>",
+            namespace_id="<namespace_id>")
         ```
 
         ## Import

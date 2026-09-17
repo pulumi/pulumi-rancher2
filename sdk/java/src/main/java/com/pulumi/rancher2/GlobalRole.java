@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.rancher2.GlobalRoleArgs;
 import com.pulumi.rancher2.Utilities;
 import com.pulumi.rancher2.inputs.GlobalRoleState;
+import com.pulumi.rancher2.outputs.GlobalRoleInheritedNamespacedRule;
 import com.pulumi.rancher2.outputs.GlobalRoleRule;
 import java.lang.Boolean;
 import java.lang.String;
@@ -32,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.rancher2.GlobalRole;
  * import com.pulumi.rancher2.GlobalRoleArgs;
+ * import com.pulumi.rancher2.inputs.GlobalRoleInheritedNamespacedRuleArgs;
+ * import com.pulumi.rancher2.inputs.GlobalRoleInheritedNamespacedRuleRuleArgs;
  * import com.pulumi.rancher2.inputs.GlobalRoleRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -48,15 +51,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new rancher2 Global Role
  *         var foo = new GlobalRole("foo", GlobalRoleArgs.builder()
- *             .name("foo")
- *             .newUserDefault(true)
- *             .description("Terraform global role acceptance test")
- *             .inheritedClusterRoles("projects-view")
+ *             .inheritedNamespacedRules(GlobalRoleInheritedNamespacedRuleArgs.builder()
+ *                 .rules(GlobalRoleInheritedNamespacedRuleRuleArgs.builder()
+ *                     .apiGroups("")
+ *                     .resources("configmaps")
+ *                     .verbs(                    
+ *                         "get",
+ *                         "list")
+ *                     .build())
+ *                 .namespace("cattle-monitoring-system")
+ *                 .build())
  *             .rules(GlobalRoleRuleArgs.builder()
  *                 .apiGroups("*")
  *                 .resources("secrets")
  *                 .verbs("create")
  *                 .build())
+ *             .name("foo")
+ *             .newUserDefault(true)
+ *             .description("Terraform global role acceptance test")
+ *             .inheritedClusterRoles("projects-view")
  *             .build());
  * 
  *     }
@@ -130,6 +143,20 @@ public class GlobalRole extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> inheritedClusterRoles() {
         return Codegen.optional(this.inheritedClusterRoles);
+    }
+    /**
+     * Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     * 
+     */
+    @Export(name="inheritedNamespacedRules", refs={List.class,GlobalRoleInheritedNamespacedRule.class}, tree="[0,1]")
+    private Output<List<GlobalRoleInheritedNamespacedRule>> inheritedNamespacedRules;
+
+    /**
+     * @return Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+     * 
+     */
+    public Output<List<GlobalRoleInheritedNamespacedRule>> inheritedNamespacedRules() {
+        return this.inheritedNamespacedRules;
     }
     /**
      * Labels for global role object (map)

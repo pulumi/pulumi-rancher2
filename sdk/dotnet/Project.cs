@@ -25,8 +25,6 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Project
     ///     var foo = new Rancher2.Project("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         ClusterId = "&lt;CLUSTER_ID&gt;",
     ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
     ///         {
     ///             ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
@@ -49,6 +47,8 @@ namespace Pulumi.Rancher2
     ///             RequestsCpu = "1m",
     ///             RequestsMemory = "1Mi",
     ///         },
+    ///         Name = "foo",
+    ///         ClusterId = "&lt;CLUSTER_ID&gt;",
     ///     });
     /// 
     /// });
@@ -65,8 +65,6 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 Project
     ///     var foo = new Rancher2.Project("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         ClusterId = "&lt;CLUSTER_ID&gt;",
     ///         ResourceQuota = new Rancher2.Inputs.ProjectResourceQuotaArgs
     ///         {
     ///             ProjectLimit = new Rancher2.Inputs.ProjectResourceQuotaProjectLimitArgs
@@ -89,6 +87,8 @@ namespace Pulumi.Rancher2
     ///             RequestsCpu = "1m",
     ///             RequestsMemory = "1Mi",
     ///         },
+    ///         Name = "foo",
+    ///         ClusterId = "&lt;CLUSTER_ID&gt;",
     ///     });
     /// 
     /// });

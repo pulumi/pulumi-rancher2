@@ -98,11 +98,11 @@ namespace Pulumi.Rancher2
     ///     // Create a new rancher2 imported Cluster with custom configuration 
     ///     var foo_imported = new Rancher2.Cluster("foo-imported", new()
     ///     {
-    ///         Name = "foo-imported",
     ///         ImportedConfig = new Rancher2.Inputs.ClusterImportedConfigArgs
     ///         {
     ///             PrivateRegistryUrl = "test.io",
     ///         },
+    ///         Name = "foo-imported",
     ///     });
     /// 
     /// });
@@ -120,19 +120,17 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Description = "foo test",
     ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
     ///             AccessKey = "&lt;aws-access-key&gt;",
     ///             SecretKey = "&lt;aws-secret-key&gt;",
     ///         },
+    ///         Name = "foo",
+    ///         Description = "foo test",
     ///     });
     /// 
     ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Description = "Terraform EKS cluster",
     ///         EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
     ///         {
     ///             CloudCredentialId = foo.Id,
@@ -140,6 +138,8 @@ namespace Pulumi.Rancher2
     ///             Region = "&lt;eks-region&gt;",
     ///             Imported = true,
     ///         },
+    ///         Name = "foo",
+    ///         Description = "Terraform EKS cluster",
     ///     });
     /// 
     /// });
@@ -157,29 +157,19 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Description = "foo test",
     ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
     ///             AccessKey = "&lt;aws-access-key&gt;",
     ///             SecretKey = "&lt;aws-secret-key&gt;",
     ///         },
+    ///         Name = "foo",
+    ///         Description = "foo test",
     ///     });
     /// 
     ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Description = "Terraform EKS cluster",
     ///         EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
     ///         {
-    ///             CloudCredentialId = foo.Id,
-    ///             Region = "&lt;EKS_REGION&gt;",
-    ///             KubernetesVersion = "1.24",
-    ///             LoggingTypes = new[]
-    ///             {
-    ///                 "audit",
-    ///                 "api",
-    ///             },
     ///             NodeGroups = new[]
     ///             {
     ///                 new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs
@@ -198,9 +188,19 @@ namespace Pulumi.Rancher2
     ///                     NodeRole = "arn:aws:iam::role/test-NodeInstanceRole",
     ///                 },
     ///             },
+    ///             CloudCredentialId = foo.Id,
+    ///             Region = "&lt;EKS_REGION&gt;",
+    ///             KubernetesVersion = "1.24",
+    ///             LoggingTypes = new[]
+    ///             {
+    ///                 "audit",
+    ///                 "api",
+    ///             },
     ///             PrivateAccess = true,
     ///             PublicAccess = false,
     ///         },
+    ///         Name = "foo",
+    ///         Description = "Terraform EKS cluster",
     ///     });
     /// 
     /// });
@@ -220,36 +220,23 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.CloudCredential("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Description = "foo test",
     ///         Amazonec2CredentialConfig = new Rancher2.Inputs.CloudCredentialAmazonec2CredentialConfigArgs
     ///         {
     ///             AccessKey = "&lt;aws-access-key&gt;",
     ///             SecretKey = "&lt;aws-secret-key&gt;",
     ///         },
+    ///         Name = "foo",
+    ///         Description = "foo test",
     ///     });
     /// 
     ///     var fooCluster = new Rancher2.Cluster("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Description = "Terraform EKS cluster",
     ///         EksConfigV2 = new Rancher2.Inputs.ClusterEksConfigV2Args
     ///         {
-    ///             CloudCredentialId = foo.Id,
-    ///             Region = "&lt;EKS_REGION&gt;",
-    ///             KubernetesVersion = "1.24",
-    ///             LoggingTypes = new[]
-    ///             {
-    ///                 "audit",
-    ///                 "api",
-    ///             },
     ///             NodeGroups = new[]
     ///             {
     ///                 new Rancher2.Inputs.ClusterEksConfigV2NodeGroupArgs
     ///                 {
-    ///                     DesiredSize = 3,
-    ///                     MaxSize = 5,
-    ///                     Name = "node_group1",
     ///                     LaunchTemplates = new[]
     ///                     {
     ///                         new Rancher2.Inputs.ClusterEksConfigV2NodeGroupLaunchTemplateArgs
@@ -258,11 +245,24 @@ namespace Pulumi.Rancher2
     ///                             Version = 1,
     ///                         },
     ///                     },
+    ///                     DesiredSize = 3,
+    ///                     MaxSize = 5,
+    ///                     Name = "node_group1",
     ///                 },
+    ///             },
+    ///             CloudCredentialId = foo.Id,
+    ///             Region = "&lt;EKS_REGION&gt;",
+    ///             KubernetesVersion = "1.24",
+    ///             LoggingTypes = new[]
+    ///             {
+    ///                 "audit",
+    ///                 "api",
     ///             },
     ///             PrivateAccess = true,
     ///             PublicAccess = true,
     ///         },
+    ///         Name = "foo",
+    ///         Description = "Terraform EKS cluster",
     ///     });
     /// 
     /// });
@@ -280,32 +280,19 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo_aks = new Rancher2.CloudCredential("foo-aks", new()
     ///     {
-    ///         Name = "foo-aks",
     ///         AzureCredentialConfig = new Rancher2.Inputs.CloudCredentialAzureCredentialConfigArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
     ///             ClientSecret = "&lt;client-secret&gt;",
     ///             SubscriptionId = "&lt;subscription-id&gt;",
     ///         },
+    ///         Name = "foo-aks",
     ///     });
     /// 
     ///     var foo = new Rancher2.Cluster("foo", new()
     ///     {
-    ///         Name = "foo",
-    ///         Description = "Terraform AKS cluster",
     ///         AksConfigV2 = new Rancher2.Inputs.ClusterAksConfigV2Args
     ///         {
-    ///             CloudCredentialId = foo_aks.Id,
-    ///             ResourceGroup = "&lt;resource-group&gt;",
-    ///             ResourceLocation = "&lt;resource-location&gt;",
-    ///             DnsPrefix = "&lt;dns-prefix&gt;",
-    ///             KubernetesVersion = "1.24.6",
-    ///             NetworkPlugin = "&lt;network-plugin&gt;",
-    ///             VirtualNetwork = "&lt;virtual-network&gt;",
-    ///             VirtualNetworkResourceGroup = "&lt;virtual-network-resource-group&gt;",
-    ///             Subnet = "&lt;subnet&gt;",
-    ///             NodeResourceGroup = "&lt;node-resource-group&gt;",
-    ///             OutboundType = "loadBalancer",
     ///             NodePools = new[]
     ///             {
     ///                 new Rancher2.Inputs.ClusterAksConfigV2NodePoolArgs
@@ -349,7 +336,20 @@ namespace Pulumi.Rancher2
     ///                     },
     ///                 },
     ///             },
+    ///             CloudCredentialId = foo_aks.Id,
+    ///             ResourceGroup = "&lt;resource-group&gt;",
+    ///             ResourceLocation = "&lt;resource-location&gt;",
+    ///             DnsPrefix = "&lt;dns-prefix&gt;",
+    ///             KubernetesVersion = "1.24.6",
+    ///             NetworkPlugin = "&lt;network-plugin&gt;",
+    ///             VirtualNetwork = "&lt;virtual-network&gt;",
+    ///             VirtualNetworkResourceGroup = "&lt;virtual-network-resource-group&gt;",
+    ///             Subnet = "&lt;subnet&gt;",
+    ///             NodeResourceGroup = "&lt;node-resource-group&gt;",
+    ///             OutboundType = "loadBalancer",
     ///         },
+    ///         Name = "foo",
+    ///         Description = "Terraform AKS cluster",
     ///     });
     /// 
     /// });
@@ -407,30 +407,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Output("clusterRegistrationToken")]
         public Output<Outputs.ClusterClusterRegistrationToken> ClusterRegistrationToken { get; private set; } = null!;
-
-        /// <summary>
-        /// Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        /// </summary>
-        [Output("clusterTemplateAnswers")]
-        public Output<Outputs.ClusterClusterTemplateAnswers> ClusterTemplateAnswers { get; private set; } = null!;
-
-        /// <summary>
-        /// Cluster template ID. For Rancher v2.3.x and above (string)
-        /// </summary>
-        [Output("clusterTemplateId")]
-        public Output<string?> ClusterTemplateId { get; private set; } = null!;
-
-        /// <summary>
-        /// Cluster template questions. For Rancher v2.3.x and above (list)
-        /// </summary>
-        [Output("clusterTemplateQuestions")]
-        public Output<ImmutableArray<Outputs.ClusterClusterTemplateQuestion>> ClusterTemplateQuestions { get; private set; } = null!;
-
-        /// <summary>
-        /// Cluster template revision ID. For Rancher v2.3.x and above (string)
-        /// </summary>
-        [Output("clusterTemplateRevisionId")]
-        public Output<string?> ClusterTemplateRevisionId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
@@ -559,12 +535,6 @@ namespace Pulumi.Rancher2
         public Output<Outputs.ClusterRke2Config> Rke2Config { get; private set; } = null!;
 
         /// <summary>
-        /// The RKE configuration for `Rke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `OkeConfig` and `K3sConfig` (list maxitems:1)
-        /// </summary>
-        [Output("rkeConfig")]
-        public Output<Outputs.ClusterRkeConfig> RkeConfig { get; private set; } = null!;
-
-        /// <summary>
         /// (Computed) System project ID for the cluster (string)
         /// </summary>
         [Output("systemProjectId")]
@@ -674,36 +644,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("clusterAuthEndpoint")]
         public Input<Inputs.ClusterClusterAuthEndpointArgs>? ClusterAuthEndpoint { get; set; }
-
-        /// <summary>
-        /// Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        /// </summary>
-        [Input("clusterTemplateAnswers")]
-        public Input<Inputs.ClusterClusterTemplateAnswersArgs>? ClusterTemplateAnswers { get; set; }
-
-        /// <summary>
-        /// Cluster template ID. For Rancher v2.3.x and above (string)
-        /// </summary>
-        [Input("clusterTemplateId")]
-        public Input<string>? ClusterTemplateId { get; set; }
-
-        [Input("clusterTemplateQuestions")]
-        private InputList<Inputs.ClusterClusterTemplateQuestionArgs>? _clusterTemplateQuestions;
-
-        /// <summary>
-        /// Cluster template questions. For Rancher v2.3.x and above (list)
-        /// </summary>
-        public InputList<Inputs.ClusterClusterTemplateQuestionArgs> ClusterTemplateQuestions
-        {
-            get => _clusterTemplateQuestions ?? (_clusterTemplateQuestions = new InputList<Inputs.ClusterClusterTemplateQuestionArgs>());
-            set => _clusterTemplateQuestions = value;
-        }
-
-        /// <summary>
-        /// Cluster template revision ID. For Rancher v2.3.x and above (string)
-        /// </summary>
-        [Input("clusterTemplateRevisionId")]
-        public Input<string>? ClusterTemplateRevisionId { get; set; }
 
         /// <summary>
         /// The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
@@ -820,12 +760,6 @@ namespace Pulumi.Rancher2
         public Input<Inputs.ClusterRke2ConfigArgs>? Rke2Config { get; set; }
 
         /// <summary>
-        /// The RKE configuration for `Rke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `OkeConfig` and `K3sConfig` (list maxitems:1)
-        /// </summary>
-        [Input("rkeConfig")]
-        public Input<Inputs.ClusterRkeConfigArgs>? RkeConfig { get; set; }
-
-        /// <summary>
         /// Windows preferred cluster. Default: `False` (bool)
         /// </summary>
         [Input("windowsPreferedCluster")]
@@ -908,36 +842,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("clusterRegistrationToken")]
         public Input<Inputs.ClusterClusterRegistrationTokenGetArgs>? ClusterRegistrationToken { get; set; }
-
-        /// <summary>
-        /// Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-        /// </summary>
-        [Input("clusterTemplateAnswers")]
-        public Input<Inputs.ClusterClusterTemplateAnswersGetArgs>? ClusterTemplateAnswers { get; set; }
-
-        /// <summary>
-        /// Cluster template ID. For Rancher v2.3.x and above (string)
-        /// </summary>
-        [Input("clusterTemplateId")]
-        public Input<string>? ClusterTemplateId { get; set; }
-
-        [Input("clusterTemplateQuestions")]
-        private InputList<Inputs.ClusterClusterTemplateQuestionGetArgs>? _clusterTemplateQuestions;
-
-        /// <summary>
-        /// Cluster template questions. For Rancher v2.3.x and above (list)
-        /// </summary>
-        public InputList<Inputs.ClusterClusterTemplateQuestionGetArgs> ClusterTemplateQuestions
-        {
-            get => _clusterTemplateQuestions ?? (_clusterTemplateQuestions = new InputList<Inputs.ClusterClusterTemplateQuestionGetArgs>());
-            set => _clusterTemplateQuestions = value;
-        }
-
-        /// <summary>
-        /// Cluster template revision ID. For Rancher v2.3.x and above (string)
-        /// </summary>
-        [Input("clusterTemplateRevisionId")]
-        public Input<string>? ClusterTemplateRevisionId { get; set; }
 
         /// <summary>
         /// The name of the pre-defined pod security admission configuration template to be applied to the cluster. Rancher admins (or those with the right permissions) can create, manage, and edit those templates. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates). The argument is available in Rancher v2.7.2 and above (string)
@@ -1086,12 +990,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         [Input("rke2Config")]
         public Input<Inputs.ClusterRke2ConfigGetArgs>? Rke2Config { get; set; }
-
-        /// <summary>
-        /// The RKE configuration for `Rke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2`, `OkeConfig` and `K3sConfig` (list maxitems:1)
-        /// </summary>
-        [Input("rkeConfig")]
-        public Input<Inputs.ClusterRkeConfigGetArgs>? RkeConfig { get; set; }
 
         /// <summary>
         /// (Computed) System project ID for the cluster (string)

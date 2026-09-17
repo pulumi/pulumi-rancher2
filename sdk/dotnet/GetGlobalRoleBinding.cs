@@ -154,6 +154,10 @@ namespace Pulumi.Rancher2
         /// (Computed) The user ID to assign global role binding (string)
         /// </summary>
         public readonly string UserId;
+        /// <summary>
+        /// (Computed) The user principal ID to assign global role binding (string)
+        /// </summary>
+        public readonly string UserPrincipalId;
 
         [OutputConstructor]
         private GetGlobalRoleBindingResult(
@@ -169,7 +173,9 @@ namespace Pulumi.Rancher2
 
             string name,
 
-            string userId)
+            string userId,
+
+            string userPrincipalId)
         {
             Annotations = annotations;
             GlobalRoleId = globalRoleId;
@@ -178,6 +184,7 @@ namespace Pulumi.Rancher2
             Labels = labels;
             Name = name;
             UserId = userId;
+            UserPrincipalId = userPrincipalId;
         }
     }
 }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2"
+//	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -37,9 +37,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Create a new rancher2 Global Role Binding using group_principal_id
+//			// Create a new rancher2 Global Role Binding using user_principal_id
 //			_, err = rancher2.NewGlobalRoleBinding(ctx, "foo2", &rancher2.GlobalRoleBindingArgs{
-//				Name:             pulumi.String("foo2"),
+//				Name:            pulumi.String("foo2"),
+//				GlobalRoleId:    pulumi.String("admin"),
+//				UserPrincipalId: pulumi.String("local://user-XXXXX"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a new rancher2 Global Role Binding using group_principal_id
+//			_, err = rancher2.NewGlobalRoleBinding(ctx, "foo3", &rancher2.GlobalRoleBindingArgs{
+//				Name:             pulumi.String("foo3"),
 //				GlobalRoleId:     pulumi.String("admin"),
 //				GroupPrincipalId: pulumi.String("local://g-XXXXX"),
 //			})
@@ -70,12 +79,14 @@ type GlobalRoleBinding struct {
 	GroupPrincipalId pulumi.StringOutput `pulumi:"groupPrincipalId"`
 	// Labels for global role binding (map)
 	//
-	// **Note:** user `userId` OR group `groupPrincipalId` must be defined
+	// **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the global role binding (string)
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The user ID to assign global role binding (string)
 	UserId pulumi.StringOutput `pulumi:"userId"`
+	// The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+	UserPrincipalId pulumi.StringOutput `pulumi:"userPrincipalId"`
 }
 
 // NewGlobalRoleBinding registers a new resource with the given unique name, arguments, and options.
@@ -119,12 +130,14 @@ type globalRoleBindingState struct {
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels for global role binding (map)
 	//
-	// **Note:** user `userId` OR group `groupPrincipalId` must be defined
+	// **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the global role binding (string)
 	Name *string `pulumi:"name"`
 	// The user ID to assign global role binding (string)
 	UserId *string `pulumi:"userId"`
+	// The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+	UserPrincipalId *string `pulumi:"userPrincipalId"`
 }
 
 type GlobalRoleBindingState struct {
@@ -136,12 +149,14 @@ type GlobalRoleBindingState struct {
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels for global role binding (map)
 	//
-	// **Note:** user `userId` OR group `groupPrincipalId` must be defined
+	// **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
 	Labels pulumi.StringMapInput
 	// The name of the global role binding (string)
 	Name pulumi.StringPtrInput
 	// The user ID to assign global role binding (string)
 	UserId pulumi.StringPtrInput
+	// The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+	UserPrincipalId pulumi.StringPtrInput
 }
 
 func (GlobalRoleBindingState) ElementType() reflect.Type {
@@ -157,12 +172,14 @@ type globalRoleBindingArgs struct {
 	GroupPrincipalId *string `pulumi:"groupPrincipalId"`
 	// Labels for global role binding (map)
 	//
-	// **Note:** user `userId` OR group `groupPrincipalId` must be defined
+	// **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the global role binding (string)
 	Name *string `pulumi:"name"`
 	// The user ID to assign global role binding (string)
 	UserId *string `pulumi:"userId"`
+	// The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+	UserPrincipalId *string `pulumi:"userPrincipalId"`
 }
 
 // The set of arguments for constructing a GlobalRoleBinding resource.
@@ -175,12 +192,14 @@ type GlobalRoleBindingArgs struct {
 	GroupPrincipalId pulumi.StringPtrInput
 	// Labels for global role binding (map)
 	//
-	// **Note:** user `userId` OR group `groupPrincipalId` must be defined
+	// **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
 	Labels pulumi.StringMapInput
 	// The name of the global role binding (string)
 	Name pulumi.StringPtrInput
 	// The user ID to assign global role binding (string)
 	UserId pulumi.StringPtrInput
+	// The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+	UserPrincipalId pulumi.StringPtrInput
 }
 
 func (GlobalRoleBindingArgs) ElementType() reflect.Type {
@@ -287,7 +306,7 @@ func (o GlobalRoleBindingOutput) GroupPrincipalId() pulumi.StringOutput {
 
 // Labels for global role binding (map)
 //
-// **Note:** user `userId` OR group `groupPrincipalId` must be defined
+// **Note:** user `userId` or `userPrincipalId` OR group `groupPrincipalId` must be defined
 func (o GlobalRoleBindingOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -300,6 +319,11 @@ func (o GlobalRoleBindingOutput) Name() pulumi.StringOutput {
 // The user ID to assign global role binding (string)
 func (o GlobalRoleBindingOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The user principal ID to assign global role binding (string). When set, the provider looks up the matching Rancher user by principal ID and sets the `userId` accordingly before creating the binding
+func (o GlobalRoleBindingOutput) UserPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalRoleBinding) pulumi.StringOutput { return v.UserPrincipalId }).(pulumi.StringOutput)
 }
 
 type GlobalRoleBindingArrayOutput struct{ *pulumi.OutputState }

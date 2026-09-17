@@ -26,7 +26,7 @@ class GetGlobalRoleBindingResult:
     """
     A collection of values returned by getGlobalRoleBinding.
     """
-    def __init__(__self__, annotations=None, global_role_id=None, group_principal_id=None, id=None, labels=None, name=None, user_id=None):
+    def __init__(__self__, annotations=None, global_role_id=None, group_principal_id=None, id=None, labels=None, name=None, user_id=None, user_principal_id=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -48,6 +48,9 @@ class GetGlobalRoleBindingResult:
         if user_id and not isinstance(user_id, str):
             raise TypeError("Expected argument 'user_id' to be a str")
         pulumi.set(__self__, "user_id", user_id)
+        if user_principal_id and not isinstance(user_principal_id, str):
+            raise TypeError("Expected argument 'user_principal_id' to be a str")
+        pulumi.set(__self__, "user_principal_id", user_principal_id)
 
     @_builtins.property
     @pulumi.getter
@@ -99,6 +102,14 @@ class GetGlobalRoleBindingResult:
         """
         return pulumi.get(self, "user_id")
 
+    @_builtins.property
+    @pulumi.getter(name="userPrincipalId")
+    def user_principal_id(self) -> _builtins.str:
+        """
+        (Computed) The user principal ID to assign global role binding (string)
+        """
+        return pulumi.get(self, "user_principal_id")
+
 
 class AwaitableGetGlobalRoleBindingResult(GetGlobalRoleBindingResult):
     # pylint: disable=using-constant-test
@@ -112,7 +123,8 @@ class AwaitableGetGlobalRoleBindingResult(GetGlobalRoleBindingResult):
             id=self.id,
             labels=self.labels,
             name=self.name,
-            user_id=self.user_id)
+            user_id=self.user_id,
+            user_principal_id=self.user_principal_id)
 
 
 def get_global_role_binding(global_role_id: Optional[_builtins.str] = None,
@@ -148,7 +160,8 @@ def get_global_role_binding(global_role_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
-        user_id=pulumi.get(__ret__, 'user_id'))
+        user_id=pulumi.get(__ret__, 'user_id'),
+        user_principal_id=pulumi.get(__ret__, 'user_principal_id'))
 def get_global_role_binding_output(global_role_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    name: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGlobalRoleBindingResult]:
@@ -181,4 +194,5 @@ def get_global_role_binding_output(global_role_id: pulumi.Input[Optional[Optiona
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
-        user_id=pulumi.get(__response__, 'user_id')))
+        user_id=pulumi.get(__response__, 'user_id'),
+        user_principal_id=pulumi.get(__response__, 'user_principal_id')))

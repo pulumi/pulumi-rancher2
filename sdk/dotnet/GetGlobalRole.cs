@@ -162,6 +162,10 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly ImmutableArray<string> InheritedClusterRoles;
         /// <summary>
+        /// (Computed) Policy rules granted in matching namespaces of every cluster besides the local cluster (set)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGlobalRoleInheritedNamespacedRuleResult> InheritedNamespacedRules;
+        /// <summary>
         /// (Computed) Labels for global role object (map)
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -191,6 +195,8 @@ namespace Pulumi.Rancher2
 
             ImmutableArray<string> inheritedClusterRoles,
 
+            ImmutableArray<Outputs.GetGlobalRoleInheritedNamespacedRuleResult> inheritedNamespacedRules,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -206,6 +212,7 @@ namespace Pulumi.Rancher2
             Description = description;
             Id = id;
             InheritedClusterRoles = inheritedClusterRoles;
+            InheritedNamespacedRules = inheritedNamespacedRules;
             Labels = labels;
             Name = name;
             NewUserDefault = newUserDefault;

@@ -214,6 +214,21 @@ public final class AppV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Skip app V2 chart schema validation. Default: `false` (bool)
+     * 
+     */
+    @Import(name="skipSchemaValidation")
+    private @Nullable Output<Boolean> skipSchemaValidation;
+
+    /**
+     * @return Skip app V2 chart schema validation. Default: `false` (bool)
+     * 
+     */
+    public Optional<Output<Boolean>> skipSchemaValidation() {
+        return Optional.ofNullable(this.skipSchemaValidation);
+    }
+
+    /**
      * System default registry providing images for app deployment (string)
      * 
      */
@@ -274,6 +289,7 @@ public final class AppV2Args extends com.pulumi.resources.ResourceArgs {
         this.namespace = $.namespace;
         this.projectId = $.projectId;
         this.repoName = $.repoName;
+        this.skipSchemaValidation = $.skipSchemaValidation;
         this.systemDefaultRegistry = $.systemDefaultRegistry;
         this.values = $.values;
         this.wait = $.wait;
@@ -568,6 +584,27 @@ public final class AppV2Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder repoName(String repoName) {
             return repoName(Output.of(repoName));
+        }
+
+        /**
+         * @param skipSchemaValidation Skip app V2 chart schema validation. Default: `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipSchemaValidation(@Nullable Output<Boolean> skipSchemaValidation) {
+            $.skipSchemaValidation = skipSchemaValidation;
+            return this;
+        }
+
+        /**
+         * @param skipSchemaValidation Skip app V2 chart schema validation. Default: `false` (bool)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipSchemaValidation(Boolean skipSchemaValidation) {
+            return skipSchemaValidation(Output.of(skipSchemaValidation));
         }
 
         /**

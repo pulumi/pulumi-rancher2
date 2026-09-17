@@ -67,6 +67,10 @@ export interface GetGlobalRoleBindingResult {
      * (Computed) The user ID to assign global role binding (string)
      */
     readonly userId: string;
+    /**
+     * (Computed) The user principal ID to assign global role binding (string)
+     */
+    readonly userPrincipalId: string;
 }
 /**
  * Use this data source to retrieve information about a Rancher v2 global role binding.

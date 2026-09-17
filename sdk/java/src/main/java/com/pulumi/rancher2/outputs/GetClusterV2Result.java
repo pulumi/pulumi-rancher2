@@ -55,6 +55,7 @@ public final class GetClusterV2Result {
      */
     private Boolean enableNetworkPolicy;
     private @Nullable String fleetNamespace;
+    private @Nullable Boolean generateKubeConfig;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -139,6 +140,9 @@ public final class GetClusterV2Result {
     public Optional<String> fleetNamespace() {
         return Optional.ofNullable(this.fleetNamespace);
     }
+    public Optional<Boolean> generateKubeConfig() {
+        return Optional.ofNullable(this.generateKubeConfig);
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -199,6 +203,7 @@ public final class GetClusterV2Result {
         private String defaultPodSecurityAdmissionConfigurationTemplateName;
         private Boolean enableNetworkPolicy;
         private @Nullable String fleetNamespace;
+        private @Nullable Boolean generateKubeConfig;
         private String id;
         private String kubeConfig;
         private String kubernetesVersion;
@@ -218,6 +223,7 @@ public final class GetClusterV2Result {
     	      this.defaultPodSecurityAdmissionConfigurationTemplateName = defaults.defaultPodSecurityAdmissionConfigurationTemplateName;
     	      this.enableNetworkPolicy = defaults.enableNetworkPolicy;
     	      this.fleetNamespace = defaults.fleetNamespace;
+    	      this.generateKubeConfig = defaults.generateKubeConfig;
     	      this.id = defaults.id;
     	      this.kubeConfig = defaults.kubeConfig;
     	      this.kubernetesVersion = defaults.kubernetesVersion;
@@ -301,6 +307,12 @@ public final class GetClusterV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder generateKubeConfig(@Nullable Boolean generateKubeConfig) {
+
+            this.generateKubeConfig = generateKubeConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetClusterV2Result", "id");
@@ -367,6 +379,7 @@ public final class GetClusterV2Result {
             _resultValue.defaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             _resultValue.enableNetworkPolicy = enableNetworkPolicy;
             _resultValue.fleetNamespace = fleetNamespace;
+            _resultValue.generateKubeConfig = generateKubeConfig;
             _resultValue.id = id;
             _resultValue.kubeConfig = kubeConfig;
             _resultValue.kubernetesVersion = kubernetesVersion;

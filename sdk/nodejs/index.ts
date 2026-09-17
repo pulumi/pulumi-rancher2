@@ -205,11 +205,6 @@ export const getNodeDriver: typeof import("./getNodeDriver").getNodeDriver = nul
 export const getNodeDriverOutput: typeof import("./getNodeDriver").getNodeDriverOutput = null as any;
 utilities.lazyLoad(exports, ["getNodeDriver","getNodeDriverOutput"], () => require("./getNodeDriver"));
 
-export { GetNodePoolArgs, GetNodePoolResult, GetNodePoolOutputArgs } from "./getNodePool";
-export const getNodePool: typeof import("./getNodePool").getNodePool = null as any;
-export const getNodePoolOutput: typeof import("./getNodePool").getNodePoolOutput = null as any;
-utilities.lazyLoad(exports, ["getNodePool","getNodePoolOutput"], () => require("./getNodePool"));
-
 export { GetPodSecurityAdmissionConfigurationTemplateArgs, GetPodSecurityAdmissionConfigurationTemplateResult, GetPodSecurityAdmissionConfigurationTemplateOutputArgs } from "./getPodSecurityAdmissionConfigurationTemplate";
 export const getPodSecurityAdmissionConfigurationTemplate: typeof import("./getPodSecurityAdmissionConfigurationTemplate").getPodSecurityAdmissionConfigurationTemplate = null as any;
 export const getPodSecurityAdmissionConfigurationTemplateOutput: typeof import("./getPodSecurityAdmissionConfigurationTemplate").getPodSecurityAdmissionConfigurationTemplateOutput = null as any;
@@ -290,10 +285,10 @@ export type NodeDriver = import("./nodeDriver").NodeDriver;
 export const NodeDriver: typeof import("./nodeDriver").NodeDriver = null as any;
 utilities.lazyLoad(exports, ["NodeDriver"], () => require("./nodeDriver"));
 
-export { NodePoolArgs, NodePoolState } from "./nodePool";
-export type NodePool = import("./nodePool").NodePool;
-export const NodePool: typeof import("./nodePool").NodePool = null as any;
-utilities.lazyLoad(exports, ["NodePool"], () => require("./nodePool"));
+export { OidcClientArgs, OidcClientState } from "./oidcClient";
+export type OidcClient = import("./oidcClient").OidcClient;
+export const OidcClient: typeof import("./oidcClient").OidcClient = null as any;
+utilities.lazyLoad(exports, ["OidcClient"], () => require("./oidcClient"));
 
 export { PodSecurityAdmissionConfigurationTemplateArgs, PodSecurityAdmissionConfigurationTemplateState } from "./podSecurityAdmissionConfigurationTemplate";
 export type PodSecurityAdmissionConfigurationTemplate = import("./podSecurityAdmissionConfigurationTemplate").PodSecurityAdmissionConfigurationTemplate;
@@ -431,8 +426,8 @@ const _module = {
                 return new Namespace(name, <any>undefined, { urn })
             case "rancher2:index/nodeDriver:NodeDriver":
                 return new NodeDriver(name, <any>undefined, { urn })
-            case "rancher2:index/nodePool:NodePool":
-                return new NodePool(name, <any>undefined, { urn })
+            case "rancher2:index/oidcClient:OidcClient":
+                return new OidcClient(name, <any>undefined, { urn })
             case "rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate":
                 return new PodSecurityAdmissionConfigurationTemplate(name, <any>undefined, { urn })
             case "rancher2:index/project:Project":
@@ -492,7 +487,7 @@ pulumi.runtime.registerResourceModule("rancher2", "index/globalRoleBinding", _mo
 pulumi.runtime.registerResourceModule("rancher2", "index/machineConfigV2", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/namespace", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/nodeDriver", _module)
-pulumi.runtime.registerResourceModule("rancher2", "index/nodePool", _module)
+pulumi.runtime.registerResourceModule("rancher2", "index/oidcClient", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/podSecurityAdmissionConfigurationTemplate", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/project", _module)
 pulumi.runtime.registerResourceModule("rancher2", "index/projectRoleTemplateBinding", _module)

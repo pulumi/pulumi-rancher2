@@ -90,6 +90,9 @@ namespace Pulumi.Rancher2
         [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
         public string? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
 
+        [Input("generateKubeConfig")]
+        public bool? GenerateKubeConfig { get; set; }
+
         /// <summary>
         /// The name of the Cluster (string)
         /// </summary>
@@ -106,6 +109,9 @@ namespace Pulumi.Rancher2
     {
         [Input("defaultPodSecurityAdmissionConfigurationTemplateName")]
         public Input<string>? DefaultPodSecurityAdmissionConfigurationTemplateName { get; set; }
+
+        [Input("generateKubeConfig")]
+        public Input<bool>? GenerateKubeConfig { get; set; }
 
         /// <summary>
         /// The name of the Cluster (string)
@@ -147,22 +153,6 @@ namespace Pulumi.Rancher2
         /// (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
         /// </summary>
         public readonly Outputs.GetClusterClusterRegistrationTokenResult ClusterRegistrationToken;
-        /// <summary>
-        /// (Computed) Cluster template answers (list maxitems:1)
-        /// </summary>
-        public readonly Outputs.GetClusterClusterTemplateAnswersResult ClusterTemplateAnswers;
-        /// <summary>
-        /// (Computed) Cluster template ID (string)
-        /// </summary>
-        public readonly string ClusterTemplateId;
-        /// <summary>
-        /// (Computed) Cluster template questions (list)
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetClusterClusterTemplateQuestionResult> ClusterTemplateQuestions;
-        /// <summary>
-        /// (Computed) Cluster template revision ID (string)
-        /// </summary>
-        public readonly string ClusterTemplateRevisionId;
         public readonly string DefaultPodSecurityAdmissionConfigurationTemplateName;
         /// <summary>
         /// (Computed) Default project ID for the cluster (string)
@@ -188,6 +178,7 @@ namespace Pulumi.Rancher2
         /// (Computed) Fleet workspace name (string)
         /// </summary>
         public readonly string FleetWorkspaceName;
+        public readonly bool? GenerateKubeConfig;
         /// <summary>
         /// (Computed) The Google GKE V2 configuration for `Gke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `K3sConfig` and `RkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
         /// </summary>
@@ -219,10 +210,6 @@ namespace Pulumi.Rancher2
         /// </summary>
         public readonly Outputs.GetClusterRke2ConfigResult Rke2Config;
         /// <summary>
-        /// (Computed) The RKE configuration for `Rke` Clusters. Conflicts with `AksConfigV2`, `EksConfigV2`, `GkeConfigV2` and `K3sConfig` (list maxitems:1)
-        /// </summary>
-        public readonly Outputs.GetClusterRkeConfigResult RkeConfig;
-        /// <summary>
         /// (Computed) System project ID for the cluster (string)
         /// </summary>
         public readonly string SystemProjectId;
@@ -241,14 +228,6 @@ namespace Pulumi.Rancher2
 
             Outputs.GetClusterClusterRegistrationTokenResult clusterRegistrationToken,
 
-            Outputs.GetClusterClusterTemplateAnswersResult clusterTemplateAnswers,
-
-            string clusterTemplateId,
-
-            ImmutableArray<Outputs.GetClusterClusterTemplateQuestionResult> clusterTemplateQuestions,
-
-            string clusterTemplateRevisionId,
-
             string defaultPodSecurityAdmissionConfigurationTemplateName,
 
             string defaultProjectId,
@@ -262,6 +241,8 @@ namespace Pulumi.Rancher2
             bool enableNetworkPolicy,
 
             string fleetWorkspaceName,
+
+            bool? generateKubeConfig,
 
             Outputs.GetClusterGkeConfigV2Result gkeConfigV2,
 
@@ -281,8 +262,6 @@ namespace Pulumi.Rancher2
 
             Outputs.GetClusterRke2ConfigResult rke2Config,
 
-            Outputs.GetClusterRkeConfigResult rkeConfig,
-
             string systemProjectId)
         {
             AgentEnvVars = agentEnvVars;
@@ -291,10 +270,6 @@ namespace Pulumi.Rancher2
             CaCert = caCert;
             ClusterAuthEndpoint = clusterAuthEndpoint;
             ClusterRegistrationToken = clusterRegistrationToken;
-            ClusterTemplateAnswers = clusterTemplateAnswers;
-            ClusterTemplateId = clusterTemplateId;
-            ClusterTemplateQuestions = clusterTemplateQuestions;
-            ClusterTemplateRevisionId = clusterTemplateRevisionId;
             DefaultPodSecurityAdmissionConfigurationTemplateName = defaultPodSecurityAdmissionConfigurationTemplateName;
             DefaultProjectId = defaultProjectId;
             Description = description;
@@ -302,6 +277,7 @@ namespace Pulumi.Rancher2
             EksConfigV2 = eksConfigV2;
             EnableNetworkPolicy = enableNetworkPolicy;
             FleetWorkspaceName = fleetWorkspaceName;
+            GenerateKubeConfig = generateKubeConfig;
             GkeConfigV2 = gkeConfigV2;
             Id = id;
             ImportedConfigs = importedConfigs;
@@ -311,7 +287,6 @@ namespace Pulumi.Rancher2
             Name = name;
             OkeConfig = okeConfig;
             Rke2Config = rke2Config;
-            RkeConfig = rkeConfig;
             SystemProjectId = systemProjectId;
         }
     }

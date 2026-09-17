@@ -9,8 +9,6 @@ import com.pulumi.rancher2.inputs.ClusterAgentEnvVarArgs;
 import com.pulumi.rancher2.inputs.ClusterAksConfigV2Args;
 import com.pulumi.rancher2.inputs.ClusterClusterAgentDeploymentCustomizationArgs;
 import com.pulumi.rancher2.inputs.ClusterClusterAuthEndpointArgs;
-import com.pulumi.rancher2.inputs.ClusterClusterTemplateAnswersArgs;
-import com.pulumi.rancher2.inputs.ClusterClusterTemplateQuestionArgs;
 import com.pulumi.rancher2.inputs.ClusterEksConfigV2Args;
 import com.pulumi.rancher2.inputs.ClusterFleetAgentDeploymentCustomizationArgs;
 import com.pulumi.rancher2.inputs.ClusterGkeConfigV2Args;
@@ -18,7 +16,6 @@ import com.pulumi.rancher2.inputs.ClusterImportedConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterK3sConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterOkeConfigArgs;
 import com.pulumi.rancher2.inputs.ClusterRke2ConfigArgs;
-import com.pulumi.rancher2.inputs.ClusterRkeConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -105,66 +102,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterClusterAuthEndpointArgs>> clusterAuthEndpoint() {
         return Optional.ofNullable(this.clusterAuthEndpoint);
-    }
-
-    /**
-     * Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-     * 
-     */
-    @Import(name="clusterTemplateAnswers")
-    private @Nullable Output<ClusterClusterTemplateAnswersArgs> clusterTemplateAnswers;
-
-    /**
-     * @return Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-     * 
-     */
-    public Optional<Output<ClusterClusterTemplateAnswersArgs>> clusterTemplateAnswers() {
-        return Optional.ofNullable(this.clusterTemplateAnswers);
-    }
-
-    /**
-     * Cluster template ID. For Rancher v2.3.x and above (string)
-     * 
-     */
-    @Import(name="clusterTemplateId")
-    private @Nullable Output<String> clusterTemplateId;
-
-    /**
-     * @return Cluster template ID. For Rancher v2.3.x and above (string)
-     * 
-     */
-    public Optional<Output<String>> clusterTemplateId() {
-        return Optional.ofNullable(this.clusterTemplateId);
-    }
-
-    /**
-     * Cluster template questions. For Rancher v2.3.x and above (list)
-     * 
-     */
-    @Import(name="clusterTemplateQuestions")
-    private @Nullable Output<List<ClusterClusterTemplateQuestionArgs>> clusterTemplateQuestions;
-
-    /**
-     * @return Cluster template questions. For Rancher v2.3.x and above (list)
-     * 
-     */
-    public Optional<Output<List<ClusterClusterTemplateQuestionArgs>>> clusterTemplateQuestions() {
-        return Optional.ofNullable(this.clusterTemplateQuestions);
-    }
-
-    /**
-     * Cluster template revision ID. For Rancher v2.3.x and above (string)
-     * 
-     */
-    @Import(name="clusterTemplateRevisionId")
-    private @Nullable Output<String> clusterTemplateRevisionId;
-
-    /**
-     * @return Cluster template revision ID. For Rancher v2.3.x and above (string)
-     * 
-     */
-    public Optional<Output<String>> clusterTemplateRevisionId() {
-        return Optional.ofNullable(this.clusterTemplateRevisionId);
     }
 
     /**
@@ -423,21 +360,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
-     * 
-     */
-    @Import(name="rkeConfig")
-    private @Nullable Output<ClusterRkeConfigArgs> rkeConfig;
-
-    /**
-     * @return The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
-     * 
-     */
-    public Optional<Output<ClusterRkeConfigArgs>> rkeConfig() {
-        return Optional.ofNullable(this.rkeConfig);
-    }
-
-    /**
      * Windows preferred cluster. Default: `false` (bool)
      * 
      */
@@ -460,10 +382,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.clusterAgentDeploymentCustomizations = $.clusterAgentDeploymentCustomizations;
         this.clusterAuthEndpoint = $.clusterAuthEndpoint;
-        this.clusterTemplateAnswers = $.clusterTemplateAnswers;
-        this.clusterTemplateId = $.clusterTemplateId;
-        this.clusterTemplateQuestions = $.clusterTemplateQuestions;
-        this.clusterTemplateRevisionId = $.clusterTemplateRevisionId;
         this.defaultPodSecurityAdmissionConfigurationTemplateName = $.defaultPodSecurityAdmissionConfigurationTemplateName;
         this.description = $.description;
         this.desiredAgentImage = $.desiredAgentImage;
@@ -481,7 +399,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.okeConfig = $.okeConfig;
         this.rke2Config = $.rke2Config;
-        this.rkeConfig = $.rkeConfig;
         this.windowsPreferedCluster = $.windowsPreferedCluster;
     }
 
@@ -626,100 +543,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterAuthEndpoint(ClusterClusterAuthEndpointArgs clusterAuthEndpoint) {
             return clusterAuthEndpoint(Output.of(clusterAuthEndpoint));
-        }
-
-        /**
-         * @param clusterTemplateAnswers Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterTemplateAnswers(@Nullable Output<ClusterClusterTemplateAnswersArgs> clusterTemplateAnswers) {
-            $.clusterTemplateAnswers = clusterTemplateAnswers;
-            return this;
-        }
-
-        /**
-         * @param clusterTemplateAnswers Cluster template answers. For Rancher v2.3.x and above (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterTemplateAnswers(ClusterClusterTemplateAnswersArgs clusterTemplateAnswers) {
-            return clusterTemplateAnswers(Output.of(clusterTemplateAnswers));
-        }
-
-        /**
-         * @param clusterTemplateId Cluster template ID. For Rancher v2.3.x and above (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterTemplateId(@Nullable Output<String> clusterTemplateId) {
-            $.clusterTemplateId = clusterTemplateId;
-            return this;
-        }
-
-        /**
-         * @param clusterTemplateId Cluster template ID. For Rancher v2.3.x and above (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterTemplateId(String clusterTemplateId) {
-            return clusterTemplateId(Output.of(clusterTemplateId));
-        }
-
-        /**
-         * @param clusterTemplateQuestions Cluster template questions. For Rancher v2.3.x and above (list)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterTemplateQuestions(@Nullable Output<List<ClusterClusterTemplateQuestionArgs>> clusterTemplateQuestions) {
-            $.clusterTemplateQuestions = clusterTemplateQuestions;
-            return this;
-        }
-
-        /**
-         * @param clusterTemplateQuestions Cluster template questions. For Rancher v2.3.x and above (list)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterTemplateQuestions(List<ClusterClusterTemplateQuestionArgs> clusterTemplateQuestions) {
-            return clusterTemplateQuestions(Output.of(clusterTemplateQuestions));
-        }
-
-        /**
-         * @param clusterTemplateQuestions Cluster template questions. For Rancher v2.3.x and above (list)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterTemplateQuestions(ClusterClusterTemplateQuestionArgs... clusterTemplateQuestions) {
-            return clusterTemplateQuestions(List.of(clusterTemplateQuestions));
-        }
-
-        /**
-         * @param clusterTemplateRevisionId Cluster template revision ID. For Rancher v2.3.x and above (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterTemplateRevisionId(@Nullable Output<String> clusterTemplateRevisionId) {
-            $.clusterTemplateRevisionId = clusterTemplateRevisionId;
-            return this;
-        }
-
-        /**
-         * @param clusterTemplateRevisionId Cluster template revision ID. For Rancher v2.3.x and above (string)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clusterTemplateRevisionId(String clusterTemplateRevisionId) {
-            return clusterTemplateRevisionId(Output.of(clusterTemplateRevisionId));
         }
 
         /**
@@ -1087,27 +910,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rke2Config(ClusterRke2ConfigArgs rke2Config) {
             return rke2Config(Output.of(rke2Config));
-        }
-
-        /**
-         * @param rkeConfig The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rkeConfig(@Nullable Output<ClusterRkeConfigArgs> rkeConfig) {
-            $.rkeConfig = rkeConfig;
-            return this;
-        }
-
-        /**
-         * @param rkeConfig The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2`, `okeConfig` and `k3sConfig` (list maxitems:1)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rkeConfig(ClusterRkeConfigArgs rkeConfig) {
-            return rkeConfig(Output.of(rkeConfig));
         }
 
         /**

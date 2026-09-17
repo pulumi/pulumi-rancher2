@@ -9,7 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,21 +31,6 @@ public final class ClusterSyncArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> clusterId() {
         return this.clusterId;
-    }
-
-    /**
-     * The node pool IDs used by the cluster id (list)
-     * 
-     */
-    @Import(name="nodePoolIds")
-    private @Nullable Output<List<String>> nodePoolIds;
-
-    /**
-     * @return The node pool IDs used by the cluster id (list)
-     * 
-     */
-    public Optional<Output<List<String>>> nodePoolIds() {
-        return Optional.ofNullable(this.nodePoolIds);
     }
 
     /**
@@ -94,7 +78,6 @@ public final class ClusterSyncArgs extends com.pulumi.resources.ResourceArgs {
 
     private ClusterSyncArgs(ClusterSyncArgs $) {
         this.clusterId = $.clusterId;
-        this.nodePoolIds = $.nodePoolIds;
         this.stateConfirm = $.stateConfirm;
         this.synced = $.synced;
         this.waitCatalogs = $.waitCatalogs;
@@ -137,37 +120,6 @@ public final class ClusterSyncArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
-        }
-
-        /**
-         * @param nodePoolIds The node pool IDs used by the cluster id (list)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodePoolIds(@Nullable Output<List<String>> nodePoolIds) {
-            $.nodePoolIds = nodePoolIds;
-            return this;
-        }
-
-        /**
-         * @param nodePoolIds The node pool IDs used by the cluster id (list)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodePoolIds(List<String> nodePoolIds) {
-            return nodePoolIds(Output.of(nodePoolIds));
-        }
-
-        /**
-         * @param nodePoolIds The node pool IDs used by the cluster id (list)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder nodePoolIds(String... nodePoolIds) {
-            return nodePoolIds(List.of(nodePoolIds));
         }
 
         /**

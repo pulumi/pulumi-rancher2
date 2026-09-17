@@ -25,6 +25,7 @@ export function getClusterV2(args: GetClusterV2Args, opts?: pulumi.InvokeOptions
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getClusterV2:getClusterV2", {
         "fleetNamespace": args.fleetNamespace,
+        "generateKubeConfig": args.generateKubeConfig,
         "name": args.name,
     }, opts);
 }
@@ -37,6 +38,7 @@ export interface GetClusterV2Args {
      * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
      */
     fleetNamespace?: string;
+    generateKubeConfig?: boolean;
     /**
      * The name of the Cluster v2 (string)
      */
@@ -77,6 +79,7 @@ export interface GetClusterV2Result {
      */
     readonly enableNetworkPolicy: boolean;
     readonly fleetNamespace?: string;
+    readonly generateKubeConfig?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -119,6 +122,7 @@ export function getClusterV2Output(args: GetClusterV2OutputArgs, opts?: pulumi.I
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getClusterV2:getClusterV2", {
         "fleetNamespace": args.fleetNamespace,
+        "generateKubeConfig": args.generateKubeConfig,
         "name": args.name,
     }, opts);
 }
@@ -131,6 +135,7 @@ export interface GetClusterV2OutputArgs {
      * The fleet namespace of the Cluster v2. Default: `\"fleet-default\"` (string)
      */
     fleetNamespace?: pulumi.Input<string | undefined>;
+    generateKubeConfig?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Cluster v2 (string)
      */

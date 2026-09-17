@@ -22,7 +22,6 @@ __all__ = ['ClusterSyncArgs', 'ClusterSync']
 class ClusterSyncArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
                  synced: pulumi.Input[Optional[_builtins.bool]] = None,
                  wait_catalogs: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -30,15 +29,12 @@ class ClusterSyncArgs:
         The set of arguments for constructing a ClusterSync resource.
 
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID that is syncing (string)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
         :param pulumi.Input[_builtins.int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
                
                **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
         :param pulumi.Input[_builtins.bool] wait_catalogs: Wait until all catalogs are downloaded and active. Default: `false` (bool)
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
-        if node_pool_ids is not None:
-            pulumi.set(__self__, "node_pool_ids", node_pool_ids)
         if state_confirm is not None:
             pulumi.set(__self__, "state_confirm", state_confirm)
         if synced is not None:
@@ -57,18 +53,6 @@ class ClusterSyncArgs:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "cluster_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="nodePoolIds")
-    def node_pool_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        The node pool IDs used by the cluster id (list)
-        """
-        return pulumi.get(self, "node_pool_ids")
-
-    @node_pool_ids.setter
-    def node_pool_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "node_pool_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="stateConfirm")
@@ -112,7 +96,6 @@ class _ClusterSyncState:
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  kube_config: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterSyncNodeArgs']]]] = None,
                  state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
                  synced: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -124,7 +107,6 @@ class _ClusterSyncState:
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[_builtins.str] default_project_id: (Computed) Default project ID for the cluster sync (string)
         :param pulumi.Input[_builtins.str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
         :param pulumi.Input[Sequence[pulumi.Input['ClusterSyncNodeArgs']]] nodes: (Computed) The cluster nodes (list).
         :param pulumi.Input[_builtins.int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
                
@@ -138,8 +120,6 @@ class _ClusterSyncState:
             pulumi.set(__self__, "default_project_id", default_project_id)
         if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
-        if node_pool_ids is not None:
-            pulumi.set(__self__, "node_pool_ids", node_pool_ids)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
         if state_confirm is not None:
@@ -186,18 +166,6 @@ class _ClusterSyncState:
     @kube_config.setter
     def kube_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kube_config", value)
-
-    @_builtins.property
-    @pulumi.getter(name="nodePoolIds")
-    def node_pool_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        The node pool IDs used by the cluster id (list)
-        """
-        return pulumi.get(self, "node_pool_ids")
-
-    @node_pool_ids.setter
-    def node_pool_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "node_pool_ids", value)
 
     @_builtins.property
     @pulumi.getter
@@ -266,7 +234,6 @@ class ClusterSync(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
                  synced: pulumi.Input[Optional[_builtins.bool]] = None,
                  wait_catalogs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -286,17 +253,15 @@ class ClusterSync(pulumi.CustomResource):
 
         # Create a new rancher2 rke Cluster 
         foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
+            rke_config=[{
+                "network": [{
                     "plugin": "canal",
-                },
-            })
+                }],
+            }],
+            name="foo-custom",
+            description="Foo rancher2 custom cluster")
         # Create a new rancher2 Node Template
         foo = rancher2.NodeTemplate("foo",
-            name=foo,
-            description=foo test,
             amazonec2_config=[{
                 accessKey: <AWS_ACCESS_KEY>,
                 secretKey: <AWS_SECRET_KEY>,
@@ -306,13 +271,15 @@ class ClusterSync(pulumi.CustomResource):
                 subnetId: <SUBNET_ID>,
                 vpcId: <VPC_ID>,
                 zone: <ZONE>,
-            }])
+            }],
+            name=foo,
+            description=foo test)
         # Create a new rancher2 Node Pool
         foo_node_pool = rancher2.NodePool("foo",
             cluster_id=foo_custom.id,
-            name="foo",
-            hostname_prefix="foo-cluster-0",
-            node_template_id=foo["id"],
+            name=foo,
+            hostname_prefix=foo-cluster-0,
+            node_template_id=foo.id,
             quantity=3,
             control_plane=True,
             etcd=True,
@@ -320,12 +287,9 @@ class ClusterSync(pulumi.CustomResource):
         # Create a new rancher2 Cluster Sync
         foo_custom_cluster_sync = rancher2.ClusterSync("foo-custom",
             cluster_id=foo_custom.id,
-            node_pool_ids=[foo_node_pool.id])
+            node_pool_ids=[foo_node_pool["id"]])
         # Create a new rancher2 Project
         foo_project = rancher2.Project("foo",
-            name="foo",
-            cluster_id=foo_custom_cluster_sync.id,
-            description="Terraform namespace acceptance test",
             resource_quota={
                 "project_limit": {
                     "limits_cpu": "2000m",
@@ -343,14 +307,16 @@ class ClusterSync(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            cluster_id=foo_custom_cluster_sync.id,
+            description="Terraform namespace acceptance test")
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID that is syncing (string)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
         :param pulumi.Input[_builtins.int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
                
                **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
@@ -377,17 +343,15 @@ class ClusterSync(pulumi.CustomResource):
 
         # Create a new rancher2 rke Cluster 
         foo_custom = rancher2.Cluster("foo-custom",
-            name="foo-custom",
-            description="Foo rancher2 custom cluster",
-            rke_config={
-                "network": {
+            rke_config=[{
+                "network": [{
                     "plugin": "canal",
-                },
-            })
+                }],
+            }],
+            name="foo-custom",
+            description="Foo rancher2 custom cluster")
         # Create a new rancher2 Node Template
         foo = rancher2.NodeTemplate("foo",
-            name=foo,
-            description=foo test,
             amazonec2_config=[{
                 accessKey: <AWS_ACCESS_KEY>,
                 secretKey: <AWS_SECRET_KEY>,
@@ -397,13 +361,15 @@ class ClusterSync(pulumi.CustomResource):
                 subnetId: <SUBNET_ID>,
                 vpcId: <VPC_ID>,
                 zone: <ZONE>,
-            }])
+            }],
+            name=foo,
+            description=foo test)
         # Create a new rancher2 Node Pool
         foo_node_pool = rancher2.NodePool("foo",
             cluster_id=foo_custom.id,
-            name="foo",
-            hostname_prefix="foo-cluster-0",
-            node_template_id=foo["id"],
+            name=foo,
+            hostname_prefix=foo-cluster-0,
+            node_template_id=foo.id,
             quantity=3,
             control_plane=True,
             etcd=True,
@@ -411,12 +377,9 @@ class ClusterSync(pulumi.CustomResource):
         # Create a new rancher2 Cluster Sync
         foo_custom_cluster_sync = rancher2.ClusterSync("foo-custom",
             cluster_id=foo_custom.id,
-            node_pool_ids=[foo_node_pool.id])
+            node_pool_ids=[foo_node_pool["id"]])
         # Create a new rancher2 Project
         foo_project = rancher2.Project("foo",
-            name="foo",
-            cluster_id=foo_custom_cluster_sync.id,
-            description="Terraform namespace acceptance test",
             resource_quota={
                 "project_limit": {
                     "limits_cpu": "2000m",
@@ -434,7 +397,10 @@ class ClusterSync(pulumi.CustomResource):
                 "limits_memory": "20Mi",
                 "requests_cpu": "1m",
                 "requests_memory": "1Mi",
-            })
+            },
+            name="foo",
+            cluster_id=foo_custom_cluster_sync.id,
+            description="Terraform namespace acceptance test")
         ```
 
 
@@ -454,7 +420,6 @@ class ClusterSync(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
                  synced: pulumi.Input[Optional[_builtins.bool]] = None,
                  wait_catalogs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -470,7 +435,6 @@ class ClusterSync(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
-            __props__.__dict__["node_pool_ids"] = node_pool_ids
             __props__.__dict__["state_confirm"] = state_confirm
             __props__.__dict__["synced"] = synced
             __props__.__dict__["wait_catalogs"] = wait_catalogs
@@ -493,7 +457,6 @@ class ClusterSync(pulumi.CustomResource):
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
             kube_config: pulumi.Input[Optional[_builtins.str]] = None,
-            node_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict']]]]] = None,
             state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
             synced: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -509,7 +472,6 @@ class ClusterSync(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[_builtins.str] default_project_id: (Computed) Default project ID for the cluster sync (string)
         :param pulumi.Input[_builtins.str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_pool_ids: The node pool IDs used by the cluster id (list)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict']]]] nodes: (Computed) The cluster nodes (list).
         :param pulumi.Input[_builtins.int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
                
@@ -524,7 +486,6 @@ class ClusterSync(pulumi.CustomResource):
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["default_project_id"] = default_project_id
         __props__.__dict__["kube_config"] = kube_config
-        __props__.__dict__["node_pool_ids"] = node_pool_ids
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["state_confirm"] = state_confirm
         __props__.__dict__["synced"] = synced
@@ -555,14 +516,6 @@ class ClusterSync(pulumi.CustomResource):
         (Computed/Sensitive) Kube Config generated for the cluster sync (string)
         """
         return pulumi.get(self, "kube_config")
-
-    @_builtins.property
-    @pulumi.getter(name="nodePoolIds")
-    def node_pool_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        The node pool IDs used by the cluster id (list)
-        """
-        return pulumi.get(self, "node_pool_ids")
 
     @_builtins.property
     @pulumi.getter

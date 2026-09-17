@@ -68,17 +68,16 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new Cloud Credential for an imported Harvester cluster
  *         var foo_harvesterCloudCredential = new CloudCredential("foo-harvesterCloudCredential", CloudCredentialArgs.builder()
- *             .name("foo-harvester")
  *             .harvesterCredentialConfig(CloudCredentialHarvesterCredentialConfigArgs.builder()
  *                 .clusterId(foo_harvester.clusterV1Id())
  *                 .clusterType("imported")
  *                 .kubeconfigContent(foo_harvester.kubeConfig())
  *                 .build())
+ *             .name("foo-harvester")
  *             .build());
  * 
  *         // Create a new rancher2 machine config v2 using harvester node_driver
  *         var foo_harvester_v2 = new MachineConfigV2("foo-harvester-v2", MachineConfigV2Args.builder()
- *             .generateName("foo-harvester-v2")
  *             .harvesterConfig(MachineConfigV2HarvesterConfigArgs.builder()
  *                 .vmNamespace("default")
  *                 .cpuCount("2")
@@ -112,6 +111,7 @@ import javax.annotation.Nullable;
  *         - qemu-guest-agent.service
  *                 """)
  *                 .build())
+ *             .generateName("foo-harvester-v2")
  *             .build());
  * 
  *     }

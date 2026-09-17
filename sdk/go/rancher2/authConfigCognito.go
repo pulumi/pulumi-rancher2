@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-rancher2/sdk/v12/go/rancher2/internal"
+	"github.com/pulumi/pulumi-rancher2/sdk/v13/go/rancher2/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +49,8 @@ type AuthConfigCognito struct {
 	Name            pulumi.StringOutput  `pulumi:"name"`
 	// The OIDC Claim to use for the user name.
 	NameClaim pulumi.StringPtrOutput `pulumi:"nameClaim"`
+	// PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+	PkceMethod pulumi.StringOutput `pulumi:"pkceMethod"`
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -157,6 +159,8 @@ type authConfigCognitoState struct {
 	Name            *string `pulumi:"name"`
 	// The OIDC Claim to use for the user name.
 	NameClaim *string `pulumi:"nameClaim"`
+	// PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+	PkceMethod *string `pulumi:"pkceMethod"`
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey *string `pulumi:"privateKey"`
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -205,6 +209,8 @@ type AuthConfigCognitoState struct {
 	Name            pulumi.StringPtrInput
 	// The OIDC Claim to use for the user name.
 	NameClaim pulumi.StringPtrInput
+	// PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+	PkceMethod pulumi.StringPtrInput
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey pulumi.StringPtrInput
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -256,6 +262,8 @@ type authConfigCognitoArgs struct {
 	LogoutAllForced *bool `pulumi:"logoutAllForced"`
 	// The OIDC Claim to use for the user name.
 	NameClaim *string `pulumi:"nameClaim"`
+	// PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+	PkceMethod *string `pulumi:"pkceMethod"`
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey *string `pulumi:"privateKey"`
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -303,6 +311,8 @@ type AuthConfigCognitoArgs struct {
 	LogoutAllForced pulumi.BoolPtrInput
 	// The OIDC Claim to use for the user name.
 	NameClaim pulumi.StringPtrInput
+	// PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+	PkceMethod pulumi.StringPtrInput
 	// A PEM-encoded private key for the OIDC provider.
 	PrivateKey pulumi.StringPtrInput
 	// The URL of the Rancher server. This is used as the redirect URI for the OIDC provider.
@@ -491,6 +501,11 @@ func (o AuthConfigCognitoOutput) Name() pulumi.StringOutput {
 // The OIDC Claim to use for the user name.
 func (o AuthConfigCognitoOutput) NameClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthConfigCognito) pulumi.StringPtrOutput { return v.NameClaim }).(pulumi.StringPtrOutput)
+}
+
+// PKCE verification method. Set to "S256" to enable PKCE verification; set to empty to disable it. Omit to use the API default or returned value.
+func (o AuthConfigCognitoOutput) PkceMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthConfigCognito) pulumi.StringOutput { return v.PkceMethod }).(pulumi.StringOutput)
 }
 
 // A PEM-encoded private key for the OIDC provider.

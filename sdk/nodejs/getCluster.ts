@@ -24,6 +24,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("rancher2:index/getCluster:getCluster", {
         "defaultPodSecurityAdmissionConfigurationTemplateName": args.defaultPodSecurityAdmissionConfigurationTemplateName,
+        "generateKubeConfig": args.generateKubeConfig,
         "name": args.name,
     }, opts);
 }
@@ -33,6 +34,7 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetClusterArgs {
     defaultPodSecurityAdmissionConfigurationTemplateName?: string;
+    generateKubeConfig?: boolean;
     /**
      * The name of the Cluster (string)
      */
@@ -67,22 +69,6 @@ export interface GetClusterResult {
      * (Computed) Cluster Registration Token generated for the cluster (list maxitems:1)
      */
     readonly clusterRegistrationToken: outputs.GetClusterClusterRegistrationToken;
-    /**
-     * (Computed) Cluster template answers (list maxitems:1)
-     */
-    readonly clusterTemplateAnswers: outputs.GetClusterClusterTemplateAnswers;
-    /**
-     * (Computed) Cluster template ID (string)
-     */
-    readonly clusterTemplateId: string;
-    /**
-     * (Computed) Cluster template questions (list)
-     */
-    readonly clusterTemplateQuestions: outputs.GetClusterClusterTemplateQuestion[];
-    /**
-     * (Computed) Cluster template revision ID (string)
-     */
-    readonly clusterTemplateRevisionId: string;
     readonly defaultPodSecurityAdmissionConfigurationTemplateName: string;
     /**
      * (Computed) Default project ID for the cluster (string)
@@ -108,6 +94,7 @@ export interface GetClusterResult {
      * (Computed) Fleet workspace name (string)
      */
     readonly fleetWorkspaceName: string;
+    readonly generateKubeConfig?: boolean;
     /**
      * (Computed) The Google GKE V2 configuration for `gke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `k3sConfig` and `rkeConfig`. For Rancher v2.5.8 and above (list maxitems:1)
      */
@@ -139,10 +126,6 @@ export interface GetClusterResult {
      */
     readonly rke2Config: outputs.GetClusterRke2Config;
     /**
-     * (Computed) The RKE configuration for `rke` Clusters. Conflicts with `aksConfigV2`, `eksConfigV2`, `gkeConfigV2` and `k3sConfig` (list maxitems:1)
-     */
-    readonly rkeConfig: outputs.GetClusterRkeConfig;
-    /**
      * (Computed) System project ID for the cluster (string)
      */
     readonly systemProjectId: string;
@@ -165,6 +148,7 @@ export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.Invok
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("rancher2:index/getCluster:getCluster", {
         "defaultPodSecurityAdmissionConfigurationTemplateName": args.defaultPodSecurityAdmissionConfigurationTemplateName,
+        "generateKubeConfig": args.generateKubeConfig,
         "name": args.name,
     }, opts);
 }
@@ -174,6 +158,7 @@ export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.Invok
  */
 export interface GetClusterOutputArgs {
     defaultPodSecurityAdmissionConfigurationTemplateName?: pulumi.Input<string | undefined>;
+    generateKubeConfig?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Cluster (string)
      */
