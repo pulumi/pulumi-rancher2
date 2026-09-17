@@ -1,5 +1,5 @@
 provider: rancher2
-major-version: 12
+major-version: 13
 setup-script: testing/setup.sh
 esc:
     enabled: true
