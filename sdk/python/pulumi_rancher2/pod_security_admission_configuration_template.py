@@ -234,9 +234,9 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 defaults: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']]] = None,
+                 defaults: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateDefaults']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 exemptions: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']]] = None,
+                 exemptions: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateExemptions']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -286,9 +286,9 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
-        :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']] defaults: The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
+        :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateDefaults']] defaults: The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
         :param pulumi.Input[_builtins.str] description: The description of the pod security admission configuration template (string)
-        :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']] exemptions: The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
+        :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateExemptions']] exemptions: The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels of the resource (map)
         :param pulumi.Input[_builtins.str] name: The name of the pod security admission configuration template (string)
         """
@@ -357,9 +357,9 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 defaults: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']]] = None,
+                 defaults: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateDefaults']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 exemptions: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']]] = None,
+                 exemptions: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateExemptions']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -390,9 +390,9 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            defaults: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']]] = None,
+            defaults: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateDefaults']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            exemptions: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']]] = None,
+            exemptions: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateExemptions']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'PodSecurityAdmissionConfigurationTemplate':
         """
@@ -403,9 +403,9 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations of the resource (map)
-        :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict']] defaults: The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
+        :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateDefaults']] defaults: The default level labels and version labels to be applied when labels for a mode is not set (list maxitems:1)
         :param pulumi.Input[_builtins.str] description: The description of the pod security admission configuration template (string)
-        :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict']] exemptions: The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
+        :param pulumi.Input[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateExemptions']] exemptions: The authenticated usernames, runtime class names, and namespaces to exempt (list maxitems:1)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels of the resource (map)
         :param pulumi.Input[_builtins.str] name: The name of the pod security admission configuration template (string)
         """

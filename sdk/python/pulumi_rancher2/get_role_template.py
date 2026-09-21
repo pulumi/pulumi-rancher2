@@ -214,7 +214,7 @@ class AwaitableGetRoleTemplateResult(GetRoleTemplateResult):
 
 
 def get_role_template(context: Optional[_builtins.str] = None,
-                      external_rules: Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']]] = None,
+                      external_rules: Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict', 'outputs.GetRoleTemplateExternalRuleResult']]] = None,
                       name: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleTemplateResult:
     """
@@ -231,7 +231,7 @@ def get_role_template(context: Optional[_builtins.str] = None,
 
 
     :param _builtins.str context: Role template context. `cluster` and `project` values are supported (string)
-    :param Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']] external_rules: (Computed) External rules used for authorization. (list)
+    :param Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict', 'outputs.GetRoleTemplateExternalRuleResult']] external_rules: (Computed) External rules used for authorization. (list)
     :param _builtins.str name: The name of the Role Template (string)
     """
     __args__ = dict()
@@ -258,7 +258,7 @@ def get_role_template(context: Optional[_builtins.str] = None,
         role_template_ids=pulumi.get(__ret__, 'role_template_ids'),
         rules=pulumi.get(__ret__, 'rules'))
 def get_role_template_output(context: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                             external_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']]]]] = None,
+                             external_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict', 'outputs.GetRoleTemplateExternalRuleResult']]]]] = None,
                              name: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleTemplateResult]:
     """
@@ -275,7 +275,7 @@ def get_role_template_output(context: pulumi.Input[Optional[Optional[_builtins.s
 
 
     :param _builtins.str context: Role template context. `cluster` and `project` values are supported (string)
-    :param Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict']] external_rules: (Computed) External rules used for authorization. (list)
+    :param Sequence[Union['GetRoleTemplateExternalRuleArgs', 'GetRoleTemplateExternalRuleArgsDict', 'outputs.GetRoleTemplateExternalRuleResult']] external_rules: (Computed) External rules used for authorization. (list)
     :param _builtins.str name: The name of the Role Template (string)
     """
     __args__ = dict()
