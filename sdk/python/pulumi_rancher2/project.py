@@ -299,11 +299,11 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 container_resource_limit: pulumi.Input[Optional[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
+                 container_resource_limit: pulumi.Input[Optional[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict', 'outputs.ProjectContainerResourceLimit']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_quota: pulumi.Input[Optional[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
+                 resource_quota: pulumi.Input[Optional[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict', 'outputs.ProjectResourceQuota']]] = None,
                  wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -380,11 +380,11 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id where create project (string)
-        :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
+        :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict', 'outputs.ProjectContainerResourceLimit']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[_builtins.str] description: A project description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[_builtins.str] name: The name of the project (string)
-        :param pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        :param pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict', 'outputs.ProjectResourceQuota']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[_builtins.bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
         ...
@@ -480,11 +480,11 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 container_resource_limit: pulumi.Input[Optional[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
+                 container_resource_limit: pulumi.Input[Optional[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict', 'outputs.ProjectContainerResourceLimit']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 resource_quota: pulumi.Input[Optional[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
+                 resource_quota: pulumi.Input[Optional[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict', 'outputs.ProjectResourceQuota']]] = None,
                  wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -517,11 +517,11 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
-            container_resource_limit: pulumi.Input[Optional[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']]] = None,
+            container_resource_limit: pulumi.Input[Optional[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict', 'outputs.ProjectContainerResourceLimit']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            resource_quota: pulumi.Input[Optional[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']]] = None,
+            resource_quota: pulumi.Input[Optional[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict', 'outputs.ProjectResourceQuota']]] = None,
             wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
@@ -532,11 +532,11 @@ class Project(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Annotations for Node Pool object (map)
         :param pulumi.Input[_builtins.str] cluster_id: The cluster id where create project (string)
-        :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
+        :param pulumi.Input[Union['ProjectContainerResourceLimitArgs', 'ProjectContainerResourceLimitArgsDict', 'outputs.ProjectContainerResourceLimit']] container_resource_limit: Default containers resource limits on project (List maxitem:1)
         :param pulumi.Input[_builtins.str] description: A project description (string)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels for Node Pool object (map)
         :param pulumi.Input[_builtins.str] name: The name of the project (string)
-        :param pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
+        :param pulumi.Input[Union['ProjectResourceQuotaArgs', 'ProjectResourceQuotaArgsDict', 'outputs.ProjectResourceQuota']] resource_quota: Resource quota for project. Rancher v2.1.x or higher (list maxitems:1)
         :param pulumi.Input[_builtins.bool] wait_for_cluster: Wait for cluster becomes active. Default `false` (bool)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

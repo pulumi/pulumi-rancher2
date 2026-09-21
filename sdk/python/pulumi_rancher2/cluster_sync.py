@@ -457,7 +457,7 @@ class ClusterSync(pulumi.CustomResource):
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
             kube_config: pulumi.Input[Optional[_builtins.str]] = None,
-            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict']]]]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict', 'outputs.ClusterSyncNode']]]]] = None,
             state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
             synced: pulumi.Input[Optional[_builtins.bool]] = None,
             system_project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -472,7 +472,7 @@ class ClusterSync(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID that is syncing (string)
         :param pulumi.Input[_builtins.str] default_project_id: (Computed) Default project ID for the cluster sync (string)
         :param pulumi.Input[_builtins.str] kube_config: (Computed/Sensitive) Kube Config generated for the cluster sync (string)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict']]]] nodes: (Computed) The cluster nodes (list).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict', 'outputs.ClusterSyncNode']]]] nodes: (Computed) The cluster nodes (list).
         :param pulumi.Input[_builtins.int] state_confirm: Wait until active status is confirmed a number of times (wait interval of 5s). Default: `1` means no confirmation (int)
                
                **Note:** `state_confirm` would be useful, if you have troubles for creating/updating custom clusters that eventually are reaching `active` state before they are fully installed. For example: setting `state_confirm = 2` will assure that the cluster has been in `active` state for at least 5 seconds, `state_confirm = 3` assure at least 10 seconds, etc
