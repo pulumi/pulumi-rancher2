@@ -2018,7 +2018,7 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
      *             .name("foo")
-     *             .projectId(foo_custom.defaultProjectId())
+     *             .projectId(foo_custom.get("defaultProjectId"))
      *             .build());
      * 
      *     }
@@ -2059,7 +2059,7 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
      *             .name("foo")
-     *             .projectId(foo_custom.defaultProjectId())
+     *             .projectId(foo_custom.get("defaultProjectId"))
      *             .build());
      * 
      *     }
@@ -2100,7 +2100,7 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
      *             .name("foo")
-     *             .projectId(foo_custom.defaultProjectId())
+     *             .projectId(foo_custom.get("defaultProjectId"))
      *             .build());
      * 
      *     }
@@ -2141,7 +2141,7 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
      *             .name("foo")
-     *             .projectId(foo_custom.defaultProjectId())
+     *             .projectId(foo_custom.get("defaultProjectId"))
      *             .build());
      * 
      *     }
@@ -2182,7 +2182,7 @@ public final class Rancher2Functions {
      *     public static void stack(Context ctx) {
      *         final var foo = Rancher2Functions.getNamespace(GetNamespaceArgs.builder()
      *             .name("foo")
-     *             .projectId(foo_custom.defaultProjectId())
+     *             .projectId(foo_custom.get("defaultProjectId"))
      *             .build());
      * 
      *     }

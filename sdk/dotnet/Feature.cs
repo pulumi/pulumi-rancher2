@@ -32,7 +32,7 @@ namespace Pulumi.Rancher2
     ///     var fleet = new Rancher2.Feature("fleet", new()
     ///     {
     ///         Name = "fleet",
-    ///         Value = "&lt;VALUE&gt;",
+    ///         Value = "&lt;VALUE&gt;" == "true",
     ///     });
     /// 
     /// });

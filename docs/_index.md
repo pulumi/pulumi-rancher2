@@ -205,7 +205,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     rancher2 = {
       source = "pulumi/rancher2"
@@ -215,10 +215,16 @@ pulumi {
 
 # Create a new rancher2_bootstrap using bootstrap provider config
 resource "rancher2_bootstrap" "admin" {
+  lifecycle {
+    create_before_destroy = true
+  }
   password = "blahblah"
 }
 # Create a new rancher2 resource using admin provider config
-resource "rancher2_catalogv2" "foo" {
+resource "rancher2_catalog_v2" "foo" {
+  lifecycle {
+    create_before_destroy = true
+  }
   cluster_id = "<CLUSTER_ID>"
   name       = "test"
   url        = "http://foo.com:8080"

@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .clusterId(foo_custom.id())
  *             .name("foo")
  *             .hostnamePrefix("foo-cluster-0")
- *             .nodeTemplateId(foo.id())
+ *             .nodeTemplateId(foo.get("id"))
  *             .quantity(3)
  *             .controlPlane(true)
  *             .etcd(true)
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *         // Create a new rancher2 Cluster Sync
  *         var foo_customClusterSync = new ClusterSync("foo-customClusterSync", ClusterSyncArgs.builder()
  *             .clusterId(foo_custom.id())
- *             .nodePoolIds(Arrays.asList(fooNodePool.id()))
+ *             .nodePoolIds(Arrays.asList(fooNodePool.get("id")))
  *             .build());
  * 
  *         // Create a new rancher2 Project
