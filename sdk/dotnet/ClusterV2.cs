@@ -297,7 +297,7 @@ namespace Pulumi.Rancher2
     /// {
     ///     var foo = new Rancher2.ClusterV2("foo", new()
     ///     {
-    ///         RkeConfig = null,
+    ///         RkeConfig = new() { },
     ///         AgentEnvVars = new[]
     ///         {
     ///             new Rancher2.Inputs.ClusterV2AgentEnvVarArgs
@@ -515,7 +515,7 @@ namespace Pulumi.Rancher2
     ///                     {
     ///                         Hostname = "registry_domain_name",
     ///                         AuthConfigSecretName = registrySecretName,
-    ///                         Insecure = "&lt;tls-insecure-bool&gt;",
+    ///                         Insecure = "&lt;tls-insecure-bool&gt;" == "true",
     ///                         TlsSecretName = "",
     ///                         CaBundle = "",
     ///                     },
