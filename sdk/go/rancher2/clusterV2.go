@@ -255,7 +255,7 @@ import (
 //								Name: fooNutanixMachineConfigV2.Name,
 //							},
 //							Name:                      pulumi.String("pool1"),
-//							CloudCredentialSecretName: fooNutanix.ID().ToIDOutput().ToStringOutput(),
+//							CloudCredentialSecretName: fooNutanix.ID(),
 //							ControlPlaneRole:          pulumi.Bool(true),
 //							EtcdRole:                  pulumi.Bool(true),
 //							WorkerRole:                pulumi.Bool(true),
@@ -817,7 +817,7 @@ import (
 //						S3Config: &rancher2.ClusterV2RkeConfigEtcdS3ConfigArgs{
 //							Bucket:              pulumi.String("backups"),
 //							Endpoint:            pulumi.String("https://minio.host:9000"),
-//							CloudCredentialName: credentials.ID().ToIDOutput().ToStringOutput(),
+//							CloudCredentialName: credentials.ID(),
 //						},
 //						SnapshotScheduleCron: pulumi.String("0 */12 * * *"),
 //						SnapshotRetention:    pulumi.Int(10),
