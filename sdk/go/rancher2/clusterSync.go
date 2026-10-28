@@ -87,7 +87,7 @@ import (
 //			}
 //			// Create a new rancher2 Cluster Sync
 //			foo_customClusterSync, err := rancher2.NewClusterSync(ctx, "foo-custom", &rancher2.ClusterSyncArgs{
-//				ClusterId: foo_custom.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId: foo_custom.ID(),
 //				NodePoolIds: []interface{}{
 //					fooNodePool.Id,
 //				},
@@ -116,7 +116,7 @@ import (
 //					RequestsMemory: pulumi.String("1Mi"),
 //				},
 //				Name:        pulumi.String("foo"),
-//				ClusterId:   foo_customClusterSync.ID().ToIDOutput().ToStringOutput(),
+//				ClusterId:   foo_customClusterSync.ID(),
 //				Description: pulumi.String("Terraform namespace acceptance test"),
 //			})
 //			if err != nil {

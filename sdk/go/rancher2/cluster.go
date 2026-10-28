@@ -153,7 +153,7 @@ import (
 //			}
 //			_, err = rancher2.NewCluster(ctx, "foo", &rancher2.ClusterArgs{
 //				EksConfigV2: &rancher2.ClusterEksConfigV2Args{
-//					CloudCredentialId: foo.ID().ToIDOutput().ToStringOutput(),
+//					CloudCredentialId: foo.ID(),
 //					Name:              pulumi.String("<cluster-name>"),
 //					Region:            pulumi.String("<eks-region>"),
 //					Imported:          pulumi.Bool(true),
@@ -212,7 +212,7 @@ import (
 //							NodeRole:     pulumi.String("arn:aws:iam::role/test-NodeInstanceRole"),
 //						},
 //					},
-//					CloudCredentialId: foo.ID().ToIDOutput().ToStringOutput(),
+//					CloudCredentialId: foo.ID(),
 //					Region:            pulumi.String("<EKS_REGION>"),
 //					KubernetesVersion: pulumi.String("1.24"),
 //					LoggingTypes: pulumi.StringArray{
@@ -276,7 +276,7 @@ import (
 //							Name:        pulumi.String("node_group1"),
 //						},
 //					},
-//					CloudCredentialId: foo.ID().ToIDOutput().ToStringOutput(),
+//					CloudCredentialId: foo.ID(),
 //					Region:            pulumi.String("<EKS_REGION>"),
 //					KubernetesVersion: pulumi.String("1.24"),
 //					LoggingTypes: pulumi.StringArray{
@@ -361,7 +361,7 @@ import (
 //							},
 //						},
 //					},
-//					CloudCredentialId:           foo_aks.ID().ToIDOutput().ToStringOutput(),
+//					CloudCredentialId:           foo_aks.ID(),
 //					ResourceGroup:               pulumi.String("<resource-group>"),
 //					ResourceLocation:            pulumi.String("<resource-location>"),
 //					DnsPrefix:                   pulumi.String("<dns-prefix>"),
