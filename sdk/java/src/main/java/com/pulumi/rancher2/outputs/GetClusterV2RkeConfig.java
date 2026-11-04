@@ -59,11 +59,10 @@ public final class GetClusterV2RkeConfig {
     /**
      * @return Cluster V2 local auth endpoint
      * 
-     * @deprecated
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      * 
      */
-    @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
+    @Deprecated
     private @Nullable GetClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint;
     /**
      * @return Cluster V2 machine global config
@@ -157,11 +156,10 @@ public final class GetClusterV2RkeConfig {
     /**
      * @return Cluster V2 local auth endpoint
      * 
-     * @deprecated
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      * 
      */
-    @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
+    @Deprecated
     public Optional<GetClusterV2RkeConfigLocalAuthEndpoint> localAuthEndpoint() {
         return Optional.ofNullable(this.localAuthEndpoint);
     }

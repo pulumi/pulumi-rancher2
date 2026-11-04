@@ -248,6 +248,12 @@ func (MachineConfigV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineConfigV2State)(nil)).Elem()
 }
 
+// MachineConfigV2Exists checks whether an existing MachineConfigV2 resource with the given ID exists.
+func MachineConfigV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MachineConfigV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/machineConfigV2:MachineConfigV2", id, state, "", opts...)
+}
+
 type machineConfigV2Args struct {
 	// AWS config for the Machine Config V2. Conflicts with `azureConfig`, `digitaloceanConfig`, `harvesterConfig`, `linodeConfig`, `nutanixConfig`, `openstackConfig`, `googleConfig` and `vsphereConfig` (list maxitems:1)
 	Amazonec2Config *MachineConfigV2Amazonec2Config `pulumi:"amazonec2Config"`

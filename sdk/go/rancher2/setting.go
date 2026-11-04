@@ -124,6 +124,12 @@ func (SettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*settingState)(nil)).Elem()
 }
 
+// SettingExists checks whether an existing Setting resource with the given ID exists.
+func SettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/setting:Setting", id, state, "", opts...)
+}
+
 type settingArgs struct {
 	// Annotations for setting object (map)
 	Annotations map[string]string `pulumi:"annotations"`

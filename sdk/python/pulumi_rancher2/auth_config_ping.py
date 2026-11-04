@@ -742,6 +742,44 @@ class AuthConfigPing(pulumi.CustomResource):
         __props__.__dict__["user_name_field"] = user_name_field
         return AuthConfigPing(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            display_name_field: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            entity_id_field: pulumi.Input[Optional[_builtins.str]] = None,
+            groups_field: pulumi.Input[Optional[_builtins.str]] = None,
+            idp_metadata_content: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rancher_api_host: pulumi.Input[Optional[_builtins.str]] = None,
+            sp_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            sp_key: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            uid_field: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name_field: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMode"] = access_mode
+        __props__["allowedPrincipalIds"] = allowed_principal_ids
+        __props__["annotations"] = annotations
+        __props__["displayNameField"] = display_name_field
+        __props__["enabled"] = enabled
+        __props__["entityIdField"] = entity_id_field
+        __props__["groupsField"] = groups_field
+        __props__["idpMetadataContent"] = idp_metadata_content
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["rancherApiHost"] = rancher_api_host
+        __props__["spCert"] = sp_cert
+        __props__["spKey"] = sp_key
+        __props__["type"] = type
+        __props__["uidField"] = uid_field
+        __props__["userNameField"] = user_name_field
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/authConfigPing:AuthConfigPing', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

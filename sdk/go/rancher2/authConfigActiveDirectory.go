@@ -306,6 +306,12 @@ func (AuthConfigActiveDirectoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigActiveDirectoryState)(nil)).Elem()
 }
 
+// AuthConfigActiveDirectoryExists checks whether an existing AuthConfigActiveDirectory resource with the given ID exists.
+func AuthConfigActiveDirectoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigActiveDirectoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory", id, state, "", opts...)
+}
+
 type authConfigActiveDirectoryArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

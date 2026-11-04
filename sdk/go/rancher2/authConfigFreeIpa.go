@@ -297,6 +297,12 @@ func (AuthConfigFreeIpaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigFreeIpaState)(nil)).Elem()
 }
 
+// AuthConfigFreeIpaExists checks whether an existing AuthConfigFreeIpa resource with the given ID exists.
+func AuthConfigFreeIpaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigFreeIpaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigFreeIpa:AuthConfigFreeIpa", id, state, "", opts...)
+}
+
 type authConfigFreeIpaArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

@@ -1445,6 +1445,82 @@ class AuthConfigActiveDirectory(pulumi.CustomResource):
         __props__.__dict__["user_search_filter"] = user_search_filter
         return AuthConfigActiveDirectory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            default_login_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_dn_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_member_mapping_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_member_user_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+            group_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            group_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+            group_search_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nested_group_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            service_account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_username: pulumi.Input[Optional[_builtins.str]] = None,
+            start_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+            test_password: pulumi.Input[Optional[_builtins.str]] = None,
+            test_username: pulumi.Input[Optional[_builtins.str]] = None,
+            tls: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_disabled_bit_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            user_enabled_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            user_login_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            user_object_class: pulumi.Input[Optional[_builtins.str]] = None,
+            user_search_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            user_search_base: pulumi.Input[Optional[_builtins.str]] = None,
+            user_search_filter: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMode"] = access_mode
+        __props__["allowedPrincipalIds"] = allowed_principal_ids
+        __props__["annotations"] = annotations
+        __props__["certificate"] = certificate
+        __props__["connectionTimeout"] = connection_timeout
+        __props__["defaultLoginDomain"] = default_login_domain
+        __props__["enabled"] = enabled
+        __props__["groupDnAttribute"] = group_dn_attribute
+        __props__["groupMemberMappingAttribute"] = group_member_mapping_attribute
+        __props__["groupMemberUserAttribute"] = group_member_user_attribute
+        __props__["groupNameAttribute"] = group_name_attribute
+        __props__["groupObjectClass"] = group_object_class
+        __props__["groupSearchAttribute"] = group_search_attribute
+        __props__["groupSearchBase"] = group_search_base
+        __props__["groupSearchFilter"] = group_search_filter
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["nestedGroupMembershipEnabled"] = nested_group_membership_enabled
+        __props__["port"] = port
+        __props__["servers"] = servers
+        __props__["serviceAccountPassword"] = service_account_password
+        __props__["serviceAccountUsername"] = service_account_username
+        __props__["startTls"] = start_tls
+        __props__["testPassword"] = test_password
+        __props__["testUsername"] = test_username
+        __props__["tls"] = tls
+        __props__["type"] = type
+        __props__["userDisabledBitMask"] = user_disabled_bit_mask
+        __props__["userEnabledAttribute"] = user_enabled_attribute
+        __props__["userLoginAttribute"] = user_login_attribute
+        __props__["userNameAttribute"] = user_name_attribute
+        __props__["userObjectClass"] = user_object_class
+        __props__["userSearchAttribute"] = user_search_attribute
+        __props__["userSearchBase"] = user_search_base
+        __props__["userSearchFilter"] = user_search_filter
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/authConfigActiveDirectory:AuthConfigActiveDirectory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

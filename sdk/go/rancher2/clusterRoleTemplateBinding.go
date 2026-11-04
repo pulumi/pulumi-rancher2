@@ -161,6 +161,12 @@ func (ClusterRoleTemplateBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterRoleTemplateBindingState)(nil)).Elem()
 }
 
+// ClusterRoleTemplateBindingExists checks whether an existing ClusterRoleTemplateBinding resource with the given ID exists.
+func ClusterRoleTemplateBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterRoleTemplateBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/clusterRoleTemplateBinding:ClusterRoleTemplateBinding", id, state, "", opts...)
+}
+
 type clusterRoleTemplateBindingArgs struct {
 	// Annotations for cluster role template binding (map)
 	Annotations map[string]string `pulumi:"annotations"`

@@ -437,6 +437,28 @@ class OidcClient(pulumi.CustomResource):
         __props__.__dict__["token_expiration_seconds"] = token_expiration_seconds
         return OidcClient(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            refresh_token_expiration_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            token_expiration_seconds: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["clientId"] = client_id
+        __props__["clientSecret"] = client_secret
+        __props__["description"] = description
+        __props__["labels"] = labels
+        __props__["redirectUris"] = redirect_uris
+        __props__["refreshTokenExpirationSeconds"] = refresh_token_expiration_seconds
+        __props__["tokenExpirationSeconds"] = token_expiration_seconds
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/oidcClient:OidcClient', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

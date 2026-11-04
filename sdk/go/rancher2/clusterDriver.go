@@ -171,6 +171,12 @@ func (ClusterDriverState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterDriverState)(nil)).Elem()
 }
 
+// ClusterDriverExists checks whether an existing ClusterDriver resource with the given ID exists.
+func ClusterDriverExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterDriverState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/clusterDriver:ClusterDriver", id, state, "", opts...)
+}
+
 type clusterDriverArgs struct {
 	// Specify the cluster driver state (bool)
 	Active bool `pulumi:"active"`

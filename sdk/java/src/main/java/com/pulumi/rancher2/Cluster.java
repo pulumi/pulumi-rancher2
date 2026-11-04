@@ -672,11 +672,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Deploy istio on `system` project and `istio-system` namespace, using rancher2App resource instead. See above example.
      * 
-     * @deprecated
-     * Deploy istio using rancher2App resource instead
+     * @deprecated Deploy istio using rancher2App resource instead
      * 
      */
-    @Deprecated /* Deploy istio using rancher2App resource instead */
+    @Deprecated
     @Export(name="enableClusterIstio", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableClusterIstio;
 

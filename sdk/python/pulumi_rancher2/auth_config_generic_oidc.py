@@ -1146,6 +1146,64 @@ class AuthConfigGenericOidc(pulumi.CustomResource):
         __props__.__dict__["userinfo_endpoint"] = userinfo_endpoint
         return AuthConfigGenericOidc(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            email_claim: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_session_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            group_search_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            groups_field: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            jwks_url: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            logout_all_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            logout_all_forced: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_claim: pulumi.Input[Optional[_builtins.str]] = None,
+            pkce_method: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            rancher_url: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[_builtins.str]] = None,
+            token_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            userinfo_endpoint: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMode"] = access_mode
+        __props__["allowedPrincipalIds"] = allowed_principal_ids
+        __props__["annotations"] = annotations
+        __props__["authEndpoint"] = auth_endpoint
+        __props__["certificate"] = certificate
+        __props__["clientId"] = client_id
+        __props__["clientSecret"] = client_secret
+        __props__["emailClaim"] = email_claim
+        __props__["enabled"] = enabled
+        __props__["endSessionEndpoint"] = end_session_endpoint
+        __props__["groupSearchEnabled"] = group_search_enabled
+        __props__["groupsField"] = groups_field
+        __props__["issuer"] = issuer
+        __props__["jwksUrl"] = jwks_url
+        __props__["labels"] = labels
+        __props__["logoutAllEnabled"] = logout_all_enabled
+        __props__["logoutAllForced"] = logout_all_forced
+        __props__["name"] = name
+        __props__["nameClaim"] = name_claim
+        __props__["pkceMethod"] = pkce_method
+        __props__["privateKey"] = private_key
+        __props__["rancherUrl"] = rancher_url
+        __props__["scopes"] = scopes
+        __props__["tokenEndpoint"] = token_endpoint
+        __props__["type"] = type
+        __props__["userinfoEndpoint"] = userinfo_endpoint
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/authConfigGenericOidc:AuthConfigGenericOidc', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

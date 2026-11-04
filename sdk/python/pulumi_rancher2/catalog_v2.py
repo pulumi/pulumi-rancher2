@@ -884,6 +884,52 @@ class CatalogV2(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return CatalogV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ca_bundle: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exponential_backoff_max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+            exponential_backoff_max_wait: pulumi.Input[Optional[_builtins.int]] = None,
+            exponential_backoff_min_wait: pulumi.Input[Optional[_builtins.int]] = None,
+            git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+            insecure_plain_http: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_version: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["caBundle"] = ca_bundle
+        __props__["clusterId"] = cluster_id
+        __props__["enabled"] = enabled
+        __props__["exponentialBackoffMaxRetries"] = exponential_backoff_max_retries
+        __props__["exponentialBackoffMaxWait"] = exponential_backoff_max_wait
+        __props__["exponentialBackoffMinWait"] = exponential_backoff_min_wait
+        __props__["gitBranch"] = git_branch
+        __props__["gitRepo"] = git_repo
+        __props__["insecure"] = insecure
+        __props__["insecurePlainHttp"] = insecure_plain_http
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["refreshInterval"] = refresh_interval
+        __props__["resourceVersion"] = resource_version
+        __props__["secretName"] = secret_name
+        __props__["secretNamespace"] = secret_namespace
+        __props__["serviceAccount"] = service_account
+        __props__["serviceAccountNamespace"] = service_account_namespace
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/catalogV2:CatalogV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

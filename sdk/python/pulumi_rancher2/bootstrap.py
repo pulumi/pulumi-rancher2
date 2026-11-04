@@ -525,6 +525,36 @@ class Bootstrap(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return Bootstrap(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            current_password: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_password: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            temp_token: pulumi.Input[Optional[_builtins.str]] = None,
+            temp_token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            token_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            ui_default_landing: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["currentPassword"] = current_password
+        __props__["initialPassword"] = initial_password
+        __props__["password"] = password
+        __props__["tempToken"] = temp_token
+        __props__["tempTokenId"] = temp_token_id
+        __props__["token"] = token
+        __props__["tokenId"] = token_id
+        __props__["tokenTtl"] = token_ttl
+        __props__["tokenUpdate"] = token_update
+        __props__["uiDefaultLanding"] = ui_default_landing
+        __props__["url"] = url
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/bootstrap:Bootstrap', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="currentPassword")
     def current_password(self) -> pulumi.Output[_builtins.str]:

@@ -228,6 +228,12 @@ func (AuthConfigKeycloakState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigKeycloakState)(nil)).Elem()
 }
 
+// AuthConfigKeycloakExists checks whether an existing AuthConfigKeycloak resource with the given ID exists.
+func AuthConfigKeycloakExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigKeycloakState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigKeycloak:AuthConfigKeycloak", id, state, "", opts...)
+}
+
 type authConfigKeycloakArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

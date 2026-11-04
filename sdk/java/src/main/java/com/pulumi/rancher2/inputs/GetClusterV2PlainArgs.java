@@ -17,14 +17,14 @@ public final class GetClusterV2PlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetClusterV2PlainArgs Empty = new GetClusterV2PlainArgs();
 
     /**
-     * The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
+     * The fleet namespace of the Cluster v2. Default: `&#92;&#34;fleet-default&#92;&#34;` (string)
      * 
      */
     @Import(name="fleetNamespace")
     private @Nullable String fleetNamespace;
 
     /**
-     * @return The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
+     * @return The fleet namespace of the Cluster v2. Default: `&#92;&#34;fleet-default&#92;&#34;` (string)
      * 
      */
     public Optional<String> fleetNamespace() {
@@ -80,7 +80,7 @@ public final class GetClusterV2PlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param fleetNamespace The fleet namespace of the Cluster v2. Default: `\&#34;fleet-default\&#34;` (string)
+         * @param fleetNamespace The fleet namespace of the Cluster v2. Default: `&#92;&#34;fleet-default&#92;&#34;` (string)
          * 
          * @return builder
          * 

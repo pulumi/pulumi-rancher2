@@ -228,6 +228,12 @@ func (AuthConfigKeycloakOidcState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigKeycloakOidcState)(nil)).Elem()
 }
 
+// AuthConfigKeycloakOidcExists checks whether an existing AuthConfigKeycloakOidc resource with the given ID exists.
+func AuthConfigKeycloakOidcExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigKeycloakOidcState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigKeycloakOidc:AuthConfigKeycloakOidc", id, state, "", opts...)
+}
+
 type authConfigKeycloakOidcArgs struct {
 	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`

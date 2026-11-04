@@ -137,6 +137,12 @@ func (StorageClassV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*storageClassV2State)(nil)).Elem()
 }
 
+// StorageClassV2Exists checks whether an existing StorageClassV2 resource with the given ID exists.
+func StorageClassV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StorageClassV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/storageClassV2:StorageClassV2", id, state, "", opts...)
+}
+
 type storageClassV2Args struct {
 	// Is the provisioner of the storageClass v2 allowing volume expansion? (bool)
 	AllowVolumeExpansion *bool `pulumi:"allowVolumeExpansion"`

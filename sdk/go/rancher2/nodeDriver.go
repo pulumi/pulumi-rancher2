@@ -177,6 +177,12 @@ func (NodeDriverState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeDriverState)(nil)).Elem()
 }
 
+// NodeDriverExists checks whether an existing NodeDriver resource with the given ID exists.
+func NodeDriverExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeDriverState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/nodeDriver:NodeDriver", id, state, "", opts...)
+}
+
 type nodeDriverArgs struct {
 	// Specify if the node driver state (bool)
 	Active bool `pulumi:"active"`

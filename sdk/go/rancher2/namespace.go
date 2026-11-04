@@ -221,6 +221,12 @@ func (NamespaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*namespaceState)(nil)).Elem()
 }
 
+// NamespaceExists checks whether an existing Namespace resource with the given ID exists.
+func NamespaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NamespaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/namespace:Namespace", id, state, "", opts...)
+}
+
 type namespaceArgs struct {
 	// Annotations for Node Pool object (map)
 	Annotations map[string]string `pulumi:"annotations"`

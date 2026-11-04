@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Get imported harvester cluster info
  *         final var foo-harvester = Rancher2Functions.getClusterV2(GetClusterV2Args.builder()
  *             .name("foo-harvester")
@@ -83,20 +83,20 @@ import javax.annotation.Nullable;
  *                 .cpuCount("2")
  *                 .memorySize("4")
  *                 .diskInfo("""
- *     {
- *         \"disks\": [{
- *             \"imageName\": \"harvester-public/image-57hzg\",
- *             \"size\": 40,
- *             \"bootOrder\": 1
- *         }]
- *     }
+ *     }{{@code
+ *         }&#92;{@code "disks}&#92;{@code ": [}{{@code
+ *             }&#92;{@code "imageName}&#92;{@code ": }&#92;{@code "harvester-public/image-57hzg}&#92;{@code ",
+ *             }&#92;{@code "size}&#92;{@code ": 40,
+ *             }&#92;{@code "bootOrder}&#92;{@code ": 1
+ *         }}{@code ]
+ *     }}{@code
  *                 """)
  *                 .networkInfo("""
- *     {
- *         \"interfaces\": [{
- *             \"networkName\": \"harvester-public/vlan1\"
- *         }]
- *     }
+ *     }{{@code
+ *         }&#92;{@code "interfaces}&#92;{@code ": [}{{@code
+ *             }&#92;{@code "networkName}&#92;{@code ": }&#92;{@code "harvester-public/vlan1}&#92;{@code "
+ *         }}{@code ]
+ *     }}{@code
  *                 """)
  *                 .sshUser("ubuntu")
  *                 .userData("""
@@ -114,8 +114,8 @@ import javax.annotation.Nullable;
  *             .generateName("foo-harvester-v2")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -193,14 +193,14 @@ public class MachineConfigV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fleetNamespace);
     }
     /**
-     * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\&#34;prod-pool1\&#34; will generate \&#34;nc-prod-pool1-?????\&#34; name computed at `name` attribute (string)
+     * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=&#92;&#34;prod-pool1&#92;&#34; will generate &#92;&#34;nc-prod-pool1-?????&#92;&#34; name computed at `name` attribute (string)
      * 
      */
     @Export(name="generateName", refs={String.class}, tree="[0]")
     private Output<String> generateName;
 
     /**
-     * @return Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\&#34;prod-pool1\&#34; will generate \&#34;nc-prod-pool1-?????\&#34; name computed at `name` attribute (string)
+     * @return Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=&#92;&#34;prod-pool1&#92;&#34; will generate &#92;&#34;nc-prod-pool1-?????&#92;&#34; name computed at `name` attribute (string)
      * 
      */
     public Output<String> generateName() {

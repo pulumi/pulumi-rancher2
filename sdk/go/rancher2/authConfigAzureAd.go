@@ -228,6 +228,12 @@ func (AuthConfigAzureAdState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigAzureAdState)(nil)).Elem()
 }
 
+// AuthConfigAzureAdExists checks whether an existing AuthConfigAzureAd resource with the given ID exists.
+func AuthConfigAzureAdExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigAzureAdState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigAzureAd:AuthConfigAzureAd", id, state, "", opts...)
+}
+
 type authConfigAzureAdArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

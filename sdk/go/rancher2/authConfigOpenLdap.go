@@ -297,6 +297,12 @@ func (AuthConfigOpenLdapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigOpenLdapState)(nil)).Elem()
 }
 
+// AuthConfigOpenLdapExists checks whether an existing AuthConfigOpenLdap resource with the given ID exists.
+func AuthConfigOpenLdapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigOpenLdapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigOpenLdap:AuthConfigOpenLdap", id, state, "", opts...)
+}
+
 type authConfigOpenLdapArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

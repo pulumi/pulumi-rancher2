@@ -206,6 +206,12 @@ func (ProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectState)(nil)).Elem()
 }
 
+// ProjectExists checks whether an existing Project resource with the given ID exists.
+func ProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/project:Project", id, state, "", opts...)
+}
+
 type projectArgs struct {
 	// Annotations for Node Pool object (map)
 	Annotations map[string]string `pulumi:"annotations"`

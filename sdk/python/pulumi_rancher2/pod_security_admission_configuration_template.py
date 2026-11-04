@@ -421,6 +421,24 @@ class PodSecurityAdmissionConfigurationTemplate(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return PodSecurityAdmissionConfigurationTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            defaults: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateDefaultsArgs', 'PodSecurityAdmissionConfigurationTemplateDefaultsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateDefaults']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            exemptions: pulumi.Input[Optional[Union['PodSecurityAdmissionConfigurationTemplateExemptionsArgs', 'PodSecurityAdmissionConfigurationTemplateExemptionsArgsDict', 'outputs.PodSecurityAdmissionConfigurationTemplateExemptions']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["defaults"] = defaults
+        __props__["description"] = description
+        __props__["exemptions"] = exemptions
+        __props__["labels"] = labels
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

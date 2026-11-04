@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterV2RkeConfigMachinePoolTaint {
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
+     * @return The taint effect. Default: `&#92;&#34;NoExecute&#92;&#34;`.
      * 
      */
     private @Nullable String effect;
@@ -30,7 +30,7 @@ public final class ClusterV2RkeConfigMachinePoolTaint {
 
     private ClusterV2RkeConfigMachinePoolTaint() {}
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
+     * @return The taint effect. Default: `&#92;&#34;NoExecute&#92;&#34;`.
      * 
      */
     public Optional<String> effect() {

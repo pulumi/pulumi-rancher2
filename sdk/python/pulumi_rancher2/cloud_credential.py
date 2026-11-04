@@ -782,6 +782,42 @@ class CloudCredential(pulumi.CustomResource):
         __props__.__dict__["vsphere_credential_config"] = vsphere_credential_config
         return CloudCredential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            amazonec2_credential_config: pulumi.Input[Optional[Union['CloudCredentialAmazonec2CredentialConfigArgs', 'CloudCredentialAmazonec2CredentialConfigArgsDict', 'outputs.CloudCredentialAmazonec2CredentialConfig']]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            azure_credential_config: pulumi.Input[Optional[Union['CloudCredentialAzureCredentialConfigArgs', 'CloudCredentialAzureCredentialConfigArgsDict', 'outputs.CloudCredentialAzureCredentialConfig']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            digitalocean_credential_config: pulumi.Input[Optional[Union['CloudCredentialDigitaloceanCredentialConfigArgs', 'CloudCredentialDigitaloceanCredentialConfigArgsDict', 'outputs.CloudCredentialDigitaloceanCredentialConfig']]] = None,
+            driver: pulumi.Input[Optional[_builtins.str]] = None,
+            google_credential_config: pulumi.Input[Optional[Union['CloudCredentialGoogleCredentialConfigArgs', 'CloudCredentialGoogleCredentialConfigArgsDict', 'outputs.CloudCredentialGoogleCredentialConfig']]] = None,
+            harvester_credential_config: pulumi.Input[Optional[Union['CloudCredentialHarvesterCredentialConfigArgs', 'CloudCredentialHarvesterCredentialConfigArgsDict', 'outputs.CloudCredentialHarvesterCredentialConfig']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            linode_credential_config: pulumi.Input[Optional[Union['CloudCredentialLinodeCredentialConfigArgs', 'CloudCredentialLinodeCredentialConfigArgsDict', 'outputs.CloudCredentialLinodeCredentialConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nutanix_credential_config: pulumi.Input[Optional[Union['CloudCredentialNutanixCredentialConfigArgs', 'CloudCredentialNutanixCredentialConfigArgsDict', 'outputs.CloudCredentialNutanixCredentialConfig']]] = None,
+            openstack_credential_config: pulumi.Input[Optional[Union['CloudCredentialOpenstackCredentialConfigArgs', 'CloudCredentialOpenstackCredentialConfigArgsDict', 'outputs.CloudCredentialOpenstackCredentialConfig']]] = None,
+            s3_credential_config: pulumi.Input[Optional[Union['CloudCredentialS3CredentialConfigArgs', 'CloudCredentialS3CredentialConfigArgsDict', 'outputs.CloudCredentialS3CredentialConfig']]] = None,
+            vsphere_credential_config: pulumi.Input[Optional[Union['CloudCredentialVsphereCredentialConfigArgs', 'CloudCredentialVsphereCredentialConfigArgsDict', 'outputs.CloudCredentialVsphereCredentialConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["amazonec2CredentialConfig"] = amazonec2_credential_config
+        __props__["annotations"] = annotations
+        __props__["azureCredentialConfig"] = azure_credential_config
+        __props__["description"] = description
+        __props__["digitaloceanCredentialConfig"] = digitalocean_credential_config
+        __props__["driver"] = driver
+        __props__["googleCredentialConfig"] = google_credential_config
+        __props__["harvesterCredentialConfig"] = harvester_credential_config
+        __props__["labels"] = labels
+        __props__["linodeCredentialConfig"] = linode_credential_config
+        __props__["name"] = name
+        __props__["nutanixCredentialConfig"] = nutanix_credential_config
+        __props__["openstackCredentialConfig"] = openstack_credential_config
+        __props__["s3CredentialConfig"] = s3_credential_config
+        __props__["vsphereCredentialConfig"] = vsphere_credential_config
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/cloudCredential:CloudCredential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="amazonec2CredentialConfig")
     def amazonec2_credential_config(self) -> pulumi.Output[Optional['outputs.CloudCredentialAmazonec2CredentialConfig']]:

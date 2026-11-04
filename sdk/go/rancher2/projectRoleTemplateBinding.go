@@ -161,6 +161,12 @@ func (ProjectRoleTemplateBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectRoleTemplateBindingState)(nil)).Elem()
 }
 
+// ProjectRoleTemplateBindingExists checks whether an existing ProjectRoleTemplateBinding resource with the given ID exists.
+func ProjectRoleTemplateBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectRoleTemplateBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding", id, state, "", opts...)
+}
+
 type projectRoleTemplateBindingArgs struct {
 	// Annotations of the resource (map)
 	Annotations map[string]string `pulumi:"annotations"`

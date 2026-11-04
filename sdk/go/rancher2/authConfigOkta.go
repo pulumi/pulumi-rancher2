@@ -222,6 +222,12 @@ func (AuthConfigOktaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigOktaState)(nil)).Elem()
 }
 
+// AuthConfigOktaExists checks whether an existing AuthConfigOkta resource with the given ID exists.
+func AuthConfigOktaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigOktaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigOkta:AuthConfigOkta", id, state, "", opts...)
+}
+
 type authConfigOktaArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

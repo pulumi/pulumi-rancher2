@@ -727,6 +727,40 @@ class RoleTemplate(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         return RoleTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            administrative: pulumi.Input[Optional[_builtins.bool]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            builtin: pulumi.Input[Optional[_builtins.bool]] = None,
+            context: pulumi.Input[Optional[_builtins.str]] = None,
+            default_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            external: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleTemplateExternalRuleArgs', 'RoleTemplateExternalRuleArgsDict', 'outputs.RoleTemplateExternalRule']]]]] = None,
+            hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_template_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleTemplateRuleArgs', 'RoleTemplateRuleArgsDict', 'outputs.RoleTemplateRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["administrative"] = administrative
+        __props__["annotations"] = annotations
+        __props__["builtin"] = builtin
+        __props__["context"] = context
+        __props__["defaultRole"] = default_role
+        __props__["description"] = description
+        __props__["external"] = external
+        __props__["externalRules"] = external_rules
+        __props__["hidden"] = hidden
+        __props__["labels"] = labels
+        __props__["locked"] = locked
+        __props__["name"] = name
+        __props__["roleTemplateIds"] = role_template_ids
+        __props__["rules"] = rules
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/roleTemplate:RoleTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def administrative(self) -> pulumi.Output[Optional[_builtins.bool]]:
