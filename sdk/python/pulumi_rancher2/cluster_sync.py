@@ -493,6 +493,28 @@ class ClusterSync(pulumi.CustomResource):
         __props__.__dict__["wait_catalogs"] = wait_catalogs
         return ClusterSync(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterSyncNodeArgs', 'ClusterSyncNodeArgsDict', 'outputs.ClusterSyncNode']]]]] = None,
+            state_confirm: pulumi.Input[Optional[_builtins.int]] = None,
+            synced: pulumi.Input[Optional[_builtins.bool]] = None,
+            system_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_catalogs: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["defaultProjectId"] = default_project_id
+        __props__["kubeConfig"] = kube_config
+        __props__["nodes"] = nodes
+        __props__["stateConfirm"] = state_confirm
+        __props__["synced"] = synced
+        __props__["systemProjectId"] = system_project_id
+        __props__["waitCatalogs"] = wait_catalogs
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/clusterSync:ClusterSync', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

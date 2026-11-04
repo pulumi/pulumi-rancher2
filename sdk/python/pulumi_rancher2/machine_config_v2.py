@@ -798,6 +798,44 @@ class MachineConfigV2(pulumi.CustomResource):
         __props__.__dict__["vsphere_config"] = vsphere_config
         return MachineConfigV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            amazonec2_config: pulumi.Input[Optional[Union['MachineConfigV2Amazonec2ConfigArgs', 'MachineConfigV2Amazonec2ConfigArgsDict', 'outputs.MachineConfigV2Amazonec2Config']]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            azure_config: pulumi.Input[Optional[Union['MachineConfigV2AzureConfigArgs', 'MachineConfigV2AzureConfigArgsDict', 'outputs.MachineConfigV2AzureConfig']]] = None,
+            digitalocean_config: pulumi.Input[Optional[Union['MachineConfigV2DigitaloceanConfigArgs', 'MachineConfigV2DigitaloceanConfigArgsDict', 'outputs.MachineConfigV2DigitaloceanConfig']]] = None,
+            fleet_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            generate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            google_config: pulumi.Input[Optional[Union['MachineConfigV2GoogleConfigArgs', 'MachineConfigV2GoogleConfigArgsDict', 'outputs.MachineConfigV2GoogleConfig']]] = None,
+            harvester_config: pulumi.Input[Optional[Union['MachineConfigV2HarvesterConfigArgs', 'MachineConfigV2HarvesterConfigArgsDict', 'outputs.MachineConfigV2HarvesterConfig']]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            linode_config: pulumi.Input[Optional[Union['MachineConfigV2LinodeConfigArgs', 'MachineConfigV2LinodeConfigArgsDict', 'outputs.MachineConfigV2LinodeConfig']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nutanix_config: pulumi.Input[Optional[Union['MachineConfigV2NutanixConfigArgs', 'MachineConfigV2NutanixConfigArgsDict', 'outputs.MachineConfigV2NutanixConfig']]] = None,
+            openstack_config: pulumi.Input[Optional[Union['MachineConfigV2OpenstackConfigArgs', 'MachineConfigV2OpenstackConfigArgsDict', 'outputs.MachineConfigV2OpenstackConfig']]] = None,
+            resource_version: pulumi.Input[Optional[_builtins.str]] = None,
+            vsphere_config: pulumi.Input[Optional[Union['MachineConfigV2VsphereConfigArgs', 'MachineConfigV2VsphereConfigArgsDict', 'outputs.MachineConfigV2VsphereConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["amazonec2Config"] = amazonec2_config
+        __props__["annotations"] = annotations
+        __props__["azureConfig"] = azure_config
+        __props__["digitaloceanConfig"] = digitalocean_config
+        __props__["fleetNamespace"] = fleet_namespace
+        __props__["generateName"] = generate_name
+        __props__["googleConfig"] = google_config
+        __props__["harvesterConfig"] = harvester_config
+        __props__["kind"] = kind
+        __props__["labels"] = labels
+        __props__["linodeConfig"] = linode_config
+        __props__["name"] = name
+        __props__["nutanixConfig"] = nutanix_config
+        __props__["openstackConfig"] = openstack_config
+        __props__["resourceVersion"] = resource_version
+        __props__["vsphereConfig"] = vsphere_config
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/machineConfigV2:MachineConfigV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="amazonec2Config")
     def amazonec2_config(self) -> pulumi.Output[Optional['outputs.MachineConfigV2Amazonec2Config']]:

@@ -518,6 +518,38 @@ class Token(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return Token(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessKey"] = access_key
+        __props__["annotations"] = annotations
+        __props__["clusterId"] = cluster_id
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["expired"] = expired
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["renew"] = renew
+        __props__["secretKey"] = secret_key
+        __props__["token"] = token
+        __props__["ttl"] = ttl
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/token:Token', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[_builtins.str]:

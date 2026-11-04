@@ -170,6 +170,12 @@ func (AuthConfigGithubState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigGithubState)(nil)).Elem()
 }
 
+// AuthConfigGithubExists checks whether an existing AuthConfigGithub resource with the given ID exists.
+func AuthConfigGithubExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigGithubState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigGithub:AuthConfigGithub", id, state, "", opts...)
+}
+
 type authConfigGithubArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

@@ -264,6 +264,12 @@ func (AppV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*appV2State)(nil)).Elem()
 }
 
+// AppV2Exists checks whether an existing AppV2 resource with the given ID exists.
+func AppV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/appV2:AppV2", id, state, "", opts...)
+}
+
 type appV2Args struct {
 	// Annotations for the app v2 (map)
 	Annotations map[string]string `pulumi:"annotations"`

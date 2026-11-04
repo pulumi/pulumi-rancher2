@@ -2097,6 +2097,48 @@ class ClusterV2(pulumi.CustomResource):
         __props__.__dict__["rke_config"] = rke_config
         return ClusterV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2AgentEnvVarArgs', 'ClusterV2AgentEnvVarArgsDict', 'outputs.ClusterV2AgentEnvVar']]]]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            cloud_credential_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2ClusterAgentDeploymentCustomizationArgs', 'ClusterV2ClusterAgentDeploymentCustomizationArgsDict', 'outputs.ClusterV2ClusterAgentDeploymentCustomization']]]]] = None,
+            cluster_registration_token: pulumi.Input[Optional[Union['ClusterV2ClusterRegistrationTokenArgs', 'ClusterV2ClusterRegistrationTokenArgsDict', 'outputs.ClusterV2ClusterRegistrationToken']]] = None,
+            cluster_v1_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_cluster_role_for_project_members: pulumi.Input[Optional[_builtins.str]] = None,
+            default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+            fleet_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterV2FleetAgentDeploymentCustomizationArgs', 'ClusterV2FleetAgentDeploymentCustomizationArgsDict', 'outputs.ClusterV2FleetAgentDeploymentCustomization']]]]] = None,
+            fleet_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_version: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_auth_endpoint: pulumi.Input[Optional[Union['ClusterV2LocalAuthEndpointArgs', 'ClusterV2LocalAuthEndpointArgsDict', 'outputs.ClusterV2LocalAuthEndpoint']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_version: pulumi.Input[Optional[_builtins.str]] = None,
+            rke_config: pulumi.Input[Optional[Union['ClusterV2RkeConfigArgs', 'ClusterV2RkeConfigArgsDict', 'outputs.ClusterV2RkeConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentEnvVars"] = agent_env_vars
+        __props__["annotations"] = annotations
+        __props__["cloudCredentialSecretName"] = cloud_credential_secret_name
+        __props__["clusterAgentDeploymentCustomizations"] = cluster_agent_deployment_customizations
+        __props__["clusterRegistrationToken"] = cluster_registration_token
+        __props__["clusterV1Id"] = cluster_v1_id
+        __props__["defaultClusterRoleForProjectMembers"] = default_cluster_role_for_project_members
+        __props__["defaultPodSecurityAdmissionConfigurationTemplateName"] = default_pod_security_admission_configuration_template_name
+        __props__["enableNetworkPolicy"] = enable_network_policy
+        __props__["fleetAgentDeploymentCustomizations"] = fleet_agent_deployment_customizations
+        __props__["fleetNamespace"] = fleet_namespace
+        __props__["kubeConfig"] = kube_config
+        __props__["kubernetesVersion"] = kubernetes_version
+        __props__["labels"] = labels
+        __props__["localAuthEndpoint"] = local_auth_endpoint
+        __props__["name"] = name
+        __props__["resourceVersion"] = resource_version
+        __props__["rkeConfig"] = rke_config
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/clusterV2:ClusterV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentEnvVars")
     def agent_env_vars(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterV2AgentEnvVar']]]:

@@ -289,6 +289,12 @@ func (AuthConfigGenericOidcState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigGenericOidcState)(nil)).Elem()
 }
 
+// AuthConfigGenericOidcExists checks whether an existing AuthConfigGenericOidc resource with the given ID exists.
+func AuthConfigGenericOidcExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigGenericOidcState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigGenericOidc:AuthConfigGenericOidc", id, state, "", opts...)
+}
+
 type authConfigGenericOidcArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

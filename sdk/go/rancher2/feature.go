@@ -114,6 +114,12 @@ func (FeatureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureState)(nil)).Elem()
 }
 
+// FeatureExists checks whether an existing Feature resource with the given ID exists.
+func FeatureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/feature:Feature", id, state, "", opts...)
+}
+
 type featureArgs struct {
 	// Annotations for feature object (map)
 	Annotations map[string]string `pulumi:"annotations"`

@@ -567,6 +567,28 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["wait_for_cluster"] = wait_for_cluster
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            container_resource_limit: pulumi.Input[Optional[Union['NamespaceContainerResourceLimitArgs', 'NamespaceContainerResourceLimitArgsDict', 'outputs.NamespaceContainerResourceLimit']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_quota: pulumi.Input[Optional[Union['NamespaceResourceQuotaArgs', 'NamespaceResourceQuotaArgsDict', 'outputs.NamespaceResourceQuota']]] = None,
+            wait_for_cluster: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["containerResourceLimit"] = container_resource_limit
+        __props__["description"] = description
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["resourceQuota"] = resource_quota
+        __props__["waitForCluster"] = wait_for_cluster
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/namespace:Namespace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

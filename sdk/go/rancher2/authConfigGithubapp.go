@@ -136,6 +136,12 @@ func (AuthConfigGithubappState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigGithubappState)(nil)).Elem()
 }
 
+// AuthConfigGithubappExists checks whether an existing AuthConfigGithubapp resource with the given ID exists.
+func AuthConfigGithubappExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigGithubappState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigGithubapp:AuthConfigGithubapp", id, state, "", opts...)
+}
+
 type authConfigGithubappArgs struct {
 	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`

@@ -122,22 +122,20 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      * 
-     * @deprecated
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      * 
      */
-    @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
+    @Deprecated
     @Import(name="localAuthEndpoint")
     private @Nullable Output<ClusterV2RkeConfigLocalAuthEndpointArgs> localAuthEndpoint;
 
     /**
      * @return Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      * 
-     * @deprecated
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      * 
      */
-    @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
+    @Deprecated
     public Optional<Output<ClusterV2RkeConfigLocalAuthEndpointArgs>> localAuthEndpoint() {
         return Optional.ofNullable(this.localAuthEndpoint);
     }
@@ -457,11 +455,10 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use rancher2_cluster_v2.local_auth_endpoint instead
+         * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
          * 
          */
-        @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
+        @Deprecated
         public Builder localAuthEndpoint(@Nullable Output<ClusterV2RkeConfigLocalAuthEndpointArgs> localAuthEndpoint) {
             $.localAuthEndpoint = localAuthEndpoint;
             return this;
@@ -472,11 +469,10 @@ public final class ClusterV2RkeConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use rancher2_cluster_v2.local_auth_endpoint instead
+         * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
          * 
          */
-        @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
+        @Deprecated
         public Builder localAuthEndpoint(ClusterV2RkeConfigLocalAuthEndpointArgs localAuthEndpoint) {
             return localAuthEndpoint(Output.of(localAuthEndpoint));
         }

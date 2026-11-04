@@ -515,6 +515,30 @@ class ProjectRoleTemplateBinding(pulumi.CustomResource):
         __props__.__dict__["user_principal_id"] = user_principal_id
         return ProjectRoleTemplateBinding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["groupId"] = group_id
+        __props__["groupPrincipalId"] = group_principal_id
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["roleTemplateId"] = role_template_id
+        __props__["userId"] = user_id
+        __props__["userPrincipalId"] = user_principal_id
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/projectRoleTemplateBinding:ProjectRoleTemplateBinding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

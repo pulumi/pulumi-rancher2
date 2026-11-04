@@ -237,6 +237,12 @@ func (CloudCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cloudCredentialState)(nil)).Elem()
 }
 
+// CloudCredentialExists checks whether an existing CloudCredential resource with the given ID exists.
+func CloudCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CloudCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/cloudCredential:CloudCredential", id, state, "", opts...)
+}
+
 type cloudCredentialArgs struct {
 	// AWS config for the Cloud Credential (list maxitems:1)
 	Amazonec2CredentialConfig *CloudCredentialAmazonec2CredentialConfig `pulumi:"amazonec2CredentialConfig"`

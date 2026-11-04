@@ -17,14 +17,14 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
     public static final ClusterV2RkeConfigMachinePoolTaintArgs Empty = new ClusterV2RkeConfigMachinePoolTaintArgs();
 
     /**
-     * The taint effect. Default: `\&#34;NoExecute\&#34;`.
+     * The taint effect. Default: `&#92;&#34;NoExecute&#92;&#34;`.
      * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
 
     /**
-     * @return The taint effect. Default: `\&#34;NoExecute\&#34;`.
+     * @return The taint effect. Default: `&#92;&#34;NoExecute&#92;&#34;`.
      * 
      */
     public Optional<Output<String>> effect() {
@@ -88,7 +88,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
+         * @param effect The taint effect. Default: `&#92;&#34;NoExecute&#92;&#34;`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ClusterV2RkeConfigMachinePoolTaintArgs extends com.pulumi.res
         }
 
         /**
-         * @param effect The taint effect. Default: `\&#34;NoExecute\&#34;`.
+         * @param effect The taint effect. Default: `&#92;&#34;NoExecute&#92;&#34;`.
          * 
          * @return builder
          * 

@@ -234,6 +234,12 @@ func (RoleTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleTemplateState)(nil)).Elem()
 }
 
+// RoleTemplateExists checks whether an existing RoleTemplate resource with the given ID exists.
+func RoleTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoleTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/roleTemplate:RoleTemplate", id, state, "", opts...)
+}
+
 type roleTemplateArgs struct {
 	// Administrative role template. Default `false` (bool)
 	Administrative *bool `pulumi:"administrative"`

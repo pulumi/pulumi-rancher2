@@ -132,6 +132,12 @@ func (SecretV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretV2State)(nil)).Elem()
 }
 
+// SecretV2Exists checks whether an existing SecretV2 resource with the given ID exists.
+func SecretV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/secretV2:SecretV2", id, state, "", opts...)
+}
+
 type secretV2Args struct {
 	// Annotations for the secret v2 (map)
 	Annotations map[string]string `pulumi:"annotations"`

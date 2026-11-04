@@ -155,6 +155,12 @@ func (PodSecurityAdmissionConfigurationTemplateState) ElementType() reflect.Type
 	return reflect.TypeOf((*podSecurityAdmissionConfigurationTemplateState)(nil)).Elem()
 }
 
+// PodSecurityAdmissionConfigurationTemplateExists checks whether an existing PodSecurityAdmissionConfigurationTemplate resource with the given ID exists.
+func PodSecurityAdmissionConfigurationTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PodSecurityAdmissionConfigurationTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/podSecurityAdmissionConfigurationTemplate:PodSecurityAdmissionConfigurationTemplate", id, state, "", opts...)
+}
+
 type podSecurityAdmissionConfigurationTemplateArgs struct {
 	// Annotations of the resource (map)
 	Annotations map[string]string `pulumi:"annotations"`

@@ -481,6 +481,26 @@ class Registry(pulumi.CustomResource):
         __props__.__dict__["registries"] = registries
         return Registry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegistryRegistryArgs', 'RegistryRegistryArgsDict', 'outputs.RegistryRegistry']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["description"] = description
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["namespaceId"] = namespace_id
+        __props__["projectId"] = project_id
+        __props__["registries"] = registries
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/registry:Registry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

@@ -1245,6 +1245,12 @@ func (ClusterV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterV2State)(nil)).Elem()
 }
 
+// ClusterV2Exists checks whether an existing ClusterV2 resource with the given ID exists.
+func ClusterV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/clusterV2:ClusterV2", id, state, "", opts...)
+}
+
 type clusterV2Args struct {
 	// Agent env vars is a list of additional environment variables to be appended to the `cattle-cluster-agent` and `fleet-agent` deployment, and the plan for the [system upgrade controller](https://github.com/rancher/system-upgrade-controller) to upgrade nodes.
 	AgentEnvVars []ClusterV2AgentEnvVar `pulumi:"agentEnvVars"`

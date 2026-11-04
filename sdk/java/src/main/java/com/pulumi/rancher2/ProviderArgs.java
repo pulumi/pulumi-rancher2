@@ -96,22 +96,20 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Rancher connection retries
      * 
-     * @deprecated
-     * Use timeout instead
+     * @deprecated Use timeout instead
      * 
      */
-    @Deprecated /* Use timeout instead */
+    @Deprecated
     @Import(name="retries", json=true)
     private @Nullable Output<Integer> retries;
 
     /**
      * @return Rancher connection retries
      * 
-     * @deprecated
-     * Use timeout instead
+     * @deprecated Use timeout instead
      * 
      */
-    @Deprecated /* Use timeout instead */
+    @Deprecated
     public Optional<Output<Integer>> retries() {
         return Optional.ofNullable(this.retries);
     }
@@ -303,11 +301,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use timeout instead
+         * @deprecated Use timeout instead
          * 
          */
-        @Deprecated /* Use timeout instead */
+        @Deprecated
         public Builder retries(@Nullable Output<Integer> retries) {
             $.retries = retries;
             return this;
@@ -318,11 +315,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use timeout instead
+         * @deprecated Use timeout instead
          * 
          */
-        @Deprecated /* Use timeout instead */
+        @Deprecated
         public Builder retries(Integer retries) {
             return retries(Output.of(retries));
         }

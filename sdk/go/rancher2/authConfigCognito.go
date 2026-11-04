@@ -228,6 +228,12 @@ func (AuthConfigCognitoState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigCognitoState)(nil)).Elem()
 }
 
+// AuthConfigCognitoExists checks whether an existing AuthConfigCognito resource with the given ID exists.
+func AuthConfigCognitoExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigCognitoState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigCognito:AuthConfigCognito", id, state, "", opts...)
+}
+
 type authConfigCognitoArgs struct {
 	AccessMode          *string  `pulumi:"accessMode"`
 	AllowedPrincipalIds []string `pulumi:"allowedPrincipalIds"`

@@ -434,12 +434,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
@@ -464,21 +464,21 @@ import javax.annotation.Nullable;
  *                     .memoryRequest("500Mi")
  *                     .build())
  *                 .overrideAffinity("""
- * {
- *   \"nodeAffinity\": {
- *     \"requiredDuringSchedulingIgnoredDuringExecution\": {
- *       \"nodeSelectorTerms\": [{
- *         \"matchExpressions\": [{
- *           \"key\": \"not.this/nodepool\",
- *           \"operator\": \"In\",
- *           \"values\": [
- *             \"true\"
+ * }{{@code
+ *   }&#92;{@code "nodeAffinity}&#92;{@code ": }{{@code
+ *     }&#92;{@code "requiredDuringSchedulingIgnoredDuringExecution}&#92;{@code ": }{{@code
+ *       }&#92;{@code "nodeSelectorTerms}&#92;{@code ": [}{{@code
+ *         }&#92;{@code "matchExpressions}&#92;{@code ": [}{{@code
+ *           }&#92;{@code "key}&#92;{@code ": }&#92;{@code "not.this/nodepool}&#92;{@code ",
+ *           }&#92;{@code "operator}&#92;{@code ": }&#92;{@code "In}&#92;{@code ",
+ *           }&#92;{@code "values}&#92;{@code ": [
+ *             }&#92;{@code "true}&#92;{@code "
  *           ]
- *         }]
- *       }]
- *     }
- *   }
- * }
+ *         }}{@code ]
+ *       }}{@code ]
+ *     }}{@code
+ *   }}{@code
+ * }}{@code
  *                 """)
  *                 .build())
  *             .fleetAgentDeploymentCustomizations(ClusterV2FleetAgentDeploymentCustomizationArgs.builder()
@@ -487,8 +487,8 @@ import javax.annotation.Nullable;
  *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1048,16 +1048,16 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machineGlobalConfig("""
- * tls-san: [\"example-website.com\", \"100.100.100.100\", \"2002:db8:3333:4444:5555:6666:7777:8888\"]
+ * tls-san: [}&#92;{@code "example-website.com}&#92;{@code ", }&#92;{@code "100.100.100.100}&#92;{@code ", }&#92;{@code "2002:db8:3333:4444:5555:6666:7777:8888}&#92;{@code "]
  *                 """)
  *                 .build())
  *             .machinePools(Arrays.asList(Map.ofEntries(
@@ -1066,8 +1066,8 @@ import javax.annotation.Nullable;
  *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1090,17 +1090,17 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machineGlobalConfig("""
- * cluster-cidr: \"0.42.0.0/16\"
- * service-cidr: \"0.42.0.0/16\"
+ * cluster-cidr: }&#92;{@code "0.42.0.0/16}&#92;{@code "
+ * service-cidr: }&#92;{@code "0.42.0.0/16}&#92;{@code "
  *                 """)
  *                 .build())
  *             .machinePools(Arrays.asList(Map.ofEntries(
@@ -1109,8 +1109,8 @@ import javax.annotation.Nullable;
  *             .kubernetesVersion("rke2/k3s-version")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -1140,12 +1140,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var foo = new ClusterV2("foo", ClusterV2Args.builder()
  *             .rkeConfig(ClusterV2RkeConfigArgs.builder()
  *                 .machinePools(ClusterV2RkeConfigMachinePoolArgs.builder()
@@ -1168,8 +1168,8 @@ import javax.annotation.Nullable;
  *   felixConfiguration:
  *     featureDetectOverride: ChecksumOffloadBroken=true
  *   global:
- *     systemDefaultRegistry: \"\"
- *   imagePullSecrets: {}
+ *     systemDefaultRegistry: }&#92;{@code "}&#92;{@code "
+ *   imagePullSecrets: }{}{@code
  *   installation:
  *     calicoNetwork:
  *       bgp: Disabled
@@ -1188,7 +1188,7 @@ import javax.annotation.Nullable;
  *     enabled: true
  *     imagePath: rancher
  *     imagePrefix: mirrored-calico-
- *     kubernetesProvider: \"\"
+ *     kubernetesProvider: }&#92;{@code "}&#92;{@code "
  *   ipamConfig:
  *     autoAllocateBlocks: true
  *     strictAffinity: true
@@ -1203,8 +1203,8 @@ import javax.annotation.Nullable;
  *             .enableNetworkPolicy(false)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

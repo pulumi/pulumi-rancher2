@@ -58,11 +58,10 @@ public final class ClusterV2RkeConfig {
     /**
      * @return Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      * 
-     * @deprecated
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      * 
      */
-    @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
+    @Deprecated
     private @Nullable ClusterV2RkeConfigLocalAuthEndpoint localAuthEndpoint;
     /**
      * @return Cluster V2 machine global config
@@ -156,11 +155,10 @@ public final class ClusterV2RkeConfig {
     /**
      * @return Local auth endpoint configures the Authorized Cluster Endpoint (ACE) which can be used to directly access the Kubernetes API server, without requiring communication through Rancher. For more information, please refer to [Rancher Documentation](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
      * 
-     * @deprecated
-     * Use rancher2_cluster_v2.local_auth_endpoint instead
+     * @deprecated Use rancher2_cluster_v2.local_auth_endpoint instead
      * 
      */
-    @Deprecated /* Use rancher2_cluster_v2.local_auth_endpoint instead */
+    @Deprecated
     public Optional<ClusterV2RkeConfigLocalAuthEndpoint> localAuthEndpoint() {
         return Optional.ofNullable(this.localAuthEndpoint);
     }

@@ -592,6 +592,34 @@ class NodeDriver(pulumi.CustomResource):
         __props__.__dict__["whitelist_domains"] = whitelist_domains
         return NodeDriver(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            builtin: pulumi.Input[Optional[_builtins.bool]] = None,
+            checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ui_url: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            whitelist_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["annotations"] = annotations
+        __props__["builtin"] = builtin
+        __props__["checksum"] = checksum
+        __props__["description"] = description
+        __props__["externalId"] = external_id
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["uiUrl"] = ui_url
+        __props__["url"] = url
+        __props__["whitelistDomains"] = whitelist_domains
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/nodeDriver:NodeDriver', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

@@ -188,6 +188,12 @@ func (CatalogV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*catalogV2State)(nil)).Elem()
 }
 
+// CatalogV2Exists checks whether an existing CatalogV2 resource with the given ID exists.
+func CatalogV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CatalogV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/catalogV2:CatalogV2", id, state, "", opts...)
+}
+
 type catalogV2Args struct {
 	// Annotations for the catalog v2 (map)
 	Annotations map[string]string `pulumi:"annotations"`

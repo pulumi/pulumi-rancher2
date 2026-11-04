@@ -119,6 +119,12 @@ func (ConfigMapV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*configMapV2State)(nil)).Elem()
 }
 
+// ConfigMapV2Exists checks whether an existing ConfigMapV2 resource with the given ID exists.
+func ConfigMapV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigMapV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/configMapV2:ConfigMapV2", id, state, "", opts...)
+}
+
 type configMapV2Args struct {
 	// Annotations for the configMap v2 (map)
 	Annotations map[string]string `pulumi:"annotations"`

@@ -229,6 +229,12 @@ func (ClusterSyncState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterSyncState)(nil)).Elem()
 }
 
+// ClusterSyncExists checks whether an existing ClusterSync resource with the given ID exists.
+func ClusterSyncExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterSyncState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/clusterSync:ClusterSync", id, state, "", opts...)
+}
+
 type clusterSyncArgs struct {
 	// The cluster ID that is syncing (string)
 	ClusterId string `pulumi:"clusterId"`

@@ -233,6 +233,12 @@ func (BootstrapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bootstrapState)(nil)).Elem()
 }
 
+// BootstrapExists checks whether an existing Bootstrap resource with the given ID exists.
+func BootstrapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BootstrapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/bootstrap:Bootstrap", id, state, "", opts...)
+}
+
 type bootstrapArgs struct {
 	// Initial password for Admin user. Default: `admin` (string)
 	InitialPassword *string `pulumi:"initialPassword"`

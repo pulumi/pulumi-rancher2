@@ -222,6 +222,12 @@ func (AuthConfigAdfsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigAdfsState)(nil)).Elem()
 }
 
+// AuthConfigAdfsExists checks whether an existing AuthConfigAdfs resource with the given ID exists.
+func AuthConfigAdfsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigAdfsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigAdfs:AuthConfigAdfs", id, state, "", opts...)
+}
+
 type authConfigAdfsArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

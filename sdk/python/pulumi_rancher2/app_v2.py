@@ -899,6 +899,50 @@ class AppV2(pulumi.CustomResource):
         __props__.__dict__["wait"] = wait
         return AppV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            chart_name: pulumi.Input[Optional[_builtins.str]] = None,
+            chart_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cleanup_on_fail: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_values: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_hooks: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_open_api_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_schema_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            system_default_registry: pulumi.Input[Optional[_builtins.str]] = None,
+            values: pulumi.Input[Optional[_builtins.str]] = None,
+            wait: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["chartName"] = chart_name
+        __props__["chartVersion"] = chart_version
+        __props__["cleanupOnFail"] = cleanup_on_fail
+        __props__["clusterId"] = cluster_id
+        __props__["clusterName"] = cluster_name
+        __props__["deploymentValues"] = deployment_values
+        __props__["disableHooks"] = disable_hooks
+        __props__["disableOpenApiValidation"] = disable_open_api_validation
+        __props__["forceUpgrade"] = force_upgrade
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["projectId"] = project_id
+        __props__["repoName"] = repo_name
+        __props__["skipSchemaValidation"] = skip_schema_validation
+        __props__["systemDefaultRegistry"] = system_default_registry
+        __props__["values"] = values
+        __props__["wait"] = wait
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/appV2:AppV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

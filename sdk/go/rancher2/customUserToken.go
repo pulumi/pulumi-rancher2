@@ -238,6 +238,12 @@ func (CustomUserTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customUserTokenState)(nil)).Elem()
 }
 
+// CustomUserTokenExists checks whether an existing CustomUserToken resource with the given ID exists.
+func CustomUserTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomUserTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/customUserToken:CustomUserToken", id, state, "", opts...)
+}
+
 type customUserTokenArgs struct {
 	// (Computed) Annotations of the token (map)
 	Annotations map[string]string `pulumi:"annotations"`

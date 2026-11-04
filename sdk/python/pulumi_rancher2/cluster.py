@@ -1635,6 +1635,72 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["windows_prefered_cluster"] = windows_prefered_cluster
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            agent_env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAgentEnvVarArgs', 'ClusterAgentEnvVarArgsDict', 'outputs.ClusterAgentEnvVar']]]]] = None,
+            aks_config_v2: pulumi.Input[Optional[Union['ClusterAksConfigV2Args', 'ClusterAksConfigV2ArgsDict', 'outputs.ClusterAksConfigV2']]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterAgentDeploymentCustomizationArgs', 'ClusterClusterAgentDeploymentCustomizationArgsDict', 'outputs.ClusterClusterAgentDeploymentCustomization']]]]] = None,
+            cluster_auth_endpoint: pulumi.Input[Optional[Union['ClusterClusterAuthEndpointArgs', 'ClusterClusterAuthEndpointArgsDict', 'outputs.ClusterClusterAuthEndpoint']]] = None,
+            cluster_registration_token: pulumi.Input[Optional[Union['ClusterClusterRegistrationTokenArgs', 'ClusterClusterRegistrationTokenArgsDict', 'outputs.ClusterClusterRegistrationToken']]] = None,
+            default_pod_security_admission_configuration_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_agent_image: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_auth_image: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_root_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            driver: pulumi.Input[Optional[_builtins.str]] = None,
+            eks_config_v2: pulumi.Input[Optional[Union['ClusterEksConfigV2Args', 'ClusterEksConfigV2ArgsDict', 'outputs.ClusterEksConfigV2']]] = None,
+            enable_cluster_istio: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+            fleet_agent_deployment_customizations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterFleetAgentDeploymentCustomizationArgs', 'ClusterFleetAgentDeploymentCustomizationArgsDict', 'outputs.ClusterFleetAgentDeploymentCustomization']]]]] = None,
+            fleet_workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gke_config_v2: pulumi.Input[Optional[Union['ClusterGkeConfigV2Args', 'ClusterGkeConfigV2ArgsDict', 'outputs.ClusterGkeConfigV2']]] = None,
+            imported_config: pulumi.Input[Optional[Union['ClusterImportedConfigArgs', 'ClusterImportedConfigArgsDict', 'outputs.ClusterImportedConfig']]] = None,
+            istio_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            k3s_config: pulumi.Input[Optional[Union['ClusterK3sConfigArgs', 'ClusterK3sConfigArgsDict', 'outputs.ClusterK3sConfig']]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oke_config: pulumi.Input[Optional[Union['ClusterOkeConfigArgs', 'ClusterOkeConfigArgsDict', 'outputs.ClusterOkeConfig']]] = None,
+            rke2_config: pulumi.Input[Optional[Union['ClusterRke2ConfigArgs', 'ClusterRke2ConfigArgsDict', 'outputs.ClusterRke2Config']]] = None,
+            system_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            windows_prefered_cluster: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["agentEnvVars"] = agent_env_vars
+        __props__["aksConfigV2"] = aks_config_v2
+        __props__["annotations"] = annotations
+        __props__["caCert"] = ca_cert
+        __props__["clusterAgentDeploymentCustomizations"] = cluster_agent_deployment_customizations
+        __props__["clusterAuthEndpoint"] = cluster_auth_endpoint
+        __props__["clusterRegistrationToken"] = cluster_registration_token
+        __props__["defaultPodSecurityAdmissionConfigurationTemplateName"] = default_pod_security_admission_configuration_template_name
+        __props__["defaultProjectId"] = default_project_id
+        __props__["description"] = description
+        __props__["desiredAgentImage"] = desired_agent_image
+        __props__["desiredAuthImage"] = desired_auth_image
+        __props__["dockerRootDir"] = docker_root_dir
+        __props__["driver"] = driver
+        __props__["eksConfigV2"] = eks_config_v2
+        __props__["enableClusterIstio"] = enable_cluster_istio
+        __props__["enableNetworkPolicy"] = enable_network_policy
+        __props__["fleetAgentDeploymentCustomizations"] = fleet_agent_deployment_customizations
+        __props__["fleetWorkspaceName"] = fleet_workspace_name
+        __props__["gkeConfigV2"] = gke_config_v2
+        __props__["importedConfig"] = imported_config
+        __props__["istioEnabled"] = istio_enabled
+        __props__["k3sConfig"] = k3s_config
+        __props__["kubeConfig"] = kube_config
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["okeConfig"] = oke_config
+        __props__["rke2Config"] = rke2_config
+        __props__["systemProjectId"] = system_project_id
+        __props__["windowsPreferedCluster"] = windows_prefered_cluster
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="agentEnvVars")
     def agent_env_vars(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterAgentEnvVar']]]:

@@ -751,6 +751,44 @@ class AuthConfigAzureAd(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return AuthConfigAzureAd(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            application_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            graph_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            group_membership_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rancher_url: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMode"] = access_mode
+        __props__["allowedPrincipalIds"] = allowed_principal_ids
+        __props__["annotations"] = annotations
+        __props__["applicationId"] = application_id
+        __props__["applicationSecret"] = application_secret
+        __props__["authEndpoint"] = auth_endpoint
+        __props__["enabled"] = enabled
+        __props__["endpoint"] = endpoint
+        __props__["graphEndpoint"] = graph_endpoint
+        __props__["groupMembershipFilter"] = group_membership_filter
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["rancherUrl"] = rancher_url
+        __props__["tenantId"] = tenant_id
+        __props__["tokenEndpoint"] = token_endpoint
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/authConfigAzureAd:AuthConfigAzureAd', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

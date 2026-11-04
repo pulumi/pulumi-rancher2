@@ -163,6 +163,12 @@ func (GlobalRoleBindingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalRoleBindingState)(nil)).Elem()
 }
 
+// GlobalRoleBindingExists checks whether an existing GlobalRoleBinding resource with the given ID exists.
+func GlobalRoleBindingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalRoleBindingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/globalRoleBinding:GlobalRoleBinding", id, state, "", opts...)
+}
+
 type globalRoleBindingArgs struct {
 	// Annotations for global role binding (map)
 	Annotations map[string]string `pulumi:"annotations"`

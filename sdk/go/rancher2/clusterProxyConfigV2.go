@@ -86,6 +86,12 @@ func (ClusterProxyConfigV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterProxyConfigV2State)(nil)).Elem()
 }
 
+// ClusterProxyConfigV2Exists checks whether an existing ClusterProxyConfigV2 resource with the given ID exists.
+func ClusterProxyConfigV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterProxyConfigV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/clusterProxyConfigV2:ClusterProxyConfigV2", id, state, "", opts...)
+}
+
 type clusterProxyConfigV2Args struct {
 	// Annotations of the resource
 	Annotations map[string]string `pulumi:"annotations"`

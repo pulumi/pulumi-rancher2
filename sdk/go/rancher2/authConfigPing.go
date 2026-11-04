@@ -228,6 +228,12 @@ func (AuthConfigPingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authConfigPingState)(nil)).Elem()
 }
 
+// AuthConfigPingExists checks whether an existing AuthConfigPing resource with the given ID exists.
+func AuthConfigPingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthConfigPingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/authConfigPing:AuthConfigPing", id, state, "", opts...)
+}
+
 type authConfigPingArgs struct {
 	// Access mode for auth. `required`, `restricted`, `unrestricted` are supported. Default `unrestricted` (string)
 	AccessMode *string `pulumi:"accessMode"`

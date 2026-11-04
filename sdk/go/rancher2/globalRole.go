@@ -188,6 +188,12 @@ func (GlobalRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalRoleState)(nil)).Elem()
 }
 
+// GlobalRoleExists checks whether an existing GlobalRole resource with the given ID exists.
+func GlobalRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GlobalRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("rancher2:index/globalRole:GlobalRole", id, state, "", opts...)
+}
+
 type globalRoleArgs struct {
 	// Annotations for global role object (map)
 	Annotations map[string]string `pulumi:"annotations"`

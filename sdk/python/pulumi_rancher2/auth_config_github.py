@@ -529,6 +529,34 @@ class AuthConfigGithub(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return AuthConfigGithub(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_principal_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tls: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessMode"] = access_mode
+        __props__["allowedPrincipalIds"] = allowed_principal_ids
+        __props__["annotations"] = annotations
+        __props__["clientId"] = client_id
+        __props__["clientSecret"] = client_secret
+        __props__["enabled"] = enabled
+        __props__["hostname"] = hostname
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["tls"] = tls
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/authConfigGithub:AuthConfigGithub', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessMode")
     def access_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

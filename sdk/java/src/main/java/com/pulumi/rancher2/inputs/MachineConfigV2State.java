@@ -101,14 +101,14 @@ public final class MachineConfigV2State extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\&#34;prod-pool1\&#34; will generate \&#34;nc-prod-pool1-?????\&#34; name computed at `name` attribute (string)
+     * Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=&#92;&#34;prod-pool1&#92;&#34; will generate &#92;&#34;nc-prod-pool1-?????&#92;&#34; name computed at `name` attribute (string)
      * 
      */
     @Import(name="generateName")
     private @Nullable Output<String> generateName;
 
     /**
-     * @return Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\&#34;prod-pool1\&#34; will generate \&#34;nc-prod-pool1-?????\&#34; name computed at `name` attribute (string)
+     * @return Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=&#92;&#34;prod-pool1&#92;&#34; will generate &#92;&#34;nc-prod-pool1-?????&#92;&#34; name computed at `name` attribute (string)
      * 
      */
     public Optional<Output<String>> generateName() {
@@ -414,7 +414,7 @@ public final class MachineConfigV2State extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param generateName Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\&#34;prod-pool1\&#34; will generate \&#34;nc-prod-pool1-?????\&#34; name computed at `name` attribute (string)
+         * @param generateName Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=&#92;&#34;prod-pool1&#92;&#34; will generate &#92;&#34;nc-prod-pool1-?????&#92;&#34; name computed at `name` attribute (string)
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class MachineConfigV2State extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param generateName Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=\&#34;prod-pool1\&#34; will generate \&#34;nc-prod-pool1-?????\&#34; name computed at `name` attribute (string)
+         * @param generateName Cluster V2 generate name. The pattern to generate machine config name. e.g  generate_name=&#92;&#34;prod-pool1&#92;&#34; will generate &#92;&#34;nc-prod-pool1-?????&#92;&#34; name computed at `name` attribute (string)
          * 
          * @return builder
          * 

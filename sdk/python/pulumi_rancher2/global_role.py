@@ -536,6 +536,32 @@ class GlobalRole(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return GlobalRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            builtin: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            inherited_cluster_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            inherited_namespaced_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalRoleInheritedNamespacedRuleArgs', 'GlobalRoleInheritedNamespacedRuleArgsDict', 'outputs.GlobalRoleInheritedNamespacedRule']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            new_user_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalRoleRuleArgs', 'GlobalRoleRuleArgsDict', 'outputs.GlobalRoleRule']]]]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["annotations"] = annotations
+        __props__["builtin"] = builtin
+        __props__["description"] = description
+        __props__["inheritedClusterRoles"] = inherited_cluster_roles
+        __props__["inheritedNamespacedRules"] = inherited_namespaced_rules
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["newUserDefault"] = new_user_default
+        __props__["rules"] = rules
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'rancher2:index/globalRole:GlobalRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
